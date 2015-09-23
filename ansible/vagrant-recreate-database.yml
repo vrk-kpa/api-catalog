@@ -2,7 +2,7 @@
 
 # This playbook deletes all postgre database and recreates empty ones!
 
-# To run: ansible-playbook -v -i inventories/vagrant deploy-all.yml
+# To run: ansible-playbook -v -i inventories/vagrant vagrant-recreate-database.yml
 
 - hosts: mainserver
   sudo: true
