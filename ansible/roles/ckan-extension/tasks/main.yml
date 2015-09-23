@@ -1,0 +1,12 @@
+---
+
+# TODO: This is designed for Vagrant
+
+- name: Create common paths
+  file: path=/tmp/ckanext state=directory
+
+- name: Synchronize extension sources
+  synchronize: src=../ckanext/{{ ckanext }} dest=/tmp/ckanext/
+
+- name: Link extension sources
+  command: /usr/lib/ckan/default/bin/python setup.py develop chdir=/tmp/ckanext/{{ ckanext }}

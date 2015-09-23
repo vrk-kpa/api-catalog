@@ -1,6 +1,6 @@
 ---
 
-# To run: ansible-playbook -v -i inventories/vagrant deploy-all.yml
+# To run: ansible-playbook -v -i inventories/vagrant deploy-extensions.yml
 
 - hosts: mainserver
   sudo: true
@@ -9,15 +9,6 @@
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
   roles:
-    - os-base
-    - postgre
-    - solr3
-    - redis
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
-    - nginx
-    - apache
-    - ckan
-    - ckan-style
-    - solr-reindex
   handlers:
     - include: handlers/handlers.yml
