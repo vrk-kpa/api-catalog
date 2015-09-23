@@ -1,0 +1,6 @@
+[mainserver]
+liityntakatalogi.palveluvayla.com ansible_ssh_user=ubuntu
+
+[mainserver:vars]
+deployment_environment_id=beta
+secrets_file_path="vars/kapa-catalog-secrets/not_yet_defined_TODO.yml"

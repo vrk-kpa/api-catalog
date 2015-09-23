@@ -1,0 +1,3 @@
+local all postgres peer
+host {{ database_ckan.name }} {{ database_ckan.username }} {{ database_ckan.allowed_ip_range }} md5
+host {{ database_ckan.name }} {{ database_ckan.username }} 127.0.0.0/8 md5

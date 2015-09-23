@@ -1,0 +1,19 @@
+---
+
+#- include: modules.yml
+
+
+# Web resources
+
+- name: Ensure www path is present
+  file: path=/var/www state=directory mode=0755 owner=root group=root
+  tags:
+  - resources
+
+- name: Clean resources
+  file: path=/var/www/resources state=absent
+  #when: modules_copy|changed
+  tags:
+  - resources
+
+#- include: ytpassets.yml

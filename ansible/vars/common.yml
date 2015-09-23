@@ -1,0 +1,45 @@
+---
+
+www_root: /var/www
+www_user: www-data
+www_group: www-data
+
+server_path: /srv/ytp
+cache_path: "{{ server_path }}/cache"
+backup_path: "{{ server_path }}/backup"
+scripts_path: "{{ server_path }}/scripts"
+log_path: /var/log/ckan
+static_path: "{{ www_root }}/static"
+
+files_root: "{{ server_path }}/files"
+
+# TODO remove. there is no useful operations for all directories besides create
+all_paths:
+  - "{{ server_path }}"
+  - "{{ cache_path }}"
+  - "{{ backup_path }}"
+  - "{{ scripts_path }}"
+  - "{{ log_path }}"
+  - "{{ static_path }}"
+
+hostname: "liityntakatalogi"
+secondary_hostname: 127.0.0.1
+secondary_hostname_language: en
+base_hostname: ""
+secondary_base_hostname: ""
+
+ckan_ini: /etc/ckan/default/production.ini
+virtualenv: /usr/lib/ckan/default
+
+harvest_sources: false
+
+ckan_version: 2.4.1
+
+google_analytics: false
+# enable: google_analytics: { 'id': "", 'account': "", 'username': "", 'password': "", 'type': "" }
+certificates_path: "/etc/ssl/opendata"
+
+basic_auth_path: false
+local_cache: "/tmp/ytp/cache"
+
+import_base_organizations: false

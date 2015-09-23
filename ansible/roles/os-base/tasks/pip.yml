@@ -1,0 +1,12 @@
+---
+
+- name: Remove distribute
+  pip: name=distribute virtualenv="{{ virtualenv }}" state=absent
+  ignore_errors: true
+
+- name: Upgrade pip
+  pip: name=pip virtualenv="{{ virtualenv }}" state=latest
+
+- name: Upgrade setuptools
+  pip: name=setuptools virtualenv="{{ virtualenv }}" state=latest
+

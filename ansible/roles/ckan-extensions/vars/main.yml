@@ -1,0 +1,20 @@
+---
+
+modules:
+  - ytp-assets-common
+  - ckanext-ytp-tasks
+  - ckanext-ytp-request
+  - ckanext-ytp-main
+  - ckanext-googleanalytics
+  - ckanext-ytp-comments
+  - ckanext-qa
+  - ckanext-archiver
+  - ckanext-harvest
+  - ckanext-spatial
+  - ckanext-report
+  - ckanext-datarequests
+
+
+modules_path: ../modules
+
+clear_module_cache: false

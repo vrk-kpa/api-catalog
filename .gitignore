@@ -1,0 +1,3 @@
+.vagrant/
+server.csr
+server.pass.key

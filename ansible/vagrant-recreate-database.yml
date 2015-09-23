@@ -1,0 +1,59 @@
+---
+
+# This playbook deletes all postgre database and recreates empty ones!
+
+# To run: ansible-playbook -v -i inventories/vagrant deploy-all.yml
+
+- hosts: mainserver
+  sudo: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  tasks:
+    - name: Ensure environment is Vagrant
+      assert:
+        that: deployment_environment_id == vagrant
+
+    - name: Stop CKAN
+      service: name=apache2 state=stopped
+
+    - name: Delete Postgresql databases
+      sudo_user: postgres
+      postgresql_db: "name={{ item.name }} state=absent"
+      with_items:
+      - { name: "{{ database.ckan.name }}" }
+      ignore_errors: True
+
+    - name: Setup Postgresql databases
+      sudo_user: postgres
+      postgresql_db: "name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}"
+      with_items:
+      - { name: "{{ database.ckan.name }}", owner: "{{ ckan_database_username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }
+      ignore_errors: True
+
+    - name: Initialize CKAN database
+      shell: ckan db init
+      ignore_errors: True
+
+    - name: Upgrade CKAN database
+      shell: ckan db upgrade
+      ignore_errors: True
+
+    - name: Create initial CKAN users
+      shell: ./bin/paster --plugin=ckan user add "{{ item.username }}" "password={{ item.password }}" "email={{ item.email }}" "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+      ignore_errors: True
+      with_flattened:
+        - harvest_user
+        - admin
+
+    - name: Add CKAN sysadmins
+      shell: ./bin/paster --plugin=ckan sysadmin add "{{ item }}" --config="{{ ckan_ini }}" chdir="{{ virtualenv }}"
+      ignore_errors: True
+      with_items: ckan_admins
+
+    - name: Start CKAN
+      service: name=apache2 state=restarted
+
+  handlers:
+    - include: handlers/handlers.yml

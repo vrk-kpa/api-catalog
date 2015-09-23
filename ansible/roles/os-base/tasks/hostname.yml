@@ -1,0 +1,17 @@
+---
+
+- name: Set hostname
+  template: src=hostname.j2 dest="/etc/hostname" mode=0644 owner=root group=root
+  register: hostname_update
+  tags:
+  - common
+  - non-local
+  - has-hostname
+
+- name: Update hostname
+  command: service hostname start
+  when: hostname_update|changed
+  tags:
+  - common
+  - non-local
+  - has-hostname

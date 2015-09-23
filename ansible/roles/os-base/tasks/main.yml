@@ -1,0 +1,55 @@
+---
+
+- name: Clear cache directory
+  file: path="{{ cache_path }}" state=absent
+  when: clear_all_cache
+  tags:
+  - clear-cache
+
+- include: timezone.yml
+- include: hostname.yml
+- include: ssh.yml
+
+- name: Copy environment
+  template: src=environment.j2 dest="/etc/environment" mode=0644 owner=root group=root
+
+- name: Copy apt sources.list
+  template: src=sources.list.j2 dest=/etc/apt/sources.list mode=0644 owner=root group=root
+  when: apt_source_url != false
+
+- name: Update package cache
+  apt: update_cache=yes
+
+- name: Update packages
+  apt: upgrade=dist
+
+# TODO: is postgresql-server-dev-9 needed?
+- name: Ensure common packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - htop
+    - python-pip
+    - python-dev
+    - python-virtualenv
+    - python-psycopg2
+    - libpq5
+    - git-core
+    - unzip
+    - gettext
+    - build-essential
+    - libz-dev
+    - libssl-dev
+    - postgresql-server-dev-9.3
+  tags:
+  - packages
+  - common
+
+# TODO: Move path creation where paths are used even those are duplicate
+- name: Create common paths
+  file: path={{ item }} state=directory
+  with_items: all_paths
+  tags:
+  - common
+
+- include: pip.yml
+- include: node.yml

@@ -1,0 +1,14 @@
+---
+
+- name: Download Solr package
+  get_url: url={{ solr_download_url }} dest={{ cache_path }}/solr-{{ solr_version }}/solr.tgz mode=0644 owner=root group=root
+
+- name: Extract Solr installer
+  # tar xzf solr-5.2.1.tgz solr-5.2.1/bin/install_solr_service.sh --strip-components=2
+  # creates
+  unarchive: src={{ cache_path }}/solr-{{ solr_version }}/solr.tgz dest=/opt/solr copy=no
+
+- name: Install Solr
+  # sudo bash ./install_solr_service.sh solr-5.2.1.tgz
+  # sudo bash ./install_solr_service.sh solr-5.0.0.tgz -i /opt -d /var/solr -u solr -s solr -p 8983
+  # creates

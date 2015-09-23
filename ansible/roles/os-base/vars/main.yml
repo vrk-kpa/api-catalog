@@ -1,0 +1,11 @@
+---
+
+clear_all_cache: false
+
+timezone: Europe/Helsinki
+apt_source_url: "http://fi.archive.ubuntu.com"
+
+# Ubuntu 12.04
+ubuntu_codename: trusty
+
+search_engine_robots_filename: "robots_disallowed.txt"

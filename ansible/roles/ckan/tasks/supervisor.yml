@@ -1,0 +1,39 @@
+---
+
+- name: Copy supervisor configuration
+  template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/ytp.conf" mode=0644 owner=root group=root
+  register: supervisor_configuration
+  notify:
+  - Restart Gather
+  - Restart Fetch
+  tags:
+  - ckan
+
+- name: Reread supervisor
+  shell: supervisorctl reread
+  when: supervisor_configuration|changed
+  tags:
+  - ckan
+
+- name: Ensure supervisor services
+  shell: supervisorctl add {{ item }}
+  when: supervisor_configuration|changed
+  with_flattened:
+    - supervisor_services
+  tags:
+  - ckan
+
+- name: Ensure supervisor services are restarted
+  supervisorctl: name={{ item }} state=restarted
+  when: supervisor_configuration|changed or modules_install|changed or ckan_configuration|changed
+  with_flattened:
+    - supervisor_services
+  tags:
+  - ckan
+
+- name: Ensure supervisor services are started
+  supervisorctl: name={{ item }} state=started
+  with_flattened:
+    - supervisor_services
+  tags:
+  - ckan

@@ -1,0 +1,54 @@
+---
+
+- name: Install postgresql
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - postgresql
+  tags:
+  - packages
+  - database
+
+# TODO These should be replaced with lineinfile or ini_file modules if possible
+# TODO action should be replace with template
+- name: Copy Postgresql configurations
+  action: template src={{ item.file }} dest={{ item.dest }} owner=postgres group=postgres mode=0640
+  with_items:
+  - { file: pg_hba.conf.j2, dest: /etc/postgresql/9.3/main/pg_hba.conf }
+  - { file: postgresql.conf.j2, dest: /etc/postgresql/9.3/main/postgresql.conf }
+  tags:
+  - database
+
+- name: Generate self-signed SSL DB certificate
+  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ hostname }}" -days 3650 -keyout "/var/lib/postgresql/9.3/main/server.key" -out "/var/lib/postgresql/9.3/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/9.3/main/server.crt"
+  tags:
+    - database
+
+- name: Ensure certificates ownership
+  shell: chmod 640 /var/lib/postgresql/9.3/main/server.* && chown "postgres:postgres" /var/lib/postgresql/9.3/main/server.*
+  tags:
+    - database
+
+- name: Restart postgres
+  service: name=postgresql state=restarted
+  tags:
+  - database
+
+- name: Setup Postgresql users
+  sudo_user: postgres
+  postgresql_user: user={{ item.user }} password={{ item.password }}
+  with_items:
+  - { user: "{{ database_ckan.username }}", password: "{{ database_ckan.password }}" }
+  tags:
+  - database
+
+- name: Setup Postgresql databases
+  sudo_user: postgres
+  postgresql_db: name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}
+  with_items:
+  - { name: "{{ database_ckan.name }}", owner: "{{ database_ckan.username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }
+  ignore_errors: True
+  tags:
+  - database
+
+- include: spatial.yml
+#- include: backup.yml

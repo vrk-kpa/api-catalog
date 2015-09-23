@@ -1,0 +1,23 @@
+---
+
+# To run: ansible-playbook -v -i inventories/vagrant deploy-all.yml
+
+- hosts: mainserver
+  sudo: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  roles:
+    - os-base
+    - postgre
+    - solr3
+    - redis
+    - ckan-extensions
+    - nginx
+    - apache
+    - ckan
+    - ckan-style
+    - solr-reindex
+  handlers:
+    - include: handlers/handlers.yml

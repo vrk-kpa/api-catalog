@@ -1,0 +1,31 @@
+---
+
+- name: Install Apache
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - apache2
+    - libapache2-mod-wsgi
+    - libffi-dev
+
+- name: Disable Apache sites
+  file: path=/etc/apache2/sites-enabled/{{ item }} state=absent
+  with_items:
+    - default
+    - default-ssl
+    - 000-default
+    - ckan_default
+
+- name: Copy Apache configuration
+  template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.owner }}
+  with_items:
+    - { src: ports.conf.j2, dest: /etc/apache2/ports.conf, mode: 0644, owner: root}
+    - { src: apache2.j2, dest: /etc/apache2/sites-available/ckan_catalog.conf, mode: 0644, owner: root}
+
+- name: Enable Apache configuration
+  file: src=/etc/apache2/sites-available/ckan_catalog.conf dest=/etc/apache2/sites-enabled/ckan_catalog.conf state=link owner=root group=root
+
+- name: Enable SSL configuration
+  command: a2enmod ssl
+
+- name: Restart Apache
+  service: name=apache2 state=restarted

@@ -1,0 +1,173 @@
+[DEFAULT]
+
+debug = false
+
+[server:main]
+
+use = egg:Paste#http
+host = 0.0.0.0
+port = 5000
+
+[app:main]
+
+use = egg:ckan
+full_stack = true
+cache_dir = /tmp/%(ckan.site_id)s/
+
+beaker.session.key = ckan
+beaker.session.secret = {{ baker_session_secret }}
+
+app_instance_uuid = {{ app_instance_uuid }}
+
+who.config_file = %(here)s/who.ini
+who.log_level = warning
+who.log_file = %(cache_dir)s/who_log.ini
+
+sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
+
+ckan.site_url = https://{{ hostname }}
+ckan.site_url_internally = https://{{ hostname }}/data/
+
+ckan.auth.anon_create_dataset = false
+ckan.auth.create_unowned_dataset = false
+ckan.auth.create_dataset_if_not_in_organization = false
+ckan.auth.user_create_groups = true
+ckan.auth.user_create_organizations = true
+ckan.auth.user_delete_groups = true
+ckan.auth.user_delete_organizations = true
+ckan.auth.create_user_via_api = false
+ckan.auth.create_user_via_web = true
+ckan.auth.roles_that_cascade_to_sub_groups = admin
+
+ckan.site_id = {{ ckan_site_id }}
+
+ckan.plugins = {{ ckan_plugins }} {% if google_analytics -%}googleanalytics{%- endif %}
+
+ckan.site_title = Liityntakatalogi
+ckan.site_logo = /base/images/ckan-logo.png
+ckan.site_description = 
+
+ckan.favicon = /images/icons/ckan.ico
+ckan.gravatar_default = identicon
+
+ckan.locale_default = fi
+ckan.locale_order = en pt_BR ja it cs_CZ ca es fr el sv sr sr@latin no sk fi ru de pl nl bg ko_KR hu sa sl lv
+ckan.locales_offered = fi sv en
+ckan.locales_filtered_out = en_GB
+ckan.feeds.authority_name = 
+ckan.feeds.date = 
+ckan.feeds.author_name = 
+ckan.feeds.author_link = 
+
+scheming.presets = ckanext.scheming:presets.json
+                   ckanext.fluent:presets.json
+
+scheming.dataset_schemas = ckanext.scheming:ckan_dataset.json
+
+email_to = {{ email.error_recipient }}
+error_email_from = {{ email.error_from }}
+
+smtp.server = {{ email.smtp_server }}
+smtp.starttls = False
+smtp.mail_from = no-reply
+
+ckan.harvest.mq.type = redis
+ckan.harvest.mq.hostname = {{ redis.host }}
+ckan.harvest.mq.port = {{ redis.port }}
+ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
+
+ckanext-archiver.archive_dir = /tmp/archive
+ckanext-archiver.max_content_length = 50000000
+ckan.celery.queues = celery bulk priority
+
+licenses_group_url = file://{{ ckan_files_path }}/license.json
+service_classes_options_url = file://{{ ckan_files_path }}/service_classes.json
+municipalities_options_url = file://{{ ckan_files_path }}/municipalities.json
+life_situation_options_url = file://{{ ckan_files_path }}/life_situations.json
+producer_type_options_url = file://{{ ckan_files_path }}/producer_types.json
+producer_type_private_options_url = file://{{ ckan_files_path }}/producer_types_private.json
+target_group_options_url = file://{{ ckan_files_path }}/target_groups.json
+
+ckanext.ytp.organizations.default_organization_name = yksityishenkilo
+ckanext.ytp.organizations.default_organization_title = Yksityishenkil\u00f6
+
+ckanext.ytp.dataset.service_database_enabled = {% if service_database_enabled -%}true{%- else -%}false{%- endif %}
+
+ckanext.ytp.dataset.auto_author = {% if auto_author_enabled -%}true{%- else -%}false{%- endif %}
+
+ckanext.ytp.theme.logos = default:opendata_fi.png alpha.avoindata.fi:avoindata_fi.png beta.avoindata.fi:avoindata_fi.png www.avoindata.fi:avoindata_fi.png avoindata.fi:avoindata_fi.png alpha.opendata.fi:opendata_fi.png beta.opendata.fi:opendata_fi.png www.opendata.fi:opendata_fi.png opendata.fi:opendata_fi.png
+
+ofs.impl = pairtree
+
+# 2.1 filestore:
+ofs.storage_dir = {{ ckan_files_path }}
+
+# 2.2 filestore:
+ckan.storage_path = {{ ckan_files_path }}
+
+{% if google_analytics -%}
+googleanalytics.id = {{ google_analytics.id }}
+googleanalytics.account = {{ google_analytics.account }}
+googleanalytics.type = {{ google_analytics.type }}
+{%- endif %}
+
+ckanext.spatial.harvest.continue_on_validation_errors = true
+
+solr_url = http://{{ solr.host }}:{{ solr.port }}/solr
+
+ckan.tracking_enabled = true
+
+ckan.max_resource_size = {{ ckan_max_resource_size }}
+
+[loggers]
+
+keys = root, ckan, ckanext
+
+[handlers]
+
+keys = console
+
+[formatters]
+
+keys = generic
+
+[logger_root]
+
+level = WARNING
+handlers = console
+
+[logger_ckan]
+
+level = INFO
+handlers = console
+qualname = ckan
+propagate = 0
+
+[logger_ckanext]
+
+level = DEBUG
+handlers = console
+qualname = ckanext
+propagate = 0
+
+[handler_console]
+
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+
+format = %(asctime)s %(levelname)-5.5s [%(name)s] %(message)s
+
+[app:celery]
+
+BROKER_URL = redis://{{ redis.host }}:{{ redis.port }}/{{ redis_celery_database }}
+CELERY_RESULT_BACKEND = redis://{{ redis.host }}:{{ redis.port }}/{{ redis_celery_database }}
+CELERY_RESULT_SERIALIZER = json
+CELERY_TASK_SERIALIZER = json
+BROKER_BACKEND = 
+BROKER_HOST = 
+CELERY_RESULT_DBURI = 
+CELERYD_CONCURRENCY = 4
