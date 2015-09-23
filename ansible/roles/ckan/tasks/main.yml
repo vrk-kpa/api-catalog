@@ -103,14 +103,6 @@
   - qa
 
 
-# FIXME: Temporary hack, replace with a proper module
-- name: Replace CKAN schema configuration
-  template: src="ckan_dataset.json.j2" dest="{{ virtualenv }}/src/ckanext-scheming/ckanext/scheming/ckan_dataset.json" mode=0640 owner=root group="{{ www_group }}"
-  tags:
-  - ckan
-
-
-
 # Extension requirements
 
 #- name: Install modules
