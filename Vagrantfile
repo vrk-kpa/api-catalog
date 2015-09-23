@@ -11,7 +11,7 @@ if [ ! -f /vagrant_bootstrap_done.info ]; then
   sudo pip install -U ansible
   sudo touch /vagrant_bootstrap_done.info
 fi
-#cd /src/ansible && ansible-playbook -i inventories/vagrant deploy-all.yml
+cd /src/ansible && ansible-playbook -i inventories/vagrant deploy-all.yml
 SCRIPT
 
 VAGRANTFILE_API_VERSION = "2"
