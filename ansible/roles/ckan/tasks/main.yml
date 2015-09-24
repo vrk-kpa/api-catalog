@@ -182,12 +182,6 @@
   - sysadmins
   - ckan
 
-- name: Trigger Solr reindex
-  file: path={{ files_root }}/.solr-reindex state=absent
-  when: copy_ckan_ui_data|changed
-  tags:
-  - ckan
-
 # TODO translations should probably be a separate role
 # - include: translations.yml
 - include: translations_simple.yml
