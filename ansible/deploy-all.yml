@@ -16,6 +16,7 @@
     - nginx
     - apache
     - ckan
+    - ckan-translations
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - solr-reindex

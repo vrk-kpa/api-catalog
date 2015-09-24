@@ -1,7 +1,7 @@
 ---
 
 - name: Copy CKAN translations
-  copy: src="katalogi/ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po"
+  copy: src="ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po"
   tags:
   - translations_simple
   - ckan
