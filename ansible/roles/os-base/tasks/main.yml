@@ -41,15 +41,21 @@
     - libssl-dev
     - postgresql-server-dev-9.3
   tags:
-  - packages
-  - common
+    - packages
+    - common
 
 # TODO: Move path creation where paths are used even those are duplicate
 - name: Create common paths
   file: path={{ item }} state=directory
-  with_items: all_paths
+  with_items:
+    - "{{ server_path }}"
+    - "{{ cache_path }}"
+    - "{{ backup_path }}"
+    - "{{ scripts_path }}"
+    - "{{ log_path }}"
+    - "{{ static_path }}"
   tags:
-  - common
+    - common
 
 - include: pip.yml
 - include: node.yml
