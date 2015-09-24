@@ -1,0 +1,47 @@
+// Define Bootstrap v2 style vars from v3 vars
+
+@black:                 #000;
+@white:                 #FFF;
+@grayDark:              #333;
+@grayLight:             #999;
+@formActionsBackground: @grayDark;
+
+@baseFontSize:   @font-size-base;
+@baseLineHeight: @line-height-base;
+@fontSizeLarge:  @font-size-large;
+
+// ie7 no longer supported in v3
+.ie7-restore-right-whitespace() {
+}
+.ie7-inline-block() {
+}
+
+// Old bootstrap v2-style .makeColumn only called once with parameter @column: 6
+.makeColumn(@columns: 1, @offset: 0) {
+  .make-lg-column(6);
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// form-actions was removed from bootstrap 3
+.form-actions {
+  padding: 19px 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  *zoom: 1;
+}
+.form-actions:before,
+.form-actions:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.form-actions:after {
+  clear: both;
+}
