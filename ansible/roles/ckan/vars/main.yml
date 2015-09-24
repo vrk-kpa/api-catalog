@@ -28,7 +28,6 @@ ckan_site_id: "default"
 
 patches_cache_path: "{{ cache_path }}/patch"
 ckan_source_path: "{{ virtualenv }}/src/ckan"
-spatial_source_path: "{{ virtualenv }}/src/ckanext-spatial"
 
 service_database_enabled: false
 auto_author_enabled: true

@@ -50,5 +50,4 @@
   tags:
   - database
 
-- include: spatial.yml
 #- include: backup.yml
