@@ -2,12 +2,6 @@
 
 - name: Copy CKAN translations
   copy: src="ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po"
-  tags:
-  - translations_simple
-  - ckan
 
 - name: Compile translation files
   command: msgfmt "{{ virtualenv }}/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po" -o "{{ virtualenv }}/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.mo"
-  tags:
-  - translations_simple
-  - ckan

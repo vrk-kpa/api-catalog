@@ -2,9 +2,6 @@
 
 - name: Create SSL path
   file: path="{{ certificates_path }}" state=directory mode=0755 owner=root group="{{ www_group }}"
-  tags:
-    - nginx
-    - ssl
 
 - name: Copy SSL files
   copy: src="{{ ssl_path }}/{{ item }}" dest={{ certificates_path }}/{{ item }} owner=root group="{{ www_group }}" mode=640
@@ -14,47 +11,30 @@
     - "{{ ssl_crt_secondary }}"
     - "{{ ssl_key_primary }}"
     - "{{ ssl_key_secondary }}"
-  tags:
-    - nginx
-    - ssl
 
 # FIXME: This generates a signing certificate, not an actual SSL cert, should be fixed
 #- name: Generate self-signed SSL certificate
 #  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ hostname }}" -days 3650 -keyout "{{ certificates_path }}/{{ ssl_key_primary }}" -out "{{ certificates_path }}/{{ ssl_crt_primary }}" -extensions v3_ca creates="{{ certificates_path }}/{{ ssl_crt_primary }}"
 #  register: generate_certificates
 #  when: ssl_path == false
-#  tags:
-#    - nginx
-#   - ssl
 
 - name: Generate signing key
   command: openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
   when: ssl_path == false
-  tags: 
-    - ssl
 
 - name: Generate server key
   command: openssl rsa -passin pass:x -in server.pass.key -out "{{ certificates_path }}/{{ ssl_key_primary }}"
   when: ssl_path == false
-  tags: 
-    - ssl
 
 - name: Generate server signing request
   command: openssl req -new -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ hostname }}" -key "{{ certificates_path }}/{{ ssl_key_primary }}" -out server.csr
   when: ssl_path == false
-  tags: 
-    - ssl
 
 - name: Generate server certificate
   command: openssl x509 -req -days 3650 -in server.csr -signkey "{{ certificates_path }}/{{ ssl_key_primary }}" -out "{{ certificates_path }}/{{ ssl_crt_primary }}"
   register: generate_certificates
   when: ssl_path == false
-  tags: 
-    - ssl
 
 - name: Ensure certificates ownership
   shell: chmod 640 {{ certificates_path }}/* && chown "root:{{ www_group }}" {{ certificates_path }}/*
   when: ssl_path == false and generate_certificates|changed
-  tags:
-    - nginx
-    - ssl

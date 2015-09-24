@@ -3,32 +3,21 @@
 - name: Initialize CKAN database
   shell: ckan db init
   ignore_errors: True
-  tags:
-  - ckan
 
 - name: Upgrade CKAN database
   shell: ckan db upgrade
   ignore_errors: True
-  tags:
-  - ckan
 
 - name: Upgrade CKAN filestore
   shell: ./bin/paster --plugin=ckan db migrate-filestore "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
   ignore_errors: True
-  tags:
-  - ckan
 
 - name: Create initial CKAN users
   shell: ./bin/paster --plugin=ckan user add "{{ item.value.username }}" "password={{ item.value.password }}" "email={{ item.value.email }}" "--config={{ ckan_ini }}" chdir={{ virtualenv }}
   ignore_errors: True
   with_dict: ckan_users
-  tags:
-  - ckan
 
 - name: Set CKAN sysadmins
   shell: ./bin/paster --plugin=ckan sysadmin add {{ item }} --config={{ ckan_ini }} chdir={{ virtualenv }}
   ignore_errors: True
   with_items: ckan_admins
-  tags:
-  - sysadmins
-  - ckan

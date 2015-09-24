@@ -39,9 +39,6 @@
     - libz-dev
     - libssl-dev
     - postgresql-server-dev-9.3
-  tags:
-    - packages
-    - common
 
 # TODO: Move path creation where paths are used even those are duplicate
 - name: Create common paths
@@ -53,8 +50,6 @@
     - "{{ scripts_path }}"
     - "{{ log_path }}"
     - "{{ static_path }}"
-  tags:
-    - common
 
 - include: pip.yml
 - include: node.yml
