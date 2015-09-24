@@ -9,6 +9,8 @@
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
   roles:
+    - ckan
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
+    - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
   handlers:
     - include: handlers/handlers.yml

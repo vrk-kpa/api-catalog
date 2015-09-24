@@ -13,11 +13,11 @@
     - postgre
     - solr3
     - redis
-    - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - nginx
     - apache
     - ckan
-    - ckan-style
+    - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
+    - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - solr-reindex
   handlers:
     - include: handlers/handlers.yml
