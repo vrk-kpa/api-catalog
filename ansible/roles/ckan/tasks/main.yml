@@ -17,10 +17,8 @@
 
 - name: Ensure path ownerships
   command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}" /etc/ckan/default
-- name: Ensure upload path mode
+- name: Ensure upload path permissions
   command: chmod -R "0770" "{{ ckan_files_path }}" 
-- name: Ensure filestore path ownership
-  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}"
 
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.owner }}
