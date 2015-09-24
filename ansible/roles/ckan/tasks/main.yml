@@ -31,8 +31,8 @@
 
 - include: custom_requirements.yml
 
-- name: Stop supervisor services (as it may block database update)
-  command: supervisorctl stop all
+#- name: Stop supervisor services (as it may block database update)
+#  command: supervisorctl stop all
 
 - include: database.yml
 

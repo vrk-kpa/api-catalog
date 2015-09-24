@@ -10,6 +10,7 @@
     - "{{ secrets_file_path }}"
   roles:
     - os-base
+    - ssh
     - postgre
     - solr3
     - redis
