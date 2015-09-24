@@ -15,10 +15,10 @@
     - redis
     - nginx
     - apache
-    - ckan
-    - ckan-translations
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
+    - ckan
+    - ckan-translations
     - solr-reindex
   handlers:
     - include: handlers/handlers.yml
