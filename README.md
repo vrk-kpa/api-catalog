@@ -35,13 +35,11 @@ And you can also run Ansible manually:
 
 ## Development
 
-TODO: This section is deprecated!
-
 Edit the following files:
 
-- **style:** [main.min.css](css/main.min.css)
-- **localization:** [ckan.po](ansible/roles/ckan/files/katalogi/ckan.po) (requires reprovisioning)
-- **schema:** [ckan_dataset.json.j2](ansible/roles/ckan/templates/ckan_dataset.json.j2) (requires reprovisioning)
+- **style:** [ckanext-apicatalog_ui](ckanext/ckanext-apicatalog_ui) (reprovision ckan-extension)
+- **localization:** [ckan.po](ansible/roles/ckan-translations/files/ckan.po) (reprovision ckan-translations)
+- **schema:** [ckanext-apicatalog_scheming](ckanext/ckanext-apicatalog_scheming/ckanext/apicatalog_scheming/schemas/dataset.json) (reprovision ckan-extension)
 
 To clean the database (destroys all data and recreates databases):
 
