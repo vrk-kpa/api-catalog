@@ -6,7 +6,7 @@ harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: stats scheming_datasets fluent
+ckan_plugins: stats scheming_datasets fluent apicatalog_scheming
 
 #ckan_extensions:
 #  - ckanext-ytp-tasks
