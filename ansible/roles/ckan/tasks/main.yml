@@ -182,10 +182,6 @@
   - sysadmins
   - ckan
 
-# TODO translations should probably be a separate role
-# - include: translations.yml
-- include: translations_simple.yml
-
 #- name: re-minify CKAN javascript files
 #  shell: ./bin/paster --plugin=ckan minify {{ ckan_source_path }}/ckan/public/base/javascript/modules "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
 #  tags:
