@@ -10,6 +10,7 @@
     - "{{ secrets_file_path }}"
   roles:
     - ckan
+    - ckan-translations
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
   handlers:

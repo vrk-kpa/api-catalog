@@ -1,42 +1,26 @@
 ---
 
-# TODO: move elsewhere
-- name: Ensure CKAN common packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - supervisor
-  tags:
-  - packages
-  - ckan
-
 - name: Install CKAN
   pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }} state=latest
-  tags:
-  - ckan
 
 - name: Install CKAN requirements
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
-  tags:
-  - ckan
 
 - name: Install CKAN launch script
   template: src=ckan.j2 dest=/usr/bin/ckan mode=0755 owner=root group=root
-  tags:
-  - ckan
 
 - name: Create CKAN files path
   file: path="{{ ckan_files_path }}" state=directory mode=0770 owner="{{ www_user }}" group="{{ www_group }}"
+
 - name: Create CKAN settings path
   file: path="/etc/ckan/default" state=directory mode=0770 owner="{{ www_user }}" group="{{ www_group }}"
 
 - name: Ensure path ownerships
   command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}" /etc/ckan/default
-- name: Ensure celerybeat pid ownership
-  command: chown "{{ www_user }}:{{ www_group }}" /tmp/celerybeat_pid /tmp/celerybeat_schedule
-  ignore_errors: True
 - name: Ensure upload path mode
   command: chmod -R "0770" "{{ ckan_files_path }}" 
-
+- name: Ensure filestore path ownership
+  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}"
 
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.owner }}
@@ -47,11 +31,8 @@
 
 - include: custom_requirements.yml
 
-# Background services can block database update
-- name: Stop supervisor services
+- name: Stop supervisor services (as it may block database update)
   command: supervisorctl stop all
-  tags:
-  - ckan
 
 - include: database.yml
 
@@ -63,19 +44,5 @@
 
 - name: Ensure Apache restart
   service: name=apache2 state=restarted
-  tags:
-  - apache
-  - ckan
 
-- name: Ensure filestore path ownership
-  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}"
-  tags:
-  - ckan
-
-#- name: Copy celery configuration
-#  template: src="../modules/ckanext-ytp-tasks/ytp_celery.py.j2" dest="/etc/ckan/default/ytp_celery.py" mode=0640 owner=root group="{{ www_group }}"
-#  tags:
-#  - ckan
-
-# - include: supervisor.yml
 # - include: cron.yml
