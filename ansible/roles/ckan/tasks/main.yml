@@ -1,10 +1,9 @@
 ---
 
+# TODO: move elsewhere
 - name: Ensure CKAN common packages
   apt: pkg={{ item }} state=latest
   with_items:
-    - libxslt1-dev
-    - libgeos-c1
     - supervisor
   tags:
   - packages
@@ -24,8 +23,6 @@
   template: src=ckan.j2 dest=/usr/bin/ckan mode=0755 owner=root group=root
   tags:
   - ckan
-
-# - include: patch.yml
 
 - name: Create CKAN files path
   file: path="{{ ckan_files_path }}" state=directory mode=0770 owner="{{ www_user }}" group="{{ www_group }}"
@@ -47,68 +44,6 @@
     - { src: ckan.ini.j2, dest: "{{ ckan_ini }}", mode: 0640, owner: root, group: "{{ www_group }}" }
     - { src: apache.wsgi.j2, dest: /etc/ckan/default/apache.wsgi, mode: 0640, owner: root, group: "{{ www_group }}" }
     - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: 0640, owner: root, group: "{{ www_group }}" }
-
-
-# Spatial / libxml
-
-- name: Create debian cache path
-  file: path="{{ cache_path }}/debian" state=directory
-  tags:
-  - ckan
-  - spatial
-  - packages
-
-# Base requirements
-
-- name: Copy requirements file
-  template: src=requirements.txt.j2 dest="{{ cache_path }}/requirements.txt" mode=0644 owner=root group=root
-  tags:
-  - ckan
-  - spatial
-
-- name: Install requirements
-  pip: requirements="{{ cache_path }}/requirements.txt" virtualenv="{{ virtualenv }}" extra_args='--exists-action=w --timeout=30'
-  tags:
-  - ckan
-  - spatial
-
-# TODO why this is not in the requirements file above?
-- name: Install python package to support SNI in requests
-  pip: name=ndg-httpsclient virtualenv="{{ virtualenv }}"
-  tags:
-  - ckan
-  - qa
-
-
-# Extension requirements
-
-#- name: Install modules
-#  pip: name="{{ cache_path }}/{{ item }}" virtualenv="{{ virtualenv }}" state=latest
-#  when: modules_copy|changed
-#  register: modules_install
-#  with_flattened:
-#    - ckan_extensions
-#  tags:
-#  - ckan
-#  - modules
-
-# todo: bad tagging
-#- name: Install extension requirements
-#  pip: requirements="{{ cache_path }}/{{ item.package }}/pip-requirements.txt" virtualenv="{{ virtualenv }}" state={{ item.state }} extra_args='--exists-action=w --timeout=30'
-#  with_items:
-#    - { package: ckanext-spatial, state: present }
-#    - { package: ckanext-archiver, state: latest }
-#    - { package: ckanext-qa, state: latest }
-#  tags:
-#  - ckan
-#  - spatial
-#  - qa
-
-- name: Ensure SqlAlchemy version
-  pip: name="sqlalchemy" virtualenv="{{ virtualenv }}" version="0.9.6" extra_args='--exists-action=w --upgrade --force-reinstall --timeout=30'
-  tags:
-  - ckan
-  - spatial
 
 # Background services can block database update
 - name: Stop supervisor services
@@ -133,39 +68,6 @@
   ignore_errors: True
   tags:
   - ckan
-
-# todo: bad tagging
-#- name: Initialize extension databases
-#  shell: ./bin/paster --plugin={{ item }} "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
-#  with_items:
-#    - "ckanext-harvest harvester initdb"
-#    - "ckanext-ytp-tasks ytp-tasks-initialize-database"
-#    - "ckanext-spatial spatial initdb"
-#    - "ckanext-ytp-comments initdb"
-#    - "ckanext-archiver archiver init"
-#    - "ckanext-qa qa init"
-#    - "ckanext-report report initdb"
-#    - "ckanext-googleanalytics initdb"
-#  tags:
-#  - ckan
-#  - google-analytics
-
-- name: Copy credentials token
-  copy: src="{{ google_credentials }}" dest="{{ cache_path }}/token.dat" mode=0644 owner=root group="{{ www_group }}"
-  when: google_analytics != false
-  tags:
-    - ckan
-    - google-analytics
-
-- name: Add analytics fetching to cron
-  cron: name="analytics" minute="*/5" hour="0-3" job="{{ virtualenv }}/bin/paster --plugin=ckanext-googleanalytics loadanalytics {{cache_path}}/token.dat --config={{ ckan_ini }}"
-  when: google_analytics != false
-  tags:
-    - ckan
-    - google-analytics
-
-
-# Users
 
 - name: Create initial CKAN users
   shell: ./bin/paster --plugin=ckan user add "{{ item.value.username }}" "password={{ item.value.password }}" "email={{ item.value.email }}" "--config={{ ckan_ini }}" chdir={{ virtualenv }}
