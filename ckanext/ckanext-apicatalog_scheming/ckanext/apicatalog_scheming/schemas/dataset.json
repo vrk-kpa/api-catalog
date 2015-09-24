@@ -38,10 +38,26 @@
       }
     },
     {
+      "field_name": "validSince",
+      "label": {
+        "en": "Valid since",
+        "fi": "Voimassaolo alkaa"
+      },
+      "preset": "date"
+    },
+    {
+      "field_name": "validUntil",
+      "label": {
+        "en": "Valid until",
+        "fi": "Voimassaolo päättyy"
+      },
+      "preset": "date"
+    },
+    {
       "field_name": "availability",
       "label": {
         "en": "Availability",
-        "fi": "Saatavuus"
+        "fi": "Saatavuusaste"
       },
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
@@ -134,6 +150,22 @@
       "label": "Type",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
+    },
+    {
+      "field_name": "validSince",
+      "label": {
+        "en": "Valid since",
+        "fi": "Voimassaolo alkaa"
+      },
+      "preset": "date"
+    },
+    {
+      "field_name": "validUntil",
+      "label": {
+        "en": "Valid until",
+        "fi": "Voimassaolo päättyy"
+      },
+      "preset": "date"
     },
     {
       "field_name": "connection_information",
