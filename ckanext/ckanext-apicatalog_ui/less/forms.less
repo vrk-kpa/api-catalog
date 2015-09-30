@@ -80,12 +80,12 @@ textarea {
 
 .control-large input,
 .control-large .control-label {
-  font-size: @baseFontSize * 1.25;
-  line-height: @baseLineHeight * 1.5;
+  font-size: @font-size-base * 1.25;
+  line-height: @line-height-computed * 1.5;
 }
 
 .control-large input {
-  height: (@baseLineHeight*2)+1;
+  height: (@line-height-computed*2)+1;
 }
 
 .control-required {
@@ -314,14 +314,14 @@ textarea {
 // Custom Fields
 @media (max-width: 768px) {
   [data-module="custom-fields"] {
-    .input-prepend .add-on {
+    .input-group .input-group-addon {
       display:block;
     }
   }
 }
 @media (max-width: 480px) {
   [data-module="custom-fields"] {
-    .input-prepend {
+    .input-group {
       width:100%;
     }
     .control-custom input {
@@ -421,8 +421,8 @@ textarea {
 .control-group.error input,
 .control-group.error select,
 .control-group.error textarea,
-.control-group.error .input-prepend .add-on,
-.control-group.error .input-append .add-on {
+.control-group.error .input-group .input-group-addon,
+.control-group.error .input-group .input-group-addon {
   border-color: @errorBorder;
 }
 
@@ -453,7 +453,7 @@ textarea {
   width: auto;
 }
 
-.control-group.error .input-prepend .error-block,
+.control-group.error .input-group .error-block,
 .control-custom.error .error-block {
   width: auto;
 }
@@ -752,7 +752,7 @@ textarea {
     top: 0;
     margin-right: 10px;
     &.hover {
-      color: @grayDark;
+      color: @gray-dark;
       text-decoration: none;
       background-position: 0 -15px;
       .transition(background-position .1s linear);
@@ -765,7 +765,7 @@ textarea {
     right: 5px;
     padding: 0 4px;
     .border-radius(100px);
-    .icon-remove {
+    .glyphicon-remove {
       margin-right: 0;
     }
   }
@@ -785,16 +785,16 @@ textarea {
   width: 7%;
   text-align: center;
   text-transform: uppercase;
-  color: @grayLight;
+  color: @gray-midtone;
   font-weight: bold;
 }
 
-.add-member-form .row-fluid .control-group {
+.add-member-form .row .control-group {
   float: left;
   width: 45%;
 }
 
-.add-member-form .row-fluid {
+.add-member-form .row {
   .select2-container, input {
     width: 100% !important;
   }
