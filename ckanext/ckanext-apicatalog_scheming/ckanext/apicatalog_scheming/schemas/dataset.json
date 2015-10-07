@@ -1,8 +1,8 @@
 {
   "scheming_version": 1,
   "dataset_type": "dataset",
-  "about": "A reimplementation of the default CKAN dataset schema",
-  "about_url": "http://github.com/open-data/ckanext-scheming",
+  "about": "API catalog service/interface schema",
+  "about_url": "http://github.com/vrk-kpa/api-catalog",
   "dataset_fields": [
     {
       "field_name": "title",
@@ -63,6 +63,15 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
+      "field_name": "sla",
+      "label": {
+        "en": "SLA",
+        "fi": "SLA"
+      },
+      "preset": "fluent_text",
+      "form_languages": ["fi", "sv", "en"]
+    },
+    {
       "field_name": "response_time",
       "label": {
         "en": "Average response time",
@@ -74,10 +83,13 @@
       }
     },
     {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "help_text": "License definitions and additional information can be found at http://opendefinition.org/"
+      "field_name": "service_status",
+      "label": {
+        "en": "Service status",
+        "fi": "Palvelun tila"
+      },
+      "preset": "fluent_text",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "owner_org",
@@ -92,26 +104,6 @@
       "display_snippet": "link.html"
     },
     {
-      "field_name": "version",
-      "label": "Version",
-      "validators": "ignore_missing unicode package_version_validator",
-      "form_placeholder": "1.0"
-    },
-    {
-      "field_name": "author",
-      "label": "Author",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:creator"
-    },
-    {
-      "field_name": "author_email",
-      "label": "Author Email",
-      "form_placeholder": "joe@example.com",
-      "display_property": "dc:creator",
-      "display_snippet": "email.html",
-      "display_email_name_field": "author"
-    },
-    {
       "field_name": "maintainer",
       "label": "Maintainer",
       "form_placeholder": "Joe Bloggs",
@@ -124,6 +116,15 @@
       "display_property": "dc:contributor",
       "display_snippet": "email.html",
       "display_email_name_field": "maintainer"
+    },
+    {
+      "field_name": "maintainer_phone",
+      "label": {
+        "en": "Maintainer phone number",
+        "fi": "Ylläpitäjän puhelinnumero"
+      },
+      "form_placeholder": "+358123456789",
+      "display_property": "dc:contributor"
     }
   ],
   "resource_fields": [
