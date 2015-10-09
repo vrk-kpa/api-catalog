@@ -1,1 +1,44 @@
 ---
+
+database_ckan:
+  host: 127.0.0.1
+  port: 5432
+  allowed_ip_range: 127.0.0.1/32
+  name: ckan_default
+  username: ckan_default
+  password: "{{ secret.database_ckan_password }}"
+
+solr:
+  host: 127.0.0.1
+  port: 8983
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+
+ckan_users:
+  admin:
+    username: admin
+    password: "{{ secret.ckan_admin_password }}"
+    email: admin@localhost
+  harvest:
+    username: harvest
+    password: "{{ secret.ckan_harvest_password }}"
+    email: harvest@localhost
+  test:
+    username: test
+    password: "{{ secret.ckan_test_password }}"
+    email: testuser@localhost
+
+ckan_admins:
+  - "{{ ckan_users.admin.username }}"
+  - "{{ ckan_users.harvest.username }}"
+
+email_domain: localhost
+email:
+  smtp_server: localhost
+  from: no-reply@{{ email_domain }}
+  error_recipient: admin@localhost
+  error_from: error@{{ email_domain }}
+  # TODO: What is this? This seems to be the recipient of sysadmin emails?
+  admin_email: admin@localhost
