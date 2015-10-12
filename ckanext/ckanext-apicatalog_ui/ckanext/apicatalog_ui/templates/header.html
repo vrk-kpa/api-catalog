@@ -51,7 +51,7 @@
           </div>
         {% else %}
           <nav class="account not-authed">
-            <ul class="list-unstyled">
+            <ul class="unstyled">
               {% block header_account_notlogged %}
               <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
               {% if h.check_access('user_create') %}
