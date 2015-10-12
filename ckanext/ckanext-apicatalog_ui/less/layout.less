@@ -8,8 +8,6 @@
 }
 @media (min-width: 768px) {
   .wrapper {
-    background-image:url("@{imagePath}/nav.png");
-    background-repeat:repeat-y;
     background-position:0px 0px;
   }
 }
@@ -50,6 +48,9 @@
 }
 
 [role=main] .secondary {
+  border-right-style: solid;
+  border-right-width: thin;
+  border-right-color: @genericBorderColor;
   margin-left: 0; // Remove grid margin.
 }
 
