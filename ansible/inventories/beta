@@ -1,5 +1,5 @@
 [mainserver]
-katalogitest01.csc.fi ansible_ssh_user=vrkroot ansible_ssh_private_key_file=vars/api-catalog-secrets/beta-csc.pem
+katalogitest01.csc.fi ansible_ssh_user=vrkroot ansible_ssh_private_key_file=vars/api-catalog-secrets/beta.pem
 
 [mainserver:vars]
 deployment_environment_id=beta
