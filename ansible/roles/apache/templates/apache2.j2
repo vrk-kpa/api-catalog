@@ -1,8 +1,7 @@
 WSGISocketPrefix /var/run/wsgi
 <VirtualHost 0.0.0.0:8080>
 
-    ServerName {{ hostname }}
-    ServerAlias {{ secondary_hostname }}
+    ServerName localhost
     WSGIScriptAlias / /etc/ckan/default/apache.wsgi
 
     # Pass authorization info on (needed for REST API)
