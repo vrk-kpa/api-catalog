@@ -52,4 +52,4 @@
     - "{{ static_path }}"
 
 - include: pip.yml
-- include: node.yml
+#- include: node.yml
