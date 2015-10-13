@@ -1,7 +1,7 @@
 ---
 
-hostname: api-catalog
-secondary_hostname: 127.0.0.1
+public_facing_hostname: api-catalog
+internal_hostname: catalog-vagrant
 
 database_ckan:
   host: 127.0.0.1

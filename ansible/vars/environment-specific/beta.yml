@@ -1,7 +1,7 @@
 ---
 
-hostname: liityntakatalogi
-secondary_hostname: 127.0.0.1
+public_facing_hostname: liityntakatalogi.palveluvayla.com
+internal_hostname: catalog-beta
 
 database_ckan:
   host: 127.0.0.1

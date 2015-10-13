@@ -9,7 +9,7 @@
 - name: Copy Nginx sites
   template: src={{ item.template }} dest=/etc/nginx/{{ item.destination }} mode=0644 owner=root group=root
   with_items:
-    - { "template": "nginx_site_config.j2", "destination": "sites-available/primary_site", "ssl_crt": "{{ ssl_crt_primary }}", "ssl_key": "{{ ssl_key_primary }}", "server_name": "{{ hostname }}" }
+    - { "template": "nginx_site_config.j2", "destination": "sites-available/primary_site", "ssl_crt": "{{ ssl_crt_primary }}", "ssl_key": "{{ ssl_key_primary }}" }
 
 - name: Disable default site
   file: path=/etc/nginx/sites-enabled/default state=absent
