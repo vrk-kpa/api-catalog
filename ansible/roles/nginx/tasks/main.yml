@@ -1,23 +1,23 @@
 ---
 
-- name: Ensure nginx is installed
-  action: apt pkg="nginx" state=latest
+- name: Ensure Nginx is installed
+  apt: pkg=nginx state=latest
 
 - name: Copy base Nginx configuration
-  template: src="nginx.conf.j2" dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
+  template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
 
 - name: Copy Nginx sites
   template: src={{ item.template }} dest=/etc/nginx/{{ item.destination }} mode=0644 owner=root group=root
   with_items:
-    - { 'template':'nginx_site_config.j2','destination':'sites-available/primary_site', 'ssl_crt': "{{ ssl_crt_primary }}", 'ssl_key': "{{ ssl_key_primary }}", 'server_name': "{{ hostname }}", 'root_redirect': false, 'base_hostname': "{{ base_hostname }}" }
+    - { "template": "nginx_site_config.j2", "destination": "sites-available/primary_site", "ssl_crt": "{{ ssl_crt_primary }}", "ssl_key": "{{ ssl_key_primary }}", "server_name": "{{ hostname }}" }
 
 - name: Disable default site
-  file: path="/etc/nginx/sites-enabled/default" state=absent
+  file: path=/etc/nginx/sites-enabled/default state=absent
 
 - name: Enable Nginx site
   file: src="/etc/nginx/sites-available/{{ item }}" dest="/etc/nginx/sites-enabled/{{ item }}" state=link
   with_items:
-    - "primary_site"
+    - primary_site
   notify: Restart Nginx
 
 - name: Ensure Nginx is restarted

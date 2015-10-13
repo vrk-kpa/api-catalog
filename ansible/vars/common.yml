@@ -13,12 +13,6 @@ static_path: "{{ www_root }}/static"
 
 files_root: "{{ server_path }}/files"
 
-hostname: "liityntakatalogi"
-secondary_hostname: 127.0.0.1
-secondary_hostname_language: en
-base_hostname: ""
-secondary_base_hostname: ""
-
 ckan_ini: /etc/ckan/default/production.ini
 virtualenv: /usr/lib/ckan/default
 
@@ -28,9 +22,9 @@ ckan_version: 2.4.1
 
 google_analytics: false
 # enable: google_analytics: { 'id': "", 'account': "", 'username': "", 'password': "", 'type': "" }
-certificates_path: "/etc/ssl/opendata"
+certificates_path: /etc/ssl/opendata
 
 basic_auth_path: false
-local_cache: "/tmp/ytp/cache"
+local_cache: /tmp/ytp/cache
 
 import_base_organizations: false

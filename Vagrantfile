@@ -21,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     server.vm.box = "ubuntu/trusty64"
     server.vm.box_url = "https://vagrantcloud.com/ubuntu/boxes/trusty64"
     server.vm.network :private_network, ip: "10.100.10.10"
-    server.vm.hostname = "catalog"
+    server.vm.hostname = "api-catalog"
 
     case RUBY_PLATFORM
     when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
