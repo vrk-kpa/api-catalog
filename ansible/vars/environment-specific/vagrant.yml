@@ -12,7 +12,7 @@ database_ckan:
   password: "{{ secret.database_ckan_password }}"
 
 solr:
-  host: 127.0.0.1
+  host: 0.0.0.0
   port: 8983
 
 redis:
