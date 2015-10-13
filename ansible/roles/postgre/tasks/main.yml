@@ -6,9 +6,8 @@
     - postgresql
 
 # TODO These should be replaced with lineinfile or ini_file modules if possible
-# TODO action should be replace with template
 - name: Copy Postgresql configurations
-  action: template src={{ item.file }} dest={{ item.dest }} owner=postgres group=postgres mode=0640
+  template: src={{ item.file }} dest={{ item.dest }} owner=postgres group=postgres mode=0640
   with_items:
   - { file: pg_hba.conf.j2, dest: /etc/postgresql/9.3/main/pg_hba.conf }
   - { file: postgresql.conf.j2, dest: /etc/postgresql/9.3/main/postgresql.conf }
