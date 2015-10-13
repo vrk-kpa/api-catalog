@@ -30,11 +30,11 @@ MaxAuthTries 4
 
 # Set Idle Timeout Interval for User Login
 {% if deployment_environment_id == 'vagrant' %}
-ClientAliveInterval 30
-ClientAliveCountMax 99999
+ClientAliveInterval 20
+ClientAliveCountMax 9999
 {% else %}
-ClientAliveInterval 300
-ClientAliveCountMax 0
+ClientAliveInterval 60
+ClientAliveCountMax 5
 {% endif %}
 
 
