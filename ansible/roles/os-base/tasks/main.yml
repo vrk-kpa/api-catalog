@@ -22,7 +22,6 @@
 - name: Update packages
   apt: upgrade=dist
 
-# TODO: is postgresql-server-dev-9 needed?
 - name: Ensure common packages
   apt: pkg={{ item }} state=latest
   with_items:
@@ -31,6 +30,7 @@
     - python-dev
     - python-virtualenv
     - python-psycopg2
+    - postgresql-server-dev-9.3
     - libpq5
     - git-core
     - unzip
@@ -38,7 +38,7 @@
     - build-essential
     - libz-dev
     - libssl-dev
-    - postgresql-server-dev-9.3
+# Note: psycopg2 requires postgresql-server-dev
 
 # TODO: Move path creation where paths are used even those are duplicate
 - name: Create common paths
