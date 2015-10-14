@@ -1,11 +1,11 @@
 ---
 
 - name: Ensure temp directory for extensions
-  file: path=/tmp/ckanext state=directory
+  file: path="{{ ckanext_sync_path }}" state=directory
 
 - name: Synchronize extension sources
-  synchronize: src=../ckanext/{{ ckanext }} dest=/tmp/ckanext/
+  synchronize: src=../ckanext/{{ ckanext }} dest="{{ ckanext_sync_path }}"/
 
 # TODO: This is designed for Vagrant
 - name: Link extension sources
-  command: "{{ virtualenv }}/bin/python setup.py develop chdir=/tmp/ckanext/{{ ckanext }}"
+  command: "{{ virtualenv }}/bin/python setup.py develop chdir="{{ ckanext_sync_path }}/{{ ckanext }}"
