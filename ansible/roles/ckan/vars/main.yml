@@ -1,5 +1,7 @@
 ---
 
+ckan_version: 2.4.1
+
 harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 

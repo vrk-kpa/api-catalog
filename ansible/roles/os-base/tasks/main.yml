@@ -48,7 +48,6 @@
     - "{{ cache_path }}"
     - "{{ backup_path }}"
     - "{{ scripts_path }}"
-    - "{{ static_path }}"
 
 - include: pip.yml
 #- include: node.yml
