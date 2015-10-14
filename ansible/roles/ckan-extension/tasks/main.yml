@@ -8,4 +8,4 @@
 
 # TODO: This is designed for Vagrant
 - name: Link extension sources
-  command: "{{ virtualenv }}/bin/python setup.py develop chdir="{{ ckanext_sync_path }}/{{ ckanext }}"
+  command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
