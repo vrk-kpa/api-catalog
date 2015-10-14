@@ -3,14 +3,12 @@
 www_root: /var/www
 www_user: www-data
 www_group: www-data
+static_path: "{{ www_root }}/static"
 
-server_path: /srv/ytp
+server_path: /opt/apicatalog
 cache_path: "{{ server_path }}/cache"
 backup_path: "{{ server_path }}/backup"
 scripts_path: "{{ server_path }}/scripts"
-log_path: /var/log/ckan
-static_path: "{{ www_root }}/static"
-
 files_root: "{{ server_path }}/files"
 
 ckan_ini: /etc/ckan/default/production.ini
@@ -22,9 +20,9 @@ ckan_version: 2.4.1
 
 google_analytics: false
 # enable: google_analytics: { 'id': "", 'account': "", 'username': "", 'password': "", 'type': "" }
-certificates_path: /etc/ssl/opendata
+certificates_path: /etc/ssl/apicatalog
 
 basic_auth_path: false
-local_cache: /tmp/ytp/cache
+local_cache: /tmp/apicatalog/cache
 
 import_base_organizations: false

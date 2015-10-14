@@ -3,8 +3,8 @@
 command=nice -n 20 {{ virtualenv }}/bin/paster --plugin=ckanext-harvest harvester gather_consumer --config={{ ckan_ini }}
 user={{ harvester_user }}
 numprocs=1
-stdout_logfile={{ log_path }}/gather_consumer.log
-stderr_logfile={{ log_path }}/gather_consumer.log
+stdout_logfile={{ supervisor_log_path }}/gather_consumer.log
+stderr_logfile={{ supervisor_log_path }}/gather_consumer.log
 autostart=true
 autorestart=true
 startsecs=10
@@ -15,8 +15,8 @@ startsecs=10
 command=nice -n 20 {{ virtualenv }}/bin/paster --plugin=ckanext-harvest harvester fetch_consumer --config={{ ckan_ini }}
 user={{ harvester_user }}
 numprocs=1
-stdout_logfile={{ log_path }}/fetch_consumer.log
-stderr_logfile={{ log_path }}/fetch_consumer.log
+stdout_logfile={{ supervisor_log_path }}/fetch_consumer.log
+stderr_logfile={{ supervisor_log_path }}/fetch_consumer.log
 autostart=true
 autorestart=true
 startsecs=10
@@ -28,8 +28,8 @@ command={{ virtualenv }}/bin/paster --plugin=ckan celeryd run -q celery --config
 user={{ celery_user }}
 
 numprocs=1
-stdout_logfile={{ log_path }}/celeryd.log
-stderr_logfile={{ log_path }}/celeryd.log
+stdout_logfile={{ supervisor_log_path }}/celeryd.log
+stderr_logfile={{ supervisor_log_path }}/celeryd.log
 autostart=true
 autorestart=true
 startsecs=10
@@ -48,8 +48,8 @@ command={{ virtualenv }}/bin/paster --plugin=ckan celeryd run -q bulk --config={
 user={{ celery_user }}
 
 numprocs=1
-stdout_logfile={{ log_path }}/celeryd_bulk.log
-stderr_logfile={{ log_path }}/celeryd_bulk.log
+stdout_logfile={{ supervisor_log_path }}/celeryd_bulk.log
+stderr_logfile={{ supervisor_log_path }}/celeryd_bulk.log
 autostart=true
 autorestart=true
 startsecs=10
@@ -69,8 +69,8 @@ command={{ virtualenv }}/bin/paster --plugin=ckan celeryd run -q priority --conf
 user={{ celery_user }}
 
 numprocs=1
-stdout_logfile={{ log_path }}/celeryd_priority.log
-stderr_logfile={{ log_path }}/celeryd_priority.log
+stdout_logfile={{ supervisor_log_path }}/celeryd_priority.log
+stderr_logfile={{ supervisor_log_path }}/celeryd_priority.log
 autostart=true
 autorestart=true
 startsecs=10
@@ -89,8 +89,8 @@ command={{ virtualenv }}/bin/celery beat --config=ytp_celery --workdir=/etc/ckan
 user={{ celery_user }}
 
 numprocs=1
-stdout_logfile={{ log_path }}/celerybeat.log
-stderr_logfile={{ log_path }}/celerybeat.log
+stdout_logfile={{ supervisor_log_path }}/celerybeat.log
+stderr_logfile={{ supervisor_log_path }}/celerybeat.log
 autostart=true
 autorestart=true
 startsecs=10

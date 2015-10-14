@@ -20,11 +20,11 @@
     - libhttpmime-java
     - libwoodstox-java
 
-- name: Create debian cache path
-  file: path="{{ cache_path }}/debian" state=directory
+- name: Create solr3 prerequisites cache path
+  file: path="{{ cache_path }}/solr3_installation" state=directory
 
 - name: Fetch Jetty packages
-  get_url: url="http://se.archive.ubuntu.com/ubuntu/pool/{{ item.path }}/{{ item.name }}" dest="{{ cache_path }}/debian/{{ item.name }}" mode=0644 owner=root group=root
+  get_url: url="http://se.archive.ubuntu.com/ubuntu/pool/{{ item.path }}/{{ item.name }}" dest="{{ cache_path }}/solr3_installation/{{ item.name }}" mode=0644 owner=root group=root
   with_items: solr_packages
   register: fetch_jetty_packages
 
@@ -36,7 +36,7 @@
   when: fetch_jetty_packages|changed
 
 - name: Install Jetty packages
-  command: dpkg -i {{ cache_path }}/debian/{{ item.name }}
+  command: dpkg -i {{ cache_path }}/solr3_installation/{{ item.name }}
   when: fetch_jetty_packages|changed
   with_items: solr_packages
 

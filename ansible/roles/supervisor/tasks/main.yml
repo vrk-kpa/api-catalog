@@ -1,5 +1,8 @@
 ---
 
+- name: Create log path for supervisor
+  file: path={{ supervisor_log_path }} state=directory
+
 - name: Ensure CKAN common packages
   apt: pkg={{ item }} state=latest
   with_items:
