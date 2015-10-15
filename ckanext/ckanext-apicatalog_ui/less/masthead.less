@@ -12,7 +12,7 @@
   .clearfix();
   min-height: 30px;
   color: @mastheadTextColor;
-  background: darken(@mastheadBackgroundColor, 10%) url("@{bgPath}");
+  background: @accountMastheadColor;
   .account {
     float: right;
     ul {
@@ -20,10 +20,9 @@
       li {
         display: block;
         float: left;
-        border-left: 1px solid darken(@mastheadBackgroundColor, 15%);
         a {
           display: block;
-          color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 25%);
+          color: @white;
           font-size: 13px;
           font-weight: bold;
           padding: 0 10px;
@@ -60,10 +59,8 @@
           font-size: 12px;
           margin-left: 3px;
           padding: 1px 6px;
-          background-color: darken(@mastheadBackgroundColor, 15%);
           .border-radius(4px);
           text-shadow:none;
-          color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 25%);
         }
         &:hover span {
           color: @mastheadLinkColor;
@@ -93,7 +90,7 @@
   .clearfix();
   min-height: 55px;
   color: @mastheadTextColor;
-  background: @mastheadBackgroundColor url("@{bgPath}");
+  background: @mastheadBackgroundColor;
 
   .container {
     position: relative;
@@ -145,9 +142,12 @@
     .nav-pills {
       margin-bottom: 0;
       li {
-        a:hover,
+        a:hover {
+          text-decoration: underline;
+        }
         &.active a {
-          background-color: darken(@mastheadBackgroundColor, 10%);
+          color: @kapa-active-link;
+          background-color: @mastheadBackgroundColor;
         }
       }
     }
@@ -158,7 +158,7 @@
   .nav > .active > a,
   .nav > .active > a:hover,
   .nav > .active > a:focus {
-    color: #fff;
+    color: @mastheadTextColor;
     text-shadow: none;
   }
 

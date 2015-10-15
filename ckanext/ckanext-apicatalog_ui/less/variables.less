@@ -44,6 +44,11 @@
 @headings-font-family: 'RobotoBlack';
 @font-family-base: 'SourceSans';
 
+
+@kapa-top-color: #2c2c2c;
+@kapa-header-color: #e9edf0;
+@kapa-active-link: #f25d0d;
+
 @black:                 #000;
 @gray-midtone:          #999;
 @white:                 #FFF;
@@ -81,11 +86,13 @@
 
 @breadcrumbTextColor: #505050;
 
-@mastheadTextColor: #fff;
+@accountMastheadColor: @kapa-top-color;
+
+@mastheadTextColor: #0f1317;
 @mastheadLinkColor: @mastheadTextColor;
-@mastheadBackgroundColor: #005d7a;
-@mastheadBackgroundColorStart: #005d7a;
-@mastheadBackgroundColorEnd: #00536b;
+@mastheadBackgroundColor: @kapa-header-color;
+@mastheadBackgroundColorStart: @mastheadBackgroundColor;
+@mastheadBackgroundColorEnd: @mastheadBackgroundColor;
 
 @navItemActiveTextColor: #FFF;
 @navItemActiveBackgroundColor: #8CA0A6;
