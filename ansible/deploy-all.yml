@@ -1,6 +1,8 @@
 ---
 
-# To run: ansible-playbook -v -i inventories/vagrant deploy-all.yml
+# To run:
+# ansible-playbook -v -i inventories/vagrant deploy-all.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/beta deploy-all.yml
 
 - hosts: mainserver
   sudo: true
