@@ -48,6 +48,8 @@
 @kapa-top-color: #2c2c2c;
 @kapa-header-color: #e9edf0;
 @kapa-active-link: #f25d0d;
+@kapa-box-border-color: #ced2d5;
+@kapa-box-header-color: #e9edf0;
 
 @black:                 #000;
 @gray-midtone:          #999;
@@ -61,15 +63,15 @@
 @layoutLinkColor: #187794;
 @layoutBackgroundColor: #fff;
 @layoutTrimBackgroundColor: #fff;
-@layoutTrimBorderColor: #ccc;
+@layoutTrimBorderColor: @kapa-box-border-color;
 
 @navLinkColor: #333;
 @navActiveBackgroundColor: #f6f6f6;
 
 // Module Variables
 @moduleBackgroundColor: #fff;
-@moduleHeadingBorderColor: #ddd;
-@moduleHeadingBackgroundColor: #f6f6f6;
+@moduleHeadingBorderColor: @kapa-box-border-color;
+@moduleHeadingBackgroundColor: @kapa-box-header-color;
 @moduleHeadingActionTextColor: #888;
 @moduleExpandedBackgroundColor: rgba(255, 255, 255, 0.9);
 
