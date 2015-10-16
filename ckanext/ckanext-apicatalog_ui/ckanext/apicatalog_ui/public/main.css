@@ -6784,6 +6784,13 @@ button.close {
   font-style: normal;
 }
 @font-face {
+  font-family: 'SourceSans';
+  src: url('../../../base/vendor/fonts//SourceSansProBold.eot');
+  src: url('../../../base/vendor/fonts//SourceSansProBold.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//SourceSansProBold.woff') format('woff'), url('../../../base/vendor/fonts//SourceSansProBold.ttf') format('truetype'), url('../../../base/vendor/fonts//SourceSansProBold.svg') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
   font-family: 'RobotoBlack';
   src: url('../../../base/vendor/fonts//RobotoBlack.eot');
   src: url('../../../base/vendor/fonts//RobotoBlack.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//RobotoBlack.woff') format('woff'), url('../../../base/vendor/fonts//RobotoBlack.ttf') format('truetype'), url('../../../base/vendor/fonts//RobotoBlack.svg') format('svg');
