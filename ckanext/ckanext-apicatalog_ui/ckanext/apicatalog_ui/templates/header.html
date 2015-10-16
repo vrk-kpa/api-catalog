@@ -3,6 +3,21 @@
   <header class="account-masthead">
     <div class="container">
       {% block header_account_container_content %}
+      {# The .header-image class hides the main text and uses image replacement for the title #}
+      <hgroup class="{{ g.header_class }} pull-left">
+
+        {% block header_logo %}
+          {% if g.site_logo %}
+            <a class="logo" href="{{ h.url('home') }}"><img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}"></a>
+          {% else %}
+            <h1>
+              <a href="{{ h.url('home') }}">{{ g.site_title }}</a>
+            </h1>
+            {% if g.site_description %}<h2>{{ g.site_description }}</h2>{% endif %}
+          {% endif %}
+        {% endblock %}
+
+      </hgroup>
         {% if c.userobj %}
           <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
             <ul class="list-unstyled">
@@ -78,21 +93,7 @@
       <span class="icon-bar"></span>
     </button>
 
-    {# The .header-image class hides the main text and uses image replacement for the title #}
-    <hgroup class="{{ g.header_class }} pull-left">
 
-      {% block header_logo %}
-        {% if g.site_logo %}
-          <a class="logo" href="{{ h.url('home') }}"><img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}"></a>
-        {% else %}
-          <h1>
-            <a href="{{ h.url('home') }}">{{ g.site_title }}</a>
-          </h1>
-          {% if g.site_description %}<h2>{{ g.site_description }}</h2>{% endif %}
-        {% endif %}
-      {% endblock %}
-
-    </hgroup>
 
     <div class="navbar-collapse collapse">
 
