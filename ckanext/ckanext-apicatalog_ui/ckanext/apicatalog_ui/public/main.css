@@ -4204,11 +4204,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 4px;
   }
 }
-@media (min-width: 768px) {
-  .navbar-header {
-    float: left;
-  }
-}
 .navbar-collapse {
   overflow-x: visible;
   padding-right: 15px;
@@ -4733,7 +4728,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #cccccc;
 }
 .breadcrumb > .active {
-  color: #777777;
+  color: #ced2d5;
 }
 .pagination {
   display: inline-block;
@@ -7822,12 +7817,11 @@ textarea {
 .simple-input .field .btn-search {
   position: absolute;
   display: block;
-  height: 17px;
-  width: 17px;
   padding: 0;
   top: 50%;
   right: 0;
-  margin-top: -10px;
+  margin-top: -15px;
+  margin-right: 3px;
   background-color: transparent;
   border: none;
   color: #999;
@@ -8858,15 +8852,6 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 .toolbar .breadcrumb:after {
   clear: both;
 }
-.toolbar .breadcrumb li:after {
-  content: " / ";
-}
-.toolbar .breadcrumb li.active:after {
-  content: "";
-}
-.toolbar .breadcrumb li:last-of-type:after {
-  content: "";
-}
 .toolbar .home a {
   text-decoration: none;
 }
@@ -8875,19 +8860,6 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 }
 .toolbar .breadcrumb a {
   color: #505050;
-}
-@media (max-width: 767px) {
-  .toolbar .breadcrumb {
-    color: #fff;
-    text-shadow: none;
-  }
-  .toolbar .breadcrumb .home {
-    display: none;
-  }
-  .toolbar .breadcrumb a {
-    color: #fff;
-    text-shadow: none;
-  }
 }
 .toolbar .breadcrumb .active a,
 .toolbar .breadcrumb a.active {
@@ -9414,6 +9386,9 @@ h4 small {
 .wrapper.no-nav {
   background-image: none;
 }
+[role=main] .container {
+  background-color: #ffffff;
+}
 [role=main],
 .main {
   position: relative;
@@ -9785,6 +9760,9 @@ h4 small {
   padding-top: 5px;
   padding-bottom: 4px;
 }
+.header-text-logo h1 a {
+  color: #ffffff;
+}
 .navbar {
   margin-bottom: 0;
 }
@@ -10036,7 +10014,9 @@ h4 small {
   min-height: 55px;
   color: #0f1317;
   background: #e9edf0;
+  background-color: #2c2c2c;
   padding: 20px 0;
+  font-size: 13px;
 }
 .site-footer:before,
 .site-footer:after {
@@ -10153,16 +10133,16 @@ h4 small {
 .site-footer,
 .site-footer label,
 .site-footer small {
-  color: #ccdee3;
+  color: #ffffff;
 }
 .site-footer a {
-  color: #ccdee3;
+  color: #e9edf0;
 }
 .footer-links ul li {
   margin-bottom: 5px;
 }
 .attribution small {
-  color: #ccdee3;
+  color: #ffffff;
   font-size: 12px;
 }
 .attribution .ckan-footer-logo {
