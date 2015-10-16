@@ -1,12 +1,40 @@
 @notificationsBg: #C9403A;
+@masthead-padding: 10px;
 
 .navbar-nav li > a {
-  padding-top: 5px;
-  padding-bottom: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.navbar-nav {
+  width: 100%;
+  text-align: center;
+  > li {
+    float: none;
+    display: inline-block;
+  }
 }
 
-.header-text-logo h1 a {
+.beta {
+  font-variant: small-caps;
   color: @white;
+  background: @kapa-attention-color;
+
+  @letter-height: @font-size-base / 1.2;
+
+  margin-top:auto;
+  padding-top: (@font-size-base - @letter-height)/2;
+  padding-bottom: (@font-size-base - @letter-height)/2;
+
+  font-size: @letter-height;
+  margin-left: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.header-text-logo a {
+  color: @white;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .navbar {
@@ -15,76 +43,78 @@
 .account-masthead {
   .clearfix();
   min-height: 30px;
-  color: @mastheadTextColor;
+  color: @white;
   background: @accountMastheadColor;
-  .account {
-    float: right;
-    ul {
-      .clearfix();
-      li {
-        display: block;
-        float: left;
-        a {
-          display: block;
-          color: @white;
-          font-size: 13px;
-          font-weight: bold;
-          padding: 0 10px;
-          line-height: 31px;
-          span.username,
-          span.text {
-            margin: 0 2px 0 4px;
-          }
 
-          span.text {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-          }
+}
 
-          &:hover {
-            color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 15%);
-            background-color: darken(@mastheadBackgroundColor, 15%);
-            text-decoration: none;
-          }
-          &.sub {
-            font-weight: 300;
-          }
-          .btn {
-            vertical-align: 1px;
-            margin-left: 3px;
-          }
-        }
-      }
-    }
-    .notifications {
+.account {
+  float: right;
+  ul {
+    .clearfix();
+    li {
+      display: block;
+      float: left;
       a {
-        span.badge {
-          font-size: 12px;
+        display: block;
+        color: mastheadTextColor;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 0 10px;
+        line-height: 31px;
+        span.username,
+        span.text {
+          margin: 0 2px 0 4px;
+        }
+
+        span.text {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+
+        &:hover {
+          color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 15%);
+          background-color: darken(@mastheadBackgroundColor, 15%);
+          text-decoration: none;
+        }
+        &.sub {
+          font-weight: 300;
+        }
+        .btn {
+          vertical-align: 1px;
           margin-left: 3px;
-          padding: 1px 6px;
-          .border-radius(4px);
-          text-shadow:none;
-        }
-        &:hover span {
-          color: @mastheadLinkColor;
-          background-color: darken(@mastheadBackgroundColor, 20%);
-        }
-      }
-      &.notifications-important a {
-        span.badge {
-          color: @mastheadLinkColor;
-          background-color: @notificationsBg;
         }
       }
     }
-    &.authed {
-      .image {
-        padding: 0 6px;
-        img {
-          vertical-align: -6px;
-          .border-radius(4px);
-        }
+  }
+  .notifications {
+    a {
+      span.badge {
+        font-size: 12px;
+        margin-left: 3px;
+        padding: 1px 6px;
+        .border-radius(4px);
+        text-shadow:none;
+      }
+      &:hover span {
+        color: @mastheadLinkColor;
+        background-color: darken(@mastheadBackgroundColor, 20%);
+      }
+    }
+    &.notifications-important a {
+      span.badge {
+        color: @mastheadLinkColor;
+        background-color: @notificationsBg;
+      }
+    }
+  }
+  &.authed {
+    .image {
+      padding: 0 6px;
+      img {
+        vertical-align: -6px;
+        .border-radius(4px);
       }
     }
   }
@@ -92,7 +122,7 @@
 
 .masthead {
   .clearfix();
-  min-height: 55px;
+  min-height: 45px;
   color: @mastheadTextColor;
   background: @mastheadBackgroundColor;
 
@@ -129,8 +159,7 @@
   }
 
   .navbar-collapse {
-    padding-top:10px;
-    padding-bottom:10px;
+    padding-top: @masthead-padding;
   }
 
   .section {
@@ -146,15 +175,26 @@
     .nav-pills {
       margin-bottom: 0;
       li {
+        a {
+          text-transform: uppercase;
+        }
         a:hover {
           text-decoration: underline;
         }
         &.active a {
+
+          border-radius: 0px;
           color: @kapa-active-link;
-          background-color: @mastheadBackgroundColor;
+          background-color: @kapa-attention-color;
+          padding-top: @masthead-padding;
+          margin-top: -@masthead-padding;
+
+          padding-bottom: @masthead-padding;
+          margin-bottom: -@masthead-padding;
         }
       }
     }
+    
   }
   .nav > li > a,
   .nav > li > a:focus,
@@ -168,6 +208,7 @@
 
   .site-search {
     margin: 2px 8px 2px 0;
+    width:200px;
     input {
       width: 200px;
       padding: 4px 10px;
@@ -197,12 +238,6 @@
     top: 37px;
     left: 10px;
     color: rgba(255, 255, 255, 0.5);
-  }
-}
-
-@media (min-width: 980px) {
-  .masthead  .navbar-collapse {
-    float:right;
   }
 }
 
