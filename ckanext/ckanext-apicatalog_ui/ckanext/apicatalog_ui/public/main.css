@@ -7820,7 +7820,7 @@ textarea {
 .simple-input .field-bordered {
   border-bottom: 1px dotted #dddddd;
 }
-.simple-input .field input :not(.site-wide-search) {
+.simple-input .field input {
   width: 100%;
   height: auto;
   margin: 0 -7px;
@@ -9813,6 +9813,11 @@ h4 small {
 }
 .account-masthead:after {
   clear: both;
+}
+.account-masthead .list-inline {
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .account-masthead .navbar-nav .list-inline li {
   text-transform: uppercase;

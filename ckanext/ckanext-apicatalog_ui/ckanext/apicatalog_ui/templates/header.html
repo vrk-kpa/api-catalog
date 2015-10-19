@@ -4,20 +4,24 @@
   {% set current_url = request.environ.CKAN_CURRENT_URL %}
   {% set current_lang = request.environ.CKAN_LANG %}
 
+
+
+  <div class="container">
   <ul class="nav navbar-nav">
-    <li class="pull-left">
-      <ul class="list-inline">
-        <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
-        </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
-        </li><li><div {% if current_lang == 'en' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en' %}">English</a></div></li>
-      </ul>
-    </li>
-    <li class="pull-right">
-      <ul class="list-inline">
-        <li>A-</li><li>A+</li>
-      </ul>
-    </li>
+      <li class="pull-left">
+        <ul class="list-inline">
+          <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
+          </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
+          </li><li><div {% if current_lang == 'en' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en' %}">English</a></div></li>
+        </ul>
+      </li>
+      <li class="pull-right">
+        <ul class="list-inline">
+          <li>A-</li><li>A+</li>
+        </ul>
+      </li>
   </ul>
+</div>
 </header>
 {% endblock %}
 <header class="navbar navbar-static-top masthead navbar-default">
@@ -26,7 +30,7 @@
   <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
   {% endif %}
   {% endblock %}
-  <div class="container-fluid">
+  <div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
