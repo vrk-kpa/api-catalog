@@ -1,23 +1,23 @@
 {% block header_wrapper %}
 {% block header_account %}
   <header class="account-masthead">
-
+    {% set current_url = request.environ.CKAN_CURRENT_URL %}
+    {% set current_lang = request.environ.CKAN_LANG %}
+    
     <ul class="nav navbar-nav">
       <li class="pull-left">
         <ul class="list-inline">
-          <li>Suomi</li>
-          <li>Svenska</li>
-          <li>Englanti</li>
+          <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
+          </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
+          </li><li><div {% if current_lang == 'en' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en' %}">English</a></div></li>
         </ul>
       </li>
       <li class="pull-right">
         <ul class="list-inline">
-          <li>A+</li>
-          <li>A-</li>
+          <li>A-</li><li>A+</li>
         </ul>
       </li>
     </ul>
-
   </header>
 {% endblock %}
 <header class="navbar navbar-static-top masthead navbar-default">
