@@ -1,10 +1,12 @@
 @notificationsBg: #C9403A;
 @masthead-padding: 10px;
+@masthead-height: 43px;
 
 .navbar-nav li > a {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
 .navbar-nav {
   width: 100%;
   text-align: center;
@@ -15,20 +17,19 @@
 }
 
 .beta {
-  font-variant: small-caps;
+  text-transform: uppercase;
+
   color: @white;
   background: @kapa-attention-color;
 
-  @letter-height: @font-size-base / 1.2;
+  @beta-height: @font-size-base / 1.41;
+  display: inline-block;
 
-  margin-top:auto;
-  padding-top: (@font-size-base - @letter-height)/2;
-  padding-bottom: (@font-size-base - @letter-height)/2;
-
-  font-size: @letter-height;
+  font-size: @beta-height;
   margin-left: 5px;
   padding-left: 2px;
   padding-right: 2px;
+
 }
 
 .header-text-logo a {
@@ -40,25 +41,74 @@
 .navbar {
   margin-bottom: 0;
 }
+
 .account-masthead {
   .clearfix();
   min-height: 30px;
-  color: @white;
   background: @accountMastheadColor;
 
+  .navbar-nav .list-inline li {
+    text-transform: uppercase;
+
+    margin: auto;
+
+    font-size: @font-size-base/1.5;
+    color: @kapa-dark-grey;
+  }
+
+  .navbar-nav .list-inline li:not(:first-child) {
+    border-left: 1px solid @white;
+  }
+
+  .navbar-nav .list-inline li div a {
+    color: @white;
+    text-decoration: none;
+  }
+
+  .navbar-nav .list-inline li div {
+    margin-top: -3px;
+    border-top: 3px solid @accountMastheadColor;
+  }
+
+
+  .navbar-nav .list-inline li div:hover
+  {
+    border-top: 3px solid @kapa-attention-color;
+  }
+
+  .navbar-nav .list-inline .active
+  {
+    border-top: 3px solid @kapa-attention-color;
+  }
 }
 
 .account {
   float: right;
+  height:100%;
+
   ul {
     .clearfix();
+
     li {
+      @top-padding: 7px;
+      @top-margin: -10px;
+
       display: block;
       float: left;
+      border-left: solid 1px @kapa-dark-grey;
+      margin-top: @top-margin;
+      padding-top: @top-padding;
+      line-height: @masthead-height;
+      height: @masthead-height + (@top-padding + @top-margin);
+
+      &:last-child {
+        border-right: solid 1px @kapa-dark-grey;
+      }
+
       a {
         display: block;
         color: mastheadTextColor;
-        font-size: 13px;
+        font-size: @font-size-base/1.2;
         font-weight: bold;
         padding: 0 10px;
         line-height: 31px;
@@ -122,7 +172,7 @@
 
 .masthead {
   .clearfix();
-  min-height: 45px;
+  min-height: @masthead-height;
   color: @mastheadTextColor;
   background: @mastheadBackgroundColor;
 
@@ -138,7 +188,6 @@
     h1,
     h2 {
       float: left;
-      font-size: 30px;
       line-height: 1.5;
     }
     h1 {
@@ -160,6 +209,7 @@
 
   .navbar-collapse {
     padding-top: @masthead-padding;
+    //padding-bottom: @masthead-padding;
   }
 
   .section {
@@ -194,7 +244,7 @@
         }
       }
     }
-    
+
   }
   .nav > li > a,
   .nav > li > a:focus,
@@ -206,14 +256,6 @@
     text-shadow: none;
   }
 
-  .site-search {
-    margin: 2px 8px 2px 0;
-    width:200px;
-    input {
-      width: 200px;
-      padding: 4px 10px;
-    }
-  }
 
   .navbar-btn,
   .navbar-btn:hover,
@@ -241,13 +283,21 @@
   }
 }
 
-@media (max-width: 767px) {
-  .account-masthead {
-    margin-left:-20px;
-    margin-right:-20px;
-    padding-left:20px;
-    padding-right:20px;
+.masthead-site-search {
+  background-color: @kapa-darker-header;
+}
+
+.site-search {
+  margin: 0 auto 0 auto;
+  width: 200px;
+  background-color: @kapa-header-color;
+  input {
+    width: 200px;
+    padding: 4px 10px;
   }
+}
+
+@media (max-width: 767px) {
   .masthead .section {
     float: none;
     .navbar-collapse {
