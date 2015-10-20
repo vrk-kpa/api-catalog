@@ -100,14 +100,6 @@
                     <span class="badge">{{ new_activities }}</span>
                   </a>
                 </li>
-                {% block header_account_settings_link %}
-                <li>
-                  <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
-                    <i class="icon-cog" aria-hidden="true"></i>
-                    <span>{{ _('Settings') }}</span>
-                  </a>
-                </li>
-                {% endblock %}
                 {% block header_account_log_out_link %}
                 <li>
                   <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
