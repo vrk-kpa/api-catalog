@@ -6,34 +6,20 @@
   margin-bottom: 20px;
   margin-left:0;
 }
-@media (min-width: 768px) {
-  .wrapper {
-    background-position:0px 0px;
-  }
-}
-@media (min-width: 980px) {
-  .wrapper {
-    background-position:0px 0px;
-  }
-}
+
 
 .wrapper.no-nav {
   background-image: none;
 }
 
 [role=main] .container {
-  background-color: @white;
+  //background-color: @white;
 }
 
 [role=main], .main {
   position: relative;
   padding-bottom: 20px;
-}
-@media (min-width: 768px) {
-  [role=main], .main {
-    padding-top: 10px;
-    background: @layoutBackgroundColor url("@{bgPath}");
-  }
+  background: @layoutBackgroundColor;
 }
 
 [role=main] {
@@ -145,6 +131,11 @@
 
 @media (min-width: 768px) {
   .hero {
+    min-height: 768px;
+    background: url('@{imagePath}/bg.png');
+    .hero-module {
+      margin-top: 2em;
+    }
   }
 }
 
