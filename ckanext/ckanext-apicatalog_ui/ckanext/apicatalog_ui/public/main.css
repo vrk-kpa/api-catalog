@@ -9381,33 +9381,14 @@ h4 small {
 .wrapper:after {
   clear: both;
 }
-@media (min-width: 768px) {
-  .wrapper {
-    background-position: 0px 0px;
-  }
-}
-@media (min-width: 980px) {
-  .wrapper {
-    background-position: 0px 0px;
-  }
-}
 .wrapper.no-nav {
   background-image: none;
-}
-[role=main] .container {
-  background-color: #ffffff;
 }
 [role=main],
 .main {
   position: relative;
   padding-bottom: 20px;
-}
-@media (min-width: 768px) {
-  [role=main],
-  .main {
-    padding-top: 10px;
-    background: #ffffff url("");
-  }
+  background: #ffffff;
 }
 [role=main] {
   min-height: 350px;
@@ -9510,6 +9491,15 @@ h4 small {
   width: 180px;
   margin-left: 18px;
   margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .hero {
+    min-height: 768px;
+    background: url('../../../base/images/bg.png');
+  }
+  .hero .hero-module {
+    margin-top: 2em;
+  }
 }
 .hero:after {
   background-color: rgba(0, 0, 0, 0.09);
@@ -9644,7 +9634,6 @@ h4 small {
 }
 .homepage .module-search {
   padding: 5px;
-  margin: 20px 0 0 0;
   color: #0f1317;
   background: #ffffff;
 }
@@ -9748,21 +9737,6 @@ h4 small {
 }
 .homepage.layout-2 .stats {
   margin-top: 20px;
-}
-@media (min-width: 768px) {
-  .homepage [role=main] {
-    padding: 20px 0;
-  }
-  .homepage.layout-1 .row1 .col2 {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-  .homepage.layout-1 .row1 .col2 .module-search {
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 }
 .navbar-nav li > a {
   padding-top: 0px;
@@ -9925,9 +9899,9 @@ h4 small {
 }
 .account.authed .image img {
   vertical-align: -6px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  border-radius: 11px;
 }
 .masthead {
   min-height: 43px;
@@ -10056,23 +10030,6 @@ h4 small {
 .site-search input {
   width: 200px;
   padding: 4px 10px;
-}
-@media (max-width: 767px) {
-  .masthead .section {
-    float: none;
-  }
-  .masthead .section .navbar-collapse {
-    margin-bottom: 25px;
-  }
-}
-@media (max-width: 979px) {
-  .masthead .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .masthead .site-search {
-    display: none;
-  }
 }
 .site-footer {
   min-height: 43px;
