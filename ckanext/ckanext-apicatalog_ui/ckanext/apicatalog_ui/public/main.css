@@ -4875,7 +4875,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -7066,9 +7066,6 @@ a.tag:hover {
   list-style: none;
   margin: 0 -25px;
   padding-bottom: 15px;
-  background: #ffffff url("");
-  border: 1px solid #d9d9d9;
-  border-width: 1px 0;
 }
 .module-grid:before,
 .module-grid:after {
@@ -7227,9 +7224,6 @@ a.tag:hover {
   list-style: none;
   margin: 0 -25px;
   padding-bottom: 15px;
-  background: #ffffff url("");
-  border: 1px solid #d9d9d9;
-  border-width: 1px 0;
 }
 .media-grid:before,
 .media-grid:after {
@@ -8814,6 +8808,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 }
 .toolbar {
   position: relative;
+  margin-top: 5px;
   margin-bottom: 10px;
   padding: 5px 0;
 }
@@ -9381,6 +9376,27 @@ h4 small {
 .wrapper:after {
   clear: both;
 }
+.border-right,
+.border-left,
+.border-both {
+  position: relative;
+}
+.border-left:before,
+.border-right:after {
+  position: absolute;
+  content: '';
+  height: auto;
+  top: 0px;
+  bottom: 0px;
+  border-right: 1px solid #dddddd;
+  width: 0;
+}
+.border-left:before {
+  left: 0px;
+}
+.border-right:after {
+  right: -1px;
+}
 .wrapper.no-nav {
   background-image: none;
 }
@@ -9404,9 +9420,6 @@ h4 small {
 }
 [role=main] .secondary {
   padding: 0;
-  border-right-style: solid;
-  border-right-width: thin;
-  border-right-color: #dddddd;
   margin-left: 0;
 }
 /* Filters modal */
@@ -9494,8 +9507,8 @@ h4 small {
 }
 @media (min-width: 768px) {
   .hero {
-    min-height: 768px;
-    background: url('../../../base/images/bg.png');
+    min-height: 500px;
+    background: url("../../../base/images/bg.png");
   }
   .hero .hero-module {
     margin-top: 2em;
@@ -9523,6 +9536,9 @@ h4 small {
 }
 .hero:after .back:hover span {
   text-decoration: underline;
+}
+.row2 {
+  margin-top: 2em;
 }
 .context-info .module-content {
   padding: 15px;
@@ -9752,16 +9768,19 @@ h4 small {
 }
 .beta {
   text-transform: uppercase;
+  display: inline-block;
   color: #ffffff;
   background: #1998ff;
-  display: inline-block;
   font-size: 11.34751773px;
   margin-left: 5px;
-  padding-left: 2px;
-  padding-right: 2px;
+  margin-bottom: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+  vertical-align: middle;
 }
 .header-text-logo a {
   color: #ffffff;
+  font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -9769,7 +9788,7 @@ h4 small {
   margin-bottom: 0;
 }
 .account-masthead {
-  min-height: 30px;
+  min-height: 37px;
   background: #2c2c2c;
 }
 .account-masthead:before,
@@ -9789,32 +9808,42 @@ h4 small {
   clear: both;
 }
 .account-masthead .list-inline {
-  margin: auto;
   padding-left: 40px;
   padding-right: 40px;
+}
+.account-masthead .navbar-nav .list-inline {
+  color: #ffffff;
 }
 .account-masthead .navbar-nav .list-inline li {
   text-transform: uppercase;
   margin: auto;
-  font-size: 10.66666667px;
-  color: #d9d9d9;
+}
+.account-masthead .navbar-nav .list-inline.font-size-changer {
+  margin-top: 7px;
+  font-size: 16px;
+}
+.account-masthead .navbar-nav .list-inline.language-changer {
+  font-size: 13.33333333px;
 }
 .account-masthead .navbar-nav .list-inline li:not(:first-child) {
-  border-left: 1px solid #ffffff;
-}
-.account-masthead .navbar-nav .list-inline li div a {
-  color: #ffffff;
-  text-decoration: none;
+  border-left: 1px solid #3d3d3d;
 }
 .account-masthead .navbar-nav .list-inline li div {
-  margin-top: -3px;
+  padding-top: 7px;
   border-top: 3px solid #2c2c2c;
 }
 .account-masthead .navbar-nav .list-inline li div:hover {
   border-top: 3px solid #1998ff;
 }
+.account-masthead .navbar-nav .list-inline li div a {
+  color: #cbcbcb;
+  text-decoration: none;
+}
 .account-masthead .navbar-nav .list-inline .active {
   border-top: 3px solid #1998ff;
+}
+.account-masthead .navbar-nav .list-inline .active a {
+  color: white;
 }
 .account {
   float: right;
@@ -9837,16 +9866,23 @@ h4 small {
   clear: both;
 }
 .account ul li {
+  margin-top: -8px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  margin-bottom: -3px;
+  height: 41px;
   display: block;
   float: left;
   border-left: solid 1px #d9d9d9;
-  margin-top: -10px;
-  padding-top: 7px;
-  line-height: 43px;
-  height: 40px;
+  line-height: 44px;
+  height: 44px;
 }
 .account ul li:last-child {
   border-right: solid 1px #d9d9d9;
+}
+.account ul li:hover {
+  color: #313438;
+  background-color: #cccccc;
 }
 .account ul li a {
   display: block;
@@ -9866,8 +9902,6 @@ h4 small {
   left: -9999px;
 }
 .account ul li a:hover {
-  color: #313438;
-  background-color: #cccccc;
   text-decoration: none;
 }
 .account ul li a.sub {
@@ -9904,7 +9938,7 @@ h4 small {
   border-radius: 11px;
 }
 .masthead {
-  min-height: 43px;
+  min-height: 44px;
   color: #0f1317;
   background: #f2f2f2;
 }
@@ -9926,6 +9960,7 @@ h4 small {
 }
 .masthead .container {
   position: relative;
+  min-height: 44px;
 }
 .masthead a {
   color: #0f1317;
@@ -9951,7 +9986,8 @@ h4 small {
   white-space: nowrap;
 }
 .masthead .navbar-collapse {
-  padding-top: 10px;
+  padding-top: 8px;
+  padding-bottom: 3px;
 }
 .masthead .section {
   float: left;
@@ -9967,6 +10003,10 @@ h4 small {
 }
 .masthead .navigation .nav-pills li a {
   text-transform: uppercase;
+  margin-top: -8px;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  margin-bottom: -13px;
 }
 .masthead .navigation .nav-pills li a:hover {
   text-decoration: underline;
@@ -9975,10 +10015,6 @@ h4 small {
   border-radius: 0px;
   color: #f2f2f2;
   background-color: #1998ff;
-  padding-top: 10px;
-  margin-top: -10px;
-  padding-bottom: 10px;
-  margin-bottom: -10px;
 }
 .masthead .nav > li > a,
 .masthead .nav > li > a:focus,
@@ -10032,7 +10068,7 @@ h4 small {
   padding: 4px 10px;
 }
 .site-footer {
-  min-height: 43px;
+  min-height: 44px;
   color: #0f1317;
   background: #f2f2f2;
   background-color: #2c2c2c;
@@ -10057,6 +10093,7 @@ h4 small {
 }
 .site-footer .container {
   position: relative;
+  min-height: 44px;
 }
 .site-footer a {
   color: #0f1317;
@@ -10082,7 +10119,8 @@ h4 small {
   white-space: nowrap;
 }
 .site-footer .navbar-collapse {
-  padding-top: 10px;
+  padding-top: 8px;
+  padding-bottom: 3px;
 }
 .site-footer .section {
   float: left;
@@ -10098,6 +10136,10 @@ h4 small {
 }
 .site-footer .navigation .nav-pills li a {
   text-transform: uppercase;
+  margin-top: -8px;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  margin-bottom: -13px;
 }
 .site-footer .navigation .nav-pills li a:hover {
   text-decoration: underline;
@@ -10106,10 +10148,6 @@ h4 small {
   border-radius: 0px;
   color: #f2f2f2;
   background-color: #1998ff;
-  padding-top: 10px;
-  margin-top: -10px;
-  padding-bottom: 10px;
-  margin-bottom: -10px;
 }
 .site-footer .nav > li > a,
 .site-footer .nav > li > a:focus,
