@@ -10,6 +10,7 @@
   <ul class="nav navbar-nav">
       <li class="pull-left">
         <ul class="list-inline">
+        <ul class="list-inline language-changer">
           <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
           </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
           </li><li><div {% if current_lang == 'en' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en' %}">English</a></div></li>
@@ -17,6 +18,7 @@
       </li>
       <li class="pull-right">
         <ul class="list-inline">
+        <ul class="list-inline font-size-changer">
           <li>A-</li><li>A+</li>
         </ul>
       </li>
