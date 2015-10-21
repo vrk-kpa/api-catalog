@@ -1,6 +1,6 @@
 ---
 
-public_facing_hostname: api-catalog
+public_facing_hostname: 10.100.10.10
 internal_hostname: catalog-vagrant
 ckan_site_name: Liityntäkatalogi
 

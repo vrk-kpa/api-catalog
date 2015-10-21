@@ -3422,7 +3422,7 @@ msgstr "API-osoite"
 #: ckan/templates/package/resource_read.html:41
 #: ckan/templates/package/snippets/resource_item.html:48
 msgid "Go to resource"
-msgstr "Mene rajapintakuvaukseen"
+msgstr "Avaa tiedosto"
 
 #: ckan/templates/package/resource_read.html:43
 #: ckan/templates/package/snippets/resource_item.html:45
