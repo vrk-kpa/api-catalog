@@ -123,6 +123,10 @@
       &:last-child {
         border-right: solid 1px @kapa-dark-grey;
       }
+      &:hover {
+        color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 15%);
+        background-color: darken(@mastheadBackgroundColor, 15%);
+      }
       a {
         display: block;
         color: mastheadTextColor;
@@ -142,8 +146,6 @@
         }
 
         &:hover {
-          color: mix(@mastheadBackgroundColor, @mastheadLinkColor, 15%);
-          background-color: darken(@mastheadBackgroundColor, 15%);
           text-decoration: none;
         }
         &.sub {
