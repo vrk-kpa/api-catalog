@@ -1,6 +1,7 @@
 @notificationsBg: #C9403A;
-@masthead-padding: 10px;
-@masthead-height: 43px;
+@masthead-padding: 8px;
+@account-masthead-height: 37px;
+@masthead-height: 44px;
 
 .navbar-nav li > a {
   padding-top: 0px;
@@ -23,6 +24,7 @@
   background: @kapa-attention-color;
   @beta-height: @font-size-base / 1.41;
   font-size: @beta-height;
+
   margin-left: 5px;
   margin-bottom :5px;
 
@@ -44,47 +46,55 @@
 
 .account-masthead {
   .clearfix();
-  min-height: 30px;
+  min-height: @account-masthead-height;
   background: @accountMastheadColor;
 
   .list-inline {
-      margin: auto;
+      //margin: auto;
       padding-left: 40px;
       padding-right: 40px;
   }
 
-  .navbar-nav .list-inline li {
-    text-transform: uppercase;
+  .navbar-nav .list-inline {
+    & li {
+      text-transform: uppercase;
+      margin: auto;
+    }
 
-    margin: auto;
+    color: @white;
 
-    font-size: @font-size-base/1.5;
-    color: @kapa-dark-grey;
+    &.font-size-changer {
+        margin-top: 7px;
+        font-size: @font-size-base;
+    }
+    &.language-changer {
+      font-size: @font-size-base/1.2;
+    }
   }
 
   .navbar-nav .list-inline li:not(:first-child) {
-    border-left: 1px solid @white;
+    border-left: 1px solid @header-divider-color;
   }
-
-  .navbar-nav .list-inline li div a {
-    color: @white;
-    text-decoration: none;
-  }
-
   .navbar-nav .list-inline li div {
-    margin-top: -3px;
+    padding-top: 7px;
     border-top: 3px solid @accountMastheadColor;
-  }
 
-
-  .navbar-nav .list-inline li div:hover
-  {
-    border-top: 3px solid @kapa-attention-color;
+    &:hover {
+      border-top: 3px solid @kapa-attention-color;
+    }
+    a {
+      color: @header-inactive-color;
+      text-decoration: none;
+    }
   }
 
   .navbar-nav .list-inline .active
   {
     border-top: 3px solid @kapa-attention-color;
+
+    a {
+      color:white;
+    }
   }
 }
 
@@ -96,21 +106,23 @@
     .clearfix();
 
     li {
-      @top-padding: 7px;
-      @top-margin: -10px;
+      @displace: -3px;
+      margin-top: -(@masthead-padding);
+      padding-top: (@masthead-padding + @displace);
+      padding-bottom: 3px;
+      margin-bottom:-3px;
 
+      height: @masthead-height + @displace;
       display: block;
       float: left;
       border-left: solid 1px @kapa-dark-grey;
-      margin-top: @top-margin;
-      padding-top: @top-padding;
+
       line-height: @masthead-height;
-      height: @masthead-height + (@top-padding + @top-margin);
+      height: @masthead-height;
 
       &:last-child {
         border-right: solid 1px @kapa-dark-grey;
       }
-
       a {
         display: block;
         color: mastheadTextColor;
@@ -184,6 +196,7 @@
 
   .container {
     position: relative;
+    min-height: @masthead-height;
   }
 
   a {
@@ -215,6 +228,7 @@
 
   .navbar-collapse {
     padding-top: @masthead-padding;
+    padding-bottom: 3px;
     //padding-bottom: @masthead-padding;
   }
 
@@ -233,20 +247,18 @@
       li {
         a {
           text-transform: uppercase;
+          margin-top: -(@masthead-padding );
+          padding-top: (@masthead-padding + 2px);
+          padding-bottom: 13px;
+          margin-bottom: -13px ;
         }
         a:hover {
           text-decoration: underline;
         }
         &.active a {
-
           border-radius: 0px;
           color: @kapa-active-link;
           background-color: @kapa-attention-color;
-          padding-top: @masthead-padding;
-          margin-top: -@masthead-padding;
-
-          padding-bottom: @masthead-padding;
-          margin-bottom: -@masthead-padding;
         }
       }
     }
