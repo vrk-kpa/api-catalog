@@ -7,6 +7,20 @@
   margin-left:0;
 }
 
+.border-right, .border-left, .border-both {
+    position: relative;
+}
+.border-left:before, .border-right:after {
+    position: absolute;
+    content:'';
+    height: auto;
+    top: 0px;
+    bottom: 0px;
+    border-right: 1px solid @genericBorderColor;
+    width: 0;
+}
+.border-left:before { left: 0px; }
+.border-right:after { right: -1px; }
 
 .wrapper.no-nav {
   background-image: none;
@@ -39,9 +53,6 @@
 
 [role=main] .secondary {
   padding: 0;
-  border-right-style: solid;
-  border-right-width: thin;
-  border-right-color: @genericBorderColor;
   margin-left: 0; // Remove grid margin.
 }
 
