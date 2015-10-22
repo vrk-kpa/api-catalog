@@ -185,7 +185,8 @@
 
 .label[data-format=xml],
 .label[data-format*=xml] {
-  background-color: #ef7100;
+  background-color: @kapa-black;
+  color: @white;
 }
 
 .label[data-format=text],
@@ -224,6 +225,11 @@
 .label[data-format*=ntriples],
 .label[data-format*=turtle] {
   background-color: #0b4498;
+}
+.label[data-format=wsdl],
+.label[data-format*=wsdl] {
+  background-color: @kapa-secondary-attention-color;
+  color: @white;
 }
 
 // Views
