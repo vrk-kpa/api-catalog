@@ -1,7 +1,24 @@
 ---
 
+- name: Ensure CKAN translation directories
+  file: path=/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES state=directory mode=0755
+  with_items:
+    - fi
+    - sv
+    - en_GB
+
+
 - name: Copy CKAN translations
-  copy: src="ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po"
+  copy: src="{{ item }}/LC_MESSAGES/ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po"
+  with_items:
+    - fi
+    - sv
+    - en_GB
 
 - name: Compile translation files
-  command: msgfmt "{{ virtualenv }}/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.po" -o "{{ virtualenv }}/src/ckan/ckan/i18n/fi/LC_MESSAGES/ckan.mo"
+  command: msgfmt "{{ virtualenv }}/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po" -o "{{ virtualenv }}/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.mo"
+  with_items:
+    - fi
+    - sv
+    - en_GB
+
