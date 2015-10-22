@@ -94,7 +94,6 @@
                 {% endblock %}
               </div>
             {% endblock %}
-
             {% block secondary %}
               <aside class="secondary border-right col-sm-3 col-md-3">
                 {#
@@ -130,7 +129,8 @@
 
 {%- block scripts %}
     {% resource 'base/main' %}
-    {% resource 'base/ckan' %}
+    {% resource 'apicatalog_ui/ckan' %}
+
     {% if g.tracking_enabled %}
       {% resource 'base/tracking.js' %}
     {% endif %}
