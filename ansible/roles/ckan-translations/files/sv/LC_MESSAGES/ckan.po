@@ -1,7 +1,7 @@
 # Translations template for ckan.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
-# 
+#
 # Translators:
 # Börje Lewin <borjelewin@gmail.com>, 2015
 # endast <endast@gmail.com>, 2014
@@ -4830,3 +4830,7 @@ msgstr "URL för webbsida"
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"
 msgstr "t.ex. http://example.com (om inte angivet så används resursens URL)"
+
+#: ckanext/templates/home/header.html:11
+msgid "Support and administration sites"
+msgstr "Stöd och administrering sidor"

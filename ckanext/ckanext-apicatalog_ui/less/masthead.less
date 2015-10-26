@@ -46,31 +46,23 @@
 
 .account-masthead {
   .clearfix();
+
   min-height: @account-masthead-height;
   background: @accountMastheadColor;
+  color: @header-inactive-color;
 
-  .list-inline {
-      //margin: auto;
-      padding-left: 40px;
-      padding-right: 40px;
-  }
+  .navbar-nav {
+    font-size: @font-size-base/1.2;
 
-  .navbar-nav .list-inline {
-    & li {
+    & .informational-text {
+      margin-top: 10px;
+    }
+
+    & .language-changer {
       text-transform: uppercase;
-      margin: auto;
-    }
-
-    color: @white;
-
-    &.font-size-changer {
-        margin-top: 7px;
-        font-size: @font-size-base;
-    }
-    &.language-changer {
-      font-size: @font-size-base/1.2;
     }
   }
+
 
   .navbar-nav .list-inline li:not(:first-child) {
     border-left: 1px solid @header-divider-color;

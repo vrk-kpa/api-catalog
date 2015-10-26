@@ -1,7 +1,7 @@
 # Translations template for ckan.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
-# 
+#
 # Translators:
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
@@ -4837,3 +4837,7 @@ msgstr "Verkkosivuston url"
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"
 msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää resurssien url:iä)"
+
+#: ckanext/templates/home/header.html:11
+msgid "Support and administration sites"
+msgstr "Tuki- ja hallintasivustot"
