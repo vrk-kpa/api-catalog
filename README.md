@@ -38,7 +38,7 @@ And you can also run Ansible manually:
 Edit the following files:
 
 - **style:** [ckanext-apicatalog_ui](ckanext/ckanext-apicatalog_ui) (reprovision ckan-extension)
-- **localization:** [ckan.po](ansible/roles/ckan-translations/files/ckan.po) (reprovision ckan-translations)
+- **localization:** [ckan.po files](ansible/roles/ckan-translations/files/) (reprovision ckan-translations)
 - **schema:** [ckanext-apicatalog_scheming](ckanext/ckanext-apicatalog_scheming/ckanext/apicatalog_scheming/schemas/dataset.json) (reprovision ckan-extension)
 
 To clean the database (destroys all data and recreates databases):
