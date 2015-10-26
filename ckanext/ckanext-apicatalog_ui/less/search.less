@@ -29,7 +29,7 @@
         display: none;
       }
       i {
-        color: @inputBorder;
+        color: @kapa-secondary-attention-color;
         .transition(color 0.2s ease-in);
       }
       &:hover i {
@@ -40,6 +40,14 @@
       input {
         font-size: 16px;
         padding: 15px;
+        border: solid 1px #999;
+        outline: none;
+      }
+      &:hover input {
+        border: solid 1px #000;
+      }
+      input:focus {
+        border: solid 1px @kapa-secondary-attention-color;
       }
       button {
         margin-top: -15px;
