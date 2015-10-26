@@ -1,19 +1,11 @@
 {% block header_wrapper %}
 {% block header_account %}
 <header class="account-masthead">
-  {% set current_url = request.environ.CKAN_CURRENT_URL %}
-  {% set current_lang = request.environ.CKAN_LANG %}
-
-
 
   <div class="container">
   <ul class="nav navbar-nav">
       <li class="pull-left">
-        <ul class="list-inline language-changer">
-          <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
-          </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
-          </li><li><div {% if current_lang == 'en_GB' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en_GB' %}">English</a></div></li>
-        </ul>
+          {% snippet 'home/snippets/language-changer.html' %}
       </li>
       <li class="pull-right">
         <ul class="list-inline font-size-changer">

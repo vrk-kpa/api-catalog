@@ -1,0 +1,8 @@
+{% set current_url = request.environ.CKAN_CURRENT_URL %}
+{% set current_lang = request.environ.CKAN_LANG %}
+
+<ul class="list-inline language-changer">
+  <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomi</a></div>
+  </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">Svenska</a></div>
+  </li><li><div {% if current_lang == 'en_GB' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en_GB' %}">English</a></div></li>
+</ul>
