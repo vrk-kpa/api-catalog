@@ -53,10 +53,14 @@
 .tag {
   display: inline-block;
   margin-bottom: 4px;
-  color:  @tabTextColor;
+  color: white;
   background-color: @tagBackgroundColor;
   padding: 1px 10px;
-  .border-radius(100px);
+  &:hover {
+    background-color: @kapa-secondary-attention-color;
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .pill {
