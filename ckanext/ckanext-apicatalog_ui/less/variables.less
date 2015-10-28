@@ -28,34 +28,52 @@
   font-weight: bold;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Roboto';
+  src: url('@{fontPath}/RobotoLight.eot');
+  src: url('@{fontPath}/RobotoLight.eot?#iefix') format('embedded-opentype'),
+       url('@{fontPath}/RobotoLight.woff') format('woff'),
+       url('@{fontPath}/RobotoLight.ttf') format('truetype'),
+       url('@{fontPath}/RobotoLight.svg') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('@{fontPath}/RobotoBold.eot');
+  src: url('@{fontPath}/RobotoBold.eot?#iefix') format('embedded-opentype'),
+       url('@{fontPath}/RobotoBold.woff') format('woff'),
+       url('@{fontPath}/RobotoBold.ttf') format('truetype'),
+       url('@{fontPath}/RobotoBold.svg') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
 
 @font-face {
-  font-family: 'RobotoBlack';
+  font-family: 'Roboto';
   src: url('@{fontPath}/RobotoBlack.eot');
   src: url('@{fontPath}/RobotoBlack.eot?#iefix') format('embedded-opentype'),
        url('@{fontPath}/RobotoBlack.woff') format('woff'),
        url('@{fontPath}/RobotoBlack.ttf') format('truetype'),
        url('@{fontPath}/RobotoBlack.svg') format('svg');
-  font-weight: normal;
+  font-weight: 900;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'RobotoBold';
-  src: url('@{fontPath}/RobotoBlack.eot');
-  src: url('@{fontPath}/RobotoBlack.eot?#iefix') format('embedded-opentype'),
-       url('@{fontPath}/RobotoBlack.woff') format('woff'),
-       url('@{fontPath}/RobotoBlack.ttf') format('truetype'),
-       url('@{fontPath}/RobotoBlack.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 @font-size-base: 16px;
 @label-color: #000;
 
-@headings-font-family: 'RobotoBlack';
+@headings-font-family: 'Roboto';
 @font-family-base: 'SourceSans';
+
+// For <h1> tags, the correct font weight is 'bolder'.
+// This is fixed manually in since bootstrap doesn't allow
+@headings-font-weight: bold;
+.h1-bolder {
+  font-weight: 900 !important;
+}
 
 @kapa-black: #2c2c2c;
 @kapa-light-grey: #f2f2f2;
