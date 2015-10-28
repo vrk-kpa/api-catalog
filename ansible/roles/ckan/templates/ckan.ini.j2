@@ -40,15 +40,16 @@ ckan.auth.create_user_via_web = true
 ckan.auth.roles_that_cascade_to_sub_groups = admin
 
 ckan.site_id = {{ ckan_site_id }}
+ckan.site_title = {{ ckan_site_name }}
+ckan.site_logo =
+ckan.site_description =
 
 ckan.plugins = {{ ckan_plugins }} {% if google_analytics -%}googleanalytics{%- endif %}
 
 ckan.preview.xml_formats = xml wsdl wsdl+xml rdf rdf+xml owl+xml atom rss
 ckan.views.default_views = text_view
 
-ckan.site_title = {{ ckan_site_name }}
-ckan.site_logo = 
-ckan.site_description =
+ckanext.pages.editor = ckeditor
 
 ckan.favicon = /images/icons/ckan.ico
 ckan.gravatar_default = identicon
