@@ -1,4 +1,7 @@
 .homepage {
+  h1 {
+    font-size: 40px;
+  }
   .top-caption {
     text-align: center;
     display: block;
@@ -11,45 +14,61 @@
     color: #fff;
   }
 
-  .row {
-    position: relative;
+  .module-search {
+    @search-box-color: @kapa-secondary-attention-color;
+    background-color: @search-box-color;
+    border-color: @search-box-color;
+    border-radius: 0px;
+  }
+
+  .promoted {
+    color: white;
+    background-color: @kapa-attention-color;
+  }
+
+  .stats {
+    a {
+      color:white;
+    }
+  }
+  .tags {
+
+    .clearfix();
+    padding: 5px 10px 10px 10px;
+    color: @white;
+    .border-radius(0 0 3px 3px);
+    h3,
+    .tag {
+      display: block;
+      float: left;
+      margin: 5px 10px 0 0;
+    }
+    h3 {
+      font-size: @font-size-base;
+      line-height: @line-height-computed;
+      padding: 2px 8px;
+    }
+  }
+
+  .heading {
+    font-weight: bolder !important;
+    margin-top: 0;
+    margin-bottom: 7px;
+    font-size: 24px;
+    line-height: 40px;
+  }
+
+  .search-form {
+    margin-bottom:0px;
+    padding-bottom: 0px;
+    border-bottom: none;
   }
 
   .module-search {
     padding: 5px;
     color: @mastheadTextColor;
-    background: @white;
-    .search-giant {
-      margin-bottom: 10px;
-    }
     .module-content {
-      .border-radius(3px 3px 0 0);
-      background-color: @white;
       border-bottom: none;
-      .heading {
-        margin-top: 0;
-        margin-bottom: 7px;
-        font-size: 24px;
-        line-height: 40px;
-      }
-    }
-    .tags {
-
-      .clearfix();
-      padding: 5px 10px 10px 10px;
-      background-color: @white;
-      .border-radius(0 0 3px 3px);
-      h3,
-      .tag {
-        display: block;
-        float: left;
-        margin: 5px 10px 0 0;
-      }
-      h3 {
-        font-size: @font-size-base;
-        line-height: @line-height-computed;
-        padding: 2px 8px;
-      }
     }
   }
 
@@ -69,16 +88,9 @@
       .unstyled;
       .clearfix;
       li {
-        float: left;
-        width: 25%;
         font-weight: 300;
         a {
           display: block;
-          b {
-            display: block;
-            font-size: @fontSizeLarge*2;
-            line-height: 1.5;
-          }
           &:hover {
             text-decoration: none;
           }
