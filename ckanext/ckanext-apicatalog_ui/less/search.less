@@ -1,3 +1,8 @@
+.search-form .frontpage-search-form {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: none;
+}
 .search-form {
   // .clearfix;
   margin-bottom: 20px;
@@ -29,11 +34,11 @@
         display: none;
       }
       i {
-        color: @kapa-secondary-attention-color;
+        color: #999;
         .transition(color 0.2s ease-in);
       }
       &:hover i {
-        color: @inputColor;
+        color: @kapa-secondary-attention-color;
       }
     }
     &.search-giant {
@@ -42,12 +47,6 @@
         padding: 15px;
         border: solid 1px #999;
         outline: none;
-      }
-      &:hover input {
-        border: solid 1px #000;
-      }
-      input:focus {
-        border: solid 1px @kapa-secondary-attention-color;
       }
       button {
         margin-top: -15px;
@@ -59,7 +58,19 @@
         }
       }
     }
+
+  &.search-giant:hover {
+    input {
+      border: solid 1px @kapa-secondary-attention-color;
+    }
+    button {
+      i {
+        color:@kapa-secondary-attention-color;
+      }
+    }
+
   }
+
   .control-order-by {
     label,
     select {
@@ -96,7 +107,7 @@
     margin-bottom: 0;
   }
 }
-
+}
 .tertiary {
   .control-order-by {
     float: none;
