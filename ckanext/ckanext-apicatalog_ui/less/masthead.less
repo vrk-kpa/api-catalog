@@ -256,6 +256,18 @@
           border-radius: 0px;
           color: @kapa-active-link;
           background-color: @kapa-attention-color;
+          &:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid @kapa-attention-color;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            margin-left: -8px;
+          }
         }
       }
     }
