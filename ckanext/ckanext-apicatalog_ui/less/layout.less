@@ -28,12 +28,7 @@
 
 [role=main], .main {
   position: relative;
-  padding-bottom: 20px;
   background: @layoutBackgroundColor;
-}
-
-[role=main] {
-  min-height: 350px;
 }
 
 .main:after,
@@ -136,13 +131,11 @@
   }
 }
 
+
 @media (min-width: 768px) {
   .hero {
-    min-height: 500px;
-    background: url(@heroBgPath);
-    .hero-module {
-      margin-top: 2em;
-    }
+    background: url(@heroBgPath) center 100% no-repeat;
+    background-color:@layoutBackgroundColor;
   }
 }
 
