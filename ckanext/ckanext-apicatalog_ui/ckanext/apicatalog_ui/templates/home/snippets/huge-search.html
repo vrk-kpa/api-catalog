@@ -3,60 +3,33 @@
 {% set stats = h.get_site_statistics() %}
 
 <div class="row hidden-xs hidden-sm">
-  <span class="top-caption">Hakemisto kansallisen palveluväylän palveluista.</span>
+  <span class="top-caption">Hakemisto kansallisen<br/>palveluväylän palveluista.</span>
 </div>
 
 <div class="module module-search module-narrow module-shallow box">
+
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-1">
         <div class="search-input control-group search-giant">
           <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
-          <button type="submit">
-            <i class="icon-search"></i>
-            <span>{{ _('Search') }}</span>
-          </button>
-        </div>
-        <div class="tags">
-          <h3>{{ _('Popular tags') }}</h3>
-          {% for tag in tags %}
-            <a class="tag" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
-          {% endfor %}
         </div>
       </div>
-      <div class="col-md-4">
-        <ul class="unstyled stats">
-          {% block stats_group %}
-          <li>
-            <a href="{{ h.url_for(controller='package', action='search') }}">
-                    {{ h.SI_number_span(stats.dataset_count) }}
-                    {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}
-                  </a>
-          </li>
-          <li>
-            <a href="{{ h.url_for(controller='organization', action='index') }}">
-                    {{ h.SI_number_span(stats.organization_count) }}
-                    {{ _('organization') if stats.organization_count == 1 else _('organizations') }}
-                  </a>
-          </li>
-          <li>
-            <a href="{{ h.url_for(controller='group', action='index') }}">
-                    {{ h.SI_number_span(stats.group_count) }}
-                    {{ _('group') if stats.group_count == 1 else _('groups') }}
-                  </a>
-          </li>
-          <li>
-            <a href="{{ h.url_for(controller='related', action='dashboard') }}">
-                    {{ h.SI_number_span(stats.related_count) }}
-                    {{ _('related item') if stats.related_count == 1 else _('related items') }}
-                  </a>
-          </li>
-          {% endblock %}
-        </ul>
+      <div class="hidden-xs col-sm-2"> <!--col-lg-3-->
+        <button class="button-hollow" type="submit">
+          <i class="icon-search"></i>
+          <span>{{ _('Search') }}</span>
+        </button>
       </div>
     </div>
   </form>
 
+  <div class="row hidden-xs">
+    <div class="col-sm-offset-1 tags">
+      <h3>{{ _('Popular tags') }}</h3>
+      {% for tag in tags %}
+        <a class="tag" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+      {% endfor %}
+    </div>
   </div>
-
 </div>
