@@ -1,7 +1,7 @@
 ---
 
 - name: Ensure Jetty requirements
-  apt: pkg="{{ item }}" state=latest
+  apt: pkg={{ item }} state=latest
   with_items:
     - openjdk-7-jdk
     - jetty
@@ -21,15 +21,15 @@
     - libwoodstox-java
 
 - name: Create solr3 prerequisites cache path
-  file: path="{{ cache_path }}/solr3_installation" state=directory
+  file: path={{ cache_path }}/solr3_installation state=directory
 
 - name: Fetch Jetty packages
-  get_url: url="http://se.archive.ubuntu.com/ubuntu/pool/{{ item.path }}/{{ item.name }}" dest="{{ cache_path }}/solr3_installation/{{ item.name }}" mode=0644 owner=root group=root
+  get_url: url="http://se.archive.ubuntu.com/ubuntu/pool/{{ item.path }}/{{ item.name }}" dest="{{ cache_path }}/solr3_installation/{{ item.name }}" mode="0644" owner=root group=root
   with_items: solr_packages
   register: fetch_jetty_packages
 
 - name: Remove old Jetty installations
-  apt: pkg="{{ item }}" state=absent
+  apt: pkg={{ item }} state=absent
   with_items:
     - solr-common
     - solr-jetty
@@ -41,7 +41,7 @@
   with_items: solr_packages
 
 - name: Copy CKAN Solr schema
-  template: src=schema.xml.j2 dest="{{ server_path }}/schema.xml" mode=0644 owner=root group=root
+  template: src=schema.xml.j2 dest={{ server_path }}/schema.xml mode="0644" owner=root group=root
   register: fetch_schema
 
 - name: Remove old schema
@@ -49,11 +49,11 @@
   when: fetch_schema|changed
 
 - name: Setup Solr schema
-  file: src="{{ server_path }}/schema.xml" dest=/etc/solr/conf/schema.xml state=link
+  file: src={{ server_path }}/schema.xml dest=/etc/solr/conf/schema.xml state=link
   when: fetch_schema|changed
 
 - name: Setup Jetty
-  template: src=jetty.j2 dest=/etc/default/jetty mode=0644 owner=root group=root
+  template: src=jetty.j2 dest=/etc/default/jetty mode="0644" owner=root group=root
   register: jetty_setup
 
 - name: Ensure Jetty is restarted

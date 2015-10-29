@@ -1,7 +1,7 @@
 ---
 
 - name: Set hostname
-  template: src=hostname.j2 dest="/etc/hostname" mode=0644 owner=root group=root
+  template: src=hostname.j2 dest="/etc/hostname" mode="0644" owner=root group=root
   register: hostname_update
 
 - name: Update hostname

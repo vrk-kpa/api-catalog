@@ -9,25 +9,26 @@
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
 
 - name: Install CKAN launch script
-  template: src=ckan.j2 dest=/usr/bin/ckan mode=0755 owner=root group=root
+  template: src=ckan.j2 dest=/usr/bin/ckan mode="0755" owner=root group=root
 
-- name: Create CKAN files path
-  file: path="{{ ckan_files_path }}" state=directory mode=0770 owner="{{ www_user }}" group="{{ www_group }}"
-
-- name: Create CKAN settings path
-  file: path="/etc/ckan/default" state=directory mode=0770 owner="{{ www_user }}" group="{{ www_group }}"
+- name: Create CKAN paths
+  file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
+  with_items:
+    - "{{ ckan_files_path }}"
+    - /etc/ckan/default
 
 - name: Ensure path ownerships
   command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}" /etc/ckan/default
+
 - name: Ensure upload path permissions
   command: chmod -R "0770" "{{ ckan_files_path }}" 
 
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.owner }}
   with_items:
-    - { src: ckan.ini.j2, dest: "{{ ckan_ini }}", mode: 0640, owner: root, group: "{{ www_group }}" }
-    - { src: apache.wsgi.j2, dest: /etc/ckan/default/apache.wsgi, mode: 0640, owner: root, group: "{{ www_group }}" }
-    - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: 0640, owner: root, group: "{{ www_group }}" }
+    - { src: ckan.ini.j2, dest: "{{ ckan_ini }}", mode: "0640", owner: root, group: "{{ www_group }}" }
+    - { src: apache.wsgi.j2, dest: /etc/ckan/default/apache.wsgi, mode: "0640", owner: root, group: "{{ www_group }}" }
+    - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: "0640", owner: root, group: "{{ www_group }}" }
 
 - include: custom_requirements.yml
 

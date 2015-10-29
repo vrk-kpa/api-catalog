@@ -1,7 +1,7 @@
 ---
 
 - name: Add webupd8 PPA
-  apt_repository: repo='ppa:webupd8team/java'
+  apt_repository: repo="ppa:webupd8team/java"
   register: java8_repo_added
 
 - name: Auto-accept Java license

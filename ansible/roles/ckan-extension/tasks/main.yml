@@ -1,10 +1,10 @@
 ---
 
 - name: Ensure temp directory for extensions
-  file: path="{{ ckanext_sync_path }}" state=directory
+  file: path={{ ckanext_sync_path }} state=directory
 
 - name: Synchronize extension sources
-  synchronize: src=../ckanext/{{ ckanext }} dest="{{ ckanext_sync_path }}"/
+  synchronize: src=../ckanext/{{ ckanext }} dest={{ ckanext_sync_path }}/
 
 # TODO: This is designed for Vagrant
 - name: Link extension sources

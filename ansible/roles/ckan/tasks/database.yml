@@ -9,7 +9,7 @@
   ignore_errors: True
 
 - name: Upgrade CKAN filestore
-  shell: ./bin/paster --plugin=ckan db migrate-filestore "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
+  shell: ./bin/paster --plugin=ckan db migrate-filestore "--config={{ ckan_ini }}" chdir={{ virtualenv }}
   ignore_errors: True
 
 - name: Create initial CKAN users

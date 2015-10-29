@@ -1,7 +1,12 @@
 ---
 
 - name: Configure SSH
-  template: src=sshd_config.j2 dest="/etc/ssh/sshd_config"
-    mode=0644 owner=root group=root
-    backup=yes validate='/usr/sbin/sshd -T -f %s'
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: "0644"
+    owner: root
+    group: root
+    backup: yes
+    validate: '/usr/sbin/sshd -T -f %s'
   notify: Restart SSH

@@ -1,7 +1,7 @@
 ---
 
 - name: Clear cache directory
-  file: path="{{ cache_path }}" state=absent
+  file: path={{ cache_path }} state=absent
   when: clear_all_cache
   tags:
   - clear-cache
@@ -10,17 +10,14 @@
 - include: hostname.yml
 
 - name: Copy environment
-  template: src=environment.j2 dest="/etc/environment" mode=0644 owner=root group=root
+  template: src=environment.j2 dest=/etc/environment mode="0644" owner=root group=root
 
 - name: Copy apt sources.list
-  template: src=sources.list.j2 dest=/etc/apt/sources.list mode=0644 owner=root group=root
+  template: src=sources.list.j2 dest=/etc/apt/sources.list mode="0644" owner=root group=root
   when: apt_source_url != false
 
-- name: Update package cache
-  apt: update_cache=yes
-
-- name: Update packages
-  apt: upgrade=dist
+- name: Upgrade packages
+  apt: upgrade=dist update_cache=yes
 
 - name: Ensure common packages
   apt: pkg={{ item }} state=latest
