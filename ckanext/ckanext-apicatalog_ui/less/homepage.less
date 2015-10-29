@@ -2,6 +2,12 @@
   h1 {
     font-size: 40px;
   }
+  .search-form {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: none;
+  }
+
   .top-caption {
     text-align: center;
     display: block;
@@ -19,6 +25,29 @@
     background-color: @search-box-color;
     border-color: @search-box-color;
     border-radius: 0px;
+
+    &:hover {
+      input {
+        border-color: @kapa-secondary-attention-color-dark;
+      }
+    }
+
+    input {
+      border-color: @search-box-color;
+      border-radius: 4px;
+      margin-bottom:none;
+
+    }
+
+    button {
+      background-color: transparent;
+      border: 3px solid white;
+      color: white;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 8px 15px;
+
+    }
   }
 
   .promoted {
@@ -62,6 +91,9 @@
     margin-bottom:0px;
     padding-bottom: 0px;
     border-bottom: none;
+    .search-input {
+      margin-bottom: 0px;
+    }
   }
 
   .module-search {
