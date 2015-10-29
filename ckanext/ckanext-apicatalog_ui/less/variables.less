@@ -82,6 +82,7 @@
 @kapa-attention-color: #1998ff;
 @kapa-attention-color-dark: #0a77d1;
 @kapa-secondary-attention-color: #f25d0d;
+@kapa-secondary-attention-color-dark: #c74500;
 
 @kapa-top-color:          @kapa-black;
 @kapa-active-link:        @kapa-light-grey;
@@ -102,7 +103,7 @@
 
 @layoutTextColor: #444;
 @layoutBoldColor: #000;
-@layoutLinkColor: #187794;
+@layoutLinkColor: @kapa-attention-color;
 @layoutBackgroundColor: #f9f9f9;
 @layoutTrimBackgroundColor: #fff;
 @layoutTrimBorderColor: @kapa-box-border-color;
@@ -139,10 +140,10 @@
 @mastheadBackgroundColorEnd: @mastheadBackgroundColor;
 
 @navItemActiveTextColor: #FFF;
-@navItemActiveBackgroundColor: #8CA0A6;
+@navItemActiveBackgroundColor: @kapa-attention-color;
 
 @pillTextColor: @navItemActiveTextColor;
-@pillBackgroundColor: darken(@navItemActiveBackgroundColor, 10%);
+@pillBackgroundColor: @kapa-secondary-attention-color;
 
 @bannerTextColor: @mastheadTextColor;
 @bannerBackgroundColor: @mastheadBackgroundColor;
@@ -217,9 +218,11 @@
 @brand-warning: @kapa-secondary-attention-color;
 
 @btn-secondary-bg: @black;
+@btn-danger-bg: @btn-secondary-bg;
+
 @btn-success-bg: @kapa-attention-color;
 @breadcrumb-separator:          "/";
-
+@btn-link-disabled-color: yellow;
 // Activity Stream base colors
 @activityColorText: #FFFFFF;
 @activityColorBlank: #999999;
