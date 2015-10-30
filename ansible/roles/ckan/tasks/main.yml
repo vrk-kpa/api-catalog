@@ -14,14 +14,14 @@
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
   with_items:
-    - "{{ ckan_files_path }}"
+    - "{{ ckan_storage_path }}"
     - /etc/ckan/default
 
 - name: Ensure path ownerships
-  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_files_path }}" /etc/ckan/default
+  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_storage_path }}" /etc/ckan/default
 
 - name: Ensure upload path permissions
-  command: chmod -R "0770" "{{ ckan_files_path }}" 
+  command: chmod -R "0770" "{{ ckan_storage_path }}"
 
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.group }}

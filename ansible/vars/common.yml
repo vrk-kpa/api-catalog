@@ -5,9 +5,7 @@ www_group: www-data
 
 server_path: /opt/apicatalog
 cache_path: "{{ server_path }}/cache"
-backup_path: "{{ server_path }}/backup"
-scripts_path: "{{ server_path }}/scripts"
-files_root: "{{ server_path }}/files"
+data_path: "{{ server_path }}/data"
 
 ckan_ini: /etc/ckan/default/production.ini
 virtualenv: /usr/lib/ckan/default

@@ -47,8 +47,6 @@
   with_items:
     - "{{ server_path }}"
     - "{{ cache_path }}"
-    - "{{ backup_path }}"
-    - "{{ scripts_path }}"
 
 - include: pip.yml
 #- include: node.yml

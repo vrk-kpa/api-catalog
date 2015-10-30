@@ -1,0 +1,4 @@
+---
+
+backup_path: "{{ server_path }}/backup"
+backup_scripts_path: "{{ server_path }}/backup"

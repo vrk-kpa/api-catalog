@@ -5,6 +5,6 @@
   shell: ./bin/paster --plugin=ckan search-index rebuild --config="{{ ckan_ini }}" chdir={{ virtualenv }}
 
 #- name: Reindex
-#  shell: touch "{{ files_root }}/.solr-reindex" && ./bin/paster --plugin=ckan search-index rebuild --config="{{ ckan_ini }}" chdir="{{ virtualenv }}" creates="{{ files_root }}/.solr-reindex"
+#  shell: touch "{{ data_path }}/.solr-reindex" && ./bin/paster --plugin=ckan search-index rebuild --config="{{ ckan_ini }}" chdir="{{ virtualenv }}" creates="{{ data_path }}/.solr-reindex"
 #  async: 1200
 #  poll: 0
