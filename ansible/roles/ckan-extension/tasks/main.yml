@@ -3,9 +3,17 @@
 - name: Ensure temp directory for extensions
   file: path={{ ckanext_sync_path }} state=directory
 
-- name: Synchronize extension sources
+- name: Copy extension sources
   synchronize: src=../ckanext/{{ ckanext }} dest={{ ckanext_sync_path }}/
+  when: deployment_environment_id != "vagrant"
 
-# TODO: This is designed for Vagrant
+- name: Remove existing extension (Vagrant)
+  file: path="{{ ckanext_sync_path }}/{{ ckanext }}" state=absent
+  when: deployment_environment_id == "vagrant"
+
+- name: Symlink extension sources from host machine (Vagrant)
+  file: src="/src/ckanext/{{ ckanext }}" path="{{ ckanext_sync_path }}/{{ ckanext }}" state=link
+  when: deployment_environment_id == "vagrant"
+
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
