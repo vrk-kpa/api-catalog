@@ -8131,8 +8131,8 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 }
 .stages li.complete:after {
   border-color: rgba(197, 226, 196, 0);
-  border-top-color: #c5e2c4;
-  border-bottom-color: #c5e2c4;
+  border-top-color: #2c2c2c;
+  border-bottom-color: #2c2c2c;
 }
 .stages.stage-3 li.complete:first-child:after {
   content: none;
@@ -8146,7 +8146,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   background: #ffffff;
 }
 .stages li.complete:before {
-  color: #c5e2c4;
+  color: #2c2c2c;
   background: #eef6ed;
 }
 .stages li .highlight {
@@ -8174,8 +8174,8 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   background: #f25d0d;
 }
 .stages li.complete .highlight {
-  color: #eef6ed;
-  background: #c5e2c4;
+  color: #ffffff;
+  background: #2c2c2c;
 }
 .alert > :last-child {
   margin-bottom: 0;
