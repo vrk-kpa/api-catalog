@@ -20,6 +20,7 @@
     - apache
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
+    - { role: ckan-extension, ckanext: ckanext-fluentall }
     - ckan
     - ckan-translations
     - solr-reindex

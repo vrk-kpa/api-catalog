@@ -10,7 +10,8 @@
       "preset": "title",
       "form_placeholder": {
         "en": "eg. A descriptive title",
-        "fi": "esim. Kuvaava otsikko"
+        "fi": "esim. Kuvaava otsikko",
+        "sv": "<esim. Kuvaava otsikko>"
       }
     },
     {
@@ -22,11 +23,13 @@
     {
       "field_name": "notes",
       "label": "Description",
-      "form_snippet": "markdown.html",
+      "preset": "fluent_markdown",
       "form_placeholder": {
         "en": "eg. A detailed description",
         "fi": "esim. Tarkempi kuvaus "
-      }
+      },
+      "form_languages": ["fi", "sv", "en"]
+
     },
     {
       "field_name": "tag_string",
