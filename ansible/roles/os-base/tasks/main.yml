@@ -23,6 +23,7 @@
   apt: pkg={{ item }} state=latest
   with_items:
     - htop
+    - unattended-upgrades
     - python-pip
     - python-dev
     - python-virtualenv
@@ -36,6 +37,9 @@
     - libz-dev
     - libssl-dev
 # Note: psycopg2 requires postgresql-server-dev
+
+- name: Enable automatic installation of security upgrades
+  template: src=apt-auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades mode="0644" owner=root group=root
 
 # TODO: Move path creation where paths are used even those are duplicate
 - name: Create common paths
