@@ -10,6 +10,4 @@ data_path: "{{ server_path }}/data"
 ckan_ini: /etc/ckan/default/production.ini
 virtualenv: /usr/lib/ckan/default
 
-google_analytics: false
-# enable: google_analytics: { 'id': "", 'account': "", 'username': "", 'password': "", 'type': "" }
 certificates_path: /etc/ssl/apicatalog
