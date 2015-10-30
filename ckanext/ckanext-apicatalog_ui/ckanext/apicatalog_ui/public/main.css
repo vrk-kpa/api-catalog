@@ -7448,18 +7448,6 @@ button.close {
   color: #ffffff;
   background-color: #1998ff;
 }
-@media (min-width: 768px) {
-  .nav-item.active > a:before,
-  .nav-aside li.active a:before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    right: -6px;
-    width: 6px;
-    height: 34px;
-    background-image: url("../../../base/images/nav-active.png?1");
-  }
-}
 .nav-item.active > a span,
 .nav-aside li.active a span {
   white-space: nowrap;
@@ -9511,11 +9499,12 @@ h4 small {
   margin-bottom: 20px;
 }
 @media (min-width: 768px) {
-  .hero {
-    background: url("../../../base/images/bg_2.png") center;
+  .hero-background-container {
+    background: url("../../../base/images/bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #f9f9f9;
+    background-position: center center;
   }
 }
 .hero:after {
