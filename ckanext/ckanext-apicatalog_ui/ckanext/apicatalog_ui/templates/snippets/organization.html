@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block image %}
+  <div class="image">
+    <a href="{{ url }}">
+      <img class="img-responsive" src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}" />
+    </a>
+  </div>
+{% endblock %}
