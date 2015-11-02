@@ -1,123 +1,15 @@
 import ckan.plugins as plugins
-import ckan.plugins.toolkit as toolkit
-import ckan.lib.helpers as h
 import pylons
 import json
 import pprint
-import collections
 import logging
 
-# from ckanext.fluentall import validators
-# from ckanext.fluentall.logic import (
-#    fluentall_dataset_count, fluentall_dataset_terms_of_use,
-#    fluentall_dataset_by_identifier
-# )
-# from ckanext.fluentall.helpers import (
-#    get_dataset_count, get_group_count, get_app_count,
-#    get_org_count, get_tweet_count, get_localized_value,
-#    get_localized_org, get_localized_pkg, localize_json_title,
-#    get_frequency_name, get_terms_of_use_icon, get_dataset_terms_of_use,
-#    get_dataset_by_identifier, get_readable_file_size
-# )
-# 
 log = logging.getLogger(__name__)
-# 
 LANGUAGES = ['en_GB', 'fi', 'sv']
-# 
-# 
-# class FluentallPlugin(plugins.SingletonPlugin):
-#     plugins.implements(plugins.IConfigurer)
-#     plugins.implements(plugins.IValidators)
-#     plugins.implements(plugins.IFacets)
-#     plugins.implements(plugins.IActions)
-#     plugins.implements(plugins.ITemplateHelpers)
-# 
-#     # IConfigurer
-# 
-#     def update_config(self, config_):
-#         toolkit.add_template_directory(config_, 'templates')
-#         toolkit.add_public_directory(config_, 'public')
-#         toolkit.add_resource('fanstatic', 'fluentall')
-# 
-#     # IValidators
-# 
-#     def get_validators(self):
-#         return {
-#             'multiple_text': validators.multiple_text,
-#             'multiple_text_output': validators.multiple_text_output,
-#             'multilingual_text_output': validators.multilingual_text_output,
-#             'list_of_dicts': validators.list_of_dicts,
-#             'timestamp_to_datetime': validators.timestamp_to_datetime,
-#             'fluentall_multiple_choice': validators.fluentall_multiple_choice,
-#             'temporals_to_datetime_output': validators.temporals_to_datetime_output,
-#             'parse_json': validators.parse_json,
-#         }
-# 
-#     # IFacets
-# 
-#     def dataset_facets(self, facets_dict, package_type):
-#         facets_dict = collections.OrderedDict()
-#         facets_dict['groups'] = plugins.toolkit._('Themes')
-#         facets_dict['tags'] = plugins.toolkit._('Keywords')
-#         facets_dict['organization'] = plugins.toolkit._('Organization')
-#         facets_dict['res_rights'] = plugins.toolkit._('Terms')
-#         facets_dict['res_format'] = plugins.toolkit._('Media Type')
-#         return facets_dict
-# 
-#     def group_facets(self, facets_dict, group_type, package_type):
-#         facets_dict = collections.OrderedDict()
-#         facets_dict['tags'] = plugins.toolkit._('Keywords')
-#         facets_dict['organization'] = plugins.toolkit._('Organization')
-#         facets_dict['res_rights'] = plugins.toolkit._('Terms')
-#         facets_dict['res_format'] = plugins.toolkit._('Media Type')
-#         return facets_dict
-# 
-#     def organization_facets(self, facets_dict, organization_type, package_type):
-#         facets_dict = collections.OrderedDict()
-#         facets_dict['groups'] = plugins.toolkit._('Themes')
-#         facets_dict['tags'] = plugins.toolkit._('Keywords')
-#         facets_dict['res_rights'] = plugins.toolkit._('Terms')
-#         facets_dict['res_format'] = plugins.toolkit._('Media Type')
-#         return facets_dict
-# 
-#     # IActions
-# 
-#     def get_actions(self):
-#         """
-#         Expose new API methods
-#         """
-#         return {
-#             'fluentall_dataset_count': fluentall_dataset_count,
-#             'fluentall_dataset_terms_of_use': fluentall_dataset_terms_of_use,
-#             'fluentall_dataset_by_identifier': fluentall_dataset_by_identifier,
-#         }
-# 
-#     # ITemplateHelpers
-# 
-#     def get_helpers(self):
-#         """
-#         Provide template helper functions
-#         """
-#         return {
-#             'get_dataset_count': get_dataset_count,
-#             'get_group_count': get_group_count,
-#             'get_app_count': get_app_count,
-#             'get_org_count': get_org_count,
-#             'get_tweet_count': get_tweet_count,
-#             'get_localized_org': get_localized_org,
-#             'get_localized_pkg': get_localized_pkg,
-#             'localize_json_title': localize_json_title,
-#             'get_frequency_name': get_frequency_name,
-#             'get_terms_of_use_icon': get_terms_of_use_icon,
-#             'get_dataset_terms_of_use': get_dataset_terms_of_use,
-#             'get_dataset_by_identifier': get_dataset_by_identifier,
-#             'get_readable_file_size': get_readable_file_size,
-#         }
 
 
 class FluentallLanguagePlugin(plugins.SingletonPlugin):
     def _extract_lang_value(self, value, lang_code):
-        log.warn("base extract_lang_value *********************************************************************")
         new_value = value
         try:
             if not isinstance(new_value, dict):
@@ -137,13 +29,12 @@ class FluentallLanguagePlugin(plugins.SingletonPlugin):
             return ''
 
     def before_view(self, pkg_dict):
-        log.warn("base before_view *********************************************************************")
         try:
             desired_lang_code = pylons.request.environ['CKAN_LANG']
         except TypeError:
             desired_lang_code = pylons.config.get('ckan.locale_default', 'en')
 
-        pkg_dict['display_name'] = pkg_dict['title']
+        pkg_dict['display_name'] = pkg_dict.get('title', '')
         for key, value in pkg_dict.iteritems():
             if not self._ignore_field(key):
                 pkg_dict[key] = self._extract_lang_value(value, desired_lang_code)
@@ -188,7 +79,6 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
     # IPackageController
 
     def before_view(self, pkg_dict):
-        log.warn("before_view *********************************************************************")
         log.debug(pprint.pformat(pkg_dict))
         try:
             desired_lang_code = pylons.request.environ['CKAN_LANG']
@@ -200,7 +90,7 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
             pkg_dict[key] = self._extract_lang_value(value, desired_lang_code)
 
         # groups
-        for element in pkg_dict['groups']:
+        for element in pkg_dict.get('groups', []):
             for field in element:
                 element[field] = self._extract_lang_value(element[field], desired_lang_code)
 
@@ -209,7 +99,7 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
             pkg_dict['organization'][field] = self._extract_lang_value(pkg_dict['organization'][field], desired_lang_code)
 
         # resources
-        for resource in pkg_dict['resources']:
+        for resource in pkg_dict.get('resources', []):
             if not resource['name'] and resource['title']:
                 resource['name'] = resource['title']
             for key, value in resource.iteritems():
@@ -218,20 +108,6 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
         return pkg_dict
 
     def before_index(self, pkg_dict):
-        log.debug("before_index *********************************************************************")
-#        extract_title = LangToString('title')
-
-#        log.debug(pprint.pformat(validated_dict))
-#
-#        pkg_dict['res_name'] = [r['title'] for r in validated_dict[u'resources']]
-#        pkg_dict['res_format'] = [r['media_type'] for r in validated_dict[u'resources']]
-#        pkg_dict['res_rights'] = [r['rights'] for r in validated_dict[u'resources']]
-#        pkg_dict['title_string'] = extract_title(validated_dict)
-#        pkg_dict['description'] = LangToString('description')(validated_dict)
-#
-#        for language in LANGUAGES:
-#            pkg_dict['title_%s' % language] = validated_dict['title'][language]
-
         log.debug(pprint.pformat(pkg_dict))
         return pkg_dict
 
