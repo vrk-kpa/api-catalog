@@ -100,8 +100,8 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
 
         # resources
         for resource in pkg_dict.get('resources', []):
-            if not resource['name'] and resource['title']:
-                resource['name'] = resource['title']
+            if not resource.get('name','') and resource.get('title',''):
+                resource['name'] = resource.get('title','')
             for key, value in resource.iteritems():
                 if key not in ['tracking_summary']:
                     resource[key] = self._extract_lang_value(value, desired_lang_code)
