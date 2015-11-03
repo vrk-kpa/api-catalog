@@ -24,8 +24,5 @@
 - name: Enable Apache configuration
   file: src=/etc/apache2/sites-available/ckan_catalog.conf dest=/etc/apache2/sites-enabled/ckan_catalog.conf state=link owner=root group=root
 
-- name: Enable SSL configuration
-  command: a2enmod ssl
-
 - name: Restart Apache
   service: name=apache2 state=restarted
