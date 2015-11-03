@@ -1,0 +1,20 @@
+---
+
+# Updates the source codes of a single CKAN extension. This does not do a
+# complete deployment and thus only works if a deploy-all has been run
+# beforehand.
+
+# To run:
+# ansible-playbook -v -i inventories/vagrant -e ckanext=ckanext-apicatalog_ui update-extension.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/beta -e ckanext=ckanext-apicatalog_ui update-extension.yml
+
+- hosts: mainserver
+  sudo: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  roles:
+    - ckan-extension
+  handlers:
+    - include: handlers/handlers.yml
