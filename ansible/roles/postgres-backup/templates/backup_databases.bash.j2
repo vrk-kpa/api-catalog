@@ -1,0 +1,23 @@
+#!/bin/bash
+
+DATE=`date -Iseconds`
+LOG="{{ backup_path }}/backup.log"
+
+LATEST="{{ backup_path }}/latest.sql.gz"
+PREVIOUS="{{ backup_path }}/previous.sql.gz"
+
+if [ -f "$LATEST" ]; then
+  mv $LATEST $PREVIOUS
+fi
+
+# Pipefail makes piped commands return non-ok exit code if any of the piped
+# commands fail. With it, pg_dumpall failure is detected even if it is piped
+# to gzip.
+set -o pipefail
+
+pg_dumpall | gzip > $LATEST
+if [ $? -eq 0 ]; then
+  echo "$DATE Database backup successful" >> $LOG
+else
+  echo "$DATE Failed to backup database" >> $LOG
+fi

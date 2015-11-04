@@ -1,15 +1,21 @@
 ---
 
+# Simple postgres backup using pg_dumpall and cron. Designed to be used in conjunction
+# with hypervisor-level backup. Rotates between latest and second latest backup.
+
 - name: Create backup directory
-  file: path={{ item }} state=directory
+  file: path={{ item }} state=directory owner=postgres group=postgres mode="0750"
   with_items:
   - "{{ backup_path }}"
   - "{{ backup_scripts_path }}"
 
-- name: Setup database backup
-  template: src=autopostgresqlbackup.j2 dest=/etc/default/autopostgresqlbackup mode="0755" owner=root group=root
+- name: Copy backup script
+  template: src=backup_databases.bash.j2 dest={{ backup_scripts_path }}/backup_databases.bash mode="0755" owner=root group=root
 
-- name: Copy backup cleanup
-  template: src=clean_backups.sh.j2 dest=/etc/cron.daily/clean_postgre_backups mode="0755" owner=root group=root
-
- # pg_dumpall | gzip > dumppi.gz
+- name: Setup cron for database backup
+  cron:
+    name: Backup postgres databases
+    job: "bash {{ backup_scripts_path }}/backup_databases.bash"
+    user: postgres
+    hour: 20
+    minute: 0

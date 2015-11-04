@@ -14,6 +14,7 @@
     - os-base
     - ssh
     - postgres
+    - postgres-backup
     - solr3
     - redis
     - nginx
