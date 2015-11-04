@@ -22,5 +22,3 @@
 
 - name: Ensure Nginx is restarted
   service: name=nginx state=restarted
-
-#- include: maintenance-start.yml

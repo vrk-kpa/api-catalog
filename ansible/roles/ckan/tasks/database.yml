@@ -1,5 +1,8 @@
 ---
 
+# Supervisor and other services may block database update and they should be
+# stopped here before database upgrade
+
 - name: Initialize CKAN database
   shell: ckan db init
   ignore_errors: True

@@ -31,16 +31,7 @@
     - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: "0640", owner: root, group: "{{ www_group }}" }
 
 - include: custom_requirements.yml
-
-#- name: Stop supervisor services (as it may block database update)
-#  command: supervisorctl stop all
-
 - include: database.yml
-
-#- name: re-minify CKAN javascript files
-#  shell: ./bin/paster --plugin=ckan minify {{ ckan_source_path }}/ckan/public/base/javascript/modules "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
 
 - name: Ensure Apache restart
   service: name=apache2 state=restarted
-
-# - include: cron.yml
