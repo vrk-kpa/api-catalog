@@ -33,5 +33,3 @@
   with_items:
   - { name: "{{ database_ckan.name }}", owner: "{{ database_ckan.username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }
   ignore_errors: True
-
-#- include: backup.yml

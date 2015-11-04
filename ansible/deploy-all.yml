@@ -13,7 +13,7 @@
   roles:
     - os-base
     - ssh
-    - postgre
+    - postgres
     - solr3
     - redis
     - nginx

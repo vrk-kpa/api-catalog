@@ -6,21 +6,10 @@
   - "{{ backup_path }}"
   - "{{ backup_scripts_path }}"
 
-- name: Install database backup tools
-  apt: pkg={{ item }} state=present
-  with_items:
-  - autopostgresqlbackup
-  - mailutils
-# TODO Mailutils should be handled in a separate role
-
-- name: Setup pre backup script
-  copy: src=pre-backup.bash dest="{{ backup_scripts_path }}/pre-backup.bash" mode="0755" owner=root group=root
-
 - name: Setup database backup
   template: src=autopostgresqlbackup.j2 dest=/etc/default/autopostgresqlbackup mode="0755" owner=root group=root
 
-- name: Run backup now
-  command: /usr/sbin/autopostgresqlbackup
-
 - name: Copy backup cleanup
   template: src=clean_backups.sh.j2 dest=/etc/cron.daily/clean_postgre_backups mode="0755" owner=root group=root
+
+ # pg_dumpall | gzip > dumppi.gz
