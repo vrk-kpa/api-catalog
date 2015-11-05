@@ -22,7 +22,6 @@
       "preset": "fluent_markdown",
       "form_placeholder": "eg. A detailed description",
       "form_languages": ["fi", "sv", "en"]
-
     },
     {
       "field_name": "tag_string",
@@ -86,8 +85,9 @@
     {
       "field_name": "description",
       "label": "Description",
-      "form_snippet": "markdown.html",
-      "form_placeholder": "eg. A detailed description"
+      "preset": "fluent_markdown",
+      "form_placeholder": "eg. A detailed description",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "type",
