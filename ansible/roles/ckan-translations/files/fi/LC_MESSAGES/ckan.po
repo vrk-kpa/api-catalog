@@ -4841,3 +4841,19 @@ msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää resurssien url:iä)"
 #: ckanext/templates/home/header.html:11
 msgid "Support and administration sites"
 msgstr "Tuki- ja hallintasivustot"
+
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "No"
+msgstr "Ei"
+
+msgid "See description"
+msgstr "Katso kuvaus"
+
+msgid "Test environment"
+msgstr "Testiympäristö"
+
+msgid "Production environment"
+msgstr "Tuotantoympäristö"
+

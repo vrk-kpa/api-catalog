@@ -4834,3 +4834,19 @@ msgstr "t.ex. http://example.com (om inte angivet så används resursens URL)"
 #: ckanext/templates/home/header.html:11
 msgid "Support and administration sites"
 msgstr "Stöd och administrering sidor"
+
+msgid "Yes"
+msgstr "<Kyllä>"
+
+msgid "No"
+msgstr "<Ei>"
+
+msgid "See description"
+msgstr "<Katso kuvaus>"
+
+msgid "Test environment"
+msgstr "<Testiympäristö>"
+
+msgid "Production environment"
+msgstr "<Tuotantoympäristö>"
+

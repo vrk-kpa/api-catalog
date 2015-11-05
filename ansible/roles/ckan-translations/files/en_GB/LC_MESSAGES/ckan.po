@@ -4829,3 +4829,19 @@ msgstr "eg. http://example.com (if blank uses resource url)"
 #: ckanext/templates/home/header.html:11
 msgid "Support and administration sites"
 msgstr "Support and administration sites"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "See description"
+msgstr "See description"
+
+msgid "Test environment"
+msgstr "Test environment"
+
+msgid "Production environment"
+msgstr "Production environment"
+

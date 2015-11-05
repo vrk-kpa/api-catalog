@@ -57,44 +57,6 @@
       "preset": "date"
     },
     {
-      "field_name": "availability",
-      "label": {
-        "en": "Availability",
-        "fi": "Saatavuusaste"
-      },
-      "preset": "fluent_text",
-      "form_languages": ["fi", "sv", "en"]
-    },
-    {
-      "field_name": "sla",
-      "label": {
-        "en": "SLA",
-        "fi": "SLA"
-      },
-      "preset": "fluent_text",
-      "form_languages": ["fi", "sv", "en"]
-    },
-    {
-      "field_name": "response_time",
-      "label": {
-        "en": "Average response time",
-        "fi": "Keskimääräinen vasteaika"
-      },
-      "form_placeholder": {
-        "en": "eg. 100ms",
-        "fi": "esim. 100ms"
-      }
-    },
-    {
-      "field_name": "service_status",
-      "label": {
-        "en": "Service status",
-        "fi": "Palvelun tila"
-      },
-      "preset": "fluent_text",
-      "form_languages": ["fi", "sv", "en"]
-    },
-    {
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization"
@@ -156,6 +118,53 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
+      "field_name": "chargeability",
+      "label": {
+        "en": "Chargeability",
+        "fi": "Maksullisuus",
+        "sv": "<Maksullisuus>"
+      },
+      "preset": "select",
+      "choices": [
+        { 
+          "value": "yes",
+          "label": "Yes"
+        },
+        { 
+          "value": "no",
+          "label": "No"
+        },
+        { 
+          "value": "maybe",
+          "label": "See description"
+        }
+      ]
+    },
+    {
+      "field_name": "environment",
+      "label": {
+        "en": "Environment",
+        "fi": "Ympäristö",
+        "sv": "<Ympäristö>"
+      },
+      "preset": "select",
+      "choices": [
+        { 
+          "value": "test",
+          "label": "Test environment"
+        },
+        { 
+          "value": "production",
+          "label": "Production environment"
+        }
+      ]
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "preset": "resource_format_autocomplete"
+    },
+    {
       "field_name": "validSince",
       "label": {
         "en": "Valid since",
@@ -181,9 +190,42 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
-      "field_name": "format",
-      "label": "Format",
-      "preset": "resource_format_autocomplete"
+      "field_name": "availability",
+      "label": {
+        "en": "Availability",
+        "fi": "Saatavuusaste"
+      },
+      "preset": "fluent_text",
+      "form_languages": ["fi", "sv", "en"]
+    },
+    {
+      "field_name": "sla",
+      "label": {
+        "en": "SLA",
+        "fi": "SLA"
+      },
+      "preset": "fluent_text",
+      "form_languages": ["fi", "sv", "en"]
+    },
+    {
+      "field_name": "response_time",
+      "label": {
+        "en": "Average response time",
+        "fi": "Keskimääräinen vasteaika"
+      },
+      "form_placeholder": {
+        "en": "eg. 100ms",
+        "fi": "esim. 100ms"
+      }
+    },
+    {
+      "field_name": "service_status",
+      "label": {
+        "en": "Service status",
+        "fi": "Palvelun tila"
+      },
+      "preset": "fluent_text",
+      "form_languages": ["fi", "sv", "en"]
     }
   ]
 }
