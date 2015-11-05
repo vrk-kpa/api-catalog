@@ -298,7 +298,7 @@ msgstr "Ryhmät"
 #: ckan/templates/tag/index.html:3 ckan/templates/tag/index.html:6
 #: ckan/templates/tag/index.html:12
 msgid "Tags"
-msgstr "Avainsanat"
+msgstr "Asiasanat"
 
 #: ckan/controllers/group.py:294 ckan/controllers/home.py:73
 #: ckan/controllers/package.py:244 ckan/lib/helpers.py:700
@@ -716,7 +716,7 @@ msgstr "Muu"
 
 #: ckan/controllers/tag.py:70
 msgid "Tag not found"
-msgstr "Avainsanaa ei löydy"
+msgstr "Asiasanaa ei löydy"
 
 #: ckan/controllers/user.py:71 ckan/controllers/user.py:219
 #: ckan/controllers/user.py:234 ckan/controllers/user.py:297
@@ -865,7 +865,7 @@ msgstr "Uudellenohjaus ulkopuoliseen sijaintiin ei sallittu."
 
 #: ckan/lib/activity_streams.py:64
 msgid "{actor} added the tag {tag} to the dataset {dataset}"
-msgstr "{actor} lisäsi avainsanan {tag} tietoaineistoon {dataset}"
+msgstr "{actor} lisäsi asiasanan {tag} tietoaineistoon {dataset}"
 
 #: ckan/lib/activity_streams.py:67
 msgid "{actor} updated the group {group}"
@@ -946,7 +946,7 @@ msgstr "{actor} kirjautui sisään"
 
 #: ckan/lib/activity_streams.py:126
 msgid "{actor} removed the tag {tag} from the dataset {dataset}"
-msgstr "{actor} poisti avainsanan {tag} tietoaineistosta {dataset}"
+msgstr "{actor} poisti asiasanan {tag} tietoaineistosta {dataset}"
 
 #: ckan/lib/activity_streams.py:129
 msgid "{actor} deleted the related item {related_item}"
@@ -1253,7 +1253,7 @@ msgstr "Lisätiedot"
 #: ckan/logic/converters.py:72 ckan/logic/converters.py:87
 #, python-format
 msgid "Tag vocabulary \"%s\" does not exist"
-msgstr "Avainsana-sanastoa %s ei ole olemassa"
+msgstr "Asiasana-sanastoa %s ei ole olemassa"
 
 #: ckan/logic/converters.py:119 ckan/logic/validators.py:211
 #: ckan/logic/validators.py:228 ckan/logic/validators.py:724
@@ -1390,22 +1390,22 @@ msgstr "Ryhmän nimi löytyy jo tietokannasta"
 #: ckan/logic/validators.py:439
 #, python-format
 msgid "Tag \"%s\" length is less than minimum %s"
-msgstr "Avainsanan \"%s\" pituus on oltava vähintään %s merkkiä"
+msgstr "Asiasanan \"%s\" pituus on oltava vähintään %s merkkiä"
 
 #: ckan/logic/validators.py:443
 #, python-format
 msgid "Tag \"%s\" length is more than maximum %i"
-msgstr "Avainsana \"%s\" on pidempi kuin maksimi %i"
+msgstr "Asiasana \"%s\" on pidempi kuin maksimi %i"
 
 #: ckan/logic/validators.py:451
 #, python-format
 msgid "Tag \"%s\" must be alphanumeric characters or symbols: -_."
-msgstr "Avainsanan \"%s\" pitää koostua alfanumeerisita merkeistä (ascii) ja näistä erikoismerkeistä: -_."
+msgstr "Asiasanan \"%s\" pitää koostua alfanumeerisita merkeistä (ascii) ja näistä erikoismerkeistä: -_."
 
 #: ckan/logic/validators.py:459
 #, python-format
 msgid "Tag \"%s\" must not be uppercase"
-msgstr "Avainsana \"%s\" ei saa sisältää isoja kirjaimia"
+msgstr "Asiasana \"%s\" ei saa sisältää isoja kirjaimia"
 
 #: ckan/logic/validators.py:568
 msgid "User names must be strings"
@@ -1453,21 +1453,21 @@ msgstr "Ei voi vaihtaa avaimen %s arvoa arvoon %s. Tähän avaimeen on vain luku
 
 #: ckan/logic/validators.py:661
 msgid "Tag vocabulary was not found."
-msgstr "Avainsana-sanastoa ei löytynyt."
+msgstr "Asiasana-sanastoa ei löytynyt."
 
 #: ckan/logic/validators.py:674
 #, python-format
 msgid "Tag %s does not belong to vocabulary %s"
-msgstr "Avainsana %s ei sisälly sanastoon %s"
+msgstr "Asiasana %s ei sisälly sanastoon %s"
 
 #: ckan/logic/validators.py:680
 msgid "No tag name"
-msgstr "Ei avainsanan nimeä"
+msgstr "Ei asiasanan nimeä"
 
 #: ckan/logic/validators.py:693
 #, python-format
 msgid "Tag %s already belongs to vocabulary %s"
-msgstr "Avainsana %s sisältyy jo sanastoon %s"
+msgstr "Asiasana %s sisältyy jo sanastoon %s"
 
 #: ckan/logic/validators.py:716
 msgid "Please provide a valid URL"
@@ -1599,7 +1599,7 @@ msgstr "Ei löytynyt sanastoa %s"
 #: ckan/logic/action/delete.py:517
 #, python-format
 msgid "Could not find tag \"%s\""
-msgstr "Ei löytynyt avainsanaa %s"
+msgstr "Ei löytynyt asiasanaa %s"
 
 #: ckan/logic/action/delete.py:543 ckan/logic/action/delete.py:547
 msgid "You must be logged in to unfollow something."
@@ -2983,7 +2983,7 @@ msgstr "Etsi palveluita"
 
 #: ckan/templates/home/snippets/search.html:16
 msgid "Popular tags"
-msgstr "Suositut avainsanat"
+msgstr "Suositut asiasanat"
 
 #: ckan/templates/home/snippets/stats.html:5
 msgid "{0} statistics"
@@ -4026,7 +4026,7 @@ msgstr "Muutokset"
 
 #: ckan/templates/revision/read.html:74
 msgid "Datasets' Tags"
-msgstr "Palveluiden avainsanat"
+msgstr "Palveluiden asiasanat"
 
 #: ckan/templates/revision/snippets/revisions_list.html:7
 msgid "Entity"
@@ -4224,7 +4224,7 @@ msgstr "Muokkaukset"
 
 #: ckan/templates/tag/index.html:33 ckan/templates/tag/index.html:34
 msgid "Search Tags"
-msgstr "Etsi avainsanoja"
+msgstr "Etsi asiasanoja"
 
 #: ckan/templates/user/dashboard.html:19 ckan/templates/user/dashboard.html:37
 msgid "News feed"
@@ -4763,7 +4763,7 @@ msgstr "Ei ryhmiä"
 #: ckanext/stats/templates/ckanext/stats/index.html:183
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:88
 msgid "Top Tags"
-msgstr "Käytetyimmät avainsanat"
+msgstr "Käytetyimmät asiasanat"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:136
 msgid "Tag Name"
@@ -4816,7 +4816,7 @@ msgstr "Tietoaineiston johtotaulukko"
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
-msgstr "Valitse tietoaineiston attribuutti ja selvitä missä kategorioissa on valitulla alueella eniten tietoaineistoja. Esimerkiksi avainsanat, ryhmät, lisenssi, tiedostoformaatti tai maa"
+msgstr "Valitse tietoaineiston attribuutti ja selvitä missä kategorioissa on valitulla alueella eniten tietoaineistoja. Esimerkiksi asiasanat, ryhmät, lisenssi, tiedostoformaatti tai maa"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
