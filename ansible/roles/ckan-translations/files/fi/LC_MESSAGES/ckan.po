@@ -4857,3 +4857,36 @@ msgstr "Testiympäristö"
 msgid "Production environment"
 msgstr "Tuotantoympäristö"
 
+msgid "Chargeability"
+msgstr "Maksullisuus"
+
+msgid "Environment"
+msgstr "Ympäristö"
+
+msgid "Valid since"
+msgstr "Voimassaolo alkaa"
+
+msgid "Valid until"
+msgstr "Voimassaolo päättyy"
+
+msgid "Connection information"
+msgstr "Liityntätiedot"
+
+msgid "Availability"
+msgstr "Saatavuus"
+
+msgid "SLA"
+msgstr "SLA"
+
+msgid "Average response time"
+msgstr "Keskimääräinen vasteaika"
+
+msgid "Service status"
+msgstr "Palvelun tila"
+
+msgid "Maintainer phone number"
+msgstr "Ylläpitäjän puhelinnumero"
+
+msgid "eg. A detailed description"
+msgstr "esim. Tarkempi kuvaus"
+

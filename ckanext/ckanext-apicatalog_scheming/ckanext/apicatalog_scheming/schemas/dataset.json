@@ -8,11 +8,7 @@
       "field_name": "title",
       "label": "Title",
       "preset": "title",
-      "form_placeholder": {
-        "en": "eg. A descriptive title",
-        "fi": "esim. Kuvaava otsikko",
-        "sv": "<esim. Kuvaava otsikko>"
-      }
+      "form_placeholder":"eg. A descriptive title"
     },
     {
       "field_name": "name",
@@ -24,10 +20,7 @@
       "field_name": "notes",
       "label": "Description",
       "preset": "fluent_markdown",
-      "form_placeholder": {
-        "en": "eg. A detailed description",
-        "fi": "esim. Tarkempi kuvaus "
-      },
+      "form_placeholder": "eg. A detailed description",
       "form_languages": ["fi", "sv", "en"]
 
     },
@@ -35,25 +28,16 @@
       "field_name": "tag_string",
       "label": "Tags",
       "preset": "tag_string_autocomplete",
-      "form_placeholder": {
-        "en": "eg. economy, mental health, government",
-        "fi": "esim. talous, terveydenhoito, hallinto"
-      }
+      "form_placeholder":"eg. economy, mental health, government"
     },
     {
       "field_name": "validSince",
-      "label": {
-        "en": "Valid since",
-        "fi": "Voimassaolo alkaa"
-      },
+      "label": "Valid since",
       "preset": "date"
     },
     {
       "field_name": "validUntil",
-      "label": {
-        "en": "Valid until",
-        "fi": "Voimassaolo päättyy"
-      },
+      "label": "Valid until",
       "preset": "date"
     },
     {
@@ -84,10 +68,7 @@
     },
     {
       "field_name": "maintainer_phone",
-      "label": {
-        "en": "Maintainer phone number",
-        "fi": "Ylläpitäjän puhelinnumero"
-      },
+      "label": "Maintainer phone number",
       "form_placeholder": "+358123456789",
       "display_property": "dc:contributor"
     }
@@ -106,10 +87,7 @@
       "field_name": "description",
       "label": "Description",
       "form_snippet": "markdown.html",
-      "form_placeholder": {
-        "en": "eg. A detailed description",
-        "fi": "esim. Tarkempi kuvaus "
-      }
+      "form_placeholder": "eg. A detailed description"
     },
     {
       "field_name": "type",
@@ -119,11 +97,7 @@
     },
     {
       "field_name": "chargeability",
-      "label": {
-        "en": "Chargeability",
-        "fi": "Maksullisuus",
-        "sv": "<Maksullisuus>"
-      },
+      "label": "Chargeability",
       "preset": "select",
       "choices": [
         { 
@@ -142,11 +116,7 @@
     },
     {
       "field_name": "environment",
-      "label": {
-        "en": "Environment",
-        "fi": "Ympäristö",
-        "sv": "<Ympäristö>"
-      },
+      "label": "Environment",
       "preset": "select",
       "choices": [
         { 
@@ -166,53 +136,35 @@
     },
     {
       "field_name": "validSince",
-      "label": {
-        "en": "Valid since",
-        "fi": "Voimassaolo alkaa"
-      },
+      "label": "Valid since",
       "preset": "date"
     },
     {
       "field_name": "validUntil",
-      "label": {
-        "en": "Valid until",
-        "fi": "Voimassaolo päättyy"
-      },
+      "label": "Valid until",
       "preset": "date"
     },
     {
       "field_name": "connection_information",
-      "label": {
-        "en": "Connection information",
-        "fi": "Liityntätiedot"
-      },
+      "label": "Connection information",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "availability",
-      "label": {
-        "en": "Availability",
-        "fi": "Saatavuusaste"
-      },
+      "label": "Availability",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "sla",
-      "label": {
-        "en": "SLA",
-        "fi": "SLA"
-      },
+      "label": "SLA",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "response_time",
-      "label": {
-        "en": "Average response time",
-        "fi": "Keskimääräinen vasteaika"
-      },
+      "label": "Average response time",
       "form_placeholder": {
         "en": "eg. 100ms",
         "fi": "esim. 100ms"
@@ -220,10 +172,7 @@
     },
     {
       "field_name": "service_status",
-      "label": {
-        "en": "Service status",
-        "fi": "Palvelun tila"
-      },
+      "label": "Service status",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
     }

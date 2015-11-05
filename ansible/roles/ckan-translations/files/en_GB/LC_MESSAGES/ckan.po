@@ -4845,3 +4845,30 @@ msgstr "Test environment"
 msgid "Production environment"
 msgstr "Production environment"
 
+msgid "Valid since"
+msgstr "Valid since"
+
+msgid "Valid until"
+msgstr "Valid until"
+
+msgid "Connection information"
+msgstr "Connection information"
+
+msgid "Availability"
+msgstr "Availability"
+
+msgid "SLA"
+msgstr "SLA"
+
+msgid "Average response time"
+msgstr "Average response time"
+
+msgid "Service status"
+msgstr "Service status"
+
+msgid "Maintainer phone number"
+msgstr "Maintainer phone number"
+
+msgid "eg. A detailed description"
+msgstr "eg. A detailed description"
+
