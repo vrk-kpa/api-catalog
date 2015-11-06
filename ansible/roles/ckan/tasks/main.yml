@@ -1,15 +1,10 @@
 ---
 
-- include: external_extensions.yml
-
 - name: Install CKAN
   pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }} state=latest
 
 - name: Install CKAN requirements
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
-
-- name: Install CKAN launch script
-  template: src=ckan.j2 dest=/usr/bin/ckan mode="0755" owner=root group=root
 
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
@@ -26,6 +21,7 @@
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.group }}
   with_items:
+    - { src: ckan.py, dest: /usr/bin/ckan, mode: "0755", owner: root, group: root }
     - { src: ckan.ini.j2, dest: "{{ ckan_ini }}", mode: "0640", owner: root, group: "{{ www_group }}" }
     - { src: apache.wsgi.j2, dest: /etc/ckan/default/apache.wsgi, mode: "0640", owner: root, group: "{{ www_group }}" }
     - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: "0640", owner: root, group: "{{ www_group }}" }

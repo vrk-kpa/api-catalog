@@ -1,4 +1,0 @@
----
-
-- name: Install ckanext-pages
-  pip: name="git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages" virtualenv={{ virtualenv }} state=latest
