@@ -45,5 +45,3 @@ email:
   from: no-reply@{{ email_domain }}
   error_recipient: admin@localhost
   error_from: error@{{ email_domain }}
-  # TODO: What is this? This seems to be the recipient of sysadmin emails?
-  admin_email: admin@localhost
