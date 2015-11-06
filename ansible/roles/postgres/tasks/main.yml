@@ -1,33 +1,32 @@
 ---
 
-- name: Install postgresql
+- name: Install postgres
   apt: pkg={{ item }} state=latest
   with_items:
     - postgresql
 
-# TODO These should be replaced with lineinfile or ini_file modules if possible
-- name: Copy Postgresql configurations
+- name: Copy postgres configurations
   template: src={{ item.file }} dest={{ item.dest }} owner=postgres group=postgres mode="0640"
   with_items:
   - { file: pg_hba.conf.j2, dest: /etc/postgresql/9.3/main/pg_hba.conf }
   - { file: postgresql.conf.j2, dest: /etc/postgresql/9.3/main/postgresql.conf }
 
-- name: Generate self-signed SSL DB certificate
-  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ public_facing_hostname }}" -days 3650 -keyout "/var/lib/postgresql/9.3/main/server.key" -out "/var/lib/postgresql/9.3/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/9.3/main/server.crt"
+- name: Generate self-signed SSL certificate
+  command: openssl req -new -nodes -x509 -subj "/C=FI/ST=Helsinki/L=Helsinki/O=IT/CN={{ public_facing_hostname }}" -days 3650 -keyout "/var/lib/postgresql/9.3/main/server.key" -out "/var/lib/postgresql/9.3/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/9.3/main/server.crt"
 
-- name: Ensure certificates ownership
+- name: Set certificate file ownership and mode
   shell: chmod 640 /var/lib/postgresql/9.3/main/server.* && chown "postgres:postgres" /var/lib/postgresql/9.3/main/server.*
 
 - name: Restart postgres
   service: name=postgresql state=restarted
 
-- name: Setup Postgresql users
+- name: Setup postgres users
   sudo_user: postgres
   postgresql_user: user={{ item.user }} password={{ item.password }}
   with_items:
   - { user: "{{ database_ckan.username }}", password: "{{ database_ckan.password }}" }
 
-- name: Setup Postgresql databases
+- name: Setup postgres databases
   sudo_user: postgres
   postgresql_db: name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}
   with_items:
