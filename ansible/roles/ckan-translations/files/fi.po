@@ -49,7 +49,7 @@ msgstr "Jäsen"
 
 #: ckan/controllers/admin.py:31
 msgid "Need to be system administrator to administer"
-msgstr "Hallinnointia varten pitää olla järjestelmän ylläpitäjä "
+msgstr "Hallinnointia varten pitää olla järjestelmän ylläpitäjä"
 
 #: ckan/controllers/admin.py:47
 msgid "Site Title"
@@ -105,7 +105,7 @@ msgstr "Kotisivu"
 msgid ""
 "Cannot purge package %s as associated revision %s includes non-deleted "
 "packages %s"
-msgstr "Ei voida poistaa tietoaineistoa %s, koska tähän liitetty revisio %s sisältää poistamattomia tietoaineistoja %s"
+msgstr "Ei voida poistaa palvelua %s, koska tähän liitetty revisio %s sisältää poistamattomia palveluja %s"
 
 #: ckan/controllers/admin.py:179
 #, python-format
@@ -183,7 +183,7 @@ msgstr "Ei pystytä luomaan entiteettiä, joka on tyyppiä %s %s"
 
 #: ckan/controllers/api.py:389
 msgid "Unable to add package to search index"
-msgstr "Ei voitu lisätä tietoaineistoa hakuindeksiin"
+msgstr "Ei voitu lisätä palvelua hakuindeksiin"
 
 #: ckan/controllers/api.py:419
 #, python-format
@@ -460,7 +460,7 @@ msgstr "Palvelua ei löydy"
 #: ckan/controllers/package.py:1264 ckan/controllers/related.py:124
 #, python-format
 msgid "Unauthorized to read package %s"
-msgstr "Ei oikeuksia lukea tietoaineistoa %s"
+msgstr "Ei oikeuksia lukea palvelua %s"
 
 #: ckan/controllers/package.py:385 ckan/controllers/package.py:387
 #: ckan/controllers/package.py:389
@@ -472,23 +472,23 @@ msgstr "Väärä revision muoto: %r"
 msgid ""
 "Viewing {package_type} datasets in {format} format is not supported "
 "(template file {file} not found)."
-msgstr "{package_type}-tietoaineistojen katselu {format}-muodossa ei ole mahdollista  (mallitiedostoa {file} ei löydy)."
+msgstr "{package_type}-palvelujen katselu {format}-muodossa ei ole mahdollista  (mallitiedostoa {file} ei löydy)."
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "CKAN-tietoaineiston muutoshistoria"
+msgstr "CKAN-palvelun muutoshistoria"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Viimeisimmät muutokset CKAN-tietoaineistoon:"
+msgstr "Viimeisimmät muutokset CKAN-palveluun:"
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
-msgstr "Ei oikeuksia luoda tietoaineistoa"
+msgstr "Ei oikeuksia luoda palvelua"
 
 #: ckan/controllers/package.py:609 ckanext/datapusher/plugin.py:59
 msgid "Unauthorized to edit this resource"
-msgstr "Ei oikeuksia muokata tätä resurssia "
+msgstr "Ei oikeuksia muokata tätä rajapintaa "
 
 #: ckan/controllers/package.py:629 ckan/controllers/package.py:1099
 #: ckan/controllers/package.py:1119 ckan/controllers/package.py:1186
@@ -501,7 +501,7 @@ msgstr "Resurssia ei löydy"
 
 #: ckan/controllers/package.py:682
 msgid "Unauthorized to update dataset"
-msgstr "Ei oikeuksia päivittää tietoaineistoa"
+msgstr "Ei oikeuksia päivittää palvelua"
 
 #: ckan/controllers/package.py:685 ckan/controllers/package.py:721
 #: ckan/controllers/package.py:749
@@ -518,11 +518,11 @@ msgstr "Virhe"
 
 #: ckan/controllers/package.py:718
 msgid "Unauthorized to create a resource"
-msgstr "Ei oikeutta luoda resurssia"
+msgstr "Ei oikeutta luoda rajapintaa"
 
 #: ckan/controllers/package.py:754
 msgid "Unauthorized to create a resource for this package"
-msgstr "Käyttäjällä ei ole oikeutta luoda uutta resurssia tähän pakettiin."
+msgstr "Käyttäjällä ei ole oikeutta luoda uutta rajapintaa tähän palveluun."
 
 #: ckan/controllers/package.py:977
 msgid "Unable to add package to search index."
@@ -536,7 +536,7 @@ msgstr "Ei voitu päivittää hakuindeksiä"
 #: ckan/controllers/package.py:1087
 #, python-format
 msgid "Unauthorized to delete package %s"
-msgstr "Ei oikeutta poistaa tietoaineistoa %s"
+msgstr "Ei oikeutta poistaa palvelua %s"
 
 #: ckan/controllers/package.py:1065
 msgid "Dataset has been deleted."
@@ -549,14 +549,14 @@ msgstr "Rajapinta on poistettu."
 #: ckan/controllers/package.py:1097
 #, python-format
 msgid "Unauthorized to delete resource %s"
-msgstr "Ei oikeuksia poistaa resurssia %s"
+msgstr "Ei oikeuksia poistaa rajapintaa %s"
 
 #: ckan/controllers/package.py:1112 ckan/controllers/package.py:1280
 #: ckan/controllers/package.py:1349 ckan/controllers/package.py:1448
 #: ckan/controllers/package.py:1485 ckan/controllers/package.py:1598
 #, python-format
 msgid "Unauthorized to read dataset %s"
-msgstr "Ei oikeuksia lukea tietoaineistoa %s"
+msgstr "Ei oikeuksia lukea palvelua %s"
 
 #: ckan/controllers/package.py:1157 ckan/controllers/package.py:1619
 msgid "Resource view not found"
@@ -567,7 +567,7 @@ msgstr "Resurssinäkymää ei löytynyt"
 #: ckan/controllers/package.py:1606 ckan/controllers/package.py:1662
 #, python-format
 msgid "Unauthorized to read resource %s"
-msgstr "Ei oikeuksia lukea resurssia %s"
+msgstr "Ei oikeuksia lukea rajapintaa %s"
 
 #: ckan/controllers/package.py:1197
 msgid "Resource data not found"
@@ -579,7 +579,7 @@ msgstr "Ei ladattavaa saatavilla"
 
 #: ckan/controllers/package.py:1527
 msgid "Unauthorized to edit resource"
-msgstr "Ei oikeuksia muokata resursseja"
+msgstr "Ei oikeuksia muokata rajapintoja"
 
 #: ckan/controllers/package.py:1545
 msgid "View not found"
@@ -596,12 +596,12 @@ msgstr "Näkymätyyppiä ei löytynyt"
 
 #: ckan/controllers/package.py:1613
 msgid "Bad resource view data"
-msgstr "Virheelliset resurssinäkymän tiedot"
+msgstr "Virheelliset rajapintanäkymän tiedot"
 
 #: ckan/controllers/package.py:1622
 #, python-format
 msgid "Unauthorized to read resource view %s"
-msgstr "Ei oikeuksia lukea resurssinäkymää %s"
+msgstr "Ei oikeuksia lukea rajapintanäkymää %s"
 
 #: ckan/controllers/package.py:1625
 msgid "Resource view not supplied"
@@ -704,7 +704,7 @@ msgstr "Viimeisimmät CKAN-tietovarannon muutokset."
 #: ckan/controllers/revision.py:108
 #, python-format
 msgid "Datasets affected: %s.\n"
-msgstr "Muutetut tietoaineistot: %s.⏎\n"
+msgstr "Muutetut palvelut: %s.⏎\n"
 
 #: ckan/controllers/revision.py:188
 msgid "Revision updated"
@@ -865,7 +865,7 @@ msgstr "Uudellenohjaus ulkopuoliseen sijaintiin ei sallittu."
 
 #: ckan/lib/activity_streams.py:64
 msgid "{actor} added the tag {tag} to the dataset {dataset}"
-msgstr "{actor} lisäsi asiasanan {tag} tietoaineistoon {dataset}"
+msgstr "{actor} lisäsi asiasanan {tag} palveluun {dataset}"
 
 #: ckan/lib/activity_streams.py:67
 msgid "{actor} updated the group {group}"
@@ -881,11 +881,11 @@ msgstr "{actor} päivitti palvelua {dataset}"
 
 #: ckan/lib/activity_streams.py:76
 msgid "{actor} changed the extra {extra} of the dataset {dataset}"
-msgstr "{actor} muutti tietoaineiston {dataset} lisäystä {extra} "
+msgstr "{actor} muutti palvelun {dataset} lisäystä {extra} "
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
-msgstr "{actor} päivitti resurssia {resource} tietoaineistossa {dataset}"
+msgstr "{actor} päivitti rajapintaa {resource} palvelussa {dataset}"
 
 #: ckan/lib/activity_streams.py:82
 msgid "{actor} updated their profile"
@@ -894,7 +894,7 @@ msgstr "{actor} päivitti profiiliaan"
 #: ckan/lib/activity_streams.py:86
 msgid ""
 "{actor} updated the {related_type} {related_item} of the dataset {dataset}"
-msgstr "{actor} päivitti {related_type} {related_item} tietoaineistossa {dataset}"
+msgstr "{actor} päivitti {related_type} {related_item} palvelussa {dataset}"
 
 #: ckan/lib/activity_streams.py:89
 msgid "{actor} updated the {related_type} {related_item}"
@@ -914,11 +914,11 @@ msgstr "{actor} poisti palvelun {dataset}"
 
 #: ckan/lib/activity_streams.py:101
 msgid "{actor} deleted the extra {extra} from the dataset {dataset}"
-msgstr "{actor} poisti lisäkentän {extra} tietoaineistosta {dataset}"
+msgstr "{actor} poisti lisäkentän {extra} palvelusta {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} poisti resurssin {resource} tietoaineistosta {dataset}"
+msgstr "{actor} poisti rajapintan {resource} palvelusta {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
@@ -934,11 +934,11 @@ msgstr "{actor} loi palvelun {dataset}"
 
 #: ckan/lib/activity_streams.py:117
 msgid "{actor} added the extra {extra} to the dataset {dataset}"
-msgstr "{actor} lisäsi lisäkentän {extra} tietoaineistoon {dataset}"
+msgstr "{actor} lisäsi lisäkentän {extra} palveluun {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
-msgstr "{actor} lisäsi rajapinnan {resource} tietoaineistoon {dataset}"
+msgstr "{actor} lisäsi rajapinnan {resource} palveluun {dataset}"
 
 #: ckan/lib/activity_streams.py:123
 msgid "{actor} signed up"
@@ -946,7 +946,7 @@ msgstr "{actor} kirjautui sisään"
 
 #: ckan/lib/activity_streams.py:126
 msgid "{actor} removed the tag {tag} from the dataset {dataset}"
-msgstr "{actor} poisti asiasanan {tag} tietoaineistosta {dataset}"
+msgstr "{actor} poisti asiasanan {tag} palvelusta {dataset}"
 
 #: ckan/lib/activity_streams.py:129
 msgid "{actor} deleted the related item {related_item}"
@@ -954,7 +954,7 @@ msgstr "{actor} poisti tähän liittyvän kohteen {related_item}"
 
 #: ckan/lib/activity_streams.py:132
 msgid "{actor} started following {dataset}"
-msgstr "{actor} alkoi seurata tietoaineistoa {dataset}"
+msgstr "{actor} alkoi seurata palvelua {dataset}"
 
 #: ckan/lib/activity_streams.py:135
 msgid "{actor} started following {user}"
@@ -967,7 +967,7 @@ msgstr "{actor} alkoi seurata ryhmää {group}"
 #: ckan/lib/activity_streams.py:142
 msgid ""
 "{actor} added the {related_type} {related_item} to the dataset {dataset}"
-msgstr "{actor} lisäsi {related_type} {related_item} tietoaineistoon {dataset}"
+msgstr "{actor} lisäsi {related_type} {related_item} palveluun {dataset}"
 
 #: ckan/lib/activity_streams.py:145
 msgid "{actor} added the {related_type} {related_item}"
@@ -1291,7 +1291,7 @@ msgstr "Organisaatiota ei ole"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "Et voi lisätä tietoaineistoa tähän organisaatioon"
+msgstr "Et voi lisätä palvelua tähän organisaatioon"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1479,7 +1479,7 @@ msgstr "roolia ei ole."
 
 #: ckan/logic/validators.py:759
 msgid "Datasets with no organization can't be private."
-msgstr "Ilman organisaatiota olevat tietoaineistot eivät voi olla yksityisiä."
+msgstr "Ilman organisaatiota olevat palvelut eivät voi olla yksityisiä."
 
 #: ckan/logic/validators.py:765
 msgid "Not a list"
@@ -1517,7 +1517,7 @@ msgstr "REST API: Luo objekti %s"
 #: ckan/logic/action/create.py:601
 #, python-format
 msgid "REST API: Create package relationship: %s %s %s"
-msgstr "REST API: Luo tietoaineistojen suhteet: %s %s %s "
+msgstr "REST API: Luo palvelujen suhteet: %s %s %s "
 
 #: ckan/logic/action/create.py:642
 #, python-format
@@ -1530,7 +1530,7 @@ msgstr "Yrittää luoda organisaatiota ryhmäksi"
 
 #: ckan/logic/action/create.py:954
 msgid "You must supply a package id or name (parameter \"package\")."
-msgstr "Sinun täytyy antaa tietoaineiston id tai nimi (parametri \"package\")."
+msgstr "Sinun täytyy antaa palvelun id tai nimi (parametri \"package\")."
 
 #: ckan/logic/action/create.py:957
 msgid "You must supply a rating (parameter \"rating\")."
@@ -1560,7 +1560,7 @@ msgstr "Seuraat jo tätä: {0}"
 
 #: ckan/logic/action/create.py:1370 ckan/logic/action/create.py:1378
 msgid "You must be logged in to follow a dataset."
-msgstr "Sinun tulee olla kirjautunut seurataksesi tietoaineistoa."
+msgstr "Sinun tulee olla kirjautunut seurataksesi palvelua."
 
 #: ckan/logic/action/create.py:1430
 msgid "User {username} does not exist."
@@ -1573,7 +1573,7 @@ msgstr "Sinun tulee olla kirjautunut seurataksesi ryhmää."
 #: ckan/logic/action/delete.py:66
 #, python-format
 msgid "REST API: Delete Package: %s"
-msgstr "REST API: Poistetaan tietoaineisto: %s"
+msgstr "REST API: Poistetaan palvelu: %s"
 
 #: ckan/logic/action/delete.py:195 ckan/logic/action/delete.py:324
 #, python-format
@@ -1646,7 +1646,7 @@ msgstr "REST API: Päivitä objektit %s"
 #: ckan/logic/action/update.py:440
 #, python-format
 msgid "REST API: Update package relationship: %s %s %s"
-msgstr "REST API: Päivitä tietoaineistojen suhteet: %s %s %s"
+msgstr "REST API: Päivitä palvelujen suhteet: %s %s %s"
 
 #: ckan/logic/action/update.py:792
 msgid "TaskStatus was not found."
@@ -1659,7 +1659,7 @@ msgstr "Organisaatiota ei löytynyt."
 #: ckan/logic/auth/create.py:25 ckan/logic/auth/create.py:43
 #, python-format
 msgid "User %s not authorized to create packages"
-msgstr "Käyttäjällä %s ei ole oikeutta luoda tietoaineistoja"
+msgstr "Käyttäjällä %s ei ole oikeutta luoda palveluja"
 
 #: ckan/logic/auth/create.py:29 ckan/logic/auth/update.py:43
 #, python-format
@@ -1669,7 +1669,7 @@ msgstr "Käyttäjällä %s ei ole oikeutta muokata näitä ryhmiä"
 #: ckan/logic/auth/create.py:36
 #, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "Käyttäjällä %s ei ole oikeutta luoda tietoaineistoa tähän organisaatioon"
+msgstr "Käyttäjällä %s ei ole oikeutta luoda palvelua tähän organisaatioon"
 
 #: ckan/logic/auth/create.py:58
 msgid "You must be a sysadmin to create a featured related item"
@@ -1691,7 +1691,7 @@ msgstr "Tietoaineistoa ei löytynyt tälle aineistolinkille, ei voida tarkistaa 
 #: ckan/logic/auth/create.py:92
 #, python-format
 msgid "User %s not authorized to create resources on dataset %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia luoda resursseja tietojoukolle %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia luoda rajapintoja tietojoukolle %s"
 
 #: ckan/logic/auth/create.py:124
 #, python-format
@@ -1741,7 +1741,7 @@ msgstr "Käyttäjällä %s ei ole oikeuksia muokata ryhmää %s"
 #: ckan/logic/auth/delete.py:34
 #, python-format
 msgid "User %s not authorized to delete resource %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia poistaa resurssia %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia poistaa rajapintaa %s"
 
 #: ckan/logic/auth/delete.py:50
 msgid "Resource view not found, cannot check auth."
@@ -1784,17 +1784,17 @@ msgstr "Käyttäjällä %s ei ole oikeutta poistaa task_status"
 #: ckan/logic/auth/get.py:97
 #, python-format
 msgid "User %s not authorized to read these packages"
-msgstr "Käyttäjällä %s ei ole oikeuksia lukea näitä tietoaineistoja "
+msgstr "Käyttäjällä %s ei ole oikeuksia lukea näitä palveluja "
 
 #: ckan/logic/auth/get.py:119
 #, python-format
 msgid "User %s not authorized to read package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia lukea tietoaineistoa %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia lukea palvelua %s"
 
 #: ckan/logic/auth/get.py:141
 #, python-format
 msgid "User %s not authorized to read resource %s"
-msgstr "Käyttäjällä %s ei ole oikeutta lukea resurssia %s"
+msgstr "Käyttäjällä %s ei ole oikeutta lukea rajapintaa %s"
 
 #: ckan/logic/auth/get.py:166
 #, python-format
@@ -1808,17 +1808,17 @@ msgstr "Sinun pitää olla kirjautunut päästäksesi omalle työpöydällesi"
 #: ckan/logic/auth/update.py:37
 #, python-format
 msgid "User %s not authorized to edit package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia muokata tietoaineistoa %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia muokata palvelua %s"
 
 #: ckan/logic/auth/update.py:69
 #, python-format
 msgid "User %s not authorized to edit resource %s"
-msgstr "Käyttäjällä %s ei oikeuksia muokata resurssia %s"
+msgstr "Käyttäjällä %s ei oikeuksia muokata rajapintaa %s"
 
 #: ckan/logic/auth/update.py:98
 #, python-format
 msgid "User %s not authorized to change state of package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia muuttaa tietoaineiston tilaa %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia muuttaa palvelun tilaa %s"
 
 #: ckan/logic/auth/update.py:126
 #, python-format
@@ -1996,7 +1996,7 @@ msgstr "Ladataan..."
 
 #: ckan/public/base/javascript/modules/api-info.js:20
 msgid "There is no API data to load for this resource"
-msgstr "API:n kautta ei ole ladattavissa dataa tälle resurssille"
+msgstr "API:n kautta ei ole ladattavissa dataa tälle rajapinnalle"
 
 #: ckan/public/base/javascript/modules/api-info.js:21
 msgid "Failed to load data API information"
@@ -2140,7 +2140,7 @@ msgstr "Olet parhaillaan lataamassa tiedostoa palvelimelle. Oletko varma, että 
 
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:8
 msgid "Reorder resource view"
-msgstr "Uudelleenjärjestä resurssinäyttö"
+msgstr "Uudelleenjärjestä rajapintanäyttö"
 
 #: ckan/public/base/javascript/modules/slug-preview.js:35
 #: ckan/templates/group/snippets/group_form.html:18
@@ -2441,7 +2441,7 @@ msgstr "Klikkaa tästä saadaksesi lisätietoa..."
 #: ckan/templates/dataviewer/snippets/data_preview.html:18
 #: ckan/templates/package/snippets/resource_view.html:33
 msgid "Download resource"
-msgstr "Lataa resurssi"
+msgstr "Lataa rajapinta"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:23
 #: ckan/templates/package/snippets/resource_view.html:56
@@ -2754,7 +2754,7 @@ msgid ""
 " <p><strong>Admin:</strong> Can edit group information, as well as manage "
 "organization members.</p> <p><strong>Member:</strong> Can add/remove "
 "datasets from groups</p> "
-msgstr " <p><strong>Ylläpitäjä:</strong> Voi muokata ryhmän tietoja ja hallinnoida jäseniä.</p> <p><strong>Jäsen:</strong> Voi lisätä/poistaa tietoaineistoja ryhmästä</p> "
+msgstr " <p><strong>Ylläpitäjä:</strong> Voi muokata ryhmän tietoja ja hallinnoida jäseniä.</p> <p><strong>Jäsen:</strong> Voi lisätä/poistaa palveluja ryhmästä</p> "
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
@@ -2802,7 +2802,7 @@ msgstr "Etsi palveluista..."
 
 #: ckan/templates/group/snippets/feeds.html:3
 msgid "Datasets in group: {group}"
-msgstr "Ryhmän: {group} tietoaineistot"
+msgstr "Ryhmän: {group} palvelut"
 
 #: ckan/templates/group/snippets/feeds.html:4
 #: ckan/templates/organization/snippets/feeds.html:4
@@ -2850,15 +2850,15 @@ msgstr "Tallenna ryhmä"
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:22
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
-msgstr[0] "{num} tietoaineistoa"
-msgstr[1] "{num} tietoaineistoa"
+msgstr[0] "{num} palvelua"
+msgstr[1] "{num} palvelua"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:25
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:24
 msgid "0 Datasets"
-msgstr "0 tietoaineistoa"
+msgstr "0 palvelua"
 
 #: ckan/templates/group/snippets/group_item.html:38
 #: ckan/templates/group/snippets/group_item.html:39
@@ -2867,7 +2867,7 @@ msgstr "Näkymä {name}"
 
 #: ckan/templates/group/snippets/group_item.html:43
 msgid "Remove dataset from this group"
-msgstr "Poista tietoaineisto tästä ryhmästä"
+msgstr "Poista palvelu tästä ryhmästä"
 
 #: ckan/templates/group/snippets/helper.html:4
 msgid "What are Groups?"
@@ -2879,7 +2879,7 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr "Voit luoda ja hallinnoida tietoaineistokokonaisuuksia käyttämällä CKAN:in ryhmiä. Voit koota yhteen ryhmään tietoaineistoja esimerkiksi projektin, käyttäjäryhmän tai teeman mukaisesti ja siten helpottaa aineistojen löytymistä."
+msgstr "Voit luoda ja hallinnoida palvelukokonaisuuksia käyttämällä CKAN:in ryhmiä. Voit koota yhteen ryhmään palveluja esimerkiksi projektin, käyttäjäryhmän tai teeman mukaisesti ja siten helpottaa aineistojen löytymistä."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -2991,11 +2991,11 @@ msgstr "{0} tilastoa"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "dataset"
-msgstr "tietoaineisto"
+msgstr "palvelu"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "datasets"
-msgstr "tietoaineistoa"
+msgstr "palvelua"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organization"
@@ -3105,7 +3105,7 @@ msgstr "Yksityinen"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr "Tällä organisaatiolla ei ole tietoaineistoja"
+msgstr "Tällä organisaatiolla ei ole palveluja"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
@@ -3155,7 +3155,7 @@ msgid ""
 "edit datasets, but not manage organization members.</p> "
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
 "but not add new datasets.</p> "
-msgstr " <p><strong>Ylläpitäjä:</strong> Voi lisätä, muokata ja poistaa tietoaineistoja sekä hallinnoida organisaation jäseniä.</p> <p><strong>Muokkaaja:</strong> Voi lisätä ja muokata tietoaineistoja.</p> <p><strong>Jäsen:</strong> Voi katsella oman organisaationsa yksityisiä tietoaineistoja, mutta ei muokata niitä.</p> "
+msgstr " <p><strong>Ylläpitäjä:</strong> Voi lisätä, muokata ja poistaa palveluja sekä hallinnoida organisaation jäseniä.</p> <p><strong>Muokkaaja:</strong> Voi lisätä ja muokata palveluja.</p> <p><strong>Jäsen:</strong> Voi katsella oman organisaationsa yksityisiä palveluja, mutta ei muokata niitä.</p> "
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3195,14 +3195,14 @@ msgid ""
 "organizations, admins can assign roles and authorise its members, giving "
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
-msgstr " <p>Organisaatiot ovat tietoaineistoja julkaisevia tahoja (esimerkiksi Tilastokeskus). Organisaatiossa julkaistut tietoaineistot kuuluvat yksittäisten käyttäjien sijaan ko. organisaatiolle.</p> <p> Organisaation ylläpitäjä voi antaa sen jäsenille rooleja ja oikeuksia, jotta yksittäiset käyttäjät voivat julkaista datasettejä organisaation (esimerkiksi Tilastokeskuksen) nimissä.</p> "
+msgstr " <p>Organisaatiot ovat palveluja julkaisevia tahoja (esimerkiksi Tilastokeskus). Organisaatiossa julkaistut palvelut kuuluvat yksittäisten käyttäjien sijaan ko. organisaatiolle.</p> <p> Organisaation ylläpitäjä voi antaa sen jäsenille rooleja ja oikeuksia, jotta yksittäiset käyttäjät voivat julkaista datasettejä organisaation (esimerkiksi Tilastokeskuksen) nimissä.</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
 " CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
-msgstr "CKAN:in organisaatioita käytetään tietoaineistojen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia tietoaineistojen luomiseen, muokkaamiseen ja julkaisemiseen."
+msgstr "CKAN:in organisaatioita käytetään palvelujen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia palvelujen luomiseen, muokkaamiseen ja julkaisemiseen."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3220,7 +3220,7 @@ msgstr "Hieman lisätietoa organisaatiostani..."
 msgid ""
 "Are you sure you want to delete this Organization? This will delete all the "
 "public and private datasets belonging to this organization."
-msgstr "Haluatko varmasti poistaa tämän organisaation? Tämä poistaa kaikki julkiset ja yksityiset tietoaineistot, jotka kuuluvat tälle organisaatiolle."
+msgstr "Haluatko varmasti poistaa tämän organisaation? Tämä poistaa kaikki julkiset ja yksityiset palvelut, jotka kuuluvat tälle organisaatiolle."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -3342,7 +3342,7 @@ msgstr "Lisää"
 msgid ""
 "This is an old revision of this dataset, as edited at %(timestamp)s. It may "
 "differ significantly from the <a href=\"%(url)s\">current revision</a>."
-msgstr "Tämä on tietoaineiston vanha revisio, jota on muokattu %(timestamp)s. Se voi poiketa merkittävästi <a href=\"%(url)s\">nykyisestä revisiosta</a>."
+msgstr "Tämä on palvelun vanha revisio, jota on muokattu %(timestamp)s. Se voi poiketa merkittävästi <a href=\"%(url)s\">nykyisestä revisiosta</a>."
 
 #: ckan/templates/package/related_list.html:7
 msgid "Related Media for {dataset}"
@@ -3396,16 +3396,16 @@ msgstr "Lokitiedoston loppu"
 
 #: ckan/templates/package/resource_edit_base.html:17
 msgid "All resources"
-msgstr "Kaikki resurssit"
+msgstr "Kaikki rajapinnat"
 
 #: ckan/templates/package/resource_edit_base.html:19
 msgid "View resource"
-msgstr "Tarkastele resurssia"
+msgstr "Tarkastele rajapintaa"
 
 #: ckan/templates/package/resource_edit_base.html:24
 #: ckan/templates/package/resource_edit_base.html:32
 msgid "Edit resource"
-msgstr "Muokkaa resurssia"
+msgstr "Muokkaa rajapintaa"
 
 #: ckan/templates/package/resource_edit_base.html:26
 msgid "DataStore"
@@ -3445,7 +3445,7 @@ msgstr "Lähde: <a href=\"%(url)s\">%(dataset)s</a>"
 
 #: ckan/templates/package/resource_read.html:112
 msgid "There are no views created for this resource yet."
-msgstr "Tälle resurssille ei ole luotu vielä yhtään näkymää."
+msgstr "Tälle rajapinnalle ei ole luotu vielä yhtään näkymää."
 
 #: ckan/templates/package/resource_read.html:116
 msgid "Not seeing the views you were expecting?"
@@ -3457,7 +3457,7 @@ msgstr "Tässä joitakin syitä, jos et näe odottamiasi näkymiä:"
 
 #: ckan/templates/package/resource_read.html:123
 msgid "No view has been created that is suitable for this resource"
-msgstr "Tälle resurssille ei ole luotu yhtään sopivaa näkymää"
+msgstr "Tälle rajapinnalle ei ole luotu yhtään sopivaa näkymää"
 
 #: ckan/templates/package/resource_read.html:124
 msgid "The site administrators may not have enabled the relevant view plugins"
@@ -3516,7 +3516,7 @@ msgstr "Uusi näkymä"
 
 #: ckan/templates/package/resource_views.html:28
 msgid "This resource has no views"
-msgstr "Tällä resurssilla ei ole näkymiä"
+msgstr "Tällä rajapinnalla ei ole näkymiä"
 
 #: ckan/templates/package/resources.html:8
 msgid "Add new resource"
@@ -3528,7 +3528,7 @@ msgstr "Lisää uusi rajapinta"
 msgid ""
 " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
 "add some?</a></p> "
-msgstr " <p class=\"empty\">Tässä tietoaineistossa ei ole dataa, <a href=\"%(url)s\">mikset lisäisi sitä?</a> "
+msgstr " <p class=\"empty\">Tässä palvelussa ei ole dataa, <a href=\"%(url)s\">mikset lisäisi sitä?</a> "
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3655,7 +3655,7 @@ msgid ""
 "agree to release the <i>metadata</i> values that you enter into the form "
 "under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open "
 "Database License</a>."
-msgstr "<i>Lisenssi</i>, jonka valitset yllä olevasta valikosta, koskee ainoastaan tähän tietoaineistoon liittämiäsi tiedostoja. Lähettämällä tämän lomakkeen suostut julkaisemaan täyttämäsi <i>metatiedot</i> <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database Lisenssin</a> mukaisesti."
+msgstr "<i>Lisenssi</i>, jonka valitset yllä olevasta valikosta, koskee ainoastaan tähän palveluun liittämiäsi tiedostoja. Lähettämällä tämän lomakkeen suostut julkaisemaan täyttämäsi <i>metatiedot</i> <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database Lisenssin</a> mukaisesti."
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
@@ -3695,7 +3695,7 @@ msgstr "Ylläpitäjän sähköposti"
 
 #: ckan/templates/package/snippets/resource_edit_form.html:12
 msgid "Update Resource"
-msgstr "Päivitä resurssi"
+msgstr "Päivitä rajapinta"
 
 #: ckan/templates/package/snippets/resource_form.html:24
 msgid "File"
@@ -3741,7 +3741,7 @@ msgstr "esim. application/json"
 
 #: ckan/templates/package/snippets/resource_form.html:65
 msgid "Are you sure you want to delete this resource?"
-msgstr "Haluatko varmasti poistaa tämän resurssin?"
+msgstr "Haluatko varmasti poistaa tämän rajapinnan?"
 
 #: ckan/templates/package/snippets/resource_form.html:72
 msgid "Previous"
@@ -3757,7 +3757,7 @@ msgstr "Valmis"
 
 #: ckan/templates/package/snippets/resource_help.html:2
 msgid "What's a resource?"
-msgstr "Mikä on resurssi?"
+msgstr "Mikä on rajapinta?"
 
 #: ckan/templates/package/snippets/resource_help.html:4
 msgid "A resource can be any file or link to a file containing useful data."
@@ -3777,11 +3777,11 @@ msgstr "Upota"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr "Tämä resurssinäyttö ei ole saatavissa tällä hetkellä."
+msgstr "Tämä rajapinnanäyttö ei ole saatavissa tällä hetkellä."
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
-msgstr "Upota resurssinäyttö"
+msgstr "Upota rajapinnanäyttö"
 
 #: ckan/templates/package/snippets/resource_view.html:66
 msgid ""
@@ -3855,7 +3855,7 @@ msgstr "Mikä on näkymä?"
 
 #: ckan/templates/package/snippets/view_help.html:4
 msgid "A view is a representation of the data held against a resource"
-msgstr "Näkymä on esitys resurssin tiedoista"
+msgstr "Näkymä on esitys rajapinnan tiedoista"
 
 #: ckan/templates/related/base_form_page.html:12
 msgid "Related Form"
@@ -3871,7 +3871,7 @@ msgid ""
 " dataset.</p> <p>For example, it could be a custom visualisation, pictograph"
 " or bar chart, an app using all or part of the data or even a news story "
 "that references this dataset.</p> "
-msgstr "<p>\"Liittyvä media\" on mikä tahansa tietoaineistoon liittyvä sovellus, artikkeli, visualisointi tai idea.</p> <p>Se voi olla esimerkiksi infograafi, kaavio tai sovellus, joka käyttää tietoaineistoa tai sen osaa. Liittyvä media voi olla jopa uutinen, joka viittaa tähän tietoaineistoon.</p> "
+msgstr "<p>\"Liittyvä media\" on mikä tahansa palveluun liittyvä sovellus, artikkeli, visualisointi tai idea.</p> <p>Se voi olla esimerkiksi infograafi, kaavio tai sovellus, joka käyttää palvelua tai sen osaa. Liittyvä media voi olla jopa uutinen, joka viittaa tähän palveluun.</p> "
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -3907,7 +3907,7 @@ msgstr "Mitä sovellukset ovat?"
 msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
-msgstr "Nämä ovat tietoaineistoa hyödyntäviä sovelluksia sekä ideoita asioista, joihin tietoaineistoa voisi hyödyntää."
+msgstr "Nämä ovat palvelua hyödyntäviä sovelluksia sekä ideoita asioista, joihin palvelua voisi hyödyntää."
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4098,7 +4098,7 @@ msgstr "Ei lisenssiä"
 
 #: ckan/templates/snippets/license.html:28
 msgid "This dataset satisfies the Open Definition."
-msgstr "Tämä tietoaineisto täyttää Open Definition -määrittelyn"
+msgstr "Tämä palvelu täyttää Open Definition -määrittelyn"
 
 #: ckan/templates/snippets/organization.html:48
 msgid "There is no description for this organization"
@@ -4540,7 +4540,7 @@ msgstr "Tätä ei ole vielä ladattu"
 
 #: ckanext/datastore/controller.py:31
 msgid "DataStore resource not found"
-msgstr "DataStore-resurssia ei löytynyt"
+msgstr "DataStore-rajapintaa ei löytynyt"
 
 #: ckanext/datastore/db.py:656
 msgid ""
@@ -4556,7 +4556,7 @@ msgstr "Resurssia \"{0}\" ei löytynyt."
 
 #: ckanext/datastore/logic/auth.py:16
 msgid "User {0} not authorized to update resource {1}"
-msgstr "Käyttäjällä {0} ei ole lupaa päivittää resurssia {1}"
+msgstr "Käyttäjällä {0} ei ole lupaa päivittää rajapintaa {1}"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:11
 msgid "Datasets per page"
@@ -4590,7 +4590,7 @@ msgstr "Maakoodi"
 
 #: ckanext/example_idatasetform/templates/package/snippets/resource_form.html:6
 msgid "custom resource text"
-msgstr "muokattu resurssi teksti"
+msgstr "muokattu rajapintateksti"
 
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:20
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:19
@@ -4607,7 +4607,7 @@ msgstr "Kuvan url"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "eg. http://example.com/image.jpg (if blank uses resource url)"
-msgstr "esim. http://esimerkki.com/kuva.jpg (jos tyhjä ,käyttää resurssien url:ia)"
+msgstr "esim. http://esimerkki.com/kuva.jpg (jos tyhjä, käyttää rajapintojen url:ia)"
 
 #: ckanext/reclineview/plugin.py:84
 msgid "Data Explorer"
@@ -4698,11 +4698,11 @@ msgstr "Palveluita yhteensä"
 #: ckanext/stats/templates/ckanext/stats/index.html:33
 #: ckanext/stats/templates/ckanext/stats/index.html:179
 msgid "Dataset Revisions per Week"
-msgstr "Viikon revisiot tietoaineistosta"
+msgstr "Viikon revisiot palvelusta"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:41
 msgid "All dataset revisions"
-msgstr "Kaikki tietoaineistojen revisiot"
+msgstr "Kaikki palvelujen revisiot"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:42
 msgid "New datasets"
@@ -4712,7 +4712,7 @@ msgstr "Uudet palvelut"
 #: ckanext/stats/templates/ckanext/stats/index.html:180
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:63
 msgid "Top Rated Datasets"
-msgstr "Korkeimman arvostelun saaneet tietoaineistot"
+msgstr "Korkeimman arvostelun saaneet palvelut"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:64
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
@@ -4733,7 +4733,7 @@ msgstr "Ei arvosteluja"
 #: ckanext/stats/templates/ckanext/stats/index.html:181
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:72
 msgid "Most Edited Datasets"
-msgstr "Eniten muokatut tietoaineistot"
+msgstr "Eniten muokatut palvelut"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
@@ -4742,7 +4742,7 @@ msgstr "Muokkausten määrä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:103
 msgid "No edited datasets"
-msgstr "Ei muokattuja tietoaineistoja"
+msgstr "Ei muokattuja palveluja"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:108
 #: ckanext/stats/templates/ckanext/stats/index.html:182
@@ -4777,7 +4777,7 @@ msgstr "Tietoaineistojen lukumäärä"
 #: ckanext/stats/templates/ckanext/stats/index.html:152
 #: ckanext/stats/templates/ckanext/stats/index.html:184
 msgid "Users Owning Most Datasets"
-msgstr "Eniten tietoaineistoja omistavat käyttäjät"
+msgstr "Eniten palveluja omistavat käyttäjät"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:175
 msgid "Statistics Menu"
@@ -4794,11 +4794,11 @@ msgstr "Tilastot"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:60
 msgid "Revisions to Datasets per week"
-msgstr "Revisioita tietoaineistoille viikossa"
+msgstr "Revisioita palveluille viikossa"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:95
 msgid "Users owning most datasets"
-msgstr "Eniten tietoaineistoja omistavat käyttäjät"
+msgstr "Eniten palveluja omistavat käyttäjät"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:102
 msgid "Page last updated:"
@@ -4816,7 +4816,7 @@ msgstr "Tietoaineiston johtotaulukko"
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
-msgstr "Valitse tietoaineiston attribuutti ja selvitä missä kategorioissa on valitulla alueella eniten tietoaineistoja. Esimerkiksi asiasanat, ryhmät, lisenssi, tiedostoformaatti tai maa"
+msgstr "Valitse palvelun attribuutti ja selvitä missä kategorioissa on valitulla alueella eniten palveluja. Esimerkiksi asiasanat, ryhmät, lisenssi, tiedostoformaatti tai maa"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
@@ -4836,7 +4836,7 @@ msgstr "Verkkosivuston url"
 
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"
-msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää resurssien url:iä)"
+msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää rajapintojen url:iä)"
 
 #: ckanext/templates/home/header.html:11
 msgid "Support and administration sites"
