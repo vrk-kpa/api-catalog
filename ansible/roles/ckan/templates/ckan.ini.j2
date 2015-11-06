@@ -124,7 +124,11 @@ propagate = 0
 
 [logger_ckanext]
 
+{% if vagrant is defined %}
 level = DEBUG
+{% else %}
+level = INFO
+{% endif %}
 handlers = console
 qualname = ckanext
 propagate = 0
