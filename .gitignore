@@ -1,4 +1,5 @@
 .vagrant/
+*.pyc
 api-catalog-secrets
 server.csr
 server.pass.key
