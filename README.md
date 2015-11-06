@@ -1,6 +1,6 @@
-## API Catalog
+## API Catalog (*Liityntäkatalogi*)
 
-This repository provides the API catalog of the Finnish *National Data Exchange Layer* (*Kansallinen palveluväylä*). The catalog provides a search engine for the interaces available on the data exchange layer.
+This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interaces available on the data exchange layer.
 
 A demo of the catalog is available at [liityntakatalogi.palveluvayla.com](http://liityntakatalogi.palveluvayla.com/)
 
@@ -17,7 +17,7 @@ Start up the vagrant:
 
 After [Ansible](http://www.ansible.com/) provisions the system, the service will be running in the virtual machine and is available from your host machine at http://10.100.10.10/
 
-Admin user credentials are `admin:katalogi`.
+Admin user credentials are `admin:admin` and a regular user is `test:test`.
 
 To reprovision the server (i.e. to run Ansible) again:
 
@@ -27,25 +27,36 @@ You can ssh into the server:
 
     vagrant ssh
 
-And you can also run Ansible manually:
+And you can also run Ansible manually inside the virtual machine:
 
     vagrant ssh
     cd /src/ansible
     ansible-playbook -v -i inventories/vagrant deploy-all.yml
 
-### Development
+### Repository structure
 
-Edit the following files:
-
-- **style:** [ckanext-apicatalog_ui](ckanext/ckanext-apicatalog_ui) (reprovision ckan-extension)
-- **localization:** [ckan.po files](ansible/roles/ckan-translations/files/) (reprovision ckan-translations)
-- **schema:** [ckanext-apicatalog_scheming](ckanext/ckanext-apicatalog_scheming/ckanext/apicatalog_scheming/schemas/dataset.json) (reprovision ckan-extension)
-
-To clean the database (destroys all data and recreates databases):
-
-    vagrant ssh
-    cd /src/ansible
-    ansible-playbook -v -i inventories/vagrant vagrant-recreate-database.yml
+    .
+    ├── ansible
+    │   ├── deploy-all.yml                  Top-level playbook for configuring complete service
+    │   ├── inventories                     Target server lists (hostname, ssh user and key)
+    │   │   ├── prod
+    │   │   ├── qa
+    │   │   └── vagrant
+    │   ├── roles                           Main configuration
+    │   └── vars                            Variables common for all roles
+    │       ├── api-catalog-secrets         Passwords and other secrets (not included here)
+    │       ├── common.yml                  Variables common for all roles and environments
+    │       ├── environment-specific        Configuration specific for each deployment env
+    │       │   ├── prod.yml
+    │       │   ├── qa.yml
+    │       │   └── vagrant.yml
+    │       └── secrets-defaults.yml        Default passwords, used in Vagrant
+    ├── ckanext                             Custom CKAN extensions
+    │   ├── ckanext-apicatalog_scheming     Custom schema, additional fields
+    │   ├── ckanext-apicatalog_ui           Template and style customizations
+    │   └── ckanext-fluentall               Localization to all dataset fields
+    ├── doc                                 Documentation
+    └── Vagrantfile                         Configuration for local development environment
 
 ### Support / Contact / Contribution
 

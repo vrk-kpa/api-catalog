@@ -26,3 +26,8 @@ This will run CKAN in port 5000. Footer and header have useful template-related 
     sudo service apache2 stop
     sudo cp /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.debug.min.css /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.debug.css
     sudo /usr/lib/ckan/default/bin/paster serve /etc/ckan/default/production.ini
+
+### Destroy database and recreate databases
+
+    cd /src/ansible
+    ansible-playbook -v -i inventories/vagrant vagrant-recreate-database.yml
