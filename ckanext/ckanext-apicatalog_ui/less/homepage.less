@@ -89,9 +89,19 @@
     .border-radius(0 0 3px 3px);
     h3,
     .tag {
-      display: block;
-      float: left;
-      margin: 5px 10px 0 0;
+      display: inline-block;
+      margin-bottom: 4px;
+      color: white;
+      padding: 1px 10px;
+      text-decoration: underline;
+      border: 2px solid transparent;
+
+      &:hover {
+        background-color: @kapa-secondary-attention-color;
+        text-decoration: none;
+        border: 2px solid white;
+        color: white;
+      }
     }
     h3 {
       font-size: @font-size-base;
