@@ -26,26 +26,47 @@
     border-color: @search-box-color;
     border-radius: 0px;
 
-    &:hover {
+    &:hover,
+    &:focus
+    {
       input {
-        border-color: @kapa-secondary-attention-color-dark;
+      .transition(box-shadow 0.2s);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
       }
     }
 
     input {
-      border-color: @search-box-color;
-      border-radius: 4px;
-      margin-bottom:none;
+      border:none;
+      border-radius:5px;
+      box-shadow: 5px;
 
+      /*
+      border-width: 3px;
+      border-style: solid;
+      border-color: @search-box-color;
+      border-radius: 5px;
+      margin-bottom: none;
+      */
     }
 
     button {
-      background-color: transparent;
-      border: 3px solid white;
-      color: white;
       font-size: 18px;
       text-transform: uppercase;
       padding: 8px 15px;
+
+      background-color: @kapa-secondary-attention-color;
+      border: 3px solid white;
+      color: white;
+
+      .transition(
+        background-color 0.2s linear,
+        color 0.2s linear;
+      );
+
+      &:hover {
+        background-color: white;
+        color: @kapa-secondary-attention-color;
+      }
 
     }
   }

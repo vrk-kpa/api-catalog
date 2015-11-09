@@ -11,6 +11,14 @@
   hyphens: auto;
 }
 
+.transition (@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -ms-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+
 .transform (@func) {
   -webkit-transform: @arguments;
   -moz-transform: @arguments;
