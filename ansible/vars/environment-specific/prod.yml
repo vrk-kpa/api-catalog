@@ -1,6 +1,6 @@
 ---
 
-public_facing_hostname: liityntakatalogi.palveluvayla.com
+public_facing_hostname: liityntakatalogi.suomi.fi
 internal_hostname: catalog-prod
 ckan_site_name: Liityntäkatalogi
 

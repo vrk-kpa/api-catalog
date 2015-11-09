@@ -2,7 +2,7 @@
 
 This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interaces available on the data exchange layer.
 
-A demo of the catalog is available at [liityntakatalogi.palveluvayla.com](http://liityntakatalogi.palveluvayla.com/)
+A demo of the catalog is available at [liityntakatalogi.qa.suomi.fi](http://liityntakatalogi.qa.suomi.fi/)
 
 ### Getting started
 
