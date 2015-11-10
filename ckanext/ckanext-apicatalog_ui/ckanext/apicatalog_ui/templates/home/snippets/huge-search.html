@@ -2,10 +2,6 @@
 {% set placeholder = _("Search data") %}
 {% set stats = h.get_site_statistics() %}
 
-<div class="row hidden-xs hidden-sm">
-  <span class="top-caption">Hakemisto kansallisen<br/>palveluväylän palveluista.</span>
-</div>
-
 <div class="module module-search module-narrow module-shallow box">
 
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
@@ -15,7 +11,7 @@
           <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
         </div>
       </div>
-      <div class="hidden-xs col-sm-2"> <!--col-lg-3-->
+      <div class="hidden-xs col-sm-2">
         <button class="button-hollow" type="submit">
           <i class="icon-search"></i>
           <span>{{ _('Search') }}</span>
@@ -26,7 +22,7 @@
 
   <div class="row hidden-xs">
     <div class="col-sm-offset-1 tags">
-      <h3>{{ _('Popular tags') }}</h3>
+      <span>{{ _('Popular tags') }}</span>
       {% for tag in tags %}
         <a class="tag" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
       {% endfor %}
