@@ -9628,11 +9628,6 @@ h4 small {
 .homepage h1 {
   font-size: 40px;
 }
-.homepage .search-form {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  border-bottom: none;
-}
 .homepage .top-caption {
   text-align: center;
   display: block;
@@ -9695,7 +9690,6 @@ h4 small {
   color: white;
 }
 .homepage .tags {
-  padding: 5px 10px 10px 10px;
   color: #ffffff;
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -9749,8 +9743,6 @@ h4 small {
   line-height: 40px;
 }
 .homepage .search-form {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
   border-bottom: none;
 }
 .homepage .search-form .search-input {
