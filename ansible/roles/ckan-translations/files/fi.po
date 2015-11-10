@@ -303,7 +303,7 @@ msgstr "Asiasanat"
 #: ckan/controllers/group.py:294 ckan/controllers/home.py:73
 #: ckan/controllers/package.py:244 ckan/lib/helpers.py:700
 msgid "Formats"
-msgstr "Muodot"
+msgstr "Tiedostomuodot"
 
 #: ckan/controllers/group.py:295 ckan/controllers/home.py:74
 #: ckan/controllers/package.py:245 ckan/lib/helpers.py:701
@@ -3502,7 +3502,7 @@ msgstr "Luotu"
 #: ckan/templates/package/snippets/resource_form.html:37
 #: ckan/templates/package/snippets/resource_info.html:16
 msgid "Format"
-msgstr "Muoto"
+msgstr "Tiedostomuoto"
 
 #: ckan/templates/package/resource_read.html:169
 #: ckan/templates/package/snippets/package_basic_fields.html:30

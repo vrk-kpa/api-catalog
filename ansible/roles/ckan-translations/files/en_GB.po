@@ -291,7 +291,7 @@ msgstr "Tags"
 #: ckan/controllers/group.py:294 ckan/controllers/home.py:73
 #: ckan/controllers/package.py:244 ckan/lib/helpers.py:700
 msgid "Formats"
-msgstr "Formats"
+msgstr "File formats"
 
 #: ckan/controllers/group.py:295 ckan/controllers/home.py:74
 #: ckan/controllers/package.py:245 ckan/lib/helpers.py:701
@@ -3490,7 +3490,7 @@ msgstr "Created"
 #: ckan/templates/package/snippets/resource_form.html:37
 #: ckan/templates/package/snippets/resource_info.html:16
 msgid "Format"
-msgstr "Format"
+msgstr "File format"
 
 #: ckan/templates/package/resource_read.html:169
 #: ckan/templates/package/snippets/package_basic_fields.html:30
