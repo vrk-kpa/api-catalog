@@ -13,12 +13,12 @@ Example:
 #}
 {% set url = h.url_for(organization.type ~ '_read', action='read', id=organization.name) %}
 {% block item %}
-<li class="list-group-item organization-item">
+<li class="list-group-item kapa-item">
   <div class="media">
   {% block item_inner %}
   {% block image %}
   <div class="media-left media-middle">
-    <div class="organization-image-wrapper">
+    <div class="kapa-image-wrapper">
       <img class="media-object" src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}">
     </div>
   </div>
