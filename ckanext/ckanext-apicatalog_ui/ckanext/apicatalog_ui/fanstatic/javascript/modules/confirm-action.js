@@ -11,6 +11,7 @@ this.ckan.module('confirm-action', function (jQuery, _) {
       },
       template: [
         '<div class="modal">',
+        '<div class="modal-dialog"',
         '<div class="modal-content">',
         '<div class="modal-header">',
         '<button type="button" class="close" data-dismiss="modal">×</button>',
@@ -20,6 +21,7 @@ this.ckan.module('confirm-action', function (jQuery, _) {
         '<div class="modal-footer">',
         '<button class="btn btn-cancel"></button>',
         '<button class="btn btn-primary"></button>',
+        '</div>',
         '</div>',
         '</div>',
         '</div>'
