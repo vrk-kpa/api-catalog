@@ -4872,3 +4872,8 @@ msgstr "Maintainer phone number"
 msgid "eg. A detailed description"
 msgstr "eg. A detailed description"
 
+msgid "API Catalog"
+msgstr "API Catalog"
+
+msgid "kapa-slogan-text"
+msgstr "An index of APIs within the National Data Exchange Layer"

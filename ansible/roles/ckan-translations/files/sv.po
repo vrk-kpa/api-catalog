@@ -4883,3 +4883,8 @@ msgstr "<Ylläpitäjän puhelinnumero>"
 msgid "eg. A detailed description"
 msgstr "<esim. Tarkempi kuvaus>"
 
+msgid "API Catalog"
+msgstr "<Liityntäkatalogi>"
+
+msgid "kapa-slogan-text"
+msgstr "<Hakemisto kansallisen palveluväylän palveluista>"
