@@ -6,15 +6,15 @@
 
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+      <div class="col-xs-8 col-xs-offset-1">
         <div class="search-input control-group search-giant">
           <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
         </div>
       </div>
-      <div class="hidden-xs col-sm-2">
+      <div class="col-xs-2">
         <button class="button-hollow" type="submit">
           <i class="icon-search"></i>
-          <span>{{ _('Search') }}</span>
+          <span class="hidden-xs">{{ _('Search') }}</span>
         </button>
       </div>
     </div>
