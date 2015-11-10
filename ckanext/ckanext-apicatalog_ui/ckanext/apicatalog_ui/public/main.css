@@ -9700,6 +9700,7 @@ h4 small {
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
+  padding-left: 15px;
 }
 .homepage .tags:before,
 .homepage .tags:after {
@@ -9717,7 +9718,8 @@ h4 small {
 .homepage .tags:after {
   clear: both;
 }
-.homepage .tags h3 {
+.homepage .tags span {
+  font-weight: bold;
   margin-top: 10px;
   margin-bottom: 0px;
   display: inline-block;
