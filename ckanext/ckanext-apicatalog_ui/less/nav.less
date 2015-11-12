@@ -4,6 +4,20 @@
   padding-bottom: 0;
 }
 
+
+.plusglyph,
+.minusglyph {
+  font-weight: bold;
+}
+
+li.active .plusglyph {
+  display:none;
+}
+
+li:not(.active) .minusglyph {
+  display:none;
+}
+
 .nav-aside {
   border-top: 1px dotted #DDD;
   border-bottom: 1px dotted #DDD;
@@ -73,25 +87,6 @@
 
 // FACET NAVIGATION
 
-.nav-facet .nav-item > a:hover:after,
-.nav-facet .nav-item.active > a:after {
-  .ckan-icon;
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  margin-top: -8px;
-}
-
-.nav-facet .nav-item > a:hover:after {
-  .ckan-icon-circle-add;
-}
-
-.nav-facet .nav-item.active > a:after {
-  .ckan-icon-circle-cross;
-  right: 3px;
-}
-
 .user-list {
   .list-unstyled;
   li {
@@ -132,16 +127,6 @@
   }
   .nav li.active {
     position: relative;
-  }
-  .nav li.active > a:hover:after,
-  .nav li.active > a:after {
-    .ckan-icon;
-    .ckan-icon-circle-cross;
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 5px;
-    margin-top: -8px;
   }
 }
 
