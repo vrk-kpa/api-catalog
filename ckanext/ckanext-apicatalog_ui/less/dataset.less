@@ -176,14 +176,40 @@
 
 // Tag List
 
+.tags {
+  span {
+   font-weight: bold;
+    margin-top: 10px;
+    margin-bottom:0px;
+    display:inline-block;
+  }
+}
+
 .tag-list {
   .list-unstyled;
   padding: 10px 10px 5px 10px;
 }
 
 .tag-list li {
+  padding: 0px 10px 2px 10px;
+
   display: inline-block;
   margin-right: 5px;
+  background-color: @kapa-secondary-attention-color;
+  border-radius:4px;
+  border: 2px solid @kapa-secondary-attention-color;
+
+  a {
+    color: @white;
+    text-decoration:none;
+  }
+
+  &:hover {
+    background-color:transparent;
+    a {
+      color: @kapa-black;
+    }
+  }
 }
 
 .tag-list li:last-child {
