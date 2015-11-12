@@ -46,8 +46,27 @@ li:not(.active) .minusglyph {
   &:hover {
     color: @navItemActiveTextColor;
     background-color: @navItemActiveBackgroundColor;
+.filtertype-tags {
+  .nav-item.active > a,
+  .nav-aside li.active a {
+    background-color: @kapa-secondary-attention-color;
+    color:@white;
+  }
+
+  .nav-item > a,
+  .nav-asied li a {
+    &:hover {
+      background-color: @kapa-secondary-attention-color;
+      color:@white;
+    }
   }
 }
+.resources,
+.filtertype-res_format {
+  .nav-item.active > a,
+  .nav-aside li.active a {
+    background-color: @kapa-black;
+  }
 
 .nav-item.active > a span,
 .nav-aside li.active a span {
