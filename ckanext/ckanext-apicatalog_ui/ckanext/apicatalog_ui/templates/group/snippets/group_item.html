@@ -32,7 +32,7 @@ Example:
   {% endblock %}
   {% block description %}
     {% if group.description %}
-      <p>{{ h.markdown_extract(group.description, extract_length=80) }}</p>
+      <p>{{ h.markdown_extract(group.description) }}</p>
     {% endif %}
   {% endblock %}
   {% block datasets %}
