@@ -3,10 +3,24 @@
 }
 
 .dataset-item {
-  border-bottom: 1px solid @genericBorderColor;
-  padding-bottom: 30px;
+  background: @kapa-attention-color;
   margin-bottom: 20px;
+
+  &:hover {
+    .transition(0.2s);
+    background-color: @kapa-attention-color-dark
+  }
+
+  &, a {
+    color: @white;
+  }
+
+  & .container-fluid {
+    padding:20px;
+  }
+
 }
+
 @media (max-width: 768px) {
   .dataset-item {
     word-wrap:break-word;
@@ -16,7 +30,6 @@
 .dataset-item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .dataset-heading {
@@ -24,10 +37,6 @@
   margin-top: 0;
   margin-bottom: 8px;
   line-height: 1.3;
-}
-
-.dataset-heading a {
-  color: @listingHeadingTextColor;
 }
 
 .dataset-heading .label {
@@ -44,10 +53,6 @@
   &.pull-right {
     margin-right: 0;
   }
-}
-
-.dataset-resources {
-  margin-top: 8px;
 }
 
 .dataset-resources li {
