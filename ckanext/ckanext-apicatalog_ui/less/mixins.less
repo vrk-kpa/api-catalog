@@ -74,6 +74,24 @@
   }
 }
 
+
+
+.multiline-ellipsis(@lines, @width, @line-height) {
+  display: inline-block;
+  width: @width;
+  height: (@line-height * @lines);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @lines; // max nb lines to show
+  -webkit-box-orient: vertical;
+}
+
+.multiline-ellipsis(@lines) {
+  .multiline-ellipsis(@lines, 100%, @line-height-computed);
+}
+
+
 .unstyled {
   margin: 0;
   list-style: none;
