@@ -43,9 +43,12 @@ li:not(.active) .minusglyph {
   position: relative;
   color: @navItemActiveTextColor;
   background-color: @navItemActiveBackgroundColor;
+
   &:hover {
-    color: @navItemActiveTextColor;
-    background-color: @navItemActiveBackgroundColor;
+    background-color: @kapa-attention-color-dark;
+  }
+}
+
 .filtertype-tags {
   .nav-item.active > a,
   .nav-aside li.active a {
@@ -68,11 +71,13 @@ li:not(.active) .minusglyph {
     background-color: @kapa-black;
   }
 
-.nav-item.active > a span,
-.nav-aside li.active a span {
-  white-space: nowrap;
-  overflow:hidden;
-  display:block;
+  .nav-item > a,
+  .nav-asied li a {
+    &:hover {
+      .transition(0.2s);
+      background-color: @kapa-vdark-grey;
+    }
+  }
 }
 
 .module-narrow .nav-item > a,
