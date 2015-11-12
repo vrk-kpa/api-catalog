@@ -20,7 +20,7 @@
     </div>
     <div class="row hidden-xs">
       <div class="col-sm-offset-1 tags">
-        <span>{{ _('Popular tags') }}</span>
+        <span>{{ _('Popular tags') + ':' }}</span>
         {% for tag in tags %}
           <a class="tag" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
         {% endfor %}
