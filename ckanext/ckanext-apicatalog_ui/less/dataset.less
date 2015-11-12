@@ -72,17 +72,26 @@
 // Resource List
 
 .resource-list {
-  margin: -10px -10px 10px -10px;
   .list-unstyled;
 }
 
 .resource-item {
+  background-color: @kapa-black;
   position: relative;
-  padding: 10px 10px 10px 60px;
   margin-bottom: 0px;
-  .border-radius(3px);
+
   &:hover {
-    background-color: @layoutBackgroundColor;
+    .transition(0.2s);
+    background-color: @kapa-vdark-grey;
+  }
+
+  a {
+    color: @white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
 .resource-item .col-xs-11 .container-fluid {
   padding: 20px 20px 20px 60px;
   p {
@@ -98,27 +107,27 @@
   font-weight: bold;
 }
 
+.resource-item .dropdown{
+  margin-top: 30px;
+}
+.resource-item .caret {
+  zoom: 2;
+  display: inline-block;
+  float: right;
+}
+
 .resource-item .format-label {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 20px;
 }
 
 .resource-item .description {
-  font-size: 12px;
+  font-size: @font-size-base;
+  word-wrap:break-word;
+
   margin-bottom: 0;
   min-height: 12px;
-}
-
-.resource-item .btn-group {
-  position: absolute;
-  top: 14px;
-  right: 10px;
-}
-@media (max-width: 768px) {
-  .resource-item .btn-group {
-    display:none;
-  }
 }
 
 .resource-list.reordering {
