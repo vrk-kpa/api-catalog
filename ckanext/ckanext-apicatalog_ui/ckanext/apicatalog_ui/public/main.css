@@ -6866,7 +6866,7 @@ button.close {
   font-size: 12px;
   line-height: 1.16666667em;
   padding: 7px 25px;
-  border-bottom: 1px dotted #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 .simple-item:last-of-type {
   border-bottom: 0;
@@ -6895,7 +6895,7 @@ button.close {
   font-size: 12px;
   line-height: 1.16666667em;
   padding: 7px 25px;
-  border-bottom: 1px dotted #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 .simple-list > li:last-of-type {
   border-bottom: 0;
@@ -6983,7 +6983,7 @@ button.close {
 .module-footer {
   padding: 7px 25px 7px;
   margin: 0;
-  border-top: 1px dotted #dddddd;
+  border-top: 1px #d9d9d9;
 }
 .module .read-more {
   font-weight: bold;
@@ -7430,7 +7430,7 @@ button.close {
   font-size: 12px;
   line-height: 1.16666667em;
   padding: 7px 25px;
-  border-bottom: 1px dotted #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 .nav-simple > li:last-of-type,
 .nav-aside > li:last-of-type {
@@ -7452,8 +7452,8 @@ li:not(.active) .minusglyph {
   display: none;
 }
 .nav-aside {
-  border-top: 1px dotted #DDD;
-  border-bottom: 1px dotted #DDD;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
   margin-bottom: 15px;
 }
 .nav-item > a,
@@ -7476,6 +7476,11 @@ li:not(.active) .minusglyph {
 }
 .nav-item.active > a:hover,
 .nav-aside li.active a:hover {
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
   background-color: #0a77d1;
 }
 .filtertype-tags .nav-item.active > a,
@@ -7485,7 +7490,12 @@ li:not(.active) .minusglyph {
 }
 .filtertype-tags .nav-item > a:hover,
 .filtertype-tags .nav-asied li a:hover {
-  background-color: #f25d0d;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  background-color: #c74500;
   color: #ffffff;
 }
 .resources .nav-item.active > a,
@@ -7496,14 +7506,15 @@ li:not(.active) .minusglyph {
 }
 .resources .nav-item > a:hover,
 .filtertype-res_format .nav-item > a:hover,
-.resources .nav-asied li a:hover,
-.filtertype-res_format .nav-asied li a:hover {
+.resources .nav-aside li a:hover,
+.filtertype-res_format .nav-aside li a:hover {
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
   background-color: #464a4d;
+  color: #ffffff;
 }
 .module-narrow .nav-item > a,
 .module-narrow .nav-aside li a {

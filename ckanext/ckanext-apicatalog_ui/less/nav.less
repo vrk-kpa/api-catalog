@@ -45,6 +45,7 @@ li:not(.active) .minusglyph {
   background-color: @navItemActiveBackgroundColor;
 
   &:hover {
+    .transition(0.2s);
     background-color: @kapa-attention-color-dark;
   }
 }
@@ -59,7 +60,8 @@ li:not(.active) .minusglyph {
   .nav-item > a,
   .nav-asied li a {
     &:hover {
-      background-color: @kapa-secondary-attention-color;
+      .transition(0.2s);
+      background-color: @kapa-secondary-attention-color-dark;
       color:@white;
     }
   }
@@ -72,10 +74,11 @@ li:not(.active) .minusglyph {
   }
 
   .nav-item > a,
-  .nav-asied li a {
+  .nav-aside li a {
     &:hover {
       .transition(0.2s);
       background-color: @kapa-vdark-grey;
+      color:@white;
     }
   }
 }
