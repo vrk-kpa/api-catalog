@@ -8505,6 +8505,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   padding: 0px 10px 2px 10px;
   display: inline-block;
   margin-right: 5px;
+  margin-bottom: 8px;
   background-color: #f25d0d;
   border-radius: 4px;
   border: 2px solid #f25d0d;
