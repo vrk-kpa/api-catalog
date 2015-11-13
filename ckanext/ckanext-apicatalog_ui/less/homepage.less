@@ -3,6 +3,14 @@
     font-size: 40px;
   }
 
+  .module li.dataset-item {
+    background-color: white;
+    margin-bottom: 0px;
+    border-bottom: 1px solid @kapa-box-border-color;
+    &:hover {
+      background-color: @kapa-light-grey;
+    }
+  }
   .module-heading p {
     display:none;
   }
@@ -26,27 +34,16 @@
     border-color: @search-box-color;
     border-radius: 0px;
 
-    &:hover,
-    &:focus
-    {
-      input {
-      .transition(box-shadow 0.2s);
-        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
-      }
-    }
-
     input {
       border:none;
       border-radius:5px;
       box-shadow: 5px;
 
-      /*
-      border-width: 3px;
-      border-style: solid;
-      border-color: @search-box-color;
-      border-radius: 5px;
-      margin-bottom: none;
-      */
+      &:hover,
+      &:focus {
+        .transition(box-shadow 0.2s);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+      }
     }
 
     button {
