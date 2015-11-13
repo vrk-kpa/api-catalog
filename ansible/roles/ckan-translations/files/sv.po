@@ -4888,3 +4888,9 @@ msgstr "<Liityntäkatalogi>"
 
 msgid "kapa-slogan-text"
 msgstr "<Hakemisto kansallisen palveluväylän palveluista>"
+
+msgid "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
+msgstr "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
+
+msgid "API Catalog source code on GitHub"
+msgstr "API Catalog source code on GitHub"
