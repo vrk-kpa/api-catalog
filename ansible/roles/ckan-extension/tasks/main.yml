@@ -4,7 +4,7 @@
   file: path={{ ckanext_sync_path }} state=directory
 
 - name: Copy extension sources
-  synchronize: src=../ckanext/{{ ckanext }} dest={{ ckanext_sync_path }}/
+  synchronize: src=../ckanext/{{ ckanext }} dest={{ ckanext_sync_path }}/ delete=yes
   when: deployment_environment_id != "vagrant"
 
 - name: Remove existing extension (Vagrant)
