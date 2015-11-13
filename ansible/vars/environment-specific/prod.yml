@@ -12,6 +12,9 @@ database_ckan:
   username: ckan_default
   password: "{{ secret.database_ckan_password }}"
 
+nginx:
+  alternative_hostnames: api.suomi.fi apikatalogi.suomi.fi katalogiprod01.csc.fi
+
 solr:
   host: 127.0.0.1
   port: 8983
