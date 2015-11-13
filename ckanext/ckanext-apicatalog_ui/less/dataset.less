@@ -3,16 +3,18 @@
 }
 
 .dataset-item {
-  background: @kapa-attention-color;
+
+  border-left: 10px solid @kapa-secondary-attention-color;
+  background-color: @kapa-light-grey;
   margin-bottom: 20px;
 
   &:hover {
     .transition(0.2s);
-    background-color: @kapa-attention-color-dark
+    background-color: @kapa-dark-grey;
   }
 
   &, a {
-    color: @white;
+    color: @black;
   }
 
   & .container-fluid {
@@ -77,17 +79,20 @@
 }
 
 .resource-item {
-  background-color: @kapa-black;
+  border-left: 10px solid #f25d0d;
+  background-color: @kapa-light-grey;
+  margin-bottom: 20px;
+
   position: relative;
   margin-bottom: 0px;
 
   &:hover {
     .transition(0.2s);
-    background-color: @kapa-vdark-grey;
+    background-color: @kapa-dark-grey;
   }
 
   a {
-    color: @white;
+    color: @black;
     font-weight: bold;
     text-decoration: none;
   }
