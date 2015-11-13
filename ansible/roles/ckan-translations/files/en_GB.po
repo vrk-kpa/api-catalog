@@ -369,11 +369,11 @@ msgstr "User %r not authorized to edit %r"
 
 #: ckan/controllers/group.py:781
 msgid "CKAN Group Revision History"
-msgstr "CKAN Group Revision History"
+msgstr "Group Revision History"
 
 #: ckan/controllers/group.py:785
 msgid "Recent changes to CKAN Group: "
-msgstr "Recent changes to CKAN Group: "
+msgstr "Recent changes to Group: "
 
 #: ckan/controllers/group.py:806 ckan/controllers/package.py:496
 msgid "Log message: "
@@ -464,11 +464,11 @@ msgstr "Viewing {package_type} APIs in {format} format is not supported (templat
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "CKAN API Revision History"
+msgstr "API Revision History"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Recent changes to CKAN API: "
+msgstr "Recent changes to API: "
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
@@ -683,11 +683,11 @@ msgstr "Visualization"
 
 #: ckan/controllers/revision.py:42
 msgid "CKAN Repository Revision History"
-msgstr "CKAN Repository Revision History"
+msgstr "Repository Revision History"
 
 #: ckan/controllers/revision.py:44
 msgid "Recent changes to the CKAN repository."
-msgstr "Recent changes to the CKAN repository."
+msgstr "Recent changes to the repository."
 
 #: ckan/controllers/revision.py:108
 #, python-format
@@ -1279,7 +1279,7 @@ msgstr "Organization does not exist"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "You cannot add a API to this organization"
+msgstr "You cannot add an API to this organization"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1548,7 +1548,7 @@ msgstr "You are already following {0}"
 
 #: ckan/logic/action/create.py:1370 ckan/logic/action/create.py:1378
 msgid "You must be logged in to follow a dataset."
-msgstr "You must be logged in to follow a API."
+msgstr "You must be logged in to follow an API."
 
 #: ckan/logic/action/create.py:1430
 msgid "User {username} does not exist."
@@ -2172,7 +2172,7 @@ msgstr "About {0}"
 
 #: ckan/templates/footer.html:15
 msgid "CKAN API"
-msgstr "CKAN API"
+msgstr "API catalog API"
 
 #: ckan/templates/footer.html:16
 msgid "Open Knowledge Foundation"
@@ -2299,7 +2299,7 @@ msgstr "Update Config"
 
 #: ckan/templates/admin/config.html:27
 msgid "CKAN config options"
-msgstr "CKAN config options"
+msgstr "API catalog config options"
 
 #: ckan/templates/admin/config.html:34
 #, python-format
@@ -2319,7 +2319,7 @@ msgid ""
 "target=\"_blank\">reading the documentation</a>.</p> "
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
 "the modules that appear on your homepage.</p> "
-msgstr " <p><strong>Site Title:</strong> This is the title of this CKAN instance It appears in various places throughout CKAN.</p> <p><strong>Style:</strong> Choose from a list of simple variations of the main colour scheme to get a very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This is the logo that appears in the header of all the CKAN instance templates.</p> <p><strong>About:</strong> This text will appear on this CKAN instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this CKAN instances <a href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that appears in <code>&lt;head&gt;</code> tag of every page. If you wish to customize the templates more fully we recommend <a href=\"%(docs_url)s\" target=\"_blank\">reading the documentation</a>.</p> <p><strong>Homepage:</strong> This is for choosing a predefined layout for the modules that appear on your homepage.</p> "
+msgstr " <p><strong>Site Title:</strong> This is the title of this API catalog instance It appears in various places throughout API catalog.</p> <p><strong>Style:</strong> Choose from a list of simple variations of the main colour scheme to get a very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This is the logo that appears in the header of all the API catalog instance templates.</p> <p><strong>About:</strong> This text will appear on this API catalog instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this API catalog instances <a href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that appears in <code>&lt;head&gt;</code> tag of every page. If you wish to customize the templates more fully we recommend <a href=\"%(docs_url)s\" target=\"_blank\">reading the documentation</a>.</p> <p><strong>Homepage:</strong> This is for choosing a predefined layout for the modules that appear on your homepage.</p> "
 
 #: ckan/templates/admin/confirm_reset.html:3
 #: ckan/templates/admin/confirm_reset.html:10
@@ -2328,7 +2328,7 @@ msgstr "Confirm Reset"
 
 #: ckan/templates/admin/index.html:15
 msgid "Administer CKAN"
-msgstr "Administer CKAN"
+msgstr "Administer API catalog"
 
 #: ckan/templates/admin/index.html:20
 #, python-format
@@ -2336,7 +2336,7 @@ msgid ""
 " <p>As a sysadmin user you have full control over this CKAN instance. "
 "Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
 "CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
-msgstr " <p>As a sysadmin user you have full control over this CKAN instance. Proceed with care!</p> <p>For guidance on using sysadmin features, see the CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+msgstr " <p>As a sysadmin user you have full control over this API catalog instance. Proceed with care!</p> <p>For guidance on using sysadmin features, see the API catalog <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
 
 #: ckan/templates/admin/trash.html:20
 msgid "Purge"
@@ -2348,7 +2348,7 @@ msgstr " <p>Purge deleted APIs forever and irreversibly.</p> "
 
 #: ckan/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
-msgstr "CKAN Data API"
+msgstr "API catalog Data API"
 
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
@@ -2369,7 +2369,7 @@ msgstr "Endpoints"
 msgid ""
 "The Data API can be accessed via the following actions of the CKAN action "
 "API."
-msgstr "The Data API can be accessed via the following actions of the CKAN action API."
+msgstr "The Data API can be accessed via the following actions of the API catalog action API."
 
 #: ckan/templates/ajax_snippets/api_info.html:42
 #: ckan/templates/related/edit_form.html:7
@@ -2867,7 +2867,7 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr " You can use CKAN Groups to create and manage collections of APIs. This could be to catalogue APIs for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published APIs. "
+msgstr " You can use Groups to create and manage collections of APIs. This could be to catalogue APIs for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published APIs. "
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3190,7 +3190,7 @@ msgid ""
 " CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
-msgstr " CKAN Organizations are used to create, manage and publish collections of APIs. Users can have different roles within an Organization, depending on their level of authorisation to create, edit and publish. "
+msgstr " Organizations are used to create, manage and publish collections of APIs. Users can have different roles within an Organization, depending on their level of authorisation to create, edit and publish. "
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -4271,7 +4271,7 @@ msgstr "Account Info"
 #: ckan/templates/user/edit.html:19
 msgid ""
 " Your profile lets other CKAN users know about who you are and what you do. "
-msgstr " Your profile lets other CKAN users know about who you are and what you do. "
+msgstr " Your profile lets other API catalog users know about who you are and what you do. "
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -4587,7 +4587,7 @@ msgstr "This group has no description"
 
 #: ckanext/example_theme/v12_extra_public_dir/templates/home/snippets/promoted.html:4
 msgid "CKAN's data previewing tool has many powerful features"
-msgstr "CKAN's data previewing tool has many powerful features"
+msgstr "API catalog's data previewing tool has many powerful features"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "Image url"
@@ -4804,7 +4804,7 @@ msgstr "API Leaderboard"
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
-msgstr "Choose a API attribute and find out which categories in that area have the most APIs. E.g. tags, groups, license, res_format, country."
+msgstr "Choose an API attribute and find out which categories in that area have the most APIs. E.g. tags, groups, license, res_format, country."
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"

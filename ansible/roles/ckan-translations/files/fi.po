@@ -381,11 +381,11 @@ msgstr "Käyttäjä %r ei voi muokata %r"
 
 #: ckan/controllers/group.py:781
 msgid "CKAN Group Revision History"
-msgstr "CKAN-ryhmän revisioiden muutoshistoria"
+msgstr "Ryhmän revisioiden muutoshistoria"
 
 #: ckan/controllers/group.py:785
 msgid "Recent changes to CKAN Group: "
-msgstr "Viimeaikaiset muutokset CKAN-ryhmään:"
+msgstr "Viimeaikaiset muutokset ryhmään:"
 
 #: ckan/controllers/group.py:806 ckan/controllers/package.py:496
 msgid "Log message: "
@@ -476,11 +476,11 @@ msgstr "{package_type}-liityntöjen katselu {format}-muodossa ei ole mahdollista
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "CKAN-liitynnän muutoshistoria"
+msgstr "Liitynnän muutoshistoria"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Viimeisimmät muutokset CKAN-liityntään:"
+msgstr "Viimeisimmät muutokset liityntään:"
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
@@ -695,11 +695,11 @@ msgstr "Visualisointi"
 
 #: ckan/controllers/revision.py:42
 msgid "CKAN Repository Revision History"
-msgstr "CKAN-tietovarannon historia"
+msgstr "Tietovarannon historia"
 
 #: ckan/controllers/revision.py:44
 msgid "Recent changes to the CKAN repository."
-msgstr "Viimeisimmät CKAN-tietovarannon muutokset."
+msgstr "Viimeisimmät tietovarannon muutokset."
 
 #: ckan/controllers/revision.py:108
 #, python-format
@@ -2184,7 +2184,7 @@ msgstr "Tietoa {0}"
 
 #: ckan/templates/footer.html:15
 msgid "CKAN API"
-msgstr "CKAN ohjelmointirajapinta (API)"
+msgstr "Liityntäkatalogin ohjelmointirajapinta (API)"
 
 #: ckan/templates/footer.html:16
 msgid "Open Knowledge Foundation"
@@ -2311,7 +2311,7 @@ msgstr "Päivitä asetukset"
 
 #: ckan/templates/admin/config.html:27
 msgid "CKAN config options"
-msgstr "CKAN konfigurointi"
+msgstr "Liityntäkatalogin konfigurointi"
 
 #: ckan/templates/admin/config.html:34
 #, python-format
@@ -2331,7 +2331,7 @@ msgid ""
 "target=\"_blank\">reading the documentation</a>.</p> "
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
 "the modules that appear on your homepage.</p> "
-msgstr "<p><strong>Sivun nimike:</strong> Tämä on CKAN -asennuksen nimike, joka näkyy useissa paikoissa sivustolla.</p> <p><strong>Tyyli:</strong> Saadaksesi nopeasti hieman muokatun teeman käyttöön voit valita tyylilistalta päävärityksen yksinkertaisia muunnelmia.</p> <p><strong>Sivun logo:</strong> Tämä on logo, joka näkyy kaikkien sivupohjien header-osiossa.</p> <p><strong>Tietoa:</strong> Teksti näkyy tämän CKAN-sivuston <a href=\"%(about_url)s\">tietoa sivusta</a> -sivulla.</p> <p><strong>Esittelyteksti:</strong> Teksti näkyy <a href=\"%(home_url)s\">etusivulla</a> tervetuliaistekstinä kävijöille.</p> <p><strong>Muokattu CSS:</strong> Tämä on CSS tyylimuotoilu, joka näkyy kaikkien sivujen <code>&lt;head&gt;</code> tagissa. Jos haluat muokata sivupohjia enemmän suosittelemme, että luet<a href=\"%(docs_url)s\" target=\"_blank\">dokumentaation</a>.</p></p> <p><strong>Kotisivu:</strong> Täältä voit valita ennalta määritellyn asettelun niille moduuleille, jotka näkyvät kotisivulla.</p>"
+msgstr "<p><strong>Sivun nimike:</strong> Tämä on Liityntäkatalogi-asennuksen nimike, joka näkyy useissa paikoissa sivustolla.</p> <p><strong>Tyyli:</strong> Saadaksesi nopeasti hieman muokatun teeman käyttöön voit valita tyylilistalta päävärityksen yksinkertaisia muunnelmia.</p> <p><strong>Sivun logo:</strong> Tämä on logo, joka näkyy kaikkien sivupohjien header-osiossa.</p> <p><strong>Tietoa:</strong> Teksti näkyy tämän Liityntäkatalogisivuston <a href=\"%(about_url)s\">tietoa sivusta</a> -sivulla.</p> <p><strong>Esittelyteksti:</strong> Teksti näkyy <a href=\"%(home_url)s\">etusivulla</a> tervetuliaistekstinä kävijöille.</p> <p><strong>Muokattu CSS:</strong> Tämä on CSS tyylimuotoilu, joka näkyy kaikkien sivujen <code>&lt;head&gt;</code> tagissa. Jos haluat muokata sivupohjia enemmän suosittelemme, että luet<a href=\"%(docs_url)s\" target=\"_blank\">dokumentaation</a>.</p></p> <p><strong>Kotisivu:</strong> Täältä voit valita ennalta määritellyn asettelun niille moduuleille, jotka näkyvät kotisivulla.</p>"
 
 #: ckan/templates/admin/confirm_reset.html:3
 #: ckan/templates/admin/confirm_reset.html:10
@@ -2340,7 +2340,7 @@ msgstr "Vahvista resetointi"
 
 #: ckan/templates/admin/index.html:15
 msgid "Administer CKAN"
-msgstr "Hallinnoi CKAN:ia"
+msgstr "Hallinnoi Liityntäkatalogia"
 
 #: ckan/templates/admin/index.html:20
 #, python-format
@@ -2348,7 +2348,7 @@ msgid ""
 " <p>As a sysadmin user you have full control over this CKAN instance. "
 "Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
 "CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
-msgstr " <p>Järjestelmänhoitajana Sinulla on täydet oikeudet tähän CKAN asennukseen. Jatka varovaisuutta noudattaen!</p> <p>Ohjeistukseksi järjestelmähoitamisen ominaisuuksista, katso CKAN <a href=\"%(docs_url)s\" target=\"_blank\">järjestelmänhoitajan ohjetta</a></p> "
+msgstr " <p>Järjestelmänhoitajana Sinulla on täydet oikeudet tähän Liityntäkatalogin asennukseen. Jatka varovaisuutta noudattaen!</p> <p>Ohjeistukseksi järjestelmähoitamisen ominaisuuksista, katso Liityntäkatalogin <a href=\"%(docs_url)s\" target=\"_blank\">järjestelmänhoitajan ohjetta</a></p> "
 
 #: ckan/templates/admin/trash.html:20
 msgid "Purge"
@@ -2360,7 +2360,7 @@ msgstr " <p>Tyhjennä poistetut tietojoukot lopullisesti ja ilman palautusmahdol
 
 #: ckan/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
-msgstr "CKAN Data API"
+msgstr "Liityntäkatalogin Data API"
 
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
@@ -2879,7 +2879,7 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr "Voit luoda ja hallinnoida liityntäkokonaisuuksia käyttämällä CKAN:in ryhmiä. Voit koota yhteen ryhmään liityntöjä esimerkiksi projektin, käyttäjäryhmän tai teeman mukaisesti ja siten helpottaa aineistojen löytymistä."
+msgstr "Voit luoda ja hallinnoida liityntäkokonaisuuksia käyttämällä ryhmiä. Voit koota yhteen ryhmään liityntöjä esimerkiksi projektin, käyttäjäryhmän tai teeman mukaisesti ja siten helpottaa aineistojen löytymistä."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3202,7 +3202,7 @@ msgid ""
 " CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
-msgstr "CKAN:in organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen ja julkaisemiseen."
+msgstr "Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen ja julkaisemiseen."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -4283,7 +4283,7 @@ msgstr "Käyttäjätilin tiedot"
 #: ckan/templates/user/edit.html:19
 msgid ""
 " Your profile lets other CKAN users know about who you are and what you do. "
-msgstr "Profiilin avulla muut CKAN:in käyttäjät tietävät kuka olet ja mitä teet. "
+msgstr "Profiilin avulla muut Liityntäkatalogin käyttäjät tietävät kuka olet ja mitä teet. "
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -4599,7 +4599,7 @@ msgstr "Tällä ryhmällä ei ole kuvausta"
 
 #: ckanext/example_theme/v12_extra_public_dir/templates/home/snippets/promoted.html:4
 msgid "CKAN's data previewing tool has many powerful features"
-msgstr "CKAN:n tietojen esikatselun työkalussa on monta tehokasta ominaisuutta"
+msgstr "Tietojen esikatselun työkalussa on monta tehokasta ominaisuutta"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "Image url"
