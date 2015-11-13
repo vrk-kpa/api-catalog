@@ -65,7 +65,7 @@ class FluentallResourcePlugin(FluentallLanguagePlugin):
 
     # IResourceController
 
-    def before_show(self, pkg_dict):
+    def before_view(self, pkg_dict):
         return super(FluentallResourcePlugin, self).before_view(pkg_dict)
 
     def _ignore_field(self, key):
