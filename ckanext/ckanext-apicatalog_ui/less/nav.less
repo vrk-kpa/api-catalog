@@ -40,46 +40,18 @@ li:not(.active) .minusglyph {
 
 .nav-item.active > a,
 .nav-aside li.active a {
-  position: relative;
-  color: @navItemActiveTextColor;
-  background-color: @navItemActiveBackgroundColor;
 
+  position: relative;
+  color:@white;
+  background-color: @kapa-attention-color;
+
+}
+
+.nav.nav-facet > li.nav-item a {
   &:hover {
     .transition(0.2s);
     background-color: @kapa-attention-color-dark;
-  }
-}
-
-.filtertype-tags {
-  .nav-item.active > a,
-  .nav-aside li.active a {
-    background-color: @kapa-secondary-attention-color;
     color:@white;
-  }
-
-  .nav-item > a,
-  .nav-asied li a {
-    &:hover {
-      .transition(0.2s);
-      background-color: @kapa-secondary-attention-color-dark;
-      color:@white;
-    }
-  }
-}
-.resources,
-.filtertype-res_format {
-  .nav-item.active > a,
-  .nav-aside li.active a {
-    background-color: @kapa-black;
-  }
-
-  .nav-item > a,
-  .nav-aside li a {
-    &:hover {
-      .transition(0.2s);
-      background-color: @kapa-vdark-grey;
-      color:@white;
-    }
   }
 }
 
