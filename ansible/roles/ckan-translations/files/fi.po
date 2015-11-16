@@ -4898,7 +4898,7 @@ msgid "API Catalog"
 msgstr "Liityntäkatalogi"
 
 msgid "kapa-slogan-text"
-msgstr "Hakemisto kansallisen palveluväylän palveluista"
+msgstr "Hakemisto kansallisen palveluväylän liitynnöistä"
 
 msgid "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
 msgstr "Kansallisen palveluarkkitehtuurin viestintäkanava eSuomi.fi"
