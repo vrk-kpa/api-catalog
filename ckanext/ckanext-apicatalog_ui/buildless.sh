@@ -1,2 +1,2 @@
-lessc less/main.less > ckanext/apicatalog_ui/public/main.css
+lessc less/main.less > ckanext/apicatalog_ui/fanstatic/main.css
 echo $(date): Compiled LESS
