@@ -28,6 +28,11 @@ This will run CKAN in port 5000. Footer and header have useful template-related 
     sudo cp /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.debug.min.css /usr/lib/ckan/default/src/ckan/ckan/public/base/css/main.debug.css
     sudo /usr/lib/ckan/default/bin/paster serve /etc/ckan/default/production.ini
 
+### Manual database backup
+
+    sudo su - postgres
+    pg_dumpall | gzip > backup.sql.gz
+
 ### Destroy database and recreate databases
 
     cd /src/ansible
