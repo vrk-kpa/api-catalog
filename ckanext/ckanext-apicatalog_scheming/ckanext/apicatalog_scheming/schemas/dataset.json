@@ -8,7 +8,8 @@
       "field_name": "title",
       "label": "Title",
       "preset": "title",
-      "form_placeholder":"eg. A descriptive title"
+      "form_placeholder":"eg. A descriptive title",
+      "required": true
     },
     {
       "field_name": "name",
@@ -80,7 +81,8 @@
     },
     {
       "field_name": "name",
-      "label": "Name"
+      "label": "Name",
+      "required": true
     },
     {
       "field_name": "description",
