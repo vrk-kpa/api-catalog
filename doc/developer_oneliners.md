@@ -14,6 +14,7 @@
     /usr/lib/ckan/default/bin/paster --plugin=ckan user --config=/etc/ckan/default/production.ini
     /usr/lib/ckan/default/bin/paster --plugin=ckan user --help --config=/etc/ckan/default/production.ini
     /usr/lib/ckan/default/bin/paster --plugin=ckan views create --config=/etc/ckan/default/production.ini
+    /usr/lib/ckan/default/bin/paster --plugin=ckan user add foouser email=foo.bar@example.com --config=/etc/ckan/default/production.ini
 
 Note that `--help` seems to be a safer option than `help`. With some subcommands `help` does not seem to work, or produces less output.
 
