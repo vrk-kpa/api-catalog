@@ -374,11 +374,11 @@ msgstr "Användare %r har inte behörighet att redigera %r"
 
 #: ckan/controllers/group.py:781
 msgid "CKAN Group Revision History"
-msgstr "CKAN Revisionshistorik för grupp"
+msgstr "Revisionshistorik för grupp"
 
 #: ckan/controllers/group.py:785
 msgid "Recent changes to CKAN Group: "
-msgstr "Senaste ändringarna i CKAN-gruppen:"
+msgstr "Senaste ändringarna i gruppen:"
 
 #: ckan/controllers/group.py:806 ckan/controllers/package.py:496
 msgid "Log message: "
@@ -444,7 +444,7 @@ msgstr "Parametern \"{parameter_name}\" är inte ett heltal"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "Dataset hittades inte"
+msgstr "API hittades inte"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791
@@ -465,15 +465,15 @@ msgstr "Felaktigt format på revision: %r"
 msgid ""
 "Viewing {package_type} datasets in {format} format is not supported "
 "(template file {file} not found)."
-msgstr "Visning av  dataset av typen {package_type} i formatet {format}, stöds inte (mallen {file} hittades inte)."
+msgstr "Visning av API av typen {package_type} i formatet {format}, stöds inte (mallen {file} hittades inte)."
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "Ändringshistorik för CKAN dataset"
+msgstr "Ändringshistorik för API"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Senaste ändringar av CKAn dataset: "
+msgstr "Senaste ändringar av API: "
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
@@ -494,12 +494,12 @@ msgstr "Objektet kunde inte hittas"
 
 #: ckan/controllers/package.py:682
 msgid "Unauthorized to update dataset"
-msgstr "Behörighet saknas för att uppdatera detta dataset"
+msgstr "Behörighet saknas för att uppdatera detta API"
 
 #: ckan/controllers/package.py:685 ckan/controllers/package.py:721
 #: ckan/controllers/package.py:749
 msgid "The dataset {id} could not be found."
-msgstr "Dataset med {id} kunde inte hittas."
+msgstr "API med {id} kunde inte hittas."
 
 #: ckan/controllers/package.py:688
 msgid "You must add at least one data resource"
@@ -533,7 +533,7 @@ msgstr "Behörighet saknas för att radera paket %s"
 
 #: ckan/controllers/package.py:1065
 msgid "Dataset has been deleted."
-msgstr "Dataset har raderats."
+msgstr "API har raderats."
 
 #: ckan/controllers/package.py:1092
 msgid "Resource has been deleted."
@@ -549,7 +549,7 @@ msgstr "Behörighet saknas för att radera resurs %s"
 #: ckan/controllers/package.py:1485 ckan/controllers/package.py:1598
 #, python-format
 msgid "Unauthorized to read dataset %s"
-msgstr "Behörighet saknas för att läsa dataset %s"
+msgstr "Behörighet saknas för att läsa API %s"
 
 #: ckan/controllers/package.py:1157 ckan/controllers/package.py:1619
 msgid "Resource view not found"
@@ -688,16 +688,16 @@ msgstr "Visualisering"
 
 #: ckan/controllers/revision.py:42
 msgid "CKAN Repository Revision History"
-msgstr "CKAN Revisionshistorik för repository"
+msgstr "Revisionshistorik för repository"
 
 #: ckan/controllers/revision.py:44
 msgid "Recent changes to the CKAN repository."
-msgstr "Senaste ändringarna för CKAN-repositoryt."
+msgstr "Senaste ändringarna för repositoryt."
 
 #: ckan/controllers/revision.py:108
 #, python-format
 msgid "Datasets affected: %s.\n"
-msgstr "Dataset som påverkas: %s.\n"
+msgstr "API som påverkas: %s.\n"
 
 #: ckan/controllers/revision.py:188
 msgid "Revision updated"
@@ -858,7 +858,7 @@ msgstr "Omdirigering till extern webbplats är inte tillåten."
 
 #: ckan/lib/activity_streams.py:64
 msgid "{actor} added the tag {tag} to the dataset {dataset}"
-msgstr "{actor} lade till taggen {tag} till dataset {dataset}"
+msgstr "{actor} lade till taggen {tag} till API {dataset}"
 
 #: ckan/lib/activity_streams.py:67
 msgid "{actor} updated the group {group}"
@@ -870,15 +870,15 @@ msgstr "{actor} uppdaterade organisationen {organization}"
 
 #: ckan/lib/activity_streams.py:73
 msgid "{actor} updated the dataset {dataset}"
-msgstr "{actor} uppdaterade dataset {dataset}"
+msgstr "{actor} uppdaterade API {dataset}"
 
 #: ckan/lib/activity_streams.py:76
 msgid "{actor} changed the extra {extra} of the dataset {dataset}"
-msgstr "{actor} ändrade extraobjektet {extra} i dataset {dataset}"
+msgstr "{actor} ändrade extraobjektet {extra} i API {dataset}"
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
-msgstr "{actor} uppdaterade resursen {resource} i dataset {dataset}"
+msgstr "{actor} uppdaterade resursen {resource} i API {dataset}"
 
 #: ckan/lib/activity_streams.py:82
 msgid "{actor} updated their profile"
@@ -887,7 +887,7 @@ msgstr "{actor} uppdaterade sin profil"
 #: ckan/lib/activity_streams.py:86
 msgid ""
 "{actor} updated the {related_type} {related_item} of the dataset {dataset}"
-msgstr "{actor} uppdaterade {related_type} {related_item} från datasetet {dataset}"
+msgstr "{actor} uppdaterade {related_type} {related_item} från APIet {dataset}"
 
 #: ckan/lib/activity_streams.py:89
 msgid "{actor} updated the {related_type} {related_item}"
@@ -903,15 +903,15 @@ msgstr "{actor} raderade organisationen {organization}"
 
 #: ckan/lib/activity_streams.py:98
 msgid "{actor} deleted the dataset {dataset}"
-msgstr "{actor} raderade dataset {dataset}"
+msgstr "{actor} raderade API {dataset}"
 
 #: ckan/lib/activity_streams.py:101
 msgid "{actor} deleted the extra {extra} from the dataset {dataset}"
-msgstr "{actor} raderade extraobjektet {extra} från dataset {dataset}"
+msgstr "{actor} raderade extraobjektet {extra} från API {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} raderade resursen {resource} från dataset {dataset}"
+msgstr "{actor} raderade resursen {resource} från API {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
@@ -923,15 +923,15 @@ msgstr "{actor} skapade organisationen {organization}"
 
 #: ckan/lib/activity_streams.py:114
 msgid "{actor} created the dataset {dataset}"
-msgstr "{actor} skapade dataset {dataset}"
+msgstr "{actor} skapade API {dataset}"
 
 #: ckan/lib/activity_streams.py:117
 msgid "{actor} added the extra {extra} to the dataset {dataset}"
-msgstr "{actor} lade till extraobjektet {extra} till dataset {dataset}"
+msgstr "{actor} lade till extraobjektet {extra} till API {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
-msgstr "{actor} lade till resursen {resource} till dataset {dataset}"
+msgstr "{actor} lade till resursen {resource} till API {dataset}"
 
 #: ckan/lib/activity_streams.py:123
 msgid "{actor} signed up"
@@ -939,7 +939,7 @@ msgstr "{actor} registrerade sig"
 
 #: ckan/lib/activity_streams.py:126
 msgid "{actor} removed the tag {tag} from the dataset {dataset}"
-msgstr "{actor} tog bort taggen {tag} från dataset {dataset}"
+msgstr "{actor} tog bort taggen {tag} från API {dataset}"
 
 #: ckan/lib/activity_streams.py:129
 msgid "{actor} deleted the related item {related_item}"
@@ -960,7 +960,7 @@ msgstr "{actor} började följa {group}"
 #: ckan/lib/activity_streams.py:142
 msgid ""
 "{actor} added the {related_type} {related_item} to the dataset {dataset}"
-msgstr "{actor} lade till {related_type} {related_item} till datasetet {dataset}"
+msgstr "{actor} lade till {related_type} {related_item} till APIet {dataset}"
 
 #: ckan/lib/activity_streams.py:145
 msgid "{actor} added the {related_type} {related_item}"
@@ -1139,7 +1139,7 @@ msgstr "Namnlös resurs"
 
 #: ckan/lib/helpers.py:1189
 msgid "Created new dataset."
-msgstr "Skapade ett nytt dataset."
+msgstr "Skapade ett nytt API."
 
 #: ckan/lib/helpers.py:1191
 msgid "Edited resources."
@@ -1262,7 +1262,7 @@ msgstr "Användare"
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
 msgid "Dataset"
-msgstr "Dataset"
+msgstr "API"
 
 #: ckan/logic/converters.py:169 ckan/logic/validators.py:241
 #: ckanext/stats/templates/ckanext/stats/index.html:113
@@ -1284,7 +1284,7 @@ msgstr "Organisationen finns inte"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "Du kan inte lägga till ett dataset till denna organisation"
+msgstr "Du kan inte lägga till ett API till denna organisation"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1308,7 +1308,7 @@ msgstr "Inga länkar är tillåtna i log_message."
 
 #: ckan/logic/validators.py:156
 msgid "Dataset id already exists"
-msgstr "Detta dataset-ID finns redan"
+msgstr "Detta API-ID finns redan"
 
 #: ckan/logic/validators.py:197 ckan/logic/validators.py:288
 msgid "Resource"
@@ -1472,7 +1472,7 @@ msgstr "Rollen finns inte."
 
 #: ckan/logic/validators.py:759
 msgid "Datasets with no organization can't be private."
-msgstr "Dataset som saknar en organisation kan inte göras privata"
+msgstr "APIer som saknar en organisation kan inte göras privata"
 
 #: ckan/logic/validators.py:765
 msgid "Not a list"
@@ -1553,7 +1553,7 @@ msgstr "Du följer redan {0}"
 
 #: ckan/logic/action/create.py:1370 ckan/logic/action/create.py:1378
 msgid "You must be logged in to follow a dataset."
-msgstr "Du måste vara inloggad för att följa ett dataset."
+msgstr "Du måste vara inloggad för att följa ett API."
 
 #: ckan/logic/action/create.py:1430
 msgid "User {username} does not exist."
@@ -1662,7 +1662,7 @@ msgstr "Användare %s saknar behörighet att redigera dessa grupper"
 #: ckan/logic/auth/create.py:36
 #, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "Användare %s har inte behörighet att lägga till dataset till denna organisation"
+msgstr "Användare %s har inte behörighet att lägga till API till denna organisation"
 
 #: ckan/logic/auth/create.py:58
 msgid "You must be a sysadmin to create a featured related item"
@@ -1674,7 +1674,7 @@ msgstr "Du måste vara inloggad för att lägg till en relaterad post."
 
 #: ckan/logic/auth/create.py:77
 msgid "No dataset id provided, cannot check auth."
-msgstr "ID för dataset saknas. Kan inte kontrollera behörighet."
+msgstr "ID för API saknas. Kan inte kontrollera behörighet."
 
 #: ckan/logic/auth/create.py:84 ckan/logic/auth/delete.py:28
 #: ckan/logic/auth/get.py:135 ckan/logic/auth/update.py:61
@@ -1684,7 +1684,7 @@ msgstr "Inget paket hittades för denna resurs, kan inte kontrollera behörighet
 #: ckan/logic/auth/create.py:92
 #, python-format
 msgid "User %s not authorized to create resources on dataset %s"
-msgstr "Användaren %s har inte behörighet att skapa resurser för dataset %s"
+msgstr "Användaren %s har inte behörighet att skapa resurser för API %s"
 
 #: ckan/logic/auth/create.py:124
 #, python-format
@@ -2177,7 +2177,7 @@ msgstr "Om {0}"
 
 #: ckan/templates/footer.html:15
 msgid "CKAN API"
-msgstr "CKAN API"
+msgstr "API-katalog API"
 
 #: ckan/templates/footer.html:16
 msgid "Open Knowledge Foundation"
@@ -2245,11 +2245,11 @@ msgstr "Registrera"
 #: ckan/templates/user/read.html:5 ckan/templates/user/read_base.html:19
 #: ckan/templates/user/read_base.html:53
 msgid "Datasets"
-msgstr "Dataset"
+msgstr "APIer"
 
 #: ckan/templates/header.html:116
 msgid "Search Datasets"
-msgstr "Sök i dataset"
+msgstr "Sök i APIer"
 
 #: ckan/templates/header.html:117 ckan/templates/home/snippets/search.html:11
 #: ckan/templates/snippets/simple_search.html:5
@@ -2304,12 +2304,12 @@ msgstr "Uppdatera konfiguration"
 
 #: ckan/templates/admin/config.html:27
 msgid "CKAN config options"
-msgstr "CKANs konfigurationsinställningar"
+msgstr "API-katalogs konfigurationsinställningar"
 
 #: ckan/templates/admin/config.html:34
 #, python-format
 msgid ""
-" <p><strong>Site Title:</strong> This is the title of this CKAN instance It "
+" <p><strong>Site Title:</strong> This is the title of this API-katalog instance It "
 "appears in various places throughout CKAN.</p> <p><strong>Style:</strong> "
 "Choose from a list of simple variations of the main colour scheme to get a "
 "very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This"
@@ -2324,7 +2324,7 @@ msgid ""
 "target=\"_blank\">reading the documentation</a>.</p> "
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
 "the modules that appear on your homepage.</p> "
-msgstr "<p><strong>Sidtitel:</strong> Det här är sidtiteln för denna CKAN-instans Den förekommer på flera ställen i CKAN.</p> <p><strong>Stil:</strong> Välj ur en lista med enkla varianter av huvudsakligt färgschema, för att snabbt få till ett modifierat schema.</p> <p><strong>Logo för sidans tagg:</strong> Det här är logon som visas i sidhuvudet på alla instansens av CKAN-mallar.</p> <p><strong>Om:</strong> Den här texten kommer visas på CKAN-instansens <a href=\"%(about_url)s\">Om-sida</a>.</p> <p><strong>Introduktionstext:</strong> Denna text kommer visas på denna CKAN-instans <a href=\"%(home_url)s\">hemsida</a> som en välkomstsfras för besökare.</p> <p><strong>Modifierad CSS:</strong> Det här är ett block med CSS som kommer ligga i <code>&lt;head&gt;</code>-taggen på varje sida. Om du önskar anpassa mallarna ytterligare rekommenderar vi <a href=\"%(docs_url)s\" target=\"_blank\">att du läser dokumentationen</a>.</p><p><strong>Hemsida:</strong> Det här är för att välja en i förväg skapad layout för modulerna som visas på din hemsida.</p>"
+msgstr "<p><strong>Sidtitel:</strong> Det här är sidtiteln för denna API-katalog-instans Den förekommer på flera ställen i API-katalog.</p> <p><strong>Stil:</strong> Välj ur en lista med enkla varianter av huvudsakligt färgschema, för att snabbt få till ett modifierat schema.</p> <p><strong>Logo för sidans tagg:</strong> Det här är logon som visas i sidhuvudet på alla instansens av API-katalog-mallar.</p> <p><strong>Om:</strong> Den här texten kommer visas på API-katalog-instansens <a href=\"%(about_url)s\">Om-sida</a>.</p> <p><strong>Introduktionstext:</strong> Denna text kommer visas på denna API-katalog-instans <a href=\"%(home_url)s\">hemsida</a> som en välkomstsfras för besökare.</p> <p><strong>Modifierad CSS:</strong> Det här är ett block med CSS som kommer ligga i <code>&lt;head&gt;</code>-taggen på varje sida. Om du önskar anpassa mallarna ytterligare rekommenderar vi <a href=\"%(docs_url)s\" target=\"_blank\">att du läser dokumentationen</a>.</p><p><strong>Hemsida:</strong> Det här är för att välja en i förväg skapad layout för modulerna som visas på din hemsida.</p>"
 
 #: ckan/templates/admin/confirm_reset.html:3
 #: ckan/templates/admin/confirm_reset.html:10
@@ -2333,7 +2333,7 @@ msgstr "Bekräfta Återställ"
 
 #: ckan/templates/admin/index.html:15
 msgid "Administer CKAN"
-msgstr "Administrera CKAN"
+msgstr "Administrera API-katalog"
 
 #: ckan/templates/admin/index.html:20
 #, python-format
@@ -2341,7 +2341,7 @@ msgid ""
 " <p>As a sysadmin user you have full control over this CKAN instance. "
 "Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
 "CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
-msgstr " <p>Som sysadmin har du full kontroll över denna CKAN-instans. Var försiktig!</p> <p>För mer information om vad du kan göra som sysadmin, läs CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+msgstr " <p>Som sysadmin har du full kontroll över denna API-katalog-instans. Var försiktig!</p> <p>För mer information om vad du kan göra som sysadmin, läs API-katalog <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
 
 #: ckan/templates/admin/trash.html:20
 msgid "Purge"
@@ -2349,11 +2349,11 @@ msgstr "Rensa"
 
 #: ckan/templates/admin/trash.html:32
 msgid " <p>Purge deleted datasets forever and irreversibly.</p> "
-msgstr " <p>Rensa borttagna dataset permanent.</p> "
+msgstr " <p>Rensa borttagna APIer permanent.</p> "
 
 #: ckan/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
-msgstr "CKAN Data API"
+msgstr "API-katalog Data API"
 
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
@@ -2374,7 +2374,7 @@ msgstr "Adresser"
 msgid ""
 "The Data API can be accessed via the following actions of the CKAN action "
 "API."
-msgstr "Data-API:et kan anropas via följande åtgärder från CKAN:s \"action API\"."
+msgstr "Data-API:et kan anropas via följande åtgärder från API-katalog:s \"action API\"."
 
 #: ckan/templates/ajax_snippets/api_info.html:42
 #: ckan/templates/related/edit_form.html:7
@@ -2747,7 +2747,7 @@ msgid ""
 " <p><strong>Admin:</strong> Can edit group information, as well as manage "
 "organization members.</p> <p><strong>Member:</strong> Can add/remove "
 "datasets from groups</p> "
-msgstr " <p><strong>Administratör:</strong>Kan redigera gruppinformation och administrera organisationens medlemmar.</p> <p><strong>Medlem:</strong>Kan lägga till och ta bort dataset från grupper.</p> "
+msgstr " <p><strong>Administratör:</strong>Kan redigera gruppinformation och administrera organisationens medlemmar.</p> <p><strong>Medlem:</strong>Kan lägga till och ta bort API från grupper.</p> "
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
@@ -2791,11 +2791,11 @@ msgstr "Populära"
 #: ckan/templates/group/read.html:21 ckan/templates/organization/read.html:25
 #: ckan/templates/snippets/search_form.html:3
 msgid "Search datasets..."
-msgstr "Sök dataset..."
+msgstr "Sök APIer..."
 
 #: ckan/templates/group/snippets/feeds.html:3
 msgid "Datasets in group: {group}"
-msgstr "Dataset som ingår i gruppen: {group}"
+msgstr "APIer som ingår i gruppen: {group}"
 
 #: ckan/templates/group/snippets/feeds.html:4
 #: ckan/templates/organization/snippets/feeds.html:4
@@ -2843,15 +2843,15 @@ msgstr "Spara gruppen"
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:22
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
-msgstr[0] "{num} dataset"
-msgstr[1] "{num} dataset"
+msgstr[0] "{num} API"
+msgstr[1] "{num} APIer"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:25
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:24
 msgid "0 Datasets"
-msgstr "0 dataset"
+msgstr "0 APIer"
 
 #: ckan/templates/group/snippets/group_item.html:38
 #: ckan/templates/group/snippets/group_item.html:39
@@ -2860,7 +2860,7 @@ msgstr "Visa {name}"
 
 #: ckan/templates/group/snippets/group_item.html:43
 msgid "Remove dataset from this group"
-msgstr "Ta bort dataset från denna grupp"
+msgstr "Ta bort API från denna grupp"
 
 #: ckan/templates/group/snippets/helper.html:4
 msgid "What are Groups?"
@@ -2872,7 +2872,7 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr "Du kan använda CKAN-grupper för att skapa och hantera samlingar av dataset. Det kan användas för att katalogisera dataset för ett visst projekt eller ett team, eller för ett särskilt tema, eller som ett enkelt sätt att hjälpa användare att hitta och söka i dina egna publicerade dataset."
+msgstr "Du kan använda grupper för att skapa och hantera samlingar av APIer. Det kan användas för att katalogisera APIer för ett visst projekt eller ett team, eller för ett särskilt tema, eller som ett enkelt sätt att hjälpa användare att hitta och söka i dina egna publicerade APIer."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -2954,13 +2954,13 @@ msgstr " <p>CKAN is the world’s leading open-source data portal platform.</p> 
 
 #: ckan/templates/home/snippets/promoted.html:8
 msgid "Welcome to CKAN"
-msgstr "Välkommen till CKAN"
+msgstr "Välkommen till API-katalog"
 
 #: ckan/templates/home/snippets/promoted.html:10
 msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
-msgstr "Det här är en trevlig liten introduktionstext om CKAN eller denna webbplats i allmänhet. Vi har ingen färdig text att lägga här ännu men det kommer snart"
+msgstr ""
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -2984,11 +2984,11 @@ msgstr "{0} statistik"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "dataset"
-msgstr "dataset"
+msgstr "API"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "datasets"
-msgstr "dataset"
+msgstr "APIer"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organization"
@@ -3059,11 +3059,11 @@ msgstr "Organisationsformulär"
 #: ckan/templates/organization/bulk_process.html:3
 #: ckan/templates/organization/bulk_process.html:11
 msgid "Edit datasets"
-msgstr "Redigera dataset"
+msgstr "Redigera APIer"
 
 #: ckan/templates/organization/bulk_process.html:6
 msgid "Add dataset"
-msgstr "Lägg till dataset"
+msgstr "Lägg till API"
 
 #: ckan/templates/organization/bulk_process.html:16
 msgid " found for \"{query}\""
@@ -3071,7 +3071,7 @@ msgstr "resultat för \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
-msgstr "Tyvärr hittades inga dataset som matchar \"{query}\""
+msgstr "Tyvärr hittades inga APIer som matchar \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:37
 msgid "Make public"
@@ -3098,7 +3098,7 @@ msgstr "Privat"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr "Denna organisation har inga dataset kopplade till sig"
+msgstr "Denna organisation har inga APIer kopplade till sig"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
@@ -3148,7 +3148,7 @@ msgid ""
 "edit datasets, but not manage organization members.</p> "
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
 "but not add new datasets.</p> "
-msgstr " <p><strong>Administratör:</strong> Kan lägga till, redigera och radera dataset, samt administrera organisationens medlemmar.</p> <p><strong>Redaktör:</strong> Kan lägga till och redigera dataset men inte administrera medlemmar.</p> <p><strong>Medlem:</strong> Kan se organisationens privata dataset men kan inte lägga till nya dataset.</p> "
+msgstr " <p><strong>Administratör:</strong> Kan lägga till, redigera och radera APIer, samt administrera organisationens medlemmar.</p> <p><strong>Redaktör:</strong> Kan lägga till och redigera APIer men inte administrera medlemmar.</p> <p><strong>Medlem:</strong> Kan se organisationens privata APIer men kan inte lägga till nya APIer.</p> "
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3169,11 +3169,11 @@ msgstr "Skapa organisation"
 #: ckan/templates/package/search.html:16
 #: ckan/templates/user/dashboard_datasets.html:7
 msgid "Add Dataset"
-msgstr "Lägg till dataset"
+msgstr "Lägg till API"
 
 #: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
-msgstr "Dataset i organisation: {group}"
+msgstr "APIer i organisation: {group}"
 
 #: ckan/templates/organization/snippets/help.html:4
 #: ckan/templates/organization/snippets/helper.html:4
@@ -3188,14 +3188,14 @@ msgid ""
 "organizations, admins can assign roles and authorise its members, giving "
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
-msgstr " <p>Organisationer utgör publicerande enheter för dataset (t.ex. Kungliga biblioteket). Det innebär att dataset kan publiceras och tillhöra en organisatorisk enhet istället för en enskild person.</p> <p>Inom organisationer kan administratörer tilldela roller och ge behörighet till enskilda personer att publicera dataset från den aktuella organisationen.</p> "
+msgstr " <p>Organisationer utgör publicerande enheter för APIer (t.ex. Kungliga biblioteket). Det innebär att APIer kan publiceras och tillhöra en organisatorisk enhet istället för en enskild person.</p> <p>Inom organisationer kan administratörer tilldela roller och ge behörighet till enskilda personer att publicera APIer från den aktuella organisationen.</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
 " CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
-msgstr "CKAN-organisationer används för att skapa, hantera och publicera samlingar av dataset. Användare kan ha olika roller inom en organisation, beroende på deras behörighet att skapa, redigera och publicera."
+msgstr "Organisationer används för att skapa, hantera och publicera samlingar av APIer. Användare kan ha olika roller inom en organisation, beroende på deras behörighet att skapa, redigera och publicera."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3213,7 +3213,7 @@ msgstr "Lite information om min organisation..."
 msgid ""
 "Are you sure you want to delete this Organization? This will delete all the "
 "public and private datasets belonging to this organization."
-msgstr "Vill du verkligen radera denna organisation? Detta kommer att radera alla publika och privata dataset som hör till denna organisation."
+msgstr "Vill du verkligen radera denna organisation? Detta kommer att radera alla publika och privata APIer som hör till denna organisation."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -3227,22 +3227,22 @@ msgstr "Visa {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Skapa dataset"
+msgstr "Skapa API"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid "What are datasets?"
-msgstr "Vad är dataset?"
+msgstr "Vad är APIer?"
 
 #: ckan/templates/package/base_form_page.html:25
 msgid ""
 " A CKAN Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
-msgstr "Ett dataset i CKAN är en samling av dataresurser (såsom filer), tillsammans med en beskrivning och annan information, som finns tillgänglig på en permanent URL. Dataset är vad användare ser när de söker efter data."
+msgstr "Ett API i API katalog är en samling av dataresurser (såsom filer), tillsammans med en beskrivning och annan information, som finns tillgänglig på en permanent URL. APIer är vad användare ser när de söker efter data."
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
-msgstr "Vill du verkligen radera detta dataset: {name}?"
+msgstr "Vill du verkligen radera detta API: {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
@@ -3250,7 +3250,7 @@ msgstr "Vill du verkligen radera resursen - {name}?"
 
 #: ckan/templates/package/edit_base.html:16
 msgid "View dataset"
-msgstr "Visa dataset"
+msgstr "Visa API"
 
 #: ckan/templates/package/edit_base.html:20
 msgid "Edit metadata"
@@ -3277,7 +3277,7 @@ msgstr "Uppdatera"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Associate this group with this dataset"
-msgstr "Koppla denna grupp till detta dataset"
+msgstr "Koppla denna grupp till detta API"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Add to group"
@@ -3285,15 +3285,15 @@ msgstr "Lägg till till gruppen"
 
 #: ckan/templates/package/group_list.html:23
 msgid "There are no groups associated with this dataset"
-msgstr "Det finns inga grupper kopplade till detta dataset"
+msgstr "Det finns inga grupper kopplade till detta API"
 
 #: ckan/templates/package/new_package_form.html:15
 msgid "Update Dataset"
-msgstr "Uppdatera dataset"
+msgstr "Uppdatera API"
 
 #: ckan/templates/package/new_resource.html:5
 msgid "Add data to the dataset"
-msgstr "Lägg till data till detta dataset"
+msgstr "Lägg till data till detta API"
 
 #: ckan/templates/package/new_resource.html:11
 #: ckan/templates/package/new_resource_not_draft.html:8
@@ -3335,7 +3335,7 @@ msgstr "Lägg till"
 msgid ""
 "This is an old revision of this dataset, as edited at %(timestamp)s. It may "
 "differ significantly from the <a href=\"%(url)s\">current revision</a>."
-msgstr "Detta är en gammal version av detta dataset, redigerad vid %(timestamp)s. Den kan skilja sig markant från den <a href=\"%(url)s\">senaste versionen</a>."
+msgstr "Detta är en gammal version av detta API, redigerad vid %(timestamp)s. Den kan skilja sig markant från den <a href=\"%(url)s\">senaste versionen</a>."
 
 #: ckan/templates/package/related_list.html:7
 msgid "Related Media for {dataset}"
@@ -3429,7 +3429,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "Från sammanfattningen av detta dataset"
+msgstr "Från sammanfattningen av detta API"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
@@ -3521,7 +3521,7 @@ msgstr "Lägg till resurs"
 msgid ""
 " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
 "add some?</a></p> "
-msgstr " <p class=\"empty\">Detta dataset saknar data, <a href=\"%(url)s\">varför inte lägga till några?</a></p> "
+msgstr " <p class=\"empty\">Detta API saknar data, <a href=\"%(url)s\">varför inte lägga till några?</a></p> "
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3604,11 +3604,11 @@ msgstr "t.ex. en beskrivande titel"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:13
 msgid "eg. my-dataset"
-msgstr "t.ex. mitt-dataset"
+msgstr "t.ex. mitt-API"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:19
 msgid "eg. Some useful notes about the data"
-msgstr "t.ex. Några rader om datasetet"
+msgstr "t.ex. Några rader om APIet"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:24
 msgid "eg. economy, mental health, government"
@@ -3648,11 +3648,11 @@ msgid ""
 "agree to release the <i>metadata</i> values that you enter into the form "
 "under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open "
 "Database License</a>."
-msgstr "Den <i>datalicens</i> du valt ovan gäller bara innehållet i resursfiler som du lägger till i detta dataset. Genom att bekräfta detta formulär godkänner du att de <i>metadata</i> du registrerar i formuläret släpps under licensen <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database License</a>."
+msgstr "Den <i>datalicens</i> du valt ovan gäller bara innehållet i resursfiler som du lägger till i detta API. Genom att bekräfta detta formulär godkänner du att de <i>metadata</i> du registrerar i formuläret släpps under licensen <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database License</a>."
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
-msgstr "Är du säker på att du vill radera detta dataset?"
+msgstr "Är du säker på att du vill radera detta API?"
 
 #: ckan/templates/package/snippets/package_form.html:44
 msgid "Next: Add Data"
@@ -3660,7 +3660,7 @@ msgstr "Nästa steg: Lägg till data"
 
 #: ckan/templates/package/snippets/package_metadata_fields.html:6
 msgid "http://example.com/dataset.json"
-msgstr "http://example.com/dataset.json"
+msgstr "http://example.com/api.xml"
 
 #: ckan/templates/package/snippets/package_metadata_fields.html:10
 msgid "1.0"
@@ -3700,7 +3700,7 @@ msgstr "t.ex. Guldpriser januari 2011"
 
 #: ckan/templates/package/snippets/resource_form.html:32
 msgid "Some useful notes about the data"
-msgstr "Beskrivande information om datasetet"
+msgstr "Beskrivande information om APIet"
 
 #: ckan/templates/package/snippets/resource_form.html:37
 msgid "eg. CSV, XML or JSON"
@@ -3804,17 +3804,17 @@ msgstr "Data och resurser"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
-msgstr "Det finns inga data i detta dataset"
+msgstr "Det finns inga data i detta API"
 
 #: ckan/templates/package/snippets/revisions_table.html:24
 #, python-format
 msgid "Read dataset as of %s"
-msgstr "Läste dataset som %s"
+msgstr "Läste API som %s"
 
 #: ckan/templates/package/snippets/stages.html:23
 #: ckan/templates/package/snippets/stages.html:25
 msgid "Create dataset"
-msgstr "Skapa dataset"
+msgstr "Skapa API"
 
 #: ckan/templates/package/snippets/stages.html:30
 #: ckan/templates/package/snippets/stages.html:34
@@ -3864,7 +3864,7 @@ msgid ""
 " dataset.</p> <p>For example, it could be a custom visualisation, pictograph"
 " or bar chart, an app using all or part of the data or even a news story "
 "that references this dataset.</p> "
-msgstr " <p>Relaterad Media är valfri app, artikel, visualisering eller idé som är relaterad till detta dataset.</p> <p>Det kan till exempel vara en egen visualisering, bildtecken, stapeldiagram, en app som använder hela datamängden eller varför inte nyhetsartiklar som refererar till detta dataset.</p> "
+msgstr " <p>Relaterad Media är valfri app, artikel, visualisering eller idé som är relaterad till detta API.</p> <p>Det kan till exempel vara en egen visualisering, bildtecken, stapeldiagram, en app som använder hela datamängden eller varför inte nyhetsartiklar som refererar till detta API.</p> "
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -3900,7 +3900,7 @@ msgstr "Vad är applikationer?"
 msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
-msgstr "Detta är applikationer som byggts med dataset, men även med idéer om vad man kan göra med dem."
+msgstr "Detta är applikationer som byggts med APIer, men även med idéer om vad man kan göra med dem."
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4019,7 +4019,7 @@ msgstr "Ändringar"
 
 #: ckan/templates/revision/read.html:74
 msgid "Datasets' Tags"
-msgstr "Taggar för dataset"
+msgstr "Taggar för API"
 
 #: ckan/templates/revision/snippets/revisions_list.html:7
 msgid "Entity"
@@ -4091,7 +4091,7 @@ msgstr "Licens ej angiven"
 
 #: ckan/templates/snippets/license.html:28
 msgid "This dataset satisfies the Open Definition."
-msgstr "Detta dataset uppfyller kraven i Open Definition."
+msgstr "Detta API uppfyller kraven i Open Definition."
 
 #: ckan/templates/snippets/organization.html:48
 msgid "There is no description for this organization"
@@ -4099,13 +4099,13 @@ msgstr "Denna organisation saknar beskrivning"
 
 #: ckan/templates/snippets/package_item.html:57
 msgid "This dataset has no description"
-msgstr "Detta dataset saknar beskrivning"
+msgstr "Detta API saknar beskrivning"
 
 #: ckan/templates/snippets/related.html:15
 msgid ""
 "No apps, ideas, news stories or images have been related to this dataset "
 "yet."
-msgstr "Inga appar, idéer, nya berättelser eller bilder har relaterats till detta dataset än."
+msgstr "Inga appar, idéer, nya berättelser eller bilder har relaterats till detta API än."
 
 #: ckan/templates/snippets/related.html:18
 msgid "Add Item"
@@ -4134,22 +4134,22 @@ msgstr " <p><strong>Fel vid sökning.</strong> Försök igen.</p> "
 #: ckan/templates/snippets/search_result_text.html:15
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
-msgstr[0] "{number} dataset hittades för \"{query}\""
-msgstr[1] "{number} dataset hittades för \"{query}\""
+msgstr[0] "{number} API hittades för \"{query}\""
+msgstr[1] "{number} APIer hittades för \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:16
 msgid "No datasets found for \"{query}\""
-msgstr "Hittade inga dataset för \"{query}\""
+msgstr "Hittade inga APIer för \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:17
 msgid "{number} dataset found"
 msgid_plural "{number} datasets found"
-msgstr[0] "{number} dataset hittades"
-msgstr[1] "{number} dataset hittades"
+msgstr[0] "{number} API hittades"
+msgstr[1] "{number} APIer hittades"
 
 #: ckan/templates/snippets/search_result_text.html:18
 msgid "No datasets found"
-msgstr "Inga dataset hittades"
+msgstr "Inga APIer hittades"
 
 #: ckan/templates/snippets/search_result_text.html:21
 msgid "{number} group found for \"{query}\""
@@ -4226,7 +4226,7 @@ msgstr "Nyhetsfeed"
 #: ckan/templates/user/dashboard.html:20
 #: ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
-msgstr "Mina dataset"
+msgstr "Mina APIer"
 
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
@@ -4245,7 +4245,7 @@ msgstr "Aktivitet från poster som jag följer"
 #: ckan/templates/user/dashboard_datasets.html:17
 #: ckan/templates/user/read.html:14
 msgid "You haven't created any datasets."
-msgstr "Du har inte skapat något dataset"
+msgstr "Du har inte skapat något APIer"
 
 #: ckan/templates/user/dashboard_datasets.html:19
 #: ckan/templates/user/dashboard_groups.html:22
@@ -4276,7 +4276,7 @@ msgstr "Kontoinformation"
 #: ckan/templates/user/edit.html:19
 msgid ""
 " Your profile lets other CKAN users know about who you are and what you do. "
-msgstr "Din profil visar andra CKAN-användare vem du är och vad du gör."
+msgstr "Din profil visar andra användare vem du är och vad du gör."
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -4416,7 +4416,7 @@ msgstr "Varför registrera sig?"
 
 #: ckan/templates/user/new.html:28
 msgid "Create datasets, groups and other exciting things"
-msgstr "Skapa dataset, grupper och andra spännande ting"
+msgstr "Skapa APIer, grupper och andra spännande ting"
 
 #: ckan/templates/user/new_user_form.html:5
 msgid "username"
@@ -4454,7 +4454,7 @@ msgstr "Ange ett nytt lösenord så blir ditt konto uppdaterat."
 
 #: ckan/templates/user/read.html:21
 msgid "User hasn't created any datasets."
-msgstr "Användaren har inte skapat något dataset."
+msgstr "Användaren har inte skapat något APIer."
 
 #: ckan/templates/user/read_base.html:39
 msgid "You have not provided a biography."
@@ -4553,7 +4553,7 @@ msgstr "Användare {0} har inte behörighet att uppdatera resurs {1}"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:11
 msgid "Datasets per page"
-msgstr "Dataset per sida"
+msgstr "APIer per sida"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:13
 msgid "Test conf"
@@ -4592,7 +4592,7 @@ msgstr "Denna grupp saknar beskrivning"
 
 #: ckanext/example_theme/v12_extra_public_dir/templates/home/snippets/promoted.html:4
 msgid "CKAN's data previewing tool has many powerful features"
-msgstr "Verktyget för förhandsgranskning av data i CKAN har många kraftfulla funktioner"
+msgstr "Verktyget för förhandsgranskning av data i API-katalog har många kraftfulla funktioner"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "Image url"
@@ -4677,7 +4677,7 @@ msgstr "Markeringar för kluster"
 #: ckanext/stats/templates/ckanext/stats/index.html:10
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:57
 msgid "Total number of Datasets"
-msgstr "Totalt antal dataset"
+msgstr "Totalt antal APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:17
 #: ckanext/stats/templates/ckanext/stats/index.html:40
@@ -4686,26 +4686,26 @@ msgstr "Datum"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:18
 msgid "Total datasets"
-msgstr "Totalt antal dataset"
+msgstr "Totalt antal APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:33
 #: ckanext/stats/templates/ckanext/stats/index.html:179
 msgid "Dataset Revisions per Week"
-msgstr "Versioner av dataset per vecka"
+msgstr "Versioner av API per vecka"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:41
 msgid "All dataset revisions"
-msgstr "Alla versioner av detta dataset"
+msgstr "Alla versioner av detta API"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:42
 msgid "New datasets"
-msgstr "Nya dataset"
+msgstr "Nya APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:58
 #: ckanext/stats/templates/ckanext/stats/index.html:180
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:63
 msgid "Top Rated Datasets"
-msgstr "Högst rankade dataset"
+msgstr "Högst rankade APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:64
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
@@ -4726,7 +4726,7 @@ msgstr "Inga betyg"
 #: ckanext/stats/templates/ckanext/stats/index.html:181
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:72
 msgid "Most Edited Datasets"
-msgstr "Mest redigerade dataset"
+msgstr "Mest redigerade APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
@@ -4735,7 +4735,7 @@ msgstr "Antal redigeringar"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:103
 msgid "No edited datasets"
-msgstr "Inga redigerade dataset"
+msgstr "Inga redigerade APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:108
 #: ckanext/stats/templates/ckanext/stats/index.html:182
@@ -4746,7 +4746,7 @@ msgstr "Största grupper"
 #: ckanext/stats/templates/ckanext/stats/index.html:114
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:82
 msgid "Number of datasets"
-msgstr "Antal dataset"
+msgstr "Antal APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:127
 msgid "No groups"
@@ -4765,12 +4765,12 @@ msgstr "Taggnamn"
 #: ckanext/stats/templates/ckanext/stats/index.html:137
 #: ckanext/stats/templates/ckanext/stats/index.html:157
 msgid "Number of Datasets"
-msgstr "Antal dataset"
+msgstr "Antal APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:152
 #: ckanext/stats/templates/ckanext/stats/index.html:184
 msgid "Users Owning Most Datasets"
-msgstr "Användare med flest dataset"
+msgstr "Användare med flest APIer"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:175
 msgid "Statistics Menu"
@@ -4778,7 +4778,7 @@ msgstr "Statistikmeny"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:178
 msgid "Total Number of Datasets"
-msgstr "Totalt antal dataset"
+msgstr "Totalt antal APIer"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:6
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:8
@@ -4787,11 +4787,11 @@ msgstr "Statistik"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:60
 msgid "Revisions to Datasets per week"
-msgstr "Ändringar av dataset per vecka"
+msgstr "Ändringar av APIer per vecka"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:95
 msgid "Users owning most datasets"
-msgstr "Användare med flest dataset"
+msgstr "Användare med flest APIer"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:102
 msgid "Page last updated:"
@@ -4803,13 +4803,13 @@ msgstr "Topplista"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:17
 msgid "Dataset Leaderboard"
-msgstr "Topplista dataset "
+msgstr "Topplista APIer "
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:18
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
-msgstr "Välj ett datasetattribut och se vilka kategorier i det området som har flest dataset, t.ex. taggar, grupper, licens, format, land."
+msgstr "Välj ett API attribut och se vilka kategorier i det området som har flest APIer, t.ex. taggar, grupper, licens, format, land."
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
