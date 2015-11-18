@@ -918,7 +918,7 @@ msgstr "{actor} poisti lisäkentän {extra} liitynnästä {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} poisti rajapintan {resource} liitynnästä {dataset}"
+msgstr "{actor} poisti rajapinnan {resource} liitynnästä {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
