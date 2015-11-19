@@ -1,40 +1,39 @@
 ---
 
-- name: Create SSL path
-  file: path="{{ certificates_path }}" state=directory mode=0755 owner=root group="{{ www_group }}"
+- name: Ensure SSL certificate directory
+  file: path="{{ ssl_certificate_path }}" state=directory mode="0750" owner=root group="{{ www_username }}"
 
-- name: Copy SSL files
-  copy: src="{{ ssl_path }}/{{ item }}" dest={{ certificates_path }}/{{ item }} owner=root group="{{ www_group }}" mode=640
-  when: ssl_path != false
+# Insecure key should only be used with Vagrant
+- name: Copy certificate and key on Vagrant
+  copy: src={{ item.src }} dest={{ ssl_certificate_path }}/{{ item.dest }} mode="0640" owner=root group=root
   with_items:
-    - "{{ ssl_crt_primary }}"
-    - "{{ ssl_crt_secondary }}"
-    - "{{ ssl_key_primary }}"
-    - "{{ ssl_key_secondary }}"
+    - { "src": "local_vagrant_ssl.cert", "dest": "{{ ssl_cert_filename }}" }
+    - { "src": "local_vagrant_ssl.key", "dest": "{{ ssl_key_filename }}" }
+  when: deployment_environment_id == "vagrant"
 
-# FIXME: This generates a signing certificate, not an actual SSL cert, should be fixed
-#- name: Generate self-signed SSL certificate
-#  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ public_facing_hostname }}" -days 3650 -keyout "{{ certificates_path }}/{{ ssl_key_primary }}" -out "{{ certificates_path }}/{{ ssl_crt_primary }}" -extensions v3_ca creates="{{ certificates_path }}/{{ ssl_crt_primary }}"
-#  register: generate_certificates
-#  when: ssl_path == false
+- name: Ensure certificate file permissions
+  file: path="{{ ssl_certificate_path }}" state=directory mode="0640" recurse=yes owner=root group="{{ www_username }}"
 
-- name: Generate signing key
-  command: openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-  when: ssl_path == false
+- name: Get certificate file information
+  stat: path="{{ ssl_certificate_path }}/{{ ssl_cert_filename }}"
+  register: cert_file_stat
 
-- name: Generate server key
-  command: openssl rsa -passin pass:x -in server.pass.key -out "{{ certificates_path }}/{{ ssl_key_primary }}"
-  when: ssl_path == false
+- name: Get certificate file information
+  stat: path="{{ ssl_certificate_path }}/{{ ssl_key_filename }}"
+  register: key_file_stat
 
-- name: Generate server signing request
-  command: openssl req -new -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ public_facing_hostname }}" -key "{{ certificates_path }}/{{ ssl_key_primary }}" -out server.csr
-  when: ssl_path == false
+# Certificates should always be present. On Vagrant, insecure certificate is
+# copied from public repository. On servers, certificates have been installed
+# manually. For now, Ansible does not handle production certificates.
+- name: Assert that certificate and key exist
+  assert:
+    that:
+      - "cert_file_stat.stat.exists == True"
+      - "key_file_stat.stat.exists == True"
 
-- name: Generate server certificate
-  command: openssl x509 -req -days 3650 -in server.csr -signkey "{{ certificates_path }}/{{ ssl_key_primary }}" -out "{{ certificates_path }}/{{ ssl_crt_primary }}"
-  register: generate_certificates
-  when: ssl_path == false
-
-- name: Ensure certificates ownership
-  shell: chmod 640 {{ certificates_path }}/* && chown "root:{{ www_group }}" {{ certificates_path }}/*
-  when: ssl_path == false and generate_certificates|changed
+- name: Assert that vagrant certificate is not used on public servers
+  assert:
+    that:
+      - "cert_file_stat.stat.checksum != 'bbde09620527350eee80c9e1b9f8050c690a60a9'"
+      - "key_file_stat.stat.checksum != '60f2d0976a639ba4f3ed9397592dc37a67dfa8b0'"
+  when: deployment_environment_id != "vagrant"

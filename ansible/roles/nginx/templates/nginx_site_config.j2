@@ -1,7 +1,7 @@
 
 server {
 
-  listen 80;
+  listen 443 ssl;
   server_name {{ public_facing_hostname }};
 
   location / {
@@ -14,8 +14,15 @@ server {
 {% if nginx.alternative_hostnames %}
 # Redirect from alternative hostnames to primary hostname
 server {
-  listen 80;
+  listen 443 ssl;
   server_name {{ nginx.alternative_hostnames }};
   return 301 http://{{ public_facing_hostname }}$request_uri;
 }
 {% endif %}
+
+# Redirect HTTP to HTTPS
+server {
+  listen 80;
+  server_name {{ public_facing_hostname }};
+  return 301 https://$server_name$request_uri;
+}
