@@ -2955,7 +2955,10 @@ msgstr "Welcome to API catalog"
 msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
-msgstr "API catalog is an index of interfaces within the National Data Exchange Layer. This is a demo version and does not contain any real data."
+msgstr ""
+"<p>The API catalogue is an up-to-date index of APIs within the National Data Exchange Layer.  The purpose of the API catalogue is to help service providers and realisers to develop more efficient electronic services and support the reuse of data. The API catalogue contains descriptions of electronic services whose data is available for use by other information systems.</p>"
+"<p>The API catalogue website is still being created. Registration is not possible during the beta phase.</p>"
+"<p>The API catalogue is provided by the Population Register Centre as part of the national service architecture programme (KaPA).</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"

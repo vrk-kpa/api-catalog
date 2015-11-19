@@ -2960,7 +2960,10 @@ msgstr "Välkommen till API-katalogen"
 msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
-msgstr "API-katalogen är en aktuell katalog över API:erna i den nationella servicekanalen.  Syftet med API-katalogen är att hjälpa producenter och tillhandahållare av tjänster att utveckla effektivare elektroniska tjänster och stödja återanvändning av uppgifterna. I API-katalogen beskrivs elektroniska tjänster som tillåter att uppgifter som behandlas i dessa tjänster också kan används i andra datasystem. The API catalogue website is still being created. Registration is not possible during the beta phase. The API catalogue is provided by the Population Register Centre as part of the national service architecture programme (KaPA)."
+msgstr ""
+"<p>API-katalogen är en aktuell katalog över API:erna i den nationella servicekanalen.  Syftet med API-katalogen är att hjälpa producenter och tillhandahållare av tjänster att utveckla effektivare elektroniska tjänster och stödja återanvändning av uppgifterna. I API-katalogen beskrivs elektroniska tjänster som tillåter att uppgifter som behandlas i dessa tjänster också kan används i andra datasystem.</p>"
+"<p>Webbplatsen för API-katalogen kommer att utvecklas vidare. Registrering är inte möjlig i beta-skedet</p>"
+"<p>API-katalogen produceras av Befolkningsregistercentralen som en del av programmet för den nationella servicearkitekturen KaPA.</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
