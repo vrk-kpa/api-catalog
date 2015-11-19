@@ -25,8 +25,8 @@ who.log_file = %(cache_dir)s/who_log.ini
 
 sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
 
-ckan.site_url = http://{{ public_facing_hostname }}
-ckan.site_url_internally = http://{{ public_facing_hostname }}/data/
+ckan.site_url = https://{{ public_facing_hostname }}
+ckan.site_url_internally = https://{{ public_facing_hostname }}/data/
 
 ckan.auth.anon_create_dataset = false
 ckan.auth.create_unowned_dataset = false

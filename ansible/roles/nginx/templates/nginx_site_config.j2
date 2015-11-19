@@ -16,7 +16,7 @@ server {
 server {
   listen 443 ssl;
   server_name {{ nginx.alternative_hostnames }};
-  return 301 http://{{ public_facing_hostname }}$request_uri;
+  return 301 https://{{ public_facing_hostname }}$request_uri;
 }
 {% endif %}
 
