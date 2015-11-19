@@ -2,14 +2,14 @@
 
 This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interaces available on the data exchange layer.
 
-A demo of the catalog is available at [liityntakatalogi.qa.suomi.fi](http://liityntakatalogi.qa.suomi.fi/)
+The catalog is available at [liityntakatalogi.suomi.fi](http://liityntakatalogi.suomi.fi/). A development sandbox of the catalog is available at [liityntakatalogi.qa.suomi.fi](http://liityntakatalogi.qa.suomi.fi/)
 
 ### Getting started
 
 Prerequisites:
 
 - [Vagrant](https://www.vagrantup.com/) (tested on 1.7.4)
-- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.0)
+- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.8)
 
 Start up the vagrant:
 
@@ -17,7 +17,7 @@ Start up the vagrant:
 
 After [Ansible](http://www.ansible.com/) provisions the system, the service will be running in the virtual machine and is available from your host machine at http://10.100.10.10/
 
-Admin user credentials are `admin:admin` and a regular user is `test:test`.
+User credentials for an administrator are `admin:admin`, and `test:test` for a regular user.
 
 To reprovision the server (i.e. to run Ansible) again:
 
