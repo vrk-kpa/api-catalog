@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block primary_content_inner %}
+  <div data-module="form_redirect_if_unchanged"
+       data-module-cancel-url="{% url_for controller='package', action='read', id=pkg.name %}"
+       data-module-form-selector="#dataset-edit">
+    {{ super() }}
+  </div>
+{% endblock %}
