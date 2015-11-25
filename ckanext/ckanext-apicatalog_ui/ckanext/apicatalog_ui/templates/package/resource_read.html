@@ -71,6 +71,7 @@
       </div>
       {% block data_preview %}
       {% block resource_view %}
+        <div class="hidden-xs"><div class="hidden-sm">
         {% block resource_view_nav %}
           {% set resource_preview = h.resource_preview(c.resource, c.package) %}
           {% snippet "package/snippets/resource_views_list.html",
@@ -127,6 +128,7 @@
             </div>
           {% endblock %}
         </div>
+      </div></div>
       {% endblock %}
       {% endblock %}
       {% endblock %}
