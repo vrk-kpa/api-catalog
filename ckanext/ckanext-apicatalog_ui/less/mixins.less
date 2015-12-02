@@ -11,6 +11,13 @@
   hyphens: auto;
 }
 
+.border-radius(@radius){
+    .border-top-radius(@radius);
+    .border-right-radius(@radius);
+    .border-bottom-radius(@radius);
+    .border-left-radius(@radius);
+}
+
 .transition (@transition) {
   -webkit-transition: @transition;
   -moz-transition: @transition;
