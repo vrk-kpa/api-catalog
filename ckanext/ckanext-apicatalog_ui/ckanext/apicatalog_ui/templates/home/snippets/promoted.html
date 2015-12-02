@@ -1,20 +1,13 @@
-{% set intro = g.site_intro_text %}
-
 <div class="hero-module module-content">
   <header>
-    {% if intro %}
-      {{ h.render_markdown(intro) }}
-    {% else %}
       <h1 class="page-heading h1-bolder">{{ _("Welcome to CKAN") }}</h1>
       <p>
         {% trans %}This is a nice introductory paragraph about CKAN or the site
         in general. We don't have any copy to go here yet but soon we will
         {% endtrans %}
       </p>
-    {% endif %}
   </header>
 
   {% block home_image %}
-  
   {% endblock %}
 </div>

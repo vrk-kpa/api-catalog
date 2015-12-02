@@ -1,6 +1,8 @@
 {% set tags = h.get_facet_items_dict('tags', limit=3) %}
 {% set placeholder = _('E.g. environment') %}
 
+{# Add hero-module class and change control-group to form-group #}
+
 <div class="hero-module module module-search module-narrow module-shallow box">
   <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
     <h3 class="heading">{{ _("Search data") }}</h3>

@@ -1,18 +1,7 @@
-{#
-Renders a media item for a group. This should be used in a list.
+{% ckan_extends %}
+{# Using media-objects inside list-group-items (Bootstrap 3)
+   instead of media-items (Bootstrap 2) #}
 
-group - A group dict.
-
-Example:
-
-    <ul class="media-grid">
-      {% for group in groups %}
-        {% snippet "group/snippets/group_item.html", group=group %}
-      {% endfor %}
-    </ul>
-#}
-{% set type = group.type or 'group' %}
-{% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
 {% block item %}
 <li class="list-group-item kapa-item">
   <div class="media">
@@ -54,6 +43,3 @@ Example:
   {% endblock %}
 </li>
 {% endblock %}
-{% if position is divisibleby 3 %}
-  <li class="clearfix js-hide"></li>
-{% endif %}
