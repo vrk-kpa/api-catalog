@@ -17,14 +17,36 @@
   vertical-align:middle;
 }
 
+.support-sites-label {
+  color: #fff;
+  background: #464a4d;
+  text-transform: uppercase;
+
+  span {
+    height: @account-masthead-height;
+    display: inline-block;
+    padding: 8px 10px 0 10px;
+  }
+
+}
+
+.informational-text .support-site-text {
+  text-transform: lowercase;
+}
+
 .navbar {
   border: none;
 }
+
+.navbar > .container {
+  background-color: @mastheadBackgroundColor;
+}
+
 .navbar-nav {
+  z-index: @zindex-navbar;
   float:none;
   margin:auto;
   text-align: center;
-  z-index: 99999;
   > li {
     border:none;
     float:none;
@@ -33,7 +55,6 @@
 }
 
 .navbar-logo-text {
-
   display: inline-block;
   margin-top: 9px;
   a {
@@ -43,9 +64,12 @@
   }
 }
 
+#profile > a > span.username {
+  color:white;
+}
+
 .language-navbar {
   .clearfix();
-
   min-height: @account-masthead-height;
   background: @accountMastheadColor;
   color: @header-inactive-color;
@@ -63,7 +87,7 @@
     border-left: 1px solid @header-divider-color;
   }
   .navbar-nav .list-inline li div {
-    padding-top: 7px;
+    padding-top: 5px;
     border-top: 3px solid @accountMastheadColor;
 
     &:hover {
@@ -87,47 +111,49 @@
 }
 
 .main-navbar {
+  z-index: @zindex-navbar - 1;
   font-size:16px;
-  
+  height:@masthead-height;
+
   -webkit-box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
-  z-index: 9999;
 
   a {
     color: @mastheadLinkColor;
   }
-  
   .navbar-collapse {
     padding-left: 0px;
     padding-right: 0px;
   }
 
+  /*
   .navbar-collapse[aria-expanded="true"] {
+
+
+    background-color: @kapa-main-light-grey;
     @media (max-width: 768px) {
       border-top: 1px solid @genericBorderColor;
     }
-  }
+  }*/
 
   .navigation {
-    li {
-      a {
-        text-transform: uppercase;
-      }
+    .main-navigation li a {
+      text-transform: uppercase;
+    }
 
-      // Triangle below active navigation
-      @media (min-width: 768px) {
-        &.active a:after {
-          content: "";
-          width: 0;
-          height: 0;
-          border-left: 8px solid transparent;
-          border-right: 8px solid transparent;
-          border-top: 8px solid @kapa-attention-color;
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          margin-left: -8px;
-        }
+    // Triangle below active navigation
+    @media (min-width: 768px) {
+      &.active a:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid @kapa-attention-color;
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -8px;
       }
     }
   }
@@ -138,17 +164,19 @@
     left: 10px;
     color: rgba(255, 255, 255, 0.5);
   }
+
 }
 
-#profile a img {
-  border-radius: 10px;
-}
-.account ul {
-  .clearfix();
-  li {
-    a {
-    }
+.account {
+  .nav > li > a,
+  .nav > li > a:hover,
+  .nav > li > a:active
+  .nav > li > a:visited, {
+    padding: 8px 10px;
+    color: @kapa-active-link;
+    background-color: transparent !important;
   }
+  .clearfix();
   .notifications {
     a {
       span.badge {
@@ -163,15 +191,6 @@
       span.badge {
         color: @mastheadLinkColor;
         background-color: @notificationsBg;
-      }
-    }
-  }
-  &.authed {
-    .image {
-      padding: 0 6px;
-      img {
-        vertical-align: -6px;
-        .border-radius(11px);
       }
     }
   }
