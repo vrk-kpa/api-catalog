@@ -11,15 +11,17 @@
 @font-family-base: 'SourceSans';
 
 // For <h1> tags, the correct font weight is 'bolder'.
-// This is fixed manually in since bootstrap doesn't allow
-@headings-font-weight: bold;
+@headings-font-weight: bolder;
 
+@kapa-deep-black: #0f1317;
+@kapa-light-grey: #ececec;
 
-@kapa-black: #2c2c2c;
-@kapa-light-grey: #f2f2f2;
 @kapa-dark-grey: #D9D9D9;
 @kapa-vdark-grey: #464a4d;
-@kapa-bluish-grey: #e9edf0;
+
+@kapa-black: #2c2c2c;
+@kapa-main-light-grey: #ececec;
+
 @kapa-attention-color: #1998ff;
 @kapa-attention-color-dark: #0a77d1;
 @kapa-secondary-attention-color: #f25d0d;
@@ -30,7 +32,7 @@
 @kapa-header-color:       @kapa-light-grey;
 @kapa-box-border-color:   @kapa-dark-grey;
 @kapa-darker-header:      @kapa-dark-grey;
-@kapa-box-header-color:   @kapa-bluish-grey;
+@kapa-box-header-color:   @kapa-main-light-grey;
 @breadcrumb-active-color: @kapa-dark-grey;
 @header-divider-color:    #3d3d3d;
 @header-inactive-color:   #cbcbcb;
@@ -44,7 +46,7 @@
 
 @layoutTextColor: #444;
 @layoutBoldColor: #000;
-@layoutLinkColor: @kapa-attention-color;
+@layoutLinkColor: @kapa-black;
 @layoutBackgroundColor: #f9f9f9;
 @layoutTrimBackgroundColor: #fff;
 @layoutTrimBorderColor: @kapa-box-border-color;
@@ -53,7 +55,7 @@
 @navActiveBackgroundColor: #f6f6f6;
 
 // Module Variables
-@moduleBackgroundColor: #f9f9f9;
+@moduleBackgroundColor: #ffffff;
 @moduleHeadingBorderColor: @kapa-box-border-color;
 @moduleHeadingBackgroundColor: @kapa-box-header-color;
 @moduleHeadingActionTextColor: #888;
