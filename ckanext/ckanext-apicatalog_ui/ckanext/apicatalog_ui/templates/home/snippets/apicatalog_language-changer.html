@@ -2,7 +2,7 @@
 {% set current_lang = request.environ.CKAN_LANG %}
 
 <ul class="list-inline language-changer">
-  <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}">Suomeksi</a></div>
-  </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}">På Svenska</a></div>
-  </li><li><div {% if current_lang == 'en_GB' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en_GB' %}">In English</a></div></li>
+  <li><div {% if current_lang == 'fi' %} class="active" {% endif %}><a href="{% url_for current_url, locale='fi' %}"><span class="hidden-xs">Suomeksi</span><span class="visible-xs">FI<span></a></div>
+  </li><li><div {% if current_lang == 'sv' %} class="active" {% endif %}><a href="{% url_for current_url, locale='sv' %}"><span class="hidden-xs">På Svenska</span><span class="visible-xs">SV<span></a></div>
+  </li><li><div {% if current_lang == 'en_GB' %} class="active" {% endif %}><a href="{% url_for current_url, locale='en_GB' %}"><span class="hidden-xs">In English</span><span class="visible-xs">EN<span></a></div></li>
 </ul>
