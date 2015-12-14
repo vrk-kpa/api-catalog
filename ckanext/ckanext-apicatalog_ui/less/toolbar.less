@@ -63,18 +63,30 @@
 
 .page-header {
   .clearfix;
+  background-color: #f9f9f9;
   border-bottom: 1px solid @moduleHeadingBorderColor;
-  background-color: @moduleHeadingBackgroundColor;
   .border-radius(0 3px 0 0);
+  @media(max-width: 768px) {
+  .border-radius(0 0 0 0);
+  }
   .nav-tabs {
     float: left;
     margin-bottom: -1px;
+
+    li a {
+      color: @kapa-vdark-grey;
+    }
+
     li.active a {
-      background-color: @moduleBackgroundColor;
-      font-weight:bold;
+      color: @kapa-deep-black;
+      background-color: #fff;
     }
   }
   .content_action {
+    a {
+      color: @kapa-deep-black;
+    }
+
     float: right;
     margin-top: -5px;
     margin-right: -7px;
@@ -103,17 +115,20 @@
 }
 
 @media (max-width: 768px) {
-  .page-header .nav-tabs {
-    margin:5px 10px 10px -5px;
-    border:none;
+  .page-header {
+    padding: 0px 10px;
   }
-  .page-header .nav-tabs > li {
-    float: none;
+  .page-header .nav-tabs > li > a {
+    padding: 5px 8px;
+    i {
+      display:none;
+    }
    }
 
-   .page-header .nav-tabs > .active > a,
-   .page-header .nav-tabs > .active > a:hover,
-   .page-header .nav-tabs > .active > a:focus {
+   .page-header .nav-tabs > a,
+   .page-header .nav-tabs > a:hover,
+   .page-header .nav-tabs > a:focus {
+      padding: 10px 5px;
       border-bottom-color:#dddddd;
    }
 }
