@@ -7,8 +7,14 @@
   margin-left:0;
 }
 .pull-right-sm-up {
+
   @media(min-width:768px) {
-    .pull-right();
+    //.pull-right();
+    margin-left: 0 !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
   }
 }
 .border-right, .border-left, .border-both {

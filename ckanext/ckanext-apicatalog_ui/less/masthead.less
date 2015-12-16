@@ -5,7 +5,7 @@
 
 .beta {
   text-transform: uppercase;
-  display:inline-block;
+  display: inline-block;
   color: @white;
   background: @kapa-attention-color;
   @beta-height: @font-size-base / 1.41;
@@ -16,18 +16,43 @@
   padding-right: 4px;
   vertical-align:middle;
 }
-
+.placeright-sm-up {
+  @media(min-width: 768px) {
+    .placeright();
+  }
+}
+.placeright {
+  margin-left: 0 !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
 .support-sites-label {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -4px;
+  text-align: center;
   color: #fff;
-  background: #464a4d;
   text-transform: uppercase;
 
   span {
-    height: @account-masthead-height;
+    background: #464a4d;
     display: inline-block;
+    height: 100%;
+    font-weight: 400;
+    height: @account-masthead-height;
     padding: 8px 10px 0 10px;
   }
+}
 
+.centered {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .informational-text .support-site-text {
@@ -54,9 +79,15 @@
   }
 }
 
-.navbar-logo-text {
+#navbar-logo-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3px 0;
+  padding-left: 15px;
   display: inline-block;
   margin-top: 9px;
+  z-index: @zindex-navbar - 1;
   a {
     font-size: 18px;
     font-weight: bold;
@@ -86,6 +117,7 @@
   .navbar-nav .list-inline li:not(:first-child) {
     border-left: 1px solid @header-divider-color;
   }
+
   .navbar-nav .list-inline li div {
     padding-top: 5px;
     border-top: 3px solid @accountMastheadColor;
@@ -99,22 +131,22 @@
     }
   }
 
-  .navbar-nav .list-inline .active
-  {
+  .navbar-nav .list-inline .active {
     border-top: 3px solid @kapa-attention-color;
-
     a {
-      color:white;
+      color: white;
     }
-
   }
 }
 
 .main-navbar {
+  .container {
+    position: relative;
+  }
+
   z-index: @zindex-navbar - 1;
   font-size:16px;
   height:@masthead-height;
-
   -webkit-box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
 
@@ -122,25 +154,31 @@
     color: @mastheadLinkColor;
   }
   .navbar-collapse {
+    background-color: @kapa-main-light-grey;
     padding-left: 0px;
     padding-right: 0px;
   }
 
-  /*
+  .navbar-collapse.collapse.in,
+  .navbar-collapse.collapsing {
+    @media (max-width: 768px) {
+      margin-top: @navbar-height;
+    }
+  }
+
   .navbar-collapse[aria-expanded="true"] {
-
-
-    background-color: @kapa-main-light-grey;
     @media (max-width: 768px) {
       border-top: 1px solid @genericBorderColor;
     }
-  }*/
+  }
 
-  .navigation {
-    .main-navigation li a {
+  .main-navigation {
+    li a {
       text-transform: uppercase;
     }
+  }
 
+  .navigation {
     // Triangle below active navigation
     @media (min-width: 768px) {
       &.active a:after {
@@ -164,7 +202,6 @@
     left: 10px;
     color: rgba(255, 255, 255, 0.5);
   }
-
 }
 
 .account {
@@ -173,6 +210,7 @@
   .nav > li > a:active
   .nav > li > a:visited, {
     padding: 8px 10px;
+    padding-right: 0px;
     color: @kapa-active-link;
     background-color: transparent !important;
   }
