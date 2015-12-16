@@ -11,6 +11,9 @@
     - { "src": "local_vagrant_ssl.key", "dest": "{{ ssl_key_filename }}" }
   when: deployment_environment_id == "vagrant"
 
+- name: Generate strong Diffie-Hellman key exchange parameters
+  command: "openssl dhparam -out {{ ssl_dh_parameters_path }} 2048 creates={{ ssl_dh_parameters_path }}"
+
 - name: Ensure certificate file permissions
   file: path="{{ ssl_certificate_path }}" state=directory mode="0600" recurse=yes owner=root group=root
 
