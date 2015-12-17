@@ -15,21 +15,22 @@
     z-index: 2;
   }
 }
-.border-right, .border-left, .border-both {
-    position: relative;
+@media (min-width: 768px) {
+  .border-right, .border-left, .border-both {
+      position: relative;
+  }
+  .border-left:before, .border-right:after {
+      position: absolute;
+      content:'';
+      height: auto;
+      top: 0px;
+      bottom: 0px;
+      border-right: 1px solid @genericBorderColor;
+      width: 0;
+  }
+  .border-left:before { left: 0px; }
+  .border-right:after { right: -1px; }
 }
-.border-left:before, .border-right:after {
-    position: absolute;
-    content:'';
-    height: auto;
-    top: 0px;
-    bottom: 0px;
-    border-right: 1px solid @genericBorderColor;
-    width: 0;
-}
-.border-left:before { left: 0px; }
-.border-right:after { right: -1px; }
-
 .wrapper.no-nav {
   background-image: none;
 }
