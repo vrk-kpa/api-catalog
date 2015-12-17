@@ -56,9 +56,6 @@
   }
 }
 
-.kapa-item p {
-  .multiline-ellipsis(2);
-}
 
 .media-view {
   position: absolute;
@@ -90,14 +87,28 @@
   .border-radius(4px);
 }
 
-.kapa-item .media-body {
-  padding-left: 10px;
+.kapa-item {
+  &:first-child {
+    margin-top: 10px;
+  }
+  .media-body {
+    padding-left: 10px;
+  }
+  p {
+    .multiline-ellipsis(2);
+  }
+  input {
+    position: absolute;
+    top: 0;
+    right: 0
+  }
 }
 
 .media-heading {
   font-size: 18px;
   line-height: 1.3;
   margin: 5px 0;
+  margin-right: 50px; // To prevent overlap with `.kapa-item input`
   .break-word();
 }
 
