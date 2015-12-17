@@ -14,7 +14,6 @@ http {
     keepalive_timeout 65;
     types_hash_max_size 2048;
 
-    ssl on;
     ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
     ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
