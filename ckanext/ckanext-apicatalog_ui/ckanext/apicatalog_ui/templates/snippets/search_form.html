@@ -20,3 +20,10 @@
 
 {% block search_facets %}
 {% endblock %}
+
+
+{% block search_title %}
+  {% if not no_title %}
+    <h4 class="search-result-text">{% snippet 'snippets/search_result_text.html', query=query, count=count, type=type %}</h4>
+  {% endif %}
+{% endblock %}
