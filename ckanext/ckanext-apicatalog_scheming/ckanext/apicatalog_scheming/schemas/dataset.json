@@ -134,7 +134,7 @@
     {
       "field_name": "format",
       "label": "Format",
-      "preset": "resource_format_autocomplete"
+      "preset": "apicatalog_resource_format_autocomplete"
     },
     {
       "field_name": "validSince",
