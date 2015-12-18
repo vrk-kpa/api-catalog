@@ -25,6 +25,10 @@
   }
   .navbar-offcanvas.in {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  }
+  .navbar-offcanvas.in:first-child {
+    margin-top:40px;
   }
   .navbar-offcanvas.navbar-offcanvas-fade {
     opacity: 0;
@@ -44,6 +48,7 @@
     left: auto;
     right: -250px;
   }
+
   .navbar-offcanvas.navbar-offcanvas-right.offcanvas-transform.in {
     -webkit-transform: translateX(-250px);
     -ms-transform: translateX(-250px);
@@ -69,7 +74,9 @@
     display: block;
     margin-bottom: 10px;
   }
-
+  .offcanvas-button-wrapper-right {
+    height: 32px;
+  }
 }
 
 .offcanvas-button-wrapper-left {
@@ -78,7 +85,7 @@
   left: 0;
 
   .offcanvas-label {
-    margin-left: 20px;
+    margin-left: 10px;
   }
   .offcanvas-toggle {
     padding-left: 50px;
@@ -88,6 +95,7 @@
 .offcanvas-button-wrapper-right {
   margin: 0;
   width: 100%;
+
   .offcanvas-toggle {
     margin: 0;
   }
@@ -96,37 +104,23 @@
     border-radius: 0;
     border: none;
     width:100%;
+    border-bottom: 1px solid @moduleHeadingBorderColor;
     > span {
       float:right;
     }
+
   }
-
 }
-
-
 .offcanvas-label {
   margin-left: 20px;
   line-height: 50px;
   font-style: italic;
 }
-
 .offcanvas-toggle {
   background: #f8f8f8;
-  margin: 10px 0 10px 0;
-
+  margin: 10px 0 10px -20px;
   border-radius:4px;
   border: 2px solid @kapa-input-border;
-/*
-float: left;
-margin-left: 15px;
-padding: 9px 10px;
-margin-top: 5.5px;
-margin-bottom: 5.5px;
-background-color: transparent;
-background-image: none;
-border: 1px solid transparent;
-border-radius: 4px;
-*/
 }
 .offcanvas-toggle .icon-bar {
   background: #000;
@@ -145,4 +139,12 @@ border-radius: 4px;
   -webkit-transform: rotate(-45deg) translate(4px, -4px);
   -ms-transform: rotate(-45deg) translate(4px, -4px);
   transform: rotate(-45deg) translate(4px, -4px);
+}
+.no-nav .offcanvas-button-row {
+  display: none !important;
+}
+.offcanvas-button-row {
+  height: 55px;
+  padding-left: 80px;
+  margin: 0;
 }

@@ -218,13 +218,22 @@
 .module .module-tags {
   padding-bottom: 8px;
 }
-
 .secondary,
 .primary {
-  .module:first-child {
+  .module {
     margin-top: 0;
   }
 }
+/*
+// Keep margin in responsive sidebar to make space for close button
+@media(min-width: @screen-sm-min) {
+  .secondary {
+    .module:first-child {
+      margin-top: 0;
+    }
+  }
+}
+*/
 .secondary {
   background-color: @moduleBackgroundColor;
 }
