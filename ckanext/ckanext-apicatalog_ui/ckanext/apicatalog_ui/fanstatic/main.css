@@ -7159,16 +7159,6 @@ button.close {
 .primary .module {
   margin-top: 0;
 }
-/*
-// Keep margin in responsive sidebar to make space for close button
-@media(min-width: @screen-sm-min) {
-  .secondary {
-    .module:first-child {
-      margin-top: 0;
-    }
-  }
-}
-*/
 .secondary {
   background-color: #ffffff;
 }
@@ -8945,7 +8935,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 .page-header:after {
   clear: both;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .page-header {
     border-top-right-radius: 0 0 0 0;
     border-bottom-right-radius: 0 0 0 0;
@@ -8989,7 +8979,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   margin-left: -15px;
   margin-right: -15px;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .page-header {
     padding: 0px 10px;
   }
