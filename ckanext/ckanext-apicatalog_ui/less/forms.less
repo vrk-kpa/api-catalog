@@ -129,7 +129,7 @@ form .control-order-by {
   margin-bottom: 0; // Prevents reduces the padding when included in a module.
   padding-bottom: 0;
 }
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .form-actions {
     text-align: right;
   }
@@ -141,7 +141,7 @@ form .control-order-by {
   color: @formInfoText;
   margin: 0;
 }
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .form-actions .action-info {
     float: left;
     width: 50%;
@@ -153,7 +153,7 @@ form .control-order-by {
   line-height: 1.2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: @screen-xs-max) {
   .form-actions .btn {
     margin-top:5px;
   }
@@ -322,7 +322,7 @@ form .control-order-by {
 }
 
 // Custom Fields
-@media (max-width: 768px) {
+@media (max-width: @screen-xs-max) {
   [data-module="custom-fields"] {
     .input-group .input-group-addon {
       display:block;
@@ -595,7 +595,7 @@ form .control-order-by {
   line-height: 27px;
   z-index: -1;
 }
-@media (max-width: 768px) {
+@media (max-width: @screen-xs-max) {
   .stages li .highlight {
     text-indent:-9999px;
   }

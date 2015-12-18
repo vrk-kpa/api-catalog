@@ -17,7 +17,7 @@
   vertical-align:middle;
 }
 .placeright-sm-up {
-  @media(min-width: 768px) {
+  @media(min-width: @screen-sm-min) {
     .placeright();
   }
 }
@@ -161,13 +161,13 @@
 
   .navbar-collapse.collapse.in,
   .navbar-collapse.collapsing {
-    @media (max-width: 768px) {
+    @media (max-width: @screen-xs-max) {
       margin-top: @navbar-height;
     }
   }
 
   .navbar-collapse[aria-expanded="true"] {
-    @media (max-width: 768px) {
+    @media (max-width: @screen-xs-max) {
       border-top: 1px solid @genericBorderColor;
     }
   }
@@ -180,7 +180,7 @@
 
   .navigation {
     // Triangle below active navigation
-    @media (min-width: 768px) {
+    @media (max-width: @screen-xs-max) {
       &.active a:after {
         content: "";
         width: 0;

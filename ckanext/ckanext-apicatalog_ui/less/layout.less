@@ -7,7 +7,7 @@
   margin-left:0;
 }
 .pull-right-sm-up {
-  @media(min-width:768px) {
+  @media(min-width: @screen-sm-min) {
     margin-left: 0 !important;
     position: absolute;
     top: 0;
@@ -15,7 +15,7 @@
     z-index: 2;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .border-right, .border-left, .border-both {
       position: relative;
   }
@@ -68,13 +68,12 @@
   display:none;
 }
 
-@media (max-width: 992px) {
+@media (max-width: @screen-sm-max) {
   .container {
     width: auto;
   }
   .wrapper {
-    margin: 0 -20px;
-    border-width: 0;
+    margin: 0 -15px;
     .box-shadow(0);
     .border-radius(0);
   }
