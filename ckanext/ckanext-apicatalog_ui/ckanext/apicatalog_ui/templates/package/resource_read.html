@@ -94,5 +94,33 @@
 </div>
 {% endblock %}
 
+{% block resource_actions %}
+  <ul>
+    {% block resource_actions_inner %}
+    {% if h.check_access('package_update', {'id':pkg.id }) %}
+      <li>{% link_for _('Manage'), controller='package', action='resource_edit', id=pkg.name, resource_id=res.id, class_='btn', icon='wrench' %}</li>
+    {% endif %}
+    {% if res.url and h.is_url(res.url) %}
+      <li>
+          {% if res.resource_type in ('listing', 'service') %}
+            <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+            <i class="icon-eye-open"></i> {{ _('View') }}
+          {% elif res.resource_type == 'api' %}
+            <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+            <i class="icon-key"></i> {{ _('API Endpoint') }}
+          {% else %}
+            <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}" download>
+            <i class="icon-download"></i> {{ _('Download') }}
+          {% endif %}
+        </a>
+      </li>
+    {% endif %}
+    {% if 'datastore' in g.plugins %}
+      <li>{% snippet 'package/snippets/data_api_button.html', resource=res, datastore_root_url=c.datastore_api %}</li>
+    {% endif %}
+    {% endblock %}
+  </ul>
+{% endblock %}
+
 {% block resource_license %}
 {% endblock %}
