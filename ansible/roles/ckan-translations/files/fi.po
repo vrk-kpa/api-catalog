@@ -4905,3 +4905,9 @@ msgstr "Kansallisen palveluarkkitehtuurin viestintäkanava eSuomi.fi"
 
 msgid "API Catalog source code on GitHub"
 msgstr "Liityntäkatalogin lähdekoodi GitHubissa"
+
+msgid "Pages"
+msgstr "Sivut"
+
+msgid "Blog"
+msgstr "Blogi"
