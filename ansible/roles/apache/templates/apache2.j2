@@ -27,3 +27,6 @@ WSGISocketPrefix /var/run/wsgi
 {% if vagrant is defined %}
     EnableSendfile Off
 {% endif %}
+
+ServerSignature Off
+ServerTokens Prod
