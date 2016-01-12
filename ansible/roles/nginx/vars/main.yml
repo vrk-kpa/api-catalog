@@ -6,3 +6,5 @@ ssl_certificate_path: /etc/ssl/apicatalog
 ssl_cert_filename: server.crt
 ssl_key_filename: server.key
 ssl_dh_parameters_path: "{{ ssl_certificate_path }}/dhparams.pem"
+
+static_path: /var/www/static

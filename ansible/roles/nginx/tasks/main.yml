@@ -13,6 +13,17 @@
   with_items:
     - { "template": "nginx_site_config.j2", "destination": "sites-available/primary_site" }
 
+- name: Ensure static resource directory
+  file: path="{{ static_path }}" state=directory mode="0775" owner=root group=root
+
+- name: Copy static resources
+  copy: src={{ item.src }} dest={{ static_path }}/{{ item.dest }} mode="0644" owner=root group=root
+  with_items:
+    - { "src": "50x.html", "dest": "50x.html" }
+
+- name: Ensure static file ermissions
+  command: chmod -R "0775" "{{ static_path }}"
+
 - name: Disable default site
   file: path=/etc/nginx/sites-enabled/default state=absent
 
