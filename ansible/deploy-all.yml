@@ -22,6 +22,9 @@
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - { role: ckan-extension, ckanext: ckanext-fluentall }
+    - { role: ckan-extension, ckanext: ckanext-scheming }
+    - { role: ckan-extension, ckanext: ckanext-fluent }
+    - { role: ckan-extension, ckanext: ckanext-pages }
     - ckan
     - ckan-translations
     - solr-reindex
