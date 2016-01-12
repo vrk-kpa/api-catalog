@@ -2,61 +2,92 @@
   <ul class="nav">
     {% block header_account_container_content %}
       {% if c.userobj %}
-        {% block header_account_logged %}
-          {% set new_activities = h.new_activities() %}
-          <li class="dropdown" id="profile">
+        {% set new_activities = h.new_activities() %}
+        <li class="dropdown" id="profile">
 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="username">{{ c.userobj.name }}</span>
-              <span class="caret"></span>
-            </a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="username">{{ c.userobj.name }}</span>
+            <span class="caret"></span>
+          </a>
 
-            <ul id="no-collapse" class="dropdown-menu dropdown-menu-right">
+          <ul id="no-collapse" class="dropdown-menu dropdown-menu-right">
+
+            {% if c.userobj.sysadmin %}
+            <li>
+              <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                <i class="icon-legal" aria-hidden="true"></i>
+                <span class="text">{{ _('Admin') }}</span>
+              </a>
+            </li>
+            {% endif %}
+
+            <li>
+              <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">
+                <i class="icon-user" aria-hidden="true"></i>
+                <span class="text">{{ c.userobj.display_name }}</span>
+              </a>
+            </li>
+
+            {% set new_activities = h.new_activities() %}
+
+            <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+              {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+              <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
+                <i class="icon-dashboard" aria-hidden="true"></i>
+                <span class="text">{{ _('Dashboard') }}</span>
+                <span class="badge">{{ new_activities }}</span>
+              </a>
+            </li>
+
+            <!-- The markup for ckanext_pages is added directly, because -->
+            <!-- the markup in ckanext_pages does not have an inner <span> -->
+            <li>
+              <a href="{{ h.url_for('pages_index') }}" title="{{ _('Pages') }}">
+                <i class="icon-file"></i>
+                <span class="text">{{ _('Pages') }}</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ h.url_for('blog_index') }}" title="{{ _('Blog') }}">
+                <i class="icon-pencil"></i>
+                <span class="text">{{ _('Blog') }}</span>
+              </a>
+            </li>
+            <!-- /ckanext_pages -->
+
+            {% block header_account_logged %}
+            {% endblock %}
+
+            {% block header_account_settings_link %}
               <li>
-                <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
-                  <span class="username">{{ c.userobj.name }}</span>
+                <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
+                  <i class="icon-cog" aria-hidden="true"></i>
+                  <span class="text">{{ _('Settings') }}</span>
                 </a>
               </li>
+            {% endblock %}
 
-              <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
-                {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
-                <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
-                  <span class="text">{{ _('Dashboard') }}</span>
-                  <span class="badge">{{ new_activities }}</span>
-                </a>
-              </li>
-
-              {% if c.userobj.sysadmin %}
-                <li>
-                  <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
-                    <i class="icon-legal" aria-hidden="true"></i>
-                    <span class="text">{{ _('Admin') }}</span>
-                  </a>
-                </li>
-              {% endif %}
-              <li class="active logout">
+            {% block header_account_log_out_link %}
+              <li>
                 <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
                   <i class="icon-signout" aria-hidden="true"></i>
-                  <span>{{ _('Log out') }}</span>
+                  <span class="text">{{ _('Log out') }}</span>
                 </a>
               </li>
-            </ul>
-
-          </li>
-
-          {% block header_account_log_out_link %}
-          {% endblock %} {# /header_account_log_out_link #}
-
-        {% endblock %} {# /header_account_logged #}
+            {% endblock %}
+          </ul> <!-- /.dropdown-menu -->
+        </li> <!-- /.dropdown -->
       {% else %}
+
         {% block header_account_notlogged %}
           <li>{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
-
           {% if h.check_access('user_create') %}
             <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
           {% endif %}
         {% endblock %} {# header_account_notlogged #}
+
       {% endif %} {# /if c.userobj #}
     {% endblock %} <!-- header_account_container_content -->
-  </ul> <!-- /.nav.navbar-nav -->
+  </ul> <!-- /.nav -->
 </div> <!-- /.account -->

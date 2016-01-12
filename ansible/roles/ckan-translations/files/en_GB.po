@@ -4886,3 +4886,9 @@ msgstr "eSuomi.fi, a channel of communication for the National Data Exchange Lay
 
 msgid "API Catalog source code on GitHub"
 msgstr "API Catalog source code on GitHub"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Blog"
+msgstr "Blog"

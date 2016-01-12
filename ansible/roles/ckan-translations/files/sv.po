@@ -4898,3 +4898,8 @@ msgstr "eSuomi.fi, en kommunikationskanal för den nationella servicekanalen"
 msgid "API Catalog source code on GitHub"
 msgstr "API Catalog källkod på GitHub"
 
+msgid "Pages"
+msgstr "Sidor"
+
+msgid "Blog"
+msgstr "Blogg"
