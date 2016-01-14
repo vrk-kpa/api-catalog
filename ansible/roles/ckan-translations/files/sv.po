@@ -1169,7 +1169,7 @@ msgstr "Hej %s,"
 #: ckan/lib/mailer.py:38
 #, python-format
 msgid "%s <%s>"
-msgstr "%s <%s>"
+msgstr "%.0s%s"
 
 #: ckan/lib/mailer.py:99
 msgid "No recipient email address available!"

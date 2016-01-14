@@ -42,7 +42,7 @@ ckan_admins:
   - "{{ ckan_users.admin.username }}"
   - "{{ ckan_users.harvest.username }}"
 
-email_domain: localhost
+email_domain: "{{ public_facing_hostname }}"
 email:
   smtp_server: localhost
   from: no-reply@{{ email_domain }}
