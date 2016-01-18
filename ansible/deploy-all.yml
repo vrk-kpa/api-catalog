@@ -20,6 +20,7 @@
     - nginx
     - apache
     - postfix
+    - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - { role: ckan-extension, ckanext: ckanext-fluentall }
