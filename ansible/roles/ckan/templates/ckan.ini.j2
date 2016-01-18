@@ -15,9 +15,9 @@ full_stack = true
 cache_dir = /tmp/%(ckan.site_id)s/
 
 beaker.session.key = ckan
-beaker.session.secret = {{ baker_session_secret }}
+beaker.session.secret = {{ secret.ckan_config.beaker_session_secret }}
 
-app_instance_uuid = {{ app_instance_uuid }}
+app_instance_uuid = {{ secret.ckan_config.app_instance_uuid }}
 
 who.config_file = %(here)s/who.ini
 who.log_level = warning

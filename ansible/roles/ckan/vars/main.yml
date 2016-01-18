@@ -19,10 +19,6 @@ supervisor_services:
   - celery_priority
   - celerybeat
 
-# Override these on servers! 
-baker_session_secret: "9PBdkhaxLGWW4M4jeTI25h+4t"
-app_instance_uuid: "{dc6259b8-f112-4d23-8816-aadabba1985c}"
-
 ckan_storage_path: "{{ data_path }}/ckan"
 ckan_max_resource_size: 50
 
