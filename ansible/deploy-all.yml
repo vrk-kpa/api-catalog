@@ -27,6 +27,7 @@
     - { role: ckan-extension, ckanext: ckanext-scheming }
     - { role: ckan-extension, ckanext: ckanext-fluent }
     - { role: ckan-extension, ckanext: ckanext-pages }
+    - { role: ckan-extension, ckanext: ckanext-contact }
     - ckan
     - ckan-translations
     - solr-reindex

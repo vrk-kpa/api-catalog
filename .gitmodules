@@ -7,3 +7,6 @@
 [submodule "ckanext/ckanext-pages"]
 	path = ckanext/ckanext-pages
 	url = https://github.com/vrk-kpa/ckanext-pages.git
+[submodule "ckanext/ckanext-contact"]
+	path = ckanext/ckanext-contact
+	url = https://github.com/vrk-kpa/ckanext-contact.git

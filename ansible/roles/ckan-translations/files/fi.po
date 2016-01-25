@@ -758,7 +758,7 @@ msgstr "Ei oiketta lisätä käyttäjää %s"
 
 #: ckan/controllers/user.py:238
 msgid "Bad Captcha. Please try again."
-msgstr "Väärä Captcha sana. Yritä uudelleen."
+msgstr "Väärä vastaus. Yritä uudelleen."
 
 #: ckan/controllers/user.py:255
 #, python-format
@@ -4911,3 +4911,12 @@ msgstr "Sivut"
 
 msgid "Blog"
 msgstr "Blogi"
+
+msgid "Feedback"
+msgstr "Palaute"
+
+msgid "Feedback message"
+msgstr "Palauteviesti"
+
+msgid "Thank you!"
+msgstr "Kiitos!"
