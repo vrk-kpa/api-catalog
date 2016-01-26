@@ -9037,6 +9037,17 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
     border-bottom-color: #dddddd;
   }
 }
+.alert-error {
+  background-color: #ffdcdc;
+  border-color: #ff5353;
+  color: #333333;
+}
+.alert-error hr {
+  border-top-color: #ff3939;
+}
+.alert-error .alert-link {
+  color: #1a1a1a;
+}
 h1 {
   font-size: 28px;
 }
