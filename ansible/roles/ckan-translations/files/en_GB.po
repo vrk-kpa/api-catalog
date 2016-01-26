@@ -4892,3 +4892,12 @@ msgstr "Pages"
 
 msgid "Blog"
 msgstr "Blog"
+
+msgid "Feedback"
+msgstr "Feedback"
+
+msgid "Feedback message"
+msgstr "Feedback message"
+
+msgid "Kiitos! Tack! Thank you!"
+msgstr "Kiitos! Tack! Thank you!"

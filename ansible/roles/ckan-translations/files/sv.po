@@ -4903,3 +4903,12 @@ msgstr "Sidor"
 
 msgid "Blog"
 msgstr "Blogg"
+
+msgid "Feedback"
+msgstr "Respons"
+
+msgid "Feedback message"
+msgstr "Responsmeddelandet"
+
+msgid "Thank you!"
+msgstr "Tack!"

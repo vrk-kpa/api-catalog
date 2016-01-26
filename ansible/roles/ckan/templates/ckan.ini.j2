@@ -76,6 +76,10 @@ smtp.server = {{ email.smtp_server }}
 smtp.starttls = False
 smtp.mail_from = no-reply
 
+#ckanext.contact.mail_to = no-reply
+ckanext.contact.recipient_name = Liityntäkatalogi
+ckanext.contact.subject = Palautetta Liityntäkatalogista
+
 ckan.harvest.mq.type = redis
 ckan.harvest.mq.hostname = {{ redis.host }}
 ckan.harvest.mq.port = {{ redis.port }}
