@@ -76,8 +76,8 @@ smtp.server = {{ email.smtp_server }}
 smtp.starttls = False
 smtp.mail_from = no-reply
 
-ckanext.contact.mail_to = kapa-asiakaspalvelu@vrk.fi
-ckanext.contact.recipient_name = Liityntäkatalogi
+ckanext.contact.mail_to = {{ email.contact }}
+ckanext.contact.recipient_name =
 ckanext.contact.subject = Palautetta Liityntäkatalogista
 
 ckan.harvest.mq.type = redis
