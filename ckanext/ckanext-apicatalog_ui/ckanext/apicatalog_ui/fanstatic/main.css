@@ -7581,9 +7581,6 @@ input {
 .btn {
   font-weight: bold;
 }
-textarea {
-  border: none;
-}
 .btn-rounded {
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
@@ -7601,6 +7598,7 @@ form .control-group:first-child {
 label {
   cursor: pointer;
   font-weight: normal;
+  font-size: 14px;
 }
 label:after {
   content: ":";
@@ -7815,7 +7813,7 @@ form .control-order-by {
 .simple-input .field .btn-search:hover {
   color: #000;
 }
-.editor textarea {
+textarea {
   padding-left: 5px;
   border: 2px solid #989c9f;
   border-radius: 4px;
@@ -7993,30 +7991,26 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 .alert-error a {
   color: #b55457;
 }
-.form-group.error input,
-.form-group.error select,
-.form-group.error textarea,
-.form-group.error .input-group .input-group-addon,
-.form-group.error .input-group .input-group-addon {
+.control-group.error input,
+.control-group.error select,
+.control-group.error textarea,
+.control-group.error .input-group .add-on,
+.control-group.error .input-group .add-on {
   border-color: #c6898b;
 }
+.error-block,
 .error-inline {
   color: #b55457;
 }
-.error-block,
 .error-inline {
   font-size: 12px;
 }
 .error-block {
-  border-top-right-radius: 0 0 3px 3px;
-  border-bottom-right-radius: 0 0 3px 3px;
-  border-bottom-left-radius: 0 0 3px 3px;
-  border-top-left-radius: 0 0 3px 3px;
+  font-weight: bold;
   display: block;
   padding: 6px 8px 3px;
-  background: #c6898b;
+  background: transparent;
   margin: -3px 0 0;
-  color: #ffffff;
   width: 208px;
 }
 .control-medium .error-block {
@@ -8334,6 +8328,59 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 #recaptcha_table {
   table-layout: inherit;
   line-height: 1;
+}
+.add-on {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: bold;
+}
+.add-on:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.add-on.input-sm {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+.add-on.input-lg {
+  padding: 10px 16px;
+  font-size: 20px;
+  border-radius: 6px;
+}
+.add-on input[type="radio"],
+.add-on input[type="checkbox"] {
+  margin-top: 0;
+}
+.input-prepend {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  vertical-align: middle;
+}
+.input-prepend[class*="col-"] {
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.input-prepend .form-control {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
 }
 .dataset-list {
   padding: 0px;
@@ -8989,6 +9036,17 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
     padding: 10px 5px;
     border-bottom-color: #dddddd;
   }
+}
+.alert-error {
+  background-color: #ffdcdc;
+  border-color: #ff5353;
+  color: #333333;
+}
+.alert-error hr {
+  border-top-color: #ff3939;
+}
+.alert-error .alert-link {
+  color: #1a1a1a;
 }
 h1 {
   font-size: 28px;

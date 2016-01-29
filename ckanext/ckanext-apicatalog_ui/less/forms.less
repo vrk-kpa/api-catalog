@@ -20,10 +20,6 @@ input {
   font-weight: bold;
 }
 
-textarea {
-  border:none;
-}
-
 .btn-rounded {
   .border-radius(100px);
   padding-left: 15px;
@@ -40,7 +36,7 @@ form .control-group:first-child {
 label {
   cursor: pointer;
   font-weight:normal;
-  //font-size: 14px;
+  font-size: 14px;
 }
 
 label:after {
@@ -297,7 +293,7 @@ form .control-order-by {
   }
 }
 
-.editor textarea {
+textarea {
   padding-left:5px;
   border: 2px solid @kapa-input-border;
   border-radius: 4px;
@@ -428,30 +424,29 @@ form .control-order-by {
   color: @errorText;
 }
 
-.form-group.error input,
-.form-group.error select,
-.form-group.error textarea,
-.form-group.error .input-group .input-group-addon,
-.form-group.error .input-group .input-group-addon {
+.control-group.error input,
+.control-group.error select,
+.control-group.error textarea,
+.control-group.error .input-group .add-on,
+.control-group.error .input-group .add-on {
   border-color: @errorBorder;
 }
 
+.error-block,
 .error-inline {
   color: @errorText;
 }
 
-.error-block,
 .error-inline {
   font-size: 12px;
 }
 
 .error-block {
-  .border-radius(0 0 @inputBorderRadius @inputBorderRadius);
+  font-weight: bold;
   display: block;
   padding: 6px 8px 3px;
-  background: @errorBorder;
+  background: transparent;
   margin: -@inputBorderRadius 0 0;
-  color: @inputBackground;
   width: 208px;
 }
 
@@ -792,4 +787,18 @@ form .control-order-by {
 #recaptcha_table {
   table-layout: inherit;
   line-height: 1;
+}
+
+// These Bootstrap 2 classes are found in Macros, which are hard to extend.
+// The css classes are directly imported with css mixins.
+.add-on {
+  .input-group-addon;
+  background-color: transparent;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+.input-prepend {
+  .input-group;
+  vertical-align: middle;
 }
