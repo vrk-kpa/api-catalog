@@ -46,11 +46,11 @@ class Apicatalog_RevisionController(RevisionController):
             ckan.logic.check_access('revision_list', auth_context())
             return super(Apicatalog_RevisionController, self).list()
         except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(401, _('Not authorized to see this page'))
+            ckan.lib.base.abort(403, _('Not authorized to see this page'))
 
     def diff(self, id=None):
         try:
             ckan.logic.check_access('revision_diff', auth_context())
             return super(Apicatalog_RevisionController, self).diff(id=id)
         except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(401, _('Not authorized to see this page'))
+            ckan.lib.base.abort(403, _('Not authorized to see this page'))

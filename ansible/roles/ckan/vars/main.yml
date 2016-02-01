@@ -30,3 +30,6 @@ ckan_source_path: "{{ virtualenv }}/src/ckan"
 service_database_enabled: false
 auto_author_enabled: true
 
+ckan_patches:
+  - { file: "fix_401_to_403" }
+
