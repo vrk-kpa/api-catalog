@@ -25,7 +25,7 @@ class Apicatalog_FeedController(FeedController):
         for pkg in results:
             description = pkg.get('notes', '')
             if isinstance(description, dict):
-                description = json.dumps(description, ensure_ascii=False).encode('utf-8')
+                description = description.get('fi', json.dumps(description, ensure_ascii=False).encode('utf-8'))
             pkg['notes'] = description
 
         return super(Apicatalog_FeedController, self).output_feed(results, feed_title,
