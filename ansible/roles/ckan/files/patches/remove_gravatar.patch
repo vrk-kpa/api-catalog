@@ -1,0 +1,48 @@
+From 6debe7436752fb4d16df5f857be68b47f1f0cc21 Mon Sep 17 00:00:00 2001
+From: root <root@api-catalog>
+Date: Thu, 4 Feb 2016 10:02:30 +0200
+Subject: [PATCH] Remove Gravatar
+
+---
+ ckan/lib/helpers.py | 23 ++---------------------
+ 1 file changed, 2 insertions(+), 21 deletions(-)
+
+diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
+index 67bdf99..e062cc8 100644
+--- a/ckan/lib/helpers.py
++++ b/ckan/lib/helpers.py
+@@ -935,29 +935,10 @@ def dict_list_reduce(list_, key, unique=True):
+ 
+ 
+ def linked_gravatar(email_hash, size=100, default=None):
+-    return literal(
+-        '<a href="https://gravatar.com/" target="_blank" ' +
+-        'title="%s" alt="">' % _('Update your avatar at gravatar.com') +
+-        '%s</a>' % gravatar(email_hash, size, default)
+-    )
+-
+-_VALID_GRAVATAR_DEFAULTS = ['404', 'mm', 'identicon', 'monsterid',
+-                            'wavatar', 'retro']
+-
++    return ''
+ 
+ def gravatar(email_hash, size=100, default=None):
+-    if default is None:
+-        default = config.get('ckan.gravatar_default', 'identicon')
+-
+-    if default not in _VALID_GRAVATAR_DEFAULTS:
+-        # treat the default as a url
+-        default = urllib.quote(default, safe='')
+-
+-    return literal('''<img src="//gravatar.com/avatar/%s?s=%d&amp;d=%s"
+-        class="gravatar" width="%s" height="%s" />'''
+-                   % (email_hash, size, default, size, size)
+-                   )
+-
++    return ''
+ 
+ def pager_url(page, partial=None, **kwargs):
+     routes_dict = _pylons_default_url.environ['pylons.routes_dict']
+-- 
+1.9.1
+
