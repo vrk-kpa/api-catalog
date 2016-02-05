@@ -8,7 +8,7 @@ if [ ! -f /vagrant_bootstrap_done.info ]; then
   sudo apt-get update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y install python-dev python-pip
-  sudo pip install ansible==1.9.4
+  sudo pip install ansible
   sudo touch /vagrant_bootstrap_done.info
 fi
 cd /src/ansible && ansible-playbook -i inventories/vagrant deploy-all.yml
