@@ -14,9 +14,9 @@ WSGISocketPrefix /var/run/wsgi
 
     WSGIProcessGroup ckan_default
 
-    ErrorLog /var/log/apache2/ckan_default.error.log
-    CustomLog /var/log/apache2/ckan_default.custom.log combined
-  
+    ErrorLogFormat "[%t] %M"
+    ErrorLog /var/log/apache2/ckan.log
+    CustomLog /var/log/apache2/requests.log combined
 
     <Directory "/etc/ckan/default">
       Require all granted
