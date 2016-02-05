@@ -32,3 +32,4 @@ auto_author_enabled: true
 
 ckan_patches:
   - { file: "fix_401_to_403" }
+  - { file: "remove_gravatar" }
