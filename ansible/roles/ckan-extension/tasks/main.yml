@@ -3,9 +3,22 @@
 - name: Ensure temp directory for extensions
   file: path={{ ckanext_sync_path }} state=directory
 
-- name: Copy extension sources
-  synchronize: src=../ckanext/{{ ckanext }} dest={{ ckanext_sync_path }}/ delete=yes
+# On servers, create an archive of the current sources, upload and unarchive
+
+- name: Archive extension
+  local_action: command zip -FSr /tmp/api-catalog-{{ ckanext }}.zip {{ ckanext }} chdir="../ckanext"
+  sudo: false
   when: deployment_environment_id != "vagrant"
+
+- name: Delete existing extension
+  file: path="{{ ckanext_sync_path }}/{{ ckanext }}" state=absent
+  when: deployment_environment_id != "vagrant"
+
+- name: Copy and unarchive extension
+  unarchive: src=/tmp/api-catalog-{{ ckanext }}.zip dest="{{ ckanext_sync_path }}/" owner=root group=root
+  when: deployment_environment_id != "vagrant"
+
+# On Vagrant, symlink sources from host so that they can be edited live
 
 - name: Remove existing extension (Vagrant)
   file: path="{{ ckanext_sync_path }}/{{ ckanext }}" state=absent
@@ -14,6 +27,8 @@
 - name: Symlink extension sources from host machine (Vagrant)
   file: src="/src/ckanext/{{ ckanext }}" path="{{ ckanext_sync_path }}/{{ ckanext }}" state=link
   when: deployment_environment_id == "vagrant"
+
+#
 
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"

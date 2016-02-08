@@ -1,0 +1,12 @@
+127.0.0.1      localhost {{ internal_hostname }}
+
+{% if deployment_environment_id == "qa" %}
+86.50.28.125    katalogitest01.csc.fi   katalogitest01
+{% elif deployment_environment_id == "prod" %}
+86.50.28.126    katalogiprod01.csc.fi   katalogiprod01
+{% endif %}
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

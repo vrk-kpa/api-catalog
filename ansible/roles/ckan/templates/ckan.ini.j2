@@ -23,6 +23,10 @@ who.config_file = %(here)s/who.ini
 who.log_level = warning
 who.log_file = %(cache_dir)s/who_log.ini
 
+# Secure cookie & 4h timeout
+who.secure = True
+who.timeout = 14400
+
 sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
 
 ckan.site_url = https://{{ public_facing_hostname }}
@@ -69,8 +73,8 @@ scheming.presets = ckanext.scheming:presets.json
 
 scheming.dataset_schemas = ckanext.apicatalog_scheming.schemas:dataset.json
 
-email_to = {{ email.error_recipient }}
-error_email_from = {{ email.error_from }}
+email_to = None
+error_email_from = None
 
 smtp.server = {{ email.smtp_server }}
 smtp.starttls = False

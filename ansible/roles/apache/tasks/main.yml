@@ -20,6 +20,7 @@
   with_items:
     - { src: ports.conf.j2, dest: /etc/apache2/ports.conf, mode: "0644", owner: root}
     - { src: apache2.j2, dest: /etc/apache2/sites-available/ckan_catalog.conf, mode: "0644", owner: root}
+    - { src: logrotate.apache2.conf, dest: /etc/logrotate.d/apache2, mode: "0644", owner: root}
 
 - name: Enable Apache configuration
   file: src=/etc/apache2/sites-available/ckan_catalog.conf dest=/etc/apache2/sites-enabled/ckan_catalog.conf state=link owner=root group=root

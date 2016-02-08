@@ -79,5 +79,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         apicatalog_routes=ckanext.apicatalog_routes.plugin:Apicatalog_RoutesPlugin
+        apicatalog_feed=ckanext.apicatalog_routes.feed:Apicatalog_FeedPlugin
     ''',
 )

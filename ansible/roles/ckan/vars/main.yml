@@ -6,7 +6,7 @@ harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui fluentall_pkg fluentall_res apicatalog_routes contact
+ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui fluentall_pkg fluentall_res apicatalog_routes contact apicatalog_feed
 
 redis_harvest_database: 0
 redis_celery_database: 1
@@ -32,4 +32,4 @@ auto_author_enabled: true
 
 ckan_patches:
   - { file: "fix_401_to_403" }
-
+  - { file: "remove_gravatar" }
