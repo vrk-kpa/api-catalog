@@ -4901,3 +4901,6 @@ msgstr "Feedback message"
 
 msgid "Kiitos! Tack! Thank you!"
 msgstr "Kiitos! Tack! Thank you!"
+
+msgid "Security token error, please try again"
+msgstr "Session error, please try again"
