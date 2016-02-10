@@ -1,20 +1,19 @@
 - name: Create patch cache path
   file: path="{{ patches_cache_path }}" state=directory
-  tags: 
-    - ckan
+  tags:
     - patch_ckan
 
-- name: Copy CKAN translations
+- name: Copy CKAN patches
   copy: src="patches/{{ item.file }}.patch" dest="{{ patches_cache_path }}"
   with_items: ckan_patches
   register: copy_patches
+  tags:
+    - patch_ckan
 
 - name: Apply CKAN patches
-  when: copy_patches|changed
+  when: copy_patches|changed or ckan_installation|changed
   shell: patch -s -N -p1 < "{{ patches_cache_path }}/{{ item.file }}.patch" chdir="{{ ckan_source_path }}"
   ignore_errors: True
   with_items: ckan_patches
   tags:
-  - ckan
   - patch_ckan
-
