@@ -16,3 +16,5 @@
 ./ckan/templates/user/snippets/followee_dropdown.html
 ./ckan/templates/development/snippets/markup.html
 ./ckan/templates/development/snippets/form.html
+./ckan/templates/package/resource_data.html
+./ckan/templates/user/new_user_form.html
