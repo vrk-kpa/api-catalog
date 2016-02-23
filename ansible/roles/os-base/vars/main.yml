@@ -2,7 +2,7 @@
 
 clear_all_cache: false
 
-timezone: Europe/Helsinki
+timezone: UTC
 
 # Apt repository configuration
 apt_source_url: http://fi.archive.ubuntu.com
