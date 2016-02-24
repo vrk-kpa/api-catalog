@@ -11,7 +11,7 @@ this.ckan.module('confirm-action', function (jQuery, _) {
       },
       template: [
         '<div class="modal">',
-        '<div class="modal-dialog"',
+        '<div class="modal-dialog">',
         '<div class="modal-content">',
         '<div class="modal-header">',
         '<button type="button" class="close" data-dismiss="modal">×</button>',
@@ -70,6 +70,7 @@ this.ckan.module('confirm-action', function (jQuery, _) {
         action: this.el.attr('href'),
         method: 'POST'
       });
+      $('form[method=POST]').find('input[type=hidden][name=csrf-token]').appendTo(form);
       form.appendTo('body').submit();
     },
 

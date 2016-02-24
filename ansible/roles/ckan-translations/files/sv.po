@@ -4912,3 +4912,6 @@ msgstr "Responsmeddelandet"
 
 msgid "Thank you!"
 msgstr "Tack!"
+
+msgid "Security token error, please try again"
+msgstr "Session fel, försök igen"

@@ -4920,3 +4920,6 @@ msgstr "Palauteviesti"
 
 msgid "Thank you!"
 msgstr "Kiitos!"
+
+msgid "Security token error, please try again"
+msgstr "Istuntovirhe, ole hyvä ja yritä uudelleen"
