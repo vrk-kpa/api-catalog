@@ -261,7 +261,7 @@ index 8716722..7a64643 100644
                        {'dataset_type': self._get_package_type(id)})
  
 diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
-index f77f7fb..1e067d1 100644
+index f77f7fb..cd79125 100644
 --- a/ckan/controllers/user.py
 +++ b/ckan/controllers/user.py
 @@ -13,8 +13,8 @@ import ckan.lib.captcha as captcha
@@ -294,113 +294,6 @@ index f77f7fb..1e067d1 100644
  
      def login(self, error=None):
          # Do any plugin login stuff
-@@ -438,8 +444,11 @@ class UserController(base.BaseController):
-             data_dict = {'id': id}
-             user_obj = None
-             try:
-+                csrf_token.validate(data_dict.get('csrf-token', ''))
-                 user_dict = get_action('user_show')(context, data_dict)
-                 user_obj = context['user_obj']
-+            except csrf_token.CsrfTokenValidationError:
-+                h.flash_error(_('Security token error, please try again'))
-             except NotFound:
-                 # Try searching the user
-                 del data_dict['id']
-@@ -499,16 +508,21 @@ class UserController(base.BaseController):
- 
-         if request.method == 'POST':
-             try:
-+                csrf_token.validate(data_dict.get('csrf-token', ''))
-                 context['reset_password'] = True
-                 new_password = self._get_form_password()
-                 user_dict['password'] = new_password
-                 user_dict['reset_key'] = c.reset_key
-                 user_dict['state'] = model.State.ACTIVE
-                 user = get_action('user_update')(context, user_dict)
-+            except csrf_token.CsrfTokenValidationError:
-+                h.flash_error(_('Security token error, please try again'))
-                 mailer.create_reset_key(user_obj)
- 
-                 h.flash_success(_("Your password has been reset."))
-                 h.redirect_to('/')
-+            except csrf_token.CsrfTokenValidationError:
-+                h.flash_error(_('Security token error, please try again'))
-             except NotAuthorized:
-                 h.flash_error(_('Unauthorized to edit user %s') % id)
-             except NotFound, e:
-diff --git a/ckan/lib/csrf_token.py b/ckan/lib/csrf_token.py
-new file mode 100644
-index 0000000..b93d1fa
---- /dev/null
-+++ b/ckan/lib/csrf_token.py
-@@ -0,0 +1,67 @@
-+# -*- coding: utf-8 -*-
-+
-+import os
-+import base64
-+import struct
-+import random
-+from pylons import session
-+from ckan.common import c
-+
-+import logging
-+log = logging.getLogger(__name__)
-+
-+class CsrfTokenValidationError(Exception):
-+    pass
-+
-+def _get_current_token(user):
-+    tokens = session.get('csrf_tokens', {})
-+    return tokens.get(user, None)
-+
-+def _set_current_token(user, token):
-+    tokens = session.get('csrf_tokens', {})
-+    tokens[user] = token
-+    session['csrf_tokens'] = tokens
-+    session.save()
-+
-+def _generate_new_token():
-+    token_bytes = os.urandom(64)
-+    token = base64.urlsafe_b64encode(token_bytes)
-+    return token
-+
-+def _get_user():
-+    return c.user
-+
-+# Compare tokens in random order to avoid timing attacks
-+def _compare_tokens(a, b):
-+    if not a or not b or len(a) != len(b):
-+        return False
-+
-+    indices = range(len(a))
-+    random.shuffle(indices)
-+
-+    for i in indices:
-+        if a[i] != b[i]:
-+            return False
-+
-+    return True
-+
-+def generate():
-+    user = _get_user()
-+    if not user: return ''
-+
-+    existing_token = _get_current_token(user)
-+    if existing_token:
-+        return existing_token
-+
-+    token = _generate_new_token()
-+    _set_current_token(user, token)
-+    return token
-+
-+def validate(token):
-+    user = _get_user()
-+    if not user:
-+        raise CsrfTokenValidationError()
-+
-+    existing_token = _get_current_token(user)
-+    if not _compare_tokens(token, existing_token):
-+        raise CsrfTokenValidationError()
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
 index e062cc8..8c6d9cc 100644
 --- a/ckan/lib/helpers.py
@@ -734,20 +627,8 @@ index 9643b35..36bcbbb 100644
    <fieldset>
      <legend>{{ _('Change details') }}</legend>
      {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], is_required=true) }}
-diff --git a/ckan/templates/user/perform_reset.html b/ckan/templates/user/perform_reset.html
-index dc6d7f2..4de266a 100644
---- a/ckan/templates/user/perform_reset.html
-+++ b/ckan/templates/user/perform_reset.html
-@@ -17,6 +17,7 @@
-       {% block form %}
-         <form class="form-horizontal" action="" method="post">
-           {{ form.errors(error_summary) }}
-+          {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-           {{ form.input("password1", id="field-password", label=_("Password"), type="password", value='', error='', attrs={'autocomplete': 'no'}, classes=["control-medium"]) }}
-           {{ form.input("password2", id="field-confirm-password", label=_("Confirm"), type="password", value='', error='', attrs={'autocomplete': 'no'}, classes=["control-medium"]) }}
-           <div class="form-actions">
 diff --git a/ckan/templates/user/request_reset.html b/ckan/templates/user/request_reset.html
-index 2db5581..e52d5c7 100644
+index 2db5581..7014c71 100644
 --- a/ckan/templates/user/request_reset.html
 +++ b/ckan/templates/user/request_reset.html
 @@ -1,4 +1,5 @@
@@ -756,11 +637,3 @@ index 2db5581..e52d5c7 100644
  
  {% block subtitle %}{{ _('Reset your password') }}{% endblock %}
  
-@@ -13,6 +14,7 @@
-       <h1 class="page-heading">{{ _('Reset your password') }}</h1>
-       {% block form %}
-         <form action="" method="post" class="form-inline control-medium">
-+          {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-           <label for="field-username">{{ _('Username') }}</label>
-           <input id="field-username" name="user" value="" type="text" />
-           {% block form_button %}
