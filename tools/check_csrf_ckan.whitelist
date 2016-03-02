@@ -18,3 +18,5 @@
 ./ckan/templates/development/snippets/form.html
 ./ckan/templates/package/resource_data.html
 ./ckan/templates/user/new_user_form.html
+./ckan/templates/user/perform_reset.html
+./ckan/templates/user/request_reset.html
