@@ -49,3 +49,6 @@ email:
   error_recipient: admin@localhost
   error_from: error@{{ email_domain }}
   contact: kapa-asiakaspalvelu@vrk.fi
+
+xroad:
+  securityserver: "https://gdev-ss2.palveluvayla.com"
