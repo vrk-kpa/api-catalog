@@ -153,7 +153,7 @@ index c34f593..b47e605 100644
                                       group_type)
  
 diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index 8716722..7a64643 100644
+index 8716722..b6d0981 100644
 --- a/ckan/controllers/package.py
 +++ b/ckan/controllers/package.py
 @@ -18,6 +18,7 @@ import ckan.model as model
@@ -164,26 +164,55 @@ index 8716722..7a64643 100644
  import ckan.plugins as p
  import ckan.lib.render
  
-@@ -647,11 +648,18 @@ class PackageController(base.BaseController):
-                 # see if we have added any resources
-                 try:
-                     data_dict = get_action('package_show')(context, {'id': id})
-+                    csrf_token.validate(data.get('csrf-token', ''))
-                 except NotAuthorized:
-                     abort(403, _('Unauthorized to update dataset'))
+@@ -560,6 +561,7 @@ class PackageController(base.BaseController):
+ 
+             data['package_id'] = id
+             try:
++                csrf_token.validate(data.get('csrf-token', ''))
+                 if resource_id:
+                     data['id'] = resource_id
+                     get_action('resource_update')(context, data)
+@@ -572,6 +574,11 @@ class PackageController(base.BaseController):
+                                           errors, error_summary)
+             except NotAuthorized:
+                 abort(403, _('Unauthorized to edit this resource'))
++            except csrf_token.CsrfTokenValidationError:
++                h.flash_error(_('Security token error, please try again'))
++                redirect(h.url_for(controller='package',
++                                   action='new_resource', id=id))
++                return
+             redirect(h.url_for(controller='package', action='resource_read',
+                                id=id, resource_id=resource_id))
+ 
+@@ -652,6 +659,7 @@ class PackageController(base.BaseController):
                  except NotFound:
                      abort(404, _('The dataset {id} could not be found.'
                                   ).format(id=id))
-+                except csrf_token.CsrfTokenValidationError:
-+                    h.flash_error(_('Security token error, please try again'))
-+                    redirect(h.url_for(controller='package',
-+                                       action='new_resource', id=id))
-+                    return
 +
                  if not len(data_dict['resources']):
                      # no data so keep on page
                      msg = _('You must add at least one data resource')
-@@ -883,6 +891,7 @@ class PackageController(base.BaseController):
+@@ -675,6 +683,7 @@ class PackageController(base.BaseController):
+ 
+             data['package_id'] = id
+             try:
++                csrf_token.validate(data.get('csrf-token', ''))
+                 if resource_id:
+                     data['id'] = resource_id
+                     get_action('resource_update')(context, data)
+@@ -689,6 +698,11 @@ class PackageController(base.BaseController):
+             except NotFound:
+                 abort(404, _('The dataset {id} could not be found.'
+                              ).format(id=id))
++            except csrf_token.CsrfTokenValidationError:
++                h.flash_error(_('Security token error, please try again'))
++                redirect(h.url_for(controller='package',
++                                   action='new_resource', id=id))
++                return
+             if save_action == 'go-metadata':
+                 # XXX race condition if another user edits/deletes
+                 data_dict = get_action('package_show')(context, {'id': id})
+@@ -883,6 +897,7 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -191,7 +220,7 @@ index 8716722..7a64643 100644
              if ckan_phase:
                  # prevent clearing of groups etc
                  context['allow_partial_update'] = True
-@@ -955,6 +964,9 @@ class PackageController(base.BaseController):
+@@ -955,6 +970,9 @@ class PackageController(base.BaseController):
                                   errors, error_summary)
              data_dict['state'] = 'none'
              return self.new(data_dict, errors, error_summary)
@@ -201,7 +230,7 @@ index 8716722..7a64643 100644
  
      def _save_edit(self, name_or_id, context, package_type=None):
          from ckan.lib.search import SearchIndexError
-@@ -963,6 +975,9 @@ class PackageController(base.BaseController):
+@@ -963,6 +981,9 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -211,7 +240,7 @@ index 8716722..7a64643 100644
              if '_ckan_phase' in data_dict:
                  # we allow partial updates to not destroy existing resources
                  context['allow_partial_update'] = True
-@@ -995,6 +1010,9 @@ class PackageController(base.BaseController):
+@@ -995,6 +1016,9 @@ class PackageController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.edit(name_or_id, data_dict, errors, error_summary)
@@ -221,7 +250,7 @@ index 8716722..7a64643 100644
  
      def _form_save_redirect(self, pkgname, action, package_type=None):
          '''This redirects the user to the CKAN package/read page,
-@@ -1026,6 +1044,7 @@ class PackageController(base.BaseController):
+@@ -1026,6 +1050,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -229,7 +258,7 @@ index 8716722..7a64643 100644
                  get_action('package_delete')(context, {'id': id})
                  h.flash_notice(_('Dataset has been deleted.'))
                  h.redirect_to(controller='package', action='search')
-@@ -1035,8 +1054,10 @@ class PackageController(base.BaseController):
+@@ -1035,8 +1060,10 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete package %s') % '')
          except NotFound:
              abort(404, _('Dataset not found'))
@@ -242,7 +271,7 @@ index 8716722..7a64643 100644
  
      def resource_delete(self, id, resource_id):
  
-@@ -1054,6 +1075,7 @@ class PackageController(base.BaseController):
+@@ -1054,6 +1081,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -250,7 +279,7 @@ index 8716722..7a64643 100644
                  get_action('resource_delete')(context, {'id': resource_id})
                  h.flash_notice(_('Resource has been deleted.'))
                  h.redirect_to(controller='package', action='read', id=id)
-@@ -1064,6 +1086,9 @@ class PackageController(base.BaseController):
+@@ -1064,6 +1092,9 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete resource %s') % '')
          except NotFound:
              abort(404, _('Resource not found'))
