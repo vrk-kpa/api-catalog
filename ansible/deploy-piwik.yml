@@ -1,0 +1,17 @@
+---
+
+# To run:
+# ansible-playbook -v -i inventories/vagrant deploy-piwik.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/qa deploy-piwik.yml
+
+- hosts: logserver
+  sudo: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  roles:
+    - piwik
+  handlers:
+    - include: handlers/handlers.yml
+

@@ -1,0 +1,52 @@
+---
+
+- name: Copy environment
+  template: src=environment.j2 dest=/etc/environment mode="0644" owner=root group=root
+
+- name: Copy apt sources.list
+  template: src=sources.list.j2 dest=/etc/apt/sources.list mode="0644" owner=root group=root
+  when: apt_source_url != false
+
+- name: Upgrade packages
+  apt: upgrade=dist update_cache=yes
+
+- name: Ensure common packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - htop
+    - unzip
+    - mysql-server
+    - apache2
+    - php5-gd
+    - php5-mysql
+    - libapache2-mod-php5
+
+- name: Enable automatic installation of security upgrades
+  template: src=apt-auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades mode="0644" owner=root group=root
+
+- name: Copy mysql configuration
+  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf mode="0644" owner=root group=root
+
+- name: Restart Mysql
+  service: name=mysql state=restarted
+
+- name: Download latest piwik
+  get_url: url=http://builds.piwik.org/latest.zip dest=/tmp/latest_piwik.zip
+
+- name: Extract piwik
+  unarchive: src=/tmp/latest_piwik.zip dest=/opt copy=no owner=www-data group=www-data
+
+- name: Copy piwik configuration
+  template: src=piwik_config.ini.php.j2 dest=/opt/piwik/config/config.ini.php mode="0644" owner=www-data group=www-data
+
+- name: Copy apache configuration
+  template: src=apache_piwik.conf.j2 dest=/etc/apache2/sites-available/piwik.conf mode="0644" owner=root group=root
+
+- name: Enable Apache configuration
+  file: src=/etc/apache2/sites-available/piwik.conf dest=/etc/apache2/sites-enabled/piwik.conf state=link owner=root group=root
+
+- name: Disable default Apache configuration
+  file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
+
+- name: Restart Apache
+  service: name=apache2 state=restarted

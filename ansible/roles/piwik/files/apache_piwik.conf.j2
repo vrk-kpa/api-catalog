@@ -1,0 +1,21 @@
+ServerName localhost
+
+<VirtualHost 127.0.0.1:8081>
+
+    ServerName localhost
+
+    DocumentRoot /var/www/sites/piwik
+
+    ErrorLogFormat "[%t] %M"
+    ErrorLog /var/log/apache2/piwik.log
+    CustomLog /var/log/apache2/piwik_requests.log combined
+
+    <Directory "/opt/piwik">
+      Require all granted
+    </Directory>
+
+</VirtualHost>
+
+
+ServerSignature Off
+ServerTokens Prod
