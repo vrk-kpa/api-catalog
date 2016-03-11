@@ -1,6 +1,13 @@
 [mainserver]
 127.0.0.1 ansible_connection=local ansible_ssh_user=vagrant
 
+[logserver]
+127.0.0.1 ansible_connection=local ansible_ssh_user=vagrant
+
 [mainserver:vars]
+deployment_environment_id=vagrant
+secrets_file_path="vars/secrets-defaults.yml"
+
+[logserver:vars]
 deployment_environment_id=vagrant
 secrets_file_path="vars/secrets-defaults.yml"
