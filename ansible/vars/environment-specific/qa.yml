@@ -51,5 +51,7 @@ email:
   contact: kapa-asiakaspalvelu@vrk.fi
 
 xroad:
-  securityserver: "https://gdev-ss2.palveluvayla.com"
   keyAlias: qa-harvester
+  securityserver:
+    host: "https://gdev-ss2.palveluvayla.com"
+    port: 443
