@@ -1,0 +1,12 @@
+---
+
+xroad_tunnel:
+  name: xroad-tunnel
+  user: xroad-tunnel
+  configuration_path: /opt/xroad-tunnel/ssh-config
+  key_path: /opt/xroad-tunnel/kapa_rsa
+  local_port: '12765'
+  tunneling_server: dev-is.palveluvayla.com
+  remote_tunnel_user: ian
+  destination_server: gdev-ss2.i.palveluvayla.com
+  remote_port: '443'

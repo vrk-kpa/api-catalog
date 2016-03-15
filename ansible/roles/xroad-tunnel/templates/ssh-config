@@ -1,0 +1,9 @@
+Host {{ xroad_tunnel.name }}
+ Hostname {{ xroad_tunnel.tunneling_server }}
+ User {{ xroad_tunnel.remote_tunnel_user }}
+ IdentityFile {{ xroad_tunnel.key_path }}
+ LocalForward {{ xroad_tunnel.local_port }} {{ xroad_tunnel.destination_server }}:{{ xroad_tunnel.remote_port }}
+ ExitOnForwardFailure yes
+ StrictHostKeyChecking no
+ ServerAliveCountMax 5
+ ServerAliveInterval 15
