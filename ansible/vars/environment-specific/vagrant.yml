@@ -51,7 +51,6 @@ email:
   contact: vagrant@localhost
 
 xroad:
-  keyAlias: qa-harvester
   securityserver:
     host: "https://gdev-ss2.i.palveluvayla.com"
     port: 12765

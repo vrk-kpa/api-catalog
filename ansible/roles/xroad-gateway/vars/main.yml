@@ -6,5 +6,7 @@ xroad_gateway:
   user: xroad-gateway
   jar_url: https://github.com/educloudalliance/xroad-rest-gateway/releases/download/v{{ xroad_gateway_version }}/rest-gateway-{{ xroad_gateway_version }}.jar
   jar_checksum: sha256:ce3f224c7e367c71b496c5ed8ec1f6f3e253d1eac2ff65e39830aa1c2ff1a14e
-  port: "9090"
+  httpPort: "9090"
+  httpsPort: "9091"
   propertiesDirectory: properties
+  keyAlias: qa-harvester
