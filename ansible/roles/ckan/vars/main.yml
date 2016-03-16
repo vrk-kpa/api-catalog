@@ -34,6 +34,7 @@ ckan_patches:
   - { file: "fix_401_to_403" }
   - { file: "remove_gravatar" }
   - { file: "csrf" }
+  - { file: "alert_fix" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
