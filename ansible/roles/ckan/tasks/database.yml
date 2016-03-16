@@ -24,3 +24,6 @@
   shell: ./bin/paster --plugin=ckan sysadmin add {{ item }} --config={{ ckan_ini }} chdir={{ virtualenv }}
   ignore_errors: True
   with_items: ckan_admins
+
+- name: Initialize Harvest database
+  shell: ./bin/paster --plugin=ckanext-harvest harvester initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
