@@ -13,10 +13,10 @@
 - name: Copy xroad-gateway config
   template: src={{ item }} dest="/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.propertiesDirectory }}" owner={{ xroad_gateway.user }} group={{ xroad_gateway.user }} mode="0600"
   with_items:
-    - "consumers.properties"
-    - "consumer-gateway.properties"
-    - "providers.properties"
-    - "provider-gateway.properties"
+    - consumers.properties
+    - consumer-gateway.properties
+    - providers.properties
+    - provider-gateway.properties
 
 - name: Check if certificate already imported
   shell: "keytool -list -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias {{ xroad.securityserver.alias }}"
