@@ -3,8 +3,8 @@
 xroad_tunnel:
   name: xroad-tunnel
   user: xroad-tunnel
-  configuration_path: /opt/xroad-tunnel/ssh-config
-  key_path: /opt/xroad-tunnel/kapa_rsa
+  configuration_filename: ssh-config
+  key_filename: dev-is.pem
   local_port: '12765'
   tunneling_host: dev-is.palveluvayla.com
   destination_host: "{{ xroad.securityserver.host }}"

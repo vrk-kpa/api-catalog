@@ -9,7 +9,21 @@
 - name: Copy SSH tunnel config
   template:
     src: "ssh-config"
-    dest: "/opt/{{ xroad_tunnel.name }}/ssh-config"
+    dest: "/opt/{{ xroad_tunnel.name }}/{{ xroad_tunnel.configuration_filename }}"
+    owner: "{{ xroad_tunnel.user }}"
+    group: "{{ xroad_tunnel.user }}"
+    mode: "0600"
+
+- name: "Find key status"
+  stat: path=/opt/{{ xroad_tunnel.name }}/{{ xroad_tunnel.key_filename }}
+  register: ssh_key
+
+- fail: msg="You need to add the SSH key manually!"
+  when: ssh_key.stat.exists==False
+
+- name: "Make sure xroad-tunnel key has proper file permissions"
+  file:
+    dest: "/opt/{{ xroad_tunnel.name }}/{{ xroad_tunnel.key_filename }}"
     owner: "{{ xroad_tunnel.user }}"
     group: "{{ xroad_tunnel.user }}"
     mode: "0600"

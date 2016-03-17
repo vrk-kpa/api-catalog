@@ -9,4 +9,6 @@ xroad_gateway:
   httpPort: "9090"
   httpsPort: "9091"
   propertiesDirectory: properties
-  keyAlias: qa-harvester
+  keystore_filename: "{{ xroad.securityserver.alias }}.jks"
+  keyAlias: catalog
+  securityserver_public_cert_filename: "{{ xroad.securityserver.alias }}.crt"
