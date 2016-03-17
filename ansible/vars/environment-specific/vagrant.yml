@@ -52,5 +52,5 @@ email:
 
 xroad:
   securityserver:
-    host: "https://gdev-ss2.i.palveluvayla.com"
+    host: "gdev-ss2.i.palveluvayla.com"
     port: 12765
