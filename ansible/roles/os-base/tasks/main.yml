@@ -37,6 +37,10 @@
     - build-essential
     - libz-dev
     - libssl-dev
+
+- name: Ensure java7 is absent
+  apt: pkg=openjdk-7-jdk state=absent
+
 # Note: psycopg2 requires postgresql-server-dev
 
 - name: Enable automatic installation of security upgrades

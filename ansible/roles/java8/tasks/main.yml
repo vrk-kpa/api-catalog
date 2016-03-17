@@ -1,13 +1,9 @@
 ---
 
-- name: Add webupd8 PPA
-  apt_repository: repo="ppa:webupd8team/java"
+- name: Add openjdk8 PPA
+  apt_repository: repo="ppa:openjdk-r/ppa"
   register: java8_repo_added
 
-- name: Auto-accept Java license
-  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-  when: java8_repo_added|changed
-
 - name: Install Java 8
-  apt: name=oracle-java8-installer update_cache=yes
+  apt: name=openjdk-8-jdk update_cache=yes
   when: java8_repo_added|changed
