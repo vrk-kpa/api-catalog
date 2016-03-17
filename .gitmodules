@@ -13,6 +13,3 @@
 [submodule "ckanext/ckanext-harvest"]
 	path = ckanext/ckanext-harvest
 	url = https://github.com/ckan/ckanext-harvest.git
-[submodule "ckanext/ckanext-xroad_integration"]
-	path = ckanext/ckanext-xroad_integration
-	url = https://github.com/vrk-kpa/ckanext-xroad_integration.git
