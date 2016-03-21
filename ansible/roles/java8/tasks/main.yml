@@ -2,8 +2,15 @@
 
 - name: Add openjdk8 PPA
   apt_repository: repo="ppa:openjdk-r/ppa"
-  register: java8_repo_added
 
-- name: Install Java 8
-  apt: name=openjdk-8-jdk update_cache=yes
-  when: java8_repo_added|changed
+- name: Install openjdk8
+  apt: name=openjdk-8-jdk update_cache=yes state=latest
+
+- name: Select Java 8 as default
+  alternatives: name=java path=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+- name: Ensure Java 7 is absent
+  apt: name={{ item }} state=absent
+  with_items:
+    - openjdk-7-jdk
+    - openjdk-7-jre
