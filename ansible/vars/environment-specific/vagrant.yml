@@ -1,6 +1,8 @@
 ---
+vagrant: true
 
 public_facing_hostname: 10.100.10.10
+logserver_public_facing_hostname: 10.100.10.11
 internal_hostname: catalog-vagrant
 ckan_site_name: Liityntäkatalogi
 

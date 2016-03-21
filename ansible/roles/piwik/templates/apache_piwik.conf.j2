@@ -1,10 +1,13 @@
 ServerName localhost
 
-<VirtualHost 127.0.0.1:8081>
+{% if deployment_environment_id == "vagrant" %}
+  <VirtualHost 127.0.0.1:8081>
+{% else %}
+  <VirtualHost *:403>
+{% endif %}
+    ServerName {{ logserver_public_facing_hostname }}
 
-    ServerName localhost
-
-    DocumentRoot /var/www/sites/piwik
+    DocumentRoot /opt/piwik
 
     ErrorLogFormat "[%t] %M"
     ErrorLog /var/log/apache2/piwik.log
