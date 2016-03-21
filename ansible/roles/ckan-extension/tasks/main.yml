@@ -52,3 +52,7 @@
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
   notify: Restart Apache
+
+# Check new harvester jobs every 15 minutes, does not execute harvesting if there are no new jobs
+- name: Ensure harvester cronjob
+  cron: name="Harvester run" minute="*/15" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
