@@ -12,6 +12,7 @@
     - "{{ secrets_file_path }}"
   roles:
     - os-base
+    - java8
     - ssh
     - postgres
     - postgres-backup

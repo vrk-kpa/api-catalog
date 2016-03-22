@@ -1,6 +1,9 @@
 127.0.0.1      localhost {{ internal_hostname }}
 
-{% if deployment_environment_id == "qa" %}
+{% if deployment_environment_id == "vagrant" %}
+# The following line is required for SSL key validation to work with tunnel forwarding
+127.0.0.1 {{ xroad.securityserver.host }}
+{% elif deployment_environment_id == "qa" %}
 86.50.28.125    katalogitest01.csc.fi   katalogitest01
 {% elif deployment_environment_id == "prod" %}
 86.50.28.126    katalogiprod01.csc.fi   katalogiprod01
