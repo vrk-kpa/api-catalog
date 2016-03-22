@@ -4915,6 +4915,9 @@ msgstr "Blogi"
 msgid "Feedback"
 msgstr "Palaute"
 
+msgid "Send feedback"
+msgstr "Anna palautetta"
+
 msgid "Feedback message"
 msgstr "Palauteviesti"
 
@@ -4923,3 +4926,9 @@ msgstr "Kiitos!"
 
 msgid "Security token error, please try again"
 msgstr "Istuntovirhe, ole hyvä ja yritä uudelleen"
+
+msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
+msgstr "Otamme vastaan palautetta ja kehittämisideoita Liityntäkatalogiin liittyen. Yksittäisistä liitynnöistä ei tässä vaiheessa voi antaa palautetta. Liityntäkohtaisia lisätietoja saa liityntään kirjattujen yhteystietojen kautta."
+
+msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
+msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi palautelomakkeella. Palaute ohjautuu Väestörekisterikeskuksen Palveluarkkitehtuuri-yksikön Asiakaspalveluun. Jos toivot palautteeseesi vastauksen, liitä mukaan yhteystietosi."
