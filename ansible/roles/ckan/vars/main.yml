@@ -11,14 +11,6 @@ ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apica
 redis_harvest_database: 0
 redis_celery_database: 1
 
-supervisor_services:
-  - ckan_gather_consumer
-  - ckan_fetch_consumer
-  - celery_celery
-  - celery_bulk
-  - celery_priority
-  - celerybeat
-
 ckan_storage_path: "{{ data_path }}/ckan"
 ckan_max_resource_size: 50
 
