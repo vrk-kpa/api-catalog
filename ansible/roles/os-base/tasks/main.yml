@@ -37,6 +37,7 @@
     - build-essential
     - libz-dev
     - libssl-dev
+    - supervisor
 
 # Note: psycopg2 requires postgresql-server-dev
 

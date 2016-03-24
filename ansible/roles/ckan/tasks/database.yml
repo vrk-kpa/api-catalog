@@ -33,8 +33,3 @@
 
 - name: Initialize Harvest database
   shell: ./bin/paster --plugin=ckanext-harvest harvester initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
-
-- name: Start supervisor services
-  supervisorctl: name={{ item }} state=started
-  with_flattened:
-    - supervisor_services

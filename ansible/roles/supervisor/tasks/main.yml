@@ -3,10 +3,6 @@
 - name: Create log path for supervisor
   file: path={{ supervisor_log_path }} state=directory
 
-- name: Ensure CKAN common packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - supervisor
 
 - name: Copy supervisor configuration
   template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/catalog.conf" mode=0644 owner=root group=root
