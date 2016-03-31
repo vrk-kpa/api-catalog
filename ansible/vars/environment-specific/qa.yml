@@ -52,6 +52,8 @@ email:
 
 xroad:
   securityserver:
-    host: "https://gdev-ss2.palveluvayla.com"
+    # This is a temporary fix until the correct SSL cert with the proper alt FQDN is obtained
+    host: "gdev-ss2.i.palveluvayla.com"
+    #host: "gdev-ss2.palveluvayla.com"
     alias: "gdev-ss2"
     port: 443

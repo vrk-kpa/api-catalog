@@ -4,6 +4,10 @@
 # The following line is required for SSL key validation to work with tunnel forwarding
 127.0.0.1 {{ xroad.securityserver.host }}
 {% elif deployment_environment_id == "qa" %}
+# This is a temporary fix until correctly formed SSL certs are provided.
+# The ip address 54.171.38.69 belongs to gdev-ss2.palveluvayla.com
+54.171.38.69 gdev-ss2.i.palveluvayla.com
+
 86.50.28.125    katalogitest01.csc.fi   katalogitest01
 {% elif deployment_environment_id == "prod" %}
 86.50.28.126    katalogiprod01.csc.fi   katalogiprod01

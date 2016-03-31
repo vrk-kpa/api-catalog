@@ -3,13 +3,9 @@
 - name: Create log path for supervisor
   file: path={{ supervisor_log_path }} state=directory
 
-- name: Ensure CKAN common packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - supervisor
 
 - name: Copy supervisor configuration
-  template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/ytp.conf" mode=0644 owner=root group=root
+  template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/catalog.conf" mode=0644 owner=root group=root
   register: supervisor_configuration
   notify:
   - Restart Gather
@@ -27,7 +23,7 @@
 
 - name: Ensure supervisor services are restarted
   supervisorctl: name={{ item }} state=restarted
-  when: supervisor_configuration|changed or modules_install|changed or ckan_configuration|changed
+  when: supervisor_configuration|changed
   with_flattened:
     - supervisor_services
 
@@ -36,11 +32,3 @@
   with_flattened:
     - supervisor_services
 
-# Celery
-
-- name: Ensure celerybeat pid ownership
-  command: chown "{{ www_user }}:{{ www_group }}" /tmp/celerybeat_pid /tmp/celerybeat_schedule
-  ignore_errors: True
-
-#- name: Copy celery configuration
-#  template: src="../modules/ckanext-ytp-tasks/ytp_celery.py.j2" dest="/etc/ckan/default/ytp_celery.py" mode=0640 owner=root group="{{ www_group }}"

@@ -30,6 +30,29 @@
 
 #
 
+# Two conventions in extension requirements files
+
+- name: Register extension requirements.txt
+  stat: path="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt"
+  register: requirements
+
+- name: Register extension pip-requirements.txt
+  stat: path="{{ ckanext_sync_path }}/{{ ckanext }}/pip-requirements.txt"
+  register: piprequirements
+
+- name: Install extension requirements
+  pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt" virtualenv={{ virtualenv}}
+  when: requirements.stat.exists
+
+- name: Install extension piprequirements
+  pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/pip-requirements.txt" virtualenv={{ virtualenv}}
+  when: piprequirements.stat.exists
+
+
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
   notify: Restart Apache
+
+# Check new harvester jobs every 15 minutes, does not execute harvesting if there are no new jobs
+- name: Ensure harvester cronjob
+  cron: name="Harvester run" minute="*/15" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"

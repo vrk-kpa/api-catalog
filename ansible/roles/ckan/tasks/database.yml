@@ -3,6 +3,10 @@
 # Supervisor and other services may block database update and they should be
 # stopped here before database upgrade
 
+
+- name: Stop supervisor services
+  supervisorctl: name=all state=stopped
+
 - name: Initialize CKAN database
   shell: ckan db init
   ignore_errors: True
@@ -24,3 +28,6 @@
   shell: ./bin/paster --plugin=ckan sysadmin add {{ item }} --config={{ ckan_ini }} chdir={{ virtualenv }}
   ignore_errors: True
   with_items: ckan_admins
+
+- name: Initialize Harvest database
+  shell: ./bin/paster --plugin=ckanext-harvest harvester initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
