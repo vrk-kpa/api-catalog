@@ -5,7 +5,7 @@
 
 
 - name: Stop supervisor services
-  supervisorctl: name=all state=stopped
+  shell: supervisorctl stop all
 
 - name: Initialize CKAN database
   shell: ckan db init
