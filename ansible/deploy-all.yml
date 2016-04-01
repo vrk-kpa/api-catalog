@@ -17,6 +17,7 @@
     - postgres-backup
     - solr3
     - redis
+    - ssl
     - nginx
     - apache
     - postfix

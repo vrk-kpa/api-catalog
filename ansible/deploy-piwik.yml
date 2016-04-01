@@ -11,6 +11,7 @@
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
   roles:
+    - ssl
     - piwik
   handlers:
     - include: handlers/handlers.yml
