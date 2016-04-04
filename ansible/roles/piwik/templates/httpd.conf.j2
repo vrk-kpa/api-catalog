@@ -112,6 +112,7 @@ ServerAdmin root@localhost
 #
 
 <VirtualHost *:443>
+  ServerName {{ analytics_server_public_facing_hostname }}
   SSLEngine on
   SSLCertificateFile "{{ ssl_certificate_path }}/{{ ssl_cert_filename }}"
   SSLCertificateKeyFile "{{ ssl_certificate_path }}/{{ ssl_key_filename }}"

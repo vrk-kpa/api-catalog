@@ -5,7 +5,7 @@ ServerName localhost
 {% else %}
   <VirtualHost *:403>
 {% endif %}
-    ServerName {{ logserver_public_facing_hostname }}
+    ServerName {{ analytics_server_public_facing_hostname }}
 
     DocumentRoot /opt/piwik
 

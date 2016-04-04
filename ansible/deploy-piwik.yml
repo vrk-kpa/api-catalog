@@ -1,10 +1,10 @@
 ---
 
 # To run:
-# ansible-playbook -v -i inventories/vagrant deploy-piwik.yml
-# ansible-playbook --ask-vault-pass -v -i inventories/qa deploy-piwik.yml
+# ansible-playbook -v -i inventories/analytics-vagrant deploy-piwik.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/analytics-prod deploy-piwik.yml
 
-- hosts: logserver
+- hosts: analytics-server
   sudo: true
   vars_files:
     - "vars/common.yml"

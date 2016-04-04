@@ -32,7 +32,7 @@ sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.passwo
 ckan.site_url = https://{{ public_facing_hostname }}
 ckan.site_url_internally = https://{{ public_facing_hostname }}/data/
 
-piwik.site_url = https://{{ logserver_public_facing_hostname }}
+piwik.site_url = https://{{ analytics_server_public_facing_hostname }}
 
 ckan.auth.anon_create_dataset = false
 ckan.auth.create_unowned_dataset = false
