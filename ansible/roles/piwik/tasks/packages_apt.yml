@@ -1,23 +1,23 @@
 - name: Copy apt sources.list
   template: src=sources.list.j2 dest=/etc/apt/sources.list mode="0644" owner=root group=root
 
-#- name: Upgrade packages
-#  apt: upgrade=dist update_cache=yes
+- name: Upgrade packages
+  apt: upgrade=dist update_cache=yes
 
-#- name: Ensure common packages
-#  apt: pkg={{ item }} state=latest
-#  with_items:
-#    - htop
-#    - unzip
-#    - mysql-server
-#    - apache2
-#    - php5-gd
-#    - php5-mysql
-#    - libapache2-mod-php5
-#    - python-mysqldb
-#    - php5-geoip
-#    - php5-dev
-#    - libgeoip-dev
+- name: Ensure common packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - htop
+    - unzip
+    - mysql-server
+    - apache2
+    - php5-gd
+    - php5-mysql
+    - libapache2-mod-php5
+    - python-mysqldb
+    - php5-geoip
+    - php5-dev
+    - libgeoip-dev
 
 - name: Enable automatic installation of security upgrades
   template: src=apt-auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades mode="0644" owner=root group=root

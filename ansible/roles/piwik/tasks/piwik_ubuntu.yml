@@ -1,3 +1,5 @@
+# For local use only
+
 - name: Copy MySQL configuration
   template: src=my.cnf.j2 dest=/etc/mysql/my.cnf mode="0644" owner=root group=root
 
@@ -10,11 +12,17 @@
 - name: Restart MySQL
   service: name=mysql state=restarted
 
-- name: Download latest piwik
-  get_url: url=http://builds.piwik.org/latest.zip dest=/tmp/latest_piwik.zip
+- name: Check if piwik is already installed
+  stat: path=/var/www/piwik
+  register: piwik_install
+
+- name: Download piwik
+  get_url: url=http://builds.piwik.org/latest.zip dest=/tmp/piwik-2.16.0.zip
+  when: not piwik_install.stat.exists
 
 - name: Extract piwik
-  unarchive: src=/tmp/latest_piwik.zip dest=/opt copy=no owner=www-data group=www-data
+  unarchive: src=/tmp/piwik-2.16.0.zip dest=/var/www copy=no owner=apache group=apache
+  when: not piwik_install.stat.exists
 
 - name: Copy apache configuration
   template: src=apache_piwik.conf.j2 dest=/etc/apache2/sites-available/piwik.conf mode="0644" owner=root group=root

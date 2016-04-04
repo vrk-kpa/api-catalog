@@ -13,6 +13,4 @@
   roles:
     - ssl
     - piwik
-  handlers:
-    - include: handlers/handlers.yml
 

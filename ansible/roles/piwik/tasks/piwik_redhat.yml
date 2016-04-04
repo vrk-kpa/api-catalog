@@ -1,20 +1,32 @@
 - name: Set hostname (systemd)
   hostname: name="{{ analytics_internal_hostname }}"
 
-- name: Restart MySQL
+- name: Start MySQL
   service: name=mariadb state=restarted enabled=yes
 
+- name: Set MySQL root password
+  mysql_user: name="root" state=present password="{{ secret.database_root_password }}"
+
+- name: Update MySQL configuration
+  template: src="mariadb_client.cnf" dest="/root/.my.cnf"
+
 - name: Add Piwik MySQL database
-  mysql_db: name="piwik" state="present" login_user="root" login_password=""
+  mysql_db: name="piwik" state="present"
 
 - name: Add piwik MySQL user
-  mysql_user: name="piwik" state="present" password="{{ secret.database_piwik_password }}" login_user="root" login_password="" priv="piwik.*:ALL"
+  mysql_user: name="piwik" state="present" password="{{ secret.database_piwik_password }}"
 
-- name: Download latest piwik
-  get_url: url=http://builds.piwik.org/latest.zip dest=/tmp/latest_piwik.zip
+- name: Check if piwik is already installed
+  stat: path=/var/www/piwik
+  register: piwik_install
+
+- name: Download piwik
+  get_url: url=http://builds.piwik.org/latest.zip dest=/tmp/piwik-2.16.0.zip
+  when: not piwik_install.stat.exists
 
 - name: Extract piwik
-  unarchive: src=/tmp/latest_piwik.zip dest=/var/www copy=no owner=apache group=apache
+  unarchive: src=/tmp/piwik-2.16.0.zip dest=/var/www copy=no owner=apache group=apache
+  when: not piwik_install.stat.exists
 
 - name: Copy apache configuration
   template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf mode="0644" owner=root group=root
