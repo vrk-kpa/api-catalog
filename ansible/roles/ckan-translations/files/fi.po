@@ -4932,3 +4932,6 @@ msgstr "Otamme vastaan palautetta ja kehittämisideoita Liityntäkatalogiin liit
 
 msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
 msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi palautelomakkeella. Palaute ohjautuu Väestörekisterikeskuksen Palveluarkkitehtuuri-yksikön Asiakaspalveluun. Jos toivot palautteeseesi vastauksen, liitä mukaan yhteystietosi."
+
+msgid "Shared resource"
+msgstr "Yhteiskäyttöinen"
