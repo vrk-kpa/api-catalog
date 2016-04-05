@@ -21,7 +21,7 @@
   when: not piwik_install.stat.exists
 
 - name: Extract piwik
-  unarchive: src=/tmp/piwik-2.16.0.zip dest=/var/www copy=no owner=apache group=apache
+  unarchive: src=/tmp/piwik-2.16.0.zip dest=/opt copy=no owner=www-data group=www-data
   when: not piwik_install.stat.exists
 
 - name: Copy apache configuration
