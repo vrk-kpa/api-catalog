@@ -1,0 +1,70 @@
+---
+
+- name: Ensure that gateway system user exists
+  user: name={{ xroad_gateway.user }} createhome=no system=yes comment="{{ xroad_gateway.name }} system user"
+
+- name: Ensure path exists
+  file: path=/opt/{{ xroad_gateway.name }} state=directory mode="0700" owner={{ xroad_gateway.user }} group={{ xroad_gateway.user }}
+
+
+- name: Create xroad-gateway config directory
+  file: path=/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.propertiesDirectory }} state=directory owner={{ xroad_gateway.user }} group={{ xroad_gateway.user }} mode="0700" recurse=yes
+
+- name: Copy xroad-gateway config
+  template: src={{ item }} dest="/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.propertiesDirectory }}" owner={{ xroad_gateway.user }} group={{ xroad_gateway.user }} mode="0600"
+  with_items:
+    - consumers.properties
+    - consumer-gateway.properties
+    - providers.properties
+    - provider-gateway.properties
+
+- name: Check if certificate already imported
+  shell: "keytool -list -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias {{ xroad.securityserver.alias }}"
+  ignore_errors: true
+  register: java_cert_imported
+
+- name: Find public certificate status
+  stat: path=/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.securityserver_public_cert_filename }}
+  register: ss_cert
+  when: java_cert_imported|failed
+
+- fail: msg="You need to add the public SSL cert key manually!"
+  when: java_cert_imported|failed and ss_cert.stat.exists==False
+
+- name: Make sure cert has proper file permissions
+  file:
+    dest: "/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.securityserver_public_cert_filename }}"
+    owner: "{{ xroad_gateway.user }}"
+    group: "{{ xroad_gateway.user }}"
+    mode: "0600"
+  when: java_cert_imported|failed
+
+- name: Import certificate into trusted certs
+  command: "keytool -import -noprompt -alias {{ xroad.securityserver.alias }} -file /opt/{{ xroad_gateway.name }}/{{ xroad_gateway.securityserver_public_cert_filename }} -keystore /etc/ssl/certs/java/cacerts -storepass changeit"
+  when: java_cert_imported|failed
+
+- name: Find private SSL key status
+  stat: path=/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.keystore_filename }} get_md5=False get_checksum=False
+  register: private_ssl_key
+
+- name: Fail if private SSL key is not present
+  fail: msg="You must manually add the SSL key required by xroad-gateway in jks format"
+  when: private_ssl_key.stat.exists==False
+
+- name: Make sure cert has proper file permissions
+  file:
+    dest: "/opt/{{ xroad_gateway.name }}/{{ xroad_gateway.keystore_filename }}"
+    owner: "{{ xroad_gateway.user }}"
+    group: "{{ xroad_gateway.user }}"
+    mode: "0600"
+
+- name: Copy gateway upstart configs
+  template:
+    src: initscript-upstart.conf
+    dest: /etc/init/{{ xroad_gateway.name }}.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Start the gateway
+  service: name={{ xroad_gateway.name }} enabled=yes state=restarted

@@ -19,7 +19,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "catalog" do |server|
     server.vm.box = "ubuntu/trusty64"
-    server.vm.box_url = "https://vagrantcloud.com/ubuntu/boxes/trusty64"
     server.vm.network :private_network, ip: "10.100.10.10"
     server.vm.network :private_network, ip: "10.100.10.11"
     server.vm.hostname = "api-catalog"

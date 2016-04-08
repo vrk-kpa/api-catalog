@@ -12,6 +12,7 @@
     - "{{ secrets_file_path }}"
   roles:
     - os-base
+    - java8
     - ssh
     - postgres
     - postgres-backup
@@ -29,8 +30,11 @@
     - { role: ckan-extension, ckanext: ckanext-fluent }
     - { role: ckan-extension, ckanext: ckanext-pages }
     - { role: ckan-extension, ckanext: ckanext-contact }
+    - { role: ckan-extension, ckanext: ckanext-harvest }
+    - { role: ckan-extension, ckanext: ckanext-xroad_integration }
     - ckan
     - ckan-translations
+    - supervisor
     - solr-reindex
   handlers:
     - include: handlers/handlers.yml

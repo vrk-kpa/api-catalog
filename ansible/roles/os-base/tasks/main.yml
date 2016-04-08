@@ -37,6 +37,8 @@
     - build-essential
     - libz-dev
     - libssl-dev
+    - supervisor
+
 # Note: psycopg2 requires postgresql-server-dev
 
 - name: Enable automatic installation of security upgrades

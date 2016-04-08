@@ -6,18 +6,10 @@ harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui fluentall_pkg fluentall_res apicatalog_routes contact apicatalog_feed
+ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui fluentall_pkg fluentall_res apicatalog_routes contact apicatalog_feed harvest xroad_harvester
 
 redis_harvest_database: 0
 redis_celery_database: 1
-
-supervisor_services:
-  - ckan_gather_consumer
-  - ckan_fetch_consumer
-  - celery_celery
-  - celery_bulk
-  - celery_priority
-  - celerybeat
 
 ckan_storage_path: "{{ data_path }}/ckan"
 ckan_max_resource_size: 50
@@ -34,6 +26,7 @@ ckan_patches:
   - { file: "fix_401_to_403" }
   - { file: "remove_gravatar" }
   - { file: "csrf" }
+  - { file: "alert_fix" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

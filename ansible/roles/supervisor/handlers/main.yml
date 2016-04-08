@@ -1,0 +1,19 @@
+---
+
+- name: Restart Gather
+  supervisorctl: name=ckan_gather_consumer state=restarted
+
+- name: Restart Fetch
+  supervisorctl: name=ckan_fetch_consumer state=restarted
+
+- name: Stop Gather
+  supervisorctl: name=ckan_gather_consumer state=stopped
+
+- name: Stop Fetch
+  supervisorctl: name=ckan_fetch_consumer state=stopped
+
+- name: Start Gather
+  supervisorctl: name=ckan_gather_consumer state=started
+
+- name: Start Fetch
+  supervisorctl: name=ckan_fetch_consumer state=started

@@ -52,3 +52,9 @@ email:
   error_recipient: vagrant@localhost
   error_from: error@{{ email_domain }}
   contact: vagrant@localhost
+
+xroad:
+  securityserver:
+    host: "gdev-ss2.i.palveluvayla.com"
+    alias: "gdev-ss2"
+    port: 12765

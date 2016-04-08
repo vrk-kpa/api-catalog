@@ -4896,6 +4896,9 @@ msgstr "Blog"
 msgid "Feedback"
 msgstr "Feedback"
 
+msgid "Send feedback"
+msgstr "Send feedback"
+
 msgid "Feedback message"
 msgstr "Feedback message"
 
@@ -4904,3 +4907,12 @@ msgstr "Kiitos! Tack! Thank you!"
 
 msgid "Security token error, please try again"
 msgstr "Session error, please try again"
+
+msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
+msgstr "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
+
+msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
+msgstr "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
+
+msgid "Shared resource"
+msgstr "Shared resource"

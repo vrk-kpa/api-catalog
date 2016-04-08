@@ -46,6 +46,37 @@
       "preset": "dataset_organization"
     },
     {
+      "field_name": "environment",
+      "label": "Environment",
+      "preset": "select",
+      "choices": [
+        {
+          "value": "test",
+          "label": "Test environment"
+        },
+        {
+          "value": "production",
+          "label": "Production environment"
+        }
+      ]
+    },
+    {
+      "field_name": "shared_resource",
+      "label": "Shared resource",
+      "preset": "select",
+      "required": true,
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    {
       "field_name": "url",
       "label": "Source",
       "form_placeholder": "http://example.com/dataset.json",
@@ -113,21 +144,6 @@
         { 
           "value": "maybe",
           "label": "See description"
-        }
-      ]
-    },
-    {
-      "field_name": "environment",
-      "label": "Environment",
-      "preset": "select",
-      "choices": [
-        { 
-          "value": "test",
-          "label": "Test environment"
-        },
-        { 
-          "value": "production",
-          "label": "Production environment"
         }
       ]
     },

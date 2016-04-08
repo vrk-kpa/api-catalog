@@ -8,14 +8,14 @@ The catalog is available at [liityntakatalogi.suomi.fi](http://liityntakatalogi.
 
 Prerequisites:
 
-- [Vagrant](https://www.vagrantup.com/) (tested on 1.7.4)
-- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.8)
+- [Vagrant](https://www.vagrantup.com/) (tested on 1.8.1)
+- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.16)
 
 Start up the vagrant:
 
     vagrant up
 
-After [Ansible](http://www.ansible.com/) provisions the system, the service will be running in the virtual machine and is available from your host machine at http://10.100.10.10/
+After [Ansible](http://www.ansible.com/) provisions the system, the service will be running in the virtual machine and is available from your host machine at https://10.100.10.10/
 
 User credentials for an administrator are `admin:admin`, and `test:test` for a regular user.
 
