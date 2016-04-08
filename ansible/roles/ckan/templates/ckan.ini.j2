@@ -76,8 +76,9 @@ scheming.presets = ckanext.scheming:presets.json
 
 scheming.dataset_schemas = ckanext.apicatalog_scheming.schemas:dataset.json
 
-email_to = None
-error_email_from = None
+# Disable sending error emails. Commented out because the default is None, and "None" is interpreted here as a string.
+# email_to = 
+# error_email_from =
 
 smtp.server = {{ email.smtp_server }}
 smtp.starttls = False
