@@ -54,7 +54,7 @@
   notify: Restart Apache
 
 - name: Disable emails in cron
-  cronvar: name="MAILTO" value=" "
+  cronvar: name="MAILTO" value="\"\""
 
 # Check new harvester jobs every 15 minutes, does not execute harvesting if there are no new jobs
 - name: Ensure harvester cronjob
