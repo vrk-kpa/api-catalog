@@ -38,6 +38,16 @@
         "validators": "not_empty unicode name_validator organization_name_validator",
         "form_snipper": "slug.html"
       }
+    },
+    {
+      "preset_name": "title_ex",
+      "values": {
+        "validators": "if_empty_same_as(name) unicode",
+        "form_snippet": "large_text_ex.html",
+        "form_attrs": {
+          "data-module": "slug-preview-target"
+        }
+      }
     }
   ]
 }

@@ -7,9 +7,10 @@
     {
       "field_name": "title",
       "label": "Title",
-      "preset": "title",
+      "preset": "title_ex",
       "form_placeholder":"eg. A descriptive title",
-      "required": true
+      "required": true,
+      "final": true
     },
     {
       "field_name": "name",
