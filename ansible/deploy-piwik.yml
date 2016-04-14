@@ -1,0 +1,16 @@
+---
+
+# To run:
+# ansible-playbook -v -i inventories/analytics-vagrant deploy-piwik.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/analytics-prod deploy-piwik.yml
+
+- hosts: analytics-server
+  sudo: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  roles:
+    - ssl
+    - piwik
+

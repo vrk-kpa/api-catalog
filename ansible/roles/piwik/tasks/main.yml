@@ -1,0 +1,16 @@
+---
+
+- name: Copy environment
+  template: src=environment.j2 dest=/etc/environment mode="0644" owner=root group=root
+
+- include: packages_apt.yml
+  when: ansible_pkg_mgr == 'apt'
+
+- include: packages_yum.yml
+  when: ansible_pkg_mgr == 'yum'
+
+- include: piwik_ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include: piwik_redhat.yml
+  when: ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS'

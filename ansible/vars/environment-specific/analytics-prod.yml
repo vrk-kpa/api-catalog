@@ -1,0 +1,5 @@
+---
+
+analytics_server_public_facing_hostname: kapastats01.csc.fi
+analytics_internal_hostname: analytics-prod
+

@@ -1,0 +1,24 @@
+ServerName localhost
+
+{% if deployment_environment_id == "vagrant" %}
+  <VirtualHost 127.0.0.1:8081>
+{% else %}
+  <VirtualHost *:403>
+{% endif %}
+    ServerName {{ analytics_server_public_facing_hostname }}
+
+    DocumentRoot /opt/piwik
+
+    ErrorLogFormat "[%t] %M"
+    ErrorLog /var/log/apache2/piwik.log
+    CustomLog /var/log/apache2/piwik_requests.log combined
+
+    <Directory "/opt/piwik">
+      Require all granted
+    </Directory>
+
+</VirtualHost>
+
+
+ServerSignature Off
+ServerTokens Prod

@@ -1,7 +1,10 @@
 ---
+vagrant: true
 
 public_facing_hostname: 10.100.10.10
+analytics_server_public_facing_hostname: 10.100.10.11
 internal_hostname: catalog-vagrant
+analytics_internal_hostname: analytics-vagrant
 ckan_site_name: Liityntäkatalogi
 
 database_ckan:

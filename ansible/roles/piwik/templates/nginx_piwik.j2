@@ -1,0 +1,14 @@
+
+server {
+
+  listen 443 ssl;
+  server_name 10.100.10.11;
+
+  location / {
+    proxy_pass http://127.0.0.1:8081/;
+    proxy_set_header X-Url-Scheme $scheme;
+    proxy_set_header Host $host;
+  }
+
+}
+
