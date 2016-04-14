@@ -116,7 +116,7 @@ ServerAdmin root@localhost
   SSLEngine on
   SSLCertificateFile "{{ ssl_certificate_path }}/{{ ssl_cert_filename }}"
   SSLCertificateKeyFile "{{ ssl_certificate_path }}/{{ ssl_key_filename }}"
-  DocumentRoot "/var/www/piwik"
+  DocumentRoot "/opt/piwik"
 
   <Directory "/var/www">
       AllowOverride None

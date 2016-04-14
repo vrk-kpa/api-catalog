@@ -17,7 +17,7 @@
   mysql_user: name="piwik" state="present" password="{{ secret.database_piwik_password }}"
 
 - name: Check if piwik is already installed
-  stat: path=/var/www/piwik
+  stat: path=/var/opt/piwik
   register: piwik_install
 
 - name: Download piwik
@@ -25,7 +25,7 @@
   when: not piwik_install.stat.exists
 
 - name: Extract piwik
-  unarchive: src=/tmp/piwik-2.16.0.zip dest=/var/www copy=no owner=apache group=apache
+  unarchive: src=/tmp/piwik-2.16.0.zip dest=/opt copy=no owner=apache group=apache
   when: not piwik_install.stat.exists
 
 - name: Copy apache configuration
