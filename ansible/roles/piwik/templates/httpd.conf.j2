@@ -118,11 +118,11 @@ ServerAdmin root@localhost
   SSLCertificateKeyFile "{{ ssl_certificate_path }}/{{ ssl_key_filename }}"
   DocumentRoot "/opt/piwik"
 
-  <Directory "/var/www">
+  <Directory "/opt/piwik">
       AllowOverride None
       Require all granted
   </Directory>
-  <Directory "/var/www/piwik">
+  <Directory "/opt/piwik">
       Options Indexes FollowSymLinks
       AllowOverride None
       Require all granted
