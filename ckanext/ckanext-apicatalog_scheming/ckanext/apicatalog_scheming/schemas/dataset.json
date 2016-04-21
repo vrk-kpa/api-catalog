@@ -102,6 +102,11 @@
       "label": "Maintainer phone number",
       "form_placeholder": "+358123456789",
       "display_property": "dc:contributor"
+    },
+    {
+      "field_name": "number_of_saves",
+      "label": "Number of saves",
+      "preset": "apicatalog_number_of_saves"
     }
   ],
   "resource_fields": [
