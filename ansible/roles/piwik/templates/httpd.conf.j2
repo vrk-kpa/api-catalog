@@ -113,9 +113,15 @@ ServerAdmin root@localhost
 
 <VirtualHost *:443>
   ServerName {{ analytics_server_public_facing_hostname }}
+
   SSLEngine on
   SSLCertificateFile "{{ ssl_certificate_path }}/{{ ssl_cert_filename }}"
   SSLCertificateKeyFile "{{ ssl_certificate_path }}/{{ ssl_key_filename }}"
+  SSLProtocol             all -SSLv3 -TLSv1 -TLSv1.1
+  SSLCipherSuite          ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+  SSLHonorCipherOrder     on
+  SSLCompression          off
+
   DocumentRoot "/opt/piwik"
 
   <Directory "/opt/piwik">
