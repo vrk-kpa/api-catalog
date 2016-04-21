@@ -1,0 +1,21 @@
+- name: Upgrade packages
+  yum: update_cache=yes name=* state=latest
+
+- name: Ensure common packages
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - htop
+    - unzip
+    - mariadb-server
+    - httpd
+    - mod_ssl
+    - php
+    - php-gd
+    - php-mysql
+    - php-pdo
+    - php-mbstring
+    - php-xml
+    - MySQL-python
+    - php-pecl-geoip
+    - libsemanage-python
+

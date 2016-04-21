@@ -1,0 +1,44 @@
+- name: Set hostname (systemd)
+  hostname: name="{{ analytics_internal_hostname }}"
+
+- name: Start MySQL
+  service: name=mariadb state=restarted enabled=yes
+
+- name: Set MySQL root password
+  mysql_user: name="root" state=present password="{{ secret.database_root_password }}"
+
+- name: Update MySQL configuration
+  template: src="mariadb_client.cnf" dest="/root/.my.cnf"
+
+- name: Add Piwik MySQL database
+  mysql_db: name="piwik" state="present"
+
+- name: Add piwik MySQL user
+  mysql_user: name="piwik" state="present" password="{{ secret.database_piwik_password }}" priv="piwik.*:ALL"
+
+- name: Check if piwik is already installed
+  stat: path=/var/opt/piwik
+  register: piwik_install
+
+- name: Download piwik
+  get_url: url=http://builds.piwik.org/piwik-2.16.0.zip dest=/tmp/piwik-2.16.0.zip
+  when: not piwik_install.stat.exists
+
+- name: Extract piwik
+  unarchive: src=/tmp/piwik-2.16.0.zip dest=/opt copy=no owner=apache group=apache
+  when: not piwik_install.stat.exists
+
+- name: Copy apache configuration
+  template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf mode="0644" owner=root group=root
+
+- name: Restart Apache
+  service: name=httpd state=restarted enabled=yes
+
+- name: Allow Apache on network (SELinux)
+  seboolean: name=httpd_can_network_connect state=yes persistent=yes
+  when: ansible_selinux.status == 'enabled'
+
+- name: Allow Apache to modify files (SELinux)
+  seboolean: name=httpd_unified state=yes persistent=yes
+  when: ansible_selinux.status == 'enabled'
+

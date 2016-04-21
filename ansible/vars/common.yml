@@ -11,3 +11,8 @@ ckan_ini: /etc/ckan/default/production.ini
 virtualenv: /usr/lib/ckan/default
 
 certificates_path: /etc/ssl/apicatalog
+
+ssl_certificate_path: /etc/ssl/apicatalog
+ssl_cert_filename: server.crt
+ssl_key_filename: server.key
+ssl_dh_parameters_path: "{{ ssl_certificate_path }}/dhparams.pem"
