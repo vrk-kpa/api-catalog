@@ -41,7 +41,7 @@ def get_homepage_organizations(count=1):
         if group['package_count'] is 0:
             continue
         # skip orgs with 1 package, if shared resource is "no"
-        if group['package_count'] is 1 and group['packages'][0]['shared_resource'] == "no":
+        if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
             continue
         found.append(group['id'])
         groups_data.append(group)
