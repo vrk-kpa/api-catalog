@@ -10,6 +10,10 @@ def piwik_url():
     return config.get('piwik.site_url', '')
 
 
+def piwik_site_id():
+    return config.get('piwik.site_id', 0)
+
+
 def get_homepage_organizations(count=1):
     def get_group(id):
         context = {'ignore_auth': True,
@@ -48,7 +52,7 @@ def get_homepage_organizations(count=1):
 
     if len(groups_data) > count:
         groups_data = random.sample(groups_data, count)
-        
+
     return groups_data
 
 
@@ -65,4 +69,6 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
 
     def get_helpers(self):
         return {'piwik_url': piwik_url,
-                'get_homepage_organizations': get_homepage_organizations}
+                'get_homepage_organizations': get_homepage_organizations,
+                'piwik_site_id': piwik_site_id
+                }
