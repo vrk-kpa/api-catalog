@@ -48,6 +48,13 @@
           "data-module": "slug-preview-target"
         }
       }
-    }
+    },
+    {
+      "preset_name": "dataset_slug_ex",
+      "values": {
+        "validators": "not_empty unicode name_validator package_name_validator",
+        "form_snippet": "slug_ex.html"
+      }
+    },
   ]
 }
