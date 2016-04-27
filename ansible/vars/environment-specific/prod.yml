@@ -5,6 +5,7 @@ internal_hostname: catalog-prod
 ckan_site_name: Liityntäkatalogi
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
+analytics_site_id: 1
 
 database_ckan:
   host: 127.0.0.1

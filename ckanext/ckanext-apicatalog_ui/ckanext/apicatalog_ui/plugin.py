@@ -7,6 +7,10 @@ def piwik_url():
     return config.get('piwik.site_url', '')
 
 
+def piwik_site_id():
+    return config.get('piwik.site_id', 0)
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -19,4 +23,4 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
         toolkit.add_resource('fanstatic', 'apicatalog_ui')
 
     def get_helpers(self):
-        return {'piwik_url': piwik_url}
+        return {'piwik_url': piwik_url, 'piwik_site_id': piwik_site_id}
