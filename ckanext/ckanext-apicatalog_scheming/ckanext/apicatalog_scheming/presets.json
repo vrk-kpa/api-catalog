@@ -55,6 +55,6 @@
         "validators": "not_empty unicode name_validator package_name_validator",
         "form_snippet": "slug_ex.html"
       }
-    },
+    }
   ]
 }

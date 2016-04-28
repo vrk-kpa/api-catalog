@@ -6,10 +6,10 @@
   {% set classes = (classes|list) %}
   {% do classes.append('error') if error %}
   {%- set extra_html = caller() if caller -%}
-  {% call input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
+  {% call form.input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
     <div class="input-prepend">
       {% if prepend %}<span class="add-on">{{ prepend }}</span>{%- endif -%}
-      <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly disabled{% endif %} {{ attributes(attrs) }} />
+      <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly disabled{% endif %} {{ form.attributes(attrs) }} />
       {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
     </div>
   {% endcall %}
@@ -36,7 +36,7 @@
     'data-module-prefix': domain,
     'data-module-placeholder': module_placeholder } -%}
 
-{{ form.prepend_ex(
+{{ prepend_ex(
     field.field_name,
     id='field-' + field.field_name,
     label=h.scheming_language_text(field.label),
@@ -45,7 +45,7 @@
     placeholder=h.scheming_language_text(field.form_placeholder),
     value=data[field.field_name],
     error=errors[field.field_name],
-    final=final,
+    final=field.final if 'final' in field else False,
     attrs=attrs,
     is_required=h.scheming_field_required(field)
     ) }}
