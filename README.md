@@ -1,6 +1,6 @@
 ## API Catalog (*Liityntäkatalogi*)
 
-This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interaces available on the data exchange layer.
+This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interfaces available on the data exchange layer.
 
 The catalog is available at [liityntakatalogi.suomi.fi](http://liityntakatalogi.suomi.fi/). A development sandbox of the catalog is available at [liityntakatalogi.qa.suomi.fi](http://liityntakatalogi.qa.suomi.fi/)
 
@@ -39,22 +39,13 @@ And you can also run Ansible manually inside the virtual machine:
     ├── ansible
     │   ├── deploy-all.yml                  Top-level playbook for configuring complete service
     │   ├── inventories                     Target server lists (hostname, ssh user and key)
-    │   │   ├── prod
-    │   │   ├── qa
-    │   │   └── vagrant
     │   ├── roles                           Main configuration
     │   └── vars                            Variables common for all roles
     │       ├── api-catalog-secrets         Passwords and other secrets (not included here)
     │       ├── common.yml                  Variables common for all roles and environments
     │       ├── environment-specific        Configuration specific for each deployment env
-    │       │   ├── prod.yml
-    │       │   ├── qa.yml
-    │       │   └── vagrant.yml
     │       └── secrets-defaults.yml        Default passwords, used in Vagrant
-    ├── ckanext                             Custom CKAN extensions
-    │   ├── ckanext-apicatalog_scheming     Custom schema, additional fields
-    │   ├── ckanext-apicatalog_ui           Template and style customizations
-    │   └── ckanext-fluentall               Localization to all dataset fields
+    ├── ckanext                             Custom CKAN extensions, main source directory
     ├── doc                                 Documentation
     └── Vagrantfile                         Configuration for local development environment
 
