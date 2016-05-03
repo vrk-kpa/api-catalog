@@ -55,6 +55,13 @@
         "validators": "not_empty unicode name_validator package_name_validator",
         "form_snippet": "slug_ex.html"
       }
+    },
+    {
+      "preset_name": "dataset_organization_ex",
+      "values": {
+        "validators": "owner_org_validator unicode",
+        "form_snippet": "organization_ex.html"
+      }
     }
   ]
 }
