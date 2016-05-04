@@ -111,12 +111,15 @@
     {
       "field_name": "url",
       "label": "URL",
-      "preset": "resource_url_upload"
+      "preset": "resource_url_upload_ex",
+      "final": true
     },
     {
       "field_name": "name",
       "label": "Name",
-      "required": true
+      "required": true,
+      "form_snippet": "text_ex.html",
+      "final": true
     },
     {
       "field_name": "description",

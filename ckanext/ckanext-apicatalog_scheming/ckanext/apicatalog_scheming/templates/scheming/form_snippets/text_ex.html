@@ -8,7 +8,7 @@
   {% endcall %}
 {% endmacro %}
 
-{% call form.input_ex(
+{% call input_ex(
     field.field_name,
     id='field-' + field.field_name,
     label=h.scheming_language_text(field.label),
@@ -16,7 +16,7 @@
     final=field.final if 'final' in field else False,
     value=data[field.field_name],
     error=errors[field.field_name],
-    classes=['control-medium'],
+    classes=['control-medium', 'control-maybe-final'],
     attrs=field.form_attrs if 'form_attrs' in field else {},
     is_required=h.scheming_field_required(field)
     )
