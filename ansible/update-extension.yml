@@ -9,7 +9,7 @@
 # ansible-playbook --ask-vault-pass -v -i inventories/qa -e ckanext=ckanext-apicatalog_ui update-extension.yml
 
 - hosts: mainserver
-  sudo: true
+  become: true
   vars_files:
     - "vars/common.yml"
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"

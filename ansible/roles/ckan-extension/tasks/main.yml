@@ -7,7 +7,7 @@
 
 - name: Archive extension
   local_action: command zip -FSr /tmp/api-catalog-{{ ckanext }}.zip {{ ckanext }} chdir="../ckanext"
-  sudo: false
+  become: false
   when: deployment_environment_id != "vagrant"
 
 - name: Delete existing extension

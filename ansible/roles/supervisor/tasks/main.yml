@@ -3,7 +3,6 @@
 - name: Create log path for supervisor
   file: path={{ supervisor_log_path }} state=directory
 
-
 - name: Copy supervisor configuration
   template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/catalog.conf" mode=0644 owner=root group=root
   register: supervisor_configuration
@@ -18,17 +17,13 @@
 - name: Ensure supervisor services
   shell: supervisorctl add {{ item }}
   when: supervisor_configuration|changed
-  with_flattened:
-    - supervisor_services
+  with_items: "{{ supervisor_services }}"
 
 - name: Ensure supervisor services are restarted
   supervisorctl: name={{ item }} state=restarted
   when: supervisor_configuration|changed
-  with_flattened:
-    - supervisor_services
+  with_items: "{{ supervisor_services }}"
 
 - name: Ensure supervisor services are started
   supervisorctl: name={{ item }} state=started
-  with_flattened:
-    - supervisor_services
-
+  with_items: "{{ supervisor_services }}"

@@ -5,7 +5,7 @@
 # To run: ansible-playbook -v -i inventories/vagrant vagrant-recreate-database.yml
 
 - hosts: mainserver
-  sudo: true
+  become: true
   vars_files:
     - "vars/common.yml"
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
@@ -19,14 +19,14 @@
       service: name=apache2 state=stopped
 
     - name: Delete Postgresql databases
-      sudo_user: postgres
+      become_user: postgres
       postgresql_db: "name={{ item.name }} state=absent"
       with_items:
       - { name: "{{ database.ckan.name }}" }
       ignore_errors: True
 
     - name: Setup Postgresql databases
-      sudo_user: postgres
+      become_user: postgres
       postgresql_db: "name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}"
       with_items:
       - { name: "{{ database.ckan.name }}", owner: "{{ ckan_database_username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }

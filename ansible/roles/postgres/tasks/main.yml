@@ -21,13 +21,13 @@
   service: name=postgresql state=restarted
 
 - name: Setup postgres users
-  sudo_user: postgres
+  become_user: postgres
   postgresql_user: user={{ item.user }} password={{ item.password }}
   with_items:
   - { user: "{{ database_ckan.username }}", password: "{{ database_ckan.password }}" }
 
 - name: Setup postgres databases
-  sudo_user: postgres
+  become_user: postgres
   postgresql_db: name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}
   with_items:
   - { name: "{{ database_ckan.name }}", owner: "{{ database_ckan.username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }

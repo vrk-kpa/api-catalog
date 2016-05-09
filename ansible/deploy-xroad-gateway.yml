@@ -4,7 +4,7 @@
 # ansible-playbook -v -i inventories/vagrant deploy-xroad-gateway.yml
 
 - hosts: mainserver
-  sudo: true
+  become: true
   vars_files:
     - "vars/common.yml"
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"

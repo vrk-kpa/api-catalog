@@ -24,7 +24,7 @@
 
 - name: Fetch Jetty packages
   get_url: url="http://se.archive.ubuntu.com/ubuntu/pool/{{ item.path }}/{{ item.name }}" dest="{{ cache_path }}/solr3_installation/{{ item.name }}" mode="0644" owner=root group=root
-  with_items: solr_packages
+  with_items: "{{ solr_packages }}"
   register: fetch_jetty_packages
 
 - name: Remove old Jetty installations
@@ -37,7 +37,7 @@
 - name: Install Jetty packages
   command: dpkg -i {{ cache_path }}/solr3_installation/{{ item.name }}
   when: fetch_jetty_packages|changed
-  with_items: solr_packages
+  with_items: "{{ solr_packages }}"
 
 - name: Copy CKAN Solr schema
   template: src=schema.xml.j2 dest={{ server_path }}/schema.xml mode="0644" owner=root group=root

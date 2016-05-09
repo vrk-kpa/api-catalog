@@ -6,11 +6,8 @@
   pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }}
   register: ckan_installation
 
-
 - name: Install CKAN requirements
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
-
-
 
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
