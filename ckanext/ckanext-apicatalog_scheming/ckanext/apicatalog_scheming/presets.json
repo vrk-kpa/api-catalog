@@ -73,6 +73,14 @@
         "upload_clear": "clear_upload",
         "upload_label": "File"
       }
+    },
+    {
+      "preset_name": "apicatalog_number_of_saves",
+      "values": {
+        "validators": "increment_if_exists",
+        "form_snippet": "hidden.html",
+        "display_snippet": null
+      }
     }
   ]
 }

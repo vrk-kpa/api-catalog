@@ -9859,6 +9859,9 @@ h4 small {
 .homepage .box .inner {
   padding: 20px 25px;
 }
+.homepage .box + .box {
+  margin-top: 20px;
+}
 .homepage .stats h3 {
   margin: 0 0 10px 0;
 }
