@@ -4927,3 +4927,9 @@ msgstr "Responsen skickas till kundtjänsten för enheten Servicearkitektur vid 
 
 msgid "Shared resource"
 msgstr "Delad resurs"
+
+msgid "Locked fields"
+msgstr "[KÄÄNNÖS PUUTTUU]"
+
+msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgstr "[KÄÄNNÖS PUUTTUU]"

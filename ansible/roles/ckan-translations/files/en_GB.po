@@ -4916,3 +4916,9 @@ msgstr "Please send your feedback or development ideas regarding the API Catalog
 
 msgid "Shared resource"
 msgstr "Shared resource"
+
+msgid "Locked fields"
+msgstr "Locked fields"
+
+msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgstr "Fields marked with a thick gray border are used in automatic processing and cannot be modified."

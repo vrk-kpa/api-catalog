@@ -4935,3 +4935,9 @@ msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi pal
 
 msgid "Shared resource"
 msgstr "Yhteiskäyttöinen"
+
+msgid "Locked fields"
+msgstr "Lukitut kentät"
+
+msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgstr "Paksulla harmaalla reunuksella merkittyjä kenttiä käytetään automaattiseen käsittelyyn. Näitä kenttiä ei voi muokata."

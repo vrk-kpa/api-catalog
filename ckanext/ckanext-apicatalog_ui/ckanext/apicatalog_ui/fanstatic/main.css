@@ -7658,7 +7658,7 @@ form .control-order-by {
   height: 45px;
 }
 .control-maybe-final input[readonly] {
-  border: 4px solid orange;
+  border: 4px solid #818181;
 }
 .control-required {
   color: #c6898b;
