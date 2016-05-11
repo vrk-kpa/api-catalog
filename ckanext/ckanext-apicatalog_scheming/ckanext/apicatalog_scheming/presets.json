@@ -46,6 +46,14 @@
         "form_snippet": "hidden.html",
         "display_snippet": null
       }
+    },
+    {
+      "preset_name": "apicatalog_resource_number_of_saves",
+      "values": {
+        "validators": "resource_validator",
+        "form_snippet": "hidden.html",
+        "display_snippet": null
+      }
     }
   ]
 }
