@@ -18,5 +18,6 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
         return {
             'lower_if_exists': validators.lower_if_exists,
             'upper_if_exists': validators.upper_if_exists,
-            'increment_if_exists': validators.increment_if_exists
+            'increment_if_exists': validators.increment_if_exists,
+            'resource_validator': validators.resource_validator
             }

@@ -198,6 +198,11 @@
       "label": "Service status",
       "preset": "fluent_text",
       "form_languages": ["fi", "sv", "en"]
+    },
+    {
+      "field_name": "number_of_saves",
+      "label": "Number of saves",
+      "preset": "apicatalog_resource_number_of_saves"
     }
   ]
 }
