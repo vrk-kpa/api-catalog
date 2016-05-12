@@ -93,8 +93,9 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
                 element[field] = self._extract_lang_value(element[field], desired_lang_code)
 
         # organization
-        for field in pkg_dict['organization']:
-            pkg_dict['organization'][field] = self._extract_lang_value(pkg_dict['organization'][field], desired_lang_code)
+        if pkg_dict['organization']:
+            for field in pkg_dict['organization']:
+                pkg_dict['organization'][field] = self._extract_lang_value(pkg_dict['organization'][field], desired_lang_code)
 
         # resources
         for resource in pkg_dict.get('resources', []):
