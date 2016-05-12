@@ -38,14 +38,6 @@
         "validators": "not_empty unicode name_validator organization_name_validator",
         "form_snipper": "slug.html"
       }
-    },
-    {
-      "preset_name": "apicatalog_number_of_saves",
-      "values": {
-        "validators": "increment_if_exists",
-        "form_snippet": "hidden.html",
-        "display_snippet": null
-      }
     }
   ]
 }

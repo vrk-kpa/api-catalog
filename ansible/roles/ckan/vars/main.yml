@@ -27,6 +27,7 @@ ckan_patches:
   - { file: "remove_gravatar" }
   - { file: "csrf" }
   - { file: "alert_fix" }
+  - { file: "fix_unmodified_package_validation" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
