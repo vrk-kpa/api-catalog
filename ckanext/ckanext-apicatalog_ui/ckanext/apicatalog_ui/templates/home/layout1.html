@@ -10,6 +10,9 @@
     </div>
   </div>
   <div role="main">
+    {% block service_alerts %}
+      {% snippet 'snippets/service_alerts.html' %}
+    {% endblock %}
     <div class="container">
       <div class="row">
         <div class="col-md-12">

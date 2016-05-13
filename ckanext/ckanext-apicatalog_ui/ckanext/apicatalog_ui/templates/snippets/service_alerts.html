@@ -1,0 +1,11 @@
+{% if h.service_alerts() %}
+<div class="container">
+  {% for service_alert in h.service_alerts() %}
+  <div class="alert alert-{{ service_alert['category'] }}">
+      {{ service_alert['message'] }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+

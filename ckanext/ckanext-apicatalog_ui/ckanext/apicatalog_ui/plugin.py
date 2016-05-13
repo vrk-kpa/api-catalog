@@ -14,6 +14,15 @@ def piwik_site_id():
     return config.get('piwik.site_id', 0)
 
 
+def service_alerts():
+    message = config.get('ckanext.apicatalog_ui.service_alert.message')
+    category = "info"
+    if message:
+        return [{"message": message, "category": category}]
+    else:
+        return []
+
+
 def get_homepage_organizations(count=1):
     def get_group(id):
         context = {'ignore_auth': True,
@@ -67,8 +76,18 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'apicatalog_ui')
 
+    def update_config_schema(self, schema):
+        ignore_missing = toolkit.get_validator('ignore_missing')
+
+        schema.update({
+            'ckanext.apicatalog_ui.service_alert.message': [ignore_missing, unicode],
+        })
+
+        return schema
+
     def get_helpers(self):
         return {'piwik_url': piwik_url,
                 'get_homepage_organizations': get_homepage_organizations,
-                'piwik_site_id': piwik_site_id
+                'piwik_site_id': piwik_site_id,
+                'service_alerts': service_alerts
                 }

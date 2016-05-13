@@ -4927,3 +4927,6 @@ msgstr "Responsen skickas till kundtjänsten för enheten Servicearkitektur vid 
 
 msgid "Shared resource"
 msgstr "Delad resurs"
+
+msgid "Service message"
+msgstr "Servicemeddelande"
