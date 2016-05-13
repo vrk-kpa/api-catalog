@@ -4935,3 +4935,6 @@ msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi pal
 
 msgid "Shared resource"
 msgstr "Yhteiskäyttöinen"
+
+msgid "Service message"
+msgstr "Huoltoilmoitus"

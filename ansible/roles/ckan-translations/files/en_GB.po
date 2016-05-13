@@ -4916,3 +4916,6 @@ msgstr "Please send your feedback or development ideas regarding the API Catalog
 
 msgid "Shared resource"
 msgstr "Shared resource"
+
+msgid "Service message"
+msgstr "Service message"
