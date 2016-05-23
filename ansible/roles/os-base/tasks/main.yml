@@ -36,6 +36,8 @@
     - libz-dev
     - libssl-dev
     - supervisor
+    - libxml2-dev
+    - libxslt1-dev
 
 # Note: psycopg2 requires postgresql-server-dev
 
