@@ -1198,7 +1198,7 @@ msgid ""
 "To accept this invite, please reset your password at:\n"
 "\n"
 "   {reset_link}\n"
-msgstr "Sinut on kutsuttu {site_title}. Sinulle on jo luotu käyttäjä käyttäjänimellä {user_name}. Voit muuttaa sen myöhemmin.\n\nHyväksyyksesi tämän kutsun, ole ystävällinen ja resetoi salasanasi linkissä:\n\n   {reset_link}\n"
+msgstr "Sinut on kutsuttu sivustolle {site_title}. Sinulle on jo luotu käyttäjä käyttäjänimellä {user_name}. Voit muuttaa sen myöhemmin.\n\nHyväksyäksesi tämän kutsun, ole ystävällinen ja resetoi salasanasi linkissä:\n\n   {reset_link}\n"
 
 #: ckan/lib/mailer.py:145 ckan/templates/user/request_reset.html:3
 #: ckan/templates/user/request_reset.html:13
