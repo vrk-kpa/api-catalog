@@ -1,5 +1,5 @@
 ---
-xroad_gateway_version: 0.0.7
+xroad_gateway_version: 0.0.8
 
 xroad_gateway:
   name: xroad-gateway
