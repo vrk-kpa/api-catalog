@@ -1,0 +1,17 @@
+---
+
+# Frontend build playbook for development
+# To run:
+# ansible-playbook -v -i inventories/vagrant frontend-build.yml
+
+- hosts: mainserver
+  become: true
+  vars_files:
+    - "vars/common.yml"
+    - "vars/environment-specific/{{ deployment_environment_id }}.yml"
+    - "{{ secrets_file_path }}"
+  roles:
+    - { role: ckan-ui }
+    - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
+    - ckan
+    - ckan-translations
