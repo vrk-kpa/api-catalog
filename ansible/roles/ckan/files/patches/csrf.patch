@@ -153,7 +153,7 @@ index c34f593..b47e605 100644
                                       group_type)
  
 diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index 8716722..b6d0981 100644
+index 8716722..6379ada 100644
 --- a/ckan/controllers/package.py
 +++ b/ckan/controllers/package.py
 @@ -18,6 +18,7 @@ import ckan.model as model
@@ -289,6 +289,28 @@ index 8716722..b6d0981 100644
          return render('package/confirm_delete_resource.html',
                        {'dataset_type': self._get_package_type(id)})
  
+@@ -1466,6 +1497,9 @@ class PackageController(base.BaseController):
+             data['resource_id'] = resource_id
+ 
+             try:
++                csrf_token.validate(data.get('csrf-token', ''))
++                data.pop('csrf-token', None)
++
+                 if to_delete:
+                     data['id'] = view_id
+                     get_action('resource_view_delete')(context, data)
+@@ -1483,6 +1517,11 @@ class PackageController(base.BaseController):
+                 ## This should never happen unless the user maliciously changed
+                 ## the resource_id in the url.
+                 abort(403, _('Unauthorized to edit resource'))
++            except csrf_token.CsrfTokenValidationError:
++                h.flash_error(_('Security token error, please try again'))
++                view_type = request.GET.get('view_type')
++                h.redirect_to(controller='package', action='edit_view', id=id, resource_id=resource_id, view_type=view_type)
++                return
+             else:
+                 if not to_preview:
+                     redirect(h.url_for(controller='package',
 diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
 index f77f7fb..cd79125 100644
 --- a/ckan/controllers/user.py
