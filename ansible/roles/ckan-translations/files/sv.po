@@ -4929,7 +4929,7 @@ msgid "Shared resource"
 msgstr "Delad resurs"
 
 msgid "Locked fields"
-msgstr "[KÄÄNNÖS PUUTTUU]"
+msgstr "Låsta Fält"
 
 msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
-msgstr "[KÄÄNNÖS PUUTTUU]"
+msgstr "Fält markerade med en tjock grå gräns används i automatisk databehandling och kan inte ändras."
