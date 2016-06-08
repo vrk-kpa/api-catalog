@@ -4,6 +4,7 @@ import pylons.config as config
 
 import ckan.logic as logic
 import random
+import urllib
 
 
 def piwik_url():
@@ -65,6 +66,10 @@ def get_homepage_organizations(count=1):
     return groups_data
 
 
+def unquote_url(url):
+    return urllib.unquote(url)
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -89,5 +94,6 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
         return {'piwik_url': piwik_url,
                 'get_homepage_organizations': get_homepage_organizations,
                 'piwik_site_id': piwik_site_id,
-                'service_alerts': service_alerts
+                'service_alerts': service_alerts,
+                'unquote_url': unquote_url
                 }
