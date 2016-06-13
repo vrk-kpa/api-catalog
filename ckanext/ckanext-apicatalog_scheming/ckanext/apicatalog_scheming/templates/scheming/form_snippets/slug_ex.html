@@ -9,7 +9,12 @@
   {% call form.input_block(id or name, label or name, error='', classes=classes, extra_html=extra_html, is_required=is_required) %}
     <div class="input-prepend">
       {% if prepend %}<span class="add-on">{{ prepend }}</span>{%- endif -%}
-      <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly disabled{% endif %} {{ form.attributes(attrs) }} />
+      {% if final and value and value != "" %}
+        <input type="{{ type }}" value="{{ value | empty_and_escape }}" {{ form.attributes(attrs) }} placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} readonly disabled />
+        <input id="{{ id or name }}" type="hidden" name="{{ name }}" value="{{ value | empty_and_escape }}" />
+      {% else %}
+        <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} />
+      {% endif %}
       {% if error and error is iterable %}<span class="error-block">{{ error|join(', ') }}</span>{% endif %}
     </div>
   {% endcall %}
