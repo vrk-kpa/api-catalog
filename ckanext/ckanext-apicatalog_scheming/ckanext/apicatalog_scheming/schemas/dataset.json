@@ -7,15 +7,17 @@
     {
       "field_name": "title",
       "label": "Title",
-      "preset": "title",
+      "preset": "title_ex",
       "form_placeholder":"eg. A descriptive title",
-      "required": true
+      "required": true,
+      "final": true
     },
     {
       "field_name": "name",
       "label": "URL",
-      "preset": "dataset_slug",
-      "form_placeholder": "eg. my-dataset"
+      "preset": "dataset_slug_ex",
+      "form_placeholder": "eg. my-dataset",
+      "final": true
     },
     {
       "field_name": "notes",
@@ -43,7 +45,8 @@
     {
       "field_name": "owner_org",
       "label": "Organization",
-      "preset": "dataset_organization"
+      "preset": "dataset_organization_ex",
+      "final": true
     },
     {
       "field_name": "environment",
@@ -108,12 +111,15 @@
     {
       "field_name": "url",
       "label": "URL",
-      "preset": "resource_url_upload"
+      "preset": "resource_url_upload_ex",
+      "final": true
     },
     {
       "field_name": "name",
       "label": "Name",
-      "required": true
+      "required": true,
+      "form_snippet": "text_ex.html",
+      "final": true
     },
     {
       "field_name": "description",

@@ -4930,3 +4930,9 @@ msgstr "Delad resurs"
 
 msgid "Service message"
 msgstr "Servicemeddelande"
+
+msgid "Locked fields"
+msgstr "Låsta Fält"
+
+msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgstr "Fält markerade med en tjock grå gräns används i automatisk databehandling och kan inte ändras."

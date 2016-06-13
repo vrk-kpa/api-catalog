@@ -1,0 +1,14 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+  {% snippet 'package/snippets/resource_info.html', res=res %}
+
+  <section class="module module-narrow">
+    <div class="module context-info">
+      <div class="module-content">
+        <h1 class="heading">{{ _('Locked fields') }}</h1>
+        {{ _('Fields marked with a thick gray border are used in automatic processing and cannot be modified.') }}
+      </div>
+    </div>
+  </section>
+{% endblock %}

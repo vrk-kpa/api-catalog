@@ -4919,3 +4919,9 @@ msgstr "Shared resource"
 
 msgid "Service message"
 msgstr "Service message"
+
+msgid "Locked fields"
+msgstr "Locked fields"
+
+msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgstr "Fields marked with a thick gray border are used in automatic processing and cannot be modified."

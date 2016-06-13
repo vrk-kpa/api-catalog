@@ -64,7 +64,7 @@ this.ckan.module('slug-preview-slug', function (jQuery, _) {
 
         // If the user manually enters text into the input we cancel the slug
         // listeners so that we don't clobber the slug when the title next changes.
-        slug.keypress(function () {
+        slug.keypress(function (event) {
           if (event.charCode) {
             sandbox.publish('slug-preview-modified', preview[0]);
           }
