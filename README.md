@@ -8,11 +8,14 @@ The catalog is available at [liityntakatalogi.suomi.fi](http://liityntakatalogi.
 
 Prerequisites:
 
-- [Vagrant](https://www.vagrantup.com/) (tested on 1.8.1)
-- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.16)
+- [Vagrant](https://www.vagrantup.com/) (tested on 1.8.4)
+- [VirtualBox](https://www.virtualbox.org/) (tested on 5.0.20)
 
-Start up the vagrant:
+Clone the repository and its submodules, and start Vagrant:
 
+    git clone https://github.com/vrk-kpa/api-catalog.git
+    cd api-catalog/
+    git submodule update --init --recursive
     vagrant up
 
 After [Ansible](http://www.ansible.com/) provisions the system, the service will be running in the virtual machine and is available from your host machine at https://10.100.10.10/
@@ -32,6 +35,14 @@ And you can also run Ansible manually inside the virtual machine:
     vagrant ssh
     cd /src/ansible
     ansible-playbook -v -i inventories/vagrant deploy-all.yml
+
+### Development
+
+With Vagrant, the host machine shares the working directory into the virtual machine. The web server uses the CKAN extensions directly from the source code via symlinks. Depending on what you change however, some extra rules apply:
+
+- If you edit a Jinja template, changes apply instantly (only page refresh required)
+- If you edit Python code of the extensions, you need to restart the WSGI server (`vagrant ssh` and `sudo service apache2 restart`).
+- If you edit Javascript, you need to run the frontend build to compile and minify files (`vagrant ssh`, `cd /src/ansible` and `ansible-playbook -v -i inventories/vagrant frontend-build.yml`).
 
 ### Repository structure
 
