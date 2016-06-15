@@ -488,7 +488,7 @@ msgstr "Ei oikeuksia luoda liityntää"
 
 #: ckan/controllers/package.py:609 ckanext/datapusher/plugin.py:59
 msgid "Unauthorized to edit this resource"
-msgstr "Ei oikeuksia muokata tätä rajapintaa "
+msgstr "Ei oikeuksia muokata tätä liitetiedostoa "
 
 #: ckan/controllers/package.py:629 ckan/controllers/package.py:1099
 #: ckan/controllers/package.py:1119 ckan/controllers/package.py:1186
@@ -497,7 +497,7 @@ msgstr "Ei oikeuksia muokata tätä rajapintaa "
 #: ckan/controllers/package.py:1660 ckanext/datapusher/plugin.py:57
 #: ckanext/resourceproxy/controller.py:32
 msgid "Resource not found"
-msgstr "Rajapintaa ei löydy"
+msgstr "Liitetiedostoa ei löydy"
 
 #: ckan/controllers/package.py:682
 msgid "Unauthorized to update dataset"
@@ -510,7 +510,7 @@ msgstr "Liityntää {id} ei löydy."
 
 #: ckan/controllers/package.py:688
 msgid "You must add at least one data resource"
-msgstr "Sinun täytyy lisätä vähintään yksi rajapinta"
+msgstr "Sinun täytyy lisätä vähintään yksi liitetiedosto"
 
 #: ckan/controllers/package.py:696 ckanext/datapusher/helpers.py:22
 msgid "Error"
@@ -518,11 +518,11 @@ msgstr "Virhe"
 
 #: ckan/controllers/package.py:718
 msgid "Unauthorized to create a resource"
-msgstr "Ei oikeutta luoda rajapintaa"
+msgstr "Ei oikeutta luoda liitetiedostoa"
 
 #: ckan/controllers/package.py:754
 msgid "Unauthorized to create a resource for this package"
-msgstr "Käyttäjällä ei ole oikeutta luoda uutta rajapintaa tähän liityntään."
+msgstr "Käyttäjällä ei ole oikeutta luoda uutta liitetiedostoa tähän liityntään."
 
 #: ckan/controllers/package.py:977
 msgid "Unable to add package to search index."
@@ -544,12 +544,12 @@ msgstr "Liityntä on poistettu."
 
 #: ckan/controllers/package.py:1092
 msgid "Resource has been deleted."
-msgstr "Rajapinta on poistettu."
+msgstr "Liitetiedosto on poistettu."
 
 #: ckan/controllers/package.py:1097
 #, python-format
 msgid "Unauthorized to delete resource %s"
-msgstr "Ei oikeuksia poistaa rajapintaa %s"
+msgstr "Ei oikeuksia poistaa liitetiedostoa %s"
 
 #: ckan/controllers/package.py:1112 ckan/controllers/package.py:1280
 #: ckan/controllers/package.py:1349 ckan/controllers/package.py:1448
@@ -560,18 +560,18 @@ msgstr "Ei oikeuksia lukea liityntää %s"
 
 #: ckan/controllers/package.py:1157 ckan/controllers/package.py:1619
 msgid "Resource view not found"
-msgstr "Rajapintanäkymää ei löytynyt"
+msgstr "Liitetiedostonäkymää ei löytynyt"
 
 #: ckan/controllers/package.py:1188 ckan/controllers/package.py:1379
 #: ckan/controllers/package.py:1459 ckan/controllers/package.py:1492
 #: ckan/controllers/package.py:1606 ckan/controllers/package.py:1662
 #, python-format
 msgid "Unauthorized to read resource %s"
-msgstr "Ei oikeuksia lukea rajapintaa %s"
+msgstr "Ei oikeuksia lukea liitetiedostoa %s"
 
 #: ckan/controllers/package.py:1197
 msgid "Resource data not found"
-msgstr "Rajapinnan dataa ei löydy"
+msgstr "Liitetiedoston dataa ei löydy"
 
 #: ckan/controllers/package.py:1205
 msgid "No download is available"
@@ -579,7 +579,7 @@ msgstr "Ei ladattavaa saatavilla"
 
 #: ckan/controllers/package.py:1527
 msgid "Unauthorized to edit resource"
-msgstr "Ei oikeuksia muokata rajapintoja"
+msgstr "Ei oikeuksia muokata liitetiedostoja"
 
 #: ckan/controllers/package.py:1545
 msgid "View not found"
@@ -596,16 +596,16 @@ msgstr "Näkymätyyppiä ei löytynyt"
 
 #: ckan/controllers/package.py:1613
 msgid "Bad resource view data"
-msgstr "Virheelliset rajapintanäkymän tiedot"
+msgstr "Virheelliset liitetiedostonäkymän tiedot"
 
 #: ckan/controllers/package.py:1622
 #, python-format
 msgid "Unauthorized to read resource view %s"
-msgstr "Ei oikeuksia lukea rajapintanäkymää %s"
+msgstr "Ei oikeuksia lukea liitetiedostonäkymää %s"
 
 #: ckan/controllers/package.py:1625
 msgid "Resource view not supplied"
-msgstr "Rajapintanäkymää ei saatavilla"
+msgstr "Liitetiedostonäkymää ei saatavilla"
 
 #: ckan/controllers/package.py:1654
 msgid "No preview has been defined."
@@ -885,7 +885,7 @@ msgstr "{actor} muutti liitynnän {dataset} lisäystä {extra} "
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
-msgstr "{actor} päivitti rajapintaa {resource} liitynnässä {dataset}"
+msgstr "{actor} päivitti liitetiedostoa {resource} liitynnässä {dataset}"
 
 #: ckan/lib/activity_streams.py:82
 msgid "{actor} updated their profile"
@@ -918,7 +918,7 @@ msgstr "{actor} poisti lisäkentän {extra} liitynnästä {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} poisti rajapinnan {resource} liitynnästä {dataset}"
+msgstr "{actor} poisti liitetiedoston {resource} liitynnästä {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
@@ -938,7 +938,7 @@ msgstr "{actor} lisäsi lisäkentän {extra} liityntään {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
-msgstr "{actor} lisäsi rajapinnan {resource} liityntään {dataset}"
+msgstr "{actor} lisäsi liitetiedoston {resource} liityntään {dataset}"
 
 #: ckan/lib/activity_streams.py:123
 msgid "{actor} signed up"
@@ -1142,7 +1142,7 @@ msgstr "Tuntematon"
 
 #: ckan/lib/helpers.py:1142
 msgid "Unnamed resource"
-msgstr "Nimetön rajapinta"
+msgstr "Nimetön liitetiedosto"
 
 #: ckan/lib/helpers.py:1189
 msgid "Created new dataset."
@@ -1150,7 +1150,7 @@ msgstr "Uusi liityntä luotu."
 
 #: ckan/lib/helpers.py:1191
 msgid "Edited resources."
-msgstr "Rajapintoja muokattu."
+msgstr "Liitetiedostoja muokattu."
 
 #: ckan/lib/helpers.py:1193
 msgid "Edited settings."
@@ -1239,7 +1239,7 @@ msgstr "Ole hyvä ja syötä kokonaislukuarvo"
 #: ckan/templates/snippets/context/dataset.html:13
 #: ckanext/example_theme/v18_snippet_api/templates/ajax_snippets/example_theme_popover.html:15
 msgid "Resources"
-msgstr "Rajapinnat"
+msgstr "Liitetiedostot"
 
 #: ckan/logic/__init__.py:102 ckan/logic/action/__init__.py:58
 msgid "Package resource(s) invalid"
@@ -1319,7 +1319,7 @@ msgstr "Tietojoukon id  on jo olemassa"
 
 #: ckan/logic/validators.py:197 ckan/logic/validators.py:288
 msgid "Resource"
-msgstr "Rajapinta"
+msgstr "Liitetiedosto"
 
 #: ckan/logic/validators.py:255 ckan/templates/package/read_base.html:27
 #: ckan/templates/package/related_list.html:4
@@ -1612,7 +1612,7 @@ msgstr "Et seuraa tätä: {0}"
 #: ckan/logic/action/get.py:1040 ckan/logic/action/update.py:133
 #: ckan/logic/action/update.py:146
 msgid "Resource was not found."
-msgstr "Rajapintaa ei löytynyt"
+msgstr "Liitetiedostoa ei löytynyt"
 
 #: ckan/logic/action/get.py:1945
 msgid "Do not specify if using \"query\" parameter"
@@ -1691,7 +1691,7 @@ msgstr "Liityntää ei löytynyt tälle aineistolinkille, ei voida tarkistaa val
 #: ckan/logic/auth/create.py:92
 #, python-format
 msgid "User %s not authorized to create resources on dataset %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia luoda rajapintoja tietojoukolle %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia luoda liitetiedostoja tietojoukolle %s"
 
 #: ckan/logic/auth/create.py:124
 #, python-format
@@ -1741,11 +1741,11 @@ msgstr "Käyttäjällä %s ei ole oikeuksia muokata ryhmää %s"
 #: ckan/logic/auth/delete.py:34
 #, python-format
 msgid "User %s not authorized to delete resource %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia poistaa rajapintaa %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia poistaa liitetiedostoa %s"
 
 #: ckan/logic/auth/delete.py:50
 msgid "Resource view not found, cannot check auth."
-msgstr "Rajapintanäyttöä ei löytynyt, tekijää ei voida tarkistaa."
+msgstr "Liitetiedostonäyttöä ei löytynyt, tekijää ei voida tarkistaa."
 
 #: ckan/logic/auth/delete.py:65 ckan/logic/auth/delete.py:79
 msgid "Only the owner can delete a related item"
@@ -1794,7 +1794,7 @@ msgstr "Käyttäjällä %s ei ole oikeuksia lukea liityntää %s"
 #: ckan/logic/auth/get.py:141
 #, python-format
 msgid "User %s not authorized to read resource %s"
-msgstr "Käyttäjällä %s ei ole oikeutta lukea rajapintaa %s"
+msgstr "Käyttäjällä %s ei ole oikeutta lukea liitetiedostoa %s"
 
 #: ckan/logic/auth/get.py:166
 #, python-format
@@ -1813,7 +1813,7 @@ msgstr "Käyttäjällä %s ei ole oikeuksia muokata liityntää %s"
 #: ckan/logic/auth/update.py:69
 #, python-format
 msgid "User %s not authorized to edit resource %s"
-msgstr "Käyttäjällä %s ei oikeuksia muokata rajapintaa %s"
+msgstr "Käyttäjällä %s ei oikeuksia muokata liitetiedostoa %s"
 
 #: ckan/logic/auth/update.py:98
 #, python-format
@@ -1996,7 +1996,7 @@ msgstr "Ladataan..."
 
 #: ckan/public/base/javascript/modules/api-info.js:20
 msgid "There is no API data to load for this resource"
-msgstr "API:n kautta ei ole ladattavissa dataa tälle rajapinnalle"
+msgstr "API:n kautta ei ole ladattavissa dataa tälle liitetiedostolle"
 
 #: ckan/public/base/javascript/modules/api-info.js:21
 msgid "Failed to load data API information"
@@ -2096,7 +2096,7 @@ msgstr "näytä vähemmän"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:8
 msgid "Reorder resources"
-msgstr "Uudelleenjärjestä rajapinnat"
+msgstr "Uudelleenjärjestä liitetiedostot"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:9
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:9
@@ -2118,7 +2118,7 @@ msgstr "Tapahtui virhe"
 
 #: ckan/public/base/javascript/modules/resource-upload-field.js:27
 msgid "Resource uploaded"
-msgstr "Rajapinta on ladattu"
+msgstr "Liitetiedosto on ladattu"
 
 #: ckan/public/base/javascript/modules/resource-upload-field.js:28
 msgid "Unable to upload file"
@@ -2140,7 +2140,7 @@ msgstr "Olet parhaillaan lataamassa tiedostoa palvelimelle. Oletko varma, että 
 
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:8
 msgid "Reorder resource view"
-msgstr "Uudelleenjärjestä rajapintanäyttö"
+msgstr "Uudelleenjärjestä liitetiedostonäyttö"
 
 #: ckan/public/base/javascript/modules/slug-preview.js:35
 #: ckan/templates/group/snippets/group_form.html:18
@@ -2364,7 +2364,7 @@ msgstr "Liityntäkatalogin Data API"
 
 #: ckan/templates/ajax_snippets/api_info.html:23
 msgid "Access resource data via a web API with powerful query support"
-msgstr "Sisällöt on saatavilla myös kyselyrajapinna (API) kautta"
+msgstr "Sisällöt on saatavilla myös kyselyrajapinnan (API) kautta"
 
 #: ckan/templates/ajax_snippets/api_info.html:24
 msgid ""
@@ -2430,7 +2430,7 @@ msgstr "Esimerkki: Python"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:9
 msgid "This resource can not be previewed at the moment."
-msgstr "Rajapinnalle ei ole esikatselua tällä hetkellä."
+msgstr "Liitetiedostolle ei ole esikatselua tällä hetkellä."
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:11
 #: ckan/templates/package/resource_read.html:118
@@ -2441,7 +2441,7 @@ msgstr "Klikkaa tästä saadaksesi lisätietoa..."
 #: ckan/templates/dataviewer/snippets/data_preview.html:18
 #: ckan/templates/package/snippets/resource_view.html:33
 msgid "Download resource"
-msgstr "Lataa rajapinta"
+msgstr "Lataa liitetiedosto"
 
 #: ckan/templates/dataviewer/snippets/data_preview.html:23
 #: ckan/templates/package/snippets/resource_view.html:56
@@ -3249,7 +3249,7 @@ msgid ""
 " A CKAN Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
-msgstr "Liityntä tarkoittaa liityntäkatalogissa kokoelmaa rajapintoja."
+msgstr "Liityntä tarkoittaa liityntäkatalogissa kokoelmaa liitetiedostoja."
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
@@ -3257,7 +3257,7 @@ msgstr "Haluatko varmasti poistaa liitynnän - {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
-msgstr "Haluatko varmasti poistaa rajapinnan - {name}?"
+msgstr "Haluatko varmasti poistaa liitetiedoston - {name}?"
 
 #: ckan/templates/package/edit_base.html:16
 msgid "View dataset"
@@ -3304,21 +3304,21 @@ msgstr "Päivitä liityntä"
 
 #: ckan/templates/package/new_resource.html:5
 msgid "Add data to the dataset"
-msgstr "Lisää rajapintoja liityntään"
+msgstr "Lisää liitetiedostoja liityntään"
 
 #: ckan/templates/package/new_resource.html:11
 #: ckan/templates/package/new_resource_not_draft.html:8
 msgid "Add New Resource"
-msgstr "Lisää uusi rajapinta"
+msgstr "Lisää uusi liitetiedosto"
 
 #: ckan/templates/package/new_resource_not_draft.html:3
 #: ckan/templates/package/new_resource_not_draft.html:4
 msgid "Add resource"
-msgstr "Lisää rajapinta"
+msgstr "Lisää liitetiedosto"
 
 #: ckan/templates/package/new_resource_not_draft.html:16
 msgid "New resource"
-msgstr "Uusi rajapinta"
+msgstr "Uusi liitetiedosto"
 
 #: ckan/templates/package/new_view.html:3
 #: ckan/templates/package/new_view.html:4
@@ -3400,16 +3400,16 @@ msgstr "Lokitiedoston loppu"
 
 #: ckan/templates/package/resource_edit_base.html:17
 msgid "All resources"
-msgstr "Kaikki rajapinnat"
+msgstr "Kaikki liitetiedostot"
 
 #: ckan/templates/package/resource_edit_base.html:19
 msgid "View resource"
-msgstr "Tarkastele rajapintaa"
+msgstr "Tarkastele liitetiedostoa"
 
 #: ckan/templates/package/resource_edit_base.html:24
 #: ckan/templates/package/resource_edit_base.html:32
 msgid "Edit resource"
-msgstr "Muokkaa rajapintaa"
+msgstr "Muokkaa liitetiedostoa"
 
 #: ckan/templates/package/resource_edit_base.html:26
 msgid "DataStore"
@@ -3449,7 +3449,7 @@ msgstr "Lähde: <a href=\"%(url)s\">%(dataset)s</a>"
 
 #: ckan/templates/package/resource_read.html:112
 msgid "There are no views created for this resource yet."
-msgstr "Tälle rajapinnalle ei ole luotu vielä yhtään näkymää."
+msgstr "Tälle liitetiedostolle ei ole luotu vielä yhtään näkymää."
 
 #: ckan/templates/package/resource_read.html:116
 msgid "Not seeing the views you were expecting?"
@@ -3461,7 +3461,7 @@ msgstr "Tässä joitakin syitä, jos et näe odottamiasi näkymiä:"
 
 #: ckan/templates/package/resource_read.html:123
 msgid "No view has been created that is suitable for this resource"
-msgstr "Tälle rajapinnalle ei ole luotu yhtään sopivaa näkymää"
+msgstr "Tälle liitetiedostolle ei ole luotu yhtään sopivaa näkymää"
 
 #: ckan/templates/package/resource_read.html:124
 msgid "The site administrators may not have enabled the relevant view plugins"
@@ -3520,11 +3520,11 @@ msgstr "Uusi näkymä"
 
 #: ckan/templates/package/resource_views.html:28
 msgid "This resource has no views"
-msgstr "Tällä rajapinnalla ei ole näkymiä"
+msgstr "Tällä liitetiedostolla ei ole näkymiä"
 
 #: ckan/templates/package/resources.html:8
 msgid "Add new resource"
-msgstr "Lisää uusi rajapinta"
+msgstr "Lisää uusi liitetiedosto"
 
 #: ckan/templates/package/resources.html:19
 #: ckan/templates/package/snippets/resources_list.html:25
@@ -3667,7 +3667,7 @@ msgstr "Haluatko varmasti poistaa liitynnän?"
 
 #: ckan/templates/package/snippets/package_form.html:44
 msgid "Next: Add Data"
-msgstr "Seuraavaksi: Lisää rajapintoja"
+msgstr "Seuraavaksi: Lisää liitetiedostoja"
 
 #: ckan/templates/package/snippets/package_metadata_fields.html:6
 msgid "http://example.com/dataset.json"
@@ -3699,7 +3699,7 @@ msgstr "Ylläpitäjän sähköposti"
 
 #: ckan/templates/package/snippets/resource_edit_form.html:12
 msgid "Update Resource"
-msgstr "Päivitä rajapinta"
+msgstr "Päivitä liitetiedosto"
 
 #: ckan/templates/package/snippets/resource_form.html:24
 msgid "File"
@@ -3745,7 +3745,7 @@ msgstr "esim. application/json"
 
 #: ckan/templates/package/snippets/resource_form.html:65
 msgid "Are you sure you want to delete this resource?"
-msgstr "Haluatko varmasti poistaa tämän rajapinnan?"
+msgstr "Haluatko varmasti poistaa tämän liitetiedoston?"
 
 #: ckan/templates/package/snippets/resource_form.html:72
 msgid "Previous"
@@ -3761,11 +3761,11 @@ msgstr "Valmis"
 
 #: ckan/templates/package/snippets/resource_help.html:2
 msgid "What's a resource?"
-msgstr "Mikä on rajapinta?"
+msgstr "Mikä on liitetiedosto?"
 
 #: ckan/templates/package/snippets/resource_help.html:4
 msgid "A resource can be any file or link to a file containing useful data."
-msgstr "Rajapinta on mikä tahansa tiedosto tai linkki tiedostoon, jossa on hyödyllistä dataa."
+msgstr "Liitetiedosto on mikä tahansa tiedosto tai linkki tiedostoon, jossa on hyödyllistä dataa."
 
 #: ckan/templates/package/snippets/resource_item.html:24
 msgid "Explore"
@@ -3781,11 +3781,11 @@ msgstr "Upota"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr "Tämä rajapinnanäyttö ei ole saatavissa tällä hetkellä."
+msgstr "Tämä liitetiedostonäyttö ei ole saatavissa tällä hetkellä."
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
-msgstr "Upota rajapinnanäyttö"
+msgstr "Upota liitetiedostonäyttö"
 
 #: ckan/templates/package/snippets/resource_view.html:66
 msgid ""
@@ -3807,15 +3807,15 @@ msgstr "Koodi"
 
 #: ckan/templates/package/snippets/resource_views_list.html:8
 msgid "Resource Preview"
-msgstr "Rajapinnan esikatselu"
+msgstr "Liitetiedoston esikatselu"
 
 #: ckan/templates/package/snippets/resources_list.html:13
 msgid "Data and Resources"
-msgstr "Rajapinnat"
+msgstr "Liitetiedostot"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
-msgstr "Tässä liitynnässä ei ole rajapintoja"
+msgstr "Tässä liitynnässä ei ole liitetiedostoja"
 
 #: ckan/templates/package/snippets/revisions_table.html:24
 #, python-format
@@ -3831,7 +3831,7 @@ msgstr "Luo uusi liityntä"
 #: ckan/templates/package/snippets/stages.html:34
 #: ckan/templates/package/snippets/stages.html:36
 msgid "Add data"
-msgstr "Lisää rajapintoja"
+msgstr "Lisää liitetiedostoja"
 
 #: ckan/templates/package/snippets/view_form.html:8
 msgid "eg. My View"
@@ -3859,7 +3859,7 @@ msgstr "Mikä on näkymä?"
 
 #: ckan/templates/package/snippets/view_help.html:4
 msgid "A view is a representation of the data held against a resource"
-msgstr "Näkymä on esitys rajapinnan tiedoista"
+msgstr "Näkymä on esitys liitetiedoston tiedoista"
 
 #: ckan/templates/related/base_form_page.html:12
 msgid "Related Form"
@@ -4544,7 +4544,7 @@ msgstr "Tätä ei ole vielä ladattu"
 
 #: ckanext/datastore/controller.py:31
 msgid "DataStore resource not found"
-msgstr "DataStore-rajapintaa ei löytynyt"
+msgstr "DataStore-liitetiedostoa ei löytynyt"
 
 #: ckanext/datastore/db.py:656
 msgid ""
@@ -4556,11 +4556,11 @@ msgstr "Tieto oli virheellistä (esimerkiksi: numeerinen arvo on rajojen ulkopuo
 #: ckanext/datastore/logic/action.py:327 ckanext/datastore/logic/action.py:411
 #: ckanext/datastore/logic/action.py:493 ckanext/datastore/logic/action.py:519
 msgid "Resource \"{0}\" was not found."
-msgstr "Rajapintaa \"{0}\" ei löytynyt."
+msgstr "Liitetiedostoa \"{0}\" ei löytynyt."
 
 #: ckanext/datastore/logic/auth.py:16
 msgid "User {0} not authorized to update resource {1}"
-msgstr "Käyttäjällä {0} ei ole lupaa päivittää rajapintaa {1}"
+msgstr "Käyttäjällä {0} ei ole lupaa päivittää liitetiedostoa {1}"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:11
 msgid "Datasets per page"
@@ -4594,7 +4594,7 @@ msgstr "Maakoodi"
 
 #: ckanext/example_idatasetform/templates/package/snippets/resource_form.html:6
 msgid "custom resource text"
-msgstr "muokattu rajapintateksti"
+msgstr "muokattu liitetiedostoteksti"
 
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:20
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:19
@@ -4611,7 +4611,7 @@ msgstr "Kuvan url"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "eg. http://example.com/image.jpg (if blank uses resource url)"
-msgstr "esim. http://esimerkki.com/kuva.jpg (jos tyhjä, käyttää rajapintojen url:ia)"
+msgstr "esim. http://esimerkki.com/kuva.jpg (jos tyhjä, käyttää liitetiedostojen url:ia)"
 
 #: ckanext/reclineview/plugin.py:84
 msgid "Data Explorer"
@@ -4840,7 +4840,7 @@ msgstr "Verkkosivuston url"
 
 #: ckanext/webpageview/theme/templates/webpage_form.html:3
 msgid "eg. http://example.com (if blank uses resource url)"
-msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää rajapintojen url:iä)"
+msgstr "esim. http://esimerkki.com (jos tyhjä, käyttää liitetiedoston url:iä)"
 
 #: ckanext/templates/home/header.html:11
 msgid "Support and administration sites"
