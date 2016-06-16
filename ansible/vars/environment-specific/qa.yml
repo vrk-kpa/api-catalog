@@ -59,3 +59,4 @@ xroad:
     alias: "vrkkapalpt05"
     port: 443
   client_id: FI-TEST.GOV.0245437-2.APICatalogClient
+  service_id: FI-TEST.GOV.0920632-0.ServiceList

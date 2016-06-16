@@ -59,3 +59,4 @@ xroad:
     alias: "vrkkapalp05"
     port: 8443
   client_id: FI.GOV.0245437-2.APICatalogClient
+  service_id: FI.ORG.0920632-0.ServiceList
