@@ -31,3 +31,5 @@ ckan_patches:
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
+
+search_engine_robots_filename: robots_disallowed.txt
