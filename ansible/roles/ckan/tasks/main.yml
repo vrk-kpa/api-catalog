@@ -33,5 +33,9 @@
 
 - include: database.yml
 
+- name: Disallow robots
+  template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
+  when: not robots_allowed
+
 - name: Ensure Apache restart
   service: name=apache2 state=restarted
