@@ -4,6 +4,7 @@
   <div class="control-group control-full control-medium control-maybe-final">
     <label class="control-label">{{ h.scheming_language_text(field.label) }}</label>
     <div><a href="{{ data[field.field_name] }}">{{ data[field.field_name] }}</a></div>
+      {{ form.hidden(field.field_name, data[field.field_name]) }}
   </div>
 {% else %}
 {%- set is_upload = (data.url_type == 'upload') -%}
