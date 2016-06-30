@@ -5,6 +5,17 @@ import pylons.config as config
 import ckan.logic as logic
 import random
 import urllib
+import ckan.lib.i18n as i18n
+
+def ensure_translated(s):
+    ts = type(s)
+    if ts == unicode:
+        return s
+    elif ts == str:
+        return unicode(s)
+    elif ts == dict:
+        language = i18n.get_lang()
+        return ensure_translated(s.get(language, u""))
 
 
 def piwik_url():
@@ -95,5 +106,6 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_homepage_organizations': get_homepage_organizations,
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
-                'unquote_url': unquote_url
+                'unquote_url': unquote_url,
+                'ensure_translated': ensure_translated
                 }

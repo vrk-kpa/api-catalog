@@ -1,0 +1,17 @@
+{% ckan_extends %}
+
+{% block package_notes %}
+  {%- if not dataset_type -%}
+    <p>
+    dataset_type not passed to template. your version of CKAN
+    might not be compatible with ckanext-scheming
+    </p>
+  {%- endif -%}
+  {% if h.scheming_field_by_name(schema.dataset_fields, 'notes') and
+    pkg.notes%}
+    <div class="notes embedded-content">
+      {{ h.render_markdown(h.ensure_translated(pkg.notes)) }}
+    </div>
+  {% endif %}
+{% endblock %}
+
