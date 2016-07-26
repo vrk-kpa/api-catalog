@@ -6,6 +6,9 @@ import ckan.logic as logic
 import random
 import urllib
 import ckan.lib.i18n as i18n
+import logging
+
+log = logging.getLogger(__name__)
 
 def ensure_translated(s):
     ts = type(s)
@@ -49,33 +52,55 @@ def get_homepage_organizations(count=1):
             return None
         return out
 
-    groups_data = []
+    def get_configured_groups():
+        ''' Return valid groups listed in ckan.featured_orgs or an empty list if none present '''
+        groups_data = []
 
-    extras = logic.get_action('organization_list')({}, {})
+        config_orgs = config.get('ckan.featured_orgs', '').split()
 
-    # list of found ids to prevent duplicates
-    found = []
-    for group_name in extras:
-        group = get_group(group_name)
-        if not group:
-            continue
-        # check if duplicate
-        if group['id'] in found:
-            continue
-        # skip orgs with 0 packages
-        if group['package_count'] is 0:
-            continue
-        # skip orgs with 1 package, if shared resource is "no"
-        if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
-            continue
-        found.append(group['id'])
-        groups_data.append(group)
+        for group_name in config_orgs:
+            group = get_group(group_name)
+            if not group:
+                log.warning('Setting ckan.featured_orgs: Organisation \'' + group_name + '\' not found')
+                continue
+            groups_data.append(group)
 
-    if len(groups_data) > count:
-        groups_data = random.sample(groups_data, count)
+        return groups_data
 
-    return groups_data
+    def get_random_groups():
+        groups_data = []
 
+        items = logic.get_action('organization_list')({}, {})
+
+        # list of found ids to prevent duplicates
+        found = []
+        for group_name in items:
+            group = get_group(group_name)
+            if not group:
+                continue
+            # check if duplicate
+            if group['id'] in found:
+                continue
+            # skip orgs with 0 packages
+            if group['package_count'] is 0:
+                continue
+            # skip orgs with 1 package, if shared resource is "no"
+            if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
+                continue
+            found.append(group['id'])
+            groups_data.append(group)
+
+        if len(groups_data) > count:
+            groups_data = random.sample(groups_data, count)
+
+        return groups_data
+
+
+    groups = get_configured_groups()
+    if len(groups) is 0:
+        groups = get_random_groups()
+
+    return groups
 
 def unquote_url(url):
     return urllib.unquote(url)
