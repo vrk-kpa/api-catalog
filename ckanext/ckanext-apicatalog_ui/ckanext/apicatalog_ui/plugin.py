@@ -6,6 +6,9 @@ import ckan.logic as logic
 import random
 import urllib
 import ckan.lib.i18n as i18n
+import logging
+
+log = logging.getLogger(__name__)
 
 def ensure_translated(s):
     ts = type(s)
@@ -49,32 +52,62 @@ def get_homepage_organizations(count=1):
             return None
         return out
 
-    groups_data = []
+    def get_configured_groups(configured_count):
+        ''' Return list of valid groups in ckan.featured_orgs up to configured_count or an empty list if none present '''
+        items = config.get('ckan.featured_orgs', '').split()
+        result = []
 
-    extras = logic.get_action('organization_list')({}, {})
+        for group_name in items:
+            group = get_group(group_name)
+            if not group:
+                log.warning('Setting ckan.featured_orgs: Organisation \'' + group_name + '\' not found')
+                continue
+            result.append(group)
 
-    # list of found ids to prevent duplicates
-    found = []
-    for group_name in extras:
-        group = get_group(group_name)
-        if not group:
-            continue
-        # check if duplicate
-        if group['id'] in found:
-            continue
-        # skip orgs with 0 packages
-        if group['package_count'] is 0:
-            continue
-        # skip orgs with 1 package, if shared resource is "no"
-        if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
-            continue
-        found.append(group['id'])
-        groups_data.append(group)
+        if len(result) > configured_count:
+            result = result[:configured_count]
 
-    if len(groups_data) > count:
-        groups_data = random.sample(groups_data, count)
+        return result
 
-    return groups_data
+    def get_random_groups(random_count, excluded_ids):
+        ''' Return random valid groups up to random_count where id is not in excluded '''
+        result = []
+        found = []
+
+        items = logic.get_action('organization_list')({}, {})
+
+        for group_name in items:
+            group = get_group(group_name)
+
+            if not group:
+                continue
+            if group['id'] in excluded_ids:
+                continue
+            # check if duplicate
+            if group['id'] in found:
+                continue
+            # skip orgs with 0 packages
+            if group['package_count'] is 0:
+                continue
+            # skip orgs with 1 package, if shared resource is "no"
+            if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
+                continue
+
+            found.append(group['id'])
+            result.append(group)
+
+        if len(result) > random_count:
+            result = random.sample(result, random_count)
+
+        return result
+
+    groups = get_configured_groups(count)
+
+    # If result comes short, fill it in with random groups
+    if len(groups) < count:
+        groups = groups + get_random_groups(count - len(groups), [x['id'] for x in groups])
+
+    return groups
 
 
 def unquote_url(url):
