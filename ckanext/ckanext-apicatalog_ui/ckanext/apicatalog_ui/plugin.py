@@ -53,7 +53,7 @@ def get_homepage_organizations(count=1):
         return out
 
     def get_configured_groups(configured_count):
-        ''' Return list of valid groups listed in ckan.featured_orgs  up to configured_ocount or an empty list if none present '''
+        ''' Return list of valid groups in ckan.featured_orgs up to configured_count or an empty list if none present '''
         items = config.get('ckan.featured_orgs', '').split()
         result = []
 
@@ -108,6 +108,7 @@ def get_homepage_organizations(count=1):
         groups = groups + get_random_groups(count - len(groups), [x['id'] for x in groups])
 
     return groups
+
 
 def unquote_url(url):
     return urllib.unquote(url)
