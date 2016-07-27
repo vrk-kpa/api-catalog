@@ -1,6 +1,6 @@
 /* Image Upload
- * 
- */  
+ *
+ */
 this.ckan.module('image-upload', function($, _) {
   return {
     /* options object can be extended using data-module-* attributes */
@@ -50,12 +50,6 @@ this.ckan.module('image-upload', function($, _) {
       this.field_clear = $('<input type="hidden" name="clear_upload">')
         .appendTo(this.el);
 
-      // Button to set the field to be a URL
-      this.button_url = $('<a href="javascript:;" class="btn"><i class="icon-globe"></i> '+this.i18n('url')+'</a>')
-        .prop('title', this.i18n('url_tooltip'))
-        .on('click', this._onFromWeb)
-        .insertAfter(this.input);
-
       // Button to attach local file to the form
       this.button_upload = $('<a href="javascript:;" class="btn"><i class="icon-cloud-upload"></i>'+this.i18n('upload')+'</a>')
         .insertAfter(this.input);
@@ -80,7 +74,6 @@ this.ckan.module('image-upload', function($, _) {
       // Fields storage. Used in this.changeState
       this.fields = $('<i />')
         .add(this.button_upload)
-        .add(this.button_url)
         .add(this.input)
         .add(this.field_url)
         .add(this.field_image);
@@ -138,7 +131,6 @@ this.ckan.module('image-upload', function($, _) {
       this.fields.hide();
       this.button_upload
         .add(this.field_image)
-        .add(this.button_url)
         .add(this.input)
         .show();
     },
