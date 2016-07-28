@@ -3,6 +3,7 @@
 public_facing_hostname: liityntakatalogi.suomi.fi
 internal_hostname: catalog-prod
 ckan_site_name: Liityntäkatalogi
+ckan_featured_orgs:
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 2
