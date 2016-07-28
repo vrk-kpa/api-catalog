@@ -808,7 +808,7 @@ msgstr "Ei käyttäjää: %s"
 
 #: ckan/controllers/user.py:468
 msgid "Please check your inbox for a reset code."
-msgstr "Ole hyvä ja tarkista sähköpostisi resetointikoodia varten"
+msgstr "Resetointikoodi on lähetetty sähköpostiisi."
 
 #: ckan/controllers/user.py:472
 #, python-format
