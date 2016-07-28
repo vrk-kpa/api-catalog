@@ -3,6 +3,7 @@
 public_facing_hostname: liityntakatalogi.qa.suomi.fi
 internal_hostname: catalog-qa
 ckan_site_name: Liityntäkatalogi
+ckan_featured_orgs: kermitti putki-ville-oy
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 1
