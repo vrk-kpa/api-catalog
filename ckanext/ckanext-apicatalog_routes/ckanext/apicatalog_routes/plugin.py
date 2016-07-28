@@ -11,6 +11,7 @@ import ckan.lib.helpers as h
 import ckan.lib.authenticator as authenticator
 import ckan.lib.base as base
 import ckan.lib.csrf_token as csrf_token
+import ckan.lib.mailer as mailer
 
 abort = base.abort
 render = base.render
@@ -48,6 +49,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
         user_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_UserController'
 
         m.connect('user_edit', '/user/edit/{id:.*}', action='edit', controller=user_controller, ckan_icon='cog')
+        m.connect('/user/reset', action='request_reset', controller=user_controller)
         return m
 
     # IAuthFunctions
@@ -189,3 +191,39 @@ class Apicatalog_UserController(UserController):
         except csrf_token.CsrfTokenValidationError:
             h.flash_error(_('Security token error, please try again'))
             return self.edit(id, data_dict, {}, {})
+
+    # Copied from ckan 2.5.2
+    # removed searching user names
+    def request_reset(self):
+        context = {'model': model, 'session': model.Session, 'user': c.user,
+                   'auth_user_obj': c.userobj}
+        data_dict = {'id': request.params.get('user')}
+        try:
+            check_access('request_reset', context)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to request reset password.'))
+
+        if request.method == 'POST':
+            id = request.params.get('user')
+
+            context = {'model': model,
+                       'user': c.user}
+
+            data_dict = {'id': id}
+            user_obj = None
+            try:
+                user_dict = get_action('user_show')(context, data_dict)
+                user_obj = context['user_obj']
+            except NotFound:
+                h.flash_error(_('No such user: %s') % id)
+
+            if user_obj:
+                try:
+                    mailer.send_reset_link(user_obj)
+                    h.flash_success(_('Please check your inbox for '
+                                      'a reset code.'))
+                    h.redirect_to('/')
+                except mailer.MailerException, e:
+                    h.flash_error(_('Could not send reset link: %s') %
+                                  unicode(e))
+        return render('user/request_reset.html')
