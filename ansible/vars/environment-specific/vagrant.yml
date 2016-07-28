@@ -18,7 +18,7 @@ database_ckan:
   password: "{{ secret.database_ckan_password }}"
 
 nginx:
-  alternative_hostnames: catalog-alternative
+  alternative_hostnames: catalog-alternative www.{{ public_facing_hostname }}
 
 solr:
   host: 127.0.0.1
