@@ -1,4 +1,0 @@
----
-
-solr_version: 5.3.1
-solr_download_url: http://www.nic.funet.fi/pub/mirrors/apache.org/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz

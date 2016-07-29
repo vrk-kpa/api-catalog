@@ -16,7 +16,7 @@
     - ssh
     - postgres
     - postgres-backup
-    - solr3
+    - solr6
     - redis
     - ssl
     - nginx
