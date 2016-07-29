@@ -22,7 +22,7 @@
   {% endblock %} {# /header_language #}
 
   {% block header_account %}
-    <nav class="navbar navbar-default main-navbar">
+    <nav class="navbar navbar-default main-navbar" data-module="sticky-header">
       {% block header_debug %}
         {% if g.debug and not g.debug_supress_header %}
           <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
