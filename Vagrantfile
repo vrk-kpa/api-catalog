@@ -36,6 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     server.vm.provider "virtualbox" do |vbox|
       vbox.gui = false
       vbox.memory = 2048
+      vbox.customize ["modifyvm", :id, "--nictype1", "virtio"]
     end
   end
 end
