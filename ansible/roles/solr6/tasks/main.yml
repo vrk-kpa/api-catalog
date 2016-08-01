@@ -1,0 +1,70 @@
+---
+
+- name: Stop solr3 jetty
+  service: name=jetty state=stopped
+
+- name: Create paths
+  file: path={{ item }} state=directory mode="0775" owner=root group=root
+  with_items:
+      - "{{ cache_path }}/solr"
+      - "/opt/solr/"
+
+- name: Download Solr package
+  get_url: url={{ solr_download_url }} dest={{ cache_path }}/solr/solr-{{ solr_version }}.zip mode="0644" owner=root group=root
+  register: fetch_solr
+  # creates solr.zip
+
+- name: Extract Solr installer from the archive
+  # tar xzf solr-5.3.1.tgz solr-5.3.1/bin/install_solr_service.sh --strip-components=2
+  unarchive: src={{ cache_path }}/solr/solr-{{ solr_version }}.zip dest={{ cache_path }}/solr copy=no
+  when: fetch_solr|changed
+  # creates install_solr_service.sh
+
+- name: Install Solr
+  command: "{{ cache_path }}/solr/solr-{{ solr_version }}/bin/install_solr_service.sh  {{ cache_path }}/solr/solr-{{ solr_version }}.zip -d /var/solr -u {{ solr_user }} -s solr -p 8983 -i /opt/solr -f"
+  become: true
+  when: fetch_solr|changed
+  # sudo ./install_solr_service.sh solr-5.3.1.tgz -p 9900 -d basic_configs
+  # sudo ./install_solr_service.sh solr-5.3.1.tgz -i /opt -d /var/solr -u solr -s solr -p 8983
+  # chdir
+  # user: solr
+  # creates /opt/solr
+  # ignore_errors: true (possibly not needed if using creates)
+
+- name: Start solr
+  service: name=solr state=started
+  when: fetch_solr|changed
+
+- name: Create Solr core
+  command: "/opt/solr/solr/bin/solr create -c ckan"
+  become: true
+  become_user: solr
+  when: fetch_solr|changed
+
+- name: Copy CKAN Solr schema and config
+  copy: src={{ item }} dest=/var/solr/data/ckan/conf/{{ item }} mode="0644" owner=solr group=solr
+  with_items:
+    - schema.xml
+    - solrconfig.xml
+  become: true
+  become_user: solr
+  #when: fetch_solr|changed
+  register: fetch_schema
+
+- name: Remove old schema
+  file: path=/var/solr/data/ckan/conf/managed-schema state=absent
+  become: true
+  become_user: solr
+  #when: fetch_schema|changed
+
+- name: Restart solr
+  service: name=solr state=restarted
+  #when: fetch_schema|changed
+  # solr_url in ckan.ini should be http://localhost:9900/solr/ckancore
+
+  # Create Solr core
+  # /opt/solr-5.3.1/bin$ ./solr create -c ckancore -d basic_configs
+  # chdir
+  # user: solr
+  # creates /var/solr/data/ckancore
+  # ignore_errors: true (possibly not needed if using creates)
