@@ -1,7 +1,13 @@
 ---
 
+- name: Check if solr3 jetty service exists
+  stat: path=/etc/init.d/jetty
+  register: jetty_exists
+
+
 - name: Stop solr3 jetty
   service: name=jetty state=stopped
+  when: jetty_exists.stat.exists
 
 - name: Create paths
   file: path={{ item }} state=directory mode="0775" owner=root group=root
