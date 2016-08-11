@@ -8666,8 +8666,10 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   width: 50%;
 }
 .label {
-  background-color: #2c2c2c;
   color: #ffffff;
+}
+.label[data-format] {
+  background-color: #2c2c2c;
 }
 .view-list {
   padding-left: 0;

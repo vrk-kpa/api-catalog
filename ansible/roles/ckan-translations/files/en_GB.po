@@ -4925,3 +4925,9 @@ msgstr "Locked fields"
 
 msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
 msgstr "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+
+msgid "Package contains invalid resources"
+msgstr "API contains invalid attachments"
+
+msgid "Invalid content"
+msgstr "Invalid content"

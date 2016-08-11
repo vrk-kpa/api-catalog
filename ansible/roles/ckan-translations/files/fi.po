@@ -4944,3 +4944,9 @@ msgstr "Lukitut kentät"
 
 msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
 msgstr "Paksulla harmaalla reunuksella merkittyjä kenttiä käytetään automaattiseen käsittelyyn. Näitä kenttiä ei voi muokata."
+
+msgid "Package contains invalid resources"
+msgstr "Liitynnällä on virheellisiä liitetiedostoja"
+
+msgid "Invalid content"
+msgstr "Virheellistä sisältöä"
