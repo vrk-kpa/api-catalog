@@ -1,0 +1,13 @@
+diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
+index 6379ada..15c032c 100644
+--- a/ckan/controllers/package.py
++++ b/ckan/controllers/package.py
+@@ -1188,7 +1188,7 @@ class PackageController(base.BaseController):
+         if rsc.get('url_type') == 'upload':
+             upload = uploader.ResourceUpload(rsc)
+             filepath = upload.get_path(rsc['id'])
+-            fileapp = paste.fileapp.FileApp(filepath)
++            fileapp = paste.fileapp.FileApp(filepath, content_disposition="attachment; filename=%s" % filename)
+             try:
+                 status, headers, app_iter = request.call_application(fileapp)
+             except OSError:
