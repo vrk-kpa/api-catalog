@@ -2,7 +2,7 @@ from pylons import config
 import ckan
 from ckan.controllers.revision import RevisionController
 from ckan.controllers.user import UserController
-from ckan.common import c, _, request
+from ckan.common import c, _, request, response
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.authz as authz
@@ -34,6 +34,12 @@ log = logging.getLogger(__name__)
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
 
+def set_repoze_user(user_id):
+    '''Set the repoze.who cookie to match a given user_id'''
+    if 'repoze.who.plugins' in request.environ:
+        rememberer = request.environ['repoze.who.plugins']['friendlyform']
+        identity = {'repoze.who.userid': user_id}
+        response.headerlist += rememberer.remember(request.environ, identity)
 
 class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
     ckan.plugins.implements(ckan.plugins.IRoutes, inherit=True)
@@ -85,6 +91,39 @@ class Apicatalog_RevisionController(RevisionController):
             ckan.lib.base.abort(403, _('Not authorized to see this page'))
 
 class Apicatalog_UserController(UserController):
+
+    def _save_new(self, context):
+        try:
+            data_dict = logic.clean_dict(unflatten(
+                logic.tuplize_dict(logic.parse_params(request.params))))
+            context['message'] = data_dict.get('log_message', '')
+            captcha.check_recaptcha(request)
+            user = get_action('user_create')(context, data_dict)
+        except NotAuthorized:
+            abort(401, _('Unauthorized to create user %s') % '')
+        except NotFound, e:
+            abort(404, _('User not found'))
+        except DataError:
+            abort(400, _(u'Integrity Error'))
+        except captcha.CaptchaError:
+            error_msg = _(u'Bad Captcha. Please try again.')
+            h.flash_error(error_msg)
+            return self.new(data_dict)
+        except ValidationError, e:
+            errors = e.error_dict
+            error_summary = e.error_summary
+            return self.new(data_dict, errors, error_summary)
+        if not c.user:
+            # log the user in programatically
+            set_repoze_user(data_dict['name'])
+            h.redirect_to(controller='user', action='me', __ckan_no_root=True)
+        else:
+            # #1799 User has managed to register whilst logged in - warn user
+            # they are not re-logged in as new user.
+            h.flash_success(_('User "%s" is now registered but you are still '
+                            'logged in as "%s" from before') %
+                            (data_dict['name'], c.user))
+            return render('user/logout_first.html')
 
     # Copy paste from ckan 2.5.1 to get to the _save_edit function
     def edit(self, id=None, data=None, errors=None, error_summary=None):
@@ -151,6 +190,12 @@ class Apicatalog_UserController(UserController):
     # copy paste from ckan 2.5.1 with modification requiring password to change the email
     def _save_edit(self, id, context):
         try:
+            if id in (c.userobj.id, c.userobj.name):
+                current_user = True
+            else:
+                current_user = False
+            old_username = c.userobj.name
+
             data_dict = logic.clean_dict(unflatten(
                     logic.tuplize_dict(logic.parse_params(request.params))))
             context['message'] = data_dict.get('log_message', '')
@@ -173,7 +218,11 @@ class Apicatalog_UserController(UserController):
 
             user = get_action('user_update')(context, data_dict)
             h.flash_success(_('Profile updated'))
-            h.redirect_to(controller='user', action='read', id=user['name'])
+            if current_user and data_dict['name'] != old_username:
+                # Changing currently logged in user's name.
+                # Update repoze.who cookie to match
+                set_repoze_user(data_dict['name'])
+            h.redirect_to(controller='user', action='read', id=data_dict['name'])
         except NotAuthorized:
             abort(401, _('Unauthorized to edit user %s') % id)
         except NotFound, e:
