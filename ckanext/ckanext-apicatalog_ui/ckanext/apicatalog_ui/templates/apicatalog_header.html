@@ -22,7 +22,8 @@
   {% endblock %} {# /header_language #}
 
   {% block header_account %}
-    <nav class="navbar navbar-default main-navbar" data-module="sticky-header">
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-default main-navbar" data-spy="affix" data-offset-top="36">
       {% block header_debug %}
         {% if g.debug and not g.debug_supress_header %}
           <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
@@ -65,6 +66,7 @@
         </div>
       </div> <!-- /.container -->
     </nav>
+    </div>
   {% endblock %} {# header_account #}
 
 {% endblock %} {# header_wrapper #}
