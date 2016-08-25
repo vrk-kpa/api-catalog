@@ -264,7 +264,9 @@ class Apicatalog_UserController(UserController):
                 user_dict = get_action('user_show')(context, data_dict)
                 user_obj = context['user_obj']
             except NotFound:
-                h.flash_error(_('No such user: %s') % id)
+                # Show success regardless of outcome to prevent scanning
+                h.flash_success(_('Please check your inbox for '
+                                  'a reset code.'))
 
             if user_obj:
                 try:
