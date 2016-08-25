@@ -10,3 +10,5 @@
 ## CKAN
 
 - When customizing templates, prefer extending and overlaying individual blocks (using `ckan_extends`, `block`, `super()`, `snippet`) instead of copy-pasting whole files. See ["Customizing CKAN’s templates"](http://docs.ckan.org/en/latest/theming/templates.html). This way our changes are separated from base CKAN which can be updated more easily.
+
+- Also when customizing templates, if you need to add a translated core dataset/resource field, wrap it inside a `h.ensure_translated()`. This makes sure it has been properly translated and won't cause issues for example in rendering markdown content. This is a workaround to [CKAN issue 2678](https://github.com/ckan/ckan/issues/2678).
