@@ -56,6 +56,10 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
 
         m.connect('user_edit', '/user/edit/{id:.*}', action='edit', controller=user_controller, ckan_icon='cog')
         m.connect('/user/reset', action='request_reset', controller=user_controller)
+
+        health_controller = 'ckanext.apicatalog_routes.health:HealthController'
+        m.connect('/health', action='check', controller=health_controller)
+
         return m
 
     # IAuthFunctions
