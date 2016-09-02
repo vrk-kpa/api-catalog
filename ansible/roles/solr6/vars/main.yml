@@ -1,7 +1,7 @@
 ---
 
 solr_version: 6.1.0
-solr_download_url: http://www.nic.funet.fi/pub/mirrors/apache.org/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.zip
+solr_download_url: http://archive.apache.org/dist/lucene/solr/{{solr_version }}/solr-{{ solr_version }}.zip
 
 solr_user: solr
 solr_group: solr
