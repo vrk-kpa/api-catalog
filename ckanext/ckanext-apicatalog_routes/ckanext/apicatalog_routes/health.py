@@ -39,16 +39,14 @@ class HealthController(base.BaseController):
         context = {'model': model,
                    'ignore_auth': True}
         for harvest_source in harvest_source_list(context, data_dict):
-            num_errors = (
-                    harvest_source
-                    .get('last_job_status', {})
-                    .get('stats', {})
-                    .get('errored', 0))
-            if num_errors > 0:
-                log.warn(HARVEST_FAILURE_LOGMESSAGE % (
-                    harvest_source.get('title', ''),
-                    pformat(harvest_source)))
-                result = False
+            last_job_status = harvest_source.get('last_job_status')
+            if last_job_status is not None:
+                num_errors = last_job_status.get('stats', {}) .get('errored', 0)
+                if num_errors > 0:
+                    log.warn(HARVEST_FAILURE_LOGMESSAGE % (
+                        harvest_source.get('title', ''),
+                        pformat(harvest_source)))
+                    result = False
 
         if result:
             base.abort(200, SUCCESS_MESSAGE)
