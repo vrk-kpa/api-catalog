@@ -15,3 +15,5 @@
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - ckan
     - ckan-translations
+  handlers:
+    - include: handlers/handlers.yml
