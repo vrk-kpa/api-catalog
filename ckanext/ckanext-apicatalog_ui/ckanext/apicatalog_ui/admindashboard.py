@@ -89,7 +89,7 @@ def fetch_package_statistics():
 
 
 def fetch_recent_package_activity_list_html(
-        context, user_id=None, user_id_not=None, limit=50):
+        context, user_id=None, user_id_not=None, limit=30):
     # Fetch recent revisions, store as list oredered by time
     recent_revisions_query = model.Session.query(model.PackageRevision)
     if user_id is not None:
