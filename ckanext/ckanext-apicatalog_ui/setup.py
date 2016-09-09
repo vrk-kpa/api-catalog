@@ -79,5 +79,6 @@ setup(
     entry_points='''
         [ckan.plugins]
         apicatalog_ui=ckanext.apicatalog_ui.plugin:Apicatalog_UiPlugin
+        apicatalog_admin_dashboard=ckanext.apicatalog_ui.plugin:Apicatalog_AdminDashboardPlugin
     ''',
 )

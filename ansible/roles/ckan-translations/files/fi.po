@@ -4944,3 +4944,25 @@ msgstr "Lukitut kentät"
 
 msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
 msgstr "Paksulla harmaalla reunuksella merkittyjä kenttiä käytetään automaattiseen käsittelyyn. Näitä kenttiä ei voi muokata."
+
+msgid "New package count"
+msgstr "Uusia liityntöjä"
+
+msgid "Last week"
+msgstr "Viimeisen viikon aikana"
+
+msgid "Last month"
+msgstr "Viimeisen kuukauden aikana"
+
+msgid "Last year"
+msgstr "Viimeisen vuoden aikana"
+
+msgid "Total package count"
+msgstr "Liityntöjen kokonaismäärä"
+
+msgid "Harvester activity"
+msgstr "Harvesterin toiminta"
+
+msgid "Recent package activity"
+msgstr "Liityntöjen seuranta"
+

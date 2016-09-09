@@ -1,0 +1,98 @@
+{% extends "admin/base.html" %}
+
+{% block primary_content_inner %}
+<h1>{{ _('Dashboard') }}</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">{{ _('Statistics') }}</h3>
+              </header>
+              <div class="module-content">
+                <h4>{{ _('New package count') }}</h4>
+                <table class="table table-condensed">
+                  <tbody>
+                    <tr>
+                      <td>{{ _('Last week') }}</td>
+                      <td>{{ stats.new_last_week }}</td>
+                    </tr>
+                    <tr>
+                      <td>{{ _('Last month') }}</td>
+                      <td>{{ stats.new_last_month }}</td>
+                    </tr>
+                    <tr>
+                      <td>{{ _('Last year') }}</td>
+                      <td>{{ stats.new_last_year }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h4>{{ _('Total package count') }}</h4>
+                <table class="table table-condensed">
+                  <tbody>
+                    <tr>
+                      <td>{{ _('Private') }}</td>
+                      <td>{{ stats.private }}</td>
+                    </tr>
+                    <tr>
+                      <td>{{ _('Public') }}</td>
+                      <td>{{ stats.public }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">{{ _('Recent package activity') }}</h3>
+              </header>
+              <div class="module-content">
+                {{ package_activity_html }}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">{{ _('Harvester activity') }}</h3>
+              </header>
+              <div class="module-content">
+                {{ harvest_activity_html }}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block secondary_content %}
+  <div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <i class="icon-info-sign"></i>
+      {{ _('Administer CKAN') }}
+    </h2>
+    <div class="module-content">
+
+      {% set docs_url = "http://docs.ckan.org/en/{0}/sysadmin-guide.html".format(g.ckan_doc_version) %}
+      {% trans %}
+        <p>As a sysadmin user you have full control over this CKAN instance. Proceed with care!</p>
+        <p>For guidance on using sysadmin features, see the CKAN  <a href="{{ docs_url }}" target="_blank">sysadmin guide</a></p>
+      {% endtrans %}
+    </div>
+  </div>
+{% endblock %}

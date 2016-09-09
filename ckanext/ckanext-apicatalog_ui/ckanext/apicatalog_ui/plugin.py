@@ -142,3 +142,24 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'unquote_url': unquote_url,
                 'ensure_translated': ensure_translated
                 }
+
+
+def admin_only(context, data_dict=None):
+    return {'success': False, 'msg': 'Access restricted to system administrators'}
+
+
+class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IConfigurer)
+
+    def update_config(self, config):
+        toolkit.add_ckan_admin_tab(config, 'admin_dashboard', 'Dashboard')
+
+    def before_map(self, m):
+        controller = 'ckanext.apicatalog_ui.admindashboard:AdminDashboardController'
+        m.connect('admin_dashboard', '/admindashboard', action='read', controller=controller)
+        return m
+
+    def get_auth_functions(self):
+        return {'admin_dashboard': admin_only}
