@@ -4936,3 +4936,25 @@ msgstr "Låsta Fält"
 
 msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
 msgstr "Fält markerade med en tjock grå gräns används i automatisk databehandling och kan inte ändras."
+
+msgid "New package count"
+msgstr "New package count"
+
+msgid "Last week"
+msgstr "Last week"
+
+msgid "Last month"
+msgstr "Last month"
+
+msgid "Last year"
+msgstr "Last year"
+
+msgid "Total package count"
+msgstr "Total package count"
+
+msgid "Harvester activity"
+msgstr "Harvester activity"
+
+msgid "Recent package activity"
+msgstr "Recent package activity"
+
