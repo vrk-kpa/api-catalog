@@ -10469,6 +10469,9 @@ h4 small {
 .activity .item.changed-package .icon {
   background-color: #8c76ce;
 }
+.activity .item.changed-package-privacy .icon {
+  background-color: #ce76a9;
+}
 .activity .item.changed-package_extra .icon {
   background-color: #769ace;
 }

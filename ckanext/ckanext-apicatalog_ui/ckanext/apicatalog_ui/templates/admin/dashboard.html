@@ -66,10 +66,34 @@
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
               <header class="module-heading">
+                <h3 class="media-heading">{{ _('Recent activity for packages with resources') }}</h3>
+              </header>
+              <div class="module-content">
+                {{ interesting_activity_html }}
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
                 <h3 class="media-heading">{{ _('Harvester activity') }}</h3>
               </header>
               <div class="module-content">
                 {{ harvest_activity_html }}
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">{{ _('Recently made private') }}</h3>
+              </header>
+              <div class="module-content">
+                {{ privatized_activity_html }}
               </div>
             </section>
           </div>
