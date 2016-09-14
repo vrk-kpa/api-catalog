@@ -4956,3 +4956,8 @@ msgstr "Recently made private"
 msgid "Package changes highlighted with pink color signify changes to public visibility."
 msgstr "Package changes highlighted with pink color signify changes to public visibility."
 
+msgid "Organizations with APIs."
+msgstr "Organizations with APIs."
+
+msgid "Organization that have joined the Data Exchange Layer."
+msgstr "Organization that have joined the Data Exchange Layer."
