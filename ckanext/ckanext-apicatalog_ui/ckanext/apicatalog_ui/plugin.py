@@ -137,7 +137,7 @@ def get_xroad_organizations():
                 logic.get_action('organization_show')(context, {'id': munge_title_to_name(member['name'])})
             except NotFound:
                 orgs.append({'title': member['name']})
-                pass
+                continue
     except:
         pass
     return orgs
