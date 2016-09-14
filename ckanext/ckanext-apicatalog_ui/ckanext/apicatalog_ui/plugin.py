@@ -134,6 +134,7 @@ def get_xroad_organizations():
 
         for member in members:
             try:
+                context.pop('__auth_audit', None)
                 logic.get_action('organization_show')(context, {'id': munge_title_to_name(member['name'])})
             except NotFound:
                 orgs.append({'title': member['name']})
