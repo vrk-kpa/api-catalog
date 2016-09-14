@@ -98,7 +98,7 @@ def fetch_recent_package_activity_list_html(
         context, user_id=None, user_id_not=None, only_privatized=False,
         only_resourceful=False, limit=30):
     # Fetch recent revisions, store as list oredered by time
-    recent_revisions_query = model.Session.query(model.PackageRevision)
+    recent_revisions_query = model.Session.query(model.PackageRevision).distinct()
     if only_resourceful:
         recent_revisions_query = (
                 recent_revisions_query
@@ -110,6 +110,9 @@ def fetch_recent_package_activity_list_html(
     if user_id_not is not None:
         recent_revisions_query = recent_revisions_query.filter(
                 model.PackageRevision.creator_user_id != user_id_not)
+    if only_privatized:
+        recent_revisions_query = recent_revisions_query.filter(
+                model.PackageRevision.private)
     recent_revisions_query = (
             recent_revisions_query
             .order_by(model.PackageRevision.revision_timestamp.desc())
