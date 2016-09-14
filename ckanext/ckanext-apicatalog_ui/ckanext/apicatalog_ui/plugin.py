@@ -7,6 +7,7 @@ import random
 import urllib
 import ckan.lib.i18n as i18n
 import logging
+import requests
 
 log = logging.getLogger(__name__)
 
@@ -113,6 +114,19 @@ def get_homepage_organizations(count=1):
 def unquote_url(url):
     return urllib.unquote(url)
 
+def get_xroad_organizations():
+
+    orgs = []
+    try:
+        r = requests.get("http://localhost:9090/rest-gateway-0.0.8/Consumer/ListMembers?changedAfter=2011-01-01")
+        catalog = r.json()
+        members = catalog['memberList']['member']
+
+        for member in members:
+            orgs.append({'display_name': member['name']})
+    except:
+        pass
+    return orgs
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
@@ -140,7 +154,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
                 'unquote_url': unquote_url,
-                'ensure_translated': ensure_translated
+                'ensure_translated': ensure_translated,
+                'get_xroad_organizations': get_xroad_organizations
                 }
 
 
