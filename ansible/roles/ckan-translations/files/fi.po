@@ -4966,3 +4966,11 @@ msgstr "Harvesterin toiminta"
 msgid "Recent package activity"
 msgstr "Liityntöjen seuranta"
 
+msgid "Recent activity for packages with resources"
+msgstr "Rajapinnallisten liityntöjen seuranta"
+
+msgid "Recently made private"
+msgstr "Yksityisiksi muutetut"
+
+msgid "Package changes highlighted with pink color signify changes to public visibility."
+msgstr "Vaaleanpunaisella korostetut muutokset liityntöihin sisältävät muutoksia liitynnän julkiseen näkymiseen."
