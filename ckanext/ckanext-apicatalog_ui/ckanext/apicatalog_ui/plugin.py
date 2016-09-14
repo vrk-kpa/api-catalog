@@ -122,7 +122,7 @@ def get_xroad_organizations():
 
     orgs = []
     try:
-        r = requests.get("http://localhost:9090/rest-gateway-0.0.8/Consumer/ListMembers?changedAfter=2011-01-01")
+        r = requests.get("http://localhost:9090/rest-gateway-0.0.8/Consumer/ListMembers?changedAfter=2011-01-01", headers = {'Accept': 'application/json'})
         catalog = r.json()
         members = catalog['memberList']['member']
 
@@ -134,7 +134,7 @@ def get_xroad_organizations():
 
         for member in members:
             try:
-                logic.get_action('package_show')({context, {'id': munge_title_to_name(member['name'])}})
+                logic.get_action('organization_show')(context, {'id': munge_title_to_name(member['name'])})
             except NotFound:
                 orgs.append({'title': member['name']})
                 pass
