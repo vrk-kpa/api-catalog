@@ -4947,3 +4947,12 @@ msgstr "Harvester activity"
 msgid "Recent package activity"
 msgstr "Recent package activity"
 
+msgid "Recent activity for packages with resources"
+msgstr "Recent activity for packages with resources"
+
+msgid "Recently made private"
+msgstr "Recently made private"
+
+msgid "Package changes highlighted with pink color signify changes to public visibility."
+msgstr "Package changes highlighted with pink color signify changes to public visibility."
+

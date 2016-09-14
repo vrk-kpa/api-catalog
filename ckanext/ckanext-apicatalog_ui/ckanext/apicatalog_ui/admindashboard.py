@@ -6,7 +6,7 @@ import ckan.lib.activity_streams as activity_streams
 from ckan.common import c
 import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
-from sqlalchemy import func
+from sqlalchemy import func, text
 from datetime import datetime, timedelta
 
 get_action = logic.get_action
@@ -35,10 +35,16 @@ class AdminDashboardController(base.BaseController):
                     context, user_id_not=harvest_id)
             harvest_activity_html = fetch_recent_package_activity_list_html(
                     context, user_id=harvest_id)
+            privatized_activity_html = fetch_recent_package_activity_list_html(
+                    context, only_privatized=True)
+            interesting_activity_html = fetch_recent_package_activity_list_html(
+                    context, only_resourceful=True)
 
             # Render template
             vars = {'package_activity_html': package_activity_html,
                     'harvest_activity_html': harvest_activity_html,
+                    'privatized_activity_html': privatized_activity_html,
+                    'interesting_activity_html': interesting_activity_html,
                     'stats': statistics
                     }
             template = 'admin/dashboard.html'
@@ -89,9 +95,15 @@ def fetch_package_statistics():
 
 
 def fetch_recent_package_activity_list_html(
-        context, user_id=None, user_id_not=None, limit=30):
+        context, user_id=None, user_id_not=None, only_privatized=False,
+        only_resourceful=False, limit=30):
     # Fetch recent revisions, store as list oredered by time
     recent_revisions_query = model.Session.query(model.PackageRevision)
+    if only_resourceful:
+        recent_revisions_query = (
+                recent_revisions_query
+                .join(model.Resource, model.Resource.package_id == model.PackageRevision.id)
+                .filter(model.Resource.state == "active"))
     if user_id is not None:
         recent_revisions_query = recent_revisions_query.filter(
                 model.PackageRevision.creator_user_id == user_id)
@@ -124,32 +136,66 @@ def fetch_recent_package_activity_list_html(
     for package_id, created in packages_created_query:
         packages_created[package_id] = created
 
+    # Fetch previous revisions for the recent revisions
+    packages_previous = {}
+    packages_previous_query = (
+            model.Session.query(model.PackageRevision.revision_id.label("rid"), model.PackageRevision)
+            .from_statement(text("""
+            select p.revision_id as rid, r.*
+            from package_revision r
+            left join (
+                    select l.revision_id, r.id, max(r.revision_timestamp) as previous_timestamp
+                    from package_revision r
+                    join package_revision l on r.id = l.id
+                    where l.revision_id = ANY(:ids)
+                      and r.revision_timestamp < l.revision_timestamp
+                    group by l.revision_id, r.id, l.revision_timestamp
+                    ) p on r.id = p.id
+            where r.revision_timestamp = p.previous_timestamp
+            """))
+            .params(ids=[r.revision_id for r in recent_revisions]))
+    for rid, package in packages_previous_query:
+        packages_previous[rid] = package
+
+    # Add support for new color for privacy-changed packages
+    activity_streams.activity_stream_string_icons['changed package privacy'] = 'sitemap'
+    activity_streams.activity_stream_string_functions['changed package privacy'] = \
+        activity_streams.activity_stream_string_changed_package
+
     # Create activity objects based on revision data
     def revision_to_activity(r):
+        pr = packages_previous.get(r.revision_id)
+        if only_privatized and (pr is None or (pr.private or not r.private)):
+            return None
+
+        privacy_changed = pr is not None and pr.private != r.private
+
         activity_type = None
         if r.state in ('active', 'draft'):
             if packages_created[r.id] == r.revision_timestamp:
-                activity_type = 'new'
+                activity_type = 'new package'
+            elif privacy_changed:
+                activity_type = 'changed package privacy'
             else:
-                activity_type = 'changed'
+                activity_type = 'changed package'
         elif r.state in ('deleted'):
-            activity_type = 'deleted'
+            activity_type = 'deleted package'
         else:
             log.warning("Unknown package state, skipping: %s" % r.state)
             return None
 
         d = {'package': dictization.table_dictize(
             packages[r.id], context={'model': model})}
-        activity = model.Activity(
-                r.creator_user_id, r.id,
-                r.revision_id, "%s package" % activity_type, d)
+        activity = model.Activity(r.creator_user_id, r.id, r.revision_id, activity_type, d)
         activity.timestamp = r.revision_timestamp
         return activity
 
-    # Render activity list snippet
     activity_objects = (
-            revision_to_activity(r)
-            for r in recent_revisions if r is not None)
+            (r for r in
+                (revision_to_activity(r) for r in recent_revisions)
+                if r is not None))
+
+    # Render activity list snippet
     changed_packages = model_dictize.activity_list_dictize(activity_objects, context)
     return activity_streams.activity_list_to_html(
             context, changed_packages, {'offset': 0})
