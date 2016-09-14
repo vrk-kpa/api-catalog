@@ -3,11 +3,15 @@ import ckan.plugins.toolkit as toolkit
 import pylons.config as config
 
 import ckan.logic as logic
+import ckan.model as model
+from ckan.lib.munge import munge_title_to_name
 import random
 import urllib
 import ckan.lib.i18n as i18n
 import logging
 import requests
+
+NotFound = logic.NotFound
 
 log = logging.getLogger(__name__)
 
@@ -122,8 +126,18 @@ def get_xroad_organizations():
         catalog = r.json()
         members = catalog['memberList']['member']
 
+        context = {
+            'model': model,
+            'session': model.Session,
+            'ignore_auth': True,
+        }
+
         for member in members:
-            orgs.append({'display_name': member['name']})
+            try:
+                logic.get_action('package_show')({context, {'id': munge_title_to_name(member['name'])}})
+            except NotFound:
+                orgs.append({'title': member['name']})
+                pass
     except:
         pass
     return orgs

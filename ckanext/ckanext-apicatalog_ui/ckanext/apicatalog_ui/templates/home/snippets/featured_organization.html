@@ -1,6 +1,9 @@
 {% set organizations = h.get_homepage_organizations(3) %}
 
+<h2>Organisaatiot, joilla on liityntöjä</h2>
 {% for organization in organizations %}
+
+
 
 <div class="box">
     {% snippet 'snippets/organization_item.html', organization=organization, truncate=50, truncate_title=35 %}
@@ -9,6 +12,8 @@
 
 
 {% set xroad_organizations = h.get_xroad_organizations() %}
+
+<h2>Muut palveluväylän organisaatiot</h2>
 
 {% for xroad_organization in xroad_organizations %}
     <div class="box">
