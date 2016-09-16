@@ -133,7 +133,7 @@ def get_xroad_organizations():
         except:
             pass
 
-        cached_xroad_orgs = []
+        new_xroad_orgs = []
         catalog = r.json()
         members = catalog['memberList']['member']
 
@@ -148,10 +148,12 @@ def get_xroad_organizations():
                 context.pop('__auth_audit', None)
                 logic.get_action('organization_show')(context, {'id': munge_title_to_name(member['name'])})
             except NotFound:
-                cached_xroad_orgs.append({'title': member['name']})
+                new_xroad_orgs.append({'title': member['name']})
                 continue
     except:
+        return cached_xroad_orgs
         pass
+    cached_xroad_orgs = new_xroad_orgs
     return cached_xroad_orgs
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
