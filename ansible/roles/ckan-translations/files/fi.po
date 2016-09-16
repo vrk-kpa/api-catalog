@@ -4975,8 +4975,8 @@ msgstr "Yksityisiksi muutetut"
 msgid "Package changes highlighted with pink color signify changes to public visibility."
 msgstr "Vaaleanpunaisella korostetut muutokset liityntöihin sisältävät muutoksia liitynnän julkiseen näkymiseen."
 
-msgid "Organizations with APIs."
-msgstr "Organisaatiot, joilla on liityntöjä."
+msgid "Organizations with APIs"
+msgstr "Organisaatiot, joilla on liityntöjä"
 
-msgid "Organization that have joined the Data Exchange Layer."
-msgstr "Palveluväylään liittyneet organisaatiot."
+msgid "Organization that have joined the Data Exchange Layer"
+msgstr "Palveluväylään liittyneet organisaatiot"
