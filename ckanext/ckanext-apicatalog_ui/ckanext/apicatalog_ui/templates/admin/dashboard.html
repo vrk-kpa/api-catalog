@@ -52,6 +52,18 @@
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
               <header class="module-heading">
+                <h3 class="media-heading">{{ _('Recently made private') }}</h3>
+              </header>
+              <div class="module-content">
+                {{ privatized_activity_html }}
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
                 <h3 class="media-heading">{{ _('Recent package activity') }}</h3>
               </header>
               <div class="module-content">
@@ -82,18 +94,6 @@
               </header>
               <div class="module-content">
                 {{ harvest_activity_html }}
-              </div>
-            </section>
-          </div>
-        </div>
-        <div class="module">
-          <div class="box">
-            <section class="group-list module module-narrow module-shallow">
-              <header class="module-heading">
-                <h3 class="media-heading">{{ _('Recently made private') }}</h3>
-              </header>
-              <div class="module-content">
-                {{ privatized_activity_html }}
               </div>
             </section>
           </div>
