@@ -11,3 +11,14 @@
 - name: Compile translation files
   command: msgfmt "{{ virtualenv }}/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po" -o "{{ virtualenv }}/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.mo"
   with_items: "{{ ckan_languages }}"
+
+# will fail in vagrant with windows and cause modifications in source files
+- name: Copy CKAN harvest translations
+  copy: src="ckanext-harvest_{{ item }}.po" dest="/opt/apicatalog/ckanext/ckanext-harvest/ckanext/harvest/i18n/{{ item }}/LC_MESSAGES/ckanext-harvest.po"
+  with_items: "{{ ckan_harvest_languages }}"
+  when: deployment_environment_id != "vagrant"
+
+- name: Compile harvest translation files
+  command: msgfmt "/opt/apicatalog/ckanext/ckanext-harvest/ckanext/harvest/i18n/{{ item }}/LC_MESSAGES/ckanext-harvest.po" -o "/opt/apicatalog/ckanext/ckanext-harvest/ckanext/harvest/i18n/{{ item }}/LC_MESSAGES/ckanext-harvest.mo"
+  with_items: "{{ ckan_harvest_languages }}"
+  when: deployment_environment_id != "vagrant"

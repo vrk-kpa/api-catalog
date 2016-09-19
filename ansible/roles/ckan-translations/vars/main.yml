@@ -4,3 +4,6 @@ ckan_languages:
   - fi
   - sv
   - en_GB
+
+ckan_harvest_languages:
+  - sv
