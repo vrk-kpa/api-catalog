@@ -62,4 +62,6 @@ xroad:
     alias: "gdev-ss2"
     port: 12765
 
+debug_enabled: true
+
 robots_allowed: true

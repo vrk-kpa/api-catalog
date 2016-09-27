@@ -62,4 +62,6 @@ xroad:
   client_id: FI-TEST.GOV.0245437-2.APICatalogClient
   service_id: FI-TEST.GOV.0920632-0.ServiceList
 
+debug_enabled: false
+
 robots_allowed: false

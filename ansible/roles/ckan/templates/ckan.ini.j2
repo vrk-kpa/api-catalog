@@ -1,6 +1,6 @@
 [DEFAULT]
 
-debug = false
+debug = {{ debug_enabled }}
 
 [server:main]
 
@@ -112,7 +112,7 @@ ckan.storage_path = {{ ckan_storage_path }}
 
 solr_url = http://{{ solr.host }}:{{ solr.port }}/solr/ckan
 
-ckan.tracking_enabled = false
+ckan.tracking_enabled = true
 
 ckan.max_resource_size = {{ ckan_max_resource_size }}
 
