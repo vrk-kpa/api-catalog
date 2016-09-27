@@ -10,14 +10,18 @@ WSGISocketPrefix /var/run/wsgi
     WSGIPassAuthorization On
 
     # Deploy as a daemon (avoids conflicts between CKAN instances)
+    # Use single process in vagrant for enabling debuggin
+    {% if vagrant is defined %}
+    WSGIDaemonProcess ckan_default display-name=ckan_default threads=15
+    {% else %}
     WSGIDaemonProcess ckan_default display-name=ckan_default processes=2 threads=15
+    {% endif %}
 
     WSGIProcessGroup ckan_default
 
     ErrorLogFormat "[%t] %M"
     ErrorLog /var/log/apache2/ckan.log
     CustomLog /var/log/apache2/requests.log combined
-
     <Directory "/etc/ckan/default">
       Require all granted
     </Directory>
