@@ -2,6 +2,7 @@ from pylons import config
 import ckan
 from ckan.controllers.revision import RevisionController
 from ckan.controllers.user import UserController
+from ckan.controllers.organization import OrganizationController
 from ckan.common import c, _, request, response
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
@@ -59,6 +60,9 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
 
         health_controller = 'ckanext.apicatalog_routes.health:HealthController'
         m.connect('/health', action='check', controller=health_controller)
+
+        organization_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_OrganizationController'
+        m.connect('organizations_index', '/organization', controller=organization_controller, action='index')
 
         return m
 
@@ -282,3 +286,60 @@ class Apicatalog_UserController(UserController):
                     h.flash_error(_('Could not send reset link: %s') %
                                   unicode(e))
         return render('user/request_reset.html')
+
+class Apicatalog_OrganizationController(OrganizationController):
+    def index(self):
+        group_type = self._guess_group_type()
+
+        page = self._get_page_number(request.params) or 1
+        items_per_page = 21
+
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'for_view': True,
+                   'with_private': False}
+
+        q = c.q = request.params.get('q', '')
+        sort_by = c.sort_by_selected = request.params.get('sort')
+        if sort_by is None:
+            sort_by = c.sort_by_selected = 'title asc'
+        try:
+            self._check_access('site_read', context)
+        except NotAuthorized:
+            abort(401, _('Not authorized to see this page'))
+
+        # pass user info to context as needed to view private datasets of
+        # orgs correctly
+        if c.userobj:
+            context['user_id'] = c.userobj.id
+            context['user_is_admin'] = c.userobj.sysadmin
+
+        data_dict_global_results = {
+            'all_fields': False,
+            'q': q,
+            'sort': sort_by,
+            'type': group_type or 'group',
+        }
+        global_results = self._action('group_list')(context,
+                                                    data_dict_global_results)
+
+        data_dict_page_results = {
+            'all_fields': True,
+            'q': q,
+            'sort': sort_by,
+            'type': group_type or 'group',
+            'limit': items_per_page,
+            'offset': items_per_page * (page - 1),
+        }
+        page_results = self._action('group_list')(context,
+                                                  data_dict_page_results)
+
+        c.page = h.Page(
+            collection=global_results,
+            page=page,
+            url=h.pager_url,
+            items_per_page=items_per_page,
+        )
+
+        c.page.items = page_results
+        return render(self._index_template(group_type),
+                      extra_vars={'group_type': group_type})
