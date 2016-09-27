@@ -46,7 +46,7 @@
   cron: name="Harvester run" minute="0" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
 
 - name: Ensure tracking cronjob
-  cron: name="Tracking update" special_time=hourly job="/usr/lib/ckan/bin/paster --plugin=ckan tracking update -c {{ ckan_ini }} && /usr/lib/ckan/bin/paster --plugin=ckan search-index rebuild -r -c {{ ckan_ini }}"
+  cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/paster --plugin=ckan tracking update -c {{ ckan_ini }} && {{ virtualenv }}/bin/paster --plugin=ckan search-index rebuild -r -c {{ ckan_ini }}"
 
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
