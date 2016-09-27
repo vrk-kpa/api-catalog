@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+
+{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+
+{% block organizations_search_form %}
+    {% snippet 'snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
+{% endblock %}
