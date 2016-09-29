@@ -4961,3 +4961,9 @@ msgstr "Organizations with APIs"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Organization that have joined the Data Exchange Layer"
+
+msgid "Package contains invalid resources"
+msgstr "API contains invalid attachments"
+
+msgid "Invalid content"
+msgstr "Invalid content"

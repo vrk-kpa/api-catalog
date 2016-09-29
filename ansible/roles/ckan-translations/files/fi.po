@@ -4980,3 +4980,9 @@ msgstr "Organisaatiot, joilla on liityntöjä"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Palveluväylään liittyneet organisaatiot"
+
+msgid "Package contains invalid resources"
+msgstr "Liitynnällä on virheellisiä liitetiedostoja"
+
+msgid "Invalid content"
+msgstr "Virheellistä sisältöä"

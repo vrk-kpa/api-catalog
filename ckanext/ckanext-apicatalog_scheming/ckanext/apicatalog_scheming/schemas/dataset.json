@@ -46,7 +46,8 @@
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization_ex",
-      "final": true
+      "final": true,
+      "validators": "valid_resources"
     },
     {
       "field_name": "environment",
@@ -205,6 +206,10 @@
       "label": "License",
       "form_snippet": "license.html",
       "display_snippet": "license.html"
+    },
+    {
+      "field_name": "valid_content",
+      "form_snippet": "hidden.html"
     }
   ]
 }

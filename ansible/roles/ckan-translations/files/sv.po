@@ -4972,3 +4972,9 @@ msgstr "Organisationer med API"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Organisation som har anslutit sig till nationella servicekanalen"
+
+msgid "Package contains invalid resources"
+msgstr "API innehåller ogiltiga bilagor"
+
+msgid "Invalid content"
+msgstr "Ogiltigt innehåll"

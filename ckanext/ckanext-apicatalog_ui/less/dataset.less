@@ -232,10 +232,11 @@
 
 // FORMATS
 
-
 .label {
-  background-color: @resourceFormatBackground;
   color: @white;
+  &[data-format] {
+    background-color: @resourceFormatBackground;
+  }
 }
 
 // Views
