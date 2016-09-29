@@ -4938,7 +4938,7 @@ msgid "Fields marked with a thick gray border are used in automatic processing a
 msgstr "Fält markerade med en tjock grå gräns används i automatisk databehandling och kan inte ändras."
 
 msgid "Package contains invalid resources"
-msgstr "***KÄÄNNÖS PUUTTUU***"
+msgstr "API innehåller ogiltiga bilagor"
 
 msgid "Invalid content"
-msgstr "***KÄÄNNÖS PUUTTUU***"
+msgstr "Ogiltigt innehåll"
