@@ -56,11 +56,11 @@ email:
 
 xroad:
   securityserver:
-    host: "vrkkapalpt05.csc.fi"
-    alias: "vrkkapalpt05"
+    host: "gdev-ss2.palveluvayla.com"
+    alias: "gdev-ss2"
     port: 443
-  client_id: FI-TEST.GOV.0245437-2.APICatalogClient
-  service_id: FI-TEST.GOV.0920632-0.ServiceList
+  client_id: FI.GOV.1710128-9
+  service_id: FI.GOV.1945065-0.VAAKKO1
 
 debug_enabled: false
 
