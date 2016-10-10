@@ -3,20 +3,15 @@ import ckan.plugins.toolkit as toolkit
 import pylons.config as config
 
 import ckan.logic as logic
-import ckan.model as model
-from ckan.lib.munge import munge_title_to_name
 import random
 import urllib
 import ckan.lib.i18n as i18n
 import logging
-import requests
 
 NotFound = logic.NotFound
 
 log = logging.getLogger(__name__)
-
-
-cached_xroad_orgs = []
+get_action = toolkit.get_action
 
 def ensure_translated(s):
     ts = type(s)
@@ -121,40 +116,14 @@ def get_homepage_organizations(count=1):
 def unquote_url(url):
     return urllib.unquote(url)
 
+
 def get_xroad_organizations():
-    global cached_xroad_orgs
-    try:
-        try:
-            r = requests.get("http://localhost:9090/rest-gateway-0.0.8/Consumer/ListMembers?changedAfter=2011-01-01",
-                            headers = {'Accept': 'application/json'},
-                            timeout = 5.000)
-        except requests.exceptions.Timeout:
-            return cached_xroad_orgs
-        except:
-            pass
+    context = {}
+    all_organizations = get_action('organization_list')(context, {"all_fields": True})
+    packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
 
-        new_xroad_orgs = []
-        catalog = r.json()
-        members = catalog['memberList']['member']
+    return packageless_organizations
 
-        context = {
-            'model': model,
-            'session': model.Session,
-            'ignore_auth': True,
-        }
-
-        for member in members:
-            try:
-                context.pop('__auth_audit', None)
-                logic.get_action('organization_show')(context, {'id': munge_title_to_name(member['name'])})
-            except NotFound:
-                new_xroad_orgs.append({'title': member['name']})
-                continue
-    except:
-        return cached_xroad_orgs
-        pass
-    cached_xroad_orgs = new_xroad_orgs
-    return cached_xroad_orgs
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
