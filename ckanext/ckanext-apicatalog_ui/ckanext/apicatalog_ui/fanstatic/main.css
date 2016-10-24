@@ -6823,6 +6823,14 @@ button.close {
   font-weight: 900;
   font-style: normal;
 }
+.subheading {
+  display: block;
+  font-size: 50%;
+  color: #777;
+}
+.nowrap {
+  white-space: nowrap;
+}
 .break-word {
   /* Non standard for webkit */
 

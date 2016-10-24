@@ -4978,3 +4978,6 @@ msgstr "API innehåller ogiltiga bilagor"
 
 msgid "Invalid content"
 msgstr "Ogiltigt innehåll"
+
+msgid "Service bus identifier"
+msgstr "Service bus identifierare"
