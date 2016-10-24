@@ -50,6 +50,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
 
     def before_map(self, m):
         controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_RevisionController'
+        m.connect('/revision', action='index', controller=controller)
         m.connect('/revision/list', action='list', controller=controller)
         m.connect('/revision/diff/{id}', action='diff', controller=controller)
 
@@ -70,6 +71,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
 
     def get_auth_functions(self):
         return {'user_list': admin_only,
+                'revision_index': admin_only,
                 'revision_list': admin_only,
                 'revision_diff': admin_only,
                 'package_revision_list': admin_only
@@ -83,6 +85,13 @@ def auth_context():
 
 
 class Apicatalog_RevisionController(RevisionController):
+
+    def index(self):
+        try:
+            ckan.logic.check_access('revision_index', auth_context())
+            return super(Apicatalog_RevisionController, self).index()
+        except ckan.logic.NotAuthorized:
+            ckan.lib.base.abort(403, _('Not authorized to see this page'))
 
     def list(self):
         try:
