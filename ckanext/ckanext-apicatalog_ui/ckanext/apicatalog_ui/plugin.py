@@ -13,6 +13,7 @@ NotFound = logic.NotFound
 log = logging.getLogger(__name__)
 get_action = toolkit.get_action
 
+
 def ensure_translated(s):
     ts = type(s)
     if ts == unicode:
@@ -39,6 +40,12 @@ def service_alerts():
         return [{"message": message, "category": category}]
     else:
         return []
+
+
+def is_service_bus_id(identifier):
+    # GUIDs don't have dots, bus IDs do
+    log.warning("is_service_bus_id(%s)" % identifier)
+    return '.' in identifier
 
 
 def get_homepage_organizations(count=1):
@@ -152,7 +159,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'service_alerts': service_alerts,
                 'unquote_url': unquote_url,
                 'ensure_translated': ensure_translated,
-                'get_xroad_organizations': get_xroad_organizations
+                'get_xroad_organizations': get_xroad_organizations,
+                'is_service_bus_id': is_service_bus_id
                 }
 
 

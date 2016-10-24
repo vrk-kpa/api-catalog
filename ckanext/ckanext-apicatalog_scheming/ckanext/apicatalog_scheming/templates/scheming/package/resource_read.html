@@ -7,7 +7,14 @@
 {% endblock -%}
 
 {% block resource_content %}
-  {% block resource_read_title %}<h1 class="page-heading">{{ h.resource_display_name(res) | truncate(50) }}</h1>{% endblock %}
+  {% block resource_read_title %}
+  <h1 class="page-heading">
+    {{ h.resource_display_name(res) | truncate(50) }}
+    {% if h.is_service_bus_id(res.package_id) %}
+    <span class="subheading">{{ _('Service bus identifier') }}: <span class="nowrap">{{ res.package_id }}.{{ res.name }}</span></span>
+    {% endif %}
+  </h1>
+  {% endblock %}
   {% block resource_read_url %}{% endblock %}
   <div class="prose notes" property="rdfs:label">
     {% if res.description %}

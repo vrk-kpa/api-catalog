@@ -4986,3 +4986,6 @@ msgstr "Liitynnällä on virheellisiä liitetiedostoja"
 
 msgid "Invalid content"
 msgstr "Virheellistä sisältöä"
+
+msgid "Service bus identifier"
+msgstr "Tunniste palveluväylässä"
