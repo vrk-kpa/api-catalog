@@ -45,8 +45,13 @@
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization_ex",
-      "final": true,
-      "validators": "valid_resources"
+      "final": true
+    },
+    {
+      "field_name": "private",
+      "validators": "valid_resources",
+      "form_snippet": null,
+      "display_snippet": null
     },
     {
       "field_name": "environment",
