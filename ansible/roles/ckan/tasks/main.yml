@@ -41,7 +41,7 @@
 - name: Disable emails in cron
   cronvar: name="MAILTO" value="\"\""
 
-# Check new harvester jobs every hour, does not execute harvesting if there are no new jobs
+# Check new harvester jobs twice a day, does not execute harvesting if there are no new jobs
 - name: Ensure harvester cronjob
   cron: name="Harvester run" hour="*/12" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
 
