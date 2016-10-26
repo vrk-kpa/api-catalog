@@ -43,7 +43,7 @@
 
 # Check new harvester jobs every hour, does not execute harvesting if there are no new jobs
 - name: Ensure harvester cronjob
-  cron: name="Harvester run" minute="0" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
+  cron: name="Harvester run" hour="*/12" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
 
 - name: Ensure tracking cronjob
   cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/paster --plugin=ckan tracking update -c {{ ckan_ini }} && {{ virtualenv }}/bin/paster --plugin=ckan search-index rebuild -r -c {{ ckan_ini }}"
