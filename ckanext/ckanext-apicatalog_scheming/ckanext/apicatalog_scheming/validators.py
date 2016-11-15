@@ -12,7 +12,7 @@ def upper_if_exists(s):
 
 def valid_resources(private, context):
     package = context.get('package')
-    if not private or private == u'False':
+    if package and (not private or private == u'False'):
         for resource in package.resources:
             if resource.extras.get('valid_content') == 'no':
                 raise df.Invalid(_("Package contains invalid resources"))
