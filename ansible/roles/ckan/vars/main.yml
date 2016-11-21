@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.5.2
+ckan_version: 2.6.0
 
 harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
@@ -23,9 +23,8 @@ service_database_enabled: false
 auto_author_enabled: true
 
 ckan_patches:
-  - { file: "fix_401_to_403" }
   - { file: "remove_gravatar" }
-  - { file: "csrf" }
+  #- { file: "csrf" }
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
   - { file: "set_attachment_content_disposition" }
