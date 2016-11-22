@@ -56,8 +56,9 @@ def log(priority, string):
 
 
 class MapItem:
-    code = 200
-    children = []
+    def __init__(self):
+        self.code = 200
+        self.children = []
 
 
 def main():
@@ -94,9 +95,25 @@ def main():
             request.urlopen(url)
             log(1, Style.result('EXT: %s' % url))
         except HTTPError as e:
+            referrers = find_referrers(url, site_map)
             log(0, Style.error('EXT-ERROR-HTTP: %d %s' % (e.code, url)))
+            log(0, Style.error('  REF: %s' % '\n  '.join(referrers)))
         except URLError as e:
+            referrers = find_referrers(url, site_map)
             log(0, Style.error('EXT-ERROR: %s %s' % (e.reason, url)))
+            log(0, Style.error('\n'.join('  REF: %s' % r for r in referrers)))
+
+
+def find_referrers(url, site_map):
+    results = []
+
+    for referrer, item in site_map.items():
+        for child in item.children:
+            if child == url:
+                results.append(referrer)
+                break
+
+    return results
 
 
 def get_external_children(site_url, site_map):
