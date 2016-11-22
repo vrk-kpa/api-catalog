@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
+from optparse import OptionParser
 from urllib import request, parse
-from urllib.error import URLError
+from urllib.error import URLError, HTTPError
 import ssl
-import sys
 import re
 
 # Require absolute URLs inside hrefs
@@ -54,13 +54,38 @@ def log(priority, string):
     if priority <= VERBOSITY:
         print(string)
 
+
 class MapItem:
     code = 200
     children = []
 
 
 def main():
-    site_url = sys.argv[1]
+    global CRAWL_URL_BLACKLIST_REGEX, CRAWL_CONTENT_TYPE_WHITELIST_REGEX, VERBOSITY, NO_COLOR
+    usage = "usage: %prog [options] site_url"
+    parser = OptionParser(usage=usage)
+    parser.add_option("-c", "--content-type-regex", metavar="REGEX", dest="content_type_regex",
+                      help="whitelist regex for content-type of crawled nodes",
+                      default=CRAWL_CONTENT_TYPE_WHITELIST_REGEX)
+    parser.add_option("-b", "--url-blacklist-regex", metavar="REGEX", dest="url_blacklist_regex",
+                      help="blacklist regex for URLs of crawled nodes",
+                      default=CRAWL_URL_BLACKLIST_REGEX)
+    parser.add_option("-v", action="count", dest="verbosity", default=0,
+                      help="output verbosity")
+    parser.add_option("--no-color", action="store_true", dest="no_color")
+
+    (options, args) = parser.parse_args()
+
+    if len(args) != 1:
+        parser.print_help()
+        return
+
+    site_url = args[0]
+    CRAWL_CONTENT_TYPE_WHITELIST_REGEX = options.content_type_regex
+    CRAWL_URL_BLACKLIST_REGEX = options.url_blacklist_regex
+    VERBOSITY = options.verbosity
+    NO_COLOR = options.no_color
+
     site_map = map_site(site_url)
 
     external_urls = get_external_children(site_url, site_map)
@@ -68,8 +93,10 @@ def main():
         try:
             request.urlopen(url)
             log(1, Style.result('EXT: %s' % url))
+        except HTTPError as e:
+            log(0, Style.error('EXT-ERROR-HTTP: %d %s' % (e.code, url)))
         except URLError as e:
-            log(1, Style.error('EXT-ERROR: %d %s' % (e.code, url)))
+            log(0, Style.error('EXT-ERROR: %s %s' % (e.reason, url)))
 
 
 def get_external_children(site_url, site_map):
