@@ -1,0 +1,23 @@
+---
+
+- block:
+    - name: Add ELK stack repository key
+      apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+    - name: Add Filebeat repository
+      apt_repository: repo='{{ item }}' state=present
+      with_items:
+        - "deb https://packages.elastic.co/beats/apt stable main"
+  when: ansible_os_family == 'Debian'
+
+- name: Install Filebeat
+  package: name=filebeat state=latest
+
+- name: Copy Filebeat configuration
+  template: src={{ item.src }} dest={{ item.dest }} owner={{ item.owner }} group={{ item.owner }} mode={{ item.mode }}
+  with_items:
+    - {"src": "filebeat.yml", "dest": "/etc/filebeat/filebeat.yml", "owner": "root", "mode": "0644"}
+
+- name: Restart Filebeat
+  service: name=filebeat enabled=yes state=restarted
+
