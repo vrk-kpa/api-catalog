@@ -1,6 +1,6 @@
 [submodule "ckanext/ckanext-scheming"]
 	path = ckanext/ckanext-scheming
-	url = https://github.com/open-data/ckanext-scheming.git
+	url = https://github.com/6aika/ckanext-scheming.git
 [submodule "ckanext/ckanext-fluent"]
 	path = ckanext/ckanext-fluent
 	url = https://github.com/open-data/ckanext-fluent.git
