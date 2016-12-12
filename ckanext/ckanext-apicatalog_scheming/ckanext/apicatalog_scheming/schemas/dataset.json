@@ -49,7 +49,7 @@
     },
     {
       "field_name": "private",
-      "validators": "valid_resources",
+      "validators": "boolean_validator valid_resources",
       "form_snippet": null,
       "display_snippet": null
     },
