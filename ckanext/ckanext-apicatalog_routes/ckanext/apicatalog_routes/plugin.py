@@ -300,11 +300,11 @@ class Apicatalog_OrganizationController(OrganizationController):
     def index(self):
         group_type = self._guess_group_type()
 
-        page = self._get_page_number(request.params) or 1
+        page = h.get_page_number(request.params) or 1
         items_per_page = 21
 
         context = {'model': model, 'session': model.Session,
-                   'user': c.user or c.author, 'for_view': True,
+                   'user': c.user, 'for_view': True,
                    'with_private': False}
 
         q = c.q = request.params.get('q', '')
@@ -313,8 +313,9 @@ class Apicatalog_OrganizationController(OrganizationController):
             sort_by = c.sort_by_selected = 'title asc'
         try:
             self._check_access('site_read', context)
+            self._check_access('group_list', context)
         except NotAuthorized:
-            abort(401, _('Not authorized to see this page'))
+            abort(403, _('Not authorized to see this page'))
 
         # pass user info to context as needed to view private datasets of
         # orgs correctly
