@@ -404,7 +404,7 @@ index 0000000..3036984
 +        raise CsrfTokenValidationError()
 \ No newline at end of file
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index fb90e55..cbb243a 100644
+index fb90e55..ad9a64a 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
 @@ -42,6 +42,7 @@ import ckan.lib.uploader as uploader
@@ -415,16 +415,18 @@ index fb90e55..cbb243a 100644
  
  from ckan.common import _, ungettext, g, c, request, session, json
  
-@@ -2267,6 +2268,9 @@ def get_translated(data_dict, field):
-     except KeyError:
+@@ -2268,6 +2269,11 @@ def get_translated(data_dict, field):
          return data_dict.get(field, '')
  
+ 
++@core_helper
 +def generate_csrf_token():
 +    return csrf_token.generate()
 +
- 
++
  core_helper(flash, name='flash')
  core_helper(localised_number)
+ core_helper(localised_SI_number)
 diff --git a/ckan/templates/admin/config.html b/ckan/templates/admin/config.html
 index 29f2d10..8d4b0aa 100644
 --- a/ckan/templates/admin/config.html
