@@ -45,6 +45,9 @@ def setup():
 def define_tables():
     global link_validation_result_table, link_validation_referrer_table
 
+    if link_validation_result_table is not None:
+        return
+
     link_validation_result_columns = (
         Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
         Column('type', types.UnicodeText, default=None),

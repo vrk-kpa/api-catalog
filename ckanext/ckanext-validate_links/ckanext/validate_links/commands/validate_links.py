@@ -8,6 +8,9 @@ import re
 from ckan.lib.cli import CkanCommand
 from ckanext.validate_links.model import define_tables, LinkValidationResult, LinkValidationReferrer
 import ckan.model as model
+import ckan.lib.mailer as mailer
+from ckan.common import config
+
 
 if sys.version_info >= (2, 7, 9):
     import ssl
@@ -48,7 +51,7 @@ class ValidateLinks(CkanCommand):
         db_setup()
 
     def crawl(self):
-        site_url = 'http://localhost:80'
+        site_url = config.get('ckan.site_url')
         crawl_url_blacklist_regex = re.compile(r'/activity/')
         crawl_content_type_whitelist_regex = re.compile(r'text/html')
         url_regex = re.compile(r'href="((http[s]?://|/)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"')
@@ -88,6 +91,11 @@ class ValidateLinks(CkanCommand):
 
             model.Session.add(result)
         model.Session.commit()
+
+        if url_errors:
+            from ckan.model.user import User
+            admin = User.get('admin')
+            mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.iteritems()))
 
 
 def find_referrers(url, site_map):

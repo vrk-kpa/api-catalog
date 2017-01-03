@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% block primary_content_inner %}
+<h1>{{ _('Broken links') }}</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>{{ _('URL') }}</th>
+      <th>{{ _('Referrers') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td><a href="{{ r.url }}">{{ r.url }}</a></td>
+      <td>
+        <ul class="list-unstyled">
+          {% for ref in r.referrers %}
+          <li><a href="{{ ref.url }}">{{ ref.url }}</a></li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
