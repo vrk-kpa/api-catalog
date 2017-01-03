@@ -45,6 +45,9 @@
 - name: Ensure tracking cronjob
   cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/paster --plugin=ckan tracking update -c {{ ckan_ini }} && {{ virtualenv }}/bin/paster --plugin=ckan search-index rebuild -r -c {{ ckan_ini }}"
 
+- name: Ensure link validation cronjob
+  cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/paster --plugin=ckanext-validate_links links crawl -c {{ ckan_ini }}"
+
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
   when: not robots_allowed
