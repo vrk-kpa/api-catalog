@@ -30,3 +30,6 @@
 
 - name: Initialize Harvest database
   shell: ./bin/paster --plugin=ckanext-harvest harvester initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+
+- name: Initialize Link Validation database
+  shell: ./bin/paster --plugin=ckanext-validate_links links initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
