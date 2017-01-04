@@ -17,8 +17,7 @@
     - patch_ckan
 
 - name: Apply CKAN patches
-  shell: patch -s -N -p1 < "{{ patches_cache_path }}/{{ item.file }}.patch" chdir="{{ ckan_source_path }}"
-  #ignore_errors: True
+  patch: src="patches/{{ item.file }}.patch" basedir="{{ ckan_source_path }}" strip=1
   with_items: "{{ ckan_patches }}"
   tags:
   - patch_ckan

@@ -10,9 +10,6 @@
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
 
 
-# can be removed after upgrading ckan to newer than 2.5
-- name: Upgrade bleach to 1.4.3
-  pip: name=bleach version=1.4.3 virtualenv={{ virtualenv }}
 
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
@@ -43,10 +40,13 @@
 
 # Check new harvester jobs twice a day, does not execute harvesting if there are no new jobs
 - name: Ensure harvester cronjob
-  cron: name="Harvester run" hour="*/12" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
+  cron: name="Harvester run" minute="*/15" job="/usr/lib/ckan/default/bin/paster --plugin=ckanext-harvest harvester run --config={{ ckan_ini }}"
 
 - name: Ensure tracking cronjob
   cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/paster --plugin=ckan tracking update -c {{ ckan_ini }} && {{ virtualenv }}/bin/paster --plugin=ckan search-index rebuild -r -c {{ ckan_ini }}"
+
+- name: Ensure link validation cronjob
+  cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/paster --plugin=ckanext-validate_links links crawl -c {{ ckan_ini }}"
 
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
