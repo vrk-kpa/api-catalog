@@ -20,7 +20,10 @@ filebeat:
 
 output:
   logstash:
-    hosts: ["{{ elk.logstash.hostname }}:{{ elk.logstash.port }}"]
+    hosts:
+{% for host in elk.logstash.hosts %}
+      - "{{ host }}"
+{% endfor %}
     worker: 1
     loadbalance: false
     #tls:

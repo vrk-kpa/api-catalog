@@ -62,6 +62,10 @@ xroad:
   client_id: FI.GOV.0245437-2.APICatalogClient
   service_id: FI.ORG.0920632-0.ServiceList
 
+elk:
+  logstash:
+    hosts: [""]
+
 debug_enabled: false
 
 robots_allowed: true

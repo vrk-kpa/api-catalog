@@ -64,8 +64,7 @@ xroad:
 
 elk:
   logstash:
-    hostname: ""
-    port: ""
+    hosts: [""]
 
 debug_enabled: true
 
