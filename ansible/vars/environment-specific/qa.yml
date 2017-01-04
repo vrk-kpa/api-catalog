@@ -62,6 +62,16 @@ xroad:
   client_id: FI-TEST.GOV.0245437-2.APICatalogClient
   service_id: FI-TEST.GOV.0920632-0.ServiceList
 
+elk:
+  logstash:
+    hosts:
+      - "kapalogtest01.csc.fi:5044"
+      - "kapalogtest02.csc.fi:5044"
+      - "kapalogtest03.csc.fi:5044"
+elk:
+  logstash:
+    hostname: ""
+    port: ""
 debug_enabled: false
 
 robots_allowed: false

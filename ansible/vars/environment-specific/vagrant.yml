@@ -62,6 +62,10 @@ xroad:
     alias: "gdev-ss2"
     port: 12765
 
+elk:
+  logstash:
+    hosts: [""]
+
 debug_enabled: true
 
 robots_allowed: true
