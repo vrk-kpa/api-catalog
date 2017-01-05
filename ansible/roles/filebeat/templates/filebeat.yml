@@ -10,7 +10,7 @@ filebeat:
       input_type: log
       document_type: catalog-apache
       fields:
-        environment: "{{ deployment_environment_id }}"
+        environment: "catalog-{{ deployment_environment_id }}"
 
   #spool_size: 1024
   #idle_timeout: 5s
