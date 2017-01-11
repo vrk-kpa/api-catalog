@@ -7,6 +7,7 @@ import random
 import urllib
 import ckan.lib.i18n as i18n
 import logging
+import itertools
 
 NotFound = logic.NotFound
 
@@ -81,33 +82,24 @@ def get_homepage_organizations(count=1):
 
     def get_random_groups(random_count, excluded_ids):
         ''' Return random valid groups up to random_count where id is not in excluded '''
-        result = []
-        found = []
+        chunk_size = 2 * random_count
+        package_search = logic.get_action('package_search')
 
-        items = logic.get_action('organization_list')({}, {})
+        def get_orgs_with_visible_packages(ids):
+            id_chunks = (ids[i:i+chunk_size] for i in range(0, len(ids), chunk_size))
+            for chunk_ids in id_chunks:
+                query = "organization:(%s)+shared_resource:yes" % " OR ".join(chunk_ids)
+                packages = package_search({}, {"q": query}).get('results', [])
+                valid_ids = {p['organization']['name'] for p in packages}
+                for id in (id for id in ids if id in valid_ids):
+                    yield id
 
-        for group_name in items:
-            group = get_group(group_name)
+        all_items = logic.get_action('organization_list')({}, {})
+        items = list(set(i for i in all_items if i not in excluded_ids))
+        random.shuffle(items)
 
-            if not group:
-                continue
-            if group['id'] in excluded_ids:
-                continue
-            # check if duplicate
-            if group['id'] in found:
-                continue
-            # skip orgs with 0 packages
-            if group['package_count'] is 0:
-                continue
-            # skip orgs with 1 package, if shared resource is "no"
-            if group['package_count'] is 1 and group['packages'][0].get('shared_resource', 'no') == 'no':
-                continue
-
-            found.append(group['id'])
-            result.append(group)
-
-        if len(result) > random_count:
-            result = random.sample(result, random_count)
+        result_ids = itertools.islice(get_orgs_with_visible_packages(items), random_count)
+        result = [get_group(id) for id in result_ids]
 
         return result
 
