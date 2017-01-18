@@ -4970,3 +4970,6 @@ msgstr "Invalid content"
 
 msgid "Service bus identifier"
 msgstr "Service bus identifier"
+
+msgid "Resources with invalid content"
+msgstr "Attachments with invalid content"
