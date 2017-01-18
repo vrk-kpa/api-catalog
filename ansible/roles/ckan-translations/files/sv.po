@@ -4981,3 +4981,6 @@ msgstr "Ogiltigt innehåll"
 
 msgid "Service bus identifier"
 msgstr "Service bus identifierare"
+
+msgid "Resources with invalid content"
+msgstr "Resources with invalid content"

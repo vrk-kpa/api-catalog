@@ -8,6 +8,7 @@ import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
 from sqlalchemy import func, text
 from datetime import datetime, timedelta
+import itertools
 
 get_action = logic.get_action
 check_access = logic.check_access
@@ -20,6 +21,9 @@ class AdminDashboardController(base.BaseController):
         context = {'model': model, 'user': c.user, 'auth_user_obj': c.userobj}
         try:
             check_access('admin_dashboard', context, {})
+
+            # Fetch invalid resources
+            invalid_resources = fetch_invalid_resources()
 
             # Query package statistics
             statistics = fetch_package_statistics()
@@ -41,7 +45,8 @@ class AdminDashboardController(base.BaseController):
                     context, only_resourceful=True)
 
             # Render template
-            vars = {'package_activity_html': package_activity_html,
+            vars = {'invalid_resources': invalid_resources,
+                    'package_activity_html': package_activity_html,
                     'harvest_activity_html': harvest_activity_html,
                     'privatized_activity_html': privatized_activity_html,
                     'interesting_activity_html': interesting_activity_html,
@@ -51,6 +56,28 @@ class AdminDashboardController(base.BaseController):
             return base.render(template, extra_vars=vars)
         except NotAuthorized:
             base.abort(403)
+
+
+def fetch_invalid_resources():
+    def package_generator(query, page_size):
+        context = {'ignore_auth': True}
+        package_search = get_action('package_search')
+
+        for index in itertools.count(start=0, step=page_size):
+            data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index}
+            packages = package_search(context, data_dict).get('results', [])
+            for package in packages:
+                yield package
+            else:
+                return
+
+    def invalid_resource_generator():
+        for package in package_generator('*:*', 1000):
+            for resource in package.get('resources', []):
+                if resource.get('valid_content', 'yes') == 'no':
+                    yield (resource, package)
+
+    return list(invalid_resource_generator())
 
 
 def fetch_package_statistics():

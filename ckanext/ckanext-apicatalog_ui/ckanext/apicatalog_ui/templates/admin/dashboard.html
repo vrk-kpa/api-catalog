@@ -78,6 +78,41 @@
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
               <header class="module-heading">
+                <h3 class="media-heading">{{ _('Resources with invalid content') }}</h3>
+              </header>
+              <div class="module-content">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>{{ _('Resource') }}</th>
+                      <th>{{ _('Dataset') }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for (res, pkg) in invalid_resources %}
+                    {% set pkg_url = h.url_for(controller='package', action='read', id=pkg.name) %}
+                    {% set url = h.url_for(controller='package', action='resource_read', id=pkg.name, resource_id=res.id) %}
+                    <tr>
+                      <td>
+                        <a href="{{ url }}">{{ h.resource_display_name(res) | truncate(50) }}</a>
+                      </td>
+                      <td>
+                        <a href="{{ pkg_url }}" title="{{ res.name or res.description }}">
+                          {{ h.dataset_display_name(pkg) }}
+                        </a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
                 <h3 class="media-heading">{{ _('Recent activity for packages with resources') }}</h3>
               </header>
               <div class="module-content">

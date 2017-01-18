@@ -4989,3 +4989,6 @@ msgstr "Virheellistä sisältöä"
 
 msgid "Service bus identifier"
 msgstr "Tunniste palveluväylässä"
+
+msgid "Resources with invalid content"
+msgstr "Virheelliset liitetiedostot"
