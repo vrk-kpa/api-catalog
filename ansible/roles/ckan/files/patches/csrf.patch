@@ -1,5 +1,5 @@
 diff --git a/ckan/controllers/admin.py b/ckan/controllers/admin.py
-index 18eccd1..97d8609 100644
+index 18eccd1..48aae3f 100644
 --- a/ckan/controllers/admin.py
 +++ b/ckan/controllers/admin.py
 @@ -6,6 +6,7 @@ import ckan.lib.base as base
@@ -23,7 +23,7 @@ index 18eccd1..97d8609 100644
              # remove sys info items
              for item in self._get_config_form_items():
                  name = item['name']
-@@ -95,10 +102,15 @@ class AdminController(base.BaseController):
+@@ -95,10 +102,17 @@ class AdminController(base.BaseController):
                              logic.parse_params(
                                  request.POST, ignore_keys=CACHE_PARAMETERS))))
  
@@ -35,11 +35,13 @@ index 18eccd1..97d8609 100644
                      {'user': c.user}, data_dict)
 +            except csrf_token.CsrfTokenValidationError:
 +                h.flash_error(_('Security token error, please try again'))
-+                return base.render('admin/config.html')
++                vars = {'data': data, 'errors': {},
++                        'error_summary': {}, 'form_items': items}
++                return base.render('admin/config.html', extra_vars=vars)
              except logic.ValidationError, e:
                  errors = e.error_dict
                  error_summary = e.error_summary
-@@ -133,6 +145,11 @@ class AdminController(base.BaseController):
+@@ -133,6 +147,11 @@ class AdminController(base.BaseController):
                                    in request.params):
              return base.render('admin/trash.html')
          else:
