@@ -301,7 +301,7 @@ index 6b65a45..16f2164 100644
                  if not to_preview:
                      redirect(h.url_for(controller='package',
 diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
-index ebc305d..7dbd21c 100644
+index ebc305d..45245c3 100644
 --- a/ckan/controllers/user.py
 +++ b/ckan/controllers/user.py
 @@ -16,6 +16,7 @@ import ckan.lib.captcha as captcha
@@ -312,7 +312,20 @@ index ebc305d..7dbd21c 100644
  import ckan.plugins as p
  
  from ckan.common import _, c, g, request, response
-@@ -350,6 +351,8 @@ class UserController(base.BaseController):
+@@ -225,6 +226,12 @@ class UserController(base.BaseController):
+         data_dict = {'id': id}
+ 
+         try:
++            csrf_token.validate(request.params.get('csrf-token', ''))
++        except csrf_token.CsrfTokenValidationError:
++            h.flash_error(_('Security token error, please try again'))
++            return self.edit(id, data_dict, {}, {})
++
++        try:
+             result = get_action('user_generate_apikey')(context, data_dict)
+         except NotAuthorized:
+             abort(403, _('Unauthorized to edit user %s') % '')
+@@ -350,6 +357,8 @@ class UserController(base.BaseController):
  
              email_changed = data_dict['email'] != c.userobj.email
  
@@ -321,7 +334,7 @@ index ebc305d..7dbd21c 100644
              if (data_dict['password1'] and data_dict['password2']) \
                      or email_changed:
                  identity = {'login': c.user,
-@@ -385,6 +388,9 @@ class UserController(base.BaseController):
+@@ -385,6 +394,9 @@ class UserController(base.BaseController):
              errors = {'oldpassword': [_('Password entered was incorrect')]}
              error_summary = {_('Old Password'): _('incorrect password')}
              return self.edit(id, data_dict, errors, error_summary)
