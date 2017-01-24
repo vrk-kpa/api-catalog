@@ -35,11 +35,11 @@
                 <table class="table table-condensed">
                   <tbody>
                     <tr>
-                      <td>{{ _('Private') }}</td>
+                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:true') }}">{{ _('Private') }}</a></td>
                       <td>{{ stats.private }}</td>
                     </tr>
                     <tr>
-                      <td>{{ _('Public') }}</td>
+                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:false') }}">{{ _('Public') }}</a></td>
                       <td>{{ stats.public }}</td>
                     </tr>
                   </tbody>
