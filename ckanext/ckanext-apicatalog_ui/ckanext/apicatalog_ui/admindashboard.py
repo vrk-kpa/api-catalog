@@ -85,6 +85,7 @@ def fetch_package_statistics():
     public_private_query = (
             model.Session.query(model.Package.private, func.count(model.Package.id))
             .filter(model.Package.state == 'active')
+            .filter(model.Package.type == 'dataset')
             .group_by(model.Package.private))
 
     public_count = 0
