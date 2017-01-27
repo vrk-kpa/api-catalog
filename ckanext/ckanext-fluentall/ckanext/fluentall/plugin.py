@@ -85,6 +85,8 @@ class FluentallPackagePlugin(FluentallLanguagePlugin):
 
         # pkg fields
         for key, value in pkg_dict.iteritems():
+            if key == 'organization':
+                continue
             pkg_dict[key] = self._extract_lang_value(value, desired_lang_code)
 
         # groups
