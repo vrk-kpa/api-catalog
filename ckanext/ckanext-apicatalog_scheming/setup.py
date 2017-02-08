@@ -79,5 +79,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         apicatalog_scheming=ckanext.apicatalog_scheming.plugin:Apicatalog_SchemingPlugin
+        [paste.paster_command]
+        migrate = ckanext.apicatalog_scheming.commands.migrate:Migrate
     ''',
 )
