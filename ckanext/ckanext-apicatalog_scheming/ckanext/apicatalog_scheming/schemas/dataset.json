@@ -19,9 +19,9 @@
       "final": true
     },
     {
-      "field_name": "notes",
+      "field_name": "notes_translated",
       "label": "Description",
-      "preset": "fluent_markdown",
+      "preset": "fluent_core_markdown_translated",
       "form_placeholder": "eg. A detailed description",
       "form_languages": ["fi", "sv", "en"]
     },

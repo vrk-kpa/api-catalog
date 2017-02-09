@@ -73,6 +73,16 @@
         "upload_clear": "clear_upload",
         "upload_label": "File"
       }
+    },
+    {
+      "preset_name": "fluent_core_markdown_translated",
+      "values": {
+        "form_snippet": "fluent_markdown.html",
+        "display_snippet": "fluent_markdown.html",
+        "error_snippet": "fluent_text.html",
+        "validators": "fluent_text",
+        "output_validators": "fluent_core_translated_output"
+      }
     }
   ]
 }

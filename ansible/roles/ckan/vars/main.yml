@@ -7,7 +7,7 @@ harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_admin_dashboard fluentall_pkg fluentall_res apicatalog_routes contact apicatalog_feed harvest xroad_harvester wsdl_view validate_links
+ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed harvest xroad_harvester wsdl_view validate_links
 
 redis_harvest_database: 0
 redis_celery_database: 1
