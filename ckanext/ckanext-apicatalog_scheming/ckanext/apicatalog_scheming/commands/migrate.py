@@ -51,26 +51,44 @@ class Migrate(CkanCommand):
                     return
 
         default_locale = config.get('ckan.locale_default', 'en')
-        patches = []
+        package_patches = []
+        resource_patches = []
         for package in package_generator('*:*', 1000):
             try:
                 notes = json.loads(package.get('notes'))
+                if isinstance(notes, dict):
+                    patch = {
+                            'id': package['id'],
+                            'notes': notes.get(default_locale, ''),
+                            'notes_translated': notes
+                            }
+                    package_patches.append(patch)
             except:
-                continue
-            if isinstance(notes, dict):
-                patch = {
-                        'id': package['id'],
-                        'notes': notes.get(default_locale, ''),
-                        'notes_translated': notes
-                        }
-                patches.append(patch)
+                pass
 
-        if not patches:
+            for resource in package.get('resources', []):
+                try:
+                    description = json.loads(resource.get('description'))
+                    if isinstance(description, dict):
+                        patch = {
+                                'id': resource['id'],
+                                'description': description.get(default_locale, ''),
+                                'description_translated': description
+                                }
+                        resource_patches.append(patch)
+                except:
+                    pass
+
+        if not package_patches and not resource_patches:
             print 'Nothing to do.'
         elif self.options.dry_run:
-            print '\n'.join('%s' % p for p in patches)
+            print '\n'.join('%s' % p for p in package_patches)
+            print '\n'.join('%s' % p for p in resource_patches)
         else:
             package_patch = get_action('package_patch')
+            resource_patch = get_action('resource_patch')
             context = {'ignore_auth': True}
-            for patch in patches:
+            for patch in package_patches:
                 package_patch(context, patch)
+            for patch in resource_patches:
+                resource_patch(context, patch)

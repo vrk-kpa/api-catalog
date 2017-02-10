@@ -127,9 +127,9 @@
       "final": true
     },
     {
-      "field_name": "description",
+      "field_name": "description_translated",
       "label": "Description",
-      "preset": "fluent_markdown",
+      "preset": "fluent_core_markdown_translated",
       "form_placeholder": "eg. A detailed description",
       "form_languages": ["fi", "sv", "en"]
     },
