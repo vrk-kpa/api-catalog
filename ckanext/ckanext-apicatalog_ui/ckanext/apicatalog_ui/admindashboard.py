@@ -28,17 +28,11 @@ class AdminDashboardController(base.BaseController):
             # Query package statistics
             statistics = fetch_package_statistics()
 
-            # Get harvest user id
-            harvest_id = (
-                    model.Session.query(model.User.id)
-                    .filter(model.User.name == 'harvest')
-                    .one())
-
             # Generate activity stream snippet
             package_activity_html = fetch_recent_package_activity_list_html(
-                    context, user_id_not=harvest_id)
+                    context, user_not='harvest')
             harvest_activity_html = fetch_recent_package_activity_list_html(
-                    context, user_id=harvest_id)
+                    context, user='harvest')
             privatized_activity_html = fetch_recent_package_activity_list_html(
                     context, only_privatized=True)
             interesting_activity_html = fetch_recent_package_activity_list_html(
@@ -85,6 +79,7 @@ def fetch_package_statistics():
     public_private_query = (
             model.Session.query(model.Package.private, func.count(model.Package.id))
             .filter(model.Package.state == 'active')
+            .filter(model.Package.type == 'dataset')
             .group_by(model.Package.private))
 
     public_count = 0
@@ -101,7 +96,7 @@ def fetch_package_statistics():
         created = (
                 model.Session.query(
                     model.PackageRevision.id.label('id'),
-                    func.min(model.PackageRevision.revision_timestamp).label('ts'))
+                    func.min(model.PackageRevision.metadata_modified).label('ts'))
                 .group_by(model.PackageRevision.id)
                 .subquery())
 
@@ -122,33 +117,38 @@ def fetch_package_statistics():
 
 
 def fetch_recent_package_activity_list_html(
-        context, user_id=None, user_id_not=None, only_privatized=False,
+        context, user=None, user_not=None, only_privatized=False,
         only_resourceful=False, limit=30):
     # Fetch recent revisions, store as list oredered by time
-    recent_revisions_query = model.Session.query(model.PackageRevision).distinct()
+    recent_revisions_query = (
+            model.Session.query(model.PackageRevision, model.User.id)
+            .join(model.Revision, model.PackageRevision.revision_id == model.Revision.id)
+            .join(model.User, model.Revision.author == model.User.name)
+            .distinct())
+
     if only_resourceful:
         recent_revisions_query = (
                 recent_revisions_query
                 .join(model.Resource, model.Resource.package_id == model.PackageRevision.id)
                 .filter(model.Resource.state == "active"))
-    if user_id is not None:
+    if user is not None:
         recent_revisions_query = recent_revisions_query.filter(
-                model.PackageRevision.creator_user_id == user_id)
-    if user_id_not is not None:
+                model.Revision.author == user)
+    if user_not is not None:
         recent_revisions_query = recent_revisions_query.filter(
-                model.PackageRevision.creator_user_id != user_id_not)
+                model.Revision.author != user_not)
     if only_privatized:
         recent_revisions_query = recent_revisions_query.filter(
                 model.PackageRevision.private)
     recent_revisions_query = (
             recent_revisions_query
-            .order_by(model.PackageRevision.revision_timestamp.desc())
+            .order_by(model.PackageRevision.metadata_modified.desc())
             .limit(limit))
 
     recent_revisions = [r for r in recent_revisions_query]
 
     # Fetch related packages, store by id
-    packages = {r.id: None for r in recent_revisions}
+    packages = {r.id: None for r, uid in recent_revisions}
     packages_query = (
             model.Session.query(model.Package)
             .filter(model.Package.id.in_(packages.keys())))
@@ -160,7 +160,7 @@ def fetch_recent_package_activity_list_html(
     packages_created_query = (
             model.Session.query(
                 model.PackageRevision.id.label('id'),
-                func.min(model.PackageRevision.revision_timestamp).label('ts'))
+                func.min(model.PackageRevision.metadata_modified).label('ts'))
             .filter(model.PackageRevision.id.in_(packages.keys()))
             .group_by(model.PackageRevision.id))
     for package_id, created in packages_created_query:
@@ -174,16 +174,16 @@ def fetch_recent_package_activity_list_html(
             select p.revision_id as rid, r.*
             from package_revision r
             left join (
-                    select l.revision_id, r.id, max(r.revision_timestamp) as previous_timestamp
+                    select l.revision_id, r.id, max(r.metadata_modified) as previous_timestamp
                     from package_revision r
                     join package_revision l on r.id = l.id
                     where l.revision_id = ANY(:ids)
-                      and r.revision_timestamp < l.revision_timestamp
-                    group by l.revision_id, r.id, l.revision_timestamp
+                      and r.metadata_modified < l.metadata_modified
+                    group by l.revision_id, r.id, l.metadata_modified
                     ) p on r.id = p.id
-            where r.revision_timestamp = p.previous_timestamp
+            where r.metadata_modified = p.previous_timestamp
             """))
-            .params(ids=[r.revision_id for r in recent_revisions]))
+            .params(ids=[r.revision_id for r, uid in recent_revisions]))
     for rid, package in packages_previous_query:
         packages_previous[rid] = package
 
@@ -193,7 +193,7 @@ def fetch_recent_package_activity_list_html(
         activity_streams.activity_stream_string_changed_package
 
     # Create activity objects based on revision data
-    def revision_to_activity(r):
+    def revision_to_activity(r, uid):
         pr = packages_previous.get(r.revision_id)
         if only_privatized and (pr is None or (pr.private or not r.private)):
             return None
@@ -202,7 +202,7 @@ def fetch_recent_package_activity_list_html(
 
         activity_type = None
         if r.state in ('active', 'draft'):
-            if packages_created[r.id] == r.revision_timestamp:
+            if packages_created[r.id] == r.metadata_modified:
                 activity_type = 'new package'
             elif privacy_changed:
                 activity_type = 'changed package privacy'
@@ -216,13 +216,13 @@ def fetch_recent_package_activity_list_html(
 
         d = {'package': dictization.table_dictize(
             packages[r.id], context={'model': model})}
-        activity = model.Activity(r.creator_user_id, r.id, r.revision_id, activity_type, d)
-        activity.timestamp = r.revision_timestamp
+        activity = model.Activity(uid, r.id, r.revision_id, activity_type, d)
+        activity.timestamp = r.metadata_modified
         return activity
 
     activity_objects = (
             (r for r in
-                (revision_to_activity(r) for r in recent_revisions)
+                (revision_to_activity(r, uid) for r, uid in recent_revisions)
                 if r is not None))
 
     # Render activity list snippet

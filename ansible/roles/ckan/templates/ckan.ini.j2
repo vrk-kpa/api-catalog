@@ -6,7 +6,7 @@ debug = {{ debug_enabled }}
 
 use = egg:Paste#http
 host = 0.0.0.0
-port = 5000
+port = "{{ ckan_internal_port }}"
 
 [app:main]
 

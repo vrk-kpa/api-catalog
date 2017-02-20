@@ -64,7 +64,10 @@ xroad:
 
 elk:
   logstash:
-    hosts: [""]
+    hosts:
+      - "kapalogprod01.csc.fi:5044"
+      - "kapalogprod02.csc.fi:5044"
+      - "kapalogprod03.csc.fi:5044"
 
 debug_enabled: false
 
