@@ -3654,12 +3654,11 @@ msgstr "Aktiivinen"
 
 #: ckan/templates/package/snippets/package_form.html:28
 msgid ""
-"The <i>data license</i> you select above only applies to the contents of any"
-" resource files that you add to this dataset. By submitting this form, you "
-"agree to release the <i>metadata</i> values that you enter into the form "
+"By submitting this form, you agree to release the "
+"<i>metadata</i> values that you enter into the form "
 "under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open "
 "Database License</a>."
-msgstr "<i>Lisenssi</i>, jonka valitset yllä olevasta valikosta, koskee ainoastaan tähän liityntään liittämiäsi tiedostoja. Lähettämällä tämän lomakkeen suostut julkaisemaan täyttämäsi <i>metatiedot</i> <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database Lisenssin</a> mukaisesti."
+msgstr "Lähettämällä tämän lomakkeen suostut julkaisemaan täyttämäsi <i>metatiedot</i> <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database Lisenssin</a> mukaisesti."
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
