@@ -26,4 +26,3 @@ class Validate_LinksPlugin(plugins.SingletonPlugin):
 
     def get_auth_functions(self):
         return {'admin_broken_links': admin_only}
-

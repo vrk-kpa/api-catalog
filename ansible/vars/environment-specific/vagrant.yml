@@ -69,3 +69,6 @@ elk:
 debug_enabled: true
 
 robots_allowed: true
+
+paha_key_whitelist:
+  - "71e0ab4f-500b-49b6-8f5a-0bd3f215eb2b"

@@ -33,6 +33,7 @@
     - { role: ckan-extension, ckanext: ckanext-harvest }
     - { role: ckan-extension, ckanext: ckanext-xroad_integration }
     - { role: ckan-extension, ckanext: ckanext-validate_links }
+    - { role: ckan-extension, ckanext: ckanext-paha }
     - ckan
     - ckan-translations
     - supervisor

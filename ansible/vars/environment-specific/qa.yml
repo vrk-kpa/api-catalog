@@ -72,3 +72,5 @@ elk:
 debug_enabled: false
 
 robots_allowed: false
+
+paha_key_whitelist: []
