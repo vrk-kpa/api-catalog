@@ -66,6 +66,12 @@ elk:
   logstash:
     hosts: [""]
 
+saha:
+  api_url: "https://asiointi.dev.vrk.fi/api"
+  username: "PahaIntegrationUser"
+  password: "{{ secret.saha_integration_password }}"
+
 debug_enabled: true
 
 robots_allowed: true
+
