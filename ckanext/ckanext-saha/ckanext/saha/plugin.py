@@ -8,6 +8,7 @@ import datetime
 import logging
 
 from ckanext.saha.model import SahaOrganization
+from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
 log = logging.getLogger('ckanext_saha')
 
@@ -82,6 +83,21 @@ class SahaPlugin(plugins.SingletonPlugin):
                 for prop in ('id', 'modifiedDate', 'organizationName',
                              'organizationUnit', 'businessId'):
                     setattr(org, prop, account.get(prop, getattr(org, prop)))
+
+                if org.businessId and not org.groupId:
+                    try:
+                        ckan_org = (model.Session.query(model.Group.id)
+                                    .filter(model.Group.id.like('%%.%%.%s' % org.businessId))
+                                    .filter(model.Group.state == 'active')
+                                    .filter(model.Group.type == 'organization')
+                                    .one())
+                        log.info('Found matching business ID: %s = %s' % (org.businessId, ckan_org))
+                        org.groupId = ckan_org
+                    except NoResultFound:
+                        log.debug('Found no matching organizations for businessId %s' % org.businessId)
+                    except MultipleResultsFound:
+                        log.warning('Found multiple matching organizations for businessId %s' % org.businessId)
+
                 org.save()
 
 

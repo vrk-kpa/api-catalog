@@ -46,7 +46,7 @@ class SahaCommand(CkanCommand):
         plugin = SahaPlugin()
         if plugin.login():
             if plugin.update():
-                print('Updating SAHA tables...')
+                print('Success!')
             else:
                 print('ERROR: Could not get update information')
         else:
