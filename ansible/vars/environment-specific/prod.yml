@@ -69,6 +69,11 @@ elk:
       - "kapalogprod02.csc.fi:5044"
       - "kapalogprod03.csc.fi:5044"
 
+saha:
+  api_url: ""
+  username: ""
+  password: "{{ secret.saha_integration_password }}"
+
 debug_enabled: false
 
 robots_allowed: true
