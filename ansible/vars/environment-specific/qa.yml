@@ -69,6 +69,11 @@ elk:
       - "kapalogtest02.csc.fi:5044"
       - "kapalogtest03.csc.fi:5044"
 
+saha:
+  api_url: "https://asiointi.dev.vrk.fi/api"
+  username: "PahaIntegrationUser"
+  password: "{{ secret.saha_integration_password }}"
+
 debug_enabled: false
 
 robots_allowed: false
