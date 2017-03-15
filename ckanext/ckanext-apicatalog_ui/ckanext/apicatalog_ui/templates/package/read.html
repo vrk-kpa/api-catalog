@@ -2,7 +2,6 @@
 
 {% block page_heading %}
 {{ super() }}
-
 {% if h.is_service_bus_id(pkg.id) %}
 <span class="subheading">{{ _('Service bus identifier') }}: <span class="nowrap">{{ pkg.id }}</span></span>
 {% endif %}
