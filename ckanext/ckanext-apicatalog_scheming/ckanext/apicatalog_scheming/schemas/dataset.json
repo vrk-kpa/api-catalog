@@ -19,6 +19,12 @@
       "final": true
     },
     {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization_ex",
+      "final": true
+    },
+    {
       "field_name": "notes_translated",
       "label": "Description",
       "preset": "fluent_core_markdown_translated",
@@ -40,12 +46,6 @@
       "field_name": "validUntil",
       "label": "Valid until",
       "preset": "date"
-    },
-    {
-      "field_name": "owner_org",
-      "label": "Organization",
-      "preset": "dataset_organization_ex",
-      "final": true
     },
     {
       "field_name": "private",
