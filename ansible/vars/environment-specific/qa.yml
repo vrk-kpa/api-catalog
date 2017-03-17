@@ -41,6 +41,10 @@ ckan_users:
     username: test
     password: "{{ secret.ckan_test_password }}"
     email: testuser@localhost
+  paha:
+    username: paha
+    password: "{{ secret.ckan_paha_password }}"
+    email: paha@localhost
 
 ckan_admins:
   - "{{ ckan_users.admin.username }}"
@@ -77,3 +81,6 @@ saha:
 debug_enabled: false
 
 robots_allowed: false
+
+paha_key_whitelist: 
+  - "{{ secret.ckan_paha_apikey }}"
