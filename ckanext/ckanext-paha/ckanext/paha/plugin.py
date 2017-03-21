@@ -62,7 +62,14 @@ def check_access(privilege):
 def paha_read_organization(context, data_dict):
     try:
         check_access('paha_read_organization')
-        organization = get_action('organization_show')({'ignore_auth': True}, {
+        ctx = {'ignore_auth': True}
+        get_action('member_create')(ctx, {
+            'id': data_dict['id'],
+            'object': context.get('auth_user_obj').id,
+            'object_type': 'user',
+            'capacity': 'member'})
+
+        organization = get_action('organization_show')(ctx, {
             'id': data_dict['id'],
             'include_datasets': True,
             'include_dataset_count': True
