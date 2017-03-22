@@ -40,11 +40,11 @@
 
       preview.find('strong').html(required + ' ' + options.i18n['URL'] + ':');
       preview.find('.slug-preview-prefix').text(options.prefix);
-      preview.find('button').text(options.i18n['Edit']).click(function (event) {
+      /* LK-316: preview.find('button').text(options.i18n['Edit']).click(function (event) {
         event.preventDefault();
         element.show();
         preview.hide();
-      });
+      });*/
 
       setValue();
       field.on('change', setValue);
@@ -70,7 +70,7 @@
       '<div class="slug-preview">',
       '<strong></strong>',
       '<span class="slug-preview-prefix"></span><span class="slug-preview-value"></span>',
-      '<button class="btn btn-xs"></button>',
+// LK-316:     '<button class="btn btn-xs"></button>',
       '</div>'
     ].join('\n')
   };
