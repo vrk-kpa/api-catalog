@@ -17,11 +17,11 @@
   register: piwik_install
 
 - name: Download piwik
-  get_url: url=http://builds.piwik.org/piwik-2.16.0.zip dest=/tmp/piwik-2.16.0.zip
+  get_url: url=http://builds.piwik.org/piwik-3.0.2.zip dest=/tmp/piwik-3.0.2.zip
   when: not piwik_install.stat.exists
 
 - name: Extract piwik
-  unarchive: src=/tmp/piwik-2.16.0.zip dest=/opt copy=no owner=www-data group=www-data
+  unarchive: src=/tmp/piwik-3.0.2.zip dest=/opt copy=no owner=www-data group=www-data
   when: not piwik_install.stat.exists
 
 - name: Copy apache configuration
