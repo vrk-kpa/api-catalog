@@ -3,6 +3,7 @@ filebeat:
     -
       paths:
         - /var/log/apache2/ckan.log
+      exclude_lines: ['/usr/lib/ckan/default/lib/python2.7/site-packages/sqlalchemy/orm/unitofwork.py:79: SAWarning']
       multiline:
         pattern: '^\[.*?\] (Error|[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]+)'
         negate: true
