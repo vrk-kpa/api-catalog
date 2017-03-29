@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.6.1
+ckan_version: 2.6.2
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
@@ -29,7 +29,6 @@ ckan_patches:
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
   - { file: "set_attachment_content_disposition" }
-  - { file: "fix_reset_mail" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
