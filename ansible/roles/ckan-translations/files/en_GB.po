@@ -2867,7 +2867,7 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr " You can use Groups to create and manage collections of APIs. This could be to catalogue APIs for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published APIs. "
+msgstr " You can use Groups to create and manage collections of APIs. This could be to catalog APIs for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published APIs. "
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -2956,9 +2956,9 @@ msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
 msgstr ""
-"<p>The API catalogue is an up-to-date index of APIs within the National Data Exchange Layer.  The purpose of the API catalogue is to help service providers and realisers to develop more efficient electronic services and support the reuse of data. The API catalogue contains descriptions of electronic services whose data is available for use by other information systems.</p>"
-"<p>The API catalogue website is still being created. Registration is not possible during the beta phase.</p>"
-"<p>The API catalogue is provided by the Population Register Centre as part of the national service architecture programme (KaPA).</p>"
+"<p>The API catalog is an up-to-date index of APIs within the National Data Exchange Layer.  The purpose of the API catalog is to help service providers and realisers to develop more efficient electronic services and support the reuse of data. The API catalog contains descriptions of electronic services whose data is available for use by other information systems.</p>"
+"<p>The API catalog website is still being created. Registration is not possible during the beta phase.</p>"
+"<p>The API catalog is provided by the Population Register Centre as part of the national service architecture programme (KaPA).</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -4908,10 +4908,10 @@ msgid "Security token error, please try again"
 msgstr "Session error, please try again"
 
 msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
-msgstr "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
+msgstr "We would like to receive feedback and development ideas regarding the API Catalog. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
 
 msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
-msgstr "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
+msgstr "Please send your feedback or development ideas regarding the API Catalog using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
 
 msgid "Shared resource"
 msgstr "Shared resource"
