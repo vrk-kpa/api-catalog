@@ -17,6 +17,9 @@ class Migrate(CkanCommand):
 
    migrate notes_translated
        - Populate notes_translated from translated notes
+
+   migrate title_translated
+       - Populate title_translated from translated titles
     '''
 
     summary = __doc__.split('\n')[0]
@@ -37,19 +40,11 @@ class Migrate(CkanCommand):
         if cmd == 'notes_translated':
             self.notes_translated()
 
+        elif cmd == 'title_translated':
+            self.title_translated()
+
+
     def notes_translated(self):
-        def package_generator(query, page_size):
-            context = {'ignore_auth': True}
-            package_search = get_action('package_search')
-
-            for index in itertools.count(start=0, step=page_size):
-                data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index}
-                packages = package_search(context, data_dict).get('results', [])
-                for package in packages:
-                    yield package
-                else:
-                    return
-
         default_locale = config.get('ckan.locale_default', 'en')
         package_patches = []
         resource_patches = []
@@ -79,6 +74,31 @@ class Migrate(CkanCommand):
                 except:
                     pass
 
+        self.apply_patches(package_patches, resource_patches)
+
+
+    def title_translated(self):
+        locales = config.get('ckan.locales_offered', ['en']).split()
+        package_patches = []
+        resource_patches = []
+        for package in package_generator('*:*', 1000):
+            try:
+                if type(package.get('title_translated')) is dict:
+                    continue
+                title = package.get('title')
+                patch = {
+                        'id': package['id'],
+                        'title': title,
+                        'title_translated': {locale.split('_')[0]: title for locale in locales}
+                        }
+                package_patches.append(patch)
+            except:
+                pass
+
+        self.apply_patches(package_patches, resource_patches)
+
+
+    def apply_patches(self, package_patches, resource_patches):
         if not package_patches and not resource_patches:
             print 'Nothing to do.'
         elif self.options.dry_run:
@@ -92,3 +112,17 @@ class Migrate(CkanCommand):
                 package_patch(context, patch)
             for patch in resource_patches:
                 resource_patch(context, patch)
+
+
+def package_generator(query, page_size):
+    context = {'ignore_auth': True}
+    package_search = get_action('package_search')
+
+    for index in itertools.count(start=0, step=page_size):
+        data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index}
+        packages = package_search(context, data_dict).get('results', [])
+        for package in packages:
+            yield package
+        else:
+            return
+
