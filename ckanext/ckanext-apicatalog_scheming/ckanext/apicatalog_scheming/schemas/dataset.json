@@ -5,11 +5,12 @@
   "about_url": "http://github.com/vrk-kpa/api-catalog",
   "dataset_fields": [
     {
-      "field_name": "title",
+      "field_name": "title_translated",
       "label": "Title",
-      "preset": "title",
+      "preset": "fluent_core_title_translated",
+      "only_default_lang_required": true,
       "form_placeholder":"eg. A descriptive title",
-      "required": true
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "name",

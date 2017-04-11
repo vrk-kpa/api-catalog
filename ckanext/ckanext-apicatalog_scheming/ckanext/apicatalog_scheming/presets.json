@@ -83,6 +83,19 @@
         "validators": "fluent_text",
         "output_validators": "fluent_core_translated_output"
       }
+    },
+    {
+      "preset_name": "fluent_core_title_translated",
+      "values": {
+        "form_snippet": "fluent_title.html",
+        "display_snippet": "fluent_text.html",
+        "error_snippet": "fluent_text.html",
+        "validators": "only_default_lang_required fluent_text",
+        "output_validators": "fluent_core_translated_output",
+        "form_attrs": {
+          "data-module": "slug-preview-target"
+        }
+      }
     }
   ]
 }

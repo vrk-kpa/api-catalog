@@ -1,11 +1,13 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.common import config
 import validators
 
 
 class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
 
@@ -18,5 +20,17 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
         return {
             'lower_if_exists': validators.lower_if_exists,
             'upper_if_exists': validators.upper_if_exists,
-            'valid_resources': validators.valid_resources
+            'valid_resources': validators.valid_resources,
+            'only_default_lang_required': validators.only_default_lang_required,
             }
+
+    def get_helpers(self):
+        return {'scheming_field_only_default_required': scheming_field_only_default_required}
+
+
+def scheming_field_only_default_required(field, lang):
+    if (field
+            and field.get('only_default_lang_required')
+            and lang == config.get('ckan.locale_default', 'en')):
+        return True
+    return False
