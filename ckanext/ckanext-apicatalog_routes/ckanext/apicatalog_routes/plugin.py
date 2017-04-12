@@ -1,5 +1,6 @@
 from pylons import config
 import ckan
+import json
 from ckan.controllers.revision import RevisionController
 from ckan.controllers.user import UserController
 from ckan.controllers.organization import OrganizationController
@@ -64,6 +65,12 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
 
         organization_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_OrganizationController'
         m.connect('organizations_index', '/organization', controller=organization_controller, action='index')
+
+        extra_information_controller = 'ckanext.apicatalog_routes.plugin:ExtraInformationController'
+        m.connect('data_exchange_layer_user_organizations',
+                  '/data_exchange_layer_user_organizations',
+                  action='data_exchange_layer_user_organizations',
+                  controller = extra_information_controller)
 
         return m
 
@@ -353,3 +360,14 @@ class Apicatalog_OrganizationController(OrganizationController):
         c.page.items = page_results
         return render(self._index_template(group_type),
                       extra_vars={'group_type': group_type})
+
+
+class ExtraInformationController(base.BaseController):
+
+    def data_exchange_layer_user_organizations(self):
+        context = {}
+        all_organizations = get_action('organization_list')(context, {"all_fields": True})
+        packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
+        response.headers['content-type'] = 'application/json'
+        return json.dumps(packageless_organizations)
+
