@@ -1,5 +1,11 @@
 ---
 
+- name: Ensure Jetty is not installed
+  apt: pkg={{ item }} state=absent
+  with_items:
+    - jetty
+    - libjetty-extra-java
+
 - name: Check if solr3 jetty service exists
   stat: path=/etc/init.d/jetty
   register: jetty_exists
