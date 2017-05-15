@@ -10,7 +10,8 @@
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
       "form_placeholder":"eg. A descriptive title",
-      "form_languages": ["fi", "sv", "en"]
+      "form_languages": ["fi", "sv", "en"],
+      "display_snippet": null
     },
     {
       "field_name": "name",
