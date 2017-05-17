@@ -3,6 +3,7 @@
 import sys
 import itertools
 import json
+import re
 
 from ckan.common import config
 from ckan.lib.cli import CkanCommand
@@ -42,6 +43,9 @@ class Migrate(CkanCommand):
 
         elif cmd == 'title_translated':
             self.title_translated()
+
+        elif cmd == 'xroad_identifiers':
+            self.xroad_identifiers()
 
 
     def notes_translated(self):
@@ -94,6 +98,42 @@ class Migrate(CkanCommand):
                 package_patches.append(patch)
             except:
                 pass
+
+        self.apply_patches(package_patches, resource_patches)
+
+
+    def xroad_identifiers(self):
+        package_patches = []
+        resource_patches = []
+        package_id_pattern = re.compile(r'([^.]+)\.([^.]+)\.([^.]+)\.([^.]+)')
+        resource_name_pattern = re.compile(r'([^.]+)\.([^.]+)')
+        for package in package_generator('*:*', 1000):
+            package_id = package.get('id')
+            match = package_id_pattern.match(package_id)
+            if match:
+                instance, memberclass, membercode, subsystemcode = match.groups()
+
+                patch = {
+                        'id': package_id,
+                        'xroad_instance': instance,
+                        'xroad_memberclass': memberclass,
+                        'xroad_membercode': membercode,
+                        'xroad_subsystemcode': subsystemcode
+                        }
+                package_patches.append(patch)
+
+            for resource in package.get('resources', []):
+                resource_id = resource.get('id')
+                resource_name = resource.get('name')
+                match = resource_name_pattern.match(resource_name)
+                if match:
+                    servicecode, serviceversion = match.groups()
+                    patch = {
+                            'id': resource_id,
+                            'xroad_servicecode': servicecode,
+                            'xroad_serviceversion': serviceversion
+                            }
+                    resource_patches.append(patch)
 
         self.apply_patches(package_patches, resource_patches)
 
