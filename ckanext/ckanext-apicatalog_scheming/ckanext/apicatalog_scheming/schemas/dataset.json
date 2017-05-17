@@ -112,7 +112,28 @@
       "label": "Maintainer phone number",
       "form_placeholder": "+358123456789",
       "display_property": "dc:contributor"
+    },
+    {
+      "field_name": "xroad_instance",
+      "label": "X-Road instance",
+      "form_snippet": null
+    },
+    {
+      "field_name": "xroad_memberclass",
+      "label": "X-Road member class",
+      "form_snippet": null
+    },
+    {
+      "field_name": "xroad_membercode",
+      "label": "X-Road member code",
+      "form_snippet": null
+    },
+    {
+      "field_name": "xroad_subsystemcode",
+      "label": "X-Road subsystem code",
+      "form_snippet": null
     }
+
   ],
   "resource_fields": [
     {
@@ -216,7 +237,20 @@
     {
       "field_name": "valid_content",
       "form_snippet": "hidden.html"
+    },
+    {
+      "field_name": "xroad_servicecode",
+      "label": "X-Road service code",
+      "form_snippet": null
+    },
+    {
+      "field_name": "xroad_serviceversion",
+      "label": "X-Road service version",
+      "form_snippet": null
     }
+
+
+
   ]
 }
 
