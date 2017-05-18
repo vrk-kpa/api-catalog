@@ -236,7 +236,9 @@
     },
     {
       "field_name": "valid_content",
-      "form_snippet": "hidden.html"
+      "form_snippet": null,
+      "display_snippet": null
+
     },
     {
       "field_name": "xroad_servicecode",
@@ -247,10 +249,14 @@
       "field_name": "xroad_serviceversion",
       "label": "X-Road service version",
       "form_snippet": null
+    },
+    {
+      "field_name": "wsdl_timestamp",
+      "label": "WSDL timestamp",
+      "preset": "datetime",
+      "form_snippet": null,
+      "display_snippet": null
     }
-
-
-
   ]
 }
 
