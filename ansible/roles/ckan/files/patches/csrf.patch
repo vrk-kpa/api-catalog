@@ -54,7 +54,7 @@ index 18eccd1..48aae3f 100644
              # this is obviously inefficient (but probably not *that* bad)
              # but has to be done to avoid (odd) sqlalchemy errors (when doing
 diff --git a/ckan/controllers/group.py b/ckan/controllers/group.py
-index 087209f..f0805b1 100644
+index d0fc32a..fff8835 100644
 --- a/ckan/controllers/group.py
 +++ b/ckan/controllers/group.py
 @@ -15,6 +15,7 @@ import ckan.lib.search as search
@@ -65,7 +65,7 @@ index 087209f..f0805b1 100644
  import ckan.plugins as plugins
  from ckan.common import OrderedDict, c, g, request, _
  
-@@ -531,6 +532,7 @@ class GroupController(base.BaseController):
+@@ -537,6 +538,7 @@ class GroupController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.params))))
@@ -73,7 +73,7 @@ index 087209f..f0805b1 100644
              data_dict['type'] = group_type or 'group'
              context['message'] = data_dict.get('log_message', '')
              data_dict['users'] = [{'name': c.user, 'capacity': 'admin'}]
-@@ -546,6 +548,9 @@ class GroupController(base.BaseController):
+@@ -552,6 +554,9 @@ class GroupController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.new(data_dict, errors, error_summary)
@@ -83,7 +83,7 @@ index 087209f..f0805b1 100644
  
      def _force_reindex(self, grp):
          ''' When the group name has changed, we need to force a reindex
-@@ -560,6 +565,7 @@ class GroupController(base.BaseController):
+@@ -566,6 +571,7 @@ class GroupController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.params))))
@@ -91,7 +91,7 @@ index 087209f..f0805b1 100644
              context['message'] = data_dict.get('log_message', '')
              data_dict['id'] = id
              context['allow_partial_update'] = True
-@@ -576,6 +582,9 @@ class GroupController(base.BaseController):
+@@ -582,6 +588,9 @@ class GroupController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.edit(id, data_dict, errors, error_summary)
@@ -101,7 +101,7 @@ index 087209f..f0805b1 100644
  
      def authz(self, id):
          group = model.Group.get(id)
-@@ -621,6 +630,7 @@ class GroupController(base.BaseController):
+@@ -627,6 +636,7 @@ class GroupController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -109,7 +109,7 @@ index 087209f..f0805b1 100644
                  self._action('group_delete')(context, {'id': id})
                  if group_type == 'organization':
                      h.flash_notice(_('Organization has been deleted.'))
-@@ -635,6 +645,9 @@ class GroupController(base.BaseController):
+@@ -641,6 +651,9 @@ class GroupController(base.BaseController):
              abort(403, _('Unauthorized to delete group %s') % '')
          except NotFound:
              abort(404, _('Group not found'))
@@ -119,7 +119,7 @@ index 087209f..f0805b1 100644
          return self._render_template('group/confirm_delete.html', group_type)
  
      def members(self, id):
-@@ -672,6 +685,7 @@ class GroupController(base.BaseController):
+@@ -678,6 +691,7 @@ class GroupController(base.BaseController):
              if request.method == 'POST':
                  data_dict = clean_dict(dict_fns.unflatten(
                      tuplize_dict(parse_params(request.params))))
@@ -127,7 +127,7 @@ index 087209f..f0805b1 100644
                  data_dict['id'] = id
  
                  email = data_dict.get('email')
-@@ -706,6 +720,8 @@ class GroupController(base.BaseController):
+@@ -712,6 +726,8 @@ class GroupController(base.BaseController):
              abort(404, _('Group not found'))
          except ValidationError, e:
              h.flash_error(e.error_summary)
@@ -136,7 +136,7 @@ index 087209f..f0805b1 100644
          return self._render_template('group/member_new.html', group_type)
  
      def member_delete(self, id):
-@@ -725,6 +741,7 @@ class GroupController(base.BaseController):
+@@ -731,6 +747,7 @@ class GroupController(base.BaseController):
          try:
              user_id = request.params.get('user')
              if request.method == 'POST':
@@ -144,7 +144,7 @@ index 087209f..f0805b1 100644
                  self._action('group_member_delete')(
                      context, {'id': id, 'user_id': user_id})
                  h.flash_notice(_('Group member has been deleted.'))
-@@ -736,6 +753,9 @@ class GroupController(base.BaseController):
+@@ -742,6 +759,9 @@ class GroupController(base.BaseController):
              abort(403, _('Unauthorized to delete group %s members') % '')
          except NotFound:
              abort(404, _('Group not found'))
@@ -155,7 +155,7 @@ index 087209f..f0805b1 100644
                                       group_type)
  
 diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index 6b65a45..16f2164 100644
+index 9e5c803..cb2cc0e 100644
 --- a/ckan/controllers/package.py
 +++ b/ckan/controllers/package.py
 @@ -20,6 +20,7 @@ import ckan.model as model
@@ -186,7 +186,7 @@ index 6b65a45..16f2164 100644
              redirect(h.url_for(controller='package', action='resource_read',
                                 id=id, resource_id=resource_id))
  
-@@ -678,6 +685,7 @@ class PackageController(base.BaseController):
+@@ -673,6 +680,7 @@ class PackageController(base.BaseController):
  
              data['package_id'] = id
              try:
@@ -194,7 +194,7 @@ index 6b65a45..16f2164 100644
                  if resource_id:
                      data['id'] = resource_id
                      get_action('resource_update')(context, data)
-@@ -692,6 +700,11 @@ class PackageController(base.BaseController):
+@@ -687,6 +695,11 @@ class PackageController(base.BaseController):
              except NotFound:
                  abort(404, _('The dataset {id} could not be found.'
                               ).format(id=id))
@@ -206,7 +206,7 @@ index 6b65a45..16f2164 100644
              if save_action == 'go-metadata':
                  # XXX race condition if another user edits/deletes
                  data_dict = get_action('package_show')(context, {'id': id})
-@@ -879,6 +892,7 @@ class PackageController(base.BaseController):
+@@ -874,6 +887,7 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -214,7 +214,7 @@ index 6b65a45..16f2164 100644
              if ckan_phase:
                  # prevent clearing of groups etc
                  context['allow_partial_update'] = True
-@@ -951,6 +965,9 @@ class PackageController(base.BaseController):
+@@ -946,6 +960,9 @@ class PackageController(base.BaseController):
                                   errors, error_summary)
              data_dict['state'] = 'none'
              return self.new(data_dict, errors, error_summary)
@@ -224,7 +224,7 @@ index 6b65a45..16f2164 100644
  
      def _save_edit(self, name_or_id, context, package_type=None):
          from ckan.lib.search import SearchIndexError
-@@ -959,6 +976,9 @@ class PackageController(base.BaseController):
+@@ -954,6 +971,9 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -234,7 +234,7 @@ index 6b65a45..16f2164 100644
              if '_ckan_phase' in data_dict:
                  # we allow partial updates to not destroy existing resources
                  context['allow_partial_update'] = True
-@@ -991,6 +1011,9 @@ class PackageController(base.BaseController):
+@@ -986,6 +1006,9 @@ class PackageController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.edit(name_or_id, data_dict, errors, error_summary)
@@ -244,7 +244,7 @@ index 6b65a45..16f2164 100644
  
      def _form_save_redirect(self, pkgname, action, package_type=None):
          '''This redirects the user to the CKAN package/read page,
-@@ -1022,6 +1045,7 @@ class PackageController(base.BaseController):
+@@ -1017,6 +1040,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -252,7 +252,7 @@ index 6b65a45..16f2164 100644
                  get_action('package_delete')(context, {'id': id})
                  h.flash_notice(_('Dataset has been deleted.'))
                  h.redirect_to(controller='package', action='search')
-@@ -1031,6 +1055,9 @@ class PackageController(base.BaseController):
+@@ -1026,6 +1050,9 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete package %s') % '')
          except NotFound:
              abort(404, _('Dataset not found'))
@@ -262,7 +262,7 @@ index 6b65a45..16f2164 100644
          return render('package/confirm_delete.html',
                        extra_vars={'dataset_type': dataset_type})
  
-@@ -1050,6 +1077,7 @@ class PackageController(base.BaseController):
+@@ -1045,6 +1072,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -270,7 +270,7 @@ index 6b65a45..16f2164 100644
                  get_action('resource_delete')(context, {'id': resource_id})
                  h.flash_notice(_('Resource has been deleted.'))
                  h.redirect_to(controller='package', action='read', id=id)
-@@ -1060,6 +1088,9 @@ class PackageController(base.BaseController):
+@@ -1055,6 +1083,9 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete resource %s') % '')
          except NotFound:
              abort(404, _('Resource not found'))
@@ -280,7 +280,7 @@ index 6b65a45..16f2164 100644
          return render('package/confirm_delete_resource.html',
                        {'dataset_type': self._get_package_type(id)})
  
-@@ -1458,6 +1489,9 @@ class PackageController(base.BaseController):
+@@ -1453,6 +1484,9 @@ class PackageController(base.BaseController):
              data['resource_id'] = resource_id
  
              try:
@@ -290,7 +290,7 @@ index 6b65a45..16f2164 100644
                  if to_delete:
                      data['id'] = view_id
                      get_action('resource_view_delete')(context, data)
-@@ -1475,6 +1509,11 @@ class PackageController(base.BaseController):
+@@ -1470,6 +1504,11 @@ class PackageController(base.BaseController):
                  ## This should never happen unless the user maliciously changed
                  ## the resource_id in the url.
                  abort(403, _('Unauthorized to edit resource'))
@@ -419,7 +419,7 @@ index 0000000..3036984
 +        raise CsrfTokenValidationError()
 \ No newline at end of file
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index fb90e55..ad9a64a 100644
+index 1d024b0..270abdc 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
 @@ -42,6 +42,7 @@ import ckan.lib.uploader as uploader
@@ -430,7 +430,7 @@ index fb90e55..ad9a64a 100644
  
  from ckan.common import _, ungettext, g, c, request, session, json
  
-@@ -2268,6 +2269,11 @@ def get_translated(data_dict, field):
+@@ -2262,6 +2263,11 @@ def get_translated(data_dict, field):
          return data_dict.get(field, '')
  
  
@@ -614,6 +614,19 @@ index 01f0be1..6ce6f8b 100644
      <div class="row-fluid">
        <div class="control-group control-medium">
          {% if not user %}
+diff --git a/ckan/templates/organization/members.html b/ckan/templates/organization/members.html
+index 6e3f444..360bdb6 100644
+--- a/ckan/templates/organization/members.html
++++ b/ckan/templates/organization/members.html
+@@ -32,7 +32,7 @@
+               <a class="btn btn-small" href="{% url_for controller='organization', action='member_new', id=c.group_dict.id, user=user_id %}" title="{{ _('Edit') }}">
+                 <i class="icon-wrench"></i>
+               </a>
+-              <a class="btn btn-danger btn-small" href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user_id %}" data-module="confirm-action" data-module-i18n="{{ locale }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="icon-remove"></i>{% endblock %}</a>
++              <a class="btn btn-danger btn-small" href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user_id %}" data-module="confirm-action" data-module-i18n="{{ locale }}" title="{{ _('Delete') }}" csrf-token="{{ h.generate_csrf_token() }}">{% block delete_button_text %}<i class="icon-remove"></i>{% endblock %}</a>
+             </div>
+           </td>
+         </tr>
 diff --git a/ckan/templates/organization/snippets/organization_form.html b/ckan/templates/organization/snippets/organization_form.html
 index d78a8e9..e05f7d7 100644
 --- a/ckan/templates/organization/snippets/organization_form.html
