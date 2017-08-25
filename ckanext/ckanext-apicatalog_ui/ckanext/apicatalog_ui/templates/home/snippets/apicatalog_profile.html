@@ -15,7 +15,7 @@
             {% if c.userobj.sysadmin %}
             <li>
               <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
-                <i class="icon-legal" aria-hidden="true"></i>
+                <i class="fa fa-gavel" aria-hidden="true"></i>
                 <span class="text">{{ _('Admin') }}</span>
               </a>
             </li>
@@ -23,7 +23,7 @@
 
             <li>
               <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">
-                <i class="icon-user" aria-hidden="true"></i>
+                <i class="fa fa-user" aria-hidden="true"></i>
                 <span class="text">{{ c.userobj.display_name }}</span>
               </a>
             </li>
@@ -33,7 +33,7 @@
             <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
               {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
               <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
-                <i class="icon-dashboard" aria-hidden="true"></i>
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
                 <span class="text">{{ _('Dashboard') }}</span>
                 <span class="badge">{{ new_activities }}</span>
               </a>
@@ -43,14 +43,14 @@
             <!-- the markup in ckanext_pages does not have an inner <span> -->
             <li>
               <a href="{{ h.url_for('pages_index') }}" title="{{ _('Pages') }}">
-                <i class="icon-file"></i>
+                <i class="fa fa-file"></i>
                 <span class="text">{{ _('Pages') }}</span>
               </a>
             </li>
 
             <li>
               <a href="{{ h.url_for('blog_index') }}" title="{{ _('Blog') }}">
-                <i class="icon-pencil"></i>
+                <i class="fa fa-pencil"></i>
                 <span class="text">{{ _('Blog') }}</span>
               </a>
             </li>
@@ -62,7 +62,7 @@
             {% block header_account_settings_link %}
               <li>
                 <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
-                  <i class="icon-cog" aria-hidden="true"></i>
+                  <i class="fa fa-cog" aria-hidden="true"></i>
                   <span class="text">{{ _('Settings') }}</span>
                 </a>
               </li>
@@ -71,7 +71,7 @@
             {% block header_account_log_out_link %}
               <li>
                 <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
-                  <i class="icon-signout" aria-hidden="true"></i>
+                  <i class="fa fa-signout" aria-hidden="true"></i>
                   <span class="text">{{ _('Log out') }}</span>
                 </a>
               </li>

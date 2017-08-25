@@ -1,10 +1,10 @@
 diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index 6379ada..15c032c 100644
+index 7ae1c5d..2bcd9b9 100644
 --- a/ckan/controllers/package.py
 +++ b/ckan/controllers/package.py
-@@ -1188,7 +1188,7 @@ class PackageController(base.BaseController):
+@@ -1177,7 +1177,7 @@ class PackageController(base.BaseController):
          if rsc.get('url_type') == 'upload':
-             upload = uploader.ResourceUpload(rsc)
+             upload = uploader.get_resource_uploader(rsc)
              filepath = upload.get_path(rsc['id'])
 -            fileapp = paste.fileapp.FileApp(filepath)
 +            fileapp = paste.fileapp.FileApp(filepath, content_disposition="attachment; filename=%s" % filename)
