@@ -1,8 +1,8 @@
 diff --git a/ckan/logic/auth/create.py b/ckan/logic/auth/create.py
-index 31f67c3..f62bfdc 100644
+index 267f3bc..0d4e71f 100644
 --- a/ckan/logic/auth/create.py
 +++ b/ckan/logic/auth/create.py
-@@ -157,6 +157,8 @@ def user_create(context, data_dict=None):
+@@ -141,6 +141,8 @@ def user_create(context, data_dict=None):
      create_user_via_web = authz.check_config_permission(
              'create_user_via_web')
  

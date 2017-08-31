@@ -18,7 +18,11 @@
     - /etc/ckan/default
 
 - name: Ensure path ownerships
-  command: chown -R "{{ www_user }}:{{ www_group }}" "{{ ckan_storage_path }}" /etc/ckan/default
+  file: path={{ item }} state=directory recurse=yes owner={{ www_user }} group={{ www_group }}
+  with_items:
+    - "{{ ckan_storage_path }}"
+    - /etc/ckan/default
+    - "{{ ckan_public_source_path }}"
 
 - name: Ensure upload path permissions
   command: chmod -R "0770" "{{ ckan_storage_path }}"
@@ -64,3 +68,8 @@
 
 - name: Restart Apache (start)
   service: name=apache2 state=started
+
+  #- name: Ensure CKAN responds to http
+  #uri:
+  #url: "http://127.0.0.1:8080"
+
