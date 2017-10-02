@@ -3,7 +3,7 @@
 - include: custom_requirements.yml
 
 - name: Install CKAN
-  pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }}
+  pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }} extra_args="--exists-action=s -e"
   register: ckan_installation
 
 - name: Install CKAN requirements
