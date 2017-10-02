@@ -30,6 +30,7 @@
     - postgresql-server-dev-9.3
     - libpq5
     - git-core
+    - zip
     - unzip
     - gettext
     - build-essential
