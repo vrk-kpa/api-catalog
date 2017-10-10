@@ -112,7 +112,8 @@
     <field name="organization" type="string" indexed="true" stored="true" multiValued="false"/>
 
     <field name="capacity" type="string" indexed="true" stored="true" multiValued="false"/>
-    <field name="permission_labels" type="text" indexed="true" stored="false" multiValued="true"/>
+    <!-- 2017-10-10 Changed type from "text" to "textgen" to fix finding by permission labels -->
+    <field name="permission_labels" type="textgen" indexed="true" stored="false" multiValued="true"/>
 
     <field name="res_name" type="textgen" indexed="true" stored="true" multiValued="true" />
     <field name="res_description" type="textgen" indexed="true" stored="true" multiValued="true"/>
