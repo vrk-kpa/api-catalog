@@ -163,6 +163,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
 
         schema.update({
             'ckanext.apicatalog_ui.service_alert.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
 
         return schema

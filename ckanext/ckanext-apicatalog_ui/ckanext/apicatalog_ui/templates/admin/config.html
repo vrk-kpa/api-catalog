@@ -5,4 +5,5 @@
 {% block admin_form %}
   {{ super() }}
   {{ form.input('ckanext.apicatalog_ui.service_alert.message', id='field-ckanext.apicatalog_ui.service_alert.message', label=_('Service message'), value=data['ckanext.apicatalog_ui.service_alert.message'], error=errors['ckanext.apicatalog_ui.service_alert.message']) }}
+  {{ form.input('ckanext.apicatalog_routes.readonly_users', id='field-ckanext.apicatalog_routes.readonly_users', label=_('Readonly admins'), value=data['ckanext.apicatalog_routes.readonly_users'], error=errors['ckanext.apicatalog_routes.readonly_users']) }}
 {% endblock %}
