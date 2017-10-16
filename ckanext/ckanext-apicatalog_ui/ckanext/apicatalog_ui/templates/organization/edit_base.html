@@ -1,0 +1,18 @@
+{% ckan_extends %}
+
+{% block content_primary_nav %}
+    {% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
+        {{ h.build_nav_icon('organization_edit', _('Edit'), id=c.group_dict.name) }}
+        {{ h.build_nav_icon('organization_bulk_process', _('Datasets'), id=c.group_dict.name) }}
+    {% endif %}
+    {% if h.check_access('read_members') %}
+        {{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name) }}
+    {% endif %}
+{% endblock %}
+
+
+{% block content_action %}
+    {% if organization and h.check_access('organization_show', {'id': organization.id}) %}
+        {% link_for _('View'), controller='organization', action='read', id=organization.name, class_='btn btn-default', icon='eye' %}
+    {% endif %}
+{% endblock %}

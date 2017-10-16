@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+
+{% block content_primary_nav %}
+    {{ super() }}
+    {% if h.check_access('read_members', {'id': c.group_dict.name}) %}
+        {{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name) }}
+    {% endif %}
+{% endblock %}

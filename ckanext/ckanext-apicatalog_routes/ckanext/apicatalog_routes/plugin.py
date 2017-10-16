@@ -32,6 +32,8 @@ import logging
 
 log = logging.getLogger(__name__)
 
+import auth
+
 
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
@@ -43,9 +45,10 @@ def set_repoze_user(user_id):
         identity = {'repoze.who.userid': user_id}
         response.headerlist += rememberer.remember(request.environ, identity)
 
-class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
+class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.DefaultPermissionLabels):
     ckan.plugins.implements(ckan.plugins.IRoutes, inherit=True)
     ckan.plugins.implements(ckan.plugins.IAuthFunctions)
+    ckan.plugins.implements(ckan.plugins.IPermissionLabels)
 
     # IRoutes
 
@@ -81,8 +84,41 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin):
                 'revision_index': admin_only,
                 'revision_list': admin_only,
                 'revision_diff': admin_only,
-                'package_revision_list': admin_only
+                'package_revision_list': admin_only,
+                'package_show': auth.package_show,
+                'read_members': auth.read_members,
+                'group_edit_permissions': auth.read_members
                 }
+
+    # IPermissionLabels
+
+    def get_dataset_labels(self, dataset_obj):
+
+        labels = super(Apicatalog_RoutesPlugin, self).get_dataset_labels(dataset_obj)
+
+        context = {
+            'ignore_auth': True
+        }
+
+        for user in config.get('ckanext.apicatalog_routes.readonly_users', []).split():
+            try:
+                user_obj = get_action('user_show')(context, {'id': user})
+                labels = labels + [u'read_only_admin-%s' % user_obj['id'] ]
+            except NotFound:
+                continue
+
+        log.info(labels)
+        return labels
+
+    def get_user_dataset_labels(self, user_obj):
+
+        labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
+
+
+        if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', []).split():
+            labels = labels + [u'read_only_admin-%s', user_obj.id]
+
+        return labels
 
 
 def auth_context():
