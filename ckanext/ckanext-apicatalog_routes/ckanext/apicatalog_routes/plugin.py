@@ -100,14 +100,13 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             'ignore_auth': True
         }
 
-        for user in config.get('ckanext.apicatalog_routes.readonly_users', []).split():
+        for user_name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
             try:
-                user_obj = get_action('user_show')(context, {'id': user})
-                labels = labels + [u'read_only_admin-%s' % user_obj['id'] ]
+                user_obj = get_action('user_show')(context, {'id': user_name})
+                labels.append(u'read_only_admin-%s' % user_obj['id'])
             except NotFound:
                 continue
 
-        log.info(labels)
         return labels
 
     def get_user_dataset_labels(self, user_obj):
@@ -115,8 +114,8 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
 
 
-        if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', []).split():
-            labels = labels + [u'read_only_admin-%s', user_obj.id]
+        if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+            labels.append(u'read_only_admin-%s' % user_obj.id)
 
         return labels
 
