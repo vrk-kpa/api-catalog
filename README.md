@@ -1,6 +1,6 @@
 ## API Catalog (*Liityntäkatalogi*)
 
-This repository provides the API catalog of the Finnish National Data Exchange Layer (*Kansallinen palveluväylä*). The catalog provides a search engine for the interfaces available on the data exchange layer.
+This repository provides the API catalog of the Finnish National Data Exchange Layer (*Suomi.fi palveluväylä*). The catalog provides a search engine for the interfaces available on the data exchange layer.
 
 The catalog is available at [liityntakatalogi.suomi.fi](http://liityntakatalogi.suomi.fi/). A development sandbox of the catalog is available at [liityntakatalogi.qa.suomi.fi](http://liityntakatalogi.qa.suomi.fi/)
 
