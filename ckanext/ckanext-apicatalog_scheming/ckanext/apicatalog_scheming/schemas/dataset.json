@@ -257,7 +257,7 @@
       "field_name": "xroad_serviceversion",
       "label": "X-Road service version",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing ignore_missing"
 
     },
     {
