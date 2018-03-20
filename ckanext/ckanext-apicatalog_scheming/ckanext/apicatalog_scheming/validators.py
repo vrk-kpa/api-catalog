@@ -86,3 +86,22 @@ def only_default_lang_required(field, schema):
             errors[key[:-1] + (key[-1] + '-' + default_lang,)] = [_('Missing value')]
 
     return validator
+
+
+@scheming_validator
+def keep_old_value_if_missing(field, schema):
+    from ckan.lib.navl.dictization_functions import missing, flatten_dict
+    from ckan.logic import get_action
+    def validator(key, data, errors, context):
+
+        if 'package' not in context:
+            errors[key].append(_('keep_old_value_if_missing can only be used with packages and resources'))
+            return
+
+        data_dict = flatten_dict(get_action('package_show')(context, {'id': context['package'].id}))
+
+        if key not in data or data[key] is missing:
+            if key in data_dict:
+                data[key] = data_dict[key]
+
+    return validator
