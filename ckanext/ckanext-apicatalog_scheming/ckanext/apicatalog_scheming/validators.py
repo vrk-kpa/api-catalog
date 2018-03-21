@@ -95,7 +95,6 @@ def keep_old_value_if_missing(field, schema):
     def validator(key, data, errors, context):
 
         if 'package' not in context:
-            errors[key].append(_('keep_old_value_if_missing can only be used with packages and resources'))
             return
 
         data_dict = flatten_dict(get_action('package_show')(context, {'id': context['package'].id}))
@@ -105,3 +104,9 @@ def keep_old_value_if_missing(field, schema):
                 data[key] = data_dict[key]
 
     return validator
+
+def default_value(default):
+    from ckan.lib.navl.dictization_functions import missing
+    def converter(value, context):
+        return value if value is not missing else default
+    return converter

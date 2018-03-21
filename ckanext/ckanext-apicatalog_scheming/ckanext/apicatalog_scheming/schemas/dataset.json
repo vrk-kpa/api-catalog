@@ -117,28 +117,28 @@
       "field_name": "xroad_instance",
       "label": "X-Road instance",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
 
     },
     {
       "field_name": "xroad_memberclass",
       "label": "X-Road member class",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
 
     },
     {
       "field_name": "xroad_membercode",
       "label": "X-Road member code",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
 
     },
     {
       "field_name": "xroad_subsystemcode",
       "label": "X-Road subsystem code",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     }
 
   ],
@@ -243,28 +243,26 @@
     },
     {
       "field_name": "valid_content",
-      "form_snippet": null,
+      "form_snippet": false,
       "display_snippet": null
     },
     {
       "field_name": "xroad_servicecode",
       "label": "X-Road service code",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing"
-
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
     {
       "field_name": "xroad_serviceversion",
       "label": "X-Road service version",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing ignore_missing"
-
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
     {
       "field_name": "wsdl_timestamp",
       "label": "WSDL timestamp",
       "preset": "datetime",
-      "form_snippet": null,
+      "form_snippet": false,
       "display_snippet": null
     }
   ]

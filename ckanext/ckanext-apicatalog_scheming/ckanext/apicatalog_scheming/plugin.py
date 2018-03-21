@@ -23,6 +23,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'valid_resources': validators.valid_resources,
             'only_default_lang_required': validators.only_default_lang_required,
             'keep_old_value_if_missing': validators.keep_old_value_if_missing,
+            'default_value': validators.default_value,
             }
 
     def get_helpers(self):
