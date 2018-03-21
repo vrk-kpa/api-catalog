@@ -7,7 +7,8 @@ $script = <<SCRIPT
 if [ ! -f /vagrant_bootstrap_done.info ]; then
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get -y install libffi-dev libssl-dev python-dev python-pip
+  sudo apt-get -y install libffi-dev libssl-dev python-dev python-pip build-essential
+  sudo pip install setuptools -U
   sudo pip install markupsafe ansible
   sudo touch /vagrant_bootstrap_done.info
 fi

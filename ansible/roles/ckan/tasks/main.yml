@@ -69,7 +69,7 @@
 - name: Restart Apache (start)
   service: name=apache2 state=started
 
-  #- name: Ensure CKAN responds to http
-  #uri:
-  #url: "http://127.0.0.1:8080"
+- name: Start CKAN
+  uri:
+    url: "http://127.0.0.1:8080"
 
