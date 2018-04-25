@@ -1,1 +1,0 @@
-filebeat_apt_repository: deb https://artifacts.elastic.co/packages/6.x/apt stable main
