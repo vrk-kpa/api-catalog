@@ -7,7 +7,7 @@
     - name: Add Filebeat repository
       apt_repository: repo='{{ item }}' state=present
       with_items:
-        - "deb https://packages.elastic.co/beats/apt stable main"
+        - "{{ filebeat_apt_repository }}"
   when: ansible_os_family == 'Debian'
 
 - name: Install Filebeat

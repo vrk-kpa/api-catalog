@@ -68,7 +68,7 @@ xroad:
 
 elk:
   logstash:
-    hosts: [""]
+    hosts: ["localhost"]
 
 saha:
   api_url: "https://asiointi.dev.vrk.fi/api"
