@@ -2968,10 +2968,9 @@ msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
 msgstr ""
-"<p>Liityntäkatalogi on ajantasainen hakemisto kansallisen palveluväylän liitynnöistä. Liityntäkatalogin tarkoituksena on auttaa palvelun tuottajia ja toteuttajia kehittämään tehokkaampia sähköisiä palveluita ja tukea tietojen uudelleenkäyttöä. Liityntäkatalogiin kuvataan sähköiset palvelut, joissa käsiteltävät tiedot ovat muiden tietojärjestelmien hyödynnettävissä.</p>"
-"<p>Liityntäkatalogi-sivustoa kehitetään edelleen.</p>"
-"<p>Rekisteröityminen ei ole beta-vaiheessa mahdollista.</p>"
-"<p>Liityntäkatalogin tuottaa Väestörekisterikeskus osana Kansallinen palveluarkkitehtuuri (KaPA) –ohjelmaa.</p>"
+"<p>Liityntäkatalogi on ajantasainen hakemisto Suomi.fi-palveluväylän liitynnöistä. Liityntäkatalogin tarkoituksena on auttaa palvelun tuottajia ja toteuttajia kehittämään tehokkaampia sähköisiä palveluita ja tukea tietojen uudelleenkäyttöä. Liityntäkatalogiin kuvataan sähköiset palvelut, joissa käsiteltävät tiedot ovat muiden tietojärjestelmien hyödynnettävissä.</p>"
+"<p>Rekisteröityminen Liityntäkatalogiin tapahtuu Suomi.fi-palveluväylän käyttöönoton yhteydessä. Organisaatio ilmoittaa yhden tai useamman pääkäyttäjän Liityntäkatalogin tietojen täydennystä varten.</p>"
+"<p>Liityntäkatalogin tuottaa Väestörekisterikeskus. Lisätietoja Suomi.fi-palveluista: esuomi.fi.</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
