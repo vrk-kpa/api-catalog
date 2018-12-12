@@ -4990,3 +4990,6 @@ msgstr "Tunniste palveluväylässä"
 
 msgid "Resources with invalid content"
 msgstr "Virheelliset liitetiedostot"
+
+msgid "File size too large for preview, download the file to view its contents."
+msgstr "Tiedoston koko on liian suuri esikatseltavaksi. Lataa tiedosto nähdäksesi sen sisällön."
