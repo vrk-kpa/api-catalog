@@ -3,6 +3,9 @@
 - name: Ensure Nginx is installed
   apt: pkg=nginx state=latest
 
+- name: Ensure snippet directory
+  file: path="/etc/nginx/snippets" state=directory mode="0775" owner=root group=root
+
 - name: Copy base Nginx configuration
   template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf mode="0644" owner=root group=root
 
@@ -10,6 +13,7 @@
   template: src={{ item.template }} dest=/etc/nginx/{{ item.destination }} mode="0644" owner=root group=root
   with_items:
     - { "template": "nginx_site_config.j2", "destination": "sites-available/primary_site" }
+    - { "template": "nginx_security_headers.conf.j2", "destination": "snippets/nginx_security_headers.conf" }
 
 - name: Ensure static resource directory
   file: path="{{ static_path }}" state=directory mode="0775" owner=root group=root

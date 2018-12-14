@@ -17,6 +17,7 @@ server {
     proxy_set_header Host $host;
   }
 
+  include snippets/nginx_security_headers.conf;
 }
 
 {% if nginx.alternative_hostnames %}
