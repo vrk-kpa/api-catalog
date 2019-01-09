@@ -2,7 +2,7 @@
 
 - block:
     - name: Add ELK stack repository key
-      apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+      apt_key: url=https://artifacts.elastic.co/GPG-KEY-elasticsearch state=present
 
     - name: Add Filebeat repository
       apt_repository: repo='{{ item }}' state=present
