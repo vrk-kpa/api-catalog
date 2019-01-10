@@ -3,6 +3,7 @@ import pylons.config as config
 import urllib2
 import logging
 import ckan.logic as logic
+import datetime
 from pprint import pformat
 import ckan.model as model
 get_action = logic.get_action
@@ -10,9 +11,12 @@ log = logging.getLogger(__name__)
 
 SITE_URL_FAILURE_LOGMESSAGE = "Site URL '%s' failed to respond during health check."
 HARVEST_FAILURE_LOGMESSAGE = "Harvester '%s' has errors:\n%s"
+HARVEST_TIMEOUT_LOGMESSAGE = "Harvester '%s' is probably stuck:\n%s"
 FAILURE_MESSAGE = "An error has occurred, check the server log for details"
 SUCCESS_MESSAGE = "OK"
 
+HARVEST_JOB_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
+HARVEST_JOB_TIMEOUT = datetime.timedelta(days=1)
 
 def check_url(url):
     try:
@@ -47,6 +51,17 @@ class HealthController(base.BaseController):
                         harvest_source.get('title', ''),
                         pformat(harvest_source)))
                     result = False
+                elif not last_job_status.get('finished'):
+                    harvest_job_created = last_job_status.get('created')
+                    created = datetime.datetime.strptime(harvest_job_created, HARVEST_JOB_TIMESTAMP_FORMAT)
+                    now = datetime.datetime.now()
+
+                    if now - created > HARVEST_JOB_TIMEOUT:
+                        log.warn(HARVEST_TIMEOUT_LOGMESSAGE % (
+                            harvest_source.get('title', ''),
+                            pformat(harvest_source)))
+                        result = False
+
 
         if result:
             base.abort(200, SUCCESS_MESSAGE)
