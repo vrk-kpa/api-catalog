@@ -27,10 +27,11 @@
     - python-dev
     - python-virtualenv
     - python-psycopg2
-    - postgresql-server-dev-9.3
+    - postgresql-server-dev-all
     - libpq5
     - git-core
     - zip
+    - bzip2
     - unzip
     - gettext
     - build-essential

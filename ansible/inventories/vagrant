@@ -1,5 +1,5 @@
 [mainserver]
-127.0.0.1 ansible_connection=local ansible_ssh_user=vagrant
+localhost ansible_connection=local ansible_ssh_user=vagrant
 
 [mainserver:vars]
 deployment_environment_id=vagrant

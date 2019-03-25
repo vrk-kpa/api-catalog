@@ -32,11 +32,11 @@
   with_items:
     - solr-common
     - solr-jetty
-  when: fetch_jetty_packages|changed
+  when: fetch_jetty_packages is changed
 
 - name: Install Jetty packages
   command: dpkg -i {{ cache_path }}/solr3_installation/{{ item.name }}
-  when: fetch_jetty_packages|changed
+  when: fetch_jetty_packages is changed
   with_items: "{{ solr_packages }}"
 
 - name: Copy CKAN Solr schema
@@ -45,11 +45,11 @@
 
 - name: Remove old schema
   file: path=/etc/solr/conf/schema.xml state=absent
-  when: fetch_schema|changed
+  when: fetch_schema is changed
 
 - name: Setup Solr schema
   file: src={{ server_path }}/schema.xml dest=/etc/solr/conf/schema.xml state=link
-  when: fetch_schema|changed
+  when: fetch_schema is changed
 
 - name: Setup Jetty
   template: src=jetty.j2 dest=/etc/default/jetty mode="0644" owner=root group=root
@@ -57,7 +57,7 @@
 
 - name: Ensure Jetty is restarted
   service: name=jetty state=restarted
-  when: jetty_setup|changed or fetch_schema|changed
+  when: jetty_setup is changed or fetch_schema is changed
 
 - name: Ensure Jetty is running
   service: name=jetty state=started

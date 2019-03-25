@@ -1,12 +1,6 @@
 ---
 
 - name: Set localtime timezone
-  command: /bin/cp "/usr/share/zoneinfo/{{ timezone }}" /etc/localtime
+  timezone:
+    name: "{{ timezone }}"
 
-- name: Set timezone
-  template: src=timezone.j2 dest=/etc/timezone
-  register: set_timezone
-
-- name: Update tzdata
-  command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
-  when: set_timezone|changed

@@ -9,7 +9,7 @@
 
 - name: Restart redis
   service: name=redis-server state=restarted
-  when: configure_redis|changed
+  when: configure_redis is changed
 
 - name: Ensure redis is started
   service: name=redis-server state=started
