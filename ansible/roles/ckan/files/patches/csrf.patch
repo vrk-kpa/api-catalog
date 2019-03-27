@@ -348,16 +348,15 @@ index fc965c59c..a0bf55cb8 100644
          # Do any plugin login stuff
 diff --git a/ckan/lib/csrf_token.py b/ckan/lib/csrf_token.py
 new file mode 100644
-index 000000000..30369847e
+index 000000000..9eb29df99
 --- /dev/null
 +++ b/ckan/lib/csrf_token.py
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,64 @@
 +import os
 +import base64
 +import struct
 +import random
-+from pylons import session
-+from ckan.common import c
++from ckan.common import c, session
 +
 +import logging
 +log = logging.getLogger(__name__)
@@ -417,9 +416,8 @@ index 000000000..30369847e
 +    existing_token = _get_current_token(user)
 +    if not _compare_tokens(token, existing_token):
 +        raise CsrfTokenValidationError()
-\ No newline at end of file
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index 8f50ef7cd..770968d52 100644
+index 3f6ed6ad6..d12bac598 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
 @@ -47,6 +47,7 @@ import ckan.lib.uploader as uploader
@@ -430,7 +428,7 @@ index 8f50ef7cd..770968d52 100644
  
  from ckan.common import _, ungettext, c, g, request, session, json
  from markupsafe import Markup, escape
-@@ -2603,6 +2604,11 @@ def clean_html(html):
+@@ -2588,6 +2589,11 @@ def clean_html(html):
      return bleach_clean(text_type(html))
  
  
@@ -760,3 +758,28 @@ index b11ae5b36..0c3cb40ef 100644
    <fieldset>
      <legend>{{ _('Change details') }}</legend>
      {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
+diff --git a/ckan/views/user.py b/ckan/views/user.py
+index 00efe36b7..e75c144d9 100644
+--- a/ckan/views/user.py
++++ b/ckan/views/user.py
+@@ -12,6 +12,7 @@ import ckan.lib.captcha as captcha
+ import ckan.lib.helpers as h
+ import ckan.lib.mailer as mailer
+ import ckan.lib.navl.dictization_functions as dictization_functions
++import ckan.lib.csrf_token as csrf_token
+ import ckan.logic as logic
+ import ckan.logic.schema as schema
+ import ckan.model as model
+@@ -179,6 +180,12 @@ class EditView(MethodView):
+         if not context[u'save']:
+             return self.get(id)
+ 
++        try:
++            csrf_token.validate(request.form.get('csrf-token', ''))
++        except csrf_token.CsrfTokenValidationError:
++            h.flash_error(_('Security token error, please try again'))
++            return h.redirect_to(u'user.read', id=id)
++
+         if id in (g.userobj.id, g.userobj.name):
+             current_user = True
+         else:
