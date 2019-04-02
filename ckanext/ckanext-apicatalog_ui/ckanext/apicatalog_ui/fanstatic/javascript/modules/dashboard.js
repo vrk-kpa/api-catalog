@@ -7,7 +7,7 @@
  *   <div data-module="dashboard"></div>
  *
  */
-this.ckan.module('dashboard', function ($, _) {
+this.ckan.module('dashboard', function ($) {
   return {
     button: null,
     popover: null,
@@ -44,7 +44,7 @@ this.ckan.module('dashboard', function ($, _) {
       return false;
     },
 
-    /* Handles focusing on the input and making sure that the keyup 
+    /* Handles focusing on the input and making sure that the keyup
      * even is applied to the input
      *
      * Returns nothing.

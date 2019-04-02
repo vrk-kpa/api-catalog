@@ -1,4 +1,4 @@
-/* Image Upload
+ /* Image Upload
  *
  */
 this.ckan.module('image-upload', function($) {
@@ -35,8 +35,8 @@ this.ckan.module('image-upload', function($) {
       var field_name = 'input[name="' + options.field_name + '"]';
 
       this.input = $(field_upload, this.el);
-      this.field_url = $(field_url, this.el).parents('.control-group');
-      this.field_image = this.input.parents('.control-group');
+      this.field_url = $(field_url, this.el).parents('.form-group');
+      this.field_image = this.input.parents('.form-group');
       this.field_url_input = $('input', this.field_url);
       this.field_name = this.el.parents('form').find(field_name);
       // this is the location for the upload/link data/image label
@@ -47,7 +47,7 @@ this.ckan.module('image-upload', function($) {
       // Is there a clear checkbox on the form already?
       var checkbox = $(field_clear, this.el);
       if (checkbox.length > 0) {
-        checkbox.parents('.control-group').remove();
+        checkbox.parents('.form-group').remove();
       }
 
       // Adds the hidden clear input to the form
@@ -55,18 +55,18 @@ this.ckan.module('image-upload', function($) {
         .appendTo(this.el);
 
       // Button to set the field to be a URL
-      this.button_url = $('<a href="javascript:;" class="btn">' +
-        '<i class="fa fa-globe"></i>' +
-        this._('Link') + '</a>')
-          .prop('title', this._('Link to a URL on the internet (you can also link to an API)'))
-          .on('click', this._onFromWeb)
-          .insertAfter(this.input);
+      this.button_url = $('<a href="javascript:;" class="btn btn-default">' +
+                          '<i class="fa fa-globe"></i>' +
+                          this._('Link') + '</a>')
+        .prop('title', this._('Link to a URL on the internet (you can also link to an API)'))
+        .on('click', this._onFromWeb)
+        .insertAfter(this.input);
 
       // Button to attach local file to the form
-      this.button_upload = $('<a href="javascript:;" class="btn">' +
-        '<i class="fa fa-cloud-upload"></i>' +
-        this._('Upload') + '</a>')
-          .insertAfter(this.input);
+      this.button_upload = $('<a href="javascript:;" class="btn btn-default">' +
+                             '<i class="fa fa-cloud-upload"></i>' +
+                             this._('Upload') + '</a>')
+        .insertAfter(this.input);
 
       // Button for resetting the form when there is a URL set
       var removeText = this._('Remove');
@@ -109,14 +109,14 @@ this.ckan.module('image-upload', function($) {
 
         this._updateUrlLabel(this._('URL'));
       } else if (options.is_upload) {
-          this._showOnlyFieldUrl();
+        this._showOnlyFieldUrl();
 
-          this.field_url_input.prop('readonly', true);
-          // If the data is an uploaded file, the filename will display rather than whole url of the site
-          var filename = this._fileNameFromUpload(this.field_url_input.val());
-          this.field_url_input.val(filename);
+        this.field_url_input.prop('readonly', true);
+        // If the data is an uploaded file, the filename will display rather than whole url of the site
+        var filename = this._fileNameFromUpload(this.field_url_input.val());
+        this.field_url_input.val(filename);
 
-          this._updateUrlLabel(this._('File'));
+        this._updateUrlLabel(this._('File'));
       } else {
         this._showOnlyButtons();
       }
@@ -129,6 +129,11 @@ this.ckan.module('image-upload', function($) {
      * Returns String.
      */
     _fileNameFromUpload: function(url) {
+      // If it's a local CKAN image return the entire URL.
+      if (/^\/base\/images/.test(url)) {
+        return url;
+      }
+
       // remove fragment (#)
       url = url.substring(0, (url.indexOf("#") === -1) ? url.length : url.indexOf("#"));
       // remove query string
@@ -266,10 +271,10 @@ this.ckan.module('image-upload', function($) {
      * Select by attribute [name] to be on the safe side and allow to change field id
      * Returns nothing
      */
-    _autoName: function(name) {
-      if (!this._nameIsDirty){
-        this.field_name.val(name);
-      }
-    }
+     _autoName: function(name) {
+        if (!this._nameIsDirty){
+          this.field_name.val(name);
+        }
+     }
   };
 });

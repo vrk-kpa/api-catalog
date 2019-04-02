@@ -13,6 +13,7 @@ redis_harvest_database: 0
 redis_celery_database: 1
 
 ckan_storage_path: "{{ data_path }}/ckan"
+ckan_uploads_path: "{{ ckan_storage_path }}/storage/uploads"
 ckan_max_resource_size: 50
 
 ckan_site_id: "default"

@@ -36,7 +36,7 @@
     {
       "field_name": "tag_string",
       "label": "Tags",
-      "preset": "tag_string_autocomplete",
+      "preset": "apicatalog_tag_string_autocomplete",
       "form_placeholder":"eg. economy, mental health, government"
     },
     {

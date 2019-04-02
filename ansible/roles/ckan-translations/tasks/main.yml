@@ -22,3 +22,7 @@
   command: msgfmt "/opt/apicatalog/ckanext/ckanext-harvest/ckanext/harvest/i18n/{{ item }}/LC_MESSAGES/ckanext-harvest.po" -o "/opt/apicatalog/ckanext/ckanext-harvest/ckanext/harvest/i18n/{{ item }}/LC_MESSAGES/ckanext-harvest.mo"
   with_items: "{{ ckan_harvest_languages }}"
   when: deployment_environment_id != "vagrant"
+
+- name: Ensure CKAN dynamic translation directory permissions
+  file: path=/usr/lib/ckan/default/src/ckan/ckan/public/base/i18n state=directory mode="0755" recurse="yes" owner="{{ www_user }}" group="{{ www_group }}"
+
