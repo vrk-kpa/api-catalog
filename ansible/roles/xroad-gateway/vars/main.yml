@@ -1,11 +1,13 @@
 ---
-xroad_gateway_version: 0.0.8
+xroad_gateway_version: 1.0.0
+jar_name: "rest-adapter-service-{{ xroad_gateway_version }}.war"
 
 xroad_gateway:
   name: xroad-gateway
   user: xroad-gateway
-  jar_url: https://github.com/educloudalliance/xroad-rest-gateway/releases/download/v{{ xroad_gateway_version }}/rest-gateway-{{ xroad_gateway_version }}.jar
-  jar_checksum: sha256:702dd6e6681db6d795a999e0792d101d745b117f080e3acbec25c8052f5f02fb
+  jar_name: "{{ jar_name }}"
+  jar_url: "https://artifactory.niis.org/xroad-maven-releases/org/niis/rest-adapter-service/1.0.0/{{ jar_name }}"
+  jar_checksum: sha256:73a29ad0954df2bf5c5761a59bf12e903ce7f2c034377b95433b227d080f7723
   httpPort: "9090"
   httpsPort: "9091"
   propertiesDirectory: properties
