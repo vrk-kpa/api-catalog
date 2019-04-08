@@ -10,3 +10,4 @@
     backup: yes
     validate: '/usr/sbin/sshd -T -f %s'
   notify: Restart SSH
+  when: deployment_environment_id != "vagrant"
