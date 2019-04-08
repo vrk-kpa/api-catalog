@@ -7,6 +7,7 @@
       "preset_name": "apicatalog_tag_string_autocomplete",
       "values": {
         "validators": "ignore_missing lower_if_exists tag_string_convert",
+        "classes": ["control-full"],
         "form_attrs": {
           "data-module": "autocomplete",
           "data-module-tags": "",

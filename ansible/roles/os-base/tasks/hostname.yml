@@ -1,11 +1,5 @@
 ---
 
 - name: Set hostname
-  template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.group }}
-  with_items:
-    - { src: hostname.j2, dest: /etc/hostname, mode: "0644", owner: root, group: root }
-  register: hostname_update
-
-- name: Update hostname
-  command: service hostname restart
-  when: hostname_update|changed
+  hostname: 
+    name: "{{ internal_hostname }}"

@@ -4986,3 +4986,6 @@ msgstr "Resources with invalid content"
 
 msgid "File size too large for preview, download the file to view its contents."
 msgstr "File size too large for preview, download the file to view its contents."
+
+msgid "Search datasets"
+msgstr "Sök API:er"

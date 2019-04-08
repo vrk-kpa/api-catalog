@@ -12,16 +12,16 @@
 
 - name: Reread supervisor
   shell: supervisorctl reread
-  when: supervisor_configuration|changed
+  when: supervisor_configuration is changed
 
 - name: Ensure supervisor services
   shell: supervisorctl add {{ item }}
-  when: supervisor_configuration|changed
+  when: supervisor_configuration is changed
   with_items: "{{ supervisor_services }}"
 
 - name: Ensure supervisor services are restarted
   supervisorctl: name={{ item }} state=restarted
-  when: supervisor_configuration|changed
+  when: supervisor_configuration is changed
   with_items: "{{ supervisor_services }}"
 
 - name: Ensure supervisor services are started

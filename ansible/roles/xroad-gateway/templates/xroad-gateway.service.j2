@@ -1,0 +1,20 @@
+[Unit]
+Description=X-Road Gateway
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/java \
+          -DpropertiesDirectory=properties \
+          -Djavax.net.ssl.keyStore=/opt/xroad-gateway/vrkkapalpt05.jks \
+          -Djavax.net.ssl.keyStorePassword=changeit \
+          -jar {{ xroad_gateway.jar_name }} \
+          --server.port=9090 \
+          -keyAlias catalog \
+          -clientAuth
+Restart=always
+WorkingDirectory=/opt/xroad-gateway/
+User=xroad-gateway
+Group=xroad-gateway
+
+[Install]
+WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.7.3
+ckan_version: 2.8.2
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
@@ -13,6 +13,7 @@ redis_harvest_database: 0
 redis_celery_database: 1
 
 ckan_storage_path: "{{ data_path }}/ckan"
+ckan_uploads_path: "{{ ckan_storage_path }}/storage/uploads"
 ckan_max_resource_size: 50
 
 ckan_site_id: "default"
@@ -30,7 +31,7 @@ ckan_patches:
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
   - { file: "set_attachment_content_disposition" }
-  - { file: "redirect_fix" }
+  - { file: "prevent_reset_scanning" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

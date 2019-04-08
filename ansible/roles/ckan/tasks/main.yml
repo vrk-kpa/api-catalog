@@ -9,23 +9,24 @@
 - name: Install CKAN requirements
   pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
 
-
+- name: Install CKAN dev requirements
+  pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
+  when: deployment_environment_id == "vagrant"
 
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
   with_items:
     - "{{ ckan_storage_path }}"
+    - "{{ ckan_uploads_path }}"
     - /etc/ckan/default
 
 - name: Ensure path ownerships
   file: path={{ item }} state=directory recurse=yes owner={{ www_user }} group={{ www_group }}
   with_items:
     - "{{ ckan_storage_path }}"
+    - "{{ ckan_uploads_path }}"
     - /etc/ckan/default
     - "{{ ckan_public_source_path }}"
-
-- name: Ensure upload path permissions
-  command: chmod -R "0770" "{{ ckan_storage_path }}"
 
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.group }}
