@@ -1,5 +1,5 @@
 diff --git a/ckan/controllers/admin.py b/ckan/controllers/admin.py
-index 3d2f44559..293567905 100644
+index 3d2f44559..3041dd6a2 100644
 --- a/ckan/controllers/admin.py
 +++ b/ckan/controllers/admin.py
 @@ -6,6 +6,7 @@ import ckan.lib.base as base
@@ -10,7 +10,7 @@ index 3d2f44559..293567905 100644
  import ckan.model as model
  import ckan.logic as logic
  import ckan.plugins as plugins
-@@ -73,6 +74,12 @@ class AdminController(base.BaseController):
+@@ -73,6 +74,13 @@ class AdminController(base.BaseController):
              h.redirect_to(controller='admin', action='config')
  
          if request.method == 'POST':
@@ -19,11 +19,12 @@ index 3d2f44559..293567905 100644
 +            except csrf_token.CsrfTokenValidationError:
 +                h.flash_error(_('Security token error, please try again'))
 +                return base.render('admin/confirm_reset.html')
++            del request.POST['csrf-token']
 +
              # remove sys info items
              for item in self._get_config_form_items():
                  name = item['name']
-@@ -96,10 +103,17 @@ class AdminController(base.BaseController):
+@@ -96,10 +104,17 @@ class AdminController(base.BaseController):
                              logic.parse_params(
                                  request.POST, ignore_keys=CACHE_PARAMETERS))))
  
@@ -41,7 +42,7 @@ index 3d2f44559..293567905 100644
              except logic.ValidationError as e:
                  errors = e.error_dict
                  error_summary = e.error_summary
-@@ -134,6 +148,11 @@ class AdminController(base.BaseController):
+@@ -134,6 +149,13 @@ class AdminController(base.BaseController):
                                    in request.params):
              return base.render('admin/trash.html')
          else:
@@ -50,6 +51,8 @@ index 3d2f44559..293567905 100644
 +            except csrf_token.CsrfTokenValidationError:
 +                h.flash_error(_('Security token error, please try again'))
 +                return base.render('admin/trash.html')
++            del request.POST['csrf-token']
++
              # NB: we repeat retrieval of of revisions
              # this is obviously inefficient (but probably not *that* bad)
              # but has to be done to avoid (odd) sqlalchemy errors (when doing
@@ -758,6 +761,37 @@ index b11ae5b36..0c3cb40ef 100644
    <fieldset>
      <legend>{{ _('Change details') }}</legend>
      {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
+diff --git a/ckan/views/admin.py b/ckan/views/admin.py
+index defd3850f..2e9759521 100644
+--- a/ckan/views/admin.py
++++ b/ckan/views/admin.py
+@@ -9,6 +9,7 @@ from flask.views import MethodView
+ import ckan.lib.app_globals as app_globals
+ import ckan.lib.base as base
+ import ckan.lib.helpers as h
++import ckan.lib.csrf_token as csrf_token
+ import ckan.lib.navl.dictization_functions as dict_fns
+ import ckan.logic as logic
+ import ckan.model as model
+@@ -118,11 +119,18 @@ class ConfigView(MethodView):
+                         logic.parse_params(
+                             req, ignore_keys=CACHE_PARAMETERS))))
+ 
++            csrf_token.validate(data_dict.get('csrf-token', ''))
++            del data_dict['csrf-token']
+             del data_dict['save']
+             data = logic.get_action(u'config_option_update')({
+                 u'user': g.user
+             }, data_dict)
+ 
++        except csrf_token.CsrfTokenValidationError:
++            h.flash_error(_('Security token error, please try again'))
++            vars = {'data': data, 'errors': {},
++                    'error_summary': {}, 'form_items': items}
++            return base.render('admin/config.html', extra_vars=vars)
+         except logic.ValidationError as e:
+             items = _get_config_options()
+             data = request.form
 diff --git a/ckan/views/user.py b/ckan/views/user.py
 index 00efe36b7..e75c144d9 100644
 --- a/ckan/views/user.py
