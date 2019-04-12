@@ -75,8 +75,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     # IAuthFunctions
 
     def get_auth_functions(self):
-        return {'user_list': admin_only,
-                'revision_index': admin_only,
+        return {'revision_index': admin_only,
                 'revision_list': admin_only,
                 'revision_diff': admin_only,
                 'package_revision_list': admin_only,
