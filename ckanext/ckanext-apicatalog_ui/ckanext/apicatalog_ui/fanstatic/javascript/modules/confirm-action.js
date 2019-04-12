@@ -83,6 +83,12 @@ this.ckan.module('confirm-action', function (jQuery) {
         action: this.el.attr('href'),
         method: 'POST'
       });
+      var csrf = jQuery('<input/>', {
+        type: 'hidden',
+        name: 'csrf-token',
+        value: $('form[method=POST]').find('input[type=hidden][name=csrf-token]').attr('value') || this.el.attr('csrf-token')
+      });
+      csrf.appendTo(form);
       form.appendTo('body').submit();
     },
 
