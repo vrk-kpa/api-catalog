@@ -1,0 +1,30 @@
+diff --git a/ckan/views/user.py b/ckan/views/user.py
+index 00efe36b7..61ad876b2 100644
+--- a/ckan/views/user.py
++++ b/ckan/views/user.py
+@@ -526,12 +526,6 @@ class RequestResetView(MethodView):
+                     data_dict[u'id'] = user_list[0][u'id']
+                     logic.get_action(u'user_show')(context, data_dict)
+                     user_obj = context[u'user_obj']
+-                elif len(user_list) > 1:
+-                    h.flash_error(_(u'"%s" matched several users') % (id))
+-                else:
+-                    h.flash_error(_(u'No such user: %s') % id)
+-            else:
+-                h.flash_error(_(u'No such user: %s') % id)
+ 
+         if user_obj:
+             try:
+@@ -545,6 +539,12 @@ class RequestResetView(MethodView):
+             except mailer.MailerException as e:
+                 h.flash_error(_(u'Could not send reset link: %s') %
+                               text_type(e))
++        else:
++            # Always show success to prevent user name scanning
++            h.flash_success(
++                _(u'Please check your inbox for '
++                  u'a reset code.'))
++
+         return self.get()
+ 
+     def get(self):
