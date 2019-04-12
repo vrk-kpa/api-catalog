@@ -5,7 +5,7 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/java \
           -DpropertiesDirectory=properties \
-          -Djavax.net.ssl.keyStore=/opt/xroad-gateway/vrkkapalpt05.jks \
+          -Djavax.net.ssl.keyStore=/opt/xroad-gateway/{{ xroad.securityserver.alias }}.jks \
           -Djavax.net.ssl.keyStorePassword=changeit \
           -jar {{ xroad_gateway.jar_name }} \
           --server.port=9090 \
