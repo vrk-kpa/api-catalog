@@ -13,6 +13,8 @@
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
   when: deployment_environment_id == "vagrant"
 
+- include: override_requirements.yml
+
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
   with_items:
