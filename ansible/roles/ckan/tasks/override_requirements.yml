@@ -1,0 +1,5 @@
+- name: Copy override requirements file
+  template: src=override_requirements.txt.j2 dest="{{ cache_path }}/override_requirements.txt" mode="0644" owner=root group=root
+
+- name: Install override requirements
+  pip: requirements="{{ cache_path }}/override_requirements.txt" virtualenv="{{ virtualenv }}" extra_args='--exists-action=w --timeout=30'
