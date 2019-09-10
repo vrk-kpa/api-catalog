@@ -158,7 +158,7 @@ class Apicatalog_OrganizationController(OrganizationController):
         q = c.q = request.params.get('q', '')
         sort_by = c.sort_by_selected = request.params.get('sort')
         if sort_by is None:
-            sort_by = c.sort_by_selected = 'title asc'
+            sort_by = 'title asc'
         try:
             self._check_access('site_read', context)
             self._check_access('group_list', context)

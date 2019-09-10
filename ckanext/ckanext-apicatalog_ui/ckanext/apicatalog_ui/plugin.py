@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import pylons.config as config
+from ckan import model
 
 import ckan.logic as logic
 import random
@@ -147,6 +148,41 @@ def get_xroad_organizations():
     return packageless_organizations
 
 
+def custom_organization_list(params):
+    page = toolkit.h.get_page_number(params) or 1
+    items_per_page = 21
+
+    context = {'model': model, 'session': model.Session,
+               'user': toolkit.c.user, 'for_view': True,
+               'with_private': False}
+
+    q = toolkit.c.q = params.get('q', '')
+    sort_by = toolkit.c.sort_by_selected = params.get('sort')
+
+    if toolkit.c.userobj:
+        context['user_id'] = toolkit.c.userobj.id
+        context['user_is_admin'] = toolkit.c.userobj.sysadmin
+
+    data_dict_page_results = {
+        'all_fields': True,
+        'q': q,
+        'sort': sort_by,
+    }
+    results = toolkit.get_action('organization_list')(context, data_dict_page_results)
+
+    def group_by_content(a, b):
+        a_has_content = 1 if a['package_count'] else 0
+        b_has_content = 1 if b['package_count'] else 0
+        return b_has_content - a_has_content
+
+    if not sort_by:
+        results.sort(cmp=group_by_content)
+
+    page_start = (page - 1) * items_per_page
+    page_end = page * items_per_page
+    return results[page_start:page_end]
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -178,7 +214,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_translated': get_translated,
                 'dataset_display_name': dataset_display_name,
                 'get_xroad_organizations': get_xroad_organizations,
-                'is_service_bus_id': is_service_bus_id
+                'is_service_bus_id': is_service_bus_id,
+                'custom_organization_list': custom_organization_list
                 }
 
 
