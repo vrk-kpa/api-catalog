@@ -6,7 +6,7 @@
         <label for="field-order-by">{{ _('Order by') }}</label>
         <select id="field-order-by" name="sort">
           {% for label, value in sorting %}
-            {% if label and value %}
+            {% if label %}
               <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
             {% endif %}
           {% endfor %}
