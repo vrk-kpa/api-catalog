@@ -4978,3 +4978,6 @@ msgstr "File size too large for preview, download the file to view its contents.
 
 msgid "Search datasets"
 msgstr "Search APIs"
+
+msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
+msgstr "Consumes data available via the Suomi.fi-Data Exchange Layer."

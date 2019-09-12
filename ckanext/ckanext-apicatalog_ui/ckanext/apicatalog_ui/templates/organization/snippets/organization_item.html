@@ -36,7 +36,7 @@ Example:
     {% if organization.package_count %}
       <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
     {% else %}
-      <span class="count">{{ _('0 Datasets') }}</span>
+      <span class="count">{{ _('Consumes data available via the Suomi.fi-Data Exchange Layer.') }}</span>
     {% endif %}
   {% endblock %}
 

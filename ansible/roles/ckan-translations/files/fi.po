@@ -4996,3 +4996,6 @@ msgstr "Tiedoston koko on liian suuri esikatseltavaksi. Lataa tiedosto nähdäks
 
 msgid "Search datasets"
 msgstr "Etsi liitynnöistä"
+
+msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
+msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
