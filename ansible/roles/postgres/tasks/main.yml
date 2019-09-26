@@ -23,8 +23,7 @@
 - name: Setup postgres users
   become_user: postgres
   become: true
-  postgresql_user: user={{ item.user }} password={{ item.password }}
-  encrypted: yes
+  postgresql_user: user={{ item.user }} password={{ item.password }} encrypted=yes
   with_items:
   - { user: "{{ database_ckan.username }}", password: "{{ database_ckan.password }}" }
 
