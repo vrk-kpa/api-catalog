@@ -4,19 +4,25 @@
     <header class="language-navbar">
       <div class="container">
 
-          <div class="hidden-sm support-sites-label">
-            <span class="hidden-xs">Suomi.fi {{ _('Support and administration sites') }}</span>
+          <div class="left">
+            <div class="navbar-logo-text">
+              <a href="{{ h.url('home') }}">{{ _('API Catalog') }}</a>
+            </div>
           </div>
 
-          <ul class="nav navbar-nav">
-            <li class="pull-left">
-              {% snippet 'home/snippets/apicatalog_language-changer.html' %}
-            </li>
-            <li class="pull-right">
-              {% snippet 'home/snippets/apicatalog_profile.html' %}
-            </li>
-          </ul>
-
+          <div class="center">
+            <div class="search-input control-group">
+              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
+            </div>
+            <ul class="nav navbar-nav">
+              <li>
+                {% snippet 'home/snippets/apicatalog_language-changer.html' %}
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            {% snippet 'home/snippets/apicatalog_profile.html' %}
+          </div>
       </div>
     </header>
   {% endblock %} {# /header_language #}
@@ -30,38 +36,34 @@
         {% endif %}
       {% endblock %}
       <div class="container">
-        <div class="centered">
-          <div class="logo-row">
+        <div class="logo-row">
 
-            <div id="navbar-logo-text">
-              <a href="{{ h.url('home') }}">{{ _('API Catalog') }}</a>
-            </div>
+          <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-            <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+        </div>
+        <div class="navbar-collapse collapse">
 
-          </div>
-          <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav main-navigation">
+            {% block header_site_navigation_tabs %}
+              {{ h.build_nav('home', _('Home')) }}
+              {{ h.build_nav('search', _('Datasets')) }}
+              {{ h.build_nav('organizations_index', _('Organizations')) }}
+              {{ h.build_nav('contact_form', _('Feedback')) }}
+              <li><a href="#">{{ _('Service Management') }}</a></li>
+            {% endblock %}
+          </ul>
 
-            <ul class="nav navbar-nav main-navigation">
-              {% block header_site_navigation_tabs %}
-                {{ h.build_nav('search', _('Datasets')) }}
-                {{ h.build_nav('organizations_index', _('Organizations')) }}
-              {% endblock %}
+          <div class="placeright-sm-up">
+            <ul class="nav navbar-nav">
+                {{ h.build_nav_main() }}
             </ul>
+          </div> <!-- /.pull-right -->
 
-            <div class="placeright-sm-up">
-              <ul class="nav navbar-nav">
-                  {{ h.build_nav_main() }}
-                  {{ h.build_nav('contact_form', _('Feedback')) }}
-              </ul>
-            </div> <!-- /.pull-right -->
-
-          </div>
         </div>
       </div> <!-- /.container -->
     </nav>
