@@ -80,5 +80,9 @@ setup(
         [ckan.plugins]
         apicatalog_routes=ckanext.apicatalog_routes.plugin:Apicatalog_RoutesPlugin
         apicatalog_feed=ckanext.apicatalog_routes.feed:Apicatalog_FeedPlugin
+        apicatalog_harvesterstatus=ckanext.apicatalog_routes.harvesterstatusplugin:HarvesterStatusPlugin
+
+        [paste.paster_command]
+        apicatalog-harvest = ckanext.apicatalog_routes.commands:apicatalog_harvest_group
     ''',
 )

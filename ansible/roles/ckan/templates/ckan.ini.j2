@@ -57,7 +57,7 @@ ckan.featured_orgs = {{ ckan_featured_orgs }}
 ckan.plugins = {{ ckan_plugins }}
 
 ckan.preview.xml_formats = xml xsd xsd+xml soap soap+xml rdf rdf+xml owl+xml atom rss wsdl wsdl+xml
-ckan.views.default_views = wsdl_view text_view 
+ckan.views.default_views = wsdl_view text_view
 
 ckanext.pages.editor = ckeditor
 
@@ -83,7 +83,7 @@ scheming.presets = ckanext.scheming:presets.json
 scheming.dataset_schemas = ckanext.apicatalog_scheming.schemas:dataset.json
 
 # Disable sending error emails. Commented out because the default is None, and "None" is interpreted here as a string.
-# email_to = 
+# email_to =
 # error_email_from =
 
 smtp.server = {{ email.smtp_server }}
@@ -98,6 +98,8 @@ ckan.harvest.mq.type = redis
 ckan.harvest.mq.hostname = {{ redis.host }}
 ckan.harvest.mq.port = {{ redis.port }}
 ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
+
+ckanext.apicatalog.harvester_status_recipients = {{ ckan_harvester_status_email_recipients|join(' ') }}
 
 ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000
