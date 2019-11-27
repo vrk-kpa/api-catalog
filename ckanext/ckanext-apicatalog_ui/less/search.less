@@ -16,9 +16,21 @@
 
 .search-form {
   // .clearfix;
-  margin-bottom: 20px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid @genericBorderColor;
+
+  &.header-search {
+    margin: auto;
+    width: 356px;
+    
+    .search-input {
+      margin: 0px;
+    }
+  }
+
+  &:not(.header-search) {
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid @genericBorderColor;
+  }
 
   .search-result-text {
     line-height: 42px;
@@ -27,13 +39,13 @@
   .search-input {
     position: relative;
     margin-bottom: 20px;
-  	input {
+    input {
       .box-sizing(border-box);
       margin: 0;
       width: 100%;
       height: auto;
-      border-radius:4px;
-      border: 2px solid @kapa-input-border;
+      border-radius: 2px;
+      border: 1px solid @kapa-input-border;
     }
     button {
       cursor: pointer;

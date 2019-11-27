@@ -11,14 +11,13 @@
           </div>
 
           <div class="center">
+            <form class="search-form header-search" method="get" action="{{ h.url('search') }}">
             <div class="search-input control-group">
-              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{% block search_placeholder %}{{ placeholder }}{% endblock %}" />
+              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" />
+              <button type="submit"><i class="fa fa-search"></i></button>
             </div>
-            <ul class="nav navbar-nav">
-              <li>
-                {% snippet 'home/snippets/apicatalog_language-changer.html' %}
-              </li>
-            </ul>
+            </form>
+            {% snippet 'home/snippets/apicatalog_language-changer.html' %}
           </div>
           <div class="right">
             {% snippet 'home/snippets/apicatalog_profile.html' %}

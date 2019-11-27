@@ -8820,7 +8820,14 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 :-ms-input-placeholder {
   font-style: italic;
 }
-.search-form {
+.search-form.header-search {
+  margin: auto;
+  width: 356px;
+}
+.search-form.header-search .search-input {
+  margin: 0px;
+}
+.search-form:not(.header-search) {
   margin-bottom: 20px;
   padding-bottom: 25px;
   border-bottom: 1px solid #dddddd;
@@ -8839,8 +8846,8 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   margin: 0;
   width: 100%;
   height: auto;
-  border-radius: 4px;
-  border: 2px solid #989c9f;
+  border-radius: 2px;
+  border: 1px solid #989c9f;
 }
 .search-form .search-input button {
   cursor: pointer;
@@ -10072,6 +10079,7 @@ h4 small {
   flex: initial;
   display: flex;
   margin: auto;
+  align-items: center;
 }
 .language-navbar .container .right {
   flex: initial;
@@ -10084,8 +10092,22 @@ h4 small {
 .language-navbar .informational-text {
   margin-top: 10px;
 }
-.language-navbar .language-changer {
-  text-transform: uppercase;
+.language-navbar .language-changer button {
+  color: #282828;
+  font-family: SourceSansPro-SemiBold;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 2px;
+  border: 1px solid #a5a7b0;
+  height: 30px;
+  width: 44px;
+  padding: 0px;
+}
+.language-navbar .language-changer button i {
+  color: #2a6ebb;
+}
+.language-navbar .header-search {
+  margin-right: 30px;
 }
 .language-navbar .navbar-nav .list-inline li:not(:first-child) {
   border-left: 1px solid #3d3d3d;
