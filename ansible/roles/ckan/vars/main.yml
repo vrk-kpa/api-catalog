@@ -7,7 +7,7 @@ harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed harvest xroad_harvester wsdl_view validate_links saha paha webpage_view
+ckan_plugins: pages text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed apicatalog_harvesterstatus harvest xroad_harvester wsdl_view validate_links saha paha webpage_view
 
 redis_harvest_database: 0
 redis_celery_database: 1
@@ -39,3 +39,5 @@ files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
 
 search_engine_robots_filename: robots_disallowed.txt
+
+ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"

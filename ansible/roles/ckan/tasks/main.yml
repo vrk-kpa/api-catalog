@@ -55,6 +55,13 @@
 - name: Ensure link validation cronjob
   cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/paster --plugin=ckanext-validate_links links crawl -c {{ ckan_ini }}"
 
+- name: Send harvester status report emails as a cron job
+  cron:
+    name: "Send harvester status report emails"
+    minute: "0"
+    hour: "11"
+    job: "{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog-harvest send-status-emails --config={{ ckan_ini }}"
+
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
   when: not robots_allowed
@@ -75,4 +82,3 @@
 - name: Start CKAN
   uri:
     url: "http://127.0.0.1:8080"
-
