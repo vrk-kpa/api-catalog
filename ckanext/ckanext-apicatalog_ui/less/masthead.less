@@ -1,7 +1,7 @@
 @notificationsBg: #C9403A;
 @masthead-padding: 8px;
 @account-masthead-height: 79px;
-@masthead-height: 50px;
+@masthead-height: 47px;
 
 .placeright-sm-up {
   @media(min-width: @screen-sm-min) {
@@ -24,6 +24,11 @@
   border: none;
 }
 
+@media (max-width: @screen-xs-max) {
+  .navbar-logo-text {
+    margin: 8px;
+  }
+}
 .navbar > .container {
   background-color: @mastheadBackgroundColor;
 }
@@ -50,7 +55,9 @@
   .container {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0 19px 0;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 19px;
 
     .left {
       flex: initial;
@@ -100,6 +107,10 @@
 
   & .header-search {
     margin-right: 30px;
+
+    .search-input button {
+      margin-top: -14px;
+    }
   }
   .navbar-nav .list-inline li:not(:first-child) {
     border-left: 1px solid @header-divider-color;
@@ -136,10 +147,13 @@
 
   z-index: @zindex-navbar - 1;
   font-size:16px;
-  height:@masthead-height;
+  height: @masthead-height;
+  min-height: @masthead-height;
 
   .navbar-collapse {
     background-color: @mastheadBackgroundColor;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .navbar-collapse.collapse.in,
@@ -167,26 +181,22 @@
       line-height: 27px;
       margin-right: 64px;
     }
-
     li.active a {
       border-bottom: 4px solid rgb(42, 110, 187);
     }
-  }
 
-  .navigation {
-    // Triangle below active navigation
     @media (max-width: @screen-xs-max) {
-      &.active a:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid @kapa-attention-color;
-        position: absolute;
-        bottom: -8px;
-        left: 50%;
-        margin-left: -8px;
+      li {
+        display: block;
+
+        a {
+          padding-left: 8px;
+          border-left: 4px solid transparent;
+        }
+        &.active a {
+          border-bottom: 0px;
+          border-left: 4px solid rgb(42, 110, 187);
+        }
       }
     }
   }
@@ -212,6 +222,7 @@
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.4px;
+    padding: 5px 15px;
 
   }
 

@@ -1,12 +1,12 @@
 {% block header_wrapper %}
 
   {% block header_language %}
-    <header class="language-navbar">
+    <header class="language-navbar hidden-xs">
       <div class="container">
 
           <div class="left">
             <div class="navbar-logo-text">
-              <a href="{{ h.url('home') }}">{{ _('API Catalog') }}</a>
+              <a href="{{ h.url('home') }}"><img src="/base/images/lika-logo.png" alt="{{ _('API Catalog') }}"></a>
             </div>
           </div>
 
@@ -29,43 +29,54 @@
   {% block header_account %}
     <div class="navbar-wrapper">
       <nav class="navbar navbar-default main-navbar" data-spy="affix" data-offset-top="36">
-      {% block header_debug %}
-        {% if g.debug and not g.debug_supress_header %}
-          <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
-        {% endif %}
-      {% endblock %}
-      <div class="container">
-        <div class="logo-row">
+        {% block header_debug %}
+          {% if g.debug and not g.debug_supress_header %}
+            <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
+          {% endif %}
+        {% endblock %}
+        <div class="container">
+          <div class="logo-row">
+            <div class="navbar-logo-text visible-xs">
+              <a href="{{ h.url('home') }}"><img src="/base/images/lika-logo.png" alt="{{ _('API Catalog') }}"></a>
+            </div>
 
-          <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-        </div>
-        <div class="navbar-collapse collapse">
+          </div>
+          <div class="navbar-collapse collapse">
 
-          <ul class="nav navbar-nav main-navigation">
-            {% block header_site_navigation_tabs %}
-              {{ h.build_nav('home', _('Home')) }}
-              {{ h.build_nav('search', _('Datasets')) }}
-              {{ h.build_nav('organizations_index', _('Organizations')) }}
-              {{ h.build_nav('contact_form', _('Feedback')) }}
-              <li><a href="#">{{ _('Service Management') }}</a></li>
-            {% endblock %}
-          </ul>
-
-          <div class="placeright-sm-up">
-            <ul class="nav navbar-nav">
-                {{ h.build_nav_main() }}
+            <ul class="nav navbar-nav main-navigation">
+              {% block header_site_navigation_tabs %}
+                {{ h.build_nav('home', _('Home')) }}
+                {{ h.build_nav('search', _('Datasets')) }}
+                {{ h.build_nav('organizations_index', _('Organizations')) }}
+                {{ h.build_nav('contact_form', _('Feedback')) }}
+                <li><a href="#">{{ _('Service Management') }}</a></li>
+                {% if c.userobj %}
+                  {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
+                {% else %}
+                  <li class="visible-xs">{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
+                  {% if h.check_access('user_create') %}
+                    <li class="visible-xs">{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+                  {% endif %}
+                {% endif %}
+              {% endblock %}
             </ul>
-          </div> <!-- /.pull-right -->
 
-        </div>
-      </div> <!-- /.container -->
-    </nav>
+            <div class="placeright-sm-up">
+              <ul class="nav navbar-nav">
+                  {{ h.build_nav_main() }}
+              </ul>
+            </div> <!-- /.pull-right -->
+
+          </div>
+        </div> <!-- /.container -->
+      </nav>
     </div>
   {% endblock %} {# header_account #}
 

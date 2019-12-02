@@ -10031,6 +10031,11 @@ h4 small {
 .navbar {
   border: none;
 }
+@media (max-width: 767px) {
+  .navbar-logo-text {
+    margin: 8px;
+  }
+}
 .navbar > .container {
   background-color: #ffffff;
 }
@@ -10070,7 +10075,9 @@ h4 small {
 .language-navbar .container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0 19px 0;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 19px;
 }
 .language-navbar .container .left {
   flex: initial;
@@ -10109,6 +10116,9 @@ h4 small {
 .language-navbar .header-search {
   margin-right: 30px;
 }
+.language-navbar .header-search .search-input button {
+  margin-top: -14px;
+}
 .language-navbar .navbar-nav .list-inline li:not(:first-child) {
   border-left: 1px solid #3d3d3d;
 }
@@ -10134,13 +10144,16 @@ h4 small {
   box-shadow: 0 1px 0 0 #c9cdcf;
   z-index: 999;
   font-size: 16px;
-  height: 50px;
+  height: 47px;
+  min-height: 47px;
 }
 .main-navbar .container {
   position: relative;
 }
 .main-navbar .navbar-collapse {
   background-color: #ffffff;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 @media (max-width: 767px) {
   .main-navbar .navbar-collapse.collapse.in,
@@ -10167,17 +10180,16 @@ h4 small {
   border-bottom: 4px solid #2a6ebb;
 }
 @media (max-width: 767px) {
-  .main-navbar .navigation.active a:after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #1998ff;
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    margin-left: -8px;
+  .main-navbar .main-navigation li {
+    display: block;
+  }
+  .main-navbar .main-navigation li a {
+    padding-left: 8px;
+    border-left: 4px solid transparent;
+  }
+  .main-navbar .main-navigation li.active a {
+    border-bottom: 0px;
+    border-left: 4px solid #2a6ebb;
   }
 }
 .main-navbar .debug {
@@ -10197,6 +10209,7 @@ h4 small {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.4px;
+  padding: 5px 15px;
 }
 .account:before,
 .account:after {
