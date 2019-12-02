@@ -1,25 +1,31 @@
-{% ckan_extends %}
-
-{% block footer_content %}
-  <div class="row">
-    <div class="footer-links col-sm-8 col-md-8">
-      {% block footer_nav %}
-        <ul class="list-unstyled">
-          {% block footer_links %}
-            <li><a href="http://esuomi.fi">{{ _('eSuomi.fi, a channel of communication for the National Data Exchange Layer') }}</a></li>
-            <li><a href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code on GitHub')}}</a></li>
-          {% endblock %}
-        </ul>
-        <ul class="list-unstyled">
-          {% block footer_links_ckan %}
-          {% endblock %}
-        </ul>
-      {% endblock %}
+{% block footer %}
+  <div class="footer-top clearfix">
+    <div class="col-sm-8">
+      <img src="base/images/lika-logo.png">
+      <p class="footer-description">{{_('The service is being developed by the Population Register Centre.')}}</p>
     </div>
-    <div class="attribution col-sm-4 col-md-4">
-      {% block footer_attribution %}
-        <p>{% trans %}<strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}</p>
-      {% endblock %}
+    <div class="footer-links col-sm-4">
+      <a class="external-link" href="http://esuomi.fi">{{ _('eSuomi') }}
+        <svg viewBox="0 0 24 24">
+          <use xlink:href="base/images/external-link-icon.svg#path-1"></use>
+        </svg>
+      </a>
+      <a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}}
+        <svg viewBox="0 0 24 24">
+          <use xlink:href="base/images/external-link-icon.svg#path-1"></use>
+        </svg></a>
+    </div>
+  </div>
+  <div class="footer-bottom clearfix">
+    <div class="col-sm-4 col-sm-offset-8">
+      <img src="base/images/twitter-icon.png"/>
+      <a class="external-link" href="https://twitter.com/suomifiyritys">
+        {{ _('@Suomifiyritys') }}
+      </a>
+      <img src="base/images/facebook-icon.png"/>
+      <a class="external-link" href="https://www.facebook.com/Suomifiyritykselle">
+        {{ _('@Suomifiyritykselle') }}
+      </a>
     </div>
   </div>
 {% endblock %}

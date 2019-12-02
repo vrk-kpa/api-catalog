@@ -10284,6 +10284,69 @@ h4 small {
 .lang-dropdown li {
   width: auto;
 }
+.footer-top {
+  background-color: white;
+  height: 170px;
+  padding: 30px 165px;
+}
+.footer-description {
+  margin-top: 28px;
+  width: 350px;
+}
+.footer-bottom {
+  background-color: #00347a;
+  height: 80px;
+}
+.footer-links a {
+  margin-top: 62px;
+  display: inline-block;
+  color: #2a6ebb;
+}
+.suomifi-logo {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+.footer-title {
+  font-size: 20px;
+  letter-spacing: -2px;
+  font-family: 'SourceSans';
+  color: #00347a;
+}
+.external-link {
+  margin-right: 40px;
+}
+.external-link:last-of-type {
+  margin-right: 0;
+}
+.external-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #2a6ebb;
+}
+.external-link:visited svg {
+  fill: #86499c;
+}
+.external-link:disabled svg {
+  fill: #a5acb1;
+}
+.external-link:hover svg {
+  fill: #235a9a;
+}
+.external-link:focus svg {
+  fill: #e97025;
+}
+.footer-bottom {
+  padding: 30px 165px;
+}
+.footer-bottom .external-link {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  text-decoration: underline;
+}
 .table-selected td {
   background-color: #333333;
 }
@@ -11260,4 +11323,30 @@ input[type="checkbox"]#field-remember {
 }
 .ie7 .media-overlay .media-heading {
   background-color: #000;
+}
+body {
+  font-family: 'SourceSans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #292929;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 27px;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: #86499c;
+}
+a:disabled {
+  text-decoration: none;
+  color: #a5acb1;
+}
+a:hover {
+  text-decoration: none;
+  color: #235a9a;
+}
+a:focus {
+  text-decoration: none;
+  color: #e97025;
 }

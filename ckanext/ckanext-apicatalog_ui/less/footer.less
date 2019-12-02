@@ -50,3 +50,81 @@
 .lang-dropdown li {
   width: auto;
 }
+
+.footer-top {
+  background-color: white;
+  height: 170px;
+  padding: 30px 165px;
+}
+
+.footer-description {
+  margin-top: 28px;
+  width: 350px;
+}
+
+.footer-bottom {
+  background-color: @suomifi-brand-base;
+  height: 80px;
+}
+
+.footer-links a {
+  margin-top: 62px;
+  display: inline-block;
+  color: @suomifi-highlight-base;
+}
+
+.suomifi-logo {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.footer-title {
+  font-size: 20px;
+  letter-spacing: -2px;
+  font-family: 'SourceSans';
+  color: @suomifi-brand-base;
+}
+
+.external-link {
+  margin-right: 40px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: @suomifi-highlight-base;
+  }
+}
+
+.external-link:visited svg {
+  fill: #86499c;
+}
+
+.external-link:disabled svg {
+  fill: #a5acb1;
+}
+
+.external-link:hover svg {
+  fill: #235a9a;
+}
+
+.external-link:focus svg {
+  fill: #e97025;
+}
+
+.footer-bottom {
+  padding: 30px 165px;
+}
+
+.footer-bottom .external-link {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 20px;
+  color: white;
+  text-decoration: underline;
+}
