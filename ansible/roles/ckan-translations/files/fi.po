@@ -4081,7 +4081,7 @@ msgstr "Tällä haulla ei löydy {facet_type} -tyypin sisältöä"
 #: ckan/templates/snippets/home_breadcrumb_item.html:2
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:51
 msgid "Home"
-msgstr "Aloitussivu"
+msgstr "Etusivu"
 
 #: ckan/templates/snippets/language_selector.html:4
 msgid "Language"
@@ -4999,3 +4999,7 @@ msgstr "Etsi liitynnöistä"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
+
+msgid "Service Management"
+msgstr "Palveluhallinta"
+
