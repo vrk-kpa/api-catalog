@@ -5003,3 +5003,11 @@ msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
 msgid "Service Management"
 msgstr "Palveluhallinta"
 
+msgid "total organizations"
+msgstr "organisaatiota"
+
+msgid "organizations with datasets"
+msgstr "organisaatiota, joilla liityntöjä"
+
+msgid "Show all"
+msgstr "Näytä kaikki"

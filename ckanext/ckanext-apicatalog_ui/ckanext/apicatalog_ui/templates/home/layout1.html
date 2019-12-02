@@ -1,10 +1,24 @@
 <div role="main" class="hero">
   <div class="hero-background-container">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-10 col-lg-offset-1">
-          {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
-          {% block search %} {% snippet 'home/snippets/apicatalog_huge-search.html' %} {% endblock %}
+      {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
+      <div id="hero-stats" class="col-sm-8 col-sm-offset-2">
+        {% set statistics = h.get_statistics() %}
+        <div class="col-sm-4">
+          <div class="count">{{statistics.package_count}}</div>
+          <div>{{_('datasets')}}</div>
+          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller='package', action='search') }}">{{_('Show all')}}</a></div>
+        </div>
+        {% set org_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_OrganizationController' %}
+        <div class="col-sm-4">
+          <div class="count">{{statistics.organization_count}}</div>
+          <div>{{_('total organizations')}}</div>
+          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller=org_controller, action='index') }}">{{_('Show all')}}</a></div>
+        </div>
+        <div class="col-sm-4">
+          <div class="count">{{statistics.organizations_with_packages_count}}</div>
+          <div>{{_('organizations with datasets')}}</div>
+          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller=org_controller, action='index') }}">{{_('Show all')}}</a></div>
         </div>
       </div>
     </div>

@@ -4992,3 +4992,12 @@ msgstr "Sök API:er"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Utnyttjar data som är tillgänglig via den nationella servicekanalen."
+
+msgid "total organizations"
+msgstr ""
+
+msgid "organizations with datasets"
+msgstr ""
+
+msgid "Show all"
+msgstr ""

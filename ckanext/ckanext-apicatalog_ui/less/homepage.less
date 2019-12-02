@@ -18,14 +18,37 @@
   .top-caption {
     text-align: center;
     display: block;
-    font-weight: 200;
-    font-family: Roboto, SourceSansProRegular, 'Helvetica Neue', Arial;
-    font-variant-ligatures: none;
-    text-shadow: 0 0 10px rgb(70, 70, 70);
-    font-size: 56px !important;
-    font-size: 2rem;
-    margin: 30px 0 20px 0;
+    font-weight: 500;
+    font-family: @layoutFontFamily;
+    font-size: 40px !important;
+    line-height: 48px;
+    margin: 57px 0 44px 0;
     color: #fff;
+  }
+
+  #hero-stats {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 50px;
+
+    .count {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    i {
+      color: @suomifi-accent-base;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+
+    a {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: white;
+    }
   }
 
   .module-search {

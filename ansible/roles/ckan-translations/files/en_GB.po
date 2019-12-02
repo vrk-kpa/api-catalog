@@ -4981,3 +4981,12 @@ msgstr "Search APIs"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Consumes data available via the Suomi.fi-Data Exchange Layer."
+
+msgid "total organizations"
+msgstr "organizations"
+
+msgid "organizations with datasets"
+msgstr "organizations with APIs"
+
+msgid "Show all"
+msgstr "Show all"
