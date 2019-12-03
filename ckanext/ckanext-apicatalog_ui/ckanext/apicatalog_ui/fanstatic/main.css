@@ -9684,6 +9684,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   background-color: #f9f9f9;
   background-position: center center;
   position: relative;
+  padding: 44px;
 }
 .hero-background-container::before {
   content: "";
@@ -9822,14 +9823,14 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 40px !important;
   line-height: 48px;
-  margin: 57px 0 44px 0;
+  margin: 13px 0 44px 0;
   color: #fff;
 }
 .homepage #hero-stats {
   text-align: center;
   color: white;
   font-weight: 500;
-  margin-bottom: 50px;
+  margin-bottom: 6px;
 }
 .homepage #hero-stats .count {
   font-size: 40px;
