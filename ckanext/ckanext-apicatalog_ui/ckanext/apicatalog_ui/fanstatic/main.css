@@ -1071,7 +1071,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'SourceSans';
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
   color: #333333;
@@ -1175,7 +1175,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Roboto';
+  font-family: 'SourceSansPro-SemiBold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bolder;
   line-height: 1.1;
   color: inherit;
@@ -6025,7 +6025,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: 'SourceSans';
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6143,7 +6143,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: 'SourceSans';
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6787,41 +6787,6 @@ button.close {
 .twitter-timeline {
   width: 100% !important;
   border: 2px solid #ececec !important;
-}
-@font-face {
-  font-family: 'SourceSans';
-  src: url('../../../base/vendor/fonts//SourceSansProRegular.eot');
-  src: url('../../../base/vendor/fonts//SourceSansProRegular.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//SourceSansProRegular.woff') format('woff'), url('../../../base/vendor/fonts//SourceSansProRegular.ttf') format('truetype'), url('../../../base/vendor/fonts//SourceSansProRegular.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SourceSans';
-  src: url('../../../base/vendor/fonts//SourceSansProBold.eot');
-  src: url('../../../base/vendor/fonts//SourceSansProBold.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//SourceSansProBold.woff') format('woff'), url('../../../base/vendor/fonts//SourceSansProBold.ttf') format('truetype'), url('../../../base/vendor/fonts//SourceSansProBold.svg') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Roboto';
-  src: url('../../../base/vendor/fonts//RobotoLight.eot');
-  src: url('../../../base/vendor/fonts//RobotoLight.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//RobotoLight.woff') format('woff'), url('../../../base/vendor/fonts//RobotoLight.ttf') format('truetype'), url('../../../base/vendor/fonts//RobotoLight.svg') format('svg');
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Roboto';
-  src: url('../../../base/vendor/fonts//RobotoBold.eot');
-  src: url('../../../base/vendor/fonts//RobotoBold.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//RobotoBold.woff') format('woff'), url('../../../base/vendor/fonts//RobotoBold.ttf') format('truetype'), url('../../../base/vendor/fonts//RobotoBold.svg') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Roboto';
-  src: url('../../../base/vendor/fonts//RobotoBlack.eot');
-  src: url('../../../base/vendor/fonts//RobotoBlack.eot?#iefix') format('embedded-opentype'), url('../../../base/vendor/fonts//RobotoBlack.woff') format('woff'), url('../../../base/vendor/fonts//RobotoBlack.ttf') format('truetype'), url('../../../base/vendor/fonts//RobotoBlack.svg') format('svg');
-  font-weight: 900;
-  font-style: normal;
 }
 .subheading {
   display: block;
@@ -9807,7 +9772,7 @@ h4 small {
 }
 .homepage .module li.dataset-item {
   background-color: white;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   border-bottom: 1px solid #c9cdcf;
 }
 .homepage .module li.dataset-item:hover {
@@ -9820,7 +9785,7 @@ h4 small {
   text-align: center;
   display: block;
   font-weight: 500;
-  font-family: 'SourceSans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 40px !important;
   line-height: 48px;
   margin: 57px 0 44px 0;
@@ -9850,12 +9815,12 @@ h4 small {
 .homepage .module-search {
   background-color: #f25d0d;
   border-color: #f25d0d;
-  border-radius: 0px;
+  border-radius: 0;
 }
 .homepage .module-search input {
   border: none;
   border-radius: 5px;
-  box-shadow: 5px;
+  box-shadow: 5px 5px;
 }
 .homepage .module-search input:hover,
 .homepage .module-search input:focus {
@@ -9920,7 +9885,7 @@ h4 small {
 .homepage .tags span {
   font-weight: bold;
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   display: inline-block;
 }
 .homepage .tags .tag {
@@ -9953,7 +9918,7 @@ h4 small {
   border-bottom: none;
 }
 .homepage .search-form .search-input {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .homepage .module-search {
   padding: 5px;
@@ -10197,7 +10162,8 @@ h4 small {
 }
 .account .nav > li > a,
 .account .nav > li > a:hover,
-.account .nav > li > a:active .nav > li > a:visited {
+.account .nav > li > a:active,
+.account .nav > li > a:visited {
   background: linear-gradient(0deg, #235a9a 0%, #2a6ebb 100%);
   border-radius: 2px;
   height: 40px;
@@ -10321,7 +10287,7 @@ h4 small {
 .footer-title {
   font-size: 20px;
   letter-spacing: -2px;
-  font-family: 'SourceSans';
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #00347a;
 }
 .external-link {
@@ -11335,7 +11301,7 @@ input[type="checkbox"]#field-remember {
   background-color: #000;
 }
 body {
-  font-family: 'SourceSans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
   line-height: 27px;

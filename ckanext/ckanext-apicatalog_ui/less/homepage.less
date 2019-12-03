@@ -1,3 +1,9 @@
+@import (reference) "variables";
+@import "mixins";
+@import "../vendor/bootstrap/less/mixins";
+@import "../vendor/bootstrap/less/type";
+@import (reference) "../vendor/bootstrap/less/variables";
+
 .homepage {
   h1 {
     font-size: 40px;
@@ -5,7 +11,7 @@
 
   .module li.dataset-item {
     background-color: white;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     border-bottom: 1px solid @kapa-box-border-color;
     &:hover {
       background-color: @kapa-light-grey;
@@ -19,7 +25,7 @@
     text-align: center;
     display: block;
     font-weight: 500;
-    font-family: @layoutFontFamily;
+    font-family: @font-family-base;
     font-size: 40px !important;
     line-height: 48px;
     margin: 57px 0 44px 0;
@@ -55,12 +61,12 @@
     @search-box-color: @kapa-secondary-attention-color;
     background-color: @search-box-color;
     border-color: @search-box-color;
-    border-radius: 0px;
+    border-radius: 0;
 
     input {
       border:none;
       border-radius:5px;
-      box-shadow: 5px;
+      box-shadow: 5px 5px;
 
       &:hover,
       &:focus {
@@ -114,7 +120,7 @@
    span {
      font-weight: bold;
       margin-top: 10px;
-      margin-bottom:0px;
+      margin-bottom:0;
       display:inline-block;
     }
 
@@ -151,7 +157,7 @@
   .search-form {
     border-bottom: none;
     .search-input {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
