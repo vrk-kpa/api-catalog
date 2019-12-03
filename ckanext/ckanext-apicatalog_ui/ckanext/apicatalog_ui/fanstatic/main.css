@@ -6932,13 +6932,23 @@ h5 {
   border: 1px solid #c9cdcf;
   border-radius: 3px;
 }
-.module {
+.secondary .module {
   margin: 40px 0;
+}
+.secondary .module.main-heading {
+  margin: 0;
+}
+.secondary .module.main-heading .module-heading {
+  height: 78px;
+  background-color: #2a6ebb;
+  font-size: 18px;
+  color: #ffffff;
 }
 .module-heading {
   margin: 0;
   padding: 28px 25px 8px 25px;
   line-height: 1.3;
+  font-size: 22px;
   background-color: #ffffff;
   border-top: 1px solid #c9cdcf;
 }
@@ -7249,6 +7259,8 @@ h5 {
   margin-top: 0;
 }
 .secondary {
+  border: 1px solid #c9cdcf;
+  border-radius: 3px;
   background-color: #ffffff;
 }
 .secondary .module {
@@ -7550,13 +7562,12 @@ li:not(.active) .minusglyph {
 }
 .nav-item.active,
 .nav-aside li.active {
-  background-color: #f6f6f6;
+  font-weight: 600;
 }
 .nav-item.active > a,
 .nav-aside li.active a {
   position: relative;
-  color: #ffffff;
-  background-color: #1998ff;
+  color: #000000;
 }
 .nav.nav-facet > li.nav-item a:hover {
   -webkit-transition: 0.2s;
@@ -7564,8 +7575,8 @@ li:not(.active) .minusglyph {
   -ms-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
-  background-color: #0a77d1;
-  color: #ffffff;
+  background-color: #2e78cc;
+  color: #000000;
 }
 .module-narrow .nav-item > a,
 .module-narrow .nav-aside li a {
@@ -9550,11 +9561,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   margin-top: 1px;
 }
 .wrapper {
-  background-color: #ffffff;
-  border: 1px solid #c9cdcf;
-  border-radius: 3px;
   position: relative;
-  background-color: #fff;
   margin-bottom: 20px;
   margin-left: 0;
 }
@@ -9596,7 +9603,6 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
     height: auto;
     top: 0px;
     bottom: 0px;
-    border-right: 1px solid #dddddd;
     width: 0;
   }
   .border-left:before {
@@ -9655,6 +9661,11 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 .primary > :last-child,
 .secondary > :last-child {
   margin-bottom: 0;
+}
+.primary .primary-inner {
+  background-color: #ffffff;
+  border: 1px solid #c9cdcf;
+  border-radius: 3px;
 }
 .primary .primary {
   float: left;

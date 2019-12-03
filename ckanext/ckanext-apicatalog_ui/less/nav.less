@@ -35,23 +35,21 @@ li:not(.active) .minusglyph {
 
 .nav-item.active,
 .nav-aside li.active {
-  background-color: @navActiveBackgroundColor;
+  font-weight: 600;
 }
 
 .nav-item.active > a,
 .nav-aside li.active a {
 
   position: relative;
-  color:@white;
-  background-color: @kapa-attention-color;
-
+  color:@black;
 }
 
 .nav.nav-facet > li.nav-item a {
   &:hover {
     .transition(0.2s);
-    background-color: @kapa-attention-color-dark;
-    color:@white;
+    background-color: @suomifi-highlight-light;
+    color: @black;
   }
 }
 

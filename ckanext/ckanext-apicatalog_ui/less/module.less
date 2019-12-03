@@ -1,8 +1,21 @@
 @import "variables";
 @module-vertical-margin: 40px;
 
-.module {
-  margin: @module-vertical-margin 0;
+.secondary {
+  .module {
+    margin: @module-vertical-margin 0;
+
+    &.main-heading {
+      margin: 0;
+      .module-heading{
+        height: 78px;
+        background-color: @suomifi-highlight-base;
+        font-size: 18px;
+        color: @white;
+      }
+    }
+  }
+
 }
 
 .module-heading {
@@ -10,6 +23,7 @@
   margin: 0;
   padding: 28px @gutterX 8px @gutterX;
   line-height: 1.3;
+  font-size: 22px;
   background-color: @moduleHeadingBackgroundColor;
   border-top: 1px solid @moduleHeadingBorderColor;
 }
@@ -230,6 +244,7 @@
 }
 
 .secondary {
+  .box();
   background-color: @moduleBackgroundColor;
 
   .module {
@@ -253,3 +268,5 @@
     vertical-align: middle;
   }
 }
+
+

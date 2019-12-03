@@ -1,8 +1,6 @@
 .wrapper {
   .clearfix();
-  .box();
   position: relative;
-  background-color:#fff;
   margin-bottom: 20px;
   margin-left:0;
 }
@@ -25,7 +23,6 @@
       height: auto;
       top: 0px;
       bottom: 0px;
-      border-right: 1px solid @genericBorderColor;
       width: 0;
   }
   .border-left:before { left: 0px; }
@@ -85,6 +82,11 @@
 }
 
 .primary {
+
+  .primary-inner{
+    .box();
+  }
+
   .primary {
     float: left;
     width: 467px;
