@@ -6935,9 +6935,6 @@ h5 {
 .module {
   margin: 40px 0;
 }
-.module h2 {
-  margin-bottom: 30px;
-}
 .module-heading {
   margin: 0;
   padding: 28px 25px 8px 25px;
@@ -10018,6 +10015,10 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   .homepage .sidebar {
     padding-top: 60px;
   }
+}
+.homepage .sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 30px;
 }
 @media (min-width: 768px) {
   .placeright-sm-up {
