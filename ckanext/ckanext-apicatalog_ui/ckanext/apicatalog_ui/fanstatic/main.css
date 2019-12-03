@@ -6786,7 +6786,25 @@ button.close {
 }
 .twitter-timeline {
   width: 100% !important;
-  border: 2px solid #ececec !important;
+  border-left: 1px solid #ececec !important;
+  border-right: 1px solid #ececec !important;
+}
+.apicatalog-twitter-feed {
+  margin-bottom: 30px;
+}
+.twitter-link-box {
+  margin-top: -10px;
+  padding: 5px 0px 10px 20px;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ececec !important;
+  background-color: white;
+}
+.twitter-link-box i {
+  font-size: 22px;
+  font-weight: 600;
+  margin-right: 16px;
+  color: #5f686d;
 }
 .subheading {
   display: block;
@@ -8589,14 +8607,14 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   text-decoration: none;
 }
 .resource-list.reordering .resource-item:hover .handle {
-  background-color: #ffffff;
+  background-color: #f9f9f9;
 }
 .resource-list.reordering .resource-item.ui-sortable-helper {
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   border: 1px solid #414141;
 }
 .resource-list.reordering .resource-item.ui-sortable-helper .handle {
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   border-color: #414141;
   color: #333333;
 }
@@ -8680,7 +8698,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   overflow: hidden;
   margin-right: 10px;
   color: #444444;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -9590,7 +9608,7 @@ h4 small {
 [role=main],
 .main {
   position: relative;
-  background: #ffffff;
+  background: #f9f9f9;
 }
 .main:after,
 [role=main]:after {
@@ -9656,7 +9674,7 @@ h4 small {
   background: url("../../../base/images/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   background-position: center center;
   position: relative;
 }
@@ -11135,7 +11153,7 @@ input[type="checkbox"]#field-remember {
 .ie8 .main,
 .ie7 .main {
   padding-top: 10px;
-  background: #ffffff url("");
+  background: #f9f9f9 url("");
 }
 .ie8 .hero,
 .ie7 .hero {
