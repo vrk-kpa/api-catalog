@@ -35,3 +35,10 @@
   {% endif %}
   {% endwith %}
 {% endblock %}
+
+{% block facet_list_heading %}
+<h2 class="module-heading">
+  {% set title = title or h.get_facet_title(name) %}
+  {{ title }}
+</h2>
+{% endblock %}

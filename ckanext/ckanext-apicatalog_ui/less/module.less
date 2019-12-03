@@ -1,3 +1,4 @@
+@import "variables";
 @module-vertical-margin: 40px;
 
 .module {
@@ -7,12 +8,10 @@
 .module-heading {
   .clearfix;
   margin: 0;
-  padding: 7px @gutterX;
-  font-size: 14px;
+  padding: 28px @gutterX 8px @gutterX;
   line-height: 1.3;
   background-color: @moduleHeadingBackgroundColor;
-  border-bottom: 1px solid @moduleHeadingBorderColor;
-  border-top: 4px solid @moduleHeadingTopBorderColor;
+  border-top: 1px solid @moduleHeadingTopBorderColor;
 }
 
 .module-content {
@@ -232,6 +231,11 @@
 
 .secondary {
   background-color: @moduleBackgroundColor;
+
+  .module {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .no-nav .module:last-child {
