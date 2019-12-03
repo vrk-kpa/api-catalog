@@ -8789,6 +8789,11 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   padding-bottom: 25px;
   border-bottom: 1px solid #dddddd;
 }
+.search-form#dataset-facet-search-form {
+  margin-bottom: 20px;
+  padding-bottom: 25px;
+  border: none;
+}
 .search-form .search-result-text {
   line-height: 42px;
 }

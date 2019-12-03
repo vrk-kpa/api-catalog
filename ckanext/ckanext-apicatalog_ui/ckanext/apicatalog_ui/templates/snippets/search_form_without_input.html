@@ -1,0 +1,14 @@
+{% extends "snippets/search_form.html" %}
+
+{% import 'macros/form.html' as form %}
+
+{% block search_facets %}{% endblock %}
+{% block search_title %}{% endblock %}
+
+{% block search_input %}
+    {% if query %}
+        {{ form.hidden("q", query) }}
+    {% endif %}
+{% endblock %}
+
+
