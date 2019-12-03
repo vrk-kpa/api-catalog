@@ -6889,6 +6889,9 @@ button.close {
 .module {
   margin: 40px 0;
 }
+.module h2 {
+  margin-bottom: 30px;
+}
 .module-heading {
   margin: 0;
   padding: 7px 25px;
@@ -9774,7 +9777,7 @@ h4 small {
   box-shadow: 0 0 0 1px #ffffff;
 }
 .homepage h1 {
-  font-size: 40px;
+  font-size: 28px;
 }
 .homepage .module li.dataset-item {
   background-color: white;
@@ -9981,6 +9984,11 @@ h4 small {
 }
 .homepage.layout-2 .stats {
   margin-top: 20px;
+}
+@media (min-width: 767px) {
+  .homepage .sidebar {
+    padding-top: 60px;
+  }
 }
 @media (min-width: 768px) {
   .placeright-sm-up {
@@ -11040,7 +11048,7 @@ iframe {
 }
 .page-heading {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
 }
 .m-top {
   margin-top: 20px;
