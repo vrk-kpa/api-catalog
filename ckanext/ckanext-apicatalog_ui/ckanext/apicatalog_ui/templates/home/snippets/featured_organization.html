@@ -2,23 +2,15 @@
 
 <h2>{{ _('Sample APIs') }}</h2>
 {% for organization in organizations %}
-
-
-
-<div class="box">
     {% snippet 'snippets/organization_item.html', organization=organization, truncate=50, truncate_title=35 %}
-</div>
 {% endfor %}
 
 
-{#
-{% set xroad_organizations = h.get_xroad_organizations() %}
+{#{% set xroad_organizations = h.get_xroad_organizations() %}
 
 <h2>{{ _('Organization that have joined the Data Exchange Layer') }}</h2>
 
 {% for xroad_organization in xroad_organizations %}
-    <div class="box">
         {% snippet 'snippets/organization_item.html', organization=xroad_organization, truncate=50, truncate_title=35 %}
-    </div>
 {% endfor %} 
 #}
