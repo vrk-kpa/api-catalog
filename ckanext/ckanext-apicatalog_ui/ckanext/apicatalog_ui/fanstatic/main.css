@@ -9969,6 +9969,9 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   border-left: 1px solid #c9cdcf;
   border-right: 1px solid #c9cdcf;
 }
+.homepage .group-list .module-heading {
+  border-top: none;
+}
 .homepage .box .inner {
   padding: 20px 25px;
 }
