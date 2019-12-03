@@ -20,7 +20,7 @@
 @kapa-vdark-grey: #464a4d;
 
 @kapa-black: #414141;
-@kapa-main-light-grey: #ececec;
+@kapa-main-light-grey: rgb(201, 205, 207);
 
 @kapa-attention-color: #1998ff;
 @kapa-attention-color-dark: #0a77d1;
@@ -30,7 +30,7 @@
 @kapa-top-color:          @kapa-black;
 @kapa-active-link:        @kapa-light-grey;
 @kapa-header-color:       white;
-@kapa-box-border-color:   @kapa-dark-grey;
+@kapa-box-border-color:   @kapa-main-light-grey;
 @kapa-darker-header:      white;
 @kapa-box-header-color:   @kapa-main-light-grey;
 @breadcrumb-active-color: @kapa-dark-grey;
@@ -47,7 +47,7 @@
 @layoutTextColor: #444;
 @layoutBoldColor: #000;
 @layoutLinkColor: @kapa-black;
-@layoutBackgroundColor: #f9f9f9;
+@layoutBackgroundColor: #fff;
 @layoutTrimBackgroundColor: #fff;
 @layoutTrimBorderColor: @kapa-box-border-color;
 
@@ -58,7 +58,7 @@
 @suomifi-brand-base: #00347a;
 @suomifi-highlight-base: #2a6ebb;
 @suomifi-highlight-light: #2e78cc;
-@suomifi-highlight-dark: 	#235a9a;
+@suomifi-highlight-dark: #235a9a;
 @suomifi-depth-base: #a5acb1;
 @suomifi-accent-base: #e97025;
 @suomifi-accent-tertiary-dark: #86499c;
@@ -68,11 +68,14 @@
 @suomifi-text-disabled: #a5acb1;
 @suomifi-text-placeholder: #949494;
 
+@suomifi-border: #c9cdcf;
+
 
 // Module Variables
 @moduleBackgroundColor: #ffffff;
-@moduleHeadingBorderColor: @kapa-box-border-color;
-@moduleHeadingBackgroundColor: @kapa-box-header-color;
+@moduleHeadingBorderColor: @suomifi-border;
+@moduleHeadingTopBorderColor: @suomifi-highlight-dark;
+@moduleHeadingBackgroundColor: white;
 @moduleHeadingActionTextColor: #888;
 @moduleExpandedBackgroundColor: rgba(255, 255, 255, 0.9);
 

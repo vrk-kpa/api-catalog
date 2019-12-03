@@ -11,8 +11,8 @@
   font-size: 14px;
   line-height: 1.3;
   background-color: @moduleHeadingBackgroundColor;
-  border-top: 1px solid @moduleHeadingBorderColor;
   border-bottom: 1px solid @moduleHeadingBorderColor;
+  border-top: 4px solid @moduleHeadingTopBorderColor;
 }
 
 .module-content {
@@ -32,11 +32,6 @@
 
 .module-content > :last-child {
   margin-bottom: 0;
-}
-
-.module:first-child .module-heading {
-  .border-radius(3px 0 0 0);
-  border-top-width: 0;
 }
 
 .module:last-child {
@@ -244,11 +239,10 @@
 }
 
 .module-image {
-  float: left;
   width: 50px;
   line-height: @line-height-computed;
   text-align: center;
-  margin-right: 15px;
+  margin-left: 15px;
   img {
     max-width: 50px;
     max-height: 50px;
