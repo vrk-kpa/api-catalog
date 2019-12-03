@@ -4966,8 +4966,8 @@ msgstr "Recently made private"
 msgid "Package changes highlighted with pink color signify changes to public visibility."
 msgstr "Package changes highlighted with pink color signify changes to public visibility."
 
-msgid "Organizations with APIs"
-msgstr "Organisationer med API"
+msgid "Sample APIs"
+msgstr "Exempel APIs"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Organisation som har anslutit sig till nationella servicekanalen"
