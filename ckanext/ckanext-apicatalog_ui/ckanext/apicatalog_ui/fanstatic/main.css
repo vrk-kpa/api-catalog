@@ -8496,7 +8496,6 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
 .dataset-item {
   font-size: 16px;
   margin-bottom: 20px;
-  border-top: 1px solid #c9cdcf;
 }
 .dataset-item:hover {
   -webkit-transition: 0.2s;
@@ -9817,6 +9816,7 @@ fieldset[disabled] .control-custom.disabled .checkbox.btn.active {
   background-color: white;
   margin-bottom: 0;
   border-bottom: 1px solid #c9cdcf;
+  border-top: 1px solid #c9cdcf;
 }
 .homepage .module li.dataset-item:hover {
   background-color: #ececec;
