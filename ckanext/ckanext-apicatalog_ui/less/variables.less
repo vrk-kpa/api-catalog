@@ -33,7 +33,6 @@
 @kapa-box-border-color:   @kapa-main-light-grey;
 @kapa-darker-header:      white;
 @kapa-box-header-color:   @kapa-main-light-grey;
-@breadcrumb-active-color: @kapa-dark-grey;
 @header-divider-color:    #3d3d3d;
 @header-inactive-color:   #cbcbcb;
 
@@ -90,7 +89,10 @@
 @emptyTextColor: #aaa;
 @genericBorderColor: #ddd;
 
-@breadcrumbTextColor: #505050;
+@breadcrumbTextColor: @suomifi-highlight-base;
+@breadcrumb-active-color: @suomifi-text-highlight;
+@breadcrumb-color: @suomifi-text-highlight;
+@breadcrumb-separator: ">";
 
 @accountMastheadColor: @kapa-black;
 
@@ -182,7 +184,6 @@
 @btn-danger-bg: @btn-secondary-bg;
 
 @btn-success-bg: @kapa-attention-color;
-@breadcrumb-separator:          "/";
 @btn-link-disabled-color: yellow;
 // Activity Stream base colors
 @activityColorText: #FFFFFF;
