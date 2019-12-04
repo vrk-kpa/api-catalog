@@ -1,5 +1,10 @@
 {% ckan_extends %}
 
+{% block prelude %}
+<h1>{{ _('Datasets') }}</h1>
+<div class="result-count">{{ _('{0} datasets').format(c.page.item_count) }}</div>
+{% endblock %}
+
 {% block form %}
 {% endblock %}
 

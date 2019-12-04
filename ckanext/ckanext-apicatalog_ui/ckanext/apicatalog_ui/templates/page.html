@@ -48,6 +48,11 @@
             </div>
           {% endblock %}
 
+          <div class="row">
+            <div class="col-xs-12 prelude">
+              {% block prelude %}{% endblock %}
+            </div>
+          </div>
           <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
             {#
             The pre_primary block can be used to add content to before the

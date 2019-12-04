@@ -5023,3 +5023,9 @@ msgstr "Näytä käyttäjän NIIS muut twiitit"
 
 msgid "API Catalog source code"
 msgstr "Liityntäkatalogin lähdekoodi"
+
+msgid "Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization."
+msgstr "Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen ja julkaisemiseen."
+
+msgid "{0} organizations"
+msgstr "{0} organisaatiota"
