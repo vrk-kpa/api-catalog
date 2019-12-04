@@ -50,7 +50,8 @@
 
           <div class="row">
             <div class="col-xs-12 prelude">
-              {% block prelude %}{% endblock %}
+              {% block prelude %}
+              {% endblock %}
             </div>
           </div>
           <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
@@ -78,19 +79,8 @@
                 #}
                 {% block primary_content %}
                   <article class="module">
-                    {% block page_header %}
-                      <header class="module-content page-header">
-                        {% if self.content_action() | trim %}
-                          <div class="content_action">
-                            {% block content_action %}{% endblock %}
-                          </div>
-                        {% endif %}
-                        <ul class="nav nav-tabs">
-                          {% block content_primary_nav %}{% endblock %}
-                        </ul>
-                      </header>
-                    {% endblock %}
                     <div class="module-content">
+                        {% block content_action %}{% endblock %}
                       {% if self.page_primary_action() | trim %}
                         <div class="page_primary_action">
                           {% block page_primary_action %}{% endblock %}
@@ -98,6 +88,7 @@
                       {% endif %}
                       {% block primary_content_inner %}
                       {% endblock %}
+
                     </div>
                   </article>
                 {% endblock %}
