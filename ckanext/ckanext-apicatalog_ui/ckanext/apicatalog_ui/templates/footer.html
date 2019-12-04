@@ -1,31 +1,34 @@
 {% block footer %}
-  <div class="footer-top clearfix">
-    <div class="col-sm-8">
-      <img src="/base/images/lika-logo.png">
-      <p class="footer-description">{{_('The service is being developed by the Population Register Centre.')}}</p>
-    </div>
-    <div class="footer-links col-sm-4">
-      <a class="external-link" href="http://esuomi.fi">{{ _('eSuomi') }}
-        <svg viewBox="0 0 24 24">
-          <use xlink:href="base/images/external-link-icon.svg#path-1"></use>
-        </svg>
-      </a>
-      <a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}}
-        <svg viewBox="0 0 24 24">
-          <use xlink:href="base/images/external-link-icon.svg#path-1"></use>
-        </svg></a>
-    </div>
-  </div>
-  <div class="footer-bottom clearfix">
-    <div class="col-sm-4 col-sm-offset-8">
-      <img src="/base/images/twitter-icon.png"/>
-      <a class="external-link" href="https://twitter.com/suomifiyritys">
-        {{ _('@Suomifiyritys') }}
-      </a>
-      <img src="/base/images/facebook-icon.png"/>
-      <a class="external-link" href="https://www.facebook.com/Suomifiyritykselle">
-        {{ _('@Suomifiyritykselle') }}
-      </a>
-    </div>
-  </div>
+	<div class="footer-top clearfix">
+		<div class="col-xs-12 col-sm-6 col-lg-7">
+			<img src="/base/images/lika-logo.png">
+			<p class="footer-description">{{_('The service is being developed by the Population Register Centre.')}}</p>
+		</div>
+		<div class="footer-top-links col-xs-12 col-sm-6 col-lg-5">
+			<a class="external-link" href="http://esuomi.fi">{{ _('eSuomi') }}
+				<svg viewbox="0 0 24 24">
+					<use xlink:href="base/images/external-link-icon.svg#path-1"></use>
+				</svg>
+			</a>
+			<a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}}
+				<svg viewbox="0 0 24 24">
+					<use xlink:href="base/images/external-link-icon.svg#path-1"></use>
+				</svg>
+			</a>
+		</div>
+	</div>
+	<div class="footer-bottom clearfix">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-6 col-lg-5 col-lg-offset-7">
+			<div class="footer-bottom-link-container" ><img src="/base/images/twitter-icon.png"/>
+				<a href="https://twitter.com/suomifiyritys">
+					{{ _('@Suomifiyritys') }}
+				</a>
+			</div>
+			<div class="footer-bottom-link-container" ><img src="/base/images/facebook-icon.png"/>
+				<a href="https://www.facebook.com/Suomifiyritykselle">
+					{{ _('@Suomifiyritykselle') }}
+				</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}

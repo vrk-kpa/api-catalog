@@ -28,7 +28,7 @@
   width: 68px;
   height: 21px;
   margin-top: 2px;
-  background: url("@{imagePath}/ckan-logo-footer.png") no-repeat top left;
+  background: url('@{imagePath}/ckan-logo-footer.png') no-repeat top left;
   text-indent: -900em;
 }
 
@@ -63,14 +63,17 @@
 }
 
 .footer-bottom {
+  padding: 30px 165px;
   background-color: @suomifi-brand-base;
   height: 80px;
 }
 
-.footer-links a {
+.footer-top-links {
   margin-top: 62px;
-  display: inline-block;
-  color: @suomifi-highlight-base;
+  a {
+    display: inline-block;
+    color: @suomifi-highlight-base;
+  }
 }
 
 .suomifi-logo {
@@ -117,14 +120,61 @@
   fill: #e97025;
 }
 
-.footer-bottom {
-  padding: 30px 165px;
-}
-
-.footer-bottom .external-link {
+.footer-bottom .footer-bottom-link-container {
   display: inline-block;
   font-size: 16px;
   line-height: 20px;
   color: white;
-  text-decoration: underline;
+  margin-right: 40px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: 1054px) {
+  .footer-top,
+  .footer-bottom {
+    padding: 30px 30px;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .footer-top {
+    height: 260px;
+    padding: 30px 30px;
+  }
+
+  .footer-top-links {
+    margin-top: 0;
+  }
+
+  .footer-top .external-link {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .footer-bottom {
+    padding: 42px 30px;
+    height: 160px;
+
+    .footer-bottom-link-container {
+      text-align: center;
+      display: block;
+      margin-bottom: 27px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
