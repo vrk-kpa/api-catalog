@@ -5001,3 +5001,6 @@ msgstr ""
 
 msgid "Show all"
 msgstr ""
+
+msgid "Filter search"
+msgstr ""
