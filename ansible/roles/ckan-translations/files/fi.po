@@ -5014,3 +5014,12 @@ msgstr "Näytä kaikki"
 
 msgid "Filter search"
 msgstr "Rajaa hakua"
+
+msgid "Show more tweets by Väestörekisterikeskus"
+msgstr "Näytä käyttäjän Väestorekisterikeskus muut twiitit"
+
+msgid "Show more tweets by NIIS"
+msgstr "Näytä käyttäjän NIIS muut twiitit"
+
+msgid "API Catalog source code"
+msgstr "Liityntäkatalogin lähdekoodi"
