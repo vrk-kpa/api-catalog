@@ -5011,3 +5011,6 @@ msgstr "organisaatiota, joilla liityntöjä"
 
 msgid "Show all"
 msgstr "Näytä kaikki"
+
+msgid "Filter search"
+msgstr "Rajaa hakua"
