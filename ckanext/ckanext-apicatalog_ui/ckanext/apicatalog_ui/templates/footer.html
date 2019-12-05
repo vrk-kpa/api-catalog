@@ -19,16 +19,23 @@
 	</div>
 	<div class="footer-bottom clearfix">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-6 col-lg-5 col-lg-offset-7">
-			<div class="footer-bottom-link-container" ><img src="/base/images/twitter-icon.png"/>
+			<div class="footer-bottom-link-container"><img src="/base/images/twitter-icon.png"/>
 				<a href="https://twitter.com/suomifiyritys">
 					{{ _('@Suomifiyritys') }}
 				</a>
 			</div>
-			<div class="footer-bottom-link-container" ><img src="/base/images/facebook-icon.png"/>
+			<div class="footer-bottom-link-container"><img src="/base/images/facebook-icon.png"/>
 				<a href="https://www.facebook.com/Suomifiyritykselle">
 					{{ _('@Suomifiyritykselle') }}
 				</a>
 			</div>
 		</div>
 	</div>
+
+	{% block footer_debug %}
+		{% if g.debug %}
+			{% include 'snippets/debug.html' %}
+		{% endif %}
+	{% endblock %}
+
 {% endblock %}
