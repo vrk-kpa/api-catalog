@@ -4921,8 +4921,8 @@ msgstr "Session fel, försök igen"
 msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
 msgstr "Vi tar gärna emot respons och utvecklingsidéer i fråga om API-katalogen. I detta skede är det inte möjligt att ge respons på enskilda API:er. Mer information om API:erna fås genom de kontaktkanaler som antecknats i API:n."
 
-msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
-msgstr "Responsen skickas till kundtjänsten för enheten Servicearkitektur vid BRC. Om du vill ha ett svar på din respons, skicka också din kontaktinformation."
+msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
+msgstr "Responsen skickas till kundtjänsten för enheten Servicearkitektur vid BRC. Om du vill ha ett svar på din respons, skicka också din kontaktinformation. Fält markerade med en asterisk (*) är obligatoriska."
 
 msgid "Shared resource"
 msgstr "Delad resurs"

@@ -1,0 +1,45 @@
+.contact-wrapper {
+  background-color: white;
+  border: 1px solid rgb(206, 210, 213);
+  padding: 0 20px 40px;
+}
+
+.contact-form {
+  label {
+    font-family: @font-family-base;
+    font-size: 16px;
+    font-weight: 600;
+    line-height:24px;
+
+    &::after {
+      content: '';
+    }
+
+    .control-required {
+      float: right;
+      padding-left: 5px;
+      color: @suomifi-text-base;
+    }
+  }
+
+  button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-family: 'SourceSansPro-SemiBold';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    line-height: 20px;
+    background-color: @suomifi-highlight-base;
+  }
+
+  .no-editor-info {
+    .editor-info-block {
+      display: none;
+    }
+  }
+
+  .reduced-width {
+    width: 65%;
+  }
+}

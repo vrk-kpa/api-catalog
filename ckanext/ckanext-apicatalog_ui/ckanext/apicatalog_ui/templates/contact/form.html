@@ -1,0 +1,29 @@
+{% ckan_extends %}
+
+{% block breadcrumb_content %}
+	<li>
+		<a class="active" href="{{ h.url_for('contact_form') }}">{{ _("Feedback") }}</a>
+	</li>
+{% endblock %}
+
+{% block primary %}
+	<div class="contact-wrapper">
+		<h1>
+			{{ _('Feedback') }}
+		</h1>
+		<div>
+			<p>{{ _('We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API.') }}</p>
+			<p>{{ _('Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory.') }}</p>
+		</div>
+		<div>
+			{% block contact_form_content %}
+				{% include "contact/snippets/form.html" %}
+			{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block secondary %}
+	{% block secondary_content %}
+	{% endblock %}
+{% endblock %}
