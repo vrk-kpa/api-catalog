@@ -85,7 +85,7 @@ def send_harvester_status_emails(ctx, config, dryrun, force, all_harvesters):
             }
 
     for recipient in email_notification_recipients:
-        email = {'recipient_name': recipient,
+        email = {'recipient_name': '',
                  'recipient_email': recipient,
                  'subject': '%s - Harvester summary %s' % (site_title, today),
                  'body': msg}
