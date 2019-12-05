@@ -5002,3 +5002,6 @@ msgstr ""
 
 msgid "API Catalog source code"
 msgstr ""
+
+msgid "The service is being developed by the Population Register Centre."
+msgstr ""

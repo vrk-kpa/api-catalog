@@ -5029,3 +5029,6 @@ msgstr "Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luo
 
 msgid "{0} organizations"
 msgstr "{0} organisaatiota"
+
+msgid "The service is being developed by the Population Register Centre."
+msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus."
