@@ -55,8 +55,9 @@
                 {{ h.build_nav('home', _('Home')) }}
                 {{ h.build_nav('search', _('Datasets')) }}
                 {{ h.build_nav('organizations_index', _('Organizations')) }}
-                {{ h.build_nav('contact_form', _('Feedback')) }}
                 <li><a href="#">{{ _('Service Management') }}</a></li>
+                {{ h.build_nav_main() }}
+                {{ h.build_nav('contact_form', _('Feedback')) }}
                 {% if c.userobj %}
                   {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
                 {% else %}
@@ -67,12 +68,6 @@
                 {% endif %}
               {% endblock %}
             </ul>
-
-            <div class="placeright-sm-up">
-              <ul class="nav navbar-nav main-navigation">
-                  {{ h.build_nav_main() }}
-              </ul>
-            </div> <!-- /.pull-right -->
 
           </div>
         </div> <!-- /.container -->

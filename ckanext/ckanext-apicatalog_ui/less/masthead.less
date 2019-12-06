@@ -2,6 +2,7 @@
 @masthead-padding: 8px;
 @account-masthead-height: 79px;
 @masthead-height: 47px;
+@masthead-doublerow-height: 89px;
 
 .placeright-sm-up {
   @media(min-width: @screen-sm-min) {
@@ -149,6 +150,10 @@
   font-size:16px;
   height: @masthead-height;
   min-height: @masthead-height;
+
+  @media (max-width: @screen-md-max) {
+    height: @masthead-doublerow-height;
+  }
 
   .navbar-collapse {
     background-color: @mastheadBackgroundColor;
