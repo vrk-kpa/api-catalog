@@ -4910,8 +4910,8 @@ msgstr "Session error, please try again"
 msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
 msgstr "We would like to receive feedback and development ideas regarding the API Catalog. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
 
-msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
-msgstr "Please send your feedback or development ideas regarding the API Catalog using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
+msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
+msgstr "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
 
 msgid "Shared resource"
 msgstr "Shared resource"
@@ -4981,3 +4981,27 @@ msgstr "Search APIs"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Consumes data available via the Suomi.fi-Data Exchange Layer."
+
+msgid "total organizations"
+msgstr "organizations"
+
+msgid "organizations with datasets"
+msgstr "organizations with APIs"
+
+msgid "Show all"
+msgstr "Show all"
+
+msgid "Filter search"
+msgstr ""
+
+msgid "Show more tweets by Väestörekisterikeskus"
+msgstr ""
+
+msgid "Show more tweets by NIIS"
+msgstr ""
+
+msgid "API Catalog source code"
+msgstr ""
+
+msgid "The service is being developed by the Population Register Centre."
+msgstr ""

@@ -183,6 +183,24 @@ def custom_organization_list(params):
     return results[page_start:page_end]
 
 
+def get_statistics():
+    context = {'model': model, 'session': model.Session,
+               'user': toolkit.c.user, 'for_view': True,
+               'with_private': True}
+
+    packages = toolkit.get_action('package_search')(context, {})
+    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True})
+    organizations_with_packages = [o for o in organizations if o.get('package_count', 0) > 0]
+
+    result_dict = {
+        'package_count': packages.get('count', 0),
+        'organization_count': len(organizations),
+        'organizations_with_packages_count': len(organizations_with_packages)
+    }
+
+    return result_dict
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -215,7 +233,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'dataset_display_name': dataset_display_name,
                 'get_xroad_organizations': get_xroad_organizations,
                 'is_service_bus_id': is_service_bus_id,
-                'custom_organization_list': custom_organization_list
+                'custom_organization_list': custom_organization_list,
+                'get_statistics': get_statistics
                 }
 
 

@@ -37,3 +37,16 @@
   {% endblock %}
 
 {% endblock %}
+
+{% block prelude %}
+    <div class="prelude-dataset">
+        <h1>{{ h.get_translated(pkg, 'title')  }}</h1>
+        <ul class="nav nav-tabs">
+            {% block content_primary_nav %}
+                {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
+                {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name, icon=None) }}
+                {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name, icon=None) }}
+            {% endblock %}
+        </ul>
+    </div>
+{% endblock %}

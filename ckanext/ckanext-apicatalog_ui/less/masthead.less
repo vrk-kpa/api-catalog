@@ -1,21 +1,9 @@
 @notificationsBg: #C9403A;
 @masthead-padding: 8px;
-@account-masthead-height: 37px;
-@masthead-height: 44px;
+@account-masthead-height: 79px;
+@masthead-height: 47px;
+@masthead-doublerow-height: 89px;
 
-.beta {
-  text-transform: uppercase;
-  display: inline-block;
-  color: @white;
-  background: @kapa-attention-color;
-  @beta-height: @font-size-base / 1.41;
-  font-size: @beta-height;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  padding-left: 4px;
-  padding-right: 4px;
-  vertical-align:middle;
-}
 .placeright-sm-up {
   @media(min-width: @screen-sm-min) {
     .placeright();
@@ -28,32 +16,6 @@
   right: 0;
   z-index: 2;
 }
-.support-sites-label {
-  position: absolute;
-  display: block;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: -4px;
-  text-align: center;
-  color: #fff;
-  text-transform: uppercase;
-
-  span {
-    background: #464a4d;
-    display: inline-block;
-    height: 100%;
-    font-weight: 400;
-    height: @account-masthead-height;
-    padding: 8px 10px 0 10px;
-  }
-}
-
-.centered {
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .informational-text .support-site-text {
   text-transform: lowercase;
@@ -63,6 +25,11 @@
   border: none;
 }
 
+@media (max-width: @screen-xs-max) {
+  .navbar-logo-text {
+    margin: 8px;
+  }
+}
 .navbar > .container {
   background-color: @mastheadBackgroundColor;
 }
@@ -71,7 +38,6 @@
   z-index: @zindex-navbar;
   float:none;
   margin:auto;
-  text-align: center;
   > li {
     border:none;
     float:none;
@@ -79,41 +45,74 @@
   }
 }
 
-#navbar-logo-text {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 3px 0;
-  padding-left: 15px;
-  display: inline-block;
-  margin-top: 9px;
-  z-index: @zindex-navbar - 1;
-  a {
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-}
-
-#profile > a > span.username {
-  color:white;
-}
-
 .language-navbar {
   .clearfix();
   min-height: @account-masthead-height;
-  background: @accountMastheadColor;
+  background: @mastheadBackgroundColor;
   color: @header-inactive-color;
   font-size: 14px;
+  border-bottom: 1px solid rgba(201, 205, 207, 1.0);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 19px;
+
+    .left {
+      flex: initial;
+    }
+
+    .center {
+      flex: initial;
+      display: flex;
+      margin: auto;
+      align-items: center;
+    }
+
+    .right {
+      flex: initial;
+    }
+  }
+  .navbar-logo-text {
+    a {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
 
   & .informational-text {
     margin-top: 10px;
   }
 
   & .language-changer {
-    text-transform: uppercase;
+    button {
+      color: rgb(40, 40, 40);
+      font-family: SourceSansPro-SemiBold;
+      font-size: 14px;
+      font-weight: 600;
+
+      border-radius: 2px;
+      border: 1px solid rgb(165, 167, 176);
+      height: 30px;
+      width: 44px;
+      padding: 0px;
+
+      i {
+        color: #2a6ebb;
+      }
+    }
   }
 
+  & .header-search {
+    margin-right: 30px;
+
+    .search-input button {
+      margin-top: -14px;
+    }
+  }
   .navbar-nav .list-inline li:not(:first-child) {
     border-left: 1px solid @header-divider-color;
   }
@@ -140,21 +139,24 @@
 }
 
 .main-navbar {
+  -webkit-box-shadow: 0 1px 0 0 rgba(201, 205, 207, 1.0);
+  box-shadow: 0 1px 0 0 rgba(201, 205, 207, 1.0);
+
   .container {
     position: relative;
   }
 
   z-index: @zindex-navbar - 1;
   font-size:16px;
-  height:@masthead-height;
-  -webkit-box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.15);
+  height: @masthead-height;
+  min-height: @masthead-height;
 
-  a {
-    color: @mastheadLinkColor;
+  @media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+    height: @masthead-doublerow-height;
   }
+
   .navbar-collapse {
-    background-color: @kapa-main-light-grey;
+    background-color: @mastheadBackgroundColor;
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -173,25 +175,33 @@
   }
 
   .main-navigation {
-    li a {
-      text-transform: uppercase;
-    }
-  }
+    a {
+      color: @mastheadLinkColor;
+      padding: 8px 0;
 
-  .navigation {
-    // Triangle below active navigation
+      color: rgb(41, 41, 41);
+      font-family: SourceSansPro-Regular;
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 27px;
+      margin-right: 64px;
+    }
+    li.active a {
+      border-bottom: 4px solid rgb(42, 110, 187);
+    }
+
     @media (max-width: @screen-xs-max) {
-      &.active a:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 8px solid @kapa-attention-color;
-        position: absolute;
-        bottom: -8px;
-        left: 50%;
-        margin-left: -8px;
+      li {
+        display: block;
+
+        a {
+          padding-left: 8px;
+          border-left: 4px solid transparent;
+        }
+        &.active a {
+          border-bottom: 0px;
+          border-left: 4px solid rgb(42, 110, 187);
+        }
       }
     }
   }
@@ -207,13 +217,20 @@
 .account {
   .nav > li > a,
   .nav > li > a:hover,
-  .nav > li > a:active
-  .nav > li > a:visited, {
-    padding: 8px 10px;
-    padding-right: 0px;
-    color: @kapa-active-link;
-    background-color: transparent !important;
+  .nav > li > a:active,
+  .nav > li > a:visited {
+    background: linear-gradient(0deg, rgb(35, 90, 154) 0%, rgb(42, 110, 187) 100%);
+    border-radius: 2px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    font-family: SourceSansPro-Semibold;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 5px 15px;
+
   }
+
   .clearfix();
   .notifications {
     a {

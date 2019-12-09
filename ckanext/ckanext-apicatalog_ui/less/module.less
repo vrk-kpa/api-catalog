@@ -1,42 +1,61 @@
+@import "variables";
 @module-vertical-margin: 40px;
 
-.module {
-  margin: @module-vertical-margin 0;
+.secondary {
+  .module {
+    margin: @module-vertical-margin 0;
+
+    &.main-heading {
+      margin: 0;
+      .module-heading{
+        height: 78px;
+        background-color: @suomifi-highlight-base;
+        font-size: 18px;
+        color: @white;
+      }
+    }
+  }
+
+}
+
+.filters {
+  .module {
+    .module-heading {
+      border-top: 1px solid @moduleHeadingBorderColor;
+    }
+  }
 }
 
 .module-heading {
   .clearfix;
   margin: 0;
-  padding: 7px @gutterX;
-  font-size: 14px;
+  padding: 28px @gutterX 8px @gutterX;
   line-height: 1.3;
+  font-size: 22px;
   background-color: @moduleHeadingBackgroundColor;
-  border-top: 1px solid @moduleHeadingBorderColor;
-  border-bottom: 1px solid @moduleHeadingBorderColor;
 }
 
 .module-content {
   padding: 0 @gutterX;
   margin: 20px 0;
+
+  > .fill-module {
+    margin: -20px 0;
+  }
 }
 
-.module-content:first-child {
+.module-content > :first-child:not(.fill-module) {
   margin-top: 0;
   padding-top: @gutterY;
 }
 
-.module-content:last-child {
+.module-content > :last-child:not(.fill-module) {
   margin-bottom: 0;
   padding-bottom: @gutterY;
 }
 
 .module-content > :last-child {
   margin-bottom: 0;
-}
-
-.module:first-child .module-heading {
-  .border-radius(3px 0 0 0);
-  border-top-width: 0;
 }
 
 .module:last-child {
@@ -236,7 +255,13 @@
 }
 
 .secondary {
+  .box();
   background-color: @moduleBackgroundColor;
+
+  .module {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .no-nav .module:last-child {
@@ -244,14 +269,15 @@
 }
 
 .module-image {
-  float: left;
   width: 50px;
   line-height: @line-height-computed;
   text-align: center;
-  margin-right: 15px;
+  margin-left: 15px;
   img {
     max-width: 50px;
     max-height: 50px;
     vertical-align: middle;
   }
 }
+
+

@@ -4081,7 +4081,7 @@ msgstr "Tällä haulla ei löydy {facet_type} -tyypin sisältöä"
 #: ckan/templates/snippets/home_breadcrumb_item.html:2
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:51
 msgid "Home"
-msgstr "Aloitussivu"
+msgstr "Etusivu"
 
 #: ckan/templates/snippets/language_selector.html:4
 msgid "Language"
@@ -4928,8 +4928,8 @@ msgstr "Istuntovirhe, ole hyvä ja yritä uudelleen"
 msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
 msgstr "Otamme vastaan palautetta ja kehittämisideoita Liityntäkatalogiin liittyen. Yksittäisistä liitynnöistä ei tässä vaiheessa voi antaa palautetta. Liityntäkohtaisia lisätietoja saa liityntään kirjattujen yhteystietojen kautta."
 
-msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information."
-msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi palautelomakkeella. Palaute ohjautuu Väestörekisterikeskuksen Palveluarkkitehtuuri-yksikön Asiakaspalveluun. Jos toivot palautteeseesi vastauksen, liitä mukaan yhteystietosi."
+msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Population Register Centre. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
+msgstr "Lähetä Liityntäkatalogiin liittyvä palautteesi tai kehitysideasi palautelomakkeella. Palaute ohjautuu Väestörekisterikeskuksen Palveluarkkitehtuuri-yksikön Asiakaspalveluun. Jos toivot palautteeseesi vastauksen, liitä mukaan yhteystietosi. Tähdellä (*) merkityt kentät ovat pakollisia."
 
 msgid "Shared resource"
 msgstr "Yhteiskäyttöinen"
@@ -4973,8 +4973,8 @@ msgstr "Yksityisiksi muutetut"
 msgid "Package changes highlighted with pink color signify changes to public visibility."
 msgstr "Vaaleanpunaisella korostetut muutokset liityntöihin sisältävät muutoksia liitynnän julkiseen näkymiseen."
 
-msgid "Organizations with APIs"
-msgstr "Organisaatiot, joilla on liityntöjä"
+msgid "Sample APIs"
+msgstr "Esimerkkejä liitynnöistä"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Palveluväylään liittyneet organisaatiot"
@@ -4999,3 +4999,36 @@ msgstr "Etsi liitynnöistä"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
+
+msgid "Service Management"
+msgstr "Palveluhallinta"
+
+msgid "total organizations"
+msgstr "organisaatiota"
+
+msgid "organizations with datasets"
+msgstr "organisaatiota, joilla liityntöjä"
+
+msgid "Show all"
+msgstr "Näytä kaikki"
+
+msgid "Filter search"
+msgstr "Rajaa hakua"
+
+msgid "Show more tweets by Väestörekisterikeskus"
+msgstr "Näytä käyttäjän Väestorekisterikeskus muut twiitit"
+
+msgid "Show more tweets by NIIS"
+msgstr "Näytä käyttäjän NIIS muut twiitit"
+
+msgid "API Catalog source code"
+msgstr "Liityntäkatalogin lähdekoodi"
+
+msgid "Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization."
+msgstr "Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen ja julkaisemiseen."
+
+msgid "{0} organizations"
+msgstr "{0} organisaatiota"
+
+msgid "The service is being developed by the Population Register Centre."
+msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus."

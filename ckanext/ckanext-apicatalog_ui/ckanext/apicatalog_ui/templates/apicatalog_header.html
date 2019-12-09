@@ -1,40 +1,43 @@
 {% block header_wrapper %}
 
   {% block header_language %}
-    <header class="language-navbar">
+    <header class="language-navbar hidden-xs">
       <div class="container">
 
-          <div class="hidden-sm support-sites-label">
-            <span class="hidden-xs">Suomi.fi {{ _('Support and administration sites') }}</span>
+          <div class="left">
+            <div class="navbar-logo-text">
+              <a href="{{ h.url('home') }}"><img src="/base/images/lika-logo.png" alt="{{ _('API Catalog') }}"></a>
+            </div>
           </div>
 
-          <ul class="nav navbar-nav">
-            <li class="pull-left">
-              {% snippet 'home/snippets/apicatalog_language-changer.html' %}
-            </li>
-            <li class="pull-right">
-              {% snippet 'home/snippets/apicatalog_profile.html' %}
-            </li>
-          </ul>
-
+          <div class="center">
+            <form class="search-form header-search" method="get" action="{{ h.url('search') }}">
+            <div class="search-input control-group">
+              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" />
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            </form>
+            {% snippet 'home/snippets/apicatalog_language-changer.html' %}
+          </div>
+          <div class="right">
+            {% snippet 'home/snippets/apicatalog_profile.html' %}
+          </div>
       </div>
     </header>
   {% endblock %} {# /header_language #}
 
   {% block header_account %}
     <div class="navbar-wrapper">
-      <nav class="navbar navbar-default main-navbar" data-spy="affix" data-offset-top="36">
-      {% block header_debug %}
-        {% if g.debug and not g.debug_supress_header %}
-          <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
-        {% endif %}
-      {% endblock %}
-      <div class="container">
-        <div class="centered">
+      <nav class="navbar navbar-default main-navbar" data-spy="affix" data-offset-top="80">
+        {% block header_debug %}
+          {% if g.debug and not g.debug_supress_header %}
+            <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
+          {% endif %}
+        {% endblock %}
+        <div class="container">
           <div class="logo-row">
-
-            <div id="navbar-logo-text">
-              <a href="{{ h.url('home') }}">{{ _('API Catalog') }}</a>
+            <div class="navbar-logo-text visible-xs">
+              <a href="{{ h.url('home') }}"><img src="/base/images/lika-logo.png" alt="{{ _('API Catalog') }}"></a>
             </div>
 
             <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,22 +52,26 @@
 
             <ul class="nav navbar-nav main-navigation">
               {% block header_site_navigation_tabs %}
+                {{ h.build_nav('home', _('Home')) }}
                 {{ h.build_nav('search', _('Datasets')) }}
                 {{ h.build_nav('organizations_index', _('Organizations')) }}
+                <li><a href="#">{{ _('Service Management') }}</a></li>
+                {{ h.build_nav_main() }}
+                {{ h.build_nav('contact_form', _('Feedback')) }}
+                {% if c.userobj %}
+                  {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
+                {% else %}
+                  <li class="visible-xs">{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
+                  {% if h.check_access('user_create') %}
+                    <li class="visible-xs">{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+                  {% endif %}
+                {% endif %}
               {% endblock %}
             </ul>
 
-            <div class="placeright-sm-up">
-              <ul class="nav navbar-nav">
-                  {{ h.build_nav_main() }}
-                  {{ h.build_nav('contact_form', _('Feedback')) }}
-              </ul>
-            </div> <!-- /.pull-right -->
-
           </div>
-        </div>
-      </div> <!-- /.container -->
-    </nav>
+        </div> <!-- /.container -->
+      </nav>
     </div>
   {% endblock %} {# header_account #}
 

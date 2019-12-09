@@ -1,20 +1,19 @@
 .dataset-list {
   padding: 0px;
+  .box();
 }
 
 .dataset-item {
-
-  border-left: 10px solid @kapa-secondary-attention-color;
-  background-color: @kapa-light-grey;
-  margin-bottom: 20px;
+  font-size: 16px;
+  border-bottom: 1px solid @suomifi-border;
 
   &:hover {
     .transition(0.2s);
     background-color: @kapa-dark-grey;
   }
 
-  &, a {
-    color: @black;
+  &, a, a:visited {
+    color: @suomifi-highlight-base;
   }
 
   & .container-fluid {
@@ -35,9 +34,10 @@
 }
 
 .dataset-heading {
-  font-size: 16px;
+  font-size: 22px;
+  font-weight: 600;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   line-height: 1.3;
 }
 

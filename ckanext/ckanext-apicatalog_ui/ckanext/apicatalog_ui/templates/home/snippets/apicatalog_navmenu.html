@@ -1,0 +1,11 @@
+{% block navmenu %}
+  <div>
+    <span><i class="fa fa-bars"></i></span>
+    <ul style="display:none">
+      {{ h.build_nav('search', _('Datasets')) }}
+      {{ h.build_nav('organizations_index', _('Organizations')) }}
+      {{ h.build_nav_main() }}
+      {{ h.build_nav('contact_form', _('Feedback')) }}
+    </ul>
+  </div>
+{% endblock %}

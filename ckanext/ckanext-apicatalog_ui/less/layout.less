@@ -1,8 +1,6 @@
 .wrapper {
   .clearfix();
-  .box();
   position: relative;
-  background-color:#fff;
   margin-bottom: 20px;
   margin-left:0;
 }
@@ -25,7 +23,6 @@
       height: auto;
       top: 0px;
       bottom: 0px;
-      border-right: 1px solid @genericBorderColor;
       width: 0;
   }
   .border-left:before { left: 0px; }
@@ -85,6 +82,11 @@
 }
 
 .primary {
+
+  .primary-inner{
+    .box();
+  }
+
   .primary {
     float: left;
     width: 467px;
@@ -111,22 +113,16 @@
   background-size: cover;
   background-color:@layoutBackgroundColor;
   background-position: center center;
+  position: relative;
+  padding: 44px;
 }
 
-.hero:after {
-  // Need to manually declare this here. If you pass rgba() through to
-  // #gradient it breaks the filter property in IE7.
-  .rgba-vertial-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
-  background-color: @moduleHeadingBackgroundColor;
-  border-bottom: 1px solid darken(@moduleHeadingBorderColor, 5%);
-  .border-radius(3px 3px 0 0);
-  .box-shadow(inset 0 -4px 0 rgba(0, 0, 0, 0.03));
-  .back:hover {
-    text-decoration: none;
-    span {
-      text-decoration: underline;
-    }
-  }
+.hero-background-container::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background-color: rgba(0,33,78,.9);
 }
 
 .row2 {
@@ -221,5 +217,45 @@
 .flash-messages {
   .alert {
     .box-shadow(0 0 0 1px white);
+  }
+}
+
+
+.prelude {
+  h1 {
+    color: @suomifi-text-base;
+    font-family: SourceSansPro-Light;
+    font-size: 40px;
+    font-weight: 300;
+    height: 48px;
+    line-height: 48px;
+    margin-top: 0px;
+    margin-bottom: 29px;
+  }
+
+  p {
+    color: @suomifi-text-base;
+    font-family: SourceSansPro-Regular;
+    font-size: 18px;
+    font-weight: normal;
+    height: 54px;
+    line-height: 27px;
+    margin-bottom: 40px;
+  }
+
+  .result-count {
+    color: @suomifi-text-base;
+    font-family: SourceSansPro-SemiBold;
+    font-size: 16px;
+    font-weight: 600;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+
+  .prelude-dataset {
+    .box();
+    background-color: @white;
+    padding: 40px;
   }
 }

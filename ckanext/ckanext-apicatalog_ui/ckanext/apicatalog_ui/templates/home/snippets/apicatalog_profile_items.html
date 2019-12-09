@@ -1,0 +1,65 @@
+{% if c.userobj.sysadmin %}
+<li class="{{ class }}">
+  <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+    <i class="fa fa-gavel" aria-hidden="true"></i>
+    <span class="text">{{ _('Admin') }}</span>
+  </a>
+</li>
+{% endif %}
+
+<li class="{{ class }}">
+  <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" title="{{ _('View profile') }}">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <span class="text">{{ c.userobj.display_name }}</span>
+  </a>
+</li>
+
+{% set new_activities = h.new_activities() %}
+
+<li class="{{ class }} notifications {% if new_activities > 0 %}notifications-important{% endif %}">
+  {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+  <a href="{{ h.url_for('user.dashboard') }}" title="{{ notifications_tooltip }}">
+    <i class="fa fa-tachometer" aria-hidden="true"></i>
+    <span class="text">{{ _('Dashboard') }}</span>
+    <span class="badge">{{ new_activities }}</span>
+  </a>
+</li>
+
+<!-- The markup for ckanext_pages is added directly, because -->
+<!-- the markup in ckanext_pages does not have an inner <span> -->
+<li class="{{ class }}">
+  <a href="{{ h.url_for('pages_index') }}" title="{{ _('Pages') }}">
+    <i class="fa fa-file"></i>
+    <span class="text">{{ _('Pages') }}</span>
+  </a>
+</li>
+
+<li class="{{ class }}">
+  <a href="{{ h.url_for('blog_index') }}" title="{{ _('Blog') }}">
+    <i class="fa fa-pencil"></i>
+    <span class="text">{{ _('Blog') }}</span>
+  </a>
+</li>
+<!-- /ckanext_pages -->
+
+{% block header_account_logged %}
+{% endblock %}
+
+{% block header_account_settings_link %}
+<li class="{{ class }}">
+  <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
+    <i class="fa fa-cog" aria-hidden="true"></i>
+    <span class="text">{{ _('Settings') }}</span>
+  </a>
+</li>
+{% endblock %}
+
+{% block header_account_log_out_link %}
+<li class="{{ class }}">
+  <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
+    <i class="fa fa-signout" aria-hidden="true"></i>
+    <span class="text">{{ _('Log out') }}</span>
+  </a>
+</li>
+{% endblock %}
+

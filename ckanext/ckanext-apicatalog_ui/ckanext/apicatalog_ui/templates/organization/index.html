@@ -1,17 +1,24 @@
 {% ckan_extends %}
 
+{% set items = h.custom_organization_list(request.params) %}
+
+{% block prelude %}
+<h1>{{ _('Organizations') }}</h1>
+<p>{% trans %}Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization.{% endtrans %}</p>
+<div class="result-count">{{ _('{0} organizations').format(items|count) }}</div>
+{% endblock %}
 
 {% set sorting = [(_('Relevance'), ''), (_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
 
 {% block organizations_search_form %}
-    {% snippet 'snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items %}
 {% endblock %}
 
 {% block organizations_list %}
-  {% set items = h.custom_organization_list(request.params) %}
   {% if items or request.params %}
     {% if items %}
+    <div class="fill-module">
       {% snippet "organization/snippets/organization_list.html", organizations=items %}
+    </div>
     {% endif %}
   {% else %}
     <p class="empty">
@@ -21,4 +28,15 @@
       {% endif %}
     </p>
   {% endif %}
+{% endblock %}
+
+{% block secondary_content %}
+<section class="module main-heading">
+    <h2 class="module-heading">{{ _('Filter search') }}</h2>
+</section>
+    <section class="module module-shallow">
+        <div class="module-content">
+          {% snippet 'snippets/search_form_without_title.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+        </div>
+    </section>
 {% endblock %}

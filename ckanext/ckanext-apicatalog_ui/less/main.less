@@ -1,3 +1,40 @@
 @import "../vendor/bootstrap/less/bootstrap.less";
 @import "twitter.less";
 @import "ckan.less";
+
+body {
+  font-family: @font-family-base;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 27px;
+}
+
+.apicatalog-page-wrapper {
+  background-color: white;
+  border: 1px solid rgb(206, 210, 213);
+  padding: 25px 20px 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: @suomifi-accent-tertiary-dark;
+}
+
+a:disabled {
+  text-decoration: none;
+  color: @suomifi-text-disabled;
+}
+
+a:hover {
+  text-decoration: none;
+  color: @suomifi-highlight-dark;
+}
+
+a:focus {
+  text-decoration: none;
+  color: @suomifi-accent-base;
+}

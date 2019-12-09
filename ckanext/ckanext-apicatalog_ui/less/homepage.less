@@ -1,12 +1,19 @@
+@import (reference) "variables";
+@import "mixins";
+@import "../vendor/bootstrap/less/mixins";
+@import "../vendor/bootstrap/less/type";
+@import (reference) "../vendor/bootstrap/less/variables";
+
 .homepage {
   h1 {
-    font-size: 40px;
+    font-size: 28px;
   }
 
   .module li.dataset-item {
     background-color: white;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     border-bottom: 1px solid @kapa-box-border-color;
+    border-top: 1px solid @suomifi-border;
     &:hover {
       background-color: @kapa-light-grey;
     }
@@ -18,26 +25,49 @@
   .top-caption {
     text-align: center;
     display: block;
-    font-weight: 200;
-    font-family: Roboto, SourceSansProRegular, 'Helvetica Neue', Arial;
-    font-variant-ligatures: none;
-    text-shadow: 0 0 10px rgb(70, 70, 70);
-    font-size: 56px !important;
-    font-size: 2rem;
-    margin: 30px 0 20px 0;
+    font-weight: 500;
+    font-family: @font-family-base;
+    font-size: 40px !important;
+    line-height: 48px;
+    margin: 13px 0 44px 0;
     color: #fff;
+  }
+
+  #hero-stats {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 6px;
+
+    .count {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    i {
+      color: @suomifi-accent-base;
+      font-size: 16px;
+      margin-right: 8px;
+    }
+
+    a {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: white;
+    }
   }
 
   .module-search {
     @search-box-color: @kapa-secondary-attention-color;
     background-color: @search-box-color;
     border-color: @search-box-color;
-    border-radius: 0px;
+    border-radius: 0;
 
     input {
       border:none;
       border-radius:5px;
-      box-shadow: 5px;
+      box-shadow: 5px 5px;
 
       &:hover,
       &:focus {
@@ -91,7 +121,7 @@
    span {
      font-weight: bold;
       margin-top: 10px;
-      margin-bottom:0px;
+      margin-bottom:0;
       display:inline-block;
     }
 
@@ -128,7 +158,7 @@
   .search-form {
     border-bottom: none;
     .search-input {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -141,7 +171,18 @@
   }
 
   .group-list {
+    border-top: 4px solid @moduleHeadingTopBorderColor;
+
+    > * {
+      border-left: 1px solid @layoutTrimBorderColor;
+      border-right: 1px solid @layoutTrimBorderColor;
+    }
     margin: 0;
+
+    .module-heading {
+      border-top: none;
+    }
+
   }
 
   .box .inner {
@@ -176,4 +217,13 @@
     margin-top: @gutterY;
   }
 
+  .sidebar {
+    @media (min-width: @screen-xs-max) {
+      padding-top: 60px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+  }
 }

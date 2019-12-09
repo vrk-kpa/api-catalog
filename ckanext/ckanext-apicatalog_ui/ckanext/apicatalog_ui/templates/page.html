@@ -48,6 +48,20 @@
             </div>
           {% endblock %}
 
+          <div class="row">
+            <div class="col-xs-12 prelude">
+              <div class="pull-right">
+                {% block content_action %}{% endblock %}
+                {% if self.page_primary_action() | trim %}
+                  <div class="page_primary_action">
+                    {% block page_primary_action %}{% endblock %}
+                  </div>
+                {% endif %}
+              </div>
+              {% block prelude %}
+              {% endblock %}
+            </div>
+          </div>
           <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
             {#
             The pre_primary block can be used to add content to before the
@@ -59,6 +73,7 @@
 
             {% block primary %}
               <div class="primary border-left col-xs-12 col-sm-9">
+
                 {#
                 The primary_content block can be used to add content to the page.
                 This is the main block that is likely to be used within a template.
@@ -72,29 +87,14 @@
                 #}
                 {% block primary_content %}
                   <article class="module">
-                    {% block page_header %}
-                      <header class="module-content page-header">
-                        {% if self.content_action() | trim %}
-                          <div class="content_action">
-                            {% block content_action %}{% endblock %}
-                          </div>
-                        {% endif %}
-                        <ul class="nav nav-tabs">
-                          {% block content_primary_nav %}{% endblock %}
-                        </ul>
-                      </header>
-                    {% endblock %}
                     <div class="module-content">
-                      {% if self.page_primary_action() | trim %}
-                        <div class="page_primary_action">
-                          {% block page_primary_action %}{% endblock %}
-                        </div>
-                      {% endif %}
                       {% block primary_content_inner %}
                       {% endblock %}
+
                     </div>
                   </article>
                 {% endblock %}
+
               </div>
             {% endblock %}
             {% block secondary %}
