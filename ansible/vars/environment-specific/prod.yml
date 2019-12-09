@@ -83,3 +83,5 @@ robots_allowed: true
 
 paha_key_whitelist:
   - "{{ secret.ckan_paha_apikey }}"
+
+apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
