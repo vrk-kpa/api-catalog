@@ -38,14 +38,18 @@
 .module-content {
   padding: 0 @gutterX;
   margin: 20px 0;
+
+  > .fill-module {
+    margin: -20px 0;
+  }
 }
 
-.module-content:first-child {
+.module-content > :first-child:not(.fill-module) {
   margin-top: 0;
   padding-top: @gutterY;
 }
 
-.module-content:last-child {
+.module-content > :last-child:not(.fill-module) {
   margin-bottom: 0;
   padding-bottom: @gutterY;
 }

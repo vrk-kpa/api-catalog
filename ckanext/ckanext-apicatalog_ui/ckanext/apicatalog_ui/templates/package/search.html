@@ -20,3 +20,9 @@
     </section>
 {{ super()}}
 {% endblock%}
+
+ {% block package_search_results_list %}
+ <div class="fill-module">
+  {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+ </div>
+{% endblock %}

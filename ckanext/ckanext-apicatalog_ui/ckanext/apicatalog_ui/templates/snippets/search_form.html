@@ -1,8 +1,13 @@
 {% ckan_extends %}
 
+{% block search_input %}
+<label for="field-giant-search">{{ _('Filter by text') }}</label>
+{{ super() }}
+{% endblock %}
+
   {% block search_sortby %}
     {% if sorting %}
-      <div class="form-select form-group control-order-by">
+      <div class="form-select">
         <label for="field-order-by">{{ _('Order by') }}</label>
         <select id="field-order-by" name="sort">
           {% for label, value in sorting %}
