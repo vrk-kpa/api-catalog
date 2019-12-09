@@ -60,7 +60,7 @@
     name: "Send harvester status report emails"
     minute: "0"
     hour: "11"
-    job: "{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog-harvest send-status-emails --config={{ ckan_ini }}"
+    job: "{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog-harvest send-status-emails --force --config={{ ckan_ini }}"
 
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
