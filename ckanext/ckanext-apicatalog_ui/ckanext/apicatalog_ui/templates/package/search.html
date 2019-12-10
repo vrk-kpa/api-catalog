@@ -50,8 +50,8 @@
     <h2 class="module-heading">{{ _('Filter search') }}</h2>
 </section>
     <section class="module module-narrow module-shallow">
-        <div class="module-content">
-        {% snippet 'snippets/search_form_without_input.html', form_id='dataset-facet-search-form', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search ' + dataset_type + 's') + '...', facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
+        <div class="sorter-wrapper">
+          {% snippet 'snippets/search_form_without_input.html', form_id='dataset-facet-search-form', type=dataset_type, query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search ' + dataset_type + 's') + '...', facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
         </div>
     </section>
 {{ super()}}

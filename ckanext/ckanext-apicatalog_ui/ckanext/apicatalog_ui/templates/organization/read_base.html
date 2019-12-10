@@ -29,10 +29,12 @@
 	<section class="module main-heading">
 		<h2 class="module-heading">{{ _('Filter list') }}</h2>
 	</section>
-	{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
-	{% set sorting_selected = c.sort_by_selected or 'title asc' %}
-	<div class="sorter-wrapper">
-		{% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
-	</div>
+	<section class="module module-narrow module-shallow">
+		{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+		{% set sorting_selected = c.sort_by_selected or 'title asc' %}
+		<div class="sorter-wrapper with-search">
+			{% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
+		</div>
+	</section>
 	{% block organization_facets %}{% endblock %}
 {% endblock %}
