@@ -3,7 +3,7 @@
 	     to <ul class="list-group"> #}
          
 {% block organization_list %}
-<ul class="list-group">
+<ul class="list-group group-list">
   {% block organization_list_inner %}
   {% for organization in organizations %}
     {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}

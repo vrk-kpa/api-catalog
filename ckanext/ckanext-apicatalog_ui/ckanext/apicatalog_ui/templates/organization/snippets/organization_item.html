@@ -17,24 +17,19 @@ Example:
   <div class="media">
   {% block item_inner %}
   {% block image %}
-  <div class="media-left media-middle hidden-xs">
-    <div class="kapa-image-wrapper">
-      <img class="media-object" src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" alt="{{ organization.name }}">
-    </div>
-  </div>
   {% endblock %}
   <div class="media-body">
   {% block title %}
-    <div class="media-heading"><strong>{{ organization.display_name }}</strong></div>
+    <div class="media-heading">{{ organization.display_name }}</div>
   {% endblock %}
   {% block description %}
     {% if organization.description %}
-      <p>{{ h.markdown_extract(organization.description) }}</p>
+      <p class="description">{{ h.markdown_extract(organization.description) }}</p>
     {% endif %}
   {% endblock %}
   {% block datasets %}
     {% if organization.package_count %}
-      <strong class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</strong>
+      <span class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</span>
     {% else %}
       <span class="count">{{ _('Consumes data available via the Suomi.fi-Data Exchange Layer.') }}</span>
     {% endif %}
