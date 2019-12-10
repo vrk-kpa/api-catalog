@@ -2,10 +2,10 @@
   .clearfix();
   position: relative;
   margin-bottom: 20px;
-  margin-left:0;
+  margin-left: 0;
 }
 .pull-right-sm-up {
-  @media(min-width: @screen-sm-min) {
+  @media (min-width: @screen-sm-min) {
     margin-left: 0 !important;
     position: absolute;
     top: 0;
@@ -14,55 +14,63 @@
   }
 }
 @media (min-width: @screen-sm-min) {
-  .border-right, .border-left, .border-both {
-      position: relative;
+  .border-right,
+  .border-left,
+  .border-both {
+    position: relative;
   }
-  .border-left:before, .border-right:after {
-      position: absolute;
-      content:'';
-      height: auto;
-      top: 0px;
-      bottom: 0px;
-      width: 0;
+  .border-left:before,
+  .border-right:after {
+    position: absolute;
+    content: '';
+    height: auto;
+    top: 0px;
+    bottom: 0px;
+    width: 0;
   }
-  .border-left:before { left: 0px; }
-  .border-right:after { right: -1px; }
+  .border-left:before {
+    left: 0px;
+  }
+  .border-right:after {
+    right: -1px;
+  }
 }
 .wrapper.no-nav {
   background-image: none;
 }
 
-[role=main], .main {
+[role='main'],
+.main {
   position: relative;
   background: @layoutBackgroundColor;
 }
 
 .main:after,
-[role=main]:after {
+[role='main']:after {
   bottom: 0;
   border-top-width: 1px;
 }
 
-[role=main] .primary {
+[role='main'] .primary {
   float: right;
   margin-left: 0; // Remove grid margin.
 }
 
-[role=main] .secondary {
+[role='main'] .secondary {
   padding: 0;
   margin-left: 0; // Remove grid margin.
 }
 
 /* Filters modal */
 .no-text .text {
-  display:none;
+  display: none;
 }
 .js body.filters-modal {
-  overflow:hidden;
+  overflow: hidden;
 }
 .show-filters.btn,
 .hide-filters {
-  display:none;
+  display: none;
 }
 
 @media (max-width: @screen-sm-max) {
@@ -82,8 +90,7 @@
 }
 
 .primary {
-
-  .primary-inner{
+  .primary-inner {
     .box();
   }
 
@@ -92,7 +99,10 @@
     width: 467px;
     margin-left: 0;
     margin-bottom: 20px;
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       &:first-child {
         margin-top: 0;
       }
@@ -106,23 +116,24 @@
   }
 }
 
-
 .hero-background-container {
   background: url(@heroBgPath);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color:@layoutBackgroundColor;
+  background-color: @layoutBackgroundColor;
   background-position: center center;
   position: relative;
   padding: 44px;
 }
 
 .hero-background-container::before {
-  content: "";
+  content: '';
   position: absolute;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
-  background-color: rgba(0,33,78,.9);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 33, 78, 0.9);
 }
 
 .row2 {
@@ -160,7 +171,7 @@
   .info {
     margin-top: 15px;
     padding-top: 10px;
-    border-top: 1px dotted #DDD;
+    border-top: 1px dotted #ddd;
     word-break: break-word;
     dl dd {
       margin-top: 3px;
@@ -172,7 +183,7 @@
     margin-top: 15px;
     padding-top: 10px;
     padding-bottom: 0;
-    border-top: 1px dotted #DDD;
+    border-top: 1px dotted #ddd;
     dl {
       float: left;
       width: 50%;
@@ -205,9 +216,6 @@
     margin-top: 15px;
   }
   &.editing {
-    .module-heading {
-
-    }
     .module-content {
       margin-top: 0;
     }
@@ -219,7 +227,6 @@
     .box-shadow(0 0 0 1px white);
   }
 }
-
 
 .prelude {
   h1 {
@@ -235,7 +242,7 @@
 
   p {
     color: @suomifi-text-base;
-    font-family: SourceSansPro-Regular;
+    font-family: @font-family-base;
     font-size: 18px;
     font-weight: normal;
     height: 54px;
@@ -243,9 +250,16 @@
     margin-bottom: 40px;
   }
 
+  & > div.pull-right {
+    a,
+    div {
+      display: inline-block;
+    }
+  }
+
   .result-count {
     color: @suomifi-text-base;
-    font-family: SourceSansPro-SemiBold;
+    font-family: @headings-font-family;
     font-size: 16px;
     font-weight: 600;
     height: 20px;
@@ -257,5 +271,55 @@
     .box();
     background-color: @white;
     padding: 40px;
+  }
+}
+
+.page-container {
+  background-color: white;
+  border: 1px solid rgb(206, 210, 213);
+  padding: 0 20px 40px;
+}
+
+.org-page-tweaks {
+  margin-right: 0;
+  padding: 40px;
+
+  .primary {
+    padding-left: 0;
+    .module-content {
+      padding-left: 20px;
+      margin-top: 0;
+    }
+  }
+}
+
+.org-page-heading {
+  margin-top: -22px;
+  margin-bottom: 40px;
+}
+
+.sorter-wrapper {
+  padding: 20px 20px 30px 20px;
+
+  .search-form {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  select {
+    width: 100%;
+    display: block;
+  }
+
+  label {
+    font-family: @headings-font-family;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+
+    &::after {
+      content: '';
+    }
   }
 }

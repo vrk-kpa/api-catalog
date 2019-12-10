@@ -5016,3 +5016,9 @@ msgstr ""
 
 msgid "The service is being developed by the Population Register Centre."
 msgstr ""
+
+msgid "Active APIs"
+msgstr ""
+
+msgid "Filter list"
+msgstr ""

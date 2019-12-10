@@ -5032,3 +5032,9 @@ msgstr "{0} organisaatiota"
 
 msgid "The service is being developed by the Population Register Centre."
 msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus."
+
+msgid "Active APIs"
+msgstr "Aktiiviset liitynnät"
+
+msgid "Filter list"
+msgstr "Rajaa listaa"

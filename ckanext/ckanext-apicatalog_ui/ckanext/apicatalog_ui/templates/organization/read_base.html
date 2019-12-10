@@ -1,9 +1,38 @@
 {% ckan_extends %}
 
+{% block prelude %}
+	<div class="prelude-dataset">
+		<h1>{{ h.get_translated( c.group_dict, 'title')  }}</h1>
+		<ul class="nav nav-tabs">
+			{% block content_primary_nav %}
+				{{ h.build_nav_icon(group_type + '_read', _('Datasets'), id=c.group_dict.name, icon=None) }}
+				{{ h.build_nav_icon(group_type + '_activity', _('Activity Stream'), id=c.group_dict.name, offset=0, icon=None) }}
+				{{ h.build_nav_icon(group_type + '_about', _('About'), id=c.group_dict.name, icon=None) }}
+				{% if h.check_access('read_members', {'id': c.group_dict.name}) %}
+					{{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name, icon=None) }}
+				{% endif %}
+			{% endblock %}
+		</ul>
+	</div>
+{% endblock %}
 
-{% block content_primary_nav %}
-    {{ super() }}
-    {% if h.check_access('read_members', {'id': c.group_dict.name}) %}
-        {{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name) }}
-    {% endif %}
+{% block wrapper_class %} page-container org-page-tweaks {% endblock %}
+
+{% block primary %}
+<div class="org-page-heading">
+	<h2>{{ _('Active APIs') }}</h2>
+</div>
+{{super()}}
+{% endblock %}
+
+{% block secondary_content %}
+	<section class="module main-heading">
+		<h2 class="module-heading">{{ _('Filter list') }}</h2>
+	</section>
+	{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+	{% set sorting_selected = c.sort_by_selected or 'title asc' %}
+	<div class="sorter-wrapper">
+		{% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
+	</div>
+	{% block organization_facets %}{% endblock %}
 {% endblock %}
