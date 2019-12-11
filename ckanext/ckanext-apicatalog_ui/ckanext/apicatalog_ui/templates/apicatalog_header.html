@@ -52,10 +52,12 @@
 
             <ul class="nav navbar-nav main-navigation">
               {% block header_site_navigation_tabs %}
+                  {% set current_lang = request.environ.CKAN_LANG %}
+                  {% set lang_code = 'en' if current_lang == 'en_GB' else current_lang %}
                 {{ h.build_nav('home', _('Home')) }}
                 {{ h.build_nav('search', _('Datasets')) }}
                 {{ h.build_nav('organizations_index', _('Organizations')) }}
-                <li><a href="#">{{ _('Service Management') }}</a></li>
+                <li><a href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Service Management') }}</a></li>
                 {{ h.build_nav_main() }}
                 {{ h.build_nav('contact_form', _('Feedback')) }}
                 {% if c.userobj %}

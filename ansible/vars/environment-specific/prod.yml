@@ -55,7 +55,7 @@ email:
   from: no-reply@{{ email_domain }}
   error_recipient: admin@localhost
   error_from: error@{{ email_domain }}
-  contact: kapa-asiakaspalvelu@vrk.fi
+  contact: palveluvayla@palveluvayla.fi
 
 xroad:
   securityserver:
