@@ -70,11 +70,28 @@ input[type=checkbox] {
   }
 }
 
-select {
-  padding: 4px;
-  height:33px;
-  background-color: white;
-  border: 2px solid @kapa-input-border;
+.select-wrapper {
+  position: relative;
+  select {
+    color: @suomifi-text-base;
+    padding: 4px;
+    padding-right: 10px;
+    height:33px;
+    background-color: white;
+    border: 1px solid @kapa-input-border;
+    border-radius: 2px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &:after {
+    content: "⏷";
+    color: @suomifi-text-highlight;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+  }
 }
 
 textarea {

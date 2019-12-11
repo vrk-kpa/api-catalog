@@ -9,13 +9,15 @@
     {% if sorting %}
       <div class="form-select">
         <label for="field-order-by">{{ _('Order by') }}</label>
-        <select id="field-order-by" name="sort">
-          {% for label, value in sorting %}
-            {% if label %}
-              <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
-            {% endif %}
-          {% endfor %}
-        </select>
+        <div class="select-wrapper">
+          <select id="field-order-by" name="sort">
+            {% for label, value in sorting %}
+              {% if label %}
+                <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
         {% block search_sortby_button %}
         <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
         {% endblock %}
