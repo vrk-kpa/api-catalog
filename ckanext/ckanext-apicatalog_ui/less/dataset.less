@@ -33,7 +33,12 @@
   margin-bottom: 0;
 }
 
+.dataset-content {
+  color: @suomifi-text-base;
+}
+
 .dataset-heading {
+  color: @suomifi-highlight-base;
   font-size: 22px;
   font-weight: 600;
   margin-top: 0;
@@ -58,10 +63,13 @@
 }
 
 .dataset-resources li {
-  display: inline;
   float: right;
   margin-left: 5px;
   margin-bottom: 5px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 .dataset-resources li a {

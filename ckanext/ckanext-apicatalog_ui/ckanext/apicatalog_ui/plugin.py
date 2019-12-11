@@ -204,6 +204,7 @@ def get_statistics():
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IFacets, inherit=True)
 
     # IConfigurer
 
@@ -236,6 +237,13 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'custom_organization_list': custom_organization_list,
                 'get_statistics': get_statistics
                 }
+
+    # IFacets
+
+    def organization_facets(self, facets_dict, organization_type, package_type):
+        if (organization_type == 'organization'):
+            facets_dict.pop('organization', None)
+        return facets_dict
 
 
 def admin_only(context, data_dict=None):

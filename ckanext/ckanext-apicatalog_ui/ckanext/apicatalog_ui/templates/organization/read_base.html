@@ -32,7 +32,7 @@
 	<section class="module module-narrow module-shallow">
 		{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
 		{% set sorting_selected = c.sort_by_selected or 'title asc' %}
-		<div class="sorter-wrapper with-search">
+		<div class="sorter-wrapper">
 			{% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
 		</div>
 	</section>
