@@ -1,0 +1,12 @@
+{% ckan_extends %}
+
+{% block prelude %}
+    <div class="prelude-dataset">
+        <h1>{{ h.get_translated(pkg, 'title')  }}</h1>
+        <ul class="nav nav-tabs">
+            {% block content_primary_nav %}
+                {{super()}}
+            {% endblock %}
+        </ul>
+    </div>
+{% endblock %}
