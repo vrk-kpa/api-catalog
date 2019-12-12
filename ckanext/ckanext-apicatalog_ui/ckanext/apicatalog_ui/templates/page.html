@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% set no_nav = self.secondary()|trim|length == 0 %}
+{% set no_nav = self.secondary_content()|trim|length == 0 %}
 {%- block page -%}
 
   {% block skip %}
@@ -99,6 +99,7 @@
               </div>
             {% endblock %}
             {% block secondary %}
+                {%  if not no_nav %}
             <aside class="secondary border-right col-sm-4 navbar-offcanvas navbar-offcanvas-touch" id="js-bootstrap-offcanvas">
               {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
               {#
@@ -115,6 +116,7 @@
               #}
               {% block secondary_content %}{% endblock %}
             </aside>
+                {% endif %}
             {% endblock %}
           </div>
         {% endblock %}
