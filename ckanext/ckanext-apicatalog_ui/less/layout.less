@@ -85,6 +85,11 @@
 }
 
 .primary {
+  &.no-sidebar {
+    background-color: white;
+    border: 1px solid @suomifi-border-light;
+  }
+
   .primary-inner {
     .box();
   }
@@ -224,6 +229,7 @@
 }
 
 .prelude {
+  padding-right: 0;
   h1 {
     color: @suomifi-text-base;
     font-family: SourceSansPro-Light;
@@ -264,6 +270,9 @@
 
   .prelude-dataset {
     .box();
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
     background-color: @white;
     padding: 40px;
   }

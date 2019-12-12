@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% set no_nav = self.secondary()|trim|length == 0 %}
 {%- block page -%}
 
   {% block skip %}
@@ -50,7 +51,7 @@
 
           <div class="row">
             <div class="col-xs-12 prelude">
-              <div class="pull-right">
+              <div class="pull-right page-actions">
                 {% block content_action %}{% endblock %}
                 {% if self.page_primary_action() | trim %}
                   <div class="page_primary_action">
@@ -62,7 +63,7 @@
               {% endblock %}
             </div>
           </div>
-          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if no_nav %} no-nav{% endif %}">
             {#
             The pre_primary block can be used to add content to before the
             rendering of the main content columns of the page.
@@ -72,7 +73,7 @@
             {% endblock %}
 
             {% block primary %}
-              <div class="primary border-left col-xs-12 col-sm-8">
+            <div class="primary border-left col-xs-12 {% if no_nav %}no-sidebar col-sm-12{% else %}col-sm-8{% endif %}">
 
                 {#
                 The primary_content block can be used to add content to the page.

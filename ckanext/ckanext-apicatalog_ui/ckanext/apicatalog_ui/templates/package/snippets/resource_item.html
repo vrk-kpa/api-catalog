@@ -9,7 +9,7 @@
         <a href="{{ url }}" title="{{ res.name or res.description }}">
           <div class="container-fluid">
             {% block resource_item_title %}
-              {{ h.resource_display_name(res) | truncate(50) }}
+              <span class="resource-title">{{ h.resource_display_name(res) | truncate(50) }}</span>
               <span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">
                 {{ res.format }}
               </span>
@@ -31,7 +31,7 @@
         {% if not url_is_edit %}
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <div class="container-fluid">
-              <span class="caret"></span>
+              <i class="fa fa-chevron-down"></i>
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">

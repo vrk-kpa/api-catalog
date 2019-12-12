@@ -72,8 +72,25 @@
   }
 }
 
-.dataset-resources li a {
+.dataset-resources {
   background-color: @resourceFormatBackground;
+}
+
+.resources {
+  background-color: white;
+  border: 1px solid @suomifi-border;
+  border-radius: 2px;
+
+  h3 {
+    color: rgb(41, 41, 41);
+    font-family: SourceSansPro-SemiBold;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 14px 20px;
+    margin: 0;
+    border-bottom: 2px solid @suomifi-highlight-base;
+  }
 }
 
 .dataset-heading .popular {
@@ -87,8 +104,10 @@
 }
 
 .resource-item {
-  border-left: 10px solid #f25d0d;
-  background-color: @kapa-light-grey;
+  background-color: white;
+  &:nth-child(even) {
+    background-color: @suomifi-striped-background;
+  }
   margin-bottom: 20px;
 
   position: relative;
@@ -99,10 +118,26 @@
     background-color: @kapa-dark-grey;
   }
 
-  a {
+  a, a:visited {
     color: @black;
     font-weight: bold;
     text-decoration: none;
+  }
+
+  .resource-title {
+    color: rgb(41, 41, 41);
+    font-family: @headings-font-family;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .description {
+    color: rgb(41, 41, 41);
+    font-family: @font-family-base;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
   }
 }
 
@@ -210,9 +245,9 @@
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 8px;
-  background-color: @kapa-secondary-attention-color;
-  border-radius:4px;
-  border: 2px solid @kapa-secondary-attention-color;
+  background-color: @suomifi-highlight-base;
+  border-radius: 14px;
+  border: 2px solid @suomifi-highlight-base;
 
   a {
     color: @white;
@@ -233,9 +268,24 @@
 
 // Additional Info
 
-.additional-info td,
-.additional-info th {
-  width: 50%;
+.additional-info table {
+  border: 1px solid @suomifi-border;
+
+  font-size: 16px;
+
+  th {
+    font-family: @headings-font-family;
+    width: 50%;
+  }
+
+  td {
+    font-family: @font-family-base;
+    width: 50%;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: @suomifi-striped-background;
+  }
 }
 
 // FORMATS

@@ -56,3 +56,9 @@
     </section>
 {{ super()}}
 {% endblock%}
+
+{% block page_primary_action %}
+  {% if h.check_access('package_create') %}
+    {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
+  {% endif %}
+{% endblock %}
