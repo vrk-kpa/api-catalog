@@ -4,40 +4,6 @@
   <meta property="og:description" content="{{ h.get_translated(pkg, 'description')|forceescape|trim }}">
 {% endblock -%}
 
-{% block secondary_content %}
-
-  {% block secondary_help_content %}{% endblock %}
-
-  {% block heading %}
-  <section class="module module-narrow">
-    <div class="module context-info">
-      <div class="module-content">
-        <h1 class="heading">{{ h.dataset_display_name(pkg) }}</h1>
-      </div>
-    </div>
-  </section>
-  {% endblock %}
-
-  {% block package_organization %}
-    {% if pkg.organization %}
-      {% set org = h.get_organization(pkg.organization.name) %}
-      {% snippet "snippets/organization.html", organization=org, has_context_title=true %}
-    {% endif %}
-  {% endblock %}
-
-  {% block package_info %}
-    {% snippet 'package/snippets/info.html', pkg=pkg %}
-  {% endblock %}
-
-  {% block package_social %}
-    {% snippet "snippets/social.html" %}
-  {% endblock %}
-
-  {% block package_license %}
-  {% endblock %}
-
-{% endblock %}
-
 {% block prelude %}
     <div class="prelude-dataset">
         <h1>{{ h.get_translated(pkg, 'title')  }}</h1>
@@ -51,4 +17,4 @@
     </div>
 {% endblock %}
 
-{% block secondary %}{% endblock %}
+{% block secondary_content %}{% endblock %}
