@@ -5038,3 +5038,12 @@ msgstr "Aktiiviset liitynnät"
 
 msgid "Filter list"
 msgstr "Rajaa listaa"
+
+msgid "Search API Catalog"
+msgstr "Hae Liityntäkatalogista"
+
+msgid "{0} datasets"
+msgstr "{0} liityntää"
+
+msgid "Filter by text"
+msgstr "Rajaa sanalla"

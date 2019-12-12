@@ -5022,3 +5022,12 @@ msgstr ""
 
 msgid "Filter list"
 msgstr ""
+
+msgid "Search API Catalog"
+msgstr ""
+
+msgid "{0} datasets"
+msgstr ""
+
+msgid "Filter by text"
+msgstr ""

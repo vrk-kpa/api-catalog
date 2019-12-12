@@ -1,7 +1,7 @@
 @notificationsBg: #C9403A;
 @masthead-padding: 8px;
 @account-masthead-height: 79px;
-@masthead-height: 47px;
+@masthead-height: 46px;
 @masthead-doublerow-height: 89px;
 
 .placeright-sm-up {
@@ -38,6 +38,8 @@
   z-index: @zindex-navbar;
   float:none;
   margin:auto;
+  height: @masthead-height;
+
   > li {
     border:none;
     float:none;
@@ -46,6 +48,9 @@
 }
 
 .language-navbar {
+  border-top: 4px solid @suomifi-highlight-dark;
+  border-radius: 0px;
+
   .clearfix();
   min-height: @account-masthead-height;
   background: @mastheadBackgroundColor;
@@ -111,6 +116,10 @@
 
     .search-input button {
       margin-top: -14px;
+    }
+
+    input {
+      padding-left: 9px;
     }
   }
   .navbar-nav .list-inline li:not(:first-child) {
