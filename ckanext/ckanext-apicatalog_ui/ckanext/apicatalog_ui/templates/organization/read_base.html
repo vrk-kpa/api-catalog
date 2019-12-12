@@ -18,23 +18,4 @@
 
 {% block wrapper_class %} page-container org-page-tweaks {% endblock %}
 
-{% block primary %}
-<div class="org-page-heading">
-	<h2>{{ _('Active APIs') }}</h2>
-</div>
-{{super()}}
-{% endblock %}
-
-{% block secondary_content %}
-	<section class="module main-heading">
-		<h2 class="module-heading">{{ _('Filter list') }}</h2>
-	</section>
-	<section class="module module-narrow module-shallow">
-		{% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
-		{% set sorting_selected = c.sort_by_selected or 'title asc' %}
-		<div class="sorter-wrapper">
-			{% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
-		</div>
-	</section>
-	{% block organization_facets %}{% endblock %}
-{% endblock %}
+{% block secondary_content %}{% endblock %}

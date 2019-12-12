@@ -16,7 +16,7 @@
       <p class="empty">
         {{ _('There are currently no APIs for this organization') }}.
         {% if h.check_access('package_create') %}
-          {% link_for _('How about creating one?'), controller='package', action='new', group=c.group_dict.id %}</a>
+          {% link_for _('How about creating one?'), controller='package', action='new', group=c.group_dict.id %}
         {% endif %}
       </p>
     {% endif %}
@@ -26,16 +26,35 @@
   {% endblock %}
 {% endblock %}
 
-{% block organization_facets %}
-	<div class="filters">
-		<div>
-			{% for facet in c.facet_titles %}
-				{{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, extras={'id':c.group_dict.id}) }}
-			{% endfor %}
-		</div>
-		<a class="close no-text hide-filters">
-			<i class="fa fa-times-circle"></i>
-			<span class="text">close</span>
-		</a>
-	</div>
+{% block primary %}
+    <div class="org-page-heading">
+        <h2>{{ _('Active APIs') }}</h2>
+    </div>
+    {{super()}}
+{% endblock %}
+
+{% block secondary_content %}
+    <section class="module main-heading">
+        <h2 class="module-heading">{{ _('Filter list') }}</h2>
+    </section>
+    <section class="module module-narrow module-shallow">
+        {% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
+        {% set sorting_selected = c.sort_by_selected or 'title asc' %}
+        <div class="sorter-wrapper">
+            {% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
+        </div>
+    </section>
+    {% block organization_facets %}
+        <div class="filters">
+            <div>
+                {% for facet in c.facet_titles %}
+                    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, extras={'id':c.group_dict.id}) }}
+                {% endfor %}
+            </div>
+            <a class="close no-text hide-filters">
+                <i class="fa fa-times-circle"></i>
+                <span class="text">close</span>
+            </a>
+        </div>
+    {% endblock %}
 {% endblock %}
