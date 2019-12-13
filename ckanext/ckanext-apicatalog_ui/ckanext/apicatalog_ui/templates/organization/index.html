@@ -5,7 +5,7 @@
 {% block prelude %}
 <h1>{{ _('Organizations') }}</h1>
 <p>{% trans %}Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization.{% endtrans %}</p>
-<div class="result-count">{{ _('{0} organizations').format(items|count) }}</div>
+<div class="result-count">{{ _('{0} organizations').format(c.page.item_count) }}</div>
 {% endblock %}
 
 {% set sorting = [(_('Relevance'), ''), (_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
