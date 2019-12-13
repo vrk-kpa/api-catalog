@@ -63,7 +63,7 @@
               {% endblock %}
             </div>
           </div>
-          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if no_nav %} no-nav{% endif %}">
+          <div class="row wrapper {% block wrapper_class %}{% endblock %}{% if no_nav %} no-nav{% endif %}">
             {#
             The pre_primary block can be used to add content to before the
             rendering of the main content columns of the page.
@@ -100,7 +100,7 @@
             {% endblock %}
             {% block secondary %}
                 {%  if not no_nav %}
-            <aside class="secondary border-right col-sm-4 navbar-offcanvas navbar-offcanvas-touch" id="js-bootstrap-offcanvas">
+                <aside class="secondary border-right col-sm-4 navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
               {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
               {#
               The secondary_content block can be used to add content to the

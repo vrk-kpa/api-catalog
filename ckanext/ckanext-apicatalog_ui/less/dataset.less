@@ -411,5 +411,49 @@
 }
 
 .resource-view {
-  margin-top: 20px;
+  background-color: white;
+  border: 1px solid @suomifi-border-light;
+}
+
+.secondary.resource-sidebar {
+  border: 0;
+  .module.resources {
+    border: 0;
+    margin-left: -20px;
+
+    h2 {
+      color: rgb(41, 41, 41);
+      font-family: SourceSansPro-SemiBold;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 27px;
+      padding-left: 30px;
+      i {
+        display: none;
+      }
+    }
+
+    .nav-item{
+      font-family: SourceSansPro-SemiBold;
+      font-size: 18px;
+      font-weight: 600;
+      height: 52px;
+      line-height: 27px;
+      a, a:visited {
+        padding-left: 5px;
+        margin: 0 auto;
+        color: rgb(42, 110, 187);
+      }
+      a:hover {
+        background: transparent;
+      }
+      &.active {
+        border-left: 5px solid @suomifi-highlight-base;
+        background: rgb(240, 246, 255);
+        a {
+          padding-left: 0px;
+        }
+      }
+    }
+  }
 }
