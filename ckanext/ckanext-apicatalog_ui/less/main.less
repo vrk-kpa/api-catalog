@@ -1,12 +1,21 @@
 @import "../vendor/bootstrap/less/bootstrap.less";
 @import "twitter.less";
 @import "ckan.less";
+@import "variables";
 
 body {
   font-family: @font-family-base;
   font-size: 18px;
   font-weight: normal;
   line-height: 27px;
+  background: @layoutBackgroundColor;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+[role='main'] {
+  flex: 1
 }
 
 .apicatalog-page-wrapper {
