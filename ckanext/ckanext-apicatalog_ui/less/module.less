@@ -76,7 +76,6 @@
 .module .pagination {
   height: 34px;
   margin-bottom: 0;
-  border-top: 1px solid @moduleHeadingBorderColor;
 }
 
 .module-content .pagination {
@@ -92,8 +91,6 @@
 }
 
 .module .pagination li a {
-  border-top: none;
-  border-bottom: none;
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -103,17 +100,10 @@
   .border-radius(0);
 }
 
-.module .pagination li:first-child a {
-  border-left-width: 0;
-}
-
-.module .pagination li:last-child a {
-  border-right-width: 0;
-}
-
 .module .pagination li.active a {
   border-left-width: 1px;
   border-right-width: 1px;
+  border-color: #ddd;
 }
 
 .pagination > ul {
