@@ -69,11 +69,16 @@
 }
 
 .footer-top-links {
+  text-align: end;
   margin-top: 62px;
   a {
     display: inline-block;
     color: @suomifi-highlight-base;
   }
+}
+
+.footer-bottom-links {
+  text-align: end;
 }
 
 .suomifi-logo {
@@ -91,6 +96,8 @@
 }
 
 .external-link {
+  font-size: 16px;
+  line-height: 20px;
   margin-right: 40px;
 
   &:last-of-type {
@@ -98,6 +105,8 @@
   }
 
   svg {
+    margin-bottom: -2px;
+    margin-left: 4px;
     width: 16px;
     height: 16px;
     fill: @suomifi-highlight-base;
@@ -150,6 +159,7 @@
   }
 
   .footer-top-links {
+    text-align: start;
     margin-top: 0;
   }
 
