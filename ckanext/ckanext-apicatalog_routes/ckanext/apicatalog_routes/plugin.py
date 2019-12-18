@@ -61,14 +61,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         health_controller = 'ckanext.apicatalog_routes.health:HealthController'
         m.connect('/health', action='check', controller=health_controller)
 
-        organization_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_OrganizationController'
-        m.connect('organizations_index', '/organization', controller=organization_controller, action='index')
-
         extra_information_controller = 'ckanext.apicatalog_routes.plugin:ExtraInformationController'
         m.connect('data_exchange_layer_user_organizations',
                   '/data_exchange_layer_user_organizations',
                   action='data_exchange_layer_user_organizations',
-                  controller = extra_information_controller)
+                  controller=extra_information_controller)
 
         return m
 
@@ -144,65 +141,6 @@ class Apicatalog_RevisionController(RevisionController):
             ckan.lib.base.abort(403, _('Not authorized to see this page'))
 
 
-class Apicatalog_OrganizationController(OrganizationController):
-    def index(self):
-        group_type = self._guess_group_type()
-
-        page = h.get_page_number(request.params) or 1
-        items_per_page = 21
-
-        context = {'model': model, 'session': model.Session,
-                   'user': c.user, 'for_view': True,
-                   'with_private': False}
-
-        q = c.q = request.params.get('q', '')
-        sort_by = c.sort_by_selected = request.params.get('sort')
-        if sort_by is None:
-            sort_by = 'title asc'
-        try:
-            self._check_access('site_read', context)
-            self._check_access('group_list', context)
-        except NotAuthorized:
-            abort(403, _('Not authorized to see this page'))
-
-        # pass user info to context as needed to view private datasets of
-        # orgs correctly
-        if c.userobj:
-            context['user_id'] = c.userobj.id
-            context['user_is_admin'] = c.userobj.sysadmin
-
-        data_dict_global_results = {
-            'all_fields': False,
-            'q': q,
-            'sort': sort_by,
-            'type': group_type or 'group',
-        }
-        global_results = self._action('group_list')(context,
-                                                    data_dict_global_results)
-
-        data_dict_page_results = {
-            'all_fields': True,
-            'q': q,
-            'sort': sort_by,
-            'type': group_type or 'group',
-            'limit': items_per_page,
-            'offset': items_per_page * (page - 1),
-        }
-        page_results = self._action('group_list')(context,
-                                                  data_dict_page_results)
-
-        c.page = h.Page(
-            collection=global_results,
-            page=page,
-            url=h.pager_url,
-            items_per_page=items_per_page,
-        )
-
-        c.page.items = page_results
-        return render(self._index_template(group_type),
-                      extra_vars={'group_type': group_type})
-
-
 class ExtraInformationController(base.BaseController):
 
     def data_exchange_layer_user_organizations(self):
@@ -211,4 +149,3 @@ class ExtraInformationController(base.BaseController):
         packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
         response.headers['content-type'] = 'application/json'
         return json.dumps(packageless_organizations)
-

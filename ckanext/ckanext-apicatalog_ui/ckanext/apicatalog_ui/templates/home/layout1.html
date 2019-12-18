@@ -9,16 +9,16 @@
           <div class="stats-title">{{_('datasets')}}</div>
           <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller='package', action='search') }}">{{_('Show all')}}</a></div>
         </div>
-        {% set org_controller = 'ckanext.apicatalog_routes.plugin:Apicatalog_OrganizationController' %}
+
         <div class="col-sm-4">
           <div class="count">{{statistics.organization_count}}</div>
           <div class="stats-title">{{_('total organizations')}}</div class="stats-title">
-          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller=org_controller, action='index') }}">{{_('Show all')}}</a></div>
+          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller='organization', action='index') }}">{{_('Show all')}}</a></div>
         </div>
         <div class="col-sm-4">
           <div class="count">{{statistics.organizations_with_packages_count}}</div>
           <div class="stats-title">{{_('organizations with datasets')}}</div class="stats-title">
-          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller=org_controller, action='index') }}">{{_('Show all')}}</a></div>
+          <div><i class="fa fa-angle-right"></i><a href="{{ h.url_for(controller='organization', action='index') }}">{{_('Show all')}}</a></div>
         </div>
       </div>
     </div>
