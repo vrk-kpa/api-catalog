@@ -5020,3 +5020,9 @@ msgstr "{0} APIs"
 
 msgid "Filter by text"
 msgstr ""
+
+msgid "Give feedback"
+msgstr ""
+
+msgid "Information about National Data Exchange Layer"
+msgstr ""

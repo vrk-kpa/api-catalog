@@ -5047,3 +5047,9 @@ msgstr "{0} liityntää"
 
 msgid "Filter by text"
 msgstr "Rajaa sanalla"
+
+msgid "Give feedback"
+msgstr "Anna palautetta"
+
+msgid "Information about National Data Exchange Layer"
+msgstr "Tietoa Palveluväylästä"

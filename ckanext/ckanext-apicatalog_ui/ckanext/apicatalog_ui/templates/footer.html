@@ -1,16 +1,22 @@
 {% block footer %}
 	<footer>
 		<div class="footer-top clearfix">
-			<div class="col-xs-12 col-sm-6 col-lg-7">
+			<div class="col-xs-12 col-sm-4 col-lg-3">
 				<img class="lika-logo" src="/base/images/lika-logo.svg">
 				<p class="footer-description">{{_('The service is being developed by the Population Register Centre.')}}</p>
 			</div>
-			<div class="footer-top-links col-xs-12 col-sm-6 col-lg-5">
-				<a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}}
-					<svg viewbox="0 0 24 24">
-						<use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
-					</svg>
-				</a>
+			<div class="footer-top-links col-xs-12 col-sm-8 col-lg-9">
+				<ul class="nav navbar footer-nav">
+					{{ h.build_nav_main() }}
+					{{ h.build_nav('contact_form', _('Give feedback')) }}
+					<li>
+						<a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}}
+							<svg viewbox="0 0 24 24">
+								<use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
+							</svg>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="footer-bottom clearfix">

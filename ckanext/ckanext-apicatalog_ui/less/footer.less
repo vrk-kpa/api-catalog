@@ -54,11 +54,11 @@
 .footer-top {
   background-color: white;
   height: 170px;
-  padding: 30px 165px;
+  padding: 12px 165px 30px;
 }
 
 .footer-description {
-  margin-top: 28px;
+  margin-top: 12px;
   max-width: 350px;
 }
 
@@ -95,15 +95,21 @@
   color: @suomifi-brand-base;
 }
 
-.external-link {
+.footer-nav {
   font-size: 16px;
   line-height: 20px;
-  margin-right: 40px;
 
-  &:last-of-type {
-    margin-right: 0;
+  li,
+  li > a {
+    display: inline-block;
+
+    &:hover {
+      background-color: unset;
+    }
   }
+}
 
+.external-link {
   svg {
     margin-bottom: -2px;
     margin-left: 4px;

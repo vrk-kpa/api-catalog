@@ -57,9 +57,10 @@
                 {{ h.build_nav('home', _('Home')) }}
                 {{ h.build_nav('search', _('Datasets')) }}
                 {{ h.build_nav('organizations_index', _('Organizations')) }}
-                <li><a href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Service Management') }}</a></li>
-                {{ h.build_nav_main() }}
-                {{ h.build_nav('contact_form', _('Feedback')) }}
+                <li><a class="nav-external-link" href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Information about National Data Exchange Layer') }}
+                  <svg viewbox="0 0 24 24">
+                    <use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
+                  </svg></a></li>
                 {% if c.userobj %}
                   {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
                 {% else %}
