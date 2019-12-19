@@ -40,6 +40,10 @@
   margin:auto;
   height: @masthead-height;
 
+  @media (max-width: @screen-xs-max) {
+    height: unset;
+  }
+
   > li {
     border:none;
     float:none;
@@ -173,7 +177,7 @@
   .navbar-collapse.collapse.in,
   .navbar-collapse.collapsing {
     @media (max-width: @screen-xs-max) {
-      margin-top: @navbar-height;
+      margin-top: 0;
     }
   }
 
