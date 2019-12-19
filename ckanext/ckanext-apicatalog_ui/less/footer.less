@@ -102,8 +102,15 @@
   li,
   li > a {
     display: inline-block;
+    background-color: unset;
 
     &:hover {
+      color: auto;
+      text-decoration: underline;
+      background-color: unset;
+    }
+
+    &:focus {
       background-color: unset;
     }
   }
@@ -119,16 +126,16 @@
   }
 }
 
+.external-link:hover svg {
+  fill: #235a9a;
+}
+
 .external-link:visited svg {
   fill: #86499c;
 }
 
 .external-link:disabled svg {
   fill: #a5acb1;
-}
-
-.external-link:hover svg {
-  fill: #235a9a;
 }
 
 .external-link:focus svg {
@@ -144,6 +151,7 @@
   }
 
   a {
+    margin-left: 8px;
     font-size: 16px;
     line-height: 20px;
     color: white;
