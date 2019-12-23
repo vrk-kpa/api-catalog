@@ -20,14 +20,13 @@ Example:
 
 {% block package_item %}
   <li class="dataset-item">
-    <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}">
       <div class="container-fluid">
         <div class="row">
           {% block content %}
             <div class="col-xs-12">
               <div class="dataset-content">
                 {% block heading %}
-                  <h3 class="dataset-heading">
+                <h3 class="dataset-heading">
                     {% block heading_private %}
                       {% if package.private %}
                         <span class="dataset-private label label-inverse">
@@ -36,7 +35,7 @@ Example:
                         </span>
                       {% endif %}
                     {% endblock %}
-                    <span>{{title}}</span>
+                    <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}">{{title}}</a>
                     {% block heading_meta %}
                       {% if package.get('state', '').startswith('draft') %}
                         <span class="label label-info">{{ _('Draft') }}</span>
@@ -80,6 +79,5 @@ Example:
           {% endblock %}
         </div>
       </div>
-    </a>
   </li>
 {% endblock %}
