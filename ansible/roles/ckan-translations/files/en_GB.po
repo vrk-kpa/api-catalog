@@ -5013,7 +5013,7 @@ msgid "Filter list"
 msgstr ""
 
 msgid "Search API Catalog"
-msgstr ""
+msgstr "Search APIs"
 
 msgid "{0} datasets"
 msgstr "{0} APIs"

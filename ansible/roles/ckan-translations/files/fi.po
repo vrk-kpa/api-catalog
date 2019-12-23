@@ -5040,7 +5040,7 @@ msgid "Filter list"
 msgstr "Rajaa listaa"
 
 msgid "Search API Catalog"
-msgstr "Hae Liityntäkatalogista"
+msgstr "Hae Liityntöjä"
 
 msgid "{0} datasets"
 msgstr "{0} liityntää"
