@@ -4068,11 +4068,11 @@ msgstr "Takaisinlinkitys URL"
 
 #: ckan/templates/snippets/facet_list.html:80
 msgid "Show More {facet_type}"
-msgstr "Näytä lisää {facet_type}"
+msgstr "Näytä enemmän"
 
 #: ckan/templates/snippets/facet_list.html:83
 msgid "Show Only Popular {facet_type}"
-msgstr "Näytä suosituimmat {facet_type}"
+msgstr "Näytä vähemmän"
 
 #: ckan/templates/snippets/facet_list.html:87
 msgid "There are no {facet_type} that match this search"
