@@ -95,7 +95,7 @@
     padding-left: 10px;
   }
   p {
-    .multiline-ellipsis(2);
+    height: unset;
   }
   input {
     position: absolute;
@@ -111,6 +111,10 @@
   margin: 5px 0;
   margin-right: 50px; // To prevent overlap with `.kapa-item input`
   .break-word();
+
+  & > a:hover {
+    text-decoration: underline;
+  }
 }
 
 // Overlay

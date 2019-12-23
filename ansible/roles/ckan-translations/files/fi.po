@@ -5053,3 +5053,6 @@ msgstr "Anna palautetta"
 
 msgid "Information about National Data Exchange Layer"
 msgstr "Tietoa Palveluväylästä"
+
+msgid "Type in name of organization"
+msgstr "Kirjoita organisaation nimi"

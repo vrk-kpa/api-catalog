@@ -5026,3 +5026,6 @@ msgstr ""
 
 msgid "Information about National Data Exchange Layer"
 msgstr ""
+
+msgid "Type in name of organization"
+msgstr ""

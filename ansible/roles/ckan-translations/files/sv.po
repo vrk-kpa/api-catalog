@@ -5024,7 +5024,7 @@ msgid "Filter list"
 msgstr ""
 
 msgid "Search API Catalog"
-msgstr ""
+msgstr "Search APIs"
 
 msgid "{0} datasets"
 msgstr ""
@@ -5036,4 +5036,7 @@ msgid "Give feedback"
 msgstr ""
 
 msgid "Information about National Data Exchange Layer"
+msgstr ""
+
+msgid "Type in name of organization"
 msgstr ""

@@ -32,11 +32,11 @@
 
 {% block secondary_content %}
   <section class="module main-heading">
-    <h2 class="module-heading">{{ _('Filter search') }}</h2>
+    <h2 class="module-heading">{{ _('Filter list') }}</h2>
   </section>
   <section class="module module-shallow">
     <div class="sorter-wrapper with-search">
-      {% snippet 'snippets/search_form_without_title.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Search organizations...'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
+      {% snippet 'snippets/search_form_without_title.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
     </div>
   </section>
 {% endblock %}
