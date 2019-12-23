@@ -53,8 +53,7 @@
 
 .footer-top {
   background-color: white;
-  height: 170px;
-  padding: 12px 165px 30px;
+  padding: 12px 0 30px;
 }
 
 .footer-description {
@@ -63,17 +62,21 @@
 }
 
 .footer-bottom {
-  padding: 30px 165px;
+  padding: 30px 0;
   background-color: @suomifi-brand-base;
   height: 80px;
 }
 
 .footer-top-links {
+  padding-right: 0;
   text-align: end;
   margin-top: 62px;
   a {
     display: inline-block;
     color: @suomifi-highlight-base;
+  }
+
+  @media (max-width: 1340px) {
   }
 }
 
@@ -159,22 +162,20 @@
   }
 }
 
-@media (min-width: @screen-sm-min) and (max-width: 1054px) {
-  .footer-top,
-  .footer-bottom {
-    padding: 30px 30px;
-  }
-}
-
 @media (max-width: @screen-xs-max) {
   .footer-top {
-    height: 210px;
     padding: 30px 30px;
+    height: 350px;
   }
 
   .footer-top-links {
     text-align: start;
     margin-top: 0;
+    padding-left: 0;
+
+    .footer-nav li {
+      display: block;
+    }
   }
 
   .footer-top .external-link {
