@@ -19,7 +19,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "catalog" do |server|
-    server.vm.box = "ubuntu/bionic64"
+    server.vm.box = "bento/ubuntu-18.04"
     server.vm.network :private_network, ip: "10.100.10.10"
     server.vm.network :private_network, ip: "10.100.10.11"
     server.vm.hostname = "api-catalog"
