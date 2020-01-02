@@ -66,7 +66,7 @@ Please file a [new issue](https://github.com/vrk-kpa/api-catalog/issues) at GitH
 
 ### Copying and License
 
-This material is copyright (c) 2015-2017 Population Register Centre.
+This material is copyright (c) 2015-2020 Digital and Population Data Services Agency, Finland.
 
 CKAN-related content like [CKAN extensions](/ckanext) are licensed under the GNU Affero General Public License (AGPL) v3.0 whose full text may be found at: http://www.fsf.org/licensing/licenses/agpl-3.0.html
 
