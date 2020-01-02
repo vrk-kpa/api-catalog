@@ -34,8 +34,9 @@
     - { role: ckan-extension, ckanext: ckanext-validate_links }
     - { role: ckan-extension, ckanext: ckanext-saha }
     - { role: ckan-extension, ckanext: ckanext-paha }
-    - { role: ckan-ui }
+    - { role: ckan-extension, ckanext: ckanext-composite }
     - ckan
+    - { role: ckan-ui }
     - ckan-translations
     - supervisor
     - solr-reindex
