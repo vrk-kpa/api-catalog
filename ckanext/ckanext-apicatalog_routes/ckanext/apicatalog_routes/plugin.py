@@ -45,10 +45,12 @@ def set_repoze_user(user_id):
         identity = {'repoze.who.userid': user_id}
         response.headerlist += rememberer.remember(request.environ, identity)
 
+
 class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.DefaultPermissionLabels):
     ckan.plugins.implements(ckan.plugins.IRoutes, inherit=True)
     ckan.plugins.implements(ckan.plugins.IAuthFunctions)
     ckan.plugins.implements(ckan.plugins.IPermissionLabels)
+    ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
 
     # IRoutes
 
@@ -109,6 +111,53 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
         return labels
+
+    # After package_search, filter out the resources which the user doesn't have access to
+    def after_search(self, search_results, search_params):
+        user_orgs = get_action('organization_list_for_user')(auth_context(), {})
+        for result in search_results['results']:
+            # Accessible resources are:
+            # 1) access_restriction_level is public
+            # OR
+            # 2) access_restriction_level is only_allowed_users AND the logged in user is on the allowed users list
+            # OR
+            # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
+            #    the organization of the package
+            allowed_resources = [resource for resource in result.get('resources', [])
+                                 if resource.get('access_restriction_level', '') == 'public' or
+                                 (resource.get('access_restriction_level', '') == 'only_allowed_users'
+                                  and c.user in resource.get('allowed_users', '').split(',')) or
+                                 (resource.get('access_restriction_level', '') == 'same_organization' and
+                                  any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
+            result['resources'] = allowed_resources
+            result['num_resources'] = len(allowed_resources)
+        return search_results
+
+    # After package_show, filter out the resources which the user doesn't have access to
+    def after_show(self, context, data_dict):
+        # Skip access check if sysadmin
+        if (c.userobj and c.userobj.sysadmin):
+            return data_dict
+
+        user_orgs = get_action('organization_list_for_user')(context, {})
+
+        # Allowed resources are the ones where:
+        # 1) access_restriction_level is public
+        # OR
+        # 2) access_restriction_level is only_allowed_users AND the logged in user is on the allowed users list
+        # OR
+        # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
+        #    the organization of the package
+        allowed_resources = [resource for resource in data_dict.get('resources', [])
+                             if resource.get('access_restriction_level', '') == 'public' or
+                             (resource.get('access_restriction_level', '') == 'only_allowed_users'
+                              and c.user in resource.get('allowed_users', '').split(',')) or
+                             (resource.get('access_restriction_level', '') == 'same_organization' and
+                              any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
+        data_dict['resources'] = allowed_resources
+        data_dict['num_resources'] = len(allowed_resources)
+
+        return data_dict
 
 
 def auth_context():

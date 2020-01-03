@@ -9,7 +9,7 @@
       "label": "Title",
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
-      "form_placeholder":"eg. A descriptive title",
+      "form_placeholder": "eg. A descriptive title",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null
     },
@@ -37,7 +37,7 @@
       "field_name": "tag_string",
       "label": "Tags",
       "preset": "apicatalog_tag_string_autocomplete",
-      "form_placeholder":"eg. economy, mental health, government"
+      "form_placeholder": "eg. economy, mental health, government"
     },
     {
       "field_name": "validSince",
@@ -118,21 +118,18 @@
       "label": "X-Road instance",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-
     },
     {
       "field_name": "xroad_memberclass",
       "label": "X-Road member class",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-
     },
     {
       "field_name": "xroad_membercode",
       "label": "X-Road member code",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-
     },
     {
       "field_name": "xroad_subsystemcode",
@@ -140,7 +137,6 @@
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     }
-
   ],
   "resource_fields": [
     {
@@ -174,15 +170,15 @@
       "label": "Chargeability",
       "preset": "select",
       "choices": [
-        { 
+        {
           "value": "yes",
           "label": "Yes"
         },
-        { 
+        {
           "value": "no",
           "label": "No"
         },
-        { 
+        {
           "value": "maybe",
           "label": "See description"
         }
@@ -264,7 +260,33 @@
       "preset": "datetime",
       "form_snippet": false,
       "display_snippet": null
+    },
+    {
+      "field_name": "access_restriction_level",
+      "label": "Access Restriction Level",
+      "preset": "select",
+      "required": true,
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public"
+        },
+        {
+          "value": "same_organization",
+          "label": "Same Organization Members"
+        },
+        {
+          "value": "only_allowed_users",
+          "label": "Allowed Users Only"
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_users",
+      "label": "Allowed Users",
+      "preset": "tag_string_autocomplete",
+      "data-module-source": "/api/2/util/user/autocomplete?q=?",
+      "validators": "ignore_missing"
     }
   ]
 }
-
