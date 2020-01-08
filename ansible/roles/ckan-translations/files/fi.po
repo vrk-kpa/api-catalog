@@ -2541,7 +2541,7 @@ msgstr "Valitse"
 #: ckan/templates/user/activity_stream.html:6
 #: ckan/templates/user/read_base.html:20
 msgid "Activity Stream"
-msgstr "Aktiivisuusvirta"
+msgstr "Päivityshistoria"
 
 #: ckan/templates/group/admins.html:3 ckan/templates/group/admins.html:6
 #: ckan/templates/organization/admins.html:3

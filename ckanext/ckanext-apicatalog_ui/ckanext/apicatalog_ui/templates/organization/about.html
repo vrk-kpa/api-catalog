@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+{% block subtitle %}
+	{{ _('About') }}
+	{{ g.template_title_delimiter }}
+	{{ super() }}
+{% endblock %}
+
+{% block primary %}
+	<div class="row">
+		<div class="col-sm-8">
+			{% block organization_description %}
+				{% if c.group_dict.description %}
+					{{ h.render_markdown(c.group_dict.description) }}
+				{% endif %}
+			{% endblock %}
+			{% block organization_extras %}
+				{% snippet 'snippets/additional_info.html', extras = h.sorted_extras(c.group_dict.extras) %}
+			{% endblock %}
+		</div>
+		<div class="col-sm-4">
+			<img src="{{c.group_dict.image_display_url}}"/>
+		</div>
+	</div>
+{% endblock %}
