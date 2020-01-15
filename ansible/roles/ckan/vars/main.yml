@@ -34,6 +34,7 @@ ckan_patches:
   - { file: "prevent_reset_scanning" }
   - { file: "fix_unicode_decode_error_in_error_page" } # https://github.com/ckan/ckan/pull/4727
   - { file: "fix-popped-wrong-app-context" } # CKAN issue #4431
+  - { file: "reorder_bulk_process" } # https://github.com/ckan/ckan/pull/5147
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
