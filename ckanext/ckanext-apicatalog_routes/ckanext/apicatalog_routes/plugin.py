@@ -149,7 +149,8 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
         #    the organization of the package
         allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if resource.get('access_restriction_level', '') == 'public' or
+                             if 'access_restriction_level' not in resource or
+                             resource.get('access_restriction_level', '') == 'public' or
                              (resource.get('access_restriction_level', '') == 'only_allowed_users'
                               and c.user in resource.get('allowed_users', '').split(',')) or
                              (resource.get('access_restriction_level', '') == 'same_organization' and
