@@ -1,21 +1,34 @@
 # Translations template for ckan.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the ckan project.
-#
+# 
 # Translators:
+# Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
+# apoikola <antti.poikola@gmail.com>, 2013,2015
+# floapps <jaakko.louhio@floapps.com>, 2012
+# Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
+# <internet@davidread.org>, 2011
+# jaakkokorhonen <jaakko.korhonen@outlook.com>, 2014
+# JuhoL <juho.lehtonen@gmail.com>, 2015
+# Kari Salovaara <kari.salovaara@pp1.inet.fi>, 2015
+# kyyberi <jarkko.moilanen@want3d.fi>, 2013
+# Mikko Koho <mikko.koho@csc.fi>, 2013,2015
+# Open Knowledge Foundation <translations@okfn.org>, 2011
+# Tarmo Toikkanen <tarmo@iki.fi>, 2014
+# Zharktas <jari-pekka.voutilainen@gofore.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
-"PO-Revision-Date: 2015-06-25 10:41+0000\n"
-"Last-Translator: dread <david.read@hackneyworkshop.com>\n"
-"Language-Team: English (http://www.transifex.com/okfn/ckan/language/en/)\n"
+"PO-Revision-Date: 2020-01-17 07:06+0000\n"
+"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2020\n"
+"Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
-"Language: en\n"
+"Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ckan/authz.py:178
@@ -93,7 +106,9 @@ msgstr "Homepage"
 msgid ""
 "Cannot purge package %s as associated revision %s includes non-deleted "
 "packages %s"
-msgstr "Cannot purge package %s as associated revision %s includes non-deleted packages %s"
+msgstr ""
+"Cannot purge package %s as associated revision %s includes non-deleted "
+"packages %s"
 
 #: ckan/controllers/admin.py:179
 #, python-format
@@ -407,12 +422,16 @@ msgid ""
 "Please <a href=\"{link}\">update your profile</a> and add your email address"
 " and your full name. {site} uses your email address if you need to reset "
 "your password."
-msgstr "Please <a href=\"{link}\">update your profile</a> and add your email address and your full name. {site} uses your email address if you need to reset your password."
+msgstr ""
+"Please <a href=\"{link}\">update your profile</a> and add your email address"
+" and your full name. {site} uses your email address if you need to reset "
+"your password."
 
 #: ckan/controllers/home.py:103
 #, python-format
 msgid "Please <a href=\"%s\">update your profile</a> and add your email address. "
-msgstr "Please <a href=\"%s\">update your profile</a> and add your email address. "
+msgstr ""
+"Please <a href=\"%s\">update your profile</a> and add your email address. "
 
 #: ckan/controllers/home.py:105
 #, python-format
@@ -460,7 +479,9 @@ msgstr "Invalid revision format: %r"
 msgid ""
 "Viewing {package_type} datasets in {format} format is not supported "
 "(template file {file} not found)."
-msgstr "Viewing {package_type} APIs in {format} format is not supported (template file {file} not found)."
+msgstr ""
+"Viewing {package_type} APIs in {format} format is not supported (template "
+"file {file} not found)."
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
@@ -753,7 +774,9 @@ msgstr "Bad Captcha. Please try again."
 msgid ""
 "User \"%s\" is now registered but you are still logged in as \"%s\" from "
 "before"
-msgstr "User \"%s\" is now registered but you are still logged in as \"%s\" from before"
+msgstr ""
+"User \"%s\" is now registered but you are still logged in as \"%s\" from "
+"before"
 
 #: ckan/controllers/user.py:276
 msgid "Unauthorized to edit a user."
@@ -882,7 +905,8 @@ msgstr "{actor} updated their profile"
 #: ckan/lib/activity_streams.py:86
 msgid ""
 "{actor} updated the {related_type} {related_item} of the dataset {dataset}"
-msgstr "{actor} updated the {related_type} {related_item} of the API {dataset}"
+msgstr ""
+"{actor} updated the {related_type} {related_item} of the API {dataset}"
 
 #: ckan/lib/activity_streams.py:89
 msgid "{actor} updated the {related_type} {related_item}"
@@ -1177,7 +1201,12 @@ msgid ""
 "Please click the following link to confirm this request:\n"
 "\n"
 "   {reset_link}\n"
-msgstr "You have requested your password on {site_title} to be reset.\n\nPlease click the following link to confirm this request:\n\n   {reset_link}\n"
+msgstr ""
+"You have requested your password on {site_title} to be reset.\n"
+"\n"
+"Please click the following link to confirm this request:\n"
+"\n"
+"   {reset_link}\n"
 
 #: ckan/lib/mailer.py:119
 msgid ""
@@ -1186,7 +1215,12 @@ msgid ""
 "To accept this invite, please reset your password at:\n"
 "\n"
 "   {reset_link}\n"
-msgstr "You have been invited to {site_title}. A user has already been created to you with the username {user_name}. You can change it later.\n\nTo accept this invite, please reset your password at:\n\n   {reset_link}\n"
+msgstr ""
+"You have been invited to {site_title}. A user has already been created to you with the username {user_name}. You can change it later.\n"
+"\n"
+"To accept this invite, please reset your password at:\n"
+"\n"
+"   {reset_link}\n"
 
 #: ckan/lib/mailer.py:145 ckan/templates/user/request_reset.html:3
 #: ckan/templates/user/request_reset.html:13
@@ -1345,7 +1379,9 @@ msgstr "Name must be a maximum of %i characters long"
 msgid ""
 "Must be purely lowercase alphanumeric (ascii) characters and these symbols: "
 "-_"
-msgstr "Must be purely lowercase alphanumeric (ascii) characters and these symbols: -_"
+msgstr ""
+"Must be purely lowercase alphanumeric (ascii) characters and these symbols: "
+"-_"
 
 #: ckan/logic/validators.py:384
 msgid "That URL is already in use."
@@ -1423,7 +1459,9 @@ msgstr "The passwords you entered do not match"
 msgid ""
 "Edit not allowed as it looks like spam. Please avoid links in your "
 "description."
-msgstr "Edit not allowed as it looks like spam. Please avoid links in your description."
+msgstr ""
+"Edit not allowed as it looks like spam. Please avoid links in your "
+"description."
 
 #: ckan/logic/validators.py:638
 #, python-format
@@ -2124,7 +2162,9 @@ msgstr "Unable to get data for uploaded file"
 msgid ""
 "You are uploading a file. Are you sure you want to navigate away and stop "
 "this upload?"
-msgstr "You are uploading a file. Are you sure you want to navigate away and stop this upload?"
+msgstr ""
+"You are uploading a file. Are you sure you want to navigate away and stop "
+"this upload?"
 
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:8
 msgid "Reorder resource view"
@@ -2182,7 +2222,9 @@ msgstr "Open Knowledge Foundation"
 msgid ""
 "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
 "href=\"http://ckan.org\">CKAN</a>"
-msgstr "<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" href=\"http://ckan.org\">CKAN</a>"
+msgstr ""
+"<strong>Powered by</strong> <a class=\"hide-text ckan-footer-logo\" "
+"href=\"http://ckan.org\">CKAN</a>"
 
 #: ckan/templates/header.html:12
 msgid "Sysadmin settings"
@@ -2319,7 +2361,23 @@ msgid ""
 "target=\"_blank\">reading the documentation</a>.</p> "
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
 "the modules that appear on your homepage.</p> "
-msgstr " <p><strong>Site Title:</strong> This is the title of this API catalog instance It appears in various places throughout API catalog.</p> <p><strong>Style:</strong> Choose from a list of simple variations of the main colour scheme to get a very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This is the logo that appears in the header of all the API catalog instance templates.</p> <p><strong>About:</strong> This text will appear on this API catalog instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro Text:</strong> This text will appear on this API catalog instances <a href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> <p><strong>Custom CSS:</strong> This is a block of CSS that appears in <code>&lt;head&gt;</code> tag of every page. If you wish to customize the templates more fully we recommend <a href=\"%(docs_url)s\" target=\"_blank\">reading the documentation</a>.</p> <p><strong>Homepage:</strong> This is for choosing a predefined layout for the modules that appear on your homepage.</p> "
+msgstr ""
+" <p><strong>Site Title:</strong> This is the title of this API catalog "
+"instance It appears in various places throughout API catalog.</p> "
+"<p><strong>Style:</strong> Choose from a list of simple variations of the "
+"main colour scheme to get a very quick custom theme working.</p> "
+"<p><strong>Site Tag Logo:</strong> This is the logo that appears in the "
+"header of all the API catalog instance templates.</p> "
+"<p><strong>About:</strong> This text will appear on this API catalog "
+"instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro "
+"Text:</strong> This text will appear on this API catalog instances <a "
+"href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> "
+"<p><strong>Custom CSS:</strong> This is a block of CSS that appears in "
+"<code>&lt;head&gt;</code> tag of every page. If you wish to customize the "
+"templates more fully we recommend <a href=\"%(docs_url)s\" "
+"target=\"_blank\">reading the documentation</a>.</p> "
+"<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
+"the modules that appear on your homepage.</p> "
 
 #: ckan/templates/admin/confirm_reset.html:3
 #: ckan/templates/admin/confirm_reset.html:10
@@ -2336,7 +2394,11 @@ msgid ""
 " <p>As a sysadmin user you have full control over this CKAN instance. "
 "Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
 "CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
-msgstr " <p>As a sysadmin user you have full control over this API catalog instance. Proceed with care!</p> <p>For guidance on using sysadmin features, see the API catalog <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+msgstr ""
+" <p>As a sysadmin user you have full control over this API catalog instance."
+" Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
+"API catalog <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin "
+"guide</a></p> "
 
 #: ckan/templates/admin/trash.html:20
 msgid "Purge"
@@ -2359,7 +2421,10 @@ msgid ""
 " Further information in the <a       "
 "href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
 "target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
-msgstr " Further information in the <a       href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
+msgstr ""
+" Further information in the <a       "
+"href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
+"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
 
 #: ckan/templates/ajax_snippets/api_info.html:33
 msgid "Endpoints"
@@ -2369,7 +2434,9 @@ msgstr "Endpoints"
 msgid ""
 "The Data API can be accessed via the following actions of the CKAN action "
 "API."
-msgstr "The Data API can be accessed via the following actions of the API catalog action API."
+msgstr ""
+"The Data API can be accessed via the following actions of the API catalog "
+"action API."
 
 #: ckan/templates/ajax_snippets/api_info.html:42
 #: ckan/templates/related/edit_form.html:7
@@ -2742,7 +2809,10 @@ msgid ""
 " <p><strong>Admin:</strong> Can edit group information, as well as manage "
 "organization members.</p> <p><strong>Member:</strong> Can add/remove "
 "datasets from groups</p> "
-msgstr " <p><strong>Admin:</strong> Can edit group information, as well as manage organization members.</p> <p><strong>Member:</strong> Can add/remove APIs from groups</p> "
+msgstr ""
+" <p><strong>Admin:</strong> Can edit group information, as well as manage "
+"organization members.</p> <p><strong>Member:</strong> Can add/remove APIs "
+"from groups</p> "
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
@@ -2867,7 +2937,11 @@ msgid ""
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
-msgstr " You can use Groups to create and manage collections of APIs. This could be to catalog APIs for a particular project or team, or on a particular theme, or as a very simple way to help people find and search your own published APIs. "
+msgstr ""
+" You can use Groups to create and manage collections of APIs. This could be "
+"to catalog APIs for a particular project or team, or on a particular theme, "
+"or as a very simple way to help people find and search your own published "
+"APIs. "
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -2945,7 +3019,25 @@ msgid ""
 "href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features "
 "overview: <a "
 "href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
-msgstr " <p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN is a complete out-of-the-box software solution that makes data accessible and usable – by providing tools to streamline publishing, sharing, finding and using data (including storage of data and provision of robust data APIs). CKAN is aimed at data publishers (national and regional governments, companies and organizations) wanting to make their data open and available.</p> <p>CKAN is used by governments and user groups worldwide and powers a variety of official and community data portals including portals for local, national and international government, such as the UK’s <a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland government portals, as well as city and municipal sites in the US, UK, Argentina, Finland and elsewhere.</p> <p>CKAN: <a href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features overview: <a href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
+msgstr ""
+" <p>CKAN is the world’s leading open-source data portal platform.</p> "
+"<p>CKAN is a complete out-of-the-box software solution that makes data "
+"accessible and usable – by providing tools to streamline publishing, "
+"sharing, finding and using data (including storage of data and provision of "
+"robust data APIs). CKAN is aimed at data publishers (national and regional "
+"governments, companies and organizations) wanting to make their data open "
+"and available.</p> <p>CKAN is used by governments and user groups worldwide "
+"and powers a variety of official and community data portals including "
+"portals for local, national and international government, such as the UK’s "
+"<a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
+"href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a "
+"href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
+"government portals, as well as city and municipal sites in the US, UK, "
+"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
+"href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a "
+"href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features "
+"overview: <a "
+"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
 
 #: ckan/templates/home/snippets/promoted.html:8
 msgid "Welcome to CKAN"
@@ -2956,9 +3048,15 @@ msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
 msgstr ""
-"<p>The API catalog is an up-to-date index of APIs within the National Data Exchange Layer.  The purpose of the API catalog is to help service providers and realisers to develop more efficient electronic services and support the reuse of data. The API catalog contains descriptions of electronic services whose data is available for use by other information systems.</p>"
-"<p>The API catalog website is still being created. Registration is not possible during the beta phase.</p>"
-"<p>The API catalog is provided by the Digital and Population Data Services Agency as part of the national service architecture programme (KaPA).</p>"
+"<p>The API catalog is an up-to-date index of APIs within the National Data "
+"Exchange Layer.  The purpose of the API catalog is to help service providers"
+" and realisers to develop more efficient electronic services and support the"
+" reuse of data. The API catalog contains descriptions of electronic services"
+" whose data is available for use by other information systems.</p><p>The API"
+" catalog website is still being created. Registration is not possible during"
+" the beta phase.</p><p>The API catalog is provided by the Digital and "
+"Population Data Services Agency as part of the national service architecture"
+" programme (KaPA).</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -3018,7 +3116,10 @@ msgid ""
 "You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
 "target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-"
 "html=\"true\">Markdown formatting</a> here"
-msgstr "You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true\">Markdown formatting</a> here"
+msgstr ""
+"You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-"
+"target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-"
+"html=\"true\">Markdown formatting</a> here"
 
 #: ckan/templates/macros/form.html:265
 msgid "This field is required"
@@ -3146,7 +3247,11 @@ msgid ""
 "edit datasets, but not manage organization members.</p> "
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
 "but not add new datasets.</p> "
-msgstr " <p><strong>Admin:</strong> Can add/edit and delete APIs, as well as manage organization members.</p> <p><strong>Editor:</strong> Can add and edit APIs, but not manage organization members.</p> <p><strong>Member:</strong> Can view the organization's private APIs, but not add new APIs.</p> "
+msgstr ""
+" <p><strong>Admin:</strong> Can add/edit and delete APIs, as well as manage "
+"organization members.</p> <p><strong>Editor:</strong> Can add and edit APIs,"
+" but not manage organization members.</p> <p><strong>Member:</strong> Can "
+"view the organization's private APIs, but not add new APIs.</p> "
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3186,14 +3291,23 @@ msgid ""
 "organizations, admins can assign roles and authorise its members, giving "
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
-msgstr " <p>Organizations act like publishing departments for APIs (for example, the Department of Health). This means that APIs can be published by and belong to a department instead of an individual user.</p> <p>Within organizations, admins can assign roles and authorise its members, giving individual users the right to publish APIs from that particular organisation (e.g. Office of National Statistics).</p> "
+msgstr ""
+" <p>Organizations act like publishing departments for APIs (for example, the"
+" Department of Health). This means that APIs can be published by and belong "
+"to a department instead of an individual user.</p> <p>Within organizations, "
+"admins can assign roles and authorise its members, giving individual users "
+"the right to publish APIs from that particular organisation (e.g. Office of "
+"National Statistics).</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
 " CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
-msgstr " Organizations are used to create, manage and publish collections of APIs. Users can have different roles within an Organization, depending on their level of authorisation to create, edit and publish. "
+msgstr ""
+" Organizations are used to create, manage and publish collections of APIs. "
+"Users can have different roles within an Organization, depending on their "
+"level of authorisation to create, edit and publish. "
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3211,7 +3325,9 @@ msgstr "A little information about my organization..."
 msgid ""
 "Are you sure you want to delete this Organization? This will delete all the "
 "public and private datasets belonging to this organization."
-msgstr "Are you sure you want to delete this Organization? This will delete all the public and private APIs belonging to this organization."
+msgstr ""
+"Are you sure you want to delete this Organization? This will delete all the "
+"public and private APIs belonging to this organization."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -3236,7 +3352,10 @@ msgid ""
 " A CKAN Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
-msgstr " An API is a collection of attachments (such as wsdl files), together with a description and other information, at a fixed URL. APIs are what users see when searching for data. "
+msgstr ""
+" An API is a collection of attachments (such as wsdl files), together with a"
+" description and other information, at a fixed URL. APIs are what users see "
+"when searching for data. "
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
@@ -3321,7 +3440,12 @@ msgid ""
 "href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-"
 "structured-data-the-data-explorer' target='_blank'>Data Explorer "
 "documentation</a>. "
-msgstr " Data Explorer views may be slow and unreliable unless the DataStore extension is enabled. For more information, please see the <a href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-structured-data-the-data-explorer' target='_blank'>Data Explorer documentation</a>. "
+msgstr ""
+" Data Explorer views may be slow and unreliable unless the DataStore "
+"extension is enabled. For more information, please see the <a "
+"href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-"
+"structured-data-the-data-explorer' target='_blank'>Data Explorer "
+"documentation</a>. "
 
 #: ckan/templates/package/new_view.html:29
 #: ckan/templates/package/snippets/resource_form.html:82
@@ -3333,7 +3457,9 @@ msgstr "Add"
 msgid ""
 "This is an old revision of this dataset, as edited at %(timestamp)s. It may "
 "differ significantly from the <a href=\"%(url)s\">current revision</a>."
-msgstr "This is an old revision of this API, as edited at %(timestamp)s. It may differ significantly from the <a href=\"%(url)s\">current revision</a>."
+msgstr ""
+"This is an old revision of this API, as edited at %(timestamp)s. It may "
+"differ significantly from the <a href=\"%(url)s\">current revision</a>."
 
 #: ckan/templates/package/related_list.html:7
 msgid "Related Media for {dataset}"
@@ -3452,14 +3578,18 @@ msgstr "No view has been created that is suitable for this attachment"
 
 #: ckan/templates/package/resource_read.html:124
 msgid "The site administrators may not have enabled the relevant view plugins"
-msgstr "The site administrators may not have enabled the relevant view plugins"
+msgstr ""
+"The site administrators may not have enabled the relevant view plugins"
 
 #: ckan/templates/package/resource_read.html:125
 msgid ""
 "If a view requires the DataStore, the DataStore plugin may not be enabled, "
 "or the data may not have been pushed to the DataStore, or the DataStore "
 "hasn't finished processing the data yet"
-msgstr "If a view requires the DataStore, the DataStore plugin may not be enabled, or the data may not have been pushed to the DataStore, or the DataStore hasn't finished processing the data yet"
+msgstr ""
+"If a view requires the DataStore, the DataStore plugin may not be enabled, "
+"or the data may not have been pushed to the DataStore, or the DataStore "
+"hasn't finished processing the data yet"
 
 #: ckan/templates/package/resource_read.html:147
 msgid "Additional Information"
@@ -3519,7 +3649,9 @@ msgstr "Add new attachment"
 msgid ""
 " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
 "add some?</a></p> "
-msgstr " <p class=\"empty\">This API has no data, <a href=\"%(url)s\">why not add some?</a></p> "
+msgstr ""
+" <p class=\"empty\">This API has no data, <a href=\"%(url)s\">why not add "
+"some?</a></p> "
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3534,14 +3666,18 @@ msgstr "full {format} dump"
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s) or download a %(dump_link)s. "
-msgstr " You can also access this registry using the %(api_link)s (see %(api_doc_link)s) or download a %(dump_link)s. "
+msgstr ""
+" You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s) or download a %(dump_link)s. "
 
 #: ckan/templates/package/search.html:60
 #, python-format
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s). "
-msgstr " You can also access this registry using the %(api_link)s (see %(api_doc_link)s). "
+msgstr ""
+" You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s). "
 
 #: ckan/templates/package/view_edit_base.html:9
 msgid "All views"
@@ -3616,7 +3752,9 @@ msgstr "eg. economy, mental health, government"
 msgid ""
 " License definitions and additional information can be found at <a "
 "href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
-msgstr " License definitions and additional information can be found at <a href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
+msgstr ""
+" License definitions and additional information can be found at <a "
+"href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
 
 #: ckan/templates/package/snippets/package_basic_fields.html:69
 #: ckan/templates/snippets/organization.html:23
@@ -3641,11 +3779,15 @@ msgstr "Active"
 
 #: ckan/templates/package/snippets/package_form.html:28
 msgid ""
-"By submitting this form, you agree to release the "
-"<i>metadata</i> values that you enter into the form "
-"under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open "
-"Database License</a>."
-msgstr "By submitting this form, you agree to release the <i>metadata</i> values that you enter into the form under the <a href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database License</a>."
+"By submitting this form, you agree to release the <i>metadata</i> values "
+"that you enter into the form under the <a "
+"href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database "
+"License</a>."
+msgstr ""
+"By submitting this form, you agree to release the <i>metadata</i> values "
+"that you enter into the form under the <a "
+"href=\"http://opendatacommons.org/licenses/odbl/1-0/\">Open Database "
+"License</a>."
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
@@ -3751,7 +3893,8 @@ msgstr "What's an attachment?"
 
 #: ckan/templates/package/snippets/resource_help.html:4
 msgid "A resource can be any file or link to a file containing useful data."
-msgstr "An attachment can be any file or link to a file containing useful data."
+msgstr ""
+"An attachment can be any file or link to a file containing useful data."
 
 #: ckan/templates/package/snippets/resource_item.html:24
 msgid "Explore"
@@ -3777,7 +3920,9 @@ msgstr "Embed attachment view"
 msgid ""
 "You can copy and paste the embed code into a CMS or blog software that "
 "supports raw HTML"
-msgstr "You can copy and paste the embed code into a CMS or blog software that supports raw HTML"
+msgstr ""
+"You can copy and paste the embed code into a CMS or blog software that "
+"supports raw HTML"
 
 #: ckan/templates/package/snippets/resource_view.html:69
 msgid "Width"
@@ -3861,7 +4006,11 @@ msgid ""
 " dataset.</p> <p>For example, it could be a custom visualisation, pictograph"
 " or bar chart, an app using all or part of the data or even a news story "
 "that references this dataset.</p> "
-msgstr " <p>Related Media is any app, article, visualisation or idea related to this API.</p> <p>For example, it could be a custom visualisation, pictograph or bar chart, an app using all or part of the data or even a news story that references this API.</p> "
+msgstr ""
+" <p>Related Media is any app, article, visualisation or idea related to this"
+" API.</p> <p>For example, it could be a custom visualisation, pictograph or "
+"bar chart, an app using all or part of the data or even a news story that "
+"references this API.</p> "
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -3878,7 +4027,9 @@ msgstr "Apps & Ideas"
 msgid ""
 " <p>Showing items <strong>%(first)s - %(last)s</strong> of "
 "<strong>%(item_count)s</strong> related items found</p> "
-msgstr " <p>Showing items <strong>%(first)s - %(last)s</strong> of <strong>%(item_count)s</strong> related items found</p> "
+msgstr ""
+" <p>Showing items <strong>%(first)s - %(last)s</strong> of "
+"<strong>%(item_count)s</strong> related items found</p> "
 
 #: ckan/templates/related/dashboard.html:25
 #, python-format
@@ -3897,7 +4048,9 @@ msgstr "What are applications?"
 msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
-msgstr " These are applications built with the APIs as well as ideas for things that could be done with them. "
+msgstr ""
+" These are applications built with the APIs as well as ideas for things that"
+" could be done with them. "
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4102,7 +4255,8 @@ msgstr "This API has no description"
 msgid ""
 "No apps, ideas, news stories or images have been related to this dataset "
 "yet."
-msgstr "No apps, ideas, news stories or images have been related to this API yet."
+msgstr ""
+"No apps, ideas, news stories or images have been related to this API yet."
 
 #: ckan/templates/snippets/related.html:18
 msgid "Add Item"
@@ -4126,7 +4280,9 @@ msgstr " <p class=\"extra\">Please try another search.</p> "
 msgid ""
 " <p><strong>There was an error while searching.</strong> Please try "
 "again.</p> "
-msgstr " <p><strong>There was an error while searching.</strong> Please try again.</p> "
+msgstr ""
+" <p><strong>There was an error while searching.</strong> Please try "
+"again.</p> "
 
 #: ckan/templates/snippets/search_result_text.html:15
 msgid "{number} dataset found for \"{query}\""
@@ -4273,7 +4429,9 @@ msgstr "Account Info"
 #: ckan/templates/user/edit.html:19
 msgid ""
 " Your profile lets other CKAN users know about who you are and what you do. "
-msgstr " Your profile lets other API catalog users know about who you are and what you do. "
+msgstr ""
+" Your profile lets other API catalog users know about who you are and what "
+"you do. "
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -4489,7 +4647,9 @@ msgstr "Request reset"
 msgid ""
 "Enter your username into the box and we will send you an email with a link "
 "to enter a new password."
-msgstr "Enter your username into the box and we will send you an email with a link to enter a new password."
+msgstr ""
+"Enter your username into the box and we will send you an email with a link "
+"to enter a new password."
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14
 #: ckan/templates/user/snippets/followee_dropdown.html:15
@@ -4536,7 +4696,9 @@ msgstr "DataStore resource not found"
 msgid ""
 "The data was invalid (for example: a numeric value is out of range or was "
 "inserted into a text field)."
-msgstr "The data was invalid (for example: a numeric value is out of range or was inserted into a text field)."
+msgstr ""
+"The data was invalid (for example: a numeric value is out of range or was "
+"inserted into a text field)."
 
 #: ckanext/datastore/logic/action.py:210 ckanext/datastore/logic/action.py:250
 #: ckanext/datastore/logic/action.py:327 ckanext/datastore/logic/action.py:411
@@ -4806,7 +4968,9 @@ msgstr "API Leaderboard"
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
-msgstr "Choose an API attribute and find out which categories in that area have the most APIs. E.g. tags, groups, license, res_format, country."
+msgstr ""
+"Choose an API attribute and find out which categories in that area have the "
+"most APIs. E.g. tags, groups, license, res_format, country."
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
@@ -4847,6 +5011,12 @@ msgstr "Test environment"
 msgid "Production environment"
 msgstr "Production environment"
 
+msgid "Chargeability"
+msgstr ""
+
+msgid "Environment"
+msgstr ""
+
 msgid "Valid since"
 msgstr "Valid since"
 
@@ -4880,8 +5050,10 @@ msgstr "API Catalog"
 msgid "kapa-slogan-text"
 msgstr "An index of APIs within the National Data Exchange Layer"
 
-msgid "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
-msgstr "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
+msgid ""
+"eSuomi.fi, a channel of communication for the National Data Exchange Layer"
+msgstr ""
+"eSuomi.fi, a channel of communication for the National Data Exchange Layer"
 
 msgid "API Catalog source code on GitHub"
 msgstr "API Catalog source code on GitHub"
@@ -4901,17 +5073,35 @@ msgstr "Send feedback"
 msgid "Feedback message"
 msgstr "Feedback message"
 
-msgid "Kiitos! Tack! Thank you!"
-msgstr "Kiitos! Tack! Thank you!"
+msgid "Thank you!"
+msgstr ""
 
 msgid "Security token error, please try again"
 msgstr "Session error, please try again"
 
-msgid "We would like to receive feedback and development ideas regarding the API Catalogue. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
-msgstr "We would like to receive feedback and development ideas regarding the API Catalog. You cannot submit feedback on individual APIs at this time. More information on specific APIs is available through the contact channels stated in the API."
+msgid ""
+"We would like to receive feedback and development ideas regarding the API "
+"Catalogue. You cannot submit feedback on individual APIs at this time. More "
+"information on specific APIs is available through the contact channels "
+"stated in the API."
+msgstr ""
+"We would like to receive feedback and development ideas regarding the API "
+"Catalog. You cannot submit feedback on individual APIs at this time. More "
+"information on specific APIs is available through the contact channels "
+"stated in the API."
 
-msgid "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Digital and Population Data Services Agency. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
-msgstr "Please send your feedback or development ideas regarding the API Catalogue using the feedback form. The feedback will be directed to Customer Services at the Service Architecture Unit of the Digital and Population Data Services Agency. If you wish to receive a reply to your feedback, please enclose your contact information. Fields marked with an asterisk (*) are mandatory."
+msgid ""
+"Please send your feedback or development ideas regarding the API Catalogue "
+"using the feedback form. The feedback will be directed to Customer Services "
+"at the Service Architecture Unit of the Digital and Population Data Services"
+" Agency. If you wish to receive a reply to your feedback, please enclose "
+"your contact information. Fields marked with an asterisk (*) are mandatory."
+msgstr ""
+"Please send your feedback or development ideas regarding the API Catalogue "
+"using the feedback form. The feedback will be directed to Customer Services "
+"at the Service Architecture Unit of the Digital and Population Data Services"
+" Agency. If you wish to receive a reply to your feedback, please enclose "
+"your contact information. Fields marked with an asterisk (*) are mandatory."
 
 msgid "Shared resource"
 msgstr "Shared resource"
@@ -4922,8 +5112,12 @@ msgstr "Service message"
 msgid "Locked fields"
 msgstr "Locked fields"
 
-msgid "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
-msgstr "Fields marked with a thick gray border are used in automatic processing and cannot be modified."
+msgid ""
+"Fields marked with a thick gray border are used in automatic processing and "
+"cannot be modified."
+msgstr ""
+"Fields marked with a thick gray border are used in automatic processing and "
+"cannot be modified."
 
 msgid "New package count"
 msgstr "New package count"
@@ -4952,11 +5146,15 @@ msgstr "Recent activity for packages with resources"
 msgid "Recently made private"
 msgstr "Recently made private"
 
-msgid "Package changes highlighted with pink color signify changes to public visibility."
-msgstr "Package changes highlighted with pink color signify changes to public visibility."
+msgid ""
+"Package changes highlighted with pink color signify changes to public "
+"visibility."
+msgstr ""
+"Package changes highlighted with pink color signify changes to public "
+"visibility."
 
-msgid "Organizations with APIs"
-msgstr "Organizations with APIs"
+msgid "Sample APIs"
+msgstr ""
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Organization that have joined the Data Exchange Layer"
@@ -4973,14 +5171,19 @@ msgstr "Service bus identifier"
 msgid "Resources with invalid content"
 msgstr "Attachments with invalid content"
 
-msgid "File size too large for preview, download the file to view its contents."
-msgstr "File size too large for preview, download the file to view its contents."
+msgid ""
+"File size too large for preview, download the file to view its contents."
+msgstr ""
+"File size too large for preview, download the file to view its contents."
 
 msgid "Search datasets"
 msgstr "Search APIs"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Consumes data available via the Suomi.fi-Data Exchange Layer."
+
+msgid "Service Management"
+msgstr ""
 
 msgid "total organizations"
 msgstr "organizations"
@@ -5003,7 +5206,18 @@ msgstr ""
 msgid "API Catalog source code"
 msgstr ""
 
-msgid "The service is being developed by the Digital and Population Data Services Agency."
+msgid ""
+"Organizations are used to create, manage and publish APIs and datasets. "
+"Users may have various roles and privileges to create, modify and publish "
+"APIs within an organization."
+msgstr ""
+
+msgid "{0} organizations"
+msgstr ""
+
+msgid ""
+"The service is being developed by the Digital and Population Data Services "
+"Agency."
 msgstr ""
 
 msgid "Active APIs"
