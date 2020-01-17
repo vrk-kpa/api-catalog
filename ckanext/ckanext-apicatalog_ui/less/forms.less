@@ -74,9 +74,7 @@ input[type=checkbox] {
   position: relative;
   select {
     color: @suomifi-text-base;
-    padding: 4px;
-    padding-right: 10px;
-    height:33px;
+    height: 33px;
     background-color: white;
     border: 1px solid @kapa-input-border;
     border-radius: 2px;
@@ -86,6 +84,7 @@ input[type=checkbox] {
   }
 
   &:after {
+    pointer-events: none;
     font-family: FontAwesome;
     content: "\f0d7";
     color: @suomifi-text-highlight;
