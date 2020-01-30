@@ -1,0 +1,30 @@
+diff --git a/ckan/lib/dictization/model_dictize.py b/ckan/lib/dictization/model_dictize.py
+index 9acb15095..f0332436c 100644
+--- a/ckan/lib/dictization/model_dictize.py
++++ b/ckan/lib/dictization/model_dictize.py
+@@ -215,7 +215,9 @@ def package_dictize(pkg, context):
+                from_obj=pkg_tag.join(tag, tag.c.id == pkg_tag.c.tag_id)
+                ).where(pkg_tag.c.package_id == pkg.id)
+     result = execute(q, pkg_tag, context)
+-    result_dict["tags"] = d.obj_list_dictize(result, context,
++    dictize_context = context.copy()
++    dictize_context['with_capacity'] = False
++    result_dict["tags"] = d.obj_list_dictize(result, dictize_context,
+                                              lambda x: x["name"])
+     result_dict['num_tags'] = len(result_dict.get('tags', []))
+ 
+diff --git a/ckan/logic/action/get.py b/ckan/logic/action/get.py
+index 7c237603f..e41c18d9f 100644
+--- a/ckan/logic/action/get.py
++++ b/ckan/logic/action/get.py
+@@ -590,7 +590,9 @@ def group_list_authz(context, data_dict):
+         if package:
+             groups = set(groups) - set(package.get_groups())
+ 
+-    group_list = model_dictize.group_list_dictize(groups, context)
++    dictize_context = context.copy()
++    dictize_context['with_capacity'] = False
++    group_list = model_dictize.group_list_dictize(groups, dictize_context)
+     return group_list
+ 
+ 
