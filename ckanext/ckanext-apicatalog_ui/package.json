@@ -1,0 +1,17 @@
+{
+  "name": "ckanext-apicatalog_ui",
+  "version": "1.0.0",
+  "description": "These less files are based on CKAN release version [2.4.1](https://github.com/ckan/ckan/tree/release-v2.4.1/ckan/public/base/less)",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "gulp"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.12.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
