@@ -1,0 +1,17 @@
+{
+  "name": "ckanext-apicatalog_ui",
+  "version": "1.0.0",
+  "description": "Installs fontawesome to specific dir, replace fontawesome-pro with fontawesome-free if you don't have a licence.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "gulp"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.12.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
