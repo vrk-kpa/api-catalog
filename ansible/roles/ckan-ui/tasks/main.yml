@@ -5,3 +5,7 @@
 
 - name: rebuild ckanext-apicatalog_ui less
   shell: lessc "{{ apicatalog_ui_path }}/less/main.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/main.css"
+
+- name: Start CKAN
+  uri:
+    url: "http://127.0.0.1:8080"

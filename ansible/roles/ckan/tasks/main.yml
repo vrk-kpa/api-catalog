@@ -88,6 +88,3 @@
 - name: Restart Apache (start)
   service: name=apache2 state=started
 
-- name: Start CKAN
-  uri:
-    url: "http://127.0.0.1:8080"
