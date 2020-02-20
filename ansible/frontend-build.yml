@@ -11,9 +11,9 @@
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
   roles:
-    - { role: ckan-ui }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
     - ckan
+    - { role: ckan-ui }
     - ckan-translations
   handlers:
     - include: handlers/handlers.yml
