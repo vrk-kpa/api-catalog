@@ -1,0 +1,82 @@
+---
+
+public_facing_hostname: liityntakatalogi.test.suomi.fi
+ckan_site_name: Liityntäkatalogi
+ckan_featured_orgs: kermitti putki-ville-oy
+
+analytics_server_public_facing_hostname: kapastats01.csc.fi
+analytics_site_id: 1
+
+database_ckan:
+  host: 127.0.0.1
+  port: 5432
+  allowed_ip_range: 127.0.0.1/32
+  name: ckan_default
+  username: ckan_default
+  password: "{{ secret.database_ckan_password }}"
+
+nginx:
+  alternative_hostnames: testiliityntakatalogi.csc.fi
+
+solr:
+  host: 127.0.0.1
+  port: 8983
+  listen_address: 127.0.0.1
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+
+ckan_users:
+  admin:
+    username: admin
+    password: "{{ secret.ckan_admin_password }}"
+    email: admin@localhost
+  test:
+    username: test
+    password: "{{ secret.ckan_test_password }}"
+    email: testuser@localhost
+  paha:
+    username: paha
+    password: "{{ secret.ckan_paha_password }}"
+    email: paha@localhost
+
+ckan_admins:
+  - "{{ ckan_users.admin.username }}"
+
+email_domain: "{{ public_facing_hostname }}"
+email:
+  smtp_server: localhost
+  from: no-reply@{{ email_domain }}
+  error_recipient: admin@localhost
+  error_from: error@{{ email_domain }}
+  contact: palveluvayla@palveluvayla.fi
+
+xroad:
+  securityserver:
+    host: "vrkkapalpt05.csc.fi"
+    alias: "vrkkapalpt05"
+    port: 443
+  client_id: FI-TEST.GOV.0245437-2.APICatalogClient
+  service_id: FI-TEST.GOV.0920632-0.ServiceList
+
+elk:
+  logstash:
+    hosts:
+      - "kapalogtest01.csc.fi:5044"
+      - "kapalogtest02.csc.fi:5044"
+      - "kapalogtest03.csc.fi:5044"
+
+saha:
+  api_url: "https://asiointi.dev.vrk.fi/api"
+  username: "PahaIntegrationUser"
+  password: "{{ secret.saha_integration_password }}"
+
+debug_enabled: false
+
+robots_allowed: false
+
+paha_key_whitelist: 
+  - "{{ secret.ckan_paha_apikey }}"
+
+apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
