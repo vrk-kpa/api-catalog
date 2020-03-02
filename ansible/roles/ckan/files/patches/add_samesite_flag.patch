@@ -1,0 +1,33 @@
+diff --git a/ckan/lib/auth_tkt.py b/ckan/lib/auth_tkt.py
+index 36faea564..75c32824d 100644
+--- a/ckan/lib/auth_tkt.py
++++ b/ckan/lib/auth_tkt.py
+@@ -14,9 +14,10 @@ log = logging.getLogger(__name__)
+ 
+ class CkanAuthTktCookiePlugin(repoze_auth_tkt.AuthTktCookiePlugin):
+ 
+-    def __init__(self, httponly, *args, **kwargs):
++    def __init__(self, httponly, samesite, *args, **kwargs):
+         super(CkanAuthTktCookiePlugin, self).__init__(*args, **kwargs)
+         self.httponly = httponly
++        self.samesite = samesite
+ 
+     def _get_cookies(self, *args, **kwargs):
+         '''
+@@ -59,6 +60,8 @@ def make_plugin(secret=None,
+     httponly = config.get('who.httponly', True)
+     # Set secure based on config value. Default is False
+     secure = config.get('who.secure', False)
++    # Set samesite based on config value. Default is None
++    samesite = config.get('who.samesite', None)
+ 
+     # back to repoze boilerplate
+     if (secret is None and secretfile is None):
+@@ -77,6 +80,7 @@ def make_plugin(secret=None,
+     if userid_checker is not None:
+         userid_checker = resolveDotted(userid_checker)
+     plugin = CkanAuthTktCookiePlugin(_bool(httponly),
++                                     samesite,
+                                      secret,
+                                      cookie_name,
+                                      _bool(secure),
