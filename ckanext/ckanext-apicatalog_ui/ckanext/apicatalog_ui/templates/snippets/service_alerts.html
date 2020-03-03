@@ -1,11 +1,13 @@
 {% if h.service_alerts() %}
-<div class="container">
   {% for service_alert in h.service_alerts() %}
-  <div class="alert alert-{{ service_alert['category'] }}">
-      {{ service_alert['message'] }}
+  <div class="alert alert-{{ service_alert['category'] }} alert-dismissible" role="alert">
+      <div class="container">
+          <i class="far fa-exclamation-circle fa-lg"></i>
+          <span class="service-alert-message">{{ service_alert['message'] }}</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="{{ _('Close') }}">{{ _('Close') }}<i class="fal fa-times"></i></button>
+      </div>
   </div>
   {% endfor %}
-</div>
 {% endif %}
 
 

@@ -19,6 +19,9 @@
   {# The content block allows you to replace the content of the page if needed #}
   {%- block content %}
    {% block maintag %}<div role="main">{% endblock %}
+  {% block service_alerts %}
+      {% snippet 'snippets/service_alerts.html' %}
+  {% endblock %}
       <div id="content" class="container">
         {% block main_content %}
           {% block flash %}
@@ -31,9 +34,6 @@
                 {% endfor %}
               {% endblock %}
             </div>
-          {% endblock %}
-          {% block service_alerts %}
-            {% snippet 'snippets/service_alerts.html' %}
           {% endblock %}
 
           {% block toolbar %}

@@ -60,7 +60,7 @@ def piwik_site_id():
 
 def service_alerts():
     message = config.get('ckanext.apicatalog_ui.service_alert.message')
-    category = "info"
+    category = "danger"
     if message:
         return [{"message": message, "category": category}]
     else:
