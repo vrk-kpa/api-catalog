@@ -6,7 +6,7 @@
 
           <div class="left">
             <div class="navbar-logo-text">
-              <a href="{{ h.url('home') }}"><img class="lika-logo" src="/base/images/lika-logo.svg" alt="{{ _('API Catalog') }}"></a>
+              <a href="{{ h.url('home') }}"><img class="lika-logo" src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ _('API Catalog') }}"></a>
             </div>
           </div>
 
