@@ -71,6 +71,13 @@ def info_message():
     locale = i18n.get_lang()
     return config.get('ckanext.apicatalog_ui.info_message.' + locale, '')
 
+def column_contents():
+    locale = i18n.get_lang()
+    return {
+        'left': config.get('ckanext.apicatalog_ui.left_column.' + locale, ''),
+        'right': config.get('ckanext.apicatalog_ui.right_column.' + locale, '')
+    }
+
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
     log.warning("is_service_bus_id(%s)" % identifier)
@@ -229,6 +236,12 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
             'ckanext.apicatalog_ui.info_message.fi': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.info_message.sv': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.info_message.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, unicode],
             'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
 
@@ -240,6 +253,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
                 'info_message': info_message,
+                'column_contents': column_contents,
                 'unquote_url': unquote_url,
                 'ensure_translated': ensure_translated,
                 'get_translated': get_translated,
