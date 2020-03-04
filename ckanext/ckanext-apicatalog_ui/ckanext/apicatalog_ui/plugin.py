@@ -66,6 +66,8 @@ def service_alerts():
     else:
         return []
 
+def info_message():
+    return config.get('ckanext.apicatalog_ui.info_message', '')
 
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
@@ -220,6 +222,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
 
         schema.update({
             'ckanext.apicatalog_ui.service_alert.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message': [ignore_missing, unicode],
             'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
 
@@ -230,6 +233,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_homepage_organizations': get_homepage_organizations,
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
+                'info_message': info_message,
                 'unquote_url': unquote_url,
                 'ensure_translated': ensure_translated,
                 'get_translated': get_translated,

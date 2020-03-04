@@ -1,0 +1,11 @@
+{% set message = h.info_message() %}
+{% if message %}
+    <div class="container info-container">
+        <div class="alert alert-info" role="alert">
+          <i class="far fa-info-circle fa-lg"></i>
+          <div class="info-message">{{ h.render_markdown(message) }}</div>
+      </div>
+    </div>
+{% endif %}
+
+
