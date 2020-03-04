@@ -68,7 +68,8 @@ def service_alerts():
         return []
 
 def info_message():
-    return config.get('ckanext.apicatalog_ui.info_message', '')
+    locale = i18n.get_lang()
+    return config.get('ckanext.apicatalog_ui.info_message.' + locale, '')
 
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
@@ -225,7 +226,9 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
             'ckanext.apicatalog_ui.service_alert.fi.message': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.service_alert.sv.message': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.service_alert.en_GB.message': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.info_message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.en_GB': [ignore_missing, unicode],
             'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
 
