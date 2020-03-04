@@ -59,7 +59,8 @@ def piwik_site_id():
 
 
 def service_alerts():
-    message = config.get('ckanext.apicatalog_ui.service_alert.message')
+    locale = i18n.get_lang()
+    message = config.get('ckanext.apicatalog_ui.service_alert.' + locale + '.message')
     category = "danger"
     if message:
         return [{"message": message, "category": category}]
@@ -221,7 +222,9 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
         ignore_missing = toolkit.get_validator('ignore_missing')
 
         schema.update({
-            'ckanext.apicatalog_ui.service_alert.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.fi.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.sv.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.en_GB.message': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.info_message': [ignore_missing, unicode],
             'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
