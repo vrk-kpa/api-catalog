@@ -121,24 +121,17 @@
 }
 
 .hero-background-container {
-  background: url(@heroBgPath);
-  background-repeat: no-repeat;
+  background: rgba(0, 33, 78, 0.9) url(@heroBgPath) no-repeat center center;
   background-size: cover;
-  background-color: @layoutBackgroundColor;
-  background-position: center center;
+  background-blend-mode: multiply;
   position: relative;
   padding: 44px;
+
+  &.test-environment{
+    background-color: rgba(40, 40, 40, 1.0)
+  }
 }
 
-.hero-background-container::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 33, 78, 0.9);
-}
 
 .row2 {
   margin-top: 2em;

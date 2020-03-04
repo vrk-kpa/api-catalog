@@ -101,6 +101,7 @@ ckan.harvest.mq.port = {{ redis.port }}
 ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
 
 ckanext.apicatalog.harvester_status_recipients = {{ ckan_harvester_status_email_recipients|join(' ') }}
+ckanext.apicatalog_ui.test_environment = {{ ckan_test_environment | default(False) }}
 
 ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000

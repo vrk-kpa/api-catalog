@@ -200,6 +200,8 @@ def get_statistics():
 
     return result_dict
 
+def is_test_environment():
+    return config.get('ckanext.apicatalog_ui.test_environment', False)
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
@@ -235,7 +237,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_xroad_organizations': get_xroad_organizations,
                 'is_service_bus_id': is_service_bus_id,
                 'custom_organization_list': custom_organization_list,
-                'get_statistics': get_statistics
+                'get_statistics': get_statistics,
+                'is_test_environment': is_test_environment
                 }
 
     # IFacets
