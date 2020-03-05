@@ -2,7 +2,9 @@
 
 public_facing_hostname: liityntakatalogi.qa.suomi.fi
 ckan_site_name: Liityntäkatalogi
+ckan_site_logo: /base/images/lika-logo-qa.svg
 ckan_featured_orgs: kermitti putki-ville-oy
+ckan_test_environment: True
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 1

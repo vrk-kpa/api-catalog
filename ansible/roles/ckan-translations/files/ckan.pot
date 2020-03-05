@@ -4931,8 +4931,45 @@ msgstr ""
 msgid "Shared resource"
 msgstr ""
 
-msgid "Service message"
+msgid "Service message in finnish"
 msgstr ""
+
+msgid "Service message in swedish"
+msgstr ""
+
+msgid "Service message in english"
+msgstr ""
+
+msgid "Info message in finnish"
+msgstr ""
+
+msgid "Info message in swedish"
+msgstr ""
+
+msgid "Info message in english"
+msgstr ""
+
+msgid "Left column in finnish"
+msgstr ""
+
+msgid "Left column in swedish"
+msgstr ""
+
+msgid "Left column in english"
+msgstr ""
+
+msgid "Right column in finnish"
+msgstr ""
+
+msgid "Right column in swedish"
+msgstr ""
+
+msgid "Right column in english"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
 
 msgid "Locked fields"
 msgstr ""

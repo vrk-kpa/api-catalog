@@ -59,13 +59,24 @@ def piwik_site_id():
 
 
 def service_alerts():
-    message = config.get('ckanext.apicatalog_ui.service_alert.message')
-    category = "info"
+    locale = i18n.get_lang()
+    message = config.get('ckanext.apicatalog_ui.service_alert.' + locale + '.message')
+    category = "danger"
     if message:
         return [{"message": message, "category": category}]
     else:
         return []
 
+def info_message():
+    locale = i18n.get_lang()
+    return config.get('ckanext.apicatalog_ui.info_message.' + locale, '')
+
+def column_contents():
+    locale = i18n.get_lang()
+    return {
+        'left': config.get('ckanext.apicatalog_ui.left_column.' + locale, ''),
+        'right': config.get('ckanext.apicatalog_ui.right_column.' + locale, '')
+    }
 
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
@@ -200,6 +211,8 @@ def get_statistics():
 
     return result_dict
 
+def is_test_environment():
+    return config.get('ckanext.apicatalog_ui.test_environment', False)
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
@@ -217,7 +230,18 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
         ignore_missing = toolkit.get_validator('ignore_missing')
 
         schema.update({
-            'ckanext.apicatalog_ui.service_alert.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.fi.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.sv.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.service_alert.en_GB.message': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.info_message.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.left_column.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, unicode],
             'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
         })
 
@@ -228,6 +252,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_homepage_organizations': get_homepage_organizations,
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
+                'info_message': info_message,
+                'column_contents': column_contents,
                 'unquote_url': unquote_url,
                 'ensure_translated': ensure_translated,
                 'get_translated': get_translated,
@@ -235,7 +261,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_xroad_organizations': get_xroad_organizations,
                 'is_service_bus_id': is_service_bus_id,
                 'custom_organization_list': custom_organization_list,
-                'get_statistics': get_statistics
+                'get_statistics': get_statistics,
+                'is_test_environment': is_test_environment
                 }
 
     # IFacets

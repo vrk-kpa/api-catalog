@@ -639,7 +639,51 @@ textarea {
 // Errors
 
 .alert {
-  margin-top:20px;
+  //margin-top:20px;
+  border: none;
+
+  &.alert-danger{
+    background-color: #faebeb;
+    margin-bottom: 0;
+    i.far, i.fas, i.fal {
+      color: #c33932;
+    }
+  }
+
+  &.alert-info{
+    display: flex;
+    align-items: baseline;
+    border: 1px solid @suomifi-highlight-base;
+    width: 100%;
+    background-color: #d1e4ff;
+    color: @suomifi-text-base;
+    margin-top: 25px;
+
+    .info-message, .far{
+      padding-left: 20px;
+    }
+
+    i.far{
+      color: @suomifi-highlight-base;
+    }
+  }
+
+  .service-alert-message {
+    padding-left: 20px;
+    font-family: @headings-font-family;
+  }
+
+  button.close {
+    font-size: 16px;
+    color: @suomifi-text-base;
+    opacity: 1;
+    line-height: 30px;
+    margin-right: 20px;
+    i.far, i.fas, i.fal{
+      padding-left: 10px;
+      color: @suomifi-text-base
+    }
+  }
 }
 
 .alert > :last-child {

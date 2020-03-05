@@ -1,0 +1,12 @@
+<div class="hero-module module-content">
+    <header>
+        <h2 class="page-heading">{{ _("Welcome to CKAN") }}</h2>
+        {% set columns = h.column_contents() %}
+        <div class="col-md-6">
+            {{ h.render_markdown(columns.left) }}
+        </div>
+        <div class="col-md-6">
+            {{ h.render_markdown(columns.right) }}
+        </div>
+    </header>
+</div>
