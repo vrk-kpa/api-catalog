@@ -652,7 +652,7 @@ textarea {
 
   &.alert-info{
     display: flex;
-    align-items: baseline;
+    align-items: start;
     border: 1px solid @suomifi-highlight-base;
     width: 100%;
     background-color: #d1e4ff;
@@ -661,10 +661,16 @@ textarea {
 
     .info-message, .far{
       padding-left: 20px;
+      line-height: 24px;
+      a{
+        color: @suomifi-text-base;
+        text-decoration: underline;
+      }
     }
 
-    i.far{
+    i.far, i.fal{
       color: @suomifi-highlight-base;
+      line-height: 24px;
     }
   }
 
