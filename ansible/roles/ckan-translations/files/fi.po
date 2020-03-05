@@ -5124,8 +5124,44 @@ msgstr ""
 msgid "Shared resource"
 msgstr "Yhteiskäyttöinen"
 
-msgid "Service message"
-msgstr "Huoltoilmoitus"
+msgid "Service message in finnish"
+msgstr "Huoltoilmoitus suomeksi"
+
+msgid "Service message in swedish"
+msgstr "Huoltoilmoitus ruotsiksi"
+
+msgid "Service message in english"
+msgstr "Huoltoilmoitus englanniksi"
+
+msgid "Info message in finnish"
+msgstr "Infoviesti suomeksi"
+
+msgid "Info message in swedish"
+msgstr "Infoviesti ruotsiksi"
+
+msgid "Info message in english"
+msgstr "Infoviesti englanniksi"
+
+msgid "Left column in finnish"
+msgstr "Vasen palsta suomeksi"
+
+msgid "Left column in swedish"
+msgstr "Vasen palsta ruotsiksi"
+
+msgid "Left column in english"
+msgstr "Vasen palsta englanniksi"
+
+msgid "Right column in finnish"
+msgstr "Oikea palsta suomeksi"
+
+msgid "Right column in swedish"
+msgstr "Oikea palsta ruotsiksi"
+
+msgid "Right column in english"
+msgstr "Oikea palsta englanniksi"
+
+msgid "Close"
+msgstr "Sulje"
 
 msgid "Locked fields"
 msgstr "Lukitut kentät"
