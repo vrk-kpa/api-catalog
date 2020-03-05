@@ -132,6 +132,42 @@
   }
 }
 
+/* the fallback for IE 10, 11 */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+//@supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
+  .hero-background-container {
+    &::before {
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: rgba(0, 33, 78, 0.9);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &.test-environment::before {
+      background-color: rgba(40, 40, 40, 0.9)
+    }
+  }
+}
+
+/* the fallback for Edge 12+ */
+@supports (-ms-accelerator:true) or (-ms-ime-align:auto) {
+  .hero-background-container {
+    &::before {
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: rgba(0, 33, 78, 0.9);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &.test-environment::before {
+      background-color: rgba(40, 40, 40, 0.9)
+    }
+  }
+}
 
 .row2 {
   margin-top: 2em;
