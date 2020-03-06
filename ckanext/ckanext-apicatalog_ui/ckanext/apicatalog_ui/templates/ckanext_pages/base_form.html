@@ -1,0 +1,33 @@
+{% ckan_extends %}
+
+{% block extra_pages_form %}
+  {{ form.input('title_fi', label=_('Title') + ' FI', value=data.title_fi, error=errors.title) }}
+  {{ form.input('title_sv', label=_('Title') + ' SV', value=data.title_sv, error=errors.title) }}
+  {{ form.input('title_en', label=_('Title') + ' EN', value=data.title_en, error=errors.title) }}
+
+  {% set editor = h.get_wysiwyg_editor() %}
+
+  {% if editor == 'medium' %}
+    {{ wysiwyg.editor('content_fi', id='field-content-fi', label=_('Content') + ' FI', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
+    {{ wysiwyg.editor('content_sv', id='field-content-sv', label=_('Content') + ' SV', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
+    {{ wysiwyg.editor('content_en', id='field-content-en', label=_('Content') + ' EN', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
+  {% elif editor == 'ckeditor' %}
+    {% resource 'ckanext-pages/main' %}
+    <div class="control-group">
+        <label for="field-content-ck" class="control-label">{{ _('Content') }} FI</label>
+    </div>
+    <textarea id="field-content-ck" name="content_fi" placeholder="{{_('My content')}}" data-module="ckedit" style="height:400px" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}"> {{ data.content_fi }}</textarea>
+    <div class="control-group">
+        <label for="field-content-ck" class="control-label">{{ _('Content') }} SV</label>
+    </div>
+    <textarea id="field-content-ck" name="content_sv" placeholder="{{_('My content')}}" data-module="ckedit" style="height:400px" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}"> {{ data.content_sv }}</textarea>
+    <div class="control-group">
+        <label for="field-content-ck" class="control-label">{{ _('Content') }} EN</label>
+    </div>
+    <textarea id="field-content-ck" name="content_en" placeholder="{{_('My content')}}" data-module="ckedit" style="height:400px" data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}"> {{ data.content_en }}</textarea>
+  {% else %}
+    {{ form.markdown('content', id='field-content-fi', label=_('Content') + ' FI', placeholder=_('Enter content here'), value=data.content_fi, error=errors.content) }}
+    {{ form.markdown('content', id='field-content-sv', label=_('Content') + ' SV', placeholder=_('Enter content here'), value=data.content_sv, error=errors.content) }}
+    {{ form.markdown('content', id='field-content-en', label=_('Content') + ' EN', placeholder=_('Enter content here'), value=data.content_en, error=errors.content) }}
+  {% endif %}
+{% endblock extra_pages_form %}
