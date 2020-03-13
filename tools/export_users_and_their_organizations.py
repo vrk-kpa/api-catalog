@@ -3,7 +3,7 @@ import argparse
 import json
 
 parser = argparse.ArgumentParser(description='Export users and their organizations')
-parser.add_argument("BASE_URL", help="Base URL of ckan api")
+parser.add_argument("BASE_URL", help="Base URL of ckan")
 parser.add_argument("-a", "--apikey", help="Apikey")
 
 args = parser.parse_args()
