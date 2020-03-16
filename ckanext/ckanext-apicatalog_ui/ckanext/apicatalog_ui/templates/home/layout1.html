@@ -1,6 +1,5 @@
 <div role="main" class="hero">
-{{ h.is_test_environment() }}
-  <div class="hero-background-container {% if h.is_test_environment()%}test-environment{% endif %}">
+  <div class="hero-background-container {% if h.is_test_environment() %}test-environment{% endif %}">
     <div class="container">
       {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
       <div id="hero-stats" class="col-sm-8 col-sm-offset-2">
