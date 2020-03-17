@@ -61,7 +61,8 @@
       "preset_name": "dataset_organization_ex",
       "values": {
         "validators": "owner_org_validator unicode",
-        "form_snippet": "organization_ex.html"
+        "form_snippet": "organization_ex.html",
+        "classes": ["control-full"]
       }
     },
     {
@@ -72,7 +73,8 @@
         "form_placeholder": "http://example.com/my-data.csv",
         "upload_field": "upload",
         "upload_clear": "clear_upload",
-        "upload_label": "File"
+        "upload_label": "File",
+        "classes": ["control-full"]
       }
     },
     {
@@ -82,7 +84,8 @@
         "display_snippet": "fluent_markdown.html",
         "error_snippet": "fluent_text.html",
         "validators": "fluent_text",
-        "output_validators": "fluent_core_translated_output"
+        "output_validators": "fluent_core_translated_output",
+        "classes": ["control-full"]
       }
     },
     {
@@ -93,6 +96,7 @@
         "error_snippet": "fluent_text.html",
         "validators": "only_default_lang_required fluent_text",
         "output_validators": "fluent_core_translated_output",
+        "classes": ["control-full"],
         "form_attrs": {
           "data-module": "slug-preview-target"
         }

@@ -42,12 +42,14 @@
     {
       "field_name": "validSince",
       "label": "Valid since",
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "validUntil",
       "label": "Valid until",
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "private",
@@ -59,6 +61,7 @@
       "field_name": "environment",
       "label": "Environment",
       "preset": "select",
+      "classes": ["control-full"],
       "choices": [
         {
           "value": "test",
@@ -75,6 +78,7 @@
       "label": "Shared resource",
       "preset": "select",
       "required": true,
+      "classes": ["control-full"],
       "choices": [
         {
           "value": "yes",
@@ -91,13 +95,15 @@
       "label": "Source",
       "form_placeholder": "http://example.com/dataset.json",
       "display_property": "foaf:homepage",
-      "display_snippet": "link.html"
+      "display_snippet": "link.html",
+      "classes": ["control-full"]
     },
     {
       "field_name": "maintainer",
       "label": "Maintainer",
       "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:contributor"
+      "display_property": "dc:contributor",
+      "classes": ["control-full"]
     },
     {
       "field_name": "maintainer_email",
@@ -105,13 +111,15 @@
       "form_placeholder": "joe@example.com",
       "display_property": "dc:contributor",
       "display_snippet": "email.html",
-      "display_email_name_field": "maintainer_email"
+      "display_email_name_field": "maintainer_email",
+      "classes": ["control-full"]
     },
     {
       "field_name": "maintainer_phone",
       "label": "Maintainer phone number",
       "form_placeholder": "+358123456789",
-      "display_property": "dc:contributor"
+      "display_property": "dc:contributor",
+      "classes": ["control-full"]
     },
     {
       "field_name": "xroad_instance",
@@ -163,12 +171,14 @@
       "field_name": "type",
       "label": "Type",
       "preset": "fluent_text",
-      "form_languages": ["fi", "sv", "en"]
+      "form_languages": ["fi", "sv", "en"],
+      "classes": ["control-full"]
     },
     {
       "field_name": "chargeability",
       "label": "Chargeability",
       "preset": "select",
+      "classes": ["control-full"],
       "choices": [
         {
           "value": "yes",
@@ -187,39 +197,46 @@
     {
       "field_name": "format",
       "label": "Format",
+      "classes": ["control-full"],
       "preset": "apicatalog_resource_format_autocomplete"
     },
     {
       "field_name": "validSince",
       "label": "Valid since",
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "validUntil",
       "label": "Valid until",
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "connection_information",
       "label": "Connection information",
       "preset": "fluent_text",
+      "classes": ["control-full"],
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "availability",
       "label": "Availability",
       "preset": "fluent_text",
+      "classes": ["control-full"],
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "sla",
       "label": "SLA",
       "preset": "fluent_text",
+      "classes": ["control-full"],
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "response_time",
       "label": "Average response time",
+      "classes": ["control-full"],
       "form_placeholder": {
         "en": "eg. 100ms",
         "fi": "esim. 100ms"
@@ -229,13 +246,18 @@
       "field_name": "service_status",
       "label": "Service status",
       "preset": "fluent_text",
+      "classes": ["control-full"],
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "license_id",
       "label": "License",
       "form_snippet": "license.html",
-      "display_snippet": "license.html"
+      "classes": ["control-full"],
+      "display_snippet": "license.html",
+      "form_attrs": {
+        "class": "form-control"
+      }
     },
     {
       "field_name": "valid_content",
@@ -265,6 +287,7 @@
       "field_name": "access_restriction_level",
       "label": "Access Restriction Level",
       "preset": "select",
+      "classes": ["control-full"],
       "choices": [
         {
           "value": "public",
@@ -283,6 +306,7 @@
     {
       "field_name": "allowed_users",
       "label": "Allowed Users",
+      "classes": ["control-full"],
       "preset": "tag_string_autocomplete",
       "data-module-source": "/api/2/util/user/autocomplete?q=?",
       "validators": "ignore_missing"

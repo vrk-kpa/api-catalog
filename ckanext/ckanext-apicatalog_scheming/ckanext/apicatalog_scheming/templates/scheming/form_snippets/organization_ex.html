@@ -19,6 +19,7 @@
     error=errors[field.field_name],
     is_required=org_required,
     extra_html=caller() if caller,
+    classes=field.classes or []
     ) %}
     <div {{ form.attributes(field.form_attrs) if 'form_attrs' in field else '' }}>
     <select id="field-organizations" name="owner_org" data-module="autocomplete">
@@ -41,7 +42,7 @@
   <div data-module="dataset-visibility">
   {% if 'final' in field and field.final and field.field_name in data and data[field.field_name] != "" %}
   {% set organization = h.get_organization(data[field.field_name]) %}
-  <div class="control-group control-full control-medium control-maybe-final">
+  <div class="control-group control-full control-full control-maybe-final">
     <label class="control-label">{{ h.scheming_language_text(field.label) }}</label>
     <div><input value="{{ organization.title }}" disabled readonly /></div>
     <select id="field-organizations" name="owner_org" style="display:none">
@@ -55,10 +56,10 @@
   {% endif %}
 
   {% block package_metadata_fields_visibility %}
-    <div class="control-group">
+    <div class="form-group control-full">
       <label for="field-private" class="control-label">{{ _('Visibility') }}</label>
       <div class="controls">
-        <select id="field-private" name="private">
+        <select id="field-private" name="private" class="form-control">
           {% for option in [('True', _('Private')), ('False', _('Public'))] %}
           <option value="{{ option[0] }}" {% if option[0] == data.private|trim %}selected="selected"{% endif %}>{{ option[1] }}</option>
           {% endfor %}
