@@ -5145,6 +5145,9 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid "Service message"
+msgstr ""
+
 msgid "Locked fields"
 msgstr "Locked fields"
 
@@ -5278,4 +5281,30 @@ msgid "Information about National Data Exchange Layer"
 msgstr ""
 
 msgid "Type in name of organization"
+msgstr ""
+
+msgid "User name is required."
+msgstr ""
+
+msgid "Email is required."
+msgstr ""
+
+msgid "User name {} already exists."
+msgstr ""
+
+msgid "Email address {} already has the following users: {}."
+msgstr ""
+
+msgid "Error sending password reset link to address {}."
+msgstr ""
+
+msgid "Error creating user {} <{}>."
+msgstr ""
+
+msgid ""
+"Successfully created user %(name)s &lt;%(email)s&gt;. Password reset mail "
+"sent."
+msgstr ""
+
+msgid "Add user"
 msgstr ""
