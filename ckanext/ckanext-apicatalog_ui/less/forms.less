@@ -44,10 +44,21 @@ form .control-group:first-child {
   margin-top: 0px;
 }
 
+form {
+  .form-control {
+    .border-radius(0);
+  }
+}
 label {
   cursor: pointer;
   font-weight:normal;
   font-size: 14px;
+
+  &.control-label {
+    font-size: 16px;
+    font-family: @headings-font-family;
+  }
+
 }
 
 label:after {
@@ -96,6 +107,7 @@ input[type=checkbox] {
 
 textarea {
   max-width: 100%;
+  .border-radius(0);
 }
 
 form .control-order-by {
@@ -114,12 +126,14 @@ form .control-order-by {
   .box-sizing(border-box);
   height: auto;
   width: 100%;
+  .border-radius(0);
 }
 
 .control-medium input,
 .control-medium select,
 .control-medium textarea {
   width: 320px;
+  .border-radius(0);
 }
 
 .control-large input,
@@ -820,15 +834,15 @@ textarea {
     }
   }
   .btn-remove-url {
-    color: @kapa-black;
-    background-color: transparent;
-    border:none;
     position: absolute;
     margin-right: 0;
-    top: 4px;
-    right: 5px;
+    top: 0;
+    right: 0;
     font-size: @font-size-base;
-    padding: 2px 2px;
+    padding: 5px 15px;
+    .border-radius(0);
+    height: 100%;
+    line-height: 28px;
 
     .glyphicon-remove {
       margin-right: 0;

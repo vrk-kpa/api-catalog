@@ -51,6 +51,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     ckan.plugins.implements(ckan.plugins.IAuthFunctions)
     ckan.plugins.implements(ckan.plugins.IPermissionLabels)
     ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
+    ckan.plugins.implements(ckan.plugins.IActions)
 
     # IRoutes
 
@@ -80,7 +81,8 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                 'package_revision_list': admin_only,
                 'package_show': auth.package_show,
                 'read_members': auth.read_members,
-                'group_edit_permissions': auth.read_members
+                'group_edit_permissions': auth.read_members,
+                'send_reset_link': admin_only
                 }
 
     # IPermissionLabels
@@ -159,6 +161,18 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         data_dict['num_resources'] = len(allowed_resources)
 
         return data_dict
+
+    # IActions
+    def get_actions(self):
+        return {
+            "send_reset_link": send_reset_link
+        }
+
+def send_reset_link(context, data_dict):
+    ckan.logic.check_access('send_reset_link', context)
+
+    user_obj = model.User.get(data_dict['user_id'])
+    mailer.send_reset_link(user_obj)
 
 
 def auth_context():

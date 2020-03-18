@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import pylons.config as config
+from paste.deploy.converters import asbool
 from ckan import model
 
 import ckan.logic as logic
@@ -212,7 +213,7 @@ def get_statistics():
     return result_dict
 
 def is_test_environment():
-    return config.get('ckanext.apicatalog_ui.test_environment', False)
+    return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)

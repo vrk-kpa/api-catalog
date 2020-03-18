@@ -4,7 +4,6 @@ import argparse
 import re
 import string
 import random
-from ckan.lib import mailer
 
 parser = argparse.ArgumentParser(description='Export users and their organizations')
 parser.add_argument("BASE_URL", help="Base URL of ckan")
@@ -45,4 +44,4 @@ with open("users.json", "r") as data:
                     print("Organization not found %s" % org['name'])
 
             print("Send reset email")
-            mailer.send_reset_link(user_obj)
+            ckan.call_action('send_reset_link', {'user_id': user_obj['id']})
