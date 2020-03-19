@@ -33,13 +33,13 @@ def _generate_random_password():
 
 @useradd.route('/useradd', endpoint='read', methods=['GET', 'POST'])
 def read():
+    context = {u'user': g.user, u'auth_user_obj': g.userobj}
+
     try:
         p.toolkit.check_access('admin_useradd', context, {})
     except logic.NotAuthorized:
         p.toolkit.abort(403)
         return
-
-    context = {u'user': g.user, u'auth_user_obj': g.userobj}
 
     if p.toolkit.request.method == u'GET':
         return p.toolkit.render(u'admin/useradd.html', extra_vars={})
