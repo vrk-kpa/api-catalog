@@ -216,6 +216,7 @@ def is_test_environment():
     return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
+    plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
@@ -266,6 +267,12 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'is_test_environment': is_test_environment
                 }
 
+    # IBlueprint
+
+    def get_blueprint(self):
+        from views.useradd import useradd
+        return [useradd]
+
     # IFacets
 
     def organization_facets(self, facets_dict, organization_type, package_type):
@@ -285,6 +292,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
 
     def update_config(self, config):
         toolkit.add_ckan_admin_tab(config, 'admin_dashboard', 'Dashboard')
+        toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
 
     def before_map(self, m):
         controller = 'ckanext.apicatalog_ui.admindashboard:AdminDashboardController'
@@ -292,4 +300,5 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
         return m
 
     def get_auth_functions(self):
-        return {'admin_dashboard': admin_only}
+        return {'admin_dashboard': admin_only,
+                'admin_useradd': admin_only}
