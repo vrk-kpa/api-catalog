@@ -132,7 +132,8 @@ form .control-order-by {
 .control-medium input,
 .control-medium select,
 .control-medium textarea {
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   .border-radius(0);
 }
 
@@ -165,8 +166,6 @@ form .control-order-by {
 
 .form-actions {
   background: none;
-  margin-left: -@gutterX;
-  margin-right: -@gutterX;
   margin-bottom: 0; // Prevents reduces the padding when included in a module.
   padding-bottom: 0;
 }
