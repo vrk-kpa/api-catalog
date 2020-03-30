@@ -183,9 +183,7 @@ def custom_organization_list(params):
     results = toolkit.get_action('organization_list')(context, data_dict_page_results)
 
     with_datasets = params.get('with_datasets', '').lower() in ('true', '1', 'yes')
-    log.info(with_datasets)
     if with_datasets:
-        log.info("filtering")
         results = [group for group in results if group.get('package_count') > 0]
 
     def group_by_content(a, b):
@@ -198,7 +196,10 @@ def custom_organization_list(params):
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
-    return results[page_start:page_end]
+    return {
+        'organizations': results[page_start:page_end],
+        'count': len(results)
+    }
 
 
 def get_statistics():
