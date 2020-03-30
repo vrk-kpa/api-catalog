@@ -3,20 +3,22 @@
 {% set truncate_title = truncate_title or 80 %}
 
 <h3>{{ _('Sample APIs') }}</h3>
-<ul class="horizontal-package-list">
+<div class="row horizontal-package-list">
 {% for package in packages %}
 {% set title = h.get_translated(package, 'title') or package.name %}
 {% set organization_title = h.get_translated(package.organization, 'title') or package.organization.name %}
 {% set notes = h.markdown_extract(h.get_translated(package, 'notes'), extract_length=truncate) %}
-<li>
-  <div class="border-wrapper">
-    <h4 class="organization-title">{{ organization_title }}</h4>
-    <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}"><h5 class="dataset-title">{{ title }}</h5></a>
-    <p class="dataset-description">{{ notes }}</p>
+<div class="col-md-4">
+  <div class="horizontal-package-item">
+    <div class="border-wrapper">
+      <h4 class="organization-title">{{ organization_title }}</h4>
+      <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}"><h5 class="dataset-title">{{ title }}</h5></a>
+      <p class="dataset-description">{{ notes }}</p>
+    </div>
   </div>
-</li>
+</div>
 {% endfor %}
-</ul>
+</div>
 <div class="view-all-link">
   <i class="fa fa-chevron-right"></i><a href="">{{ _('Browse APIs') }}</a>
 </div>

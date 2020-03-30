@@ -267,24 +267,17 @@
 .horizontal-package-list {
   list-style: none;
   padding: 0;
-  display: flex;
-  height: 265px;
 
-  > li {
-    flex: auto;
-    max-width: 33%;
-    background-color: white;
+  .horizontal-package-item {
+    height: 265px;
     border-top: 4px solid @suomifi-highlight-dark;
 
     .border-wrapper {
+      background-color: white;
       border: 1px solid @suomifi-border;
       border-top: 0;
       padding: 25px 25px 25px 30px;
       height: 100%;
-    }
-
-    &:not(:last-child) {
-      margin-right: 29px;
     }
 
     .organization-title {
