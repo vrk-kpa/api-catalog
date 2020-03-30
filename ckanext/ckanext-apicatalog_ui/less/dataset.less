@@ -107,23 +107,28 @@
   &:nth-child(even) {
     background-color: @suomifi-striped-background;
   }
-  margin-bottom: 20px;
 
   position: relative;
   margin-bottom: 0px;
 
   a,
-  a:visited {
-    color: @black;
-    font-weight: bold;
+  a:visited,
+  a:focus {
+    color: @suomifi-highlight-base;
     text-decoration: none;
   }
 
   .resource-title {
-    color: rgb(41, 41, 41);
+    color: @suomifi-highlight-base;
+    font-family: @font-family-base;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .resource-download {
+    color: @suomifi-highlight-base;
     font-family: @headings-font-family;
     font-size: 16px;
-    font-weight: 600;
     line-height: 24px;
   }
 
@@ -136,12 +141,21 @@
   }
 }
 
-.resource-item .col-xs-11 .container-fluid {
-  padding: 20px 20px 20px 60px;
-  p {
-    font-weight: normal;
-    @font-size: @font-size-base;
-    .multiline-ellipsis(1);
+.resource-item {
+  .col-xs-9,
+  .col-xs-3{
+    .container-fluid {
+      padding: 20px 20px 20px 60px;
+      p {
+        font-weight: normal;
+        @font-size: @font-size-base;
+        .multiline-ellipsis(1);
+      }
+
+      &.resource-download {
+        padding: 20px;
+      }
+    }
   }
 }
 
