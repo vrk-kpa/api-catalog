@@ -33,27 +33,46 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="row">
+          <div class="row homepage-section">
             <div class="col-sm-12">
-              {% block columns %} {% snippet 'home/snippets/columns.html' %} {% endblock %}
+              {% block columns %}
+                {% snippet 'home/snippets/columns.html' %}
+              {% endblock %}
             </div>
           </div>
-          <div class="row">
-              <div class="col-sm-6">
-                  <div class="module">
-                      {% block twitter_feed %} {% snippet 'home/snippets/twitter.html' %} {% endblock %}
-                  </div>
-              </div>
-            <div class="col-sm-4 col-md-4">
-              {# <div class="module"> #}
-                {# Note: this featured_group block is used as an example in the theming tutorial in the docs! If you change this code, be sure to check whether you need to update the docs. #} {# Start template block example. #} {# {% block featured_group %} {% snippet 'home/snippets/featured_group.html'
-                %} {% endblock %} #} {# End template block example. #}
-                {# </div> #}
-              <div class="module">
-                {% block featured_organization %} {% snippet 'home/snippets/featured_organization.html' %} {% endblock %}
-              </div>
+          <div class="row homepage-section">
+            <div class="col-sm-12">
+              {% block featured_datasets %}
+                {% snippet 'home/snippets/featured_datasets.html' %}
+              {% endblock %}
             </div>
-            <div class="col-md-1"></div>
+          </div>
+          <div class="row homepage-section">
+            <div class="col-sm-12">
+              {% block news %}
+                {% snippet 'home/snippets/news.html', news=h.get_homepage_news() %}
+              {% endblock %}
+            </div>
+          </div>
+          <div class="row homepage-section">
+            <div class="col-sm-6">
+              {% block announcements %}
+                {% snippet 'home/snippets/announcements.html', announcements=h.get_homepage_announcements() %}
+              {% endblock %}
+
+            </div>
+            <div class="col-sm-6">
+                <div class="module">
+                    {% block twitter_feed %} {% snippet 'home/snippets/twitter.html' %} {% endblock %}
+                </div>
+            </div>
+          </div>
+          <div class="row homepage-section">
+            <div class="col-sm-12">
+              {% block stats %}
+                {% snippet 'home/snippets/apicatalog_12mo_stats.html' %}
+              {% endblock %}
+            </div>
           </div>
         </div>
       </div>

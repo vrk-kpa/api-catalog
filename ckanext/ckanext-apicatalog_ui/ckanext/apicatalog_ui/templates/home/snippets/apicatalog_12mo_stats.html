@@ -1,0 +1,9 @@
+{% set stats = h.get_last_12_months_statistics() %}
+<div class="apicatalog-12mo-stats">
+  <h3 class="heading">API catalog statistics for the last 12 months</h3>
+  <ul class="items">
+    <li><span class="amount">{{ stats.visitors }}</span><span class="quality">visitors</span></li>
+    <li><span class="amount">{{ stats.new_packages }}</span><span class="quality">new APIs</span></li>
+    <li><span class="amount">{{ stats.new_resources }}</span><span class="quality">new attachments</span></li>
+  </ul>
+</div>
