@@ -182,6 +182,12 @@ def custom_organization_list(params):
     }
     results = toolkit.get_action('organization_list')(context, data_dict_page_results)
 
+    with_datasets = params.get('with_datasets', '').lower() in ('true', '1', 'yes')
+    log.info(with_datasets)
+    if with_datasets:
+        log.info("filtering")
+        results = [group for group in results if group.get('package_count') > 0]
+
     def group_by_content(a, b):
         a_has_content = 1 if a['package_count'] else 0
         b_has_content = 1 if b['package_count'] else 0
