@@ -10,5 +10,5 @@
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
   roles:
-    - { role: xroad-tunnel, when: "deployment_environment_id == 'vagrant'" }
+    #- { role: xroad-tunnel, when: "deployment_environment_id == 'vagrant'" }
     - xroad-gateway
