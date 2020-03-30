@@ -40,11 +40,11 @@
         {% set sorting_selected = c.sort_by_selected or '' %}
         {% if request.params.with_datasets %}
             <a href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
-                {{ _('Show organizations without datasets') }}
+                {{ _('Show organizations without APIs') }}
             </a>
         {% else %}
             <a href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, with_datasets=True) }}">
-                {{ _('Show only organizations with datasets') }}
+                {{ _('Show only organizations with APIs') }}
             </a>
         {% endif %}
     </div>
