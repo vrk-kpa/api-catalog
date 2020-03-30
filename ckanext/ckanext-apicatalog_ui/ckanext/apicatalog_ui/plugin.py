@@ -241,9 +241,6 @@ def get_last_12_months_statistics(context=None, data_dict=None):
     packages = toolkit.get_action('package_search')(context, {'q':'metadata_modified:[NOW-12MONTHS TO *]'})
     organizations = toolkit.get_action('organization_list')(context, {"all_fields": True})
 
-    from pprint import pformat
-    log.info(pformat(organizations))
-
     package_create_dates = (
         datetime.strptime(result['metadata_created'], '%Y-%m-%dT%H:%M:%S.%f')
         for result in packages.get('results', []) if 'metadata_created' in result)
@@ -285,12 +282,12 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
                     'format': 'json',
                     'token_auth': piwik_token_auth}
             stats = requests.get('https://{}/index.php'.format(piwik_site_url),
-                                 verify=piwik_ssl_verify, params=params).json
-            log.info('visitors: %s' % stats)
-            visitor_count = 37
+                                 verify=piwik_ssl_verify, params=params).json()
+            visitor_count = sum(iter(stats.values()))
         except Exception as e:
+            # Fetch failed for some reason, keep old value until cache invalidates
             visitor_count = 0 if VISITOR_CACHE is None else VISITOR_CACHE[1]
-            raise
+
         visitor_cache_timestamp = datetime.now()
         VISITOR_CACHE = (visitor_cache_timestamp, visitor_count)
     else:
