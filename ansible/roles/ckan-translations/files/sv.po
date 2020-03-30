@@ -5145,9 +5145,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-msgid "Service message"
-msgstr ""
-
 msgid "Locked fields"
 msgstr "Låsta Fält"
 
@@ -5309,4 +5306,10 @@ msgid ""
 msgstr ""
 
 msgid "Add user"
+msgstr ""
+
+msgid "Show organizations without APIs"
+msgstr ""
+
+msgid "Show only organizations with APIs"
 msgstr ""
