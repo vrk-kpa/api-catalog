@@ -5333,3 +5333,33 @@ msgstr ""
 
 msgid "Add user"
 msgstr "Lisää käyttäjä"
+
+msgid "Browse APIs"
+msgstr "Kaikki liitynnät"
+
+msgid "News"
+msgstr "Uutisia palveluväylästä"
+
+msgid "Published"
+msgstr "Julkaistu"
+
+msgid "Announcements"
+msgstr "Tiedotteet"
+
+msgid "API catalog statistics for the last 12 months"
+msgstr "Liityntäkatalogin tilastoja viimeisen 12 kuukauden ajalta"
+
+msgid "Browse announcements"
+msgstr "Lue kaikki tiedotteet"
+
+msgid "Visitors"
+msgstr "Kävijää"
+
+msgid "New APIs"
+msgstr "Uutta liityntää"
+
+msgid "New attachments"
+msgstr "Uutta rajapintaa"
+
+msgid "Browse news"
+msgstr "Lue kaikki uutiset"

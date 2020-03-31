@@ -230,7 +230,6 @@
 }
 
 .apicatalog-12mo-stats {
-  display: flex;
   font-family: SourceSansPro-SemiBold;
   font-weight: 600;
   color: @suomifi-text-base;
@@ -240,35 +239,29 @@
     line-height: 28px;
     max-width: 300px;
     margin-right: 80px;
+    margin-bottom: 20px;
   }
 
-  .items {
-    flex: auto;
-    list-style: none;
-    display: flex;
-    margin: 0;
+  .item {
+    margin-bottom: 30px;
 
-    li {
-      .amount {
-        display: block;
-        font-size: 40px;
-        margin-bottom: 8px;
-      }
-      .quality {
-        font-size: 18px;
-        color: @suomifi-text-highlight;
-      }
-
-      flex: auto;
+    .amount {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+    .quality {
+      font-size: 18px;
+      color: @suomifi-text-highlight;
     }
   }
 }
 
-.horizontal-package-list {
+.horizontal-dataset-list {
   list-style: none;
   padding: 0;
 
-  .horizontal-package-item {
+  .horizontal-dataset-item {
     height: 265px;
     border-top: 4px solid @suomifi-highlight-dark;
 

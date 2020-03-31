@@ -5145,9 +5145,6 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-msgid "Service message"
-msgstr ""
-
 msgid "Locked fields"
 msgstr "Locked fields"
 
@@ -5307,4 +5304,34 @@ msgid ""
 msgstr ""
 
 msgid "Add user"
+msgstr ""
+
+msgid "Browse APIs"
+msgstr ""
+
+msgid "News"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Announcements"
+msgstr ""
+
+msgid "API catalog statistics for the last 12 months"
+msgstr ""
+
+msgid "Browse announcements"
+msgstr ""
+
+msgid "Visitors"
+msgstr ""
+
+msgid "New APIs"
+msgstr ""
+
+msgid "New attachments"
+msgstr ""
+
+msgid "Browse news"
 msgstr ""

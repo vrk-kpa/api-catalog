@@ -43,21 +43,21 @@
           <div class="row homepage-section">
             <div class="col-sm-12">
               {% block featured_datasets %}
-                {% snippet 'home/snippets/featured_datasets.html' %}
+                {% snippet 'home/snippets/featured_datasets.html', datasets=h.get_homepage_datasets(3) %}
               {% endblock %}
             </div>
           </div>
           <div class="row homepage-section">
             <div class="col-sm-12">
               {% block news %}
-                {% snippet 'home/snippets/news.html', news=h.get_homepage_news() %}
+                {% snippet 'home/snippets/news.html', news=h.get_homepage_news(5) %}
               {% endblock %}
             </div>
           </div>
           <div class="row homepage-section">
             <div class="col-sm-6">
               {% block announcements %}
-                {% snippet 'home/snippets/announcements.html', announcements=h.get_homepage_announcements() %}
+                {% snippet 'home/snippets/announcements.html', announcements=h.get_homepage_announcements(5) %}
               {% endblock %}
 
             </div>

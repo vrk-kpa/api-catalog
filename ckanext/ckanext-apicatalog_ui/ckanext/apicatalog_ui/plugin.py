@@ -150,9 +150,9 @@ def get_homepage_organizations(count=1):
     return groups
 
 
-def get_homepage_packages(count=1):
-    packages = get_action('package_search')({}, {'q': '*:*'}).get('results', [])
-    return packages[:3]
+def get_homepage_datasets(count=1):
+    datasets = get_action('package_search')({}, {'q': 'type:dataset'}).get('results', [])
+    return datasets[:count]
 
 
 def get_homepage_news(count=3):
@@ -338,7 +338,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         return {'piwik_url': piwik_url,
                 'get_homepage_organizations': get_homepage_organizations,
-                'get_homepage_packages': get_homepage_packages,
+                'get_homepage_datasets': get_homepage_datasets,
                 'get_homepage_news': get_homepage_news,
                 'get_homepage_announcements': get_homepage_announcements,
                 'piwik_site_id': piwik_site_id,
