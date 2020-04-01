@@ -5339,3 +5339,6 @@ msgstr "Näytä kaikki organisaatiot"
 
 msgid "Show only organizations with APIs"
 msgstr "Näytä vain organisaatiot joilla on liityntöjä"
+
+msgid "More options"
+msgstr "Lisää"

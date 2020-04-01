@@ -222,6 +222,14 @@ def get_statistics():
 def is_test_environment():
     return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
+
+def get_submenu_content():
+
+    pages_list = toolkit.get_action('ckanext_pages_list')(None, {'private': False})
+    submenu_pages = [page for page in pages_list if page.get('submenu_order')]
+    return sorted(submenu_pages, key = lambda p: p['submenu_order'])
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
@@ -271,7 +279,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'is_service_bus_id': is_service_bus_id,
                 'custom_organization_list': custom_organization_list,
                 'get_statistics': get_statistics,
-                'is_test_environment': is_test_environment
+                'is_test_environment': is_test_environment,
+                'get_submenu_content': get_submenu_content
                 }
 
     # IBlueprint
