@@ -5314,3 +5314,15 @@ msgstr ""
 
 msgid "More options"
 msgstr ""
+
+msgid "Site Tag Line in swedish"
+msgstr ""
+
+msgid "Site Tag Line in english"
+msgstr ""
+
+msgid "Intro text in swedish"
+msgstr ""
+
+msgid "Intro text in english"
+msgstr ""

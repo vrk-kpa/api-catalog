@@ -79,6 +79,20 @@ def column_contents():
         'right': config.get('ckanext.apicatalog_ui.right_column.' + locale, '')
     }
 
+def get_slogan():
+    locale = i18n.get_lang()
+    if locale == 'fi':
+        return config.get('ckan.site_description', '')
+
+    return config.get('ckanext.apicatalog_ui.site_description.' + locale, '')
+
+def get_welcome_text():
+    locale = i18n.get_lang()
+    if locale == 'fi':
+        return config.get('ckan.site_intro_text', '')
+
+    return config.get('ckanext.apicatalog_ui.site_intro_text.' + locale, '')
+
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
     log.warning("is_service_bus_id(%s)" % identifier)
@@ -259,7 +273,11 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
             'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
+            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_intro_text.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_intro_text.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_description.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_description.en_GB': [ignore_missing, unicode]
         })
 
         return schema
@@ -280,7 +298,9 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'custom_organization_list': custom_organization_list,
                 'get_statistics': get_statistics,
                 'is_test_environment': is_test_environment,
-                'get_submenu_content': get_submenu_content
+                'get_submenu_content': get_submenu_content,
+                'get_slogan': get_slogan,
+                'get_welcome_text': get_welcome_text
                 }
 
     # IBlueprint

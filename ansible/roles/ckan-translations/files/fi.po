@@ -5342,3 +5342,15 @@ msgstr "Näytä vain organisaatiot joilla on liityntöjä"
 
 msgid "More options"
 msgstr "Lisää"
+
+msgid "Site Tag Line in swedish"
+msgstr "Sivun slogan ruotsiksi"
+
+msgid "Site Tag Line in english"
+msgstr "Sivun slogan englanniksi"
+
+msgid "Intro text in swedish"
+msgstr "Johdantoteksti ruotsiksi"
+
+msgid "Intro text in english"
+msgstr "Johdantoteksti englanniksi"
