@@ -277,8 +277,21 @@
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
     {
+      "field_name": "xroad_service_type",
+      "label": "X-Road service type",
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
       "field_name": "wsdl_timestamp",
       "label": "WSDL timestamp",
+      "preset": "datetime",
+      "form_snippet": false,
+      "display_snippet": null
+    },
+    {
+      "field_name": "rest_timestamp",
+      "label": "Rest timestamp",
       "preset": "datetime",
       "form_snippet": false,
       "display_snippet": null
