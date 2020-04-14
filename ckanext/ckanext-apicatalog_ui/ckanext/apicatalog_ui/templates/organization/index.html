@@ -1,11 +1,11 @@
 {% ckan_extends %}
 
-{% set items = h.custom_organization_list(request.params) %}
+{% set org_list = h.custom_organization_list(request.params) %}
 
 {% block prelude %}
 <h1>{{ _('Organizations') }}</h1>
 <p>{% trans %}Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization.{% endtrans %}</p>
-<div class="result-count">{{ _('{0} organizations').format(c.page.item_count) }}</div>
+<div class="result-count">{{ _('{0} organizations').format(org_list.count) }}</div>
 {% endblock %}
 
 {% set sorting = [(_('Relevance'), ''), (_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
@@ -14,17 +14,17 @@
 {% endblock %}
 
 {% block organizations_list %}
-  {% if items or request.params %}
-    {% if items %}
+  {% if org_list.organizations or request.params %}
+    {% if org_list.organizations %}
     <div class="fill-module">
-      {% snippet "organization/snippets/organization_list.html", organizations=items %}
+      {% snippet "organization/snippets/organization_list.html", organizations=org_list.organizations %}
     </div>
     {% endif %}
   {% else %}
     <p class="empty">
       {{ _('There are currently no organizations for this site') }}.
       {% if h.check_access('organization_create') %}
-        {% link_for _('How about creating one?'), controller='organization', action='new' %}</a>.
+        {% link_for _('How about creating one?'), controller='organization', action='new' %}.
       {% endif %}
     </p>
   {% endif %}
@@ -36,7 +36,17 @@
   </section>
   <section class="module module-shallow">
     <div class="sorter-wrapper with-search">
-      {% snippet 'snippets/search_form_without_title.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
+        {% snippet 'snippets/search_form_without_title.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=c.sort_by_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
+        {% set sorting_selected = c.sort_by_selected or '' %}
+        {% if request.params.with_datasets %}
+            <a href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
+                {{ _('Show organizations without APIs') }}
+            </a>
+        {% else %}
+            <a href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, with_datasets=True) }}">
+                {{ _('Show only organizations with APIs') }}
+            </a>
+        {% endif %}
     </div>
   </section>
 {% endblock %}

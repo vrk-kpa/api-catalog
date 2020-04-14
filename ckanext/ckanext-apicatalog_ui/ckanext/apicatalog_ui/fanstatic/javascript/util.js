@@ -22,4 +22,9 @@ ckan.module('form_redirect_if_unchanged', function ($, _) {
   };
 });
 
-
+$(function() {
+  $('[data-toggle="collapse"]').click(function() {
+    $('.navbar-hamburger').toggleClass('hidden');
+    $('.navbar-cross').toggleClass('hidden');
+  });
+});

@@ -14,5 +14,6 @@ class Apicatalog_PagesPlugin(plugins.SingletonPlugin):
             'content_fi': [],
             'content_sv': [],
             'content_en': [],
+            'submenu_order': []
             })
         return schema

@@ -81,6 +81,20 @@ def column_contents():
         'right': config.get('ckanext.apicatalog_ui.right_column.' + locale, '')
     }
 
+def get_slogan():
+    locale = i18n.get_lang()
+    if locale == 'fi':
+        return config.get('ckan.site_description', '')
+
+    return config.get('ckanext.apicatalog_ui.site_description.' + locale, '')
+
+def get_welcome_text():
+    locale = i18n.get_lang()
+    if locale == 'fi':
+        return config.get('ckan.site_intro_text', '')
+
+    return config.get('ckanext.apicatalog_ui.site_intro_text.' + locale, '')
+
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
     log.warning("is_service_bus_id(%s)" % identifier)
@@ -205,6 +219,10 @@ def custom_organization_list(params):
     }
     results = toolkit.get_action('organization_list')(context, data_dict_page_results)
 
+    with_datasets = params.get('with_datasets', '').lower() in ('true', '1', 'yes')
+    if with_datasets:
+        results = [group for group in results if group.get('package_count') > 0]
+
     def group_by_content(a, b):
         a_has_content = 1 if a['package_count'] else 0
         b_has_content = 1 if b['package_count'] else 0
@@ -215,7 +233,10 @@ def custom_organization_list(params):
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
-    return results[page_start:page_end]
+    return {
+        'organizations': results[page_start:page_end],
+        'count': len(results)
+    }
 
 
 def get_statistics():
@@ -300,6 +321,14 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
 def is_test_environment():
     return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
+
+def get_submenu_content():
+
+    pages_list = toolkit.get_action('ckanext_pages_list')(None, {'private': False})
+    submenu_pages = [page for page in pages_list if page.get('submenu_order')]
+    return sorted(submenu_pages, key = lambda p: p['submenu_order'])
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
@@ -330,7 +359,11 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
             'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, unicode],
             'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode]
+            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_intro_text.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_intro_text.en_GB': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_description.sv': [ignore_missing, unicode],
+            'ckanext.apicatalog_ui.site_description.en_GB': [ignore_missing, unicode]
         })
 
         return schema
@@ -354,7 +387,10 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'custom_organization_list': custom_organization_list,
                 'get_statistics': get_statistics,
                 'get_last_12_months_statistics': get_last_12_months_statistics,
-                'is_test_environment': is_test_environment
+                'is_test_environment': is_test_environment,
+                'get_submenu_content': get_submenu_content,
+                'get_slogan': get_slogan,
+                'get_welcome_text': get_welcome_text
                 }
 
     def get_actions(self):

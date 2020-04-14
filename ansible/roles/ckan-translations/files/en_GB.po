@@ -5306,6 +5306,7 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
+<<<<<<< HEAD
 msgid "Browse APIs"
 msgstr ""
 
@@ -5334,4 +5335,25 @@ msgid "New attachments"
 msgstr ""
 
 msgid "Browse news"
+=======
+msgid "Show organizations without APIs"
+msgstr ""
+
+msgid "Show only organizations with APIs"
+msgstr ""
+
+msgid "More options"
+msgstr ""
+
+msgid "Site Tag Line in swedish"
+msgstr ""
+
+msgid "Site Tag Line in english"
+msgstr ""
+
+msgid "Intro text in swedish"
+msgstr ""
+
+msgid "Intro text in english"
+>>>>>>> master
 msgstr ""

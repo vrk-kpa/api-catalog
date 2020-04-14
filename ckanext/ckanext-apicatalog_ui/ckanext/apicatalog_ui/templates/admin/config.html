@@ -4,6 +4,10 @@
 
 {% block admin_form %}
     {{ super() }}
+    {{ form.input('ckanext.apicatalog_ui.site_description.sv', id='field-ckanext.apicatalog_ui.site_description.sv', label=_('Site Tag Line in swedish'), value=data['ckanext.apicatalog_ui.site_description.sv'], error=errors['ckanext.apicatalog_ui.site_description.sv']) }}
+    {{ form.input('ckanext.apicatalog_ui.site_description.en_GB', id='field-ckanext.apicatalog_ui.site_description.en_GB', label=_('Site Tag Line in english'), value=data['ckanext.apicatalog_ui.site_description.en_GB'], error=errors['ckanext.apicatalog_ui.site_description.en_GB']) }}
+    {{ form.input('ckanext.apicatalog_ui.site_intro_text.sv', id='field-ckanext.apicatalog_ui.site_intro_text.sv', label=_('Intro text in swedish'), value=data['ckanext.apicatalog_ui.site_intro_text.sv'], error=errors['ckanext.apicatalog_ui.site_intro_text.sv']) }}
+    {{ form.input('ckanext.apicatalog_ui.site_intro_text.en_GB', id='field-ckanext.apicatalog_ui.site_intro_text.en_GB', label=_('Intro text in english'), value=data['ckanext.apicatalog_ui.site_intro_text.en_GB'], error=errors['ckanext.apicatalog_ui.site_intro_text.en_GB']) }}
     {{ form.input('ckanext.apicatalog_ui.service_alert.fi.message', id='field-ckanext.apicatalog_ui.service_alert.fi.message', label=_('Service message in finnish'), value=data['ckanext.apicatalog_ui.service_alert.fi.message'], error=errors['ckanext.apicatalog_ui.service_alert.fi.message']) }}
     {{ form.input('ckanext.apicatalog_ui.service_alert.sv.message', id='field-ckanext.apicatalog_ui.service_alert.sv.message', label=_('Service message in swedish'), value=data['ckanext.apicatalog_ui.service_alert.sv.message'], error=errors['ckanext.apicatalog_ui.service_alert.sv.message']) }}
     {{ form.input('ckanext.apicatalog_ui.service_alert.en_GB.message', id='field-ckanext.apicatalog_ui.service_alert.en_GB.message', label=_('Service message in english'), value=data['ckanext.apicatalog_ui.service_alert.en_GB.message'], error=errors['ckanext.apicatalog_ui.service_alert.en_GB.message']) }}
