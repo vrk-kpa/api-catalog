@@ -172,7 +172,9 @@ def get_homepage_datasets(count=1):
 def get_homepage_news(count=3):
     news = [{'title': 'Title %i' % i,
              'content': 'Content %i' % i,
-             'published': date.today() - timedelta(days=i)}
+             'published': date.today() - timedelta(days=i),
+             'image': 'https://via.placeholder.com/270x180',
+             'image_alt': 'Image %i' % i}
             for i in range(count)]
     return news
 

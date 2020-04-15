@@ -5115,7 +5115,6 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
-<<<<<<< HEAD
 msgid "Browse APIs"
 msgstr ""
 
@@ -5145,7 +5144,7 @@ msgstr ""
 
 msgid "Browse news"
 msgstr ""
-=======
+
 msgid "Show organizations without APIs"
 msgstr ""
 
@@ -5166,4 +5165,3 @@ msgstr ""
 
 msgid "Intro text in english"
 msgstr ""
->>>>>>> master

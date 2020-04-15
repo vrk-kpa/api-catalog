@@ -49,12 +49,22 @@
           </div>
           <div class="row homepage-section">
             <div class="col-sm-12">
+              {% block stats %}
+                {% snippet 'home/snippets/apicatalog_12mo_stats.html' %}
+              {% endblock %}
+            </div>
+          </div>
+          <div class="row homepage-section">
+            <div class="col-sm-12">
               {% block news %}
                 {% snippet 'home/snippets/news.html', news=h.get_homepage_news(5) %}
               {% endblock %}
             </div>
           </div>
           <div class="row homepage-section">
+            <div class="col-sm-12">
+              <h3>{{ _('Announcements') }}</h3>
+            </div>
             <div class="col-sm-6">
               {% block announcements %}
                 {% snippet 'home/snippets/announcements.html', announcements=h.get_homepage_announcements(5) %}
@@ -65,13 +75,6 @@
                 <div class="module">
                     {% block twitter_feed %} {% snippet 'home/snippets/twitter.html' %} {% endblock %}
                 </div>
-            </div>
-          </div>
-          <div class="row homepage-section">
-            <div class="col-sm-12">
-              {% block stats %}
-                {% snippet 'home/snippets/apicatalog_12mo_stats.html' %}
-              {% endblock %}
             </div>
           </div>
         </div>

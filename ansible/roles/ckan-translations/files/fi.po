@@ -5334,7 +5334,6 @@ msgstr ""
 msgid "Add user"
 msgstr "Lisää käyttäjä"
 
-<<<<<<< HEAD
 msgid "Browse APIs"
 msgstr "Kaikki liitynnät"
 
@@ -5364,7 +5363,7 @@ msgstr "Uutta rajapintaa"
 
 msgid "Browse news"
 msgstr "Lue kaikki uutiset"
-=======
+
 msgid "Show organizations without APIs"
 msgstr "Näytä kaikki organisaatiot"
 
@@ -5385,4 +5384,3 @@ msgstr "Johdantoteksti ruotsiksi"
 
 msgid "Intro text in english"
 msgstr "Johdantoteksti englanniksi"
->>>>>>> master

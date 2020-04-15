@@ -314,12 +314,14 @@
   }
 }
 
-.news {
+.news, .announcements {
   background-color: white;
   border: 1px solid @suomifi-border;
-  padding: 46px 96px;
-}
-.announcements {
+  padding: 14px 44px;
+
+  .view-all-link {
+    margin-bottom: 30px;
+  }
 }
 
 .news-list, .announcements-list {
@@ -328,10 +330,19 @@
   padding: 0;
 
   li {
+    padding-top:  30px;
+    padding-bottom:  30px;
+    border-bottom: 1px solid @suomifi-border;
+
     &:last-child {
       margin-bottom: 40px;
     }
+    .image {
+      width: 270px;
+      margin-right: 50px;
+    }
     .title {
+      margin-top: 0;
       font-size: 20px;
       margin-bottom: 5px;
     }
@@ -345,8 +356,6 @@
   }
 }
 
-.news-list li:not(:last-child), .announcements-list li {
-  margin-bottom:  20px;
-  border-bottom: 1px solid @suomifi-border;
+.news-list li {
+  display: flex;
 }
-
