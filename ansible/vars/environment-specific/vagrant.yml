@@ -8,11 +8,9 @@ ckan_site_logo: /base/images/lika-logo-test.svg
 ckan_featured_orgs:
 ckan_test_environment: True
 
-#analytics_server_public_facing_hostname: 10.100.10.11
+analytics_server_public_facing_hostname: 10.100.10.11
 analytics_internal_hostname: analytics-vagrant
-analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 1
-analytics_auth_token: adb1e8153e42a31a9dd0437cf51fa614
 
 database_ckan:
   host: 127.0.0.1
