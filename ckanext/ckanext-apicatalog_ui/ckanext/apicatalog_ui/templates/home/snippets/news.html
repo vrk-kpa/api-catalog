@@ -1,0 +1,19 @@
+{% set news = news or [] %}
+{% if news %}
+<h3>{{ _('News') }}</h3>
+<div class="news">
+  <ul class="news-list">
+    {%- for item in news -%}<li>
+      <img class="image" src="{{ item.image }}" alt="{{ item.image_alt }}"></img>
+      <div>
+        <a href="{{ item.url }}"><h4 class="title">{{ item.title }}</h4></a>
+        <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
+        <p class="content">{{ item.content }}</p>
+      </div>
+    </li>{%- endfor -%}
+  </ul>
+  <div class="view-all-link">
+    <i class="fa fa-chevron-right"></i><a href="">{{ _('Browse news') }}</a>
+  </div>
+</div>
+{% endif %}

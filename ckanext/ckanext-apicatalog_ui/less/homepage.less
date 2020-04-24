@@ -228,3 +228,140 @@
     }
   }
 }
+
+.apicatalog-12mo-stats {
+  font-family: SourceSansPro-SemiBold;
+  font-weight: 600;
+  color: @suomifi-text-base;
+
+  .heading {
+    font-size: 22px;
+    line-height: 28px;
+    max-width: 300px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+  }
+
+  .item {
+    margin-bottom: 30px;
+
+    .amount {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+    .quality {
+      font-size: 18px;
+      color: @suomifi-text-highlight;
+    }
+  }
+}
+
+.horizontal-dataset-list {
+  list-style: none;
+  padding: 0;
+
+  .horizontal-dataset-item {
+    height: 265px;
+    border-top: 4px solid @suomifi-highlight-dark;
+
+    .border-wrapper {
+      background-color: white;
+      border: 1px solid @suomifi-border;
+      border-top: 0;
+      padding: 25px 25px 25px 30px;
+      height: 100%;
+    }
+
+    .organization-title {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .dataset-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .dataset-description {
+      font-size: 16px;
+      max-height: 131px;
+      overflow: hidden;
+    }
+  }
+}
+
+.view-all-link {
+  font-size: 16px;
+  i {
+    color: @suomifi-accent-base;
+  }
+  a {
+    margin-left: 10px;
+  }
+}
+
+.homepage-section {
+  margin-bottom: 80px;
+  &:first-child {
+    margin-top: 80px;
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.news, .announcements {
+  background-color: white;
+  border: 1px solid @suomifi-border;
+  padding: 14px 44px;
+
+  .view-all-link {
+    margin-bottom: 30px;
+  }
+}
+
+.news-list, .announcements-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid @suomifi-border;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+    .image {
+      width: 270px;
+      margin-right: 50px;
+    }
+    .title {
+      margin-top: 0;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .published {
+      font-size: 16px;
+    }
+    .content {
+      font-size: 18px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.news-list li {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.announcements-list li {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

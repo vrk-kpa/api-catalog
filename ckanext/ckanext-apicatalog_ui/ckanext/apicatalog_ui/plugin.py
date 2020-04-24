@@ -10,6 +10,8 @@ import urllib
 import ckan.lib.i18n as i18n
 import logging
 import itertools
+import requests
+from datetime import datetime, timedelta, date
 
 NotFound = logic.NotFound
 
@@ -162,6 +164,39 @@ def get_homepage_organizations(count=1):
     return groups
 
 
+def get_homepage_datasets(count=1):
+    datasets = get_action('package_search')({}, {'q': 'type:dataset', 'rows': count}).get('results', [])
+    return datasets
+
+
+def get_homepage_news(count=3):
+    if is_test_environment():
+        news = [{'title': 'Title %i' % i,
+                 'content': 'Content %i' % i,
+                 'published': date.today() - timedelta(days=i),
+                 'image': 'https://via.placeholder.com/270x180',
+                 'image_alt': 'Image %i' % i}
+                for i in range(count)]
+    else:
+        # TODO: Fetch real news
+        news = []
+
+    return news
+
+
+def get_homepage_announcements(count=3):
+    if is_test_environment():
+        announcements = [{'title': 'Title %i' % i,
+                 'content': 'Content %i' % i,
+                 'published': date.today() - timedelta(days=i)}
+                for i in range(count)]
+    else:
+        # TODO: Fetch real announcements
+        announcements = []
+
+    return announcements
+
+
 def unquote_url(url):
     return urllib.unquote(url)
 
@@ -233,6 +268,68 @@ def get_statistics():
 
     return result_dict
 
+
+@logic.side_effect_free
+def get_last_12_months_statistics(context=None, data_dict=None):
+    packages = toolkit.get_action('package_search')(context, {'q':'metadata_modified:[NOW-12MONTHS TO *]'})
+    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_dataset_count": False})
+
+    package_create_dates = (
+        datetime.strptime(result['metadata_created'], '%Y-%m-%dT%H:%M:%S.%f')
+        for result in packages.get('results', []) if 'metadata_created' in result)
+
+    resource_create_dates = (
+        datetime.strptime(resource['created'], '%Y-%m-%dT%H:%M:%S.%f')
+        for result in packages.get('results', [])
+        for resource in result.get('resources', [])
+        if 'created' in resource)
+
+    organization_create_dates = (
+        datetime.strptime(organization['created'], '%Y-%m-%dT%H:%M:%S.%f')
+        for organization in organizations if 'created' in organization)
+
+    # log.info(pformat(list(package_create_dates)))
+    one_year_ago = datetime.now() - timedelta(days=365)
+    return {'new_packages': sum(1 if d >= one_year_ago else 0 for d in package_create_dates),
+            'new_resources': sum(1 if d >= one_year_ago else 0 for d in resource_create_dates),
+            'new_organizations': sum(1 if d >= one_year_ago else 0 for d in organization_create_dates),
+            'visitors': fetch_visitor_count()}
+
+
+VISITOR_CACHE = None
+def fetch_visitor_count(cache_duration=timedelta(days=1)):
+    global VISITOR_CACHE
+    if VISITOR_CACHE is None or datetime.now() - VISITOR_CACHE[0] > cache_duration:
+        try:
+            piwik_site_url = config['piwik.site_url']
+            piwik_site_id = config['piwik.site_id']
+            piwik_token_auth = config['piwik.token_auth']
+            piwik_ssl_verify = asbool(config.get('piwik.ssl_verify', 'True'))
+
+            params = {
+                    'module': 'API',
+                    'method': 'VisitsSummary.getVisits',
+                    'idSite': piwik_site_id,
+                    'period': 'month',
+                    'date': 'last12',
+                    'format': 'json',
+                    'token_auth': piwik_token_auth}
+            stats = requests.get('https://{}/index.php'.format(piwik_site_url),
+                                 verify=piwik_ssl_verify, params=params).json()
+            visitor_count = sum(iter(stats.values()))
+        except Exception as e:
+            # Fetch failed for some reason, keep old value until cache invalidates
+            visitor_count = 0 if VISITOR_CACHE is None else VISITOR_CACHE[1]
+
+        visitor_cache_timestamp = datetime.now()
+        VISITOR_CACHE = (visitor_cache_timestamp, visitor_count)
+    else:
+        visitor_cache_timestamp, visitor_count = VISITOR_CACHE
+
+    return visitor_count
+
+
+
 def is_test_environment():
     return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
@@ -247,6 +344,7 @@ def get_submenu_content():
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IActions)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
 
@@ -285,6 +383,9 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         return {'piwik_url': piwik_url,
                 'get_homepage_organizations': get_homepage_organizations,
+                'get_homepage_datasets': get_homepage_datasets,
+                'get_homepage_news': get_homepage_news,
+                'get_homepage_announcements': get_homepage_announcements,
                 'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
                 'info_message': info_message,
@@ -297,11 +398,15 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'is_service_bus_id': is_service_bus_id,
                 'custom_organization_list': custom_organization_list,
                 'get_statistics': get_statistics,
+                'get_last_12_months_statistics': get_last_12_months_statistics,
                 'is_test_environment': is_test_environment,
                 'get_submenu_content': get_submenu_content,
                 'get_slogan': get_slogan,
                 'get_welcome_text': get_welcome_text
                 }
+
+    def get_actions(self):
+        return {'get_last_12_months_statistics': get_last_12_months_statistics}
 
     # IBlueprint
 
