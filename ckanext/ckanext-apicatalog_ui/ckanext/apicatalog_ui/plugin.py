@@ -166,24 +166,34 @@ def get_homepage_organizations(count=1):
 
 def get_homepage_datasets(count=1):
     datasets = get_action('package_search')({}, {'q': 'type:dataset'}).get('results', [])
-    return datasets[:count]
+    return random.sample(datasets, count)
 
 
 def get_homepage_news(count=3):
-    news = [{'title': 'Title %i' % i,
-             'content': 'Content %i' % i,
-             'published': date.today() - timedelta(days=i),
-             'image': 'https://via.placeholder.com/270x180',
-             'image_alt': 'Image %i' % i}
-            for i in range(count)]
+    if is_test_environment():
+        news = [{'title': 'Title %i' % i,
+                 'content': 'Content %i' % i,
+                 'published': date.today() - timedelta(days=i),
+                 'image': 'https://via.placeholder.com/270x180',
+                 'image_alt': 'Image %i' % i}
+                for i in range(count)]
+    else:
+        # TODO: Fetch real news
+        news = []
+
     return news
 
 
 def get_homepage_announcements(count=3):
-    announcements = [{'title': 'Title %i' % i,
-             'content': 'Content %i' % i,
-             'published': date.today() - timedelta(days=i)}
-            for i in range(count)]
+    if is_test_environment():
+        announcements = [{'title': 'Title %i' % i,
+                 'content': 'Content %i' % i,
+                 'published': date.today() - timedelta(days=i)}
+                for i in range(count)]
+    else:
+        # TODO: Fetch real announcements
+        announcements = []
+
     return announcements
 
 
