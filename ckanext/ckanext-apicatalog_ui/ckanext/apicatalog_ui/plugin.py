@@ -165,8 +165,8 @@ def get_homepage_organizations(count=1):
 
 
 def get_homepage_datasets(count=1):
-    datasets = get_action('package_search')({}, {'q': 'type:dataset'}).get('results', [])
-    return random.sample(datasets, count)
+    datasets = get_action('package_search')({}, {'q': 'type:dataset', 'rows': count}).get('results', [])
+    return datasets
 
 
 def get_homepage_news(count=3):
@@ -272,7 +272,7 @@ def get_statistics():
 @logic.side_effect_free
 def get_last_12_months_statistics(context=None, data_dict=None):
     packages = toolkit.get_action('package_search')(context, {'q':'metadata_modified:[NOW-12MONTHS TO *]'})
-    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True})
+    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_dataset_count": False})
 
     package_create_dates = (
         datetime.strptime(result['metadata_created'], '%Y-%m-%dT%H:%M:%S.%f')
