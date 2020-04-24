@@ -7,7 +7,7 @@ ckan_featured_orgs:
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 2
-analytics_auth_token: {{ secret.analytics_auth_token }}
+analytics_auth_token: "{{ secret.analytics_auth_token }}"
 
 database_ckan:
   host: 127.0.0.1
