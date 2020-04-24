@@ -314,7 +314,7 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
                     'date': 'last12',
                     'format': 'json',
                     'token_auth': piwik_token_auth}
-            stats = requests.get('https://{}/index.php'.format(piwik_site_url),
+            stats = requests.get('{}/index.php'.format(piwik_site_url),
                                  verify=piwik_ssl_verify, params=params).json()
             visitor_count = sum(iter(stats.values()))
         except Exception as e:
