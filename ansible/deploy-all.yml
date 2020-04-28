@@ -34,6 +34,7 @@
     - { role: ckan-extension, ckanext: ckanext-validate_links }
     - { role: ckan-extension, ckanext: ckanext-saha }
     - { role: ckan-extension, ckanext: ckanext-paha }
+    - { role: ckan-extension, ckanext: ckanext-openapiviewer }
     - ckan
     - { role: ckan-ui }
     - ckan-translations
