@@ -12,6 +12,7 @@ import logging
 import itertools
 import requests
 from datetime import datetime, timedelta, date
+import ckan.lib.helpers as h
 
 NotFound = logic.NotFound
 
@@ -245,9 +246,19 @@ def custom_organization_list(params):
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
+
+    custom_page = h.Page(
+        collection=results,
+        page=page,
+        url=h.pager_url,
+        items_per_page=items_per_page,
+    )
+
     return {
         'organizations': results[page_start:page_end],
-        'count': len(results)
+        'count': len(results),
+        'page': custom_page,
+        "with_datasets": with_datasets
     }
 
 

@@ -50,3 +50,7 @@
     </div>
   </section>
 {% endblock %}
+
+{% block page_pagination %}
+    {{ org_list.page.pager(q=q or '', sort=sort_by_selected or '', with_datasets=org_list.with_datasets or '') }}
+{% endblock %}
