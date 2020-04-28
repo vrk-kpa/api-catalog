@@ -306,6 +306,10 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
             piwik_token_auth = config['piwik.token_auth']
             piwik_ssl_verify = asbool(config.get('piwik.ssl_verify', 'True'))
 
+            if piwik_token_auth == "":
+                log.info("Piwik auth key not set, returning 0...")
+                return 0
+
             params = {
                     'module': 'API',
                     'method': 'VisitsSummary.getVisits',
