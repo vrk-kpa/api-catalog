@@ -1,0 +1,4 @@
+include README.rst
+include LICENSE
+include requirements.txt
+recursive-include ckanext/apply_permission_to_service *.html *.json *.js *.less *.css *.mo
