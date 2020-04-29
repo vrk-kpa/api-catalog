@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
 
-class Apply_Permission_To_ServicePlugin(plugins.SingletonPlugin):
+class ApplypermissionsforservicePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
 
     # IConfigurer
@@ -10,4 +10,4 @@ class Apply_Permission_To_ServicePlugin(plugins.SingletonPlugin):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'apply_permission_to_service')
+        toolkit.add_resource('fanstatic', 'applypermissionsforservice')

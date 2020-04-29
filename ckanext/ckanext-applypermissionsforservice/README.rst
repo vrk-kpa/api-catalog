@@ -2,34 +2,34 @@
    these badges work. The necessary Travis and Coverage config files have been
    generated for you.
 
-.. image:: https://travis-ci.org/vrk-kpa/ckanext-apply_permission_to_service.svg?branch=master
-    :target: https://travis-ci.org/vrk-kpa/ckanext-apply_permission_to_service
+.. image:: https://travis-ci.org/vrk-kpa/ckanext-applypermissionsforservice.svg?branch=master
+    :target: https://travis-ci.org/vrk-kpa/ckanext-applypermissionsforservice
 
-.. image:: https://coveralls.io/repos/vrk-kpa/ckanext-apply_permission_to_service/badge.svg
-  :target: https://coveralls.io/r/vrk-kpa/ckanext-apply_permission_to_service
+.. image:: https://coveralls.io/repos/vrk-kpa/ckanext-applypermissionsforservice/badge.svg
+  :target: https://coveralls.io/r/vrk-kpa/ckanext-applypermissionsforservice
 
-.. image:: https://pypip.in/download/ckanext-apply_permission_to_service/badge.svg
-    :target: https://pypi.python.org/pypi//ckanext-apply_permission_to_service/
+.. image:: https://pypip.in/download/ckanext-applypermissionsforservice/badge.svg
+    :target: https://pypi.python.org/pypi//ckanext-applypermissionsforservice/
     :alt: Downloads
 
-.. image:: https://pypip.in/version/ckanext-apply_permission_to_service/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-apply_permission_to_service/
+.. image:: https://pypip.in/version/ckanext-applypermissionsforservice/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-applypermissionsforservice/
     :alt: Latest Version
 
-.. image:: https://pypip.in/py_versions/ckanext-apply_permission_to_service/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-apply_permission_to_service/
+.. image:: https://pypip.in/py_versions/ckanext-applypermissionsforservice/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-applypermissionsforservice/
     :alt: Supported Python versions
 
-.. image:: https://pypip.in/status/ckanext-apply_permission_to_service/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-apply_permission_to_service/
+.. image:: https://pypip.in/status/ckanext-applypermissionsforservice/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-applypermissionsforservice/
     :alt: Development Status
 
-.. image:: https://pypip.in/license/ckanext-apply_permission_to_service/badge.svg
-    :target: https://pypi.python.org/pypi/ckanext-apply_permission_to_service/
+.. image:: https://pypip.in/license/ckanext-applypermissionsforservice/badge.svg
+    :target: https://pypi.python.org/pypi/ckanext-applypermissionsforservice/
     :alt: License
 
 =============
-ckanext-apply_permission_to_service
+ckanext-applypermissionsforservice
 =============
 
 .. Put a description of your extension here:
@@ -53,17 +53,17 @@ Installation
    For example installing any non-Python dependencies or adding any required
    config settings.
 
-To install ckanext-apply_permission_to_service:
+To install ckanext-applypermissionsforservice:
 
 1. Activate your CKAN virtual environment, for example::
 
      . /usr/lib/ckan/default/bin/activate
 
-2. Install the ckanext-apply_permission_to_service Python package into your virtual environment::
+2. Install the ckanext-applypermissionsforservice Python package into your virtual environment::
 
-     pip install ckanext-apply_permission_to_service
+     pip install ckanext-applypermissionsforservice
 
-3. Add ``apply_permission_to_service`` to the ``ckan.plugins`` setting in your CKAN
+3. Add ``applypermissionsforservice`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
@@ -80,18 +80,18 @@ Document any optional config settings here. For example::
 
     # The minimum number of hours to wait before re-checking a resource
     # (optional, default: 24).
-    ckanext.apply_permission_to_service.some_setting = some_default_value
+    ckanext.applypermissionsforservice.some_setting = some_default_value
 
 
 ------------------------
 Development Installation
 ------------------------
 
-To install ckanext-apply_permission_to_service for development, activate your CKAN virtualenv and
+To install ckanext-applypermissionsforservice for development, activate your CKAN virtualenv and
 do::
 
-    git clone https://github.com/vrk-kpa/ckanext-apply_permission_to_service.git
-    cd ckanext-apply_permission_to_service
+    git clone https://github.com/vrk-kpa/ckanext-applypermissionsforservice.git
+    cd ckanext-applypermissionsforservice
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -107,15 +107,15 @@ To run the tests, do::
 To run the tests and produce a coverage report, first make sure you have
 coverage installed in your virtualenv (``pip install coverage``) then run::
 
-    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.apply_permission_to_service --cover-inclusive --cover-erase --cover-tests
+    nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.applypermissionsforservice --cover-inclusive --cover-erase --cover-tests
 
 
 ---------------------------------
-Registering ckanext-apply_permission_to_service on PyPI
+Registering ckanext-applypermissionsforservice on PyPI
 ---------------------------------
 
-ckanext-apply_permission_to_service should be availabe on PyPI as
-https://pypi.python.org/pypi/ckanext-apply_permission_to_service. If that link doesn't work, then
+ckanext-applypermissionsforservice should be availabe on PyPI as
+https://pypi.python.org/pypi/ckanext-applypermissionsforservice. If that link doesn't work, then
 you can register the project on PyPI for the first time by following these
 steps:
 
@@ -140,10 +140,10 @@ steps:
 
 
 ----------------------------------------
-Releasing a New Version of ckanext-apply_permission_to_service
+Releasing a New Version of ckanext-applypermissionsforservice
 ----------------------------------------
 
-ckanext-apply_permission_to_service is availabe on PyPI as https://pypi.python.org/pypi/ckanext-apply_permission_to_service.
+ckanext-applypermissionsforservice is availabe on PyPI as https://pypi.python.org/pypi/ckanext-applypermissionsforservice.
 To publish a new version to PyPI follow these steps:
 
 1. Update the version number in the ``setup.py`` file.

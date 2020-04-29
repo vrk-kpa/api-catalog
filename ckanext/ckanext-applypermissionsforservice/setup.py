@@ -10,18 +10,18 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-apply_permission_to_service''',
+    name='''ckanext-applypermissionsforservice''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''Apply permissions to services in api catalog''',
+    description='''Apply permissions for service''',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/vrk-kpa/ckanext-apply_permission_to_service',
+    url='https://github.com/vrk-kpa/ckanext-applypermissionsforservice',
 
     # Author details
     author='''Jari-Pekka Voutilainen''',
@@ -80,7 +80,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        apply_permission_to_service=ckanext.apply_permission_to_service.plugin:Apply_Permission_To_ServicePlugin
+        applypermissionsforservice=ckanext.applypermissionsforservice.plugin:ApplypermissionsforservicePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

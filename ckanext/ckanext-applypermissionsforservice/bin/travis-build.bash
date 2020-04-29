@@ -32,7 +32,7 @@ cd ckan
 paster db init -c test-core.ini
 cd -
 
-echo "Installing ckanext-apply_permission_to_service and its requirements..."
+echo "Installing ckanext-applypermissionsforservice and its requirements..."
 python setup.py develop
 pip install -r dev-requirements.txt
 
