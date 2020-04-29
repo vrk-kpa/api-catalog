@@ -80,7 +80,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        applypermissionsforservice=ckanext.applypermissionsforservice.plugin:ApplypermissionsforservicePlugin
+        apply_permissions_for_service=ckanext.apply_permissions_for_service.plugin:ApplyPermissionsForServicePlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
