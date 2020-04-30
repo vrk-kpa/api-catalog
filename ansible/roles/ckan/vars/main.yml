@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.8.3
+ckan_version: 2.8.4
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
