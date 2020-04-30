@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from logic import action, auth
 from flask import Blueprint
 
 import views
@@ -8,6 +9,8 @@ import views
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IBlueprint)
+    plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IAuthFunctions)
 
     # IConfigurer
 
@@ -29,3 +32,19 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin):
             blueprint.add_url_rule(*rule)
 
         return blueprint
+
+    # IActions
+
+    def get_actions(self):
+        return {'service_permission_application_list': action.get.service_permission_application_list,
+                'service_permission_application_show': action.get.service_permission_application_show,
+                'service_permission_application_create': action.create.service_permission_application_create,
+                }
+
+    # IAuthFunctions
+
+    def get_auth_functions(self):
+        return {'service_permission_application_list': auth.get.service_permission_application_list,
+                'service_permission_application_show': auth.get.service_permission_application_show,
+                'service_permission_application_create': auth.create.service_permission_application_create,
+                }
