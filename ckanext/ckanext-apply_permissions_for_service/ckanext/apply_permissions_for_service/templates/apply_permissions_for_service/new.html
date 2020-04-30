@@ -1,5 +1,49 @@
 {% extends 'apply_permissions_for_service/base.html' %}
 
-{% block primary_content_inner %}
+{% block prelude %}
 <h1>apply_permissions_for_service.new</h1>
+{% endblock %}
+
+{% block primary_content_inner %}
+<form class="col-sm-8">
+  {% import 'macros/form.html' as form %}
+  {{ form.hidden('subsystemId', value=subsystem_id) }}
+  <h3>Title 1</h3>
+  <p>Text 1</p>
+  <hr>
+  <h3>Title 2</h3>
+  <p>Text 2</p>
+
+  <p>* Required field</p>
+  {{ form.input('organization', label='Organization') }}
+  {{ form.input('businessCode', label='Business code') }}
+
+  {{ form.input('contactName', label='Contact name') }}
+  {{ form.input('contactEmail', label='Contact email') }}
+
+  <hr>
+  <h3>Title 3</h3>
+  <p>Text 3</p>
+
+  {{ form.input('ipAddress', label='IP address') }}
+  <button class="btn btn-default"><i class="fa fa-plus"></i>Add IP address</button>
+  {{ form.select('subsystemCode', label='Subsystem code', options=[{'name':'Lorem Ipsum'}]) }}
+
+  <hr>
+  <h3>Title 4</h3>
+  <p>Text 5</p>
+
+  <table style="width: 100%">
+    <thead>
+      <tr><th>Organization name</th><th>Subsystem</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Placeholder</td><td>data</td></tr>
+    </tbody>
+  </table>
+
+  {{ form.select('serviceCode', label="Service code", options=[{'name':'Dolor Sit Amet'}]) }}
+  {{ form.textarea('usageDescription', label='Explain how the service will be used') }}
+  {{ form.input('requestDate', type='date', label='Requesting access starting at') }}
+</form>
 {% endblock %}

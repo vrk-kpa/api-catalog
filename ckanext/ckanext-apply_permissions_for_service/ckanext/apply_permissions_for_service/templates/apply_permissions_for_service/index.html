@@ -1,10 +1,13 @@
 {% extends 'apply_permissions_for_service/base.html' %}
 
-{% block primary_content_inner %}
+{% block prelude %}
 <h1>apply_permissions_for_service.index</h1>
+{% endblock %}
+
+{% block primary_content_inner %}
 <ul>
 {% for application in applications %}
-<li>{{ application }}</li>
+<li><a href="view/{{ application.id }}">{{ application }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
