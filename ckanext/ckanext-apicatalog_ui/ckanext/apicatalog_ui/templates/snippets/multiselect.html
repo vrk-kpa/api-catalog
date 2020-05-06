@@ -1,0 +1,100 @@
+{% set allow_select_all = allow_select_all or False %}
+{% set selected_indices = [] %}
+
+{% for option in options %}
+  {% if option.value in selected %}
+    {% do selected_indices.append(loop.index) %}
+  {% endif %}
+{% endfor %}
+
+{% set all_selected = selected_indices|length == options|length %}
+
+{% if selected %}
+      {% if all_selected %}
+          {% set status = _('All') %}
+      {% else %}
+          {% set status %}
+            {{selected_indices|length}} {{_('selected')}}
+          {% endset %}
+      {% endif %}
+{% else %}
+    {% set status %}
+        {{_('Not selected')}}
+    {% endset %}
+    {% set class = 'placeholder' %}
+{% endif %}
+
+{% resource 'apicatalog_ui/javascript/multiselect.js' %}
+
+<div
+    class="multiselect multiselect-{{name}} mb-3"
+    data-module="multiselect"
+    data-module-name="{{name}}"
+    data-module-allow-all="{% if allow_select_all %}true{% else %}false{% endif %}"
+    data-module-all-translation="{{_('All')}}"
+    data-module-select-translation="{{_('selected')}}"
+>
+    <label for="multiselect-dropdown-toggle-{{name}}" class="input-label">
+        {{_(label)}}
+    </label>
+    <button
+        for="multiselect-dropdown-toggle-{{name}}"
+        class="multiselect-toggle input-element"
+        type="button"
+        aria-expanded="false"
+    >
+        <!--
+            TODO: This could be made more accessible for screenreader users
+            by moving the focus and by providing better indicators of what happens when buttons are clicked
+        -->
+        <span class="multiselect-status {{class}}">{{status}}</span>
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+        <i class="fa fa-caret-up" aria-hidden="true"></i>
+    </button>
+    <fieldset id="multiselect-dropdown-{{name}}">
+        <div class="choicelist" id="{{name}}-choicelist">
+            <!-- Get selection from previous query and apply it to the current inputs -->
+            {% if allow_select_all %}
+                <label class="checkbox choice m-0" for="{{name}}-checkbox-all">
+                    <input
+                        class="m-0 sr-only"
+                        type="checkbox"
+                        name="{{name}}"
+                        value="all"
+                        id="{{name}}-checkbox-all"
+                        data-option-value="all"
+                        data-option-label="{{ _('All') }}"
+                        {% if all_selected %}checked{% endif %}
+                    >
+                    <span class="custom-checkbox">
+                    </span>
+                    <span class="m-0 ml-2">
+                        {{ _('All') }}
+                    </span>
+                </label>
+            {% endif %}
+            {% if options %}
+                {% for option in options %}
+                    {% set checked = loop.index in selected_indices %}
+                    <label class="checkbox choice m-0" for="{{name}}-checkbox-{{option.value}}">
+                        <input
+                            class="m-0 sr-only"
+                            type="checkbox"
+                            name="{{name}}"
+                            value="{{option.value}}"
+                            id="{{name}}-checkbox-{{option.value}}"
+                            data-option-value="{{option.value}}"
+                            data-option-label="{{option.text}}"
+                            {% if checked %}checked{% endif %}
+                        >
+                        <span class="custom-checkbox">
+                        </span>
+                        <span class="m-0 ml-2">
+                            {{ option.text }}
+                        </span>
+                    </label>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </fieldset>
+</div>

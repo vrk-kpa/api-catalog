@@ -1,0 +1,33 @@
+{% ckan_extends %}
+
+{% macro input_multiple(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, description="", add_input='') %}
+  {% resource 'apicatalog_ui/javascript/multiple_input.js' %}
+  {% do classes.append('control-medium') %}
+  {%- set extra_html = caller() if caller -%}
+  {% call input_block(id or name, label or name, error, classes, control_classes=["editor"], extra_html=extra_html, is_required=is_required) %}
+  <div class="multiple-values"{% if add_input %}data-add-input="{{ add_input }}"{% endif %}>
+      {% if value %}
+      {% set values = value if value.append else [value] %}
+      {% for value_item in values %}
+      {% if value_item %}
+      <div class="multiple-value-group">
+          <input id="{{ id or name }}-{{ loop.index }}" type="{{ type }}" name="{{ name }}" value="{{ value_item | empty_and_escape }}" placeholder="{{ placeholder }}" class="multiple-value form-control" />
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      <div class="multiple-value-group">
+          <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="" placeholder="{{ placeholder }}" class="multiple-value form-control" />
+      </div>
+  </div>
+  {% endcall %}
+{% endmacro %}
+
+{% macro select_multiple(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, description="", options=[], selected=[]) %}
+  {% do classes.append('control-medium') %}
+  {%- set extra_html = caller() if caller -%}
+  {% call input_block(id or name, label or name, error, classes, control_classes=["editor"], extra_html=extra_html, is_required=is_required) %}
+    {% snippet 'snippets/multiselect.html', label=label, name=id or name, options=options, selected=selected %}
+  {% endcall %}
+{% endmacro %}
+

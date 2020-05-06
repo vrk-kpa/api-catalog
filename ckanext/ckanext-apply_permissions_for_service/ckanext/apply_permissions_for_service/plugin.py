@@ -23,13 +23,9 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin):
 
     def get_blueprint(self):
         blueprint = Blueprint('apply_permissions_for_service', self.__module__, url_prefix=u'/apply_permissions_for_service')
-        rules = [
-            ('/', 'list_permission_applications', views.index),
-            ('/new/<subsystem_id>', 'new_permission_application', views.new),
-            ('/view/<application_id>', 'view_permission_application', views.view),
-        ]
-        for rule in rules:
-            blueprint.add_url_rule(*rule)
+        blueprint.add_url_rule('/', 'list_permission_applications', views.index),
+        blueprint.add_url_rule('/new/<subsystem_id>', 'new_permission_application', views.new, methods=['GET', 'POST'])
+        blueprint.add_url_rule('/view/<application_id>', 'view_permission_application', views.view),
 
         return blueprint
 
