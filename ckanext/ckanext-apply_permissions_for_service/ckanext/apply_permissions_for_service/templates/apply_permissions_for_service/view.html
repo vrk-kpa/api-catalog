@@ -1,9 +1,50 @@
 {% extends 'apply_permissions_for_service/base.html' %}
 
 {% block prelude %}
-<h1>apply_permissions_for_service.view</h1>
+<h1>{{ _('API access application') }}</h1>
 {% endblock %}
 
 {% block primary_content_inner %}
-<p>{{ application }}</p>
+  {% link_for _('All access applications'), named_route='apply_permissions_for_service.list_permission_application', class_='btn', icon='arrow-left' %}
+
+  <h3>{{ _('Applicant information') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization') }}</th><td>{{ application.organization }}</td></tr>
+      <tr><th>{{ _('Business code') }}</th><td>{{ application.business_code }}</td></tr>
+      <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
+      <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>{{ _('Utilizing security server and subsystem details') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_addresses|join(', ') }}</td></tr>
+      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.from.subsystem) or h.get_translated(application.from.subsystem, 'title') }}</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>{{ _('Requested API and service information') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.to.subsystem.organization, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.to.subsystem) or h.get_translated(application.to.subsystem, 'title') }}</td></tr>
+      <tr>
+        <th>{{ _('Service code') }}</th>
+        <td>
+          {%- for service in application.to.services -%}
+            {%- if loop.index > 1 %}, {% endif -%}
+            {{- service.xroad_service_code or service.name -}}
+            {%- endfor -%}
+        </td>
+      </tr>
+      <tr><th>{{ _('Explain how the service will be used') }}</th><td>{{ application.usage_description }}</td></tr>
+      <tr><th>{{ _('Requesting access starting at') }}</th><td>{{ application.request_date }}</td></tr>
+    </tbody>
+  </table>
 {% endblock %}

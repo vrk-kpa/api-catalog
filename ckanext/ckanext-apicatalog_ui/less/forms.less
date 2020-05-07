@@ -85,7 +85,7 @@ input[type=checkbox] {
   position: relative;
   select {
     color: @suomifi-text-base;
-    height: 33px;
+    height: 40px;
     background-color: white;
     border: 1px solid @kapa-input-border;
     border-radius: 2px;
@@ -96,12 +96,14 @@ input[type=checkbox] {
 
   &:after {
     pointer-events: none;
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Pro";
     content: "\f0d7";
+    font-size: 18px;
+    font-weight: 900;
     color: @suomifi-text-highlight;
     position: absolute;
     right: 10px;
-    top: 7px;
+    bottom: 4px;
   }
 }
 
@@ -905,4 +907,13 @@ textarea {
   .multiple-values-remove-input {
     margin-left: 8px;
   }
+}
+
+.input-block-description {
+  font-size: 16px;
+}
+.input-group-description {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }

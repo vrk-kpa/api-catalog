@@ -1,7 +1,7 @@
 {% extends 'apply_permissions_for_service/base.html' %}
 
 {% block prelude %}
-<h1>{{ _('Apply for permission to utilize an API') }}</h1>
+<h1>{{ _('Apply for permission to use API') }}</h1>
 {% endblock %}
 
 {% block primary_content_inner %}
@@ -9,10 +9,10 @@
   {% import 'macros/form.html' as form %}
   {{ form.hidden('subsystemId', value=subsystem_id) }}
   <h3>{{ _('API access application') }}</h3>
-  <p>{{ _('Using this form you can apply for a permission to utilize an API for your organization. Contact information will be delivered alongside the application to the API\'s owning organization. Valtori will be notified of granted access permissions to facilitate firewall configuration.') }}</p>
+  <p class="input-group-description">{{ _('Use this form to apply for a permission to use a service that is available in the National Data Exchange Layer. Your application will be submitted to the organization providing the service. When your application has been approved, Valtori is automatically notified of the needed firewall configurations.') }}</p>
   <hr>
   <h3>{{ _('Applicant information') }}</h3>
-  <p>{{ _('Contact information details have been prefilled based on information provided previously during the joining procedure to the National Data Exchange Layer. You may modify the prefilled information if necessary.') }}</p>
+  <p class="input-group-description">{{ _('Your contact infomation and organization details are prefilled based on information provided when your organization joined the National Data Exchange layer. Modify the prefilled information if necessary.') }}</p>
 
   <p>* Required field</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
@@ -23,8 +23,8 @@
   {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=user.email) }}
 
   <hr>
-  <h3>{{ _('Utilizing security server and subsystem details') }}</h3>
-  <p></p>
+  <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
+  <p class="input-group-description">{{ _('Fill in the details of the Security Server and subsystem that you are applying permission for, and need the firewall opened to.') }}</p>
 
   {% set subsystem_options = [] %}
   {% for d in user_managed_datasets %}
@@ -32,15 +32,20 @@
     {% do subsystem_options.append({'value': d.id, 'text': dataset_title}) %}
   {% endfor %}
 
-  {{ form.input_multiple('ipAddress', label=_('IP address'), is_required=True, add_input='add-ip-address') }}
-  <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>Add IP address</button>
-  {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True) }}
+  {% call form.input_multiple('ipAddress', label=_('IP address'), is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address') %}
+    <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
+  {% endcall %}
+
+  <div class="select-wrapper">
+    {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True) }}
+  </div>
 
   <hr>
-  <h3>{{ _('Requested API and service information') }}</h3>
-  <p></p>
 
-  <table style="width: 100%">
+  <h3>{{ _('Details of the service and API you are applying to access') }}</h3>
+  <p class="input-group-description"></p>
+
+  <table class="horizontal-info">
     <thead>
       <tr><th>{{ _('Organization name') }}</th><th>{{ _('Subsystem') }}</th></tr>
     </thead>
@@ -55,9 +60,9 @@
     {% do service_options.append({'value': res.id, 'text': res.xroad_service_code or res.name}) %}
   {% endfor %}
 
-  {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected) }}
-  {{ form.textarea('usageDescription', label=_('Explain how the service will be used')) }}
-  {{ form.input('requestDate', type='date', label=_('Requesting access starting at')) }}
+  {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access')) }}
+  {{ form.textarea('usageDescription', label=_('Explain how the service will be used'), placeholder=_('Reason for requesting access')) }}
+  {{ form.input('requestDate', type='date', label=_('Date when access is needed')) }}
 
   <hr>
 
