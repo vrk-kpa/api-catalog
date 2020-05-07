@@ -1,2 +1,2 @@
-def apply_permission_create(context, data_dict):
+def service_permission_application_create(context, data_dict):
     return {'success': True}

@@ -2,8 +2,8 @@ from ckan.plugins import toolkit as tk
 import model
 import ckan.model as ckan_model
 
-def apply_permission_create(context, data_dict):
-    tk.check_access('apply_permission_create', context, data_dict)
+def service_permission_application_create(context, data_dict):
+    tk.check_access('service_permission_application_create', context, data_dict)
 
     organization = data_dict.get('organization')
     vat_id = data_dict.get('vat_id')

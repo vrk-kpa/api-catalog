@@ -21,12 +21,12 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin):
 
     def get_actions(self):
         return {
-            'apply_permission_create': logic.apply_permission_create
+            'service_permission_application_create': logic.service_permission_application_create
         }
 
     # IAuthFunctions
 
     def get_auth_functions(self):
         return {
-           'apply_permission_create': auth.apply_permission_create
+           'service_permission_application_create': auth.service_permission_application_create
         }
