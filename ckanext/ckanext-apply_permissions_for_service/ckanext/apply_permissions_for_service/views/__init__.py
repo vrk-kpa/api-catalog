@@ -25,11 +25,16 @@ def new(subsystem_id):
                 'subsystem_id': form.get('subsystemId'),
                 'subsystem_code': form.get('subsystemCode'),
                 'service_code': form.getlist('serviceCode'),
-                'ip_address': form.get('ip_addresses'),
+                'ip_address_list': form.get('ipAddress'),
                 'request_date': form.get('requestDate'),
                 'usage_description': form.get('usageDescription'),
                 }
-        plugins.toolkit.get_action('service_permission_application_create')(context, data_dict)
+        try:
+            plugins.toolkit.get_action('service_permission_application_create')(context, data_dict)
+        except plugins.toolkit.ValidationError as e:
+            # Todo: render form again with errors
+            return plugins.toolkit.render('apply_permissions_for_service/new.html')
+
         return plugins.toolkit.render('apply_permissions_for_service/sent.html')
     else:
         service_id = plugins.toolkit.request.args.get('service_id')

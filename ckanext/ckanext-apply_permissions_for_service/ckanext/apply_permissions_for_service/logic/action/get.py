@@ -1,6 +1,8 @@
 from ckan.logic import NotFound, check_access, side_effect_free
 from ckan import plugins
 
+from ... import model
+
 @side_effect_free
 def service_permission_application_list(context, data_dict):
     check_access('service_permission_application_list', context, data_dict)
@@ -19,6 +21,9 @@ def service_permission_application_show(context, data_dict):
 
     if application_id is None:
         raise NotFound
+
+    application = model.ApplyPermission.get(application_id).as_dict()
+    return application
 
     packages = plugins.toolkit.get_action('package_search')(context, {}).get('results', [])
     fake_count = 10
