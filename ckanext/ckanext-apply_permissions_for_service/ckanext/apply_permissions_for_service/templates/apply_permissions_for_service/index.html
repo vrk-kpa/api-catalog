@@ -1,0 +1,32 @@
+{% extends 'apply_permissions_for_service/base.html' %}
+
+{% block prelude %}
+<h1>{{ _('Service access applications') }}</h1>
+{% endblock %}
+
+{% block primary_content_inner %}
+
+<h2>{{ _('Sent applications') }}</h2>
+{% if sent_applications %}
+  <ul>
+  {% for application in sent_applications %}
+  <li>{% link_for ((h.xroad_subsystem_path(application.from.subsystem) or application.from.subsystem.name) + ' → ' + (h.xroad_subsystem_path(application.to.subsystem) or application.to.subsystem.name)), named_route='apply_permissions_for_service.view_permission_application', application_id=application.id %}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>_('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.')</p>
+{% endif %}
+
+<h2>{{ _('Received applications') }}</h2>
+{% if received_applications %}
+  <ul>
+  {% for application in received_applications %}
+    <li>{% link_for ((h.xroad_subsystem_path(application.from.subsystem) or application.from.subsystem.name) + ' → ' + (h.xroad_subsystem_path(application.to.subsystem) or application.to.subsystem.name)), named_route='apply_permissions_for_service.view_permission_application', application_id=application.id %}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>_('You have not received any service access applications.')</p>
+{% endif %}
+
+{% endblock %}
+

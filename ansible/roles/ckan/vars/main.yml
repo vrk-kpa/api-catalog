@@ -1,13 +1,13 @@
 ---
 
-ckan_version: 2.8.3
+ckan_version: 2.8.4
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
 # plugin order matters, when templates call super()
-ckan_plugins: openapi_view text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_pages pages apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed apicatalog_harvesterstatus harvest xroad_harvester wsdl_view validate_links saha paha webpage_view apply_permissions_for_service
+ckan_plugins: openapi_view text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_pages pages apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed apicatalog_harvesterstatus harvest xroad_harvester wsdl_view validate_links saha paha webpage_view apply_permissions_for_service xroad_integration
 
 redis_harvest_database: 0
 redis_celery_database: 1
@@ -31,13 +31,9 @@ ckan_patches:
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
   - { file: "set_attachment_content_disposition" }
-  - { file: "prevent_reset_scanning" }
   - { file: "fix_unicode_decode_error_in_error_page" } # https://github.com/ckan/ckan/pull/4727
-  - { file: "fix-popped-wrong-app-context" } # CKAN issue #4431
   - { file: "reorder_bulk_process" } # https://github.com/ckan/ckan/pull/5147
   - { file: "disable_leftover_with_capacity" }
-  - { file: "fix_password_reset" }
-  - { file: "add_samesite_flag" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

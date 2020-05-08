@@ -1,3 +1,8 @@
+# Default server to block undefined hostnames
+server {
+    listen 443 ssl;
+    return 404;
+}
 
 server {
 

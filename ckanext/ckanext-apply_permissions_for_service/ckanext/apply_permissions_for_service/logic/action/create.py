@@ -1,8 +1,7 @@
 from ckan.plugins import toolkit as tk
-import model
+import ckanext.apply_permissions_for_service.model
 
 _ = tk._
-
 
 def service_permission_application_create(context, data_dict):
     tk.check_access('service_permission_application_create', context, data_dict)
@@ -39,10 +38,10 @@ def service_permission_application_create(context, data_dict):
 
 
     model.ApplyPermission.create(organization=organization, vat_id=vat_id,
-                          contact_person_name=contact_person_name,
-                          contact_person_email=contact_person_email,
-                          ip_address_list=ip_address_list,
-                          subsystem_code=subsystem_code,
-                          api_id=api_id,
-                          request_description=request_description)
+                                 contact_person_name=contact_person_name,
+                                 contact_person_email=contact_person_email,
+                                 ip_address_list=ip_address_list,
+                                 subsystem_code=subsystem_code,
+                                 api_id=api_id,
+                                 request_description=request_description)
 
