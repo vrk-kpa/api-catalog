@@ -1,7 +1,7 @@
 {% extends 'apply_permissions_for_service/base.html' %}
 
 {% block prelude %}
-<h1>{{ _('Apply for permission to use API') }}</h1>
+<h1>{{ _('Apply for permission to use API {}').format(h.get_translated(pkg, 'title')) }}</h1>
 {% endblock %}
 
 {% block primary_content_inner %}
