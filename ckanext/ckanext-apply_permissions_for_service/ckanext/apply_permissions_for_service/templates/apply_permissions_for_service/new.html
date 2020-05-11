@@ -16,7 +16,8 @@
 
   <p>* Required field</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
-  {{ form.input('organization', label=_('Organization'), is_required=True, value=h.get_translated(user_org, 'title') or '') }}
+  {# TODO: Should probably be organization select component ? #}
+  {{ form.input('organization', label=_('Organization'), is_required=True, value=user_org.name or '') }}
   {{ form.input('businessCode', label=_('Business code'), is_required=True, value=user_org.xroad_member_code or '') }}
 
   {{ form.input('contactName', label=_('Contact name'), is_required=True, value=user.fullname) }}

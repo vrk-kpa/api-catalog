@@ -18,7 +18,7 @@ def new(subsystem_id):
     if plugins.toolkit.request.method == u'POST':
         form = plugins.toolkit.request.form
         data_dict = {
-                'organization': form.get('organization'),
+                'organization_id': form.get('organization'),
                 'business_code': form.get('businessCode'),
                 'contact_name': form.get('contactName'),
                 'contact_email': form.get('contactEmail'),
@@ -29,6 +29,10 @@ def new(subsystem_id):
                 'request_date': form.get('requestDate'),
                 'usage_description': form.get('usageDescription'),
                 }
+
+        # Todo: Handle multiple service codes
+        data_dict['service_code'] = data_dict['service_code'][0]
+
         try:
             plugins.toolkit.get_action('service_permission_application_create')(context, data_dict)
         except plugins.toolkit.ValidationError as e:
