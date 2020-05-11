@@ -14,7 +14,7 @@
   {% endfor %}
   </ul>
 {% else %}
-  <p>_('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.')</p>
+<p>{{ _('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.') }}</p>
 {% endif %}
 
 <h2>{{ _('Received applications') }}</h2>
@@ -25,7 +25,7 @@
   {% endfor %}
   </ul>
 {% else %}
-  <p>_('You have not received any service access applications.')</p>
+<p>{{ _('You have not received any service access applications.') }}</p>
 {% endif %}
 
 {% endblock %}
