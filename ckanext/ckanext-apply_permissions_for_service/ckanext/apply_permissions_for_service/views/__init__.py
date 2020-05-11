@@ -45,7 +45,9 @@ def new(subsystem_id):
             })
         user_managed_datasets_query = 'owner_org:({})'.format(' OR '.join(o['id'] for o in user_managed_organizations))
         user_managed_datasets = plugins.toolkit.get_action('package_search')(context, {
-            'q': user_managed_datasets_query
+            'q': user_managed_datasets_query,
+            'include_private': True,
+            'rows': 1000
             }).get('results', []) if user_managed_organizations else []
 
         log.info(plugins.toolkit.g)
