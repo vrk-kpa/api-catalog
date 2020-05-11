@@ -1,16 +1,18 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.lib.plugins import DefaultTranslation
 from logic import action, auth
 from flask import Blueprint
 
 import views
 
 
-class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin):
+class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
