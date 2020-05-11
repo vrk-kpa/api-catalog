@@ -32,7 +32,7 @@
   <h3>{{ _('Requested API and service information') }}</h3>
   <table class="table">
     <tbody>
-      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.organization, 'title') }}</td></tr>
+      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
       <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.service) or h.get_translated(application.subsystem, 'title') }}</td></tr>
       <tr>
         <th>{{ _('Service code') }}</th>

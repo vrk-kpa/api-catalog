@@ -13,8 +13,8 @@ def service_permission_application_create(context, data_dict):
     errors = {}
     error_summary = {}
 
-    organization_id = data_dict.get('organization_id')
-    if organization_id is None or organization_id == "":
+    organization = data_dict.get('organization')
+    if organization is None or organization == "":
         errors['organization_id'] = _('Missing value')
     business_code = data_dict.get('business_code')
     if business_code is None or business_code == "":
@@ -47,7 +47,7 @@ def service_permission_application_create(context, data_dict):
 
 
 
-    model.ApplyPermission.create(organization_id=organization_id, business_code=business_code,
+    model.ApplyPermission.create(organization=organization, business_code=business_code,
                                  contact_name=contact_name,
                                  contact_email=contact_email,
                                  ip_address_list=ip_address_list,

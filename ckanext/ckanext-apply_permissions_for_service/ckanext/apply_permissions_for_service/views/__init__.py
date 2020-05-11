@@ -18,7 +18,7 @@ def new(subsystem_id):
     if plugins.toolkit.request.method == u'POST':
         form = plugins.toolkit.request.form
         data_dict = {
-                'organization_id': form.get('organization'),
+                'organization': form.get('organization'),
                 'business_code': form.get('businessCode'),
                 'contact_name': form.get('contactName'),
                 'contact_email': form.get('contactEmail'),
