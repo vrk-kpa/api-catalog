@@ -23,7 +23,7 @@
   <table class="table">
     <tbody>
       <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_addresses|join(', ') }}</td></tr>
-      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</td></tr>
     </tbody>
   </table>
 

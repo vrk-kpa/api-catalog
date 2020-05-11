@@ -55,6 +55,8 @@ class ApplyPermission(Base):
         context = {'model': model}
         application_dict = dictization.table_dictize(self, context)
 
+        application_dict['requester_subsystem'] = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': application_dict['subsystem_id']})
+
         application_dict['subsystem'] = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': application_dict['subsystem_code']})
         application_dict['member'] = toolkit.get_action('organization_show')({'ignore_auth': True}, {'id': application_dict['subsystem']['owner_org']})
         application_dict['services'] = [toolkit.get_action('resource_show')({'ignore_auth': True}, {'id': service}) for service in application_dict['service_code_list']]
