@@ -33,11 +33,9 @@
   <table class="table">
     <tbody>
       <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
-      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.service) or h.get_translated(application.subsystem, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
       <tr>
         <th>{{ _('Service code') }}</th>
-        <td>{{- application.service.xroad_servicecode or application.service.name -}}</td>
-        {# TODO: Handle list of services #}
           <td>
           {%- for service in application.services -%}
             {%- if loop.index > 1 %}, {% endif -%}

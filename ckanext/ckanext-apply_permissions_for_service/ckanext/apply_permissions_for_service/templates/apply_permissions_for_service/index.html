@@ -10,7 +10,9 @@
 {% if sent_applications %}
   <ul>
   {% for application in sent_applications %}
-  <li>{% link_for ((h.xroad_subsystem_path(application.subsystem) or application.subsystem.name) + ' → ' + (h.xroad_subsystem_path(application.service) or application.service.name)), named_route='apply_permissions_for_service.view_permission_application', application_id=application.id %}</li>
+      {%  for service in application.services %}
+        <li>{% link_for ((h.xroad_subsystem_path(application.subsystem) or application.subsystem.name) + ' → ' + (h.xroad_subsystem_path(service) or service.name)), named_route='apply_permissions_for_service.view_permission_application', application_id=application.id %}</li>
+    {% endfor %}
   {% endfor %}
   </ul>
 {% else %}

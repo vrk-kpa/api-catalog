@@ -34,9 +34,9 @@ def service_permission_application_create(context, data_dict):
     subsystem_code = data_dict.get('subsystem_code')
     if subsystem_code is None or subsystem_code == "":
         errors['subsystem_code'] = _('Missing value')
-    service_code = data_dict.get('service_code')
-    if service_code is None or service_code == "":
-        errors['service_code'] = _('Missing value')
+    service_code_list = data_dict.get('service_code_list')
+    if service_code_list is None or service_code_list == "":
+        errors['service_code_list'] = _('Missing value')
 
 
     if errors:
@@ -53,7 +53,7 @@ def service_permission_application_create(context, data_dict):
                                  ip_address_list=ip_address_list,
                                  subsystem_id=subsystem_id,
                                  subsystem_code=subsystem_code,
-                                 service_code=service_code,
+                                 service_code_list=service_code_list,
                                  usage_description=usage_description,
                                  request_date=request_date)
 

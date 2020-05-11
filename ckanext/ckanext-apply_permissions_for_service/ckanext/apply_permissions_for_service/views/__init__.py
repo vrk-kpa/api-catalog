@@ -24,14 +24,11 @@ def new(subsystem_id):
                 'contact_email': form.get('contactEmail'),
                 'subsystem_id': form.get('subsystemId'),
                 'subsystem_code': form.get('subsystemCode'),
-                'service_code': form.getlist('serviceCode'),
+                'service_code_list': form.getlist('serviceCode'),
                 'ip_address_list': form.get('ipAddress'),
                 'request_date': form.get('requestDate'),
                 'usage_description': form.get('usageDescription'),
                 }
-
-        # Todo: Handle multiple service codes
-        data_dict['service_code'] = data_dict['service_code'][0]
 
         try:
             plugins.toolkit.get_action('service_permission_application_create')(context, data_dict)
