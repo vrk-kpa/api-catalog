@@ -56,6 +56,7 @@ def new(subsystem_id):
                 'subsystem_id': subsystem_id,
                 'service_id': service_id,
                 'pkg': package,
+                'service': next((r for r in package.get('resources', []) if r['id'] == service_id), None),
                 'org': organization,
                 'user': plugins.toolkit.g.userobj,
                 'user_managed_organizations': user_managed_organizations,
