@@ -1,18 +1,16 @@
 from ckan.logic import NotFound, check_access, side_effect_free
 from ckan import plugins
+from ckan import model
 
-from ... import model
+from ... import model as apply_permission_model
 
 @side_effect_free
 def service_permission_application_list(context, data_dict):
     check_access('service_permission_application_list', context, data_dict)
-    result = {
-            'sent': [service_permission_application_show(context, {'id': str(i)})
-                     for i in range(10)],
-            'received': [service_permission_application_show(context, {'id': str(i)})
-                         for i in range(10, 20)]
-            }
-    return result
+
+    applications = model.Session.query(apply_permission_model.ApplyPermission).all()
+
+    return {"sent":[application.as_dict() for application in applications]}
 
 @side_effect_free
 def service_permission_application_show(context, data_dict):
@@ -22,6 +20,6 @@ def service_permission_application_show(context, data_dict):
     if application_id is None:
         raise NotFound
 
-    application = model.ApplyPermission.get(application_id).as_dict()
+    application = apply_permission_model.ApplyPermission.get(application_id).as_dict()
     return application
 
