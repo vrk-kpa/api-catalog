@@ -10,6 +10,12 @@
     - "vars/common.yml"
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
+
+  pre_tasks:
+    - import_role:
+        name: mailhog
+      when: deployment_environment_id == 'vagrant'
+      tags: mailhog
   roles:
     - os-base
     - java8
