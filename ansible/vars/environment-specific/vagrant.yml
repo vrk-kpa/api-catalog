@@ -57,7 +57,7 @@ ckan_admins:
 
 email_domain: vagrant
 email:
-  smtp_server: localhost
+  smtp_server: localhost:1025
   from: no-reply@{{ email_domain }}
   error_recipient: vagrant@localhost
   error_from: error@{{ email_domain }}
