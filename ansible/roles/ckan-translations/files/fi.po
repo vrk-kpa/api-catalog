@@ -5384,3 +5384,9 @@ msgstr "Johdantoteksti ruotsiksi"
 
 msgid "Intro text in english"
 msgstr "Johdantoteksti englanniksi"
+
+msgid "Not selected"
+msgstr "Ei valittu"
+
+msgid "selected"
+msgstr "valittu"

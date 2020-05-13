@@ -12,6 +12,9 @@
 {% if selected %}
       {% if all_selected %}
           {% set status = _('All') %}
+      {% elif selected_indices|length == 1 %}
+        {# loop indices start at 1 #}
+        {% set status = options[selected_indices[0] - 1].text %}
       {% else %}
           {% set status %}
             {{selected_indices|length}} {{_('selected')}}
