@@ -43,7 +43,7 @@ def service_permission_application_create(context, data_dict):
         raise tk.ValidationError(errors)
 
     usage_description = data_dict.get('usage_description')
-    request_date = data_dict.get('request_date')
+    request_date = data_dict.get('request_date') or None
 
 
 

@@ -29,7 +29,7 @@ def new_post(context, subsystem_id):
             'subsystem_id': form.get('subsystemId'),
             'subsystem_code': form.get('subsystemCode'),
             'service_code_list': form.getlist('serviceCode'),
-            'ip_address_list': form.get('ipAddress'),
+            'ip_address_list': [ip for ip in form.getlist('ipAddress') if ip],
             'request_date': form.get('requestDate'),
             'usage_description': form.get('usageDescription'),
             }
@@ -37,12 +37,12 @@ def new_post(context, subsystem_id):
     try:
         get_action('service_permission_application_create')(context, data_dict)
     except ValidationError as e:
-        return new_get(context, subsystem_id, e.error_dict)
+        return new_get(context, subsystem_id, e.error_dict, values=data_dict)
 
     return plugins.toolkit.render('apply_permissions_for_service/sent.html')
 
 
-def new_get(context, subsystem_id, errors={}):
+def new_get(context, subsystem_id, errors={}, values={}):
     service_id = plugins.toolkit.request.args.get('service_id')
     package = get_action('package_show')(context, {'id': subsystem_id})
     organization = get_action('organization_show')(context, {'id': package['owner_org']})
@@ -66,6 +66,7 @@ def new_get(context, subsystem_id, errors={}):
             'user': g.userobj,
             'user_managed_organizations': user_managed_organizations,
             'user_managed_datasets': user_managed_datasets,
+            'values': values,
             'errors': errors
             }
     return plugins.toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)

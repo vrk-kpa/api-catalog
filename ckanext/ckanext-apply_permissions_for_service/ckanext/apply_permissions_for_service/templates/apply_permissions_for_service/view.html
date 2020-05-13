@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-  {% link_for _('All access applications'), named_route='apply_permissions_for_service.list_permission_application', class_='btn', icon='arrow-left' %}
+  {% link_for _('All access applications'), named_route='apply_permissions_for_service.list_permission_applications', class_='btn', icon='arrow-left' %}
 
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">
@@ -24,17 +24,17 @@
 
   <hr>
 
-  <h3>{{ _('Utilizing security server and subsystem details') }}</h3>
+  <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
   <table class="table">
     <tbody>
-      <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_addresses|join(', ') }}</td></tr>
+      <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_address_list|join(', ') }}</td></tr>
       <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</td></tr>
     </tbody>
   </table>
 
   <hr>
 
-  <h3>{{ _('Requested API and service information') }}</h3>
+  <h3>{{ _('Details of the service and API you are applying to access') }}</h3>
   <table class="table">
     <tbody>
       <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
@@ -49,7 +49,7 @@
         </td>
       </tr>
       <tr><th>{{ _('Explain how the service will be used') }}</th><td>{{ application.usage_description }}</td></tr>
-      <tr><th>{{ _('Requesting access starting at') }}</th><td>{{ application.request_date }}</td></tr>
+      <tr><th>{{ _('Date when access is needed') }}</th><td>{{ application.request_date }}</td></tr>
     </tbody>
   </table>
 {% endblock %}

@@ -34,11 +34,11 @@
   <p>* Required field</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
   {# TODO: Should probably be organization select component ? #}
-  {{ form.input('organization', label=_('Organization'), is_required=True, value=user_org.title or '') }}
-  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=user_org.xroad_member_code or '') }}
+  {{ form.input('organization', label=_('Organization'), is_required=True, value=values.organization or user_org.title or '') }}
+  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code or user_org.xroad_member_code or '') }}
 
-  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=user.fullname) }}
-  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=user.email) }}
+  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
+  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
 
   <hr>
   <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
@@ -50,12 +50,12 @@
     {% do subsystem_options.append({'value': d.id, 'text': dataset_title}) %}
   {% endfor %}
 
-  {% call form.input_multiple('ipAddress', label=_('IP address'), is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address') %}
+  {% call form.input_multiple('ipAddress', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address') %}
     <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
   {% endcall %}
 
   <div class="select-wrapper">
-    {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True) }}
+    {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
   </div>
 
   <hr>
@@ -73,14 +73,14 @@
   </table>
 
   {% set service_options = [] %}
-  {% set service_selected = [service_id] if service_id else [] %}
+  {% set service_selected = values.service_code_list or ([service_id] if service_id else []) %}
   {% for res in pkg.resources %}
     {% do service_options.append({'value': res.id, 'text': res.xroad_service_code or res.name}) %}
   {% endfor %}
 
   {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access')) }}
-  {{ form.textarea('usageDescription', label=_('Explain how the service will be used'), placeholder=_('Reason for requesting access')) }}
-  {{ form.input('requestDate', type='date', label=_('Date when access is needed')) }}
+  {{ form.textarea('usageDescription', label=_('Explain how the service will be used'), value=values.usage_description, placeholder=_('Reason for requesting access')) }}
+  {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date) }}
 
   <hr>
 
