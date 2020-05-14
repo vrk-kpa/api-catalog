@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-applypermissionsforservice''',
+    name='''ckanext-apply_permissions_for_service''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -84,6 +84,9 @@ setup(
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
+        
+        [paste.paster_command]
+        apply_permissions=ckanext.apply_permissions_for_service.commands:ApplyPermissionsCommand
     ''',
 
     # If you are changing from the default layout of your extension, you may

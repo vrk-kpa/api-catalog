@@ -14,3 +14,9 @@
   {% endif %}
 {% endblock %}
 
+  {% block content_action %}
+  {% if h.organizations_available() %}
+    {% link_for _('Request access'), named_route='apply_permissions_for_service.new_permission_application', subsystem_id=pkg.name, class_='btn', icon='' %}
+  {% endif %}
+  {{ super() }}
+{% endblock %}

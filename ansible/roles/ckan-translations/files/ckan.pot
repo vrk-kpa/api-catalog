@@ -5165,3 +5165,9 @@ msgstr ""
 
 msgid "Intro text in english"
 msgstr ""
+
+msgid "Not selected"
+msgstr ""
+
+msgid "selected"
+msgstr ""

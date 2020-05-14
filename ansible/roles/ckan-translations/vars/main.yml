@@ -7,3 +7,6 @@ ckan_languages:
 
 ckan_harvest_languages:
   - sv
+
+ckan_extensions_with_translations:
+  - ckanext-apply_permissions_for_service

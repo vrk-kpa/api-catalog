@@ -6,9 +6,6 @@ ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
 celery_user: "{{ www_user }}"
 
-# plugin order matters, when templates call super()
-ckan_plugins: openapi_view text_view apicatalog_scheming scheming_datasets fluent apicatalog_ui apicatalog_pages pages apicatalog_admin_dashboard apicatalog_routes contact apicatalog_feed apicatalog_harvesterstatus harvest xroad_harvester wsdl_view validate_links saha paha webpage_view apply_permissions_for_service
-
 redis_harvest_database: 0
 redis_celery_database: 1
 
