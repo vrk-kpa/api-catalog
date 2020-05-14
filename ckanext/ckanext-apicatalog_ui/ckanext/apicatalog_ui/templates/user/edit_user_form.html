@@ -3,6 +3,8 @@
 <form id="user-edit-form" class="dataset-form" method="post" action="{{ action }}">
     {{ form.errors(error_summary) }}
 
+    {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
+
     <fieldset>
         <legend>{{ _('Change details') }}</legend>
         {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
@@ -10,7 +12,7 @@
         {{ form.input('fullname', label=_('Full name'), id='field-fullname', value=data.fullname, error=errors.fullname, placeholder=_('eg. Joe Bloggs'), classes=['control-medium']) }}
 
         {{ form.input('email', label=_('Email'), id='field-email', type='email', value=data.email, error=errors.email, placeholder=_('eg. joe@example.com'), classes=['control-medium'], is_required=true) }}
-    
+
         {% if show_email_notifications %}
             {% call form.checkbox('activity_streams_email_notifications', label=_('Subscribe to notification emails'), id='field-activity-streams-email-notifications', value=True, checked=g.userobj.activity_streams_email_notifications) %}
                 {% set helper_text = _("You will receive notification emails from {site_title}, e.g. when you have new activities on your dashboard."|string) %}
