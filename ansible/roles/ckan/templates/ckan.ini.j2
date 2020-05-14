@@ -57,7 +57,7 @@ ckan.site_description =
 
 ckan.featured_orgs = {{ ckan_featured_orgs }}
 
-ckan.plugins = {{ ckan_plugins }}
+ckan.plugins = {{ ckan_plugins | join(' ') }}
 
 ckan.preview.xml_formats = xml xsd xsd+xml soap soap+xml rdf rdf+xml owl+xml atom rss wsdl wsdl+xml
 ckan.views.default_views = wsdl_view text_view
