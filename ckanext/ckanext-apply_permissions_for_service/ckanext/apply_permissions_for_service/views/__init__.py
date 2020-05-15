@@ -56,7 +56,6 @@ def new_get(context, subsystem_id, errors={}, values={}):
         'rows': 1000
         }).get('results', []) if user_managed_organizations else []
 
-    log.info(g)
     extra_vars = {
             'subsystem_id': subsystem_id,
             'service_id': service_id,
