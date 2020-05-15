@@ -1,4 +1,6 @@
 from ckan.plugins import toolkit as tk
+from ckan.lib.mailer import mail_user
+from ckan.model.user import User
 from ... import model
 import logging
 
@@ -45,7 +47,18 @@ def service_permission_application_create(context, data_dict):
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
 
+    # Determine notification email recipients before creating the application
+    # in case there are errors
+    package = tk.get_action('package_show')(context, {'id': subsystem_id})
 
+    system_context = {'ignore_auth': True}
+    package_org_admin_members = tk.get_action('member_list')(system_context, {
+        'id': package['owner_org'],
+        'object_type': 'user',
+        'capacity': 'admin'
+        })
+
+    package_org_admin_users = [User.get(uid) for uid, t, c in package_org_admin_members]
 
     model.ApplyPermission.create(organization=organization, business_code=business_code,
                                  contact_name=contact_name,
@@ -57,3 +70,15 @@ def service_permission_application_create(context, data_dict):
                                  usage_description=usage_description,
                                  request_date=request_date)
 
+
+    # TODO: Fetch email content, interpolate parameters
+    email_subject = _('Test subject for permission application notification')
+    email_content = _('Lorem ipsum, dolor sit amet')
+
+    log.info('Sending application notification emails to {} users'.format(len(package_org_admin_users)))
+    for u in package_org_admin_users:
+        try:
+            mail_user(u, email_subject, email_content)
+        except Exception as e:
+            # Email exceptions are not user relevant nor action critical, but should be logged
+            log.warning(e)
