@@ -110,3 +110,4 @@ ckan_plugins:
   - webpage_view
   - apply_permissions_for_service
   - xroad_integration
+  - forcetranslation
