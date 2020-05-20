@@ -118,13 +118,17 @@ def business_id_validator(value):
     if not matches:
         raise toolkit.Invalid("Business id is incorrect format.")
 
-    verification_number = (7 * int(matches.group(1)[0]) +
-                          9 * int(matches.group(1)[1]) +
-                          10 * int(matches.group(1)[2]) +
-                          5 * int(matches.group(1)[3]) +
-                          8 * int(matches.group(1)[4]) +
-                          4 * int(matches.group(1)[5]) +
-                          2 * int(matches.group(1)[6])) % 11
+    business_id = matches.group(1)
+    if len(business_id) is 6:
+        business_id = "0" + business_id
+
+    verification_number = (7 * int(business_id[0]) +
+                          9 * int(business_id[1]) +
+                          10 * int(business_id[2]) +
+                          5 * int(business_id[3]) +
+                          8 * int(business_id[4]) +
+                          4 * int(business_id[5]) +
+                          2 * int(business_id[6])) % 11
 
     if verification_number > 1:
         verification_number = 11 - verification_number
