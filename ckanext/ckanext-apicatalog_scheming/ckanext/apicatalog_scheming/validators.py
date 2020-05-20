@@ -1,3 +1,4 @@
+import re
 from ckan.common import _
 import ckan.lib.navl.dictization_functions as df
 from ckan.common import config
@@ -110,3 +111,24 @@ def default_value(default):
     def converter(value, context):
         return value if value is not missing else default
     return converter
+
+
+def business_id_validator(value):
+    matches = re.match(r"(^[0-9]{6,7})-([0-9])$", value)
+    if not matches:
+        raise toolkit.Invalid("Business id is incorrect format.")
+
+    verification_number = (7 * int(matches.group(1)[0]) +
+                          9 * int(matches.group(1)[1]) +
+                          10 * int(matches.group(1)[2]) +
+                          5 * int(matches.group(1)[3]) +
+                          8 * int(matches.group(1)[4]) +
+                          4 * int(matches.group(1)[5]) +
+                          2 * int(matches.group(1)[6])) % 11
+
+    if verification_number > 1:
+        verification_number = 11 - verification_number
+
+    if verification_number is not int(matches.group(2)):
+        raise toolkit.Invalid("Business id verification number does match business id.")
+
