@@ -187,12 +187,6 @@ def send_reset_link(context, data_dict):
 
 def create_user_to_organization(context, data_dict):
 
-    def _generate_password():
-        out = ''
-        for n in xrange(8):
-            out += str(uuid.uuid4())
-        return out
-
     toolkit.check_access('create_user_to_organization', context)
     model = context['model']
     schema = context.get('schema') or create_user_to_organization_schema()
@@ -204,14 +198,10 @@ def create_user_to_organization(context, data_dict):
         session.rollback()
         raise ValidationError(errors)
 
-    data['password'] = _generate_password()
-    user = get_action('user_create')(context, data)
-
-    # Todo: Add created user to organization
+    # Todo: Store user and organization to database
 
     return {
-        "name": user['name'] ,
-        "email": user['email']
+        "msg": _("User {name} stored in database.").format(name=data['name'])
     }
 
 
