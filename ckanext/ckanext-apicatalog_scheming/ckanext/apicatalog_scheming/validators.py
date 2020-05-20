@@ -116,7 +116,7 @@ def default_value(default):
 def business_id_validator(value):
     matches = re.match(r"(^[0-9]{6,7})-([0-9])$", value)
     if not matches:
-        raise toolkit.Invalid("Business id is incorrect format.")
+        raise toolkit.Invalid(_("Business id is incorrect format."))
 
     business_id = matches.group(1)
     if len(business_id) is 6:
@@ -133,6 +133,6 @@ def business_id_validator(value):
     if verification_number > 1:
         verification_number = 11 - verification_number
 
-    if verification_number is not int(matches.group(2)):
-        raise toolkit.Invalid("Business id verification number does match business id.")
+    if verification_number != int(matches.group(2)):
+        raise toolkit.Invalid(_("Business id verification number does match business id."))
 
