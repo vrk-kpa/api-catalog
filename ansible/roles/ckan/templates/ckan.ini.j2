@@ -119,6 +119,8 @@ ckanext.forcetranslation.path = i18n
 ckanext.forcetranslation.domain = ckan
 
 
+ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | default([]) | join(" ")  }}
+
 ofs.impl = pairtree
 
 # 2.1 filestore:

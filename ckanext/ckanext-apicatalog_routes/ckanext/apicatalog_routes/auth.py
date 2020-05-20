@@ -3,7 +3,7 @@ import logging
 log = logging.getLogger(__name__)
 
 from ckan.logic.auth import get, update
-from ckan.plugins.toolkit import check_access, auth_allow_anonymous_access
+from ckan.plugins.toolkit import check_access, auth_allow_anonymous_access, _
 
 from ckan.lib.base import config
 from ckan.common import c
@@ -28,3 +28,13 @@ def read_members(context, data_dict):
         return {'success': True}
 
     return update.group_edit_permissions(context, data_dict)
+
+def create_user_to_organization(context, data_dict=None):
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+        return {"success": True}
+
+    return {
+        "success": False,
+        "msg": _("User {user} not authorized to create users via the API").format(user=context.get('user'))
+    }
