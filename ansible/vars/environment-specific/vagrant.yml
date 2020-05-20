@@ -92,6 +92,7 @@ ckan_plugins:
   - text_view
   - apicatalog_scheming
   - scheming_datasets
+  - scheming_organizations
   - fluent
   - apicatalog_ui
   - apicatalog_pages
