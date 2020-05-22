@@ -31,17 +31,15 @@ content_group = paster_click_group(
 @click.argument('current_version')
 @click.argument('target_version')
 @click.option(u'--dryrun', is_flag=True)
-@click.option(u'--path-index')
+@click.option(u'--path-index', type=int)
 @click.pass_context
 def migrate(ctx, config, current_version, target_version, dryrun, path_index):
-    def no_changes(*args, **kwargs):
-        pass
 
     load_config(config or ctx.obj['config'])
     m = Migrate()
 
-    m.add('1.49.0', '1.50.0', no_changes)
-    m.add('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0)
+    for v1, v2, step in migrations():
+        m.add(v1, v2, step)
 
     plans = m.plan(current_version, target_version)
 
@@ -56,7 +54,7 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
                 print('{}: {}'.format(i, ' -> '.join(plan_to_path(plan))))
             sys.exit(1)
 
-        plan = plans[path_index]
+        plan = plans[int(path_index)]
     else:
         plan = plans[0]
 
@@ -73,8 +71,21 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
 
 
 #
+# Migrations
+#
+
+def migrations():
+    return [('1.49.0', '1.50.0', no_changes),
+            ('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0)
+            ]
+
+
+#
 # Migration step functions
 #
+
+def no_changes(*args, **kwargs):
+    pass
 
 def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
     organization_patches = [{'id': org['id'],
@@ -82,7 +93,6 @@ def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
                              'description_translated': {'fi': org['description']}}
                             for org in org_generator()]
     apply_patches(organization_patches=organization_patches, dryrun=dryrun)
-
 
 #
 # Utilities
