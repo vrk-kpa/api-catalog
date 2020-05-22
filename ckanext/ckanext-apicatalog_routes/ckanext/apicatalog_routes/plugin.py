@@ -19,6 +19,7 @@ import ckan.lib.csrf_token as csrf_token
 import ckan.lib.mailer as mailer
 
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
+from db import UserForOrganization
 
 abort = base.abort
 render = base.render
@@ -198,7 +199,7 @@ def create_user_to_organization(context, data_dict):
         session.rollback()
         raise ValidationError(errors)
 
-    # Todo: Store user and organization to database
+    UserForOrganization.create(data['name'], data['email'], data['business_id'], data['organization_name'])
 
     return {
         "msg": _("User {name} stored in database.").format(name=data['name'])
