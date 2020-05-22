@@ -1,6 +1,10 @@
+import uuid
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.common import config
+import ckan.lib.navl.dictization_functions as dictization_functions
+
 import validators
 
 
@@ -24,6 +28,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'only_default_lang_required': validators.only_default_lang_required,
             'keep_old_value_if_missing': validators.keep_old_value_if_missing,
             'default_value': validators.default_value,
+            "business_id_validator": validators.business_id_validator
             }
 
     def get_helpers(self):

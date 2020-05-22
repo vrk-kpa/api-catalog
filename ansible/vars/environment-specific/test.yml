@@ -106,3 +106,4 @@ ckan_plugins:
   - paha
   - webpage_view
   - xroad_integration
+  - forcetranslation

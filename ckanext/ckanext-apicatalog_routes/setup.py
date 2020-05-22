@@ -84,5 +84,6 @@ setup(
 
         [paste.paster_command]
         apicatalog-harvest = ckanext.apicatalog_routes.commands:apicatalog_harvest_group
+        apicatalog_db = ckanext.apicatalog_routes.commands:apicatalog_database_group
     ''',
 )

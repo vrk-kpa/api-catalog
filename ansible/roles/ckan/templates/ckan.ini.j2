@@ -114,6 +114,14 @@ ckanext.saha.username = {{ saha.username }}
 ckanext.saha.password = {{ saha.password }}
 ckanext.saha.api_url = {{ saha.api_url }}
 
+# Force using of core translations, change this when translations are moved to extensions
+ckanext.forcetranslation.module = ckan
+ckanext.forcetranslation.path = i18n
+ckanext.forcetranslation.domain = ckan
+
+
+ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | default([]) | join(" ")  }}
+
 ofs.impl = pairtree
 
 # 2.1 filestore:

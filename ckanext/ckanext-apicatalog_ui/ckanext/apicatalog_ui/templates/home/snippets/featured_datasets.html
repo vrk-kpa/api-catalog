@@ -6,9 +6,12 @@
 <h3>{{ _('Sample APIs') }}</h3>
 <div class="row horizontal-dataset-list">
 {% for dataset in datasets %}
-{% set title = h.get_translated(dataset, 'title') or dataset.name %}
-{% set organization_title = h.get_translated(dataset.organization, 'title') or dataset.organization.name %}
-{% set notes = h.markdown_extract(h.get_translated(dataset, 'notes'), extract_length=truncate) %}
+    {% set title = h.get_translated(dataset, 'title') or dataset.name %}
+    {% set organization_title = "" %}
+    {% if dataset.organization %}
+        {% set organization_title = h.get_translated(dataset.organization, 'title') or dataset.organization.name %}
+    {% endif %}
+    {% set notes = h.markdown_extract(h.get_translated(dataset, 'notes'), extract_length=truncate) %}
 <div class="col-md-4">
   <div class="horizontal-dataset-item">
     <div class="border-wrapper">
