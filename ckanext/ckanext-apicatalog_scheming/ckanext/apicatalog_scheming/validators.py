@@ -136,3 +136,4 @@ def business_id_validator(value):
     if verification_number != int(matches.group(2)):
         raise toolkit.Invalid(_("Business id verification number does match business id."))
 
+    return value
