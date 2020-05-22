@@ -93,7 +93,10 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                 'read_members': auth.read_members,
                 'group_edit_permissions': auth.read_members,
                 'send_reset_link': admin_only,
-                'create_user_to_organization': auth.create_user_to_organization
+                'create_user_to_organization': auth.create_user_to_organization,
+                'user_create': auth.user_create,
+                'user_update': auth.user_update,
+                'user_show': auth.user_show
                 }
 
     # IPermissionLabels

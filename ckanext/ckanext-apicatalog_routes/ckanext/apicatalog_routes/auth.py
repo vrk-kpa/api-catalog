@@ -3,7 +3,7 @@ import logging
 log = logging.getLogger(__name__)
 
 from ckan.logic.auth import get, update
-from ckan.plugins.toolkit import check_access, auth_allow_anonymous_access, _
+from ckan.plugins.toolkit import check_access, auth_allow_anonymous_access, _, chained_auth_function
 
 from ckan.lib.base import config
 from ckan.common import c
@@ -38,3 +38,22 @@ def create_user_to_organization(context, data_dict=None):
         "success": False,
         "msg": _("User {user} not authorized to create users via the API").format(user=context.get('user'))
     }
+
+@chained_auth_function
+def user_create(next_auth, context, data_dict=None):
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+        return {"success": True}
+
+@chained_auth_function
+def user_update(next_auth, context, data_dict=None):
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+        return {"success": True}
+
+@chained_auth_function
+def user_show(next_auth, context, data_dict=None):
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+        context['keep_email'] = True
+        return {"success": True}
