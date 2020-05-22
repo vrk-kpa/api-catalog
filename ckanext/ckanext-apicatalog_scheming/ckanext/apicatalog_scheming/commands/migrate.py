@@ -4,165 +4,189 @@ import sys
 import itertools
 import json
 import re
+from pprint import pformat
 
 from ckan.common import config
-from ckan.lib.cli import CkanCommand
+import click
+from ckan.lib.cli import load_config, paster_click_group, click_config_option
 import ckan.plugins.toolkit as toolkit
 get_action = toolkit.get_action
 
+from collections import deque
 
-class Migrate(CkanCommand):
-    '''Migrate
 
-   Usage:
+#
+# Commands
+#
 
-   migrate notes_translated
-       - Populate notes_translated from translated notes
+content_group = paster_click_group(
+    summary=u'Content modification tools'
+)
 
-   migrate title_translated
-       - Populate title_translated from translated titles
-    '''
+@content_group.command(
+    u'migrate',
+    help=u'Migrates site content from one version to another'
+)
+@click_config_option
+@click.argument('current_version')
+@click.argument('target_version')
+@click.option(u'--dryrun', is_flag=True)
+@click.option(u'--path-index')
+@click.pass_context
+def migrate(ctx, config, current_version, target_version, dryrun, path_index):
+    def no_changes(*args, **kwargs):
+        pass
 
-    summary = __doc__.split('\n')[0]
-    usage = __doc__
+    load_config(config or ctx.obj['config'])
+    m = Migrate()
 
-    def __init__(self, name):
-        super(Migrate, self).__init__(name)
-        self.parser.add_option('--dry-run', dest='dry_run',
-                               action='store_true', default=False,
-                               help='Print changes without making them')
-    def command(self):
-        self._load_config()
-        if len(self.args) == 0:
-            self.parser.print_usage()
+    m.add('1.49.0', '1.50.0', no_changes)
+    m.add('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0)
+
+    plans = m.plan(current_version, target_version)
+
+    if not plans:
+        print('No migration paths found from {} to {}'.format(current_version, target_version))
+        sys.exit(1)
+    elif len(plans) > 1:
+        if path_index is None:
+            print('Multiple migration paths found from {} to {}.'.format(current_version, target_version))
+            print('Run this command again with the option --path-index <your selection>')
+            for i, plan in enumerate(plans):
+                print('{}: {}'.format(i, ' -> '.join(plan_to_path(plan))))
             sys.exit(1)
-        cmd = self.args[0]
 
-        if cmd == 'notes_translated':
-            self.notes_translated()
+        plan = plans[path_index]
+    else:
+        plan = plans[0]
 
-        elif cmd == 'title_translated':
-            self.title_translated()
+    print('Using migration path: {}'.format(' -> '.join(plan_to_path(plan))))
 
-        elif cmd == 'xroad_identifiers':
-            self.xroad_identifiers()
+    if dryrun:
+        print('Performing a dry run')
+
+    for v1, v2, step in plan:
+        print('Migrating from {} to {}'.format(v1, v2))
+        step(ctx, config, dryrun)
+
+    print('Finished migration successfully')
 
 
-    def notes_translated(self):
-        default_locale = config.get('ckan.locale_default', 'en')
-        package_patches = []
-        resource_patches = []
-        for package in package_generator('*:*', 1000):
+#
+# Migration step functions
+#
+
+def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
+    organization_patches = [{'id': org['id'],
+                             'title_translated': {'fi': org['title']},
+                             'description_translated': {'fi': org['description']}}
+                            for org in org_generator()]
+    apply_patches(organization_patches=organization_patches, dryrun=dryrun)
+
+
+#
+# Utilities
+#
+
+def breadth_first_search(graph, start, end):
+  visited = set()
+  queue = deque([(start, [start])])
+  results = []
+  while queue:
+    node, path = queue.popleft()
+    if node == end:
+      results.append(path)
+      continue
+    if node in visited:
+      continue
+    visited.add(node)
+    for child in graph.get(node, []):
+      queue.append((child, path + [child]))
+  return results
+
+
+class Migrate:
+  def __init__(self):
+    self.callbacks = {}
+    self.graph = {}
+
+  def add(self, version_from, version_to, callback):
+    self.graph.setdefault(version_from, []).append(version_to)
+    self.callbacks.setdefault(version_from, {})[version_to] = callback
+
+  def plan(self, version_from, version_to):
+    paths = breadth_first_search(self.graph, version_from, version_to)
+    plans = []
+    for path in paths:
+      plan = [(path[i-1], path[i], self.callbacks[path[i-1]][path[i]])
+              for i in range(1, len(path))]
+      plans.append(plan)
+    return plans
+
+
+def plan_to_path(plan):
+    return [plan[0][0]] + [v2 for v1, v2, step in plan]
+
+
+def apply_patches(package_patches=[], resource_patches=[], organization_patches=[], dryrun=False):
+    if not (package_patches or resource_patches or organization_patches):
+        print('No patches to process.')
+    elif dryrun:
+        if package_patches:
+            print('Package patches:')
+            print('\n'.join(pformat(p) for p in package_patches))
+        if resource_patches:
+            print('Resource patches:')
+            print('\n'.join(pformat(p) for p in resource_patches))
+        if organization_patches:
+            print('Organization patches:')
+            print('\n'.join(pformat(p) for p in organization_patches))
+    else:
+        package_patch = get_action('package_patch')
+        resource_patch = get_action('resource_patch')
+        organization_patch = get_action('organization_patch')
+        context = {'ignore_auth': True, 'allow_partial_update': True}
+        for patch in package_patches:
             try:
-                notes = json.loads(package.get('notes'))
-                if isinstance(notes, dict):
-                    patch = {
-                            'id': package['id'],
-                            'notes': notes.get(default_locale, ''),
-                            'notes_translated': notes
-                            }
-                    package_patches.append(patch)
-            except:
-                pass
-
-            for resource in package.get('resources', []):
-                try:
-                    description = json.loads(resource.get('description'))
-                    if isinstance(description, dict):
-                        patch = {
-                                'id': resource['id'],
-                                'description': description.get(default_locale, ''),
-                                'description_translated': description
-                                }
-                        resource_patches.append(patch)
-                except:
-                    pass
-
-        self.apply_patches(package_patches, resource_patches)
-
-
-    def title_translated(self):
-        locales = config.get('ckan.locales_offered', ['en']).split()
-        package_patches = []
-        resource_patches = []
-        for package in package_generator('*:*', 1000):
-            try:
-                if type(package.get('title_translated')) is dict:
-                    continue
-                title = package.get('title')
-                patch = {
-                        'id': package['id'],
-                        'title': title,
-                        'title_translated': {locale.split('_')[0]: title for locale in locales}
-                        }
-                package_patches.append(patch)
-            except:
-                pass
-
-        self.apply_patches(package_patches, resource_patches)
-
-
-    def xroad_identifiers(self):
-        package_patches = []
-        resource_patches = []
-        package_id_pattern = re.compile(r'([^.]+)\.([^.]+)\.([^.]+)\.([^.]+)')
-        resource_name_pattern = re.compile(r'([^.]+)\.([^.]+)')
-        for package in package_generator('*:*', 1000):
-            package_id = package.get('id')
-            match = package_id_pattern.match(package_id)
-            if match:
-                instance, memberclass, membercode, subsystemcode = match.groups()
-
-                patch = {
-                        'id': package_id,
-                        'xroad_instance': instance,
-                        'xroad_memberclass': memberclass,
-                        'xroad_membercode': membercode,
-                        'xroad_subsystemcode': subsystemcode
-                        }
-                package_patches.append(patch)
-
-            for resource in package.get('resources', []):
-                resource_id = resource.get('id')
-                resource_name = resource.get('name')
-                match = resource_name_pattern.match(resource_name)
-                if match:
-                    servicecode, serviceversion = match.groups()
-                    patch = {
-                            'id': resource_id,
-                            'xroad_servicecode': servicecode,
-                            'xroad_serviceversion': serviceversion
-                            }
-                    resource_patches.append(patch)
-
-        self.apply_patches(package_patches, resource_patches)
-
-
-    def apply_patches(self, package_patches, resource_patches):
-        if not package_patches and not resource_patches:
-            print 'Nothing to do.'
-        elif self.options.dry_run:
-            print '\n'.join('%s' % p for p in package_patches)
-            print '\n'.join('%s' % p for p in resource_patches)
-        else:
-            package_patch = get_action('package_patch')
-            resource_patch = get_action('resource_patch')
-            context = {'ignore_auth': True}
-            for patch in package_patches:
                 package_patch(context, patch)
-            for patch in resource_patches:
+            except toolkit.ValidationError as e:
+                print("Migration failed for package %s reason:" % patch['id'])
+                print(e)
+        for patch in resource_patches:
+            try:
                 resource_patch(context, patch)
+            except toolkit.ValidationError as e:
+                print("Migration failed for resource %s, reason" % patch['id'])
+                print(e)
+        for patch in organization_patches:
+            try:
+                organization_patch(context, patch)
+            except toolkit.ValidationError as e:
+                print("Migration failed for organization %s reason:" % patch['id'])
+                print(e)
 
 
-def package_generator(query, page_size):
-    context = {'ignore_auth': True}
+def package_generator(query, page_size, context={'ignore_auth': True}, dataset_type='dataset'):
     package_search = get_action('package_search')
 
+    # Loop through all items. Each page has {page_size} items.
+    # Stop iteration when all items have been looped.
     for index in itertools.count(start=0, step=page_size):
-        data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index}
-        packages = package_search(context, data_dict).get('results', [])
+        data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index,
+                     'fq': '+dataset_type:' + dataset_type}
+        data = package_search(context, data_dict)
+        packages = data.get('results', [])
         for package in packages:
             yield package
-        else:
+
+        # Stop iteration all query results have been looped through
+        if data["count"] < (index + page_size):
             return
 
+
+def org_generator():
+    context = {'ignore_auth': True}
+    org_list = get_action('organization_list')
+    orgs = org_list(context, {'all_fields': True, 'include_extras': True})
+    for org in orgs:
+        yield org

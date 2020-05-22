@@ -8,7 +8,7 @@
       "label": "Title",
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
-      "form_placeholder": "eg. A descriptive title",
+      "form_placeholder": "My Organization",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null
     },
@@ -20,21 +20,27 @@
       "form_placeholder": "my-theme"
     },
     {
-      "field_name": "notes_translated",
+      "field_name": "description_translated",
       "label": "Description",
       "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "A little information about my group...",
+      "form_placeholder": "A little information about my organization...",
       "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "url",
       "preset": "resource_url_upload_ex",
       "upload_label": "Image URL",
-      "form_placeholder": "http://example.com/my-image.jpg"
+      "form_placeholder": "http://example.com/my-image.jpg",
+      "validators": "ignore_missing"
     },
     {
       "field_name": "street_address",
       "label": "Street address",
+      "output_validators": "ignore_missing"
+    },
+    {
+      "field_name": "postal_address",
+      "label": "Postal address",
       "output_validators": "ignore_missing"
     },
     {
@@ -47,6 +53,61 @@
       "label": "Email address",
       "display_snippet": "email.html",
       "output_validators": "ignore_missing"
+    },
+    {
+      "field_name": "email_address_description",
+      "label": "Email address description",
+      "output_validators": "ignore_missing"
+    },
+    {
+      "field_name": "webpage_address",
+      "label": "Webpage address",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "webpage_description",
+      "label": "Webpage description",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_type",
+      "label": "Company type",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_language",
+      "label": "Company language",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_guid",
+      "label": "Company GUID",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_registration_date",
+      "label": "Company registration date",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "old_business_ids",
+      "label": "Old business ids",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
     {
       "field_name": "xroad_instance",
