@@ -117,3 +117,6 @@ ckan_plugins:
 
 allowed_user_creators:
   - paha
+
+allowed_user_editors:
+  - paha

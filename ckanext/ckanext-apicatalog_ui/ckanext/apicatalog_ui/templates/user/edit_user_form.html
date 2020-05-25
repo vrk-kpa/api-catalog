@@ -24,9 +24,17 @@
 
     <fieldset>
         <legend>{{ _('Change password') }}</legend>
+
+        {% if is_sysadmin %}
+            {% set label = _('Sysadmin Password') %}
+        {% elif is_myself  %}
+            {% set label = _('Old Password') %}
+        {% else %}
+            {% set label = _('Your Password') %}
+        {% endif %}
         {{ form.input('old_password',
                   type='password',
-                  label=_('Sysadmin Password') if is_sysadmin else _('Old Password'),
+                  label=label,
                   id='field-password-old',
                   value=data.oldpassword,
                   error=errors.oldpassword,
