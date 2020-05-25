@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from ckan.plugins import toolkit as tk
 from ckan.lib.mailer import mail_user
 from ckan.model.user import User
@@ -60,25 +62,28 @@ def service_permission_application_create(context, data_dict):
 
     package_org_admin_users = [User.get(uid) for uid, t, c in package_org_admin_members]
 
-    model.ApplyPermission.create(organization=organization, business_code=business_code,
-                                 contact_name=contact_name,
-                                 contact_email=contact_email,
-                                 ip_address_list=ip_address_list,
-                                 subsystem_id=subsystem_id,
-                                 subsystem_code=subsystem_code,
-                                 service_code_list=service_code_list,
-                                 usage_description=usage_description,
-                                 request_date=request_date)
+    application_id = model.ApplyPermission.create(organization=organization,
+                                                  business_code=business_code,
+                                                  contact_name=contact_name,
+                                                  contact_email=contact_email,
+                                                  ip_address_list=ip_address_list,
+                                                  subsystem_id=subsystem_id,
+                                                  subsystem_code=subsystem_code,
+                                                  service_code_list=service_code_list,
+                                                  usage_description=usage_description,
+                                                  request_date=request_date)
 
 
-    # TODO: Fetch email content, interpolate parameters
-    email_subject = _('Test subject for permission application notification')
-    email_content = _('Lorem ipsum, dolor sit amet')
+    application = model.ApplyPermission.get(application_id).as_dict()
+    email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
+            application['organization'])
+    email_content = tk.render('apply_permissions_for_service/notification_email.html',
+                              extra_vars={'application': application})
 
     log.info('Sending application notification emails to {} users'.format(len(package_org_admin_users)))
     for u in package_org_admin_users:
         try:
-            mail_user(u, email_subject, email_content)
+            mail_user(u, email_subject, email_content, headers={'content-type': 'text/html'})
         except Exception as e:
             # Email exceptions are not user relevant nor action critical, but should be logged
             log.warning(e)
