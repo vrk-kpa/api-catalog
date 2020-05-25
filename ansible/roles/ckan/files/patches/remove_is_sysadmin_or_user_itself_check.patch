@@ -1,0 +1,56 @@
+diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
+index 1bfb2ca2eb..fb6a3dccb9 100644
+--- a/ckan/controllers/user.py
++++ b/ckan/controllers/user.py
+@@ -316,11 +316,6 @@ def edit(self, id=None, data=None, errors=None, error_summary=None):
+ 
+         user_obj = context.get('user_obj')
+ 
+-        if not (authz.is_sysadmin(c.user)
+-                or c.user == user_obj.name):
+-            abort(403, _('User %s not authorized to edit %s') %
+-                  (str(c.user), id))
+-
+         errors = errors or {}
+         vars = {'data': data, 'errors': errors, 'error_summary': error_summary}
+ 
+diff --git a/ckan/views/user.py b/ckan/views/user.py
+index 87c3af1e10..7457507416 100644
+--- a/ckan/views/user.py
++++ b/ckan/views/user.py
+@@ -251,10 +251,6 @@ def get(self, id=None, data=None, errors=None, error_summary=None):
+             base.abort(404, _(u'User not found'))
+         user_obj = context.get(u'user_obj')
+ 
+-        if not (authz.is_sysadmin(g.user) or g.user == user_obj.name):
+-            msg = _(u'User %s not authorized to edit %s') % (g.user, id)
+-            base.abort(403, msg)
+-
+         errors = errors or {}
+         vars = {
+             u'data': data,
+
+diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
+index fb6a3dccb9..e2a39a064a 100644
+--- a/ckan/controllers/user.py
++++ b/ckan/controllers/user.py
+@@ -324,7 +324,6 @@ def edit(self, id=None, data=None, errors=None, error_summary=None):
+                                         'user': c.user},
+                                        data_dict)
+
+-        c.is_myself = True
+         c.show_email_notifications = asbool(
+             config.get('ckan.activity_streams_email_notifications'))
+         c.form = render(self.edit_user_form, extra_vars=vars)
+diff --git a/ckan/views/user.py b/ckan/views/user.py
+index 7457507416..c6ccb6ef65 100644
+--- a/ckan/views/user.py
++++ b/ckan/views/user.py
+@@ -264,7 +264,6 @@ def get(self, id=None, data=None, errors=None, error_summary=None):
+             u'user': g.user
+         }, data_dict)
+
+-        extra_vars[u'is_myself'] = True
+         extra_vars[u'show_email_notifications'] = asbool(
+             config.get(u'ckan.activity_streams_email_notifications'))
+         vars.update(extra_vars)

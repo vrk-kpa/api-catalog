@@ -1,5 +1,7 @@
 import logging
 
+from ckan import authz
+
 log = logging.getLogger(__name__)
 
 from ckan.logic.auth import get, update
@@ -45,15 +47,33 @@ def user_create(next_auth, context, data_dict=None):
     if context.get('user') and context.get('user') in users_allowed_to_create_users:
         return {"success": True}
 
+    return next_auth(context, data_dict)
+
 @chained_auth_function
 def user_update(next_auth, context, data_dict=None):
     users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
-    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+    if context.get('user_obj'):
+        sysadmin_field = context.get('user_obj').sysadmin
+    else:
+        sysadmin_field = data_dict.get('sysadmin')
+
+    # In edit form, only user id is supplied
+    if not sysadmin_field:
+        sysadmin_field = authz.is_sysadmin(data_dict['id'])
+
+    if context.get('user') and context.get('user') in users_allowed_to_create_users \
+            and sysadmin_field is False:
         return {"success": True}
+
+    return next_auth(context, data_dict)
 
 @chained_auth_function
 def user_show(next_auth, context, data_dict=None):
     users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
-    if context.get('user') and context.get('user') in users_allowed_to_create_users:
+
+    if context.get('user') and context.get('user') in users_allowed_to_create_users \
+            and context['user_obj'].sysadmin is False:
         context['keep_email'] = True
         return {"success": True}
+
+    return next_auth(context, data_dict)
