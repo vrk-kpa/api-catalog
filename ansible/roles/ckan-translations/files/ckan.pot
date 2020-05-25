@@ -5171,3 +5171,15 @@ msgstr ""
 
 msgid "selected"
 msgstr ""
+
+msgid "Street address"
+msgstr ""
+
+msgid "Postal address"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
+msgid "Email address description"
+msgstr ""
