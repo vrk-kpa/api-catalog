@@ -84,6 +84,7 @@ scheming.presets = ckanext.scheming:presets.json
                    ckanext.apicatalog_scheming:presets.json
 
 scheming.dataset_schemas = ckanext.apicatalog_scheming.schemas:dataset.json
+scheming.organization_schemas = ckanext.apicatalog_scheming.schemas:organization.json
 
 # Disable sending error emails. Commented out because the default is None, and "None" is interpreted here as a string.
 # email_to =
@@ -112,6 +113,14 @@ ckan.celery.queues = celery bulk priority
 ckanext.saha.username = {{ saha.username }}
 ckanext.saha.password = {{ saha.password }}
 ckanext.saha.api_url = {{ saha.api_url }}
+
+# Force using of core translations, change this when translations are moved to extensions
+ckanext.forcetranslation.module = ckan
+ckanext.forcetranslation.path = i18n
+ckanext.forcetranslation.domain = ckan
+
+
+ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | default([]) | join(" ")  }}
 
 ofs.impl = pairtree
 

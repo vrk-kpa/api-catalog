@@ -80,6 +80,6 @@ setup(
         [ckan.plugins]
         apicatalog_scheming=ckanext.apicatalog_scheming.plugin:Apicatalog_SchemingPlugin
         [paste.paster_command]
-        migrate = ckanext.apicatalog_scheming.commands.migrate:Migrate
+        content = ckanext.apicatalog_scheming.commands.migrate:content_group
     ''',
 )

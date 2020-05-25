@@ -5356,3 +5356,21 @@ msgstr ""
 
 msgid "Intro text in english"
 msgstr ""
+
+msgid "Not selected"
+msgstr ""
+
+msgid "selected"
+msgstr ""
+
+msgid "Street address"
+msgstr ""
+
+msgid "Postal address"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
+msgid "Email address description"
+msgstr ""

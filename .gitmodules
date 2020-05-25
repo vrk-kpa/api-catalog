@@ -19,3 +19,6 @@
 [submodule "ckanext/ckanext-openapiviewer"]
 	path = ckanext/ckanext-openapiviewer
 	url = https://github.com/vrk-kpa/ckanext-openapiviewer.git
+[submodule "ckanext/ckanext-forcetranslation"]
+	path = ckanext/ckanext-forcetranslation
+	url = https://github.com/vrk-kpa/ckanext-forcetranslation.git

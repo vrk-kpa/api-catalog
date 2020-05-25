@@ -125,3 +125,22 @@ def _pretty_time(t):
         return '%d months ago' % int(delta.days / 30)
     else:
         return '%d years ago' % int(delta.days / 365)
+
+
+apicatalog_database_group = paster_click_group(
+    summary=u'Database commands for apicatalog.'
+)
+
+
+@apicatalog_database_group.command(
+    u'init',
+    help='Initializes database for apicatalog'
+)
+
+@click_config_option
+@click.pass_context
+def init(ctx, config):
+    load_config(config or ctx.obj['config'])
+    import ckan.model as model
+    from db import init_table
+    init_table(model.meta.engine)
