@@ -43,7 +43,7 @@ def create_user_to_organization(context, data_dict=None):
 
 @chained_auth_function
 def user_create(next_auth, context, data_dict=None):
-    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_editors', [])
     if context.get('user') and context.get('user') in users_allowed_to_create_users:
         return {"success": True}
 
@@ -51,7 +51,7 @@ def user_create(next_auth, context, data_dict=None):
 
 @chained_auth_function
 def user_update(next_auth, context, data_dict=None):
-    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_editors', [])
     if context.get('user_obj'):
         sysadmin_field = context.get('user_obj').sysadmin
     else:
@@ -69,7 +69,7 @@ def user_update(next_auth, context, data_dict=None):
 
 @chained_auth_function
 def user_show(next_auth, context, data_dict=None):
-    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_creators', [])
+    users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_editors', [])
 
     if context.get('user') and context.get('user') in users_allowed_to_create_users \
             and context['user_obj'].sysadmin is False:
