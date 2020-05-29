@@ -50,6 +50,7 @@ def user_create(next_auth, context, data_dict=None):
     return next_auth(context, data_dict)
 
 @chained_auth_function
+@auth_allow_anonymous_access
 def user_update(next_auth, context, data_dict=None):
     users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_editors', [])
     if context.get('user_obj'):
@@ -68,6 +69,7 @@ def user_update(next_auth, context, data_dict=None):
     return next_auth(context, data_dict)
 
 @chained_auth_function
+@auth_allow_anonymous_access
 def user_show(next_auth, context, data_dict=None):
     users_allowed_to_create_users = config.get('ckanext.apicatalog_routes.allowed_user_editors', [])
 
