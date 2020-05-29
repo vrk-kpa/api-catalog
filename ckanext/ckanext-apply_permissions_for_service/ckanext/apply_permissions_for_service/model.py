@@ -46,6 +46,7 @@ class ApplyPermission(Base):
                                            request_date=request_date)
         model.Session.add(apply_permission)
         model.repo.commit()
+        return apply_permission.id
 
     @classmethod
     def get(cls, application_id):

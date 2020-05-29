@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  {% set subsystem_title =  h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') %}
+  <p>Hei,</p>
+
+  <p>{{ application.organization }} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua {{ subsystem_title }}.</p>
+
+  <p><strong>Lupaa pyydetään palveluusi:</strong>
+    <ul>
+      <li>{{ subsystem_title }}</li>
+      {% for service in application.services %}
+      <li> {{ service.xroad_servicecode or service.name }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+
+
+  <p><strong>Luvan pyytäjän tiedot:</strong>
+    <ul>
+      <li>Organisaatio: {{ application.organization }}</li>
+      <li>Yritystunnus: {{ application.business_code }}</li>
+      <li>Yhteyshenkilö: {{ application.contact_name }} </li>
+      <li>Yhteyshenkilön sähköposti: {{ application.contact_email }}</li>
+    </ul>
+  </p>
+  <p><strong>Luvan pyytäjän alijärjestelmän tiedot:</strong>
+    <ul>
+      <li>Alijärjestelmän tunnus: {{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</li>
+      <li>IP-osoite, mihin palomuuriavausta pyydetään: {{ application.ip_address_list|join(', ') }}</li>
+    </ul>
+  </p>
+  <p><strong>Päivämäärä, josta alkaen palvelun halutaan olevan käytettävissä:</strong>
+    <ul>
+      <li>
+        {% if application.usage_description %}
+        {{ application.request_date }}
+        {% else %}
+        <em>(päivämäärää ei annettu)</em>
+        {% endif %}
+      </li>
+    </ul>
+  </p>
+
+  <p><strong>Mahdollinen perustelu lupapyynnölle:</strong>
+  <blockquote>
+    {% if application.usage_description %}
+    {{ application.usage_description }}
+    {% else %}
+    <em>(perustelua ei annettu)</em>
+    {% endif %}
+  </blockquote>
+  </p>
+
+  <p>Voit halutessasi hyväksyä pyynnön Liityntäsi sivulla {% link_for 'Liityntäkatalogissa', named_route='dataset.read', id=application.subsystem.name %}. Sovi sen jälkeen luvan pyytäjän kanssa erikseen palomuuriavaukset ja muut käytännön toimet.</p>
+
+  <p>Ohjeita ja lisätietoja liitynnän luvittamisesta ja alijärjestelmien liittämisestä toisiinsa löydät <a href="https://palveluhallinta.suomi.fi/fi/tuki/artikkelit/591ac1e314bbb10001966f9c">täältä</a> . Tarvittaessa ota yhteys Suomi.fi-palveluväylän asiakaspalveluun osoitteessa palveluvayla@palveluvayla.fi.</p>
+
+
+  <p>Tähän viestiin ei voi vastata.</p>
+
+  <p>Terveisin,</p>
+
+  <p>Suomi.fi-palveluväylän Liityntäkatalogi</p>
+</body>
+</html>

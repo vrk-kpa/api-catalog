@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from ckan.plugins import toolkit as tk
+from ckan.lib.mailer import mail_recipient
+from ckan.model.user import User
 from ... import model
 import logging
 
@@ -45,15 +49,33 @@ def service_permission_application_create(context, data_dict):
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
 
+    package = tk.get_action('package_show')(context, {'id': subsystem_id})
+    owner_org = tk.get_action('organization_show')(context, {'id': package['owner_org']})
+
+    application_id = model.ApplyPermission.create(organization=organization,
+                                                  business_code=business_code,
+                                                  contact_name=contact_name,
+                                                  contact_email=contact_email,
+                                                  ip_address_list=ip_address_list,
+                                                  subsystem_id=subsystem_id,
+                                                  subsystem_code=subsystem_code,
+                                                  service_code_list=service_code_list,
+                                                  usage_description=usage_description,
+                                                  request_date=request_date)
 
 
-    model.ApplyPermission.create(organization=organization, business_code=business_code,
-                                 contact_name=contact_name,
-                                 contact_email=contact_email,
-                                 ip_address_list=ip_address_list,
-                                 subsystem_id=subsystem_id,
-                                 subsystem_code=subsystem_code,
-                                 service_code_list=service_code_list,
-                                 usage_description=usage_description,
-                                 request_date=request_date)
-
+    email_address = owner_org.get('email_address')
+    if email_address:
+        log.info('Sending permission application notification email to {}'.format(email_address))
+        application = model.ApplyPermission.get(application_id).as_dict()
+        email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
+                        application['organization'])
+        email_content = tk.render('apply_permissions_for_service/notification_email.html',
+                                  extra_vars={'application': application})
+        try:
+            mail_recipient(owner_org['title'], email_address, email_subject, email_content, headers={'content-type': 'text/html'})
+        except Exception as e:
+            # Email exceptions are not user relevant nor action critical, but should be logged
+            log.warning(e)
+    else:
+        log.info('Organization %s has no email address defined, not sending permission application notification.', owner_org['name'])
