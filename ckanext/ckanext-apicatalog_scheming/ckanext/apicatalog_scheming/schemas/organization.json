@@ -36,28 +36,28 @@
     {
       "field_name": "street_address",
       "label": "Street address",
-      "output_validators": "ignore_missing"
+      "validators": "ignore_missing"
     },
     {
       "field_name": "postal_address",
       "label": "Postal address",
-      "output_validators": "ignore_missing"
+      "validators": "ignore_missing"
     },
     {
       "field_name": "phone_number",
       "label": "Phone number",
-      "output_validators": "ignore_missing"
+      "validators": "ignore_missing"
     },
     {
       "field_name": "email_address",
       "label": "Email address",
       "display_snippet": "email.html",
-      "output_validators": "ignore_missing"
+      "validators": "ignore_missing"
     },
     {
       "field_name": "email_address_description",
       "label": "Email address description",
-      "output_validators": "ignore_missing"
+      "validators": "ignore_missing"
     },
     {
       "field_name": "webpage_address",
