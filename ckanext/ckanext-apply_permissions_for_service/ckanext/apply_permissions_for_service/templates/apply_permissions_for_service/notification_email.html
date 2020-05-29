@@ -37,7 +37,7 @@
   <p><strong>Päivämäärä, josta alkaen palvelun halutaan olevan käytettävissä:</strong>
     <ul>
       <li>
-        {% if application.usage_description %}
+        {% if application.request_date %}
         {{ application.request_date }}
         {% else %}
         <em>(päivämäärää ei annettu)</em>
