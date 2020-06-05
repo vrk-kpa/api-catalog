@@ -12,6 +12,7 @@ import logging
 import itertools
 import requests
 from datetime import datetime, timedelta, date
+import ckan.lib.helpers as h
 
 NotFound = logic.NotFound
 
@@ -245,9 +246,19 @@ def custom_organization_list(params):
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
+
+    custom_page = h.Page(
+        collection=results,
+        page=page,
+        url=h.pager_url,
+        items_per_page=items_per_page,
+    )
+
     return {
         'organizations': results[page_start:page_end],
-        'count': len(results)
+        'count': len(results),
+        'page': custom_page,
+        "with_datasets": with_datasets
     }
 
 
@@ -305,6 +316,10 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
             piwik_site_id = config['piwik.site_id']
             piwik_token_auth = config['piwik.token_auth']
             piwik_ssl_verify = asbool(config.get('piwik.ssl_verify', 'True'))
+
+            if piwik_token_auth == "":
+                log.info("Piwik auth key not set, returning 0...")
+                return 0
 
             params = {
                     'module': 'API',

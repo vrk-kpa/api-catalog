@@ -11,6 +11,7 @@ ckan_test_environment: True
 analytics_server_public_facing_hostname: 10.100.10.11
 analytics_internal_hostname: analytics-vagrant
 analytics_site_id: 1
+analytics_auth_token: "{{ secret.analytics_auth_token }}"
 
 database_ckan:
   host: 127.0.0.1
@@ -56,7 +57,7 @@ ckan_admins:
 
 email_domain: vagrant
 email:
-  smtp_server: localhost
+  smtp_server: localhost:1025
   from: no-reply@{{ email_domain }}
   error_recipient: vagrant@localhost
   error_from: error@{{ email_domain }}
@@ -85,3 +86,35 @@ robots_allowed: true
 
 paha_key_whitelist:
   - "{{ secret.ckan_paha_apikey }}"
+
+ckan_plugins:
+  - openapi_view
+  - text_view
+  - apicatalog_scheming
+  - scheming_datasets
+  - scheming_organizations
+  - fluent
+  - apicatalog_ui
+  - apicatalog_pages
+  - pages
+  - apicatalog_admin_dashboard
+  - apicatalog_routes
+  - contact
+  - apicatalog_feed
+  - apicatalog_harvesterstatus
+  - harvest
+  - xroad_harvester
+  - wsdl_view
+  - validate_links
+  - saha
+  - paha
+  - webpage_view
+  - apply_permissions_for_service
+  - xroad_integration
+  - forcetranslation
+
+allowed_user_creators:
+  - paha
+
+allowed_user_editors:
+  - paha

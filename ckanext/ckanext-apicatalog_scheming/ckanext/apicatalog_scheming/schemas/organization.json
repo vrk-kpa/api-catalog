@@ -1,0 +1,131 @@
+{
+  "scheming_version": 1,
+  "organization_type": "organization",
+  "about_url": "http://github.com/vrk-kpa/apicatalog/ckanext/ckanext-apicatalog_scheming",
+  "fields": [
+    {
+      "field_name": "title_translated",
+      "label": "Title",
+      "preset": "fluent_core_title_translated",
+      "only_default_lang_required": true,
+      "form_placeholder": "My Organization",
+      "form_languages": ["fi", "sv", "en"],
+      "display_snippet": null
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "validators": "not_empty unicode name_validator group_name_validator",
+      "form_snippet": "slug.html",
+      "form_placeholder": "my-theme"
+    },
+    {
+      "field_name": "description_translated",
+      "label": "Description",
+      "preset": "fluent_core_markdown_translated",
+      "form_placeholder": "A little information about my organization...",
+      "form_languages": ["fi", "sv", "en"]
+    },
+    {
+      "field_name": "url",
+      "preset": "resource_url_upload_ex",
+      "upload_label": "Image URL",
+      "form_placeholder": "http://example.com/my-image.jpg",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "street_address",
+      "label": "Street address",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "postal_address",
+      "label": "Postal address",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "phone_number",
+      "label": "Phone number",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "email_address",
+      "label": "Email address",
+      "display_snippet": "email.html",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "email_address_description",
+      "label": "Email address description",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "webpage_address",
+      "label": "Webpage address",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "webpage_description",
+      "label": "Webpage description",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_type",
+      "label": "Company type",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_language",
+      "label": "Company language",
+      "preset": "fluent_text",
+      "output_validators": "ignore_missing",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_guid",
+      "label": "Company GUID",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "company_registration_date",
+      "label": "Company registration date",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "old_business_ids",
+      "label": "Old business ids",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_instance",
+      "label": "X-Road instance",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_memberclass",
+      "label": "X-Road member class",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_membercode",
+      "label": "X-Road member code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    }
+  ]
+}

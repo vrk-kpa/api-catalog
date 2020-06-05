@@ -1,3 +1,6 @@
+import uuid
+
+from ckan.plugins import toolkit
 from pylons import config
 import ckan
 import json
@@ -15,6 +18,9 @@ import ckan.lib.base as base
 import ckan.lib.csrf_token as csrf_token
 import ckan.lib.mailer as mailer
 
+from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
+from db import UserForOrganization
+
 abort = base.abort
 render = base.render
 check_access = ckan.logic.check_access
@@ -27,6 +33,10 @@ DataError = dictization_functions.DataError
 
 UsernamePasswordError = logic.UsernamePasswordError
 ValidationError = logic.ValidationError
+
+
+
+_validate = dictization_functions.validate
 
 import logging
 
@@ -82,7 +92,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                 'package_show': auth.package_show,
                 'read_members': auth.read_members,
                 'group_edit_permissions': auth.read_members,
-                'send_reset_link': admin_only
+                'send_reset_link': admin_only,
+                'create_user_to_organization': auth.create_user_to_organization,
+                'user_create': auth.user_create,
+                'user_update': auth.user_update,
+                'user_show': auth.user_show
                 }
 
     # IPermissionLabels
@@ -165,7 +179,8 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     # IActions
     def get_actions(self):
         return {
-            "send_reset_link": send_reset_link
+            "send_reset_link": send_reset_link,
+            "create_user_to_organization": create_user_to_organization
         }
 
 def send_reset_link(context, data_dict):
@@ -173,6 +188,26 @@ def send_reset_link(context, data_dict):
 
     user_obj = model.User.get(data_dict['user_id'])
     mailer.send_reset_link(user_obj)
+
+def create_user_to_organization(context, data_dict):
+
+    toolkit.check_access('create_user_to_organization', context)
+    model = context['model']
+    schema = context.get('schema') or create_user_to_organization_schema()
+    session = context['session']
+
+    data, errors = _validate(data_dict, schema, context)
+
+    if errors:
+        session.rollback()
+        raise ValidationError(errors)
+
+    UserForOrganization.create(data['name'], data['email'], data['business_id'], data['organization_name'])
+
+    return {
+        "msg": _("User {name} stored in database.").format(name=data['name'])
+    }
+
 
 
 def auth_context():

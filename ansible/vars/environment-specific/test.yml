@@ -82,3 +82,28 @@ paha_key_whitelist:
   - "{{ secret.ckan_paha_apikey }}"
 
 apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
+
+ckan_plugins:
+  - openapi_view
+  - text_view
+  - apicatalog_scheming
+  - scheming_datasets
+  - scheming_organizations
+  - fluent
+  - apicatalog_ui
+  - apicatalog_pages
+  - pages
+  - apicatalog_admin_dashboard
+  - apicatalog_routes
+  - contact
+  - apicatalog_feed
+  - apicatalog_harvesterstatus
+  - harvest
+  - xroad_harvester
+  - wsdl_view
+  - validate_links
+  - saha
+  - paha
+  - webpage_view
+  - xroad_integration
+  - forcetranslation

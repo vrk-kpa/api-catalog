@@ -26,3 +26,9 @@
 - name: Ensure CKAN dynamic translation directory permissions
   file: path=/usr/lib/ckan/default/src/ckan/ckan/public/base/i18n state=directory mode="0755" recurse="yes" owner="{{ www_user }}" group="{{ www_group }}"
 
+- name: Compile extension translations
+  command: "{{ virtualenv }}/bin/python setup.py compile_catalog -f"
+  with_items: "{{ ckan_extensions_with_translations }}"
+  args:
+    chdir: "{{ ckanext_sync_path }}/{{ item }}"
+

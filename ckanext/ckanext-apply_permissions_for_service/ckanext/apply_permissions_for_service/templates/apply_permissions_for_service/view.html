@@ -1,0 +1,55 @@
+{% extends 'apply_permissions_for_service/base.html' %}
+
+{% block breadcrumb_content %}
+  {{ super() }}
+  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions_for_service.view_permission_application', id=application.id%}</li>
+{% endblock %}
+
+{% block prelude %}
+<h1>{{ _('API access application') }}</h1>
+{% endblock %}
+
+{% block primary_content_inner %}
+  {% link_for _('All access applications'), named_route='apply_permissions_for_service.list_permission_applications', class_='btn', icon='arrow-left' %}
+
+  <h3>{{ _('Applicant information') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization') }}</th><td>{{ application.organization }}</td></tr>
+      <tr><th>{{ _('Business code') }}</th><td>{{ application.business_code }}</td></tr>
+      <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
+      <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_address_list|join(', ') }}</td></tr>
+      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>{{ _('Details of the service and API you are applying to access') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
+      <tr>
+        <th>{{ _('Service code') }}</th>
+          <td>
+          {%- for service in application.services -%}
+            {%- if loop.index > 1 %}, {% endif -%}
+            {{- service.xroad_servicecode or service.name -}}
+            {%- endfor -%}
+        </td>
+      </tr>
+      <tr><th>{{ _('Explain how the service will be used') }}</th><td>{{ application.usage_description }}</td></tr>
+      <tr><th>{{ _('Date when access is needed') }}</th><td>{{ application.request_date }}</td></tr>
+    </tbody>
+  </table>
+{% endblock %}

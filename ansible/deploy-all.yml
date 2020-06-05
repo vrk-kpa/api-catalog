@@ -10,6 +10,12 @@
     - "vars/common.yml"
     - "vars/environment-specific/{{ deployment_environment_id }}.yml"
     - "{{ secrets_file_path }}"
+
+  pre_tasks:
+    - import_role:
+        name: mailhog
+      when: deployment_environment_id == 'vagrant'
+      tags: mailhog
   roles:
     - os-base
     - java8
@@ -34,6 +40,9 @@
     - { role: ckan-extension, ckanext: ckanext-validate_links }
     - { role: ckan-extension, ckanext: ckanext-saha }
     - { role: ckan-extension, ckanext: ckanext-paha }
+    - { role: ckan-extension, ckanext: ckanext-openapiviewer }
+    - { role: ckan-extension, ckanext: ckanext-apply_permissions_for_service }
+    - { role: ckan-extension, ckanext: ckanext-forcetranslation }
     - ckan
     - { role: ckan-ui }
     - ckan-translations

@@ -16,3 +16,9 @@
 [submodule "ckanext/ckanext-xroad_integration"]
 	path = ckanext/ckanext-xroad_integration
 	url = https://github.com/vrk-kpa/ckanext-xroad_integration.git
+[submodule "ckanext/ckanext-openapiviewer"]
+	path = ckanext/ckanext-openapiviewer
+	url = https://github.com/vrk-kpa/ckanext-openapiviewer.git
+[submodule "ckanext/ckanext-forcetranslation"]
+	path = ckanext/ckanext-forcetranslation
+	url = https://github.com/vrk-kpa/ckanext-forcetranslation.git

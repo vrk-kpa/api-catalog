@@ -33,3 +33,10 @@
 
 - name: Initialize Link Validation database
   shell: ./bin/paster --plugin=ckanext-validate_links links initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+
+- name: Initialize service permission application database
+  shell: ./bin/paster --plugin=ckanext-apply_permissions_for_service apply_permissions init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  when: "'apply_permissions_for_service' in ckan_plugins"
+
+- name: Initialize users for organization database
+  shell: ./bin/paster --plugin=ckanext-apicatalog_routes apicatalog_db init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
