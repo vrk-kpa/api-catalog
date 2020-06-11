@@ -21,11 +21,11 @@ Example:
   {% endblock %}
   <div class="media-body">
   {% block title %}
-    <div class="media-heading">
+    <h2 class="media-heading">
       <a href="{{ url }}" title="{{ _('View {organization_name}').format(organization_name=organization.display_name) }}">
         {{ organization.display_name }}
       </a>
-    </div>
+    </h2>
   {% endblock %}
   {% block description %}
     {% if organization.description %}
