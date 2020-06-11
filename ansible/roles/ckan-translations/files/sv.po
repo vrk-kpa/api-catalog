@@ -4658,13 +4658,19 @@ msgstr "Återställ lösenord"
 msgid "Request reset"
 msgstr "Begär återställning"
 
-#: ckan/templates/user/request_reset.html:34
-msgid ""
-"Enter your username into the box and we will send you an email with a link "
-"to enter a new password."
+#: ckan/templates/user/request_reset.html:17
+msgid "Email or username"
 msgstr ""
-"Ange ditt användarnamn i fältet så skickar vi e-post med en länk för att "
-"ange ett nytt lösenord."
+
+#: ckan/templates/user/request_reset.html:22
+msgid "Request Reset"
+msgstr ""
+
+#: ckan/templates/user/request_reset.html:38
+msgid ""
+"Enter your email address or username into the box and we will send you an "
+"email with a link to enter a new password."
+msgstr ""
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14
 #: ckan/templates/user/snippets/followee_dropdown.html:15
@@ -5396,4 +5402,19 @@ msgid "Phone number"
 msgstr ""
 
 msgid "Email address description"
+msgstr ""
+
+msgid "Access Restriction Level"
+msgstr ""
+
+msgid "Allowed Users"
+msgstr ""
+
+#: ckan/views/user.py:571
+msgid ""
+"A reset link has been emailed to you (unless the account specified does not "
+"exist)"
+msgstr ""
+
+msgid "There are currently no APIs for this organization"
 msgstr ""

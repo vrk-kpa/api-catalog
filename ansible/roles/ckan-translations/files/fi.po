@@ -3,8 +3,9 @@
 # This file is distributed under the same license as the ckan project.
 # 
 # Translators:
-# Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2020
+# Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
+# Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -23,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2020\n"
+"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2020\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4660,13 +4661,21 @@ msgstr "Salasanan uudelleenasetus"
 msgid "Request reset"
 msgstr "Pyydä uudelleenasettamista"
 
-#: ckan/templates/user/request_reset.html:34
+#: ckan/templates/user/request_reset.html:17
+msgid "Email or username"
+msgstr "Sähköpostiosoite tai käyttäjätunnus"
+
+#: ckan/templates/user/request_reset.html:22
+msgid "Request Reset"
+msgstr "Lähetä pyyntö"
+
+#: ckan/templates/user/request_reset.html:38
 msgid ""
-"Enter your username into the box and we will send you an email with a link "
-"to enter a new password."
+"Enter your email address or username into the box and we will send you an "
+"email with a link to enter a new password."
 msgstr ""
-"Syötä käyttäjänimesi laatikkoon, niin lähetämme sinulle sähköpostin, jossa "
-"on linkki uuden salasanan syöttämislomakkeeseen."
+"Syötä sähköpostiosoitteesi tai käyttäjätunnuksesi kenttään. Lähetämme "
+"sinulle sähköpostitse linkin salasanan vaihtamiseksi."
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14
 #: ckan/templates/user/snippets/followee_dropdown.html:15
@@ -5221,7 +5230,7 @@ msgid "Invalid content"
 msgstr "Virheellistä sisältöä"
 
 msgid "Service bus identifier"
-msgstr "Tunniste palveluväylässä"
+msgstr "Tunniste Palveluväylässä"
 
 msgid "Resources with invalid content"
 msgstr "Virheelliset liitetiedostot"
@@ -5368,7 +5377,7 @@ msgid "Show organizations without APIs"
 msgstr "Näytä kaikki organisaatiot"
 
 msgid "Show only organizations with APIs"
-msgstr "Näytä vain organisaatiot joilla on liityntöjä"
+msgstr "Näytä vain organisaatiot, joilla on liityntöjä"
 
 msgid "More options"
 msgstr "Lisää"
@@ -5402,3 +5411,20 @@ msgstr "Puhelinnumero"
 
 msgid "Email address description"
 msgstr "Sähköpostiosoitteen kuvaus"
+
+msgid "Access Restriction Level"
+msgstr "Käyttöoikeuksien rajoitukset"
+
+msgid "Allowed Users"
+msgstr "Sallitut käyttäjät"
+
+#: ckan/views/user.py:571
+msgid ""
+"A reset link has been emailed to you (unless the account specified does not "
+"exist)"
+msgstr ""
+"Salasanan palautuslinkki on lähetetty sähköpostiisi (paitsi jos "
+"käyttäjätiliä ei ole olemassa)"
+
+msgid "There are currently no APIs for this organization"
+msgstr "Organisaatiolla ei ole aktiivisia liityntöjä"

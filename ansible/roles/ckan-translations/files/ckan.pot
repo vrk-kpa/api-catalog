@@ -4280,8 +4280,7 @@ msgid "Account Info"
 msgstr ""
 
 #: ckan/templates/user/edit.html:19
-msgid ""
-" Your profile lets other CKAN users know about who you are and what you do. "
+msgid " Your profile lets other CKAN users know about who you are and what you do. "
 msgstr ""
 
 #: ckan/templates/user/edit_user_form.html:7
@@ -4494,10 +4493,18 @@ msgstr ""
 msgid "Request reset"
 msgstr ""
 
-#: ckan/templates/user/request_reset.html:34
+#: ckan/templates/user/request_reset.html:17
+msgid "Email or username"
+msgstr ""
+
+#: ckan/templates/user/request_reset.html:22
+msgid "Request Reset"
+msgstr ""
+
+#: ckan/templates/user/request_reset.html:38
 msgid ""
-"Enter your username into the box and we will send you an email with a link "
-"to enter a new password."
+"Enter your email address or username into the box and we will send you an "
+"email with a link to enter a new password."
 msgstr ""
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14
@@ -5182,4 +5189,19 @@ msgid "Phone number"
 msgstr ""
 
 msgid "Email address description"
+msgstr ""
+
+msgid "Access Restriction Level"
+msgstr ""
+
+msgid "Allowed Users"
+msgstr ""
+
+#: ckan/views/user.py:571
+msgid ""
+"A reset link has been emailed to you (unless the account specified does not "
+"exist)"
+msgstr ""
+
+msgid "There are currently no APIs for this organization"
 msgstr ""
