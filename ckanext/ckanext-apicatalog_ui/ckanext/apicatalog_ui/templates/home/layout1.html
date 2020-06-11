@@ -57,7 +57,13 @@
           <div class="row homepage-section">
             <div class="col-sm-12">
               {% block news %}
-                {% snippet 'home/snippets/news.html', news=h.get_homepage_news(5) %}
+                {% set news_lang = h.lang() %}
+                {% set note = None %}
+                {% if news_lang in ('en', 'en_GB') %}
+                  {% set note = _('News are currently not available in English. For more information about the Data Exchange Layer and the API Catalog, contact TODO.') %}
+                  {% set news_lang = 'fi' %}
+                {% endif %}
+                {% snippet 'home/snippets/news.html', news=h.get_homepage_news(count=5, language=news_lang), language=news_lang, note=note %}
               {% endblock %}
             </div>
           </div>

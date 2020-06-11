@@ -1,19 +1,25 @@
 {% set news = news or [] %}
+{% set language = language or h.lang() %}
 {% if news %}
 <h3>{{ _('News') }}</h3>
+{% if note %}
+  <div class="section-note">{{ note }}</div>
+{% endif %}
 <div class="news">
   <ul class="news-list">
     {%- for item in news -%}<li>
-      <img class="image" src="{{ item.image }}" alt="{{ item.image_alt }}"></img>
+      {% if item.image %}
+        <img class="image" src="{{ item.image }}" alt="{{ item.image_alt }}"></img>
+      {% endif %}
       <div>
-        <a href="{{ item.url }}"><h4 class="title">{{ item.title }}</h4></a>
+        <a href="{{ h.get_translated(item, 'url', language=language) }}"><h4 class="title">{{ h.get_translated(item, 'title', language=language) | safe}}</h4></a>
         <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
-        <p class="content">{{ item.content }}</p>
+        <p class="content">{{ h.get_translated(item, 'content', language=language) | safe }}</p>
       </div>
     </li>{%- endfor -%}
   </ul>
   <div class="view-all-link">
-    <i class="fa fa-chevron-right"></i><a href="">{{ _('Browse news') }}</a>
+    <i class="fa fa-chevron-right"></i><a href="https://palveluhallinta.suomi.fi/{{ h.lang() }}/ajankohtaista/uutiset/">{{ _('Browse news') }}</a>
   </div>
 </div>
 {% endif %}

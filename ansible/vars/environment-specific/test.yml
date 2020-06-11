@@ -74,6 +74,12 @@ saha:
   username: "PahaIntegrationUser"
   password: "{{ secret.saha_integration_password }}"
 
+content:
+  news:
+    endpoint_url: "https://palveluhallinta.test.suomi.fi/api/articles/importantTopical"
+    url_template: "https://palveluhallinta.test.suomi.fi/{language}/ajankohtaista/uutiset/{id}"
+    ssl_verify: false
+
 debug_enabled: false
 
 robots_allowed: false

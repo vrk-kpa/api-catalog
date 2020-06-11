@@ -106,6 +106,11 @@ ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
 ckanext.apicatalog.harvester_status_recipients = {{ ckan_harvester_status_email_recipients|join(' ') }}
 ckanext.apicatalog_ui.test_environment = {{ ckan_test_environment | default(False) }}
 
+ckanext.apicatalog_ui.news.endpoint_url = {{ content.news.endpoint_url }}
+ckanext.apicatalog_ui.news.ssl_verify = {{ content.news.ssl_verify | default(True) }}
+ckanext.apicatalog_ui.news.tags = palveluvaeylae
+ckanext.apicatalog_ui.news.url_template = {{ content.news.url_template }}
+
 ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000
 ckan.celery.queues = celery bulk priority
