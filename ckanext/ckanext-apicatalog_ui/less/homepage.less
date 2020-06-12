@@ -312,6 +312,10 @@
     margin-top: 0;
     margin-bottom: 20px;
   }
+
+  .section-note {
+    font-style: italic;
+  }
 }
 
 .news, .announcements {
@@ -329,7 +333,7 @@
   margin: 0;
   padding: 0;
 
-  li {
+  > li {
     border-bottom: 1px solid @suomifi-border;
 
     &:last-child {
@@ -355,13 +359,13 @@
   }
 }
 
-.news-list li {
+.news-list > li {
   display: flex;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.announcements-list li {
+.announcements-list > li {
   padding-top: 20px;
   padding-bottom: 20px;
 }
