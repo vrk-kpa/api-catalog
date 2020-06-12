@@ -1,5 +1,4 @@
-.topbar,
-.information-containera {
+.topbar {
   display: none;
 }
 .swagger-container .swagger-ui .btn.authorize {
