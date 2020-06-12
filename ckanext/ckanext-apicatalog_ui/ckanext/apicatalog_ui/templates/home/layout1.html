@@ -60,7 +60,7 @@
                 {% set news_lang = h.lang() %}
                 {% set note = None %}
                 {% if news_lang in ('en', 'en_GB') %}
-                {% set note = _('This content is not available in English. If you have any questions about this topic, please contact our customer service at <a href="mailto:organisaatiopalvelut@dvv.fi">organisaatiopalvelut@dvv</a>.') %}
+                {% set note = _('This content is not available in English. If you have any questions about this topic, please contact our customer service at <a href="mailto:organisaatiopalvelut@dvv.fi">organisaatiopalvelut@dvv.fi</a>.') %}
                   {% set news_lang = 'fi' %}
                 {% endif %}
                 {% snippet 'home/snippets/news.html', news=h.get_homepage_news(count=5, language=news_lang), language=news_lang, note=note %}
