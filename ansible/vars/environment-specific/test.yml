@@ -7,7 +7,8 @@ ckan_featured_orgs: kermitti putki-ville-oy
 ckan_test_environment: True
 
 analytics_server_public_facing_hostname: kapastats01.csc.fi
-analytics_site_id: 1
+analytics_site_id: 3
+analytics_auth_token: "{{ secret.analytics_auth_token }}"
 
 database_ckan:
   host: 127.0.0.1
@@ -90,13 +91,13 @@ paha_key_whitelist:
 apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
 
 ckan_plugins:
-  - openapi_view
   - text_view
   - apicatalog_scheming
   - scheming_datasets
   - scheming_organizations
   - fluent
   - apicatalog_ui
+  - openapi_view
   - apicatalog_pages
   - pages
   - apicatalog_admin_dashboard
