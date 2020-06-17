@@ -236,21 +236,25 @@
 }
 
 .account {
-  .nav a,
-  .nav a:hover,
-  .nav a:active,
-  .nav a:visited
-  {
-    background: linear-gradient(0deg, rgb(35, 90, 154) 0%, rgb(42, 110, 187) 100%);
-    border-radius: 2px;
-    height: 40px;
-    color: rgb(255, 255, 255);
-    font-family: @headings-font-family;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    padding: 5px 15px;
-    display: block;
+  .nav {
+    & > a,
+    .dropdown > a{
+      &,
+      &:hover,
+      &:visited,
+      &:active {
+        background: linear-gradient(0deg, rgb(35, 90, 154) 0%, rgb(42, 110, 187) 100%);
+        border-radius: 2px;
+        height: 40px;
+        color: rgb(255, 255, 255);
+        font-family: @headings-font-family;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        padding: 5px 15px;
+        display: block;
+      }
+    }
   }
 
   .clearfix();
