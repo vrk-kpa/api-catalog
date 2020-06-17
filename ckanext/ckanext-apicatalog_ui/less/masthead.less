@@ -120,6 +120,7 @@
 
     .search-input button {
       margin-top: -14px;
+      font-size: 20px;
     }
 
     input {
@@ -205,7 +206,8 @@
       line-height: 27px;
       margin-right: 64px;
     }
-    li.active a {
+    li.active a,
+    li:hover a {
       border-bottom: 4px solid rgb(42, 110, 187);
     }
 
@@ -234,10 +236,11 @@
 }
 
 .account {
-  .nav > li > a,
-  .nav > li > a:hover,
-  .nav > li > a:active,
-  .nav > li > a:visited {
+  .nav a,
+  .nav a:hover,
+  .nav a:active,
+  .nav a:visited
+  {
     background: linear-gradient(0deg, rgb(35, 90, 154) 0%, rgb(42, 110, 187) 100%);
     border-radius: 2px;
     height: 40px;
@@ -247,7 +250,7 @@
     font-weight: 600;
     letter-spacing: 0.4px;
     padding: 5px 15px;
-
+    display: block;
   }
 
   .clearfix();

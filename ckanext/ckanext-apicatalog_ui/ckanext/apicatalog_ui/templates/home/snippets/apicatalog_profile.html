@@ -1,9 +1,9 @@
 <div class="account">
-  <ul class="nav">
+  <div class="nav">
     {% block header_account_container_content %}
       {% if c.userobj %}
         {% set new_activities = h.new_activities() %}
-        <li class="dropdown" id="profile">
+        <div class="dropdown" id="profile">
 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="username">{{ c.userobj.name }}</span>
@@ -13,17 +13,17 @@
           <ul id="no-collapse" class="dropdown-menu dropdown-menu-right">
             {% snippet 'home/snippets/apicatalog_profile_items.html' %}
           </ul> <!-- /.dropdown-menu -->
-        </li> <!-- /.dropdown -->
+        </div> <!-- /.dropdown -->
       {% else %}
 
         {% block header_account_notlogged %}
-          <li>{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
+          {% link_for _('Log in'), controller='user', action='login', icon='signin' %}
           {% if h.check_access('user_create') %}
-            <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+            {% link_for _('Register'), controller='user', action='register', class_='sub' %}
           {% endif %}
         {% endblock %} {# header_account_notlogged #}
 
       {% endif %} {# /if c.userobj #}
     {% endblock %} <!-- header_account_container_content -->
-  </ul> <!-- /.nav -->
+  </div> <!-- /.nav -->
 </div> <!-- /.account -->
