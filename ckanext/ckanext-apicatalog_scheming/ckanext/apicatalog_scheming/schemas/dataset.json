@@ -58,47 +58,6 @@
       "display_snippet": null
     },
     {
-      "field_name": "environment",
-      "label": "Environment",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "test",
-          "label": "Test environment"
-        },
-        {
-          "value": "production",
-          "label": "Production environment"
-        }
-      ]
-    },
-    {
-      "field_name": "shared_resource",
-      "label": "Shared resource",
-      "preset": "select",
-      "required": true,
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "yes",
-          "label": "Yes"
-        },
-        {
-          "value": "no",
-          "label": "No"
-        }
-      ]
-    },
-    {
-      "field_name": "url",
-      "label": "Source",
-      "form_placeholder": "http://example.com/dataset.json",
-      "display_property": "foaf:homepage",
-      "display_snippet": "link.html",
-      "classes": ["control-full"]
-    },
-    {
       "field_name": "maintainer",
       "label": "Maintainer",
       "form_placeholder": "Joe Bloggs",
