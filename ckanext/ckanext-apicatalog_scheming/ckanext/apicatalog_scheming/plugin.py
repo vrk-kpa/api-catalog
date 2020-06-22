@@ -5,12 +5,19 @@ import ckan.plugins.toolkit as toolkit
 from ckan.common import config
 import ckan.lib.navl.dictization_functions as dictization_functions
 from ckanext.scheming.helpers import lang
+import json
+
+try:
+    from collections import OrderedDict  # 2.7
+except ImportError:
+    from sqlalchemy.util import OrderedDict
 
 import validators
 import logging
 
 
 log = logging.getLogger(__name__)
+_ = toolkit._
 
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
@@ -19,6 +26,8 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -46,6 +55,40 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
                 'get_lang_prefix': get_lang_prefix,
                 'add_locale_to_source': add_locale_to_source}
 
+
+    # IFacets
+
+    def dataset_facets(self, facets_dict, package_type):
+        lang = get_lang_prefix()
+        facets_dict = OrderedDict([
+            ('organization', _('Organization')),
+            ('vocab_keywords_' + lang, _('Tags')),
+            ('res_format', _('Formats'))
+            ])
+        return facets_dict
+
+
+    # IPackageController
+
+    def before_index(self, pkg_dict):
+        # Map keywords to vocab_keywords_{lang}
+        translated_vocabs = ['keywords']
+        languages = ['fi', 'sv', 'en']
+        for prop_key in translated_vocabs:
+            prop_json = pkg_dict.get(prop_key)
+            # Add only if not already there
+            if not prop_json:
+                continue
+            prop_value = json.loads(prop_json)
+            # Add for each language
+            for lang in languages:
+                if prop_value.get(lang):
+                    pkg_dict['vocab_%s_%s' % (prop_key, lang)] = [tag for tag in prop_value[lang]]
+
+        if 'date_released' in pkg_dict and ISO_DATETIME_FORMAT.match(pkg_dict['date_released']):
+            pkg_dict['metadata_created'] = "%sZ" % pkg_dict['date_released']
+
+        return pkg_dict
 
 def scheming_field_only_default_required(field, lang):
     if (field
