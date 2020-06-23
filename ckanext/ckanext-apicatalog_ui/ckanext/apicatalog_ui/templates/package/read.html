@@ -17,6 +17,12 @@
 {% endblock %}
 
 {% block package_resources %}
-  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources|selectattr('harvested_from_xroad'), title='Interfaces' %}
-  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources|rejectattr('harvested_from_xroad'), title='Attachments' %}
+{% set interfaces = pkg.resources|selectattr('harvested_from_xroad')|list %}
+{% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
+{% if interfaces %}
+{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=interfaces, title=_('Interfaces') %}
+{% endif %}
+{% if attachments %}
+{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Attachments') %}
+{% endif %}
 {% endblock %}
