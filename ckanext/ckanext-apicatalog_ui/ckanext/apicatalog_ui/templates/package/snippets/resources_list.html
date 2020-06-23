@@ -1,4 +1,4 @@
-{# 
+{#
 Renders a list of resources with icons and view links.
 
 resources - A list of resources to render
@@ -10,7 +10,7 @@ Example:
 
 #}
 <section id="dataset-resources" class="resources">
-  <h3>{{ title }}</h3>
+  <h2>{{ title }}</h2>
   {% block resource_list %}
     {% if resources %}
       <ul class="{% block resource_list_class %}resource-list{% endblock %}">
@@ -30,5 +30,5 @@ Example:
           <p class="empty">{{ _('This dataset has no data') }}</p>
       {% endif %}
     {% endif %}
-    {% endblock %}
+  {% endblock %}
 </section>

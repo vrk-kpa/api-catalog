@@ -6,7 +6,6 @@
 	<form class="contact-form" method="post">
 		{{ form.errors(error_summary) }}
 
-		<fieldset>
 
 			{% block contact_form_fields %}
 
@@ -20,7 +19,7 @@
 
 			{{ form.hidden('captcha_challenge_field', captcha.challenge) }}
 			{{ form.input('captcha_response_field', label=captcha.text, id='field-captcha', type='number', value='', error=errors.captcha, classes=['control-medium'], is_required=true) }}
-		</fieldset>
+
 
 		<button class="btn btn-primary save" type="submit" name="save">{{ _('Submit') }}</button>
 	</form>

@@ -14,7 +14,7 @@
             <form class="search-form header-search" method="get" action="{{ h.url('search') }}">
             <div class="search-input control-group">
               <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" />
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <button type="submit" aria-label="{{ _('Search API Catalog') }}"><i class="fa fa-search"></i></button>
             </div>
             </form>
             {% snippet 'home/snippets/apicatalog_language-changer.html' %}
