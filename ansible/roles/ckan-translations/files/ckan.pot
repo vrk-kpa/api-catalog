@@ -5205,3 +5205,9 @@ msgstr ""
 
 msgid "There are currently no APIs for this organization"
 msgstr ""
+
+msgid "Interfaces"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""

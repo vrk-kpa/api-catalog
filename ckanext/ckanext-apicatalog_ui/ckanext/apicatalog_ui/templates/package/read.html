@@ -15,3 +15,8 @@
   {%- set tags = h.scheming_language_text(pkg.keywords) -%}
   {% snippet "package/snippets/tags.html", tags=tags %}
 {% endblock %}
+
+{% block package_resources %}
+  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources|selectattr('harvested_from_xroad'), title='Interfaces' %}
+  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources|rejectattr('harvested_from_xroad'), title='Attachments' %}
+{% endblock %}
