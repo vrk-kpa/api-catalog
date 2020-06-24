@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{% block content_primary_nav %}
+  {{ super() }}
+  {{ h.build_nav_icon('apply_permissions_for_service.manage_permission_applications', _('Manage access requests'), subsystem_id=pkg.name) }}
+{% endblock %}
