@@ -93,6 +93,7 @@ def only_default_lang_required(field, schema):
 def keep_old_value_if_missing(field, schema):
     from ckan.lib.navl.dictization_functions import missing, flatten_dict
     from ckan.logic import get_action
+
     def validator(key, data, errors, context):
 
         if 'package' not in context:
@@ -137,3 +138,13 @@ def business_id_validator(value):
         raise toolkit.Invalid(_("Business id verification number does match business id."))
 
     return value
+
+
+def ignore_not_package_maintainer(key, data, errors, context):
+    '''Ignore the field if user not sysadmin or ignore_auth in context.'''
+
+    if 'package' not in context:
+        return
+
+    if not toolkit.check_access('package_update', context, {'id': context['package'].id}):
+        data.pop(key)
