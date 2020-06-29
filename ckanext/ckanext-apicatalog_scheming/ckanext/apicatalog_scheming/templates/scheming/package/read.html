@@ -14,7 +14,7 @@
   {% endif %}
 {% endblock %}
 
-  {% block content_action %}
+{% block content_action %}
   {% if h.organizations_available() and h.is_extension_loaded('apply_permissions_for_service') and not h.check_access('package_update', {'id':pkg.id }) %}
     {% snippet 'apply_permissions_for_service/snippets/request_access_button.html', subsystem_id=pkg.name %}
   {% endif %}

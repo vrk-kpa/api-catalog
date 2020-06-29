@@ -57,4 +57,5 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     # ITemplateHelpers
 
     def get_helpers(self):
-        return {'service_permission_application_url': helpers.service_permission_application_url}
+        return {'service_permission_application_url': helpers.service_permission_application_url,
+                'service_permission_applications_enabled': helpers.service_permission_applications_enabled}
