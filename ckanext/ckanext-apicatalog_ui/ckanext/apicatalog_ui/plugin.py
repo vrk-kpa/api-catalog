@@ -396,6 +396,9 @@ def is_test_environment():
     return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
 
+def is_extension_loaded(extension_name):
+    return extension_name in config.get('ckan.plugins', '').split()
+
 def get_submenu_content():
 
     pages_list = toolkit.get_action('ckanext_pages_list')(None, {'private': False})
@@ -464,7 +467,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'is_test_environment': is_test_environment,
                 'get_submenu_content': get_submenu_content,
                 'get_slogan': get_slogan,
-                'get_welcome_text': get_welcome_text
+                'get_welcome_text': get_welcome_text,
+                'is_extension_loaded': is_extension_loaded
                 }
 
     def get_actions(self):
