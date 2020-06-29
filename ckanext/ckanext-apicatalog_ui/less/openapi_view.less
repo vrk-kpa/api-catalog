@@ -4,32 +4,48 @@
   display: none;
 }
 
-.opblock-colors(@background, @foreground) {
+.opblock-colors(@text, @background, @foreground) {
   border-color: @foreground;
   background: @background;
   .opblock-summary {
       border-color: @foreground;
   }
   .opblock-summary-method {
+    color: @text;
     background: @foreground;
   }
 }
 
 .swagger-container .swagger-ui {
   .btn.authorize {
-    color: @suomifi-success-base;
-    border-color: @suomifi-success-base;
+    color: darken(@suomifi-success-base, 10%);
+    border-color: darken(@suomifi-success-base, 10%);
+
+    svg {
+      fill: darken(@suomifi-success-base, 10%);
+    }
+  }
+  .info {
+    .title small {
+      background-color: @suomifi-depth-dark1;
+    }
+    a {
+      color: @suomifi-highlight-base;
+    }
   }
   .opblock.opblock-get {
-    .opblock-colors(fade(@suomifi-highlight-base, 10%), @suomifi-highlight-base)
+    .opblock-colors(@suomifi-text-base, fade(@suomifi-highlight-light2, 10%), @suomifi-highlight-light2)
   }
   .opblock.opblock-post {
-    .opblock-colors(fade(@suomifi-success-base, 10%), @suomifi-success-base)
+    .opblock-colors(@suomifi-text-base, fade(@suomifi-success-secondary, 10%), @suomifi-success-secondary)
+  }
+  .opblock.opblock-patch {
+    .opblock-colors(@suomifi-text-base, fade(@suomifi-success-secondary, 10%), @suomifi-success-secondary)
   }
   .opblock.opblock-put {
-    .opblock-colors(fade(@suomifi-warning-base, 10%), @suomifi-warning-base)
+    .opblock-colors(@suomifi-text-base, fade(@suomifi-warning-base, 10%), @suomifi-warning-base)
   }
   .opblock.opblock-delete {
-    .opblock-colors(fade(@suomifi-alert-base, 10%), @suomifi-alert-base)
+    .opblock-colors(@suomifi-text-base, fade(@suomifi-alert-light1, 10%), @suomifi-alert-light1)
   }
 }
