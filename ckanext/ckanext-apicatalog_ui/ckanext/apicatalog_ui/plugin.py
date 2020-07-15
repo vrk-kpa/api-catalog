@@ -235,7 +235,9 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
     return news[:count]
 
 
-def get_homepage_announcements(count=3):
+ANNOUNCEMENT_CACHE = None
+def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
+    global ANNOUNCEMENT_CACHE
     admin_context = {'ignore_auth': True}
     organization_show = get_action('organization_show')
     package_show = get_action('package_show')
@@ -278,11 +280,17 @@ def get_homepage_announcements(count=3):
             log.warn('Error parsing announcement item: %s', e)
             return None
 
-    harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
-    announcements = (a for a in (activity_to_announcement(a)
-                                 for a in harvest_activity)
-                     if a is not None)
-    return list(itertools.islice(announcements, count))
+    if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
+        harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
+        all_announcements = (a for a in (activity_to_announcement(a)
+                                         for a in harvest_activity)
+                             if a is not None)
+        announcements = list(itertools.islice(all_announcements, count))
+        announcement_cache_timestamp = datetime.now()
+        ANNOUNCEMENT_CACHE = (announcement_cache_timestamp, announcements)
+    else:
+        announcement_cache_timestamp, announcements = ANNOUNCEMENT_CACHE
+    return announcements
 
 
 def unquote_url(url):
