@@ -3,9 +3,9 @@
 <div class="announcements">
   <ul class="announcements-list">
     {%- for item in announcements -%}<li>
-      <a href="{{ item.url }}"><h4 class="title">{{ item.title }}</h4></a>
+      <h4 class="title">{% snippet 'home/snippets/announcement_title.html', item=item %}</h4>
       <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
-      <p class="content">{{ item.content }}</p>
+      <p class="content">{% snippet 'home/snippets/announcement_content.html', item=item %}</p>
     </li>{%- endfor -%}
   </ul>
   <div class="view-all-link">

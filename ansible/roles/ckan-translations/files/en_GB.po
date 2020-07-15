@@ -5395,3 +5395,70 @@ msgstr ""
 
 msgid "There are currently no APIs for this organization"
 msgstr ""
+
+msgid "New consumer"
+msgstr ""
+
+msgid "New producer"
+msgstr ""
+
+msgid "New subsystem"
+msgstr ""
+
+msgid "Updated subsystem"
+msgstr ""
+
+msgid "Deleted subsystem"
+msgstr ""
+
+msgid "New service"
+msgstr ""
+
+msgid "Updated service"
+msgstr ""
+
+msgid "Deleted service"
+msgstr ""
+
+msgid ""
+"Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
+"Exchange Layer to utilise services"
+msgstr ""
+
+msgid ""
+"Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
+"Exchange Layer as a service provider"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> added a new subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> updated the subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> deleted the subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a> and its services"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> added a new service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> updated the service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> deleted the service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
