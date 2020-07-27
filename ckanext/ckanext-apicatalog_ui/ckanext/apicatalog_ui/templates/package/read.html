@@ -11,3 +11,18 @@
 </span>
 {% endblock %}
 
+{% block package_tags %}
+  {%- set tags = h.scheming_language_text(pkg.keywords) -%}
+  {% snippet "package/snippets/tags.html", tags=tags %}
+{% endblock %}
+
+{% block package_resources %}
+{% set interfaces = pkg.resources|selectattr('harvested_from_xroad')|list %}
+{% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
+{% if interfaces %}
+{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=interfaces, title=_('Interfaces') %}
+{% endif %}
+{% if attachments %}
+{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Attachments') %}
+{% endif %}
+{% endblock %}

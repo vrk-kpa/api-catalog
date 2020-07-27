@@ -34,10 +34,19 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
-      "field_name": "tag_string",
-      "label": "Tags",
-      "preset": "apicatalog_tag_string_autocomplete",
-      "form_placeholder": "eg. economy, mental health, government"
+      "field_name": "keywords",
+      "label": "Keywords",
+      "form_placeholder": "e.g. names",
+      "form_languages": ["fi", "en", "sv"],
+      "preset": "fluent_vocabulary_with_autocomplete",
+      "validators": "only_default_lang_required fluent_tags create_fluent_tags(keywords)",
+      "form_attrs": {
+        "data-module": "autocomplete",
+        "data-module-tags": "",
+        "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
+      },
+      "description": "",
+      "only_default_lang_required": true
     },
     {
       "field_name": "validSince",
@@ -56,47 +65,6 @@
       "validators": "boolean_validator valid_resources",
       "form_snippet": null,
       "display_snippet": null
-    },
-    {
-      "field_name": "environment",
-      "label": "Environment",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "test",
-          "label": "Test environment"
-        },
-        {
-          "value": "production",
-          "label": "Production environment"
-        }
-      ]
-    },
-    {
-      "field_name": "shared_resource",
-      "label": "Shared resource",
-      "preset": "select",
-      "required": true,
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "yes",
-          "label": "Yes"
-        },
-        {
-          "value": "no",
-          "label": "No"
-        }
-      ]
-    },
-    {
-      "field_name": "url",
-      "label": "Source",
-      "form_placeholder": "http://example.com/dataset.json",
-      "display_property": "foaf:homepage",
-      "display_snippet": "link.html",
-      "classes": ["control-full"]
     },
     {
       "field_name": "maintainer",
@@ -168,13 +136,6 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
-      "field_name": "type",
-      "label": "Type",
-      "preset": "fluent_text",
-      "form_languages": ["fi", "sv", "en"],
-      "classes": ["control-full"]
-    },
-    {
       "field_name": "chargeability",
       "label": "Chargeability",
       "preset": "select",
@@ -214,40 +175,29 @@
     },
     {
       "field_name": "connection_information",
-      "label": "Connection information",
+      "label": "Information about the interface",
       "preset": "fluent_text",
       "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"]
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Other information about the API, e.g. how to take into use, parameters, terms of use (unless available in a separate document)"
     },
     {
       "field_name": "availability",
       "label": "Availability",
       "preset": "fluent_text",
       "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"]
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Information on the availability of the API, e.g. available 24/7, or available only during business hours"
+
     },
     {
       "field_name": "sla",
       "label": "SLA",
       "preset": "fluent_text",
       "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"]
-    },
-    {
-      "field_name": "response_time",
-      "label": "Average response time",
-      "classes": ["control-full"],
-      "form_placeholder": {
-        "en": "eg. 100ms",
-        "fi": "esim. 100ms"
-      }
-    },
-    {
-      "field_name": "service_status",
-      "label": "Service status",
-      "preset": "fluent_text",
-      "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"]
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Additional information on the SLA of the API, e.g. response time or speed"
+
     },
     {
       "field_name": "license_id",
@@ -263,6 +213,12 @@
       "field_name": "valid_content",
       "form_snippet": false,
       "display_snippet": null
+    },
+    {
+      "field_name": "harvested_from_xroad",
+      "label": "Harvested from X-Road",
+      "form_snippet": false,
+      "validators": "keep_old_value_if_missing default_value(false) boolean_validator ignore_not_sysadmin"
     },
     {
       "field_name": "xroad_servicecode",
