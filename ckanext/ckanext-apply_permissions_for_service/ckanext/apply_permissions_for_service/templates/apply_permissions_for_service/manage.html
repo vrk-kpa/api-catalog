@@ -1,0 +1,17 @@
+{% extends 'package/edit_base.html' %}
+
+{% block primary_content_inner %}
+<h2>{{ _('Received applications') }}</h2>
+{% if applications %}
+  <ul>
+  {% for application in applications %}
+  <li>{% link_for ((h.xroad_subsystem_path(application.requester_subsystem) or application.requester_subsystem.name) + ' → ' + (h.xroad_subsystem_path(application.subsystem) or application.subsystem.name)), named_route='apply_permissions_for_service.view_permission_application', application_id=application.id %}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+<p>{{ _('You have not received any service access applications.') }}</p>
+{% endif %}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

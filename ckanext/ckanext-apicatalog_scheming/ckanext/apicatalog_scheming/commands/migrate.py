@@ -76,7 +76,9 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
 
 def migrations():
     return [('1.49.0', '1.50.0', no_changes),
-            ('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0)
+            ('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0),
+            ('1.51.0', '1.52.0', no_changes),
+            ('1.52.0', '1.53.0', migrate_1_52_0_to_1_53_0)
             ]
 
 
@@ -93,6 +95,23 @@ def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
                              'description_translated': {'fi': org['description']}}
                             for org in org_generator()]
     apply_patches(organization_patches=organization_patches, dryrun=dryrun)
+
+
+def migrate_1_52_0_to_1_53_0(ctx, config, dryrun):
+    package_patches = []
+    resource_patches = []
+
+    for dataset in package_generator():
+        package_patches.append({'id': dataset['id'],
+                                'keywords': {'fi': [tag['display_name']
+                                             for tag in dataset.get('tags', [])]}})
+        for resource in dataset.get('resources', []):
+            harvested_from_xroad = True if resource.get('xroad_servicecode') else False
+            resource_patches.append({'id': resource['id'],
+                                     'harvested_from_xroad': harvested_from_xroad})
+
+    apply_patches(package_patches=package_patches, resource_patches=resource_patches, dryrun=dryrun)
+
 
 #
 # Utilities
@@ -176,7 +195,7 @@ def apply_patches(package_patches=[], resource_patches=[], organization_patches=
                 print(e)
 
 
-def package_generator(query, page_size, context={'ignore_auth': True}, dataset_type='dataset'):
+def package_generator(query='*:*', page_size=1000, context={'ignore_auth': True}, dataset_type='dataset'):
     package_search = get_action('package_search')
 
     # Loop through all items. Each page has {page_size} items.

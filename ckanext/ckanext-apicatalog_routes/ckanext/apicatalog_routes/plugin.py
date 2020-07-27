@@ -96,7 +96,12 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                 'create_user_to_organization': auth.create_user_to_organization,
                 'user_create': auth.user_create,
                 'user_update': auth.user_update,
-                'user_show': auth.user_show
+                'user_show': auth.user_show,
+                'member_create': auth.member_create,
+                'member_delete': auth.member_delete,
+                'organization_member_create': auth.organization_member_create,
+                'organization_member_delete': auth.organization_member_delete,
+                'group_show': auth.group_show
                 }
 
     # IPermissionLabels
