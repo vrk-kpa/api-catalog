@@ -20,3 +20,21 @@
   {% endif %}
   {{ super() }}
 {% endblock %}
+
+{% block package_additional_info %}
+  {%- set exclude_fields = [
+      'id',
+      'title',
+      'title_translated',
+      'keywords',
+      'keywords_translated',
+      'name',
+      'notes',
+      'notes_translated',
+      'tag_string',
+      'license_id',
+      'owner_org',
+      ] -%}
+  {% snippet "scheming/package/snippets/additional_info.html",
+  pkg_dict=pkg, dataset_type=dataset_type, schema=schema, exclude_fields=exclude_fields %}
+{% endblock %}
