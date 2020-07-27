@@ -137,3 +137,15 @@ def business_id_validator(value):
         raise toolkit.Invalid(_("Business id verification number does match business id."))
 
     return value
+
+@scheming_validator
+def mark_as_modified_in_catalog_if_changed(field, schema):
+    from ckan.logic import get_action
+    def validator(key, data, errors, context):
+
+        old_organization = get_action('organization_show')(context, {'id': context['group'].id})
+        if json.dumps(old_organization.get(key[0])) != data[key] and 'for_edit' in context:
+            flattened = df.flatten_dict({ key[0] + '_modified_in_catalog': True })
+            data.update(flattened)
+
+    return validator

@@ -28,7 +28,8 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'only_default_lang_required': validators.only_default_lang_required,
             'keep_old_value_if_missing': validators.keep_old_value_if_missing,
             'default_value': validators.default_value,
-            "business_id_validator": validators.business_id_validator
+            "business_id_validator": validators.business_id_validator,
+            'mark_as_modified_in_catalog_if_changed': validators.mark_as_modified_in_catalog_if_changed
             }
 
     def get_helpers(self):
