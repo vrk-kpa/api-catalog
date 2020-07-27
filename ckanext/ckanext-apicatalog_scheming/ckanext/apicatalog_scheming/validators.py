@@ -3,9 +3,13 @@ from ckan.common import _
 import ckan.lib.navl.dictization_functions as df
 from ckan.common import config
 import ckan.plugins.toolkit as toolkit
+import ckan.logic.validators as validators
 import json
+import plugin
 
 missing = toolkit.missing
+get_action = toolkit.get_action
+
 
 try:
     from ckanext.scheming.validation import (
@@ -92,7 +96,6 @@ def only_default_lang_required(field, schema):
 @scheming_validator
 def keep_old_value_if_missing(field, schema):
     from ckan.lib.navl.dictization_functions import missing, flatten_dict
-    from ckan.logic import get_action
     def validator(key, data, errors, context):
 
         if 'package' not in context:
@@ -138,6 +141,7 @@ def business_id_validator(value):
 
     return value
 
+
 @scheming_validator
 def mark_as_modified_in_catalog_if_changed(field, schema):
     from ckan.logic import get_action
@@ -149,3 +153,60 @@ def mark_as_modified_in_catalog_if_changed(field, schema):
             data.update(flattened)
 
     return validator
+
+
+def ignore_not_package_maintainer(key, data, errors, context):
+    '''Ignore the field if user not sysadmin or ignore_auth in context.'''
+
+    if 'package' not in context:
+        return
+
+    if not toolkit.check_access('package_update', context, {'id': context['package'].id}):
+        data.pop(key)
+
+def create_fluent_tags(vocab):
+    def callable(key, data, errors, context):
+        value = data[key]
+        if isinstance(value, str):
+            value = json.loads(value)
+        if isinstance(value, dict):
+            for lang in value:
+                add_to_vocab(context, value[lang], vocab + '_' + lang)
+            data[key] = json.dumps(value)
+
+    return callable
+
+
+def add_to_vocab(context, tags, vocab):
+
+    defer = context.get('defer', False)
+    try:
+        v = get_action('vocabulary_show')(context, {'id': vocab})
+    except toolkit.ObjectNotFound:
+        v = plugin.create_vocabulary(vocab, defer)
+
+    import ckan.model as model
+    context['vocabulary'] = model.Vocabulary.get(v.get('id'))
+
+    if isinstance(tags, basestring):
+        tags = [tags]
+
+    for tag in tags:
+        validators.tag_length_validator(tag, context)
+        validators.tag_name_validator(tag, context)
+
+        try:
+            validators.tag_in_vocabulary_validator(tag, context)
+        except toolkit.Invalid:
+            plugin.create_tag_to_vocabulary(tag, vocab, defer)
+
+
+def convert_to_json_compatible_str_if_str(value):
+    if isinstance(value, basestring):
+        if value == "":
+            return json.dumps({})
+        try:
+            json.loads(value)
+        except ValueError:
+            value = json.dumps({'fi': value})
+        return value

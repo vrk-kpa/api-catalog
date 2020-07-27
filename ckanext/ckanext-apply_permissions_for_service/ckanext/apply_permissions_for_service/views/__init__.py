@@ -1,5 +1,5 @@
 import ckan.plugins as plugins
-from plugins.toolkit import _, h, g, get_action, ValidationError, NotAuthorized
+from plugins.toolkit import _, h, g, c, get_action, ValidationError, NotAuthorized
 from logging import getLogger
 
 log = getLogger(__name__)
@@ -7,12 +7,13 @@ log = getLogger(__name__)
 
 def index():
     try:
+        subsystem_id = plugins.toolkit.request.args.get('id')
         context = {u'user': g.user, u'auth_user_obj': g.userobj}
-        data_dict = {}
+        data_dict = {'subsystem_id': subsystem_id}
         applications = get_action('service_permission_application_list')(context, data_dict)
         extra_vars = {
-                'sent_applications': applications.get('sent', []),
-                'received_applications': applications.get('received', [])
+                'sent_applications': applications,
+                'received_applications': applications
                 }
         return plugins.toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
     except NotAuthorized:
@@ -93,3 +94,64 @@ def view(application_id):
     except NotAuthorized:
         plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
 
+
+def manage(subsystem_id):
+    context = {u'user': g.user, u'auth_user_obj': g.userobj}
+    package = get_action('package_show')(context, {'id': subsystem_id})
+    c.pkg_dict = package
+
+    data_dict = {'subsystem_id': subsystem_id}
+    applications = get_action('service_permission_application_list')(context, data_dict)
+
+    extra_vars = {
+            'subsystem_id': subsystem_id,
+            'pkg': package,
+            'applications': applications
+            }
+    return plugins.toolkit.render('apply_permissions_for_service/manage.html', extra_vars=extra_vars)
+
+
+def settings_get(context, subsystem_id, errors={}, values=None):
+    package = get_action('package_show')(context, {'id': subsystem_id})
+    c.pkg_dict = package
+    settings = values or get_action('service_permission_settings_show')(context, {'subsystem_id': subsystem_id})
+
+    extra_vars = {
+            'subsystem_id': subsystem_id,
+            'pkg': package,
+            'errors': errors,
+            'settings': settings,
+            }
+
+    return plugins.toolkit.render('apply_permissions_for_service/settings.html', extra_vars=extra_vars)
+
+
+def settings_post(context, subsystem_id):
+    form = plugins.toolkit.request.form
+    data_dict = {
+            'subsystem_id': subsystem_id,
+            'delivery_method': form.get('deliveryMethod'),
+            'email': form.get('email'),
+            'api': form.get('api'),
+            'web': form.get('web')
+            }
+
+    try:
+        get_action('service_permission_settings_update')(context, data_dict)
+        pass
+    except ValidationError as e:
+        return settings_get(context, subsystem_id, e.error_dict, values=data_dict)
+
+    plugins.toolkit.h.flash_success(_('Changes saved successfully'))
+    return settings_get(context, subsystem_id, values=data_dict)
+
+
+def settings(subsystem_id):
+    try:
+        context = {u'user': g.user, u'auth_user_obj': g.userobj}
+        if plugins.toolkit.request.method == u'POST':
+            return settings_post(context, subsystem_id)
+        else:
+            return settings_get(context, subsystem_id)
+    except NotAuthorized:
+        plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
