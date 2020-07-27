@@ -112,6 +112,13 @@
       "label": "X-Road subsystem code",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "service_permission_settings",
+      "form_snippet": null,
+      "display_snippet": null,
+      "validators": "keep_old_value_if_missing ignore_missing",
+      "output_validators": "ignore_not_package_maintainer"
     }
   ],
   "resource_fields": [

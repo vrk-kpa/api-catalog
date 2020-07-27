@@ -142,6 +142,16 @@ def business_id_validator(value):
     return value
 
 
+
+def ignore_not_package_maintainer(key, data, errors, context):
+    '''Ignore the field if user not sysadmin or ignore_auth in context.'''
+
+    if 'package' not in context:
+        return
+
+    if not toolkit.check_access('package_update', context, {'id': context['package'].id}):
+        data.pop(key)
+
 def create_fluent_tags(vocab):
     def callable(key, data, errors, context):
         value = data[key]

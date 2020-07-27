@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import requests
+import json
 
 from ckan.plugins import toolkit as tk
 from ckan.lib.mailer import mail_recipient
@@ -49,7 +51,9 @@ def service_permission_application_create(context, data_dict):
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
 
-    package = tk.get_action('package_show')(context, {'id': subsystem_id})
+    # Need sysadmin privileges to see permission_application_settings
+    sysadmin_context = {'ignore_auth': True, 'use_cache': False}
+    package = tk.get_action('package_show')(sysadmin_context, {'id': subsystem_id})
     owner_org = tk.get_action('organization_show')(context, {'id': package['owner_org']})
 
     application_id = model.ApplyPermission.create(organization=organization,
@@ -64,18 +68,36 @@ def service_permission_application_create(context, data_dict):
                                                   request_date=request_date)
 
 
-    email_address = owner_org.get('email_address')
-    if email_address:
-        log.info('Sending permission application notification email to {}'.format(email_address))
+    service_permission_settings = json.loads(package.get('service_permission_settings', '{}'))
+    delivery_method = service_permission_settings.get('delivery_method', 'email')
+
+    if delivery_method == 'api':
         application = model.ApplyPermission.get(application_id).as_dict()
-        email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
-                        application['organization'])
-        email_content = tk.render('apply_permissions_for_service/notification_email.html',
-                                  extra_vars={'application': application})
         try:
-            mail_recipient(owner_org['title'], email_address, email_subject, email_content, headers={'content-type': 'text/html'})
-        except Exception as e:
-            # Email exceptions are not user relevant nor action critical, but should be logged
-            log.warning(e)
-    else:
-        log.info('Organization %s has no email address defined, not sending permission application notification.', owner_org['name'])
+            api_url = service_permission_settings.get('api')
+
+            data = data_dict.copy()
+            data['subsystem_code'] = package.get('xroad_subsystemcode') or package['title']
+            service_code_list = [r['xroad_servicecode'] or r['name'] for r in package.get('resources') if r['id'] in data_dict['service_code_list']]
+            data['service_code_list'] = service_code_list
+
+            requests.post(api_url, data=json.dumps(data), timeout=5).raise_for_status()
+        except Exception, e:
+            log.error('Error calling request application API: %s', e)
+
+    elif delivery_method == 'email':
+        email_address = service_permission_settings.get('email', owner_org.get('email_address'))
+        if email_address:
+            log.info('Sending permission application notification email to {}'.format(email_address))
+            application = model.ApplyPermission.get(application_id).as_dict()
+            email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
+                            application['organization'])
+            email_content = tk.render('apply_permissions_for_service/notification_email.html',
+                                      extra_vars={'application': application})
+            try:
+                mail_recipient(owner_org['title'], email_address, email_subject, email_content, headers={'content-type': 'text/html'})
+            except Exception as e:
+                # Email exceptions are not user relevant nor action critical, but should be logged
+                log.warning(e)
+        else:
+            log.info('Organization %s has no email address defined, not sending permission application notification.', owner_org['name'])

@@ -5,6 +5,7 @@ from logic import action, auth
 from flask import Blueprint
 
 import views
+import helpers
 
 
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -12,6 +13,7 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.ITranslation)
 
     # IConfigurer
@@ -29,6 +31,7 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
         blueprint.add_url_rule('/new/<subsystem_id>', 'new_permission_application', views.new, methods=['GET', 'POST'])
         blueprint.add_url_rule('/view/<application_id>', 'view_permission_application', views.view),
         blueprint.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', views.manage),
+        blueprint.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings', views.settings, methods=['GET', 'POST']),
 
         return blueprint
 
@@ -38,6 +41,8 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
         return {'service_permission_application_list': action.get.service_permission_application_list,
                 'service_permission_application_show': action.get.service_permission_application_show,
                 'service_permission_application_create': action.create.service_permission_application_create,
+                'service_permission_settings_show': action.get.service_permission_settings_show,
+                'service_permission_settings_update': action.update.service_permission_settings_update,
                 }
 
     # IAuthFunctions
@@ -46,4 +51,11 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
         return {'service_permission_application_list': auth.get.service_permission_application_list,
                 'service_permission_application_show': auth.get.service_permission_application_show,
                 'service_permission_application_create': auth.create.service_permission_application_create,
+                'service_permission_settings': auth.get.service_permission_settings,
                 }
+
+    # ITemplateHelpers
+
+    def get_helpers(self):
+        return {'service_permission_application_url': helpers.service_permission_application_url,
+                'service_permission_applications_enabled': helpers.service_permission_applications_enabled}
