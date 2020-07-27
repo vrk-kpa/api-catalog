@@ -15,7 +15,7 @@
 {% endblock %}
 
   {% block content_action %}
-  {% if h.organizations_available() and h.is_extension_loaded('apply_permissions_for_service') %}
+  {% if h.organizations_available() and h.is_extension_loaded('apply_permissions_for_service') and not h.check_access('package_update', {'id':pkg.id }) %}
     {% link_for _('Request access'), named_route='apply_permissions_for_service.new_permission_application', subsystem_id=pkg.name, class_='btn', icon='' %}
   {% endif %}
   {{ super() }}

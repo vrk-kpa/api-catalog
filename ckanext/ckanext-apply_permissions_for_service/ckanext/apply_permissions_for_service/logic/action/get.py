@@ -8,9 +8,16 @@ from ... import model as apply_permission_model
 def service_permission_application_list(context, data_dict):
     check_access('service_permission_application_list', context, data_dict)
 
-    applications = model.Session.query(apply_permission_model.ApplyPermission).all()
+    applications = model.Session.query(apply_permission_model.ApplyPermission)
 
-    return {"sent":[application.as_dict() for application in applications]}
+    subsystem_id = data_dict.get('subsystem_id')
+    if subsystem_id:
+        applications = applications.filter(apply_permission_model.ApplyPermission.subsystem_id == subsystem_id)
+
+    applications = applications.all()
+
+    return [application.as_dict() for application in applications]
+
 
 @side_effect_free
 def service_permission_application_show(context, data_dict):

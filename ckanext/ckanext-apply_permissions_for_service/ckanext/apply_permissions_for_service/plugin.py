@@ -28,6 +28,7 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
         blueprint.add_url_rule('/', 'list_permission_applications', views.index),
         blueprint.add_url_rule('/new/<subsystem_id>', 'new_permission_application', views.new, methods=['GET', 'POST'])
         blueprint.add_url_rule('/view/<application_id>', 'view_permission_application', views.view),
+        blueprint.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', views.manage),
 
         return blueprint
 
