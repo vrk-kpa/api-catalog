@@ -76,7 +76,7 @@
             {% endblock %}
 
             {% block primary %}
-            <div class="primary border-left col-xs-12 {% if not no_nav %}col-sm-8{% endif %}">
+            <div class="primary border-left col-xs-12 {% if not no_nav %}{% block primary_col %}col-sm-8{% endblock %}{% endif %}">
 
                 {#
                 The primary_content block can be used to add content to the page.
@@ -103,7 +103,7 @@
             {% endblock %}
             {% block secondary %}
                 {%  if not no_nav %}
-                <aside class="secondary border-right col-sm-4 navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
+                <aside class="secondary border-right {% block secondary_col %}col-sm-4{% endblock %} navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
               {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
               {#
               The secondary_content block can be used to add content to the
