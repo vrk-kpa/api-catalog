@@ -1,7 +1,7 @@
 import logging
 
 from ckan import authz
-from paste.deploy.converters import aslist
+from ckan.plugins.toolkit import aslist
 
 log = logging.getLogger(__name__)
 
