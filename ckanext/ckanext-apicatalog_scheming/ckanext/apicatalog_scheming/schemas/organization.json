@@ -111,8 +111,8 @@
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
     {
-      "field_name": "company_guid",
-      "label": "Company GUID",
+      "field_name": "organization_guid",
+      "label": "Organization GUID",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
     },
