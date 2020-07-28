@@ -31,7 +31,7 @@
       "field_name": "description_translated_modified_in_catalog",
       "validators": "ignore_missing boolean_validator",
       "display_snippet": null,
-      "form_snippet": null
+      "form_snippet": "hidden.html"
     },
     {
       "field_name": "url",
