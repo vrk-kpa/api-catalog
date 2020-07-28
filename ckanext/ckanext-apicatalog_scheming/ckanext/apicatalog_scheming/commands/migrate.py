@@ -100,6 +100,7 @@ def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
 def migrate_1_52_0_to_1_53_0(ctx, config, dryrun):
     package_patches = []
     resource_patches = []
+    organization_patches = []
 
     for dataset in package_generator():
         package_patches.append({'id': dataset['id'],
@@ -110,7 +111,13 @@ def migrate_1_52_0_to_1_53_0(ctx, config, dryrun):
             resource_patches.append({'id': resource['id'],
                                      'harvested_from_xroad': harvested_from_xroad})
 
-    apply_patches(package_patches=package_patches, resource_patches=resource_patches, dryrun=dryrun)
+    for org in org_generator():
+        if org.get('description_translated') != {'fi': ""} \
+                and org.get('description_translated') != {'fi': "", 'sv': "", 'en': ""}:
+            organization_patches.append({'id': org['id'], 'description_translated_modified_in_catalog': True})
+
+    apply_patches(package_patches=package_patches, resource_patches=resource_patches,
+                  organization_patches=organization_patches, dryrun=dryrun)
 
 
 #
