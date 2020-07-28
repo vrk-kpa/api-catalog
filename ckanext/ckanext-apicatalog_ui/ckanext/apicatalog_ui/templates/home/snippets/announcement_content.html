@@ -1,0 +1,39 @@
+{% if item.package %}
+  {% set pkg_title = h.get_translated(item.package, 'title') or item.package.name %}
+  {% set pkg_url = h.url_for('dataset_read', id=item.package.name) %}
+{% endif %}
+{% if item.resource %}
+  {% set res_title = item.resource.name %}
+  {% set res_url = h.url_for('resource_read', id=item.package.name, resource_id=item.resource.id) %}
+{% endif %}
+{% if item.organization %}
+  {% set org_title = h.get_translated(item.organization, 'title') or item.organization.name %}
+  {% set org_url = h.url_for('organization_read', id=item.organization.name) %}
+{% endif %}
+
+{% if item.activity.activity_type == 'new organization' %}
+  {% if item.organization.package_count == 0 %}
+    {{ _('Organization <a href="{org_url}">{org_title}</a> joined the National Data Exchange Layer to utilise services').format(org_title=org_title, org_url=org_url) }}
+
+  {% else %}
+    {{ _('Organization <a href="{org_url}">{org_title}</a> joined the National Data Exchange Layer as a service provider').format(org_title=org_title, org_url=org_url) }}
+  {% endif %}
+
+{% elif item.activity.activity_type == 'new package' %}
+  {{ _('<a href="{org_url}">{org_title}</a> added a new subsystem <a href="{pkg_url}">{pkg_title}</a>').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+
+{% elif item.activity.activity_type == 'changed package' %}
+  {{ _('<a href="{org_url}">{org_title}</a> updated the subsystem <a href="{pkg_url}">{pkg_title}</a>').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+
+{% elif item.activity.activity_type == 'deleted package' %}
+  {{ _('<a href="{org_url}">{org_title}</a> deleted the subsystem <a href="{pkg_url}">{pkg_title}</a> and its services').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+
+{% elif item.activity.activity_type == 'new resource' %}
+  {{ _('<a href="{org_url}">{org_title}</a> added a new service <a href="{res_url}">{res_title}</a> to subsystem <a href="{pkg_url}">{pkg_title}</a>').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+
+{% elif item.activity.activity_type == 'changed resource' %}
+  {{ _('<a href="{org_url}">{org_title}</a> updated the service <a href="{res_url}">{res_title}</a> to subsystem <a href="{pkg_url}">{pkg_title}</a>').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+
+{% elif item.activity.activity_type == 'deleted resource' %}
+  {{ _('<a href="{org_url}">{org_title}</a> deleted the service <a href="{res_url}">{res_title}</a> to subsystem <a href="{pkg_url}">{pkg_title}</a>').format(org_title=org_title, org_url=org_url, pkg_title=pkg_title, pkg_url=pkg_url) }}
+{% endif %}

@@ -1,0 +1,29 @@
+{% if item.package %}
+  {% set pkg_url = h.url_for('dataset_read', id=item.package.name) %}
+{% endif %}
+{% if item.resource %}
+  {% set res_url = h.url_for('resource_read', id=item.package.name, resource_id=item.resource.id) %}
+{% endif %}
+{% if item.organization %}
+  {% set org_url = h.url_for('organization_read', id=item.organization.name) %}
+{% endif %}
+
+{% if item.activity.activity_type == 'new organization' %}
+  {% if item.organization.package_count == 0 %}
+    <a href="{{ org_url }}">{{ _('New consumer') }}</a>
+  {% else %}
+  <a href="{{ org_url }}">{{ _('New producer') }}</a>
+  {% endif %}
+{% elif item.activity.activity_type == 'new package' %}
+  <a href="{{ pkg_url }}">{{ _('New subsystem') }}</a>
+{% elif item.activity.activity_type == 'changed package' %}
+  <a href="{{ pkg_url }}">{{ _('Updated subsystem') }}</a>
+{% elif item.activity.activity_type == 'deleted package' %}
+  <a href="{{ pkg_url }}">{{ _('Deleted subsystem') }}</a>
+{% elif item.activity.activity_type == 'new resource' %}
+  <a href="{{ res_url }}">{{ _('New service') }}</a>
+{% elif item.activity.activity_type == 'changed resource' %}
+  <a href="{{ res_url }}">{{ _('Updated service') }}</a>
+{% elif item.activity.activity_type == 'deleted resource' %}
+  <a href="{{ res_url }}">{{ _('Deleted service') }}</a>
+{% endif %}
