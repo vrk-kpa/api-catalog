@@ -5514,3 +5514,29 @@ msgstr ""
 "<a href=\"{org_url}\">{org_title}</a> poisti palvelun <a "
 "href=\"{res_url}\">{res_title}</a> alijärjestelmästä <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
+
+msgid "Interfaces"
+msgstr "Rajapinnat"
+
+msgid "Attachments"
+msgstr "Liittymän lisätiedot"
+
+msgid "Information about the interface"
+msgstr "Rajapinnan tiedot"
+
+msgid ""
+"Other information about the API, e.g. how to take into use, parameters, "
+"terms of use (unless available in a separate document)"
+msgstr ""
+"Tietoa rajapinnasta, esim. käyttöönotto, parametrit, käyttöehdot (ellei "
+"erillisessä dokumentissa)"
+
+msgid ""
+"Information on the availability of the API, e.g. available 24/7, or "
+"available only during business hours"
+msgstr ""
+"Tietoa rajapinnan saatavuudesta, esim. 24/7, tai vastaa vain arkisin 8-16"
+
+msgid ""
+"Additional information on the SLA of the API, e.g. response time or speed"
+msgstr "Tietoa rajapinnan palvelutasosta, esim. vasteaika, nopeus"

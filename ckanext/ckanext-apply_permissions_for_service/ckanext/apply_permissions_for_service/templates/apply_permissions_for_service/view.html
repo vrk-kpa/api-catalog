@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-  {% link_for _('All access applications'), named_route='apply_permissions_for_service.list_permission_applications', class_='btn', icon='arrow-left' %}
+{% link_for _('All access applications'), named_route='apply_permissions_for_service.manage_permission_applications', class_='btn', icon='arrow-left', subsystem_id=application.subsystem_id %}
 
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">

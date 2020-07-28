@@ -5485,3 +5485,26 @@ msgid ""
 "href=\"{res_url}\">{res_title}</a> to subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+
+msgid "Interfaces"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Information about the interface"
+msgstr ""
+
+msgid ""
+"Other information about the API, e.g. how to take into use, parameters, "
+"terms of use (unless available in a separate document)"
+msgstr ""
+
+msgid ""
+"Information on the availability of the API, e.g. available 24/7, or "
+"available only during business hours"
+msgstr ""
+
+msgid ""
+"Additional information on the SLA of the API, e.g. response time or speed"
+msgstr ""
