@@ -5429,6 +5429,92 @@ msgstr ""
 msgid "There are currently no APIs for this organization"
 msgstr "Organisaatiolla ei ole aktiivisia liityntöjä"
 
+msgid "New consumer"
+msgstr "Uusi hyödyntäjä"
+
+msgid "New producer"
+msgstr "Uusi tuottaja"
+
+msgid "New subsystem"
+msgstr "Uusi alijärjestelmä"
+
+msgid "Updated subsystem"
+msgstr "Päivitetty alijärjestelmä"
+
+msgid "Deleted subsystem"
+msgstr "Poistettu alijärjestelmä"
+
+msgid "New service"
+msgstr "Uusi palvelu"
+
+msgid "Updated service"
+msgstr "Päivitetty palvelu"
+
+msgid "Deleted service"
+msgstr "Poistettu palvelu"
+
+msgid ""
+"Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
+"Exchange Layer to utilise services"
+msgstr ""
+"Organisaatio <a href=\"{org_url}\">{org_title}</a> alkoi hyödyntää "
+"Palveluväylän palveluita "
+
+msgid ""
+"Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
+"Exchange Layer as a service provider"
+msgstr ""
+"Organisaatio <a href=\"{org_url}\">{org_title}</a> liittyi Palveluväylään "
+"palveluntarjoajana"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> added a new subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> loi alijärjestelmän <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> updated the subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> päivitti alijärjestelmän <a "
+"href=\"{pkg_url}\">{pkg_title}</a> tietoja"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> deleted the subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a> and its services"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> poisti alijärjestelmän <a "
+"href=\"{pkg_url}\">{pkg_title}</a> ja sen sisältämät palvelut"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> added a new service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> loi uuden palvelun <a "
+"href=\"{res_url}\">{res_title}</a> alijärjestelmään <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> updated the service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> päivitti palvelun <a "
+"href=\"{res_url}\">{res_title}</a> tietoja alijärjestelmässä <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+
+msgid ""
+"<a href=\"{org_url}\">{org_title}</a> deleted the service <a "
+"href=\"{res_url}\">{res_title}</a> to subsystem <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> poisti palvelun <a "
+"href=\"{res_url}\">{res_title}</a> alijärjestelmästä <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
+
 msgid "Interfaces"
 msgstr "Rajapinnat"
 

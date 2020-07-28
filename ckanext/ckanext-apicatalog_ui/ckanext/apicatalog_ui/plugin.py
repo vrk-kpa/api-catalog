@@ -173,8 +173,11 @@ def parse_datetime(t):
     try:
         return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
     except Exception as e:
-        log.warn(e)
-        return None
+        try:
+            return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
+        except Exception as e:
+            log.warn(e)
+            return None
 
 
 NEWS_CACHE = None
@@ -232,16 +235,61 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
     return news[:count]
 
 
-def get_homepage_announcements(count=3):
-    if is_test_environment():
-        announcements = [{'title': 'Title %i' % i,
-                 'content': 'Content %i' % i,
-                 'published': date.today() - timedelta(days=i)}
-                for i in range(count)]
-    else:
-        # TODO: Fetch real announcements
-        announcements = []
+ANNOUNCEMENT_CACHE = None
+def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
+    global ANNOUNCEMENT_CACHE
+    admin_context = {'ignore_auth': True}
+    organization_show = get_action('organization_show')
+    package_show = get_action('package_show')
+    resource_show = get_action('resource_show')
 
+    def activity_to_announcement(activity):
+        try:
+            published = parse_datetime(activity.get('timestamp'))
+            activity_type = activity.get('activity_type')
+            data = {'activity': activity, 'published': published}
+
+            if activity_type == 'new organization':
+                organization_id = activity.get('object_id')
+                data['organization'] = organization_show({}, {'id': organization_id})
+
+            elif activity_type in ('new package', 'changed package', 'deleted package'):
+                package_data = activity.get('data', {}).get('package', {})
+                if package_data.get('private', False):
+                    return None
+                package_id = activity.get('object_id')
+                organization_id = package_data.get('owner_org')
+                data['package'] = package_show({}, {'id': package_id})
+                data['organization'] = organization_show({}, {'id': organization_id})
+
+            elif activity_type in ('new resource', 'changed resource', 'deleted resource'):
+                resource_id = activity.get('object_id')
+                resource = activity.get('data', {}).get('resource', {})
+                package = package_show({}, {'id': resource.get('package_id')})
+                organization = organization_show({}, {'id': package.get('owner_org')})
+                data['resource'] = resource
+                data['package'] = package
+                data['organization'] = organization
+
+            else:
+                log.debug('Skipping announcement item of type %s', activity_type)
+                return None
+
+            return data
+        except Exception as e:
+            log.warn('Error parsing announcement item: %s', e)
+            return None
+
+    if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
+        harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
+        all_announcements = (a for a in (activity_to_announcement(a)
+                                         for a in harvest_activity)
+                             if a is not None)
+        announcements = list(itertools.islice(all_announcements, count))
+        announcement_cache_timestamp = datetime.now()
+        ANNOUNCEMENT_CACHE = (announcement_cache_timestamp, announcements)
+    else:
+        announcement_cache_timestamp, announcements = ANNOUNCEMENT_CACHE
     return announcements
 
 
