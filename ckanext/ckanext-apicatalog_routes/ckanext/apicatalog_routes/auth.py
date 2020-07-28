@@ -91,6 +91,7 @@ def _is_member_editor(context):
 
 
 @chained_auth_function
+@auth_allow_anonymous_access
 def group_show(next_auth, context, data_dict=None):
     return {"success": True} if _is_member_editor(context) else next_auth(context, data_dict)
 
