@@ -106,9 +106,7 @@
       "field_name": "company_language",
       "label": "Company language",
       "preset": "fluent_text",
-      "output_validators": "ignore_missing",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "form_snippet": null
     },
     {
       "field_name": "organization_guid",
@@ -119,8 +117,8 @@
     {
       "field_name": "company_registration_date",
       "label": "Company registration date",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "preset": "datetime",
+      "form_snippet": null
     },
     {
       "field_name": "old_business_ids",
