@@ -70,9 +70,7 @@
       "field_name": "webpage_address",
       "label": "Webpage address",
       "preset": "fluent_text",
-      "output_validators": "ignore_missing",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "form_snippet": null
     },
     {
       "field_name": "webpage_address_modified_in_catalog",
@@ -84,9 +82,7 @@
       "field_name": "webpage_description",
       "label": "Webpage description",
       "preset": "fluent_text",
-      "output_validators": "ignore_missing",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "form_snippet": null
     },
     {
       "field_name": "webpage_description_modified_in_catalog",
@@ -98,9 +94,7 @@
       "field_name": "company_type",
       "label": "Company type",
       "preset": "fluent_text",
-      "output_validators": "ignore_missing",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "form_snippet": null
     },
     {
       "field_name": "company_language",
