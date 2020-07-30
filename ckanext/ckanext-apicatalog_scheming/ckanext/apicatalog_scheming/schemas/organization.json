@@ -124,7 +124,8 @@
       "field_name": "old_business_ids",
       "label": "Old business ids",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()",
+      "output_validators": "scheming_load_json"
     },
     {
       "field_name": "xroad_instance",
