@@ -93,6 +93,7 @@
     {
       "field_name": "company_type",
       "label": "Company type",
+      "preset": "fluent_text",
       "form_snippet": null
     },
     {
