@@ -111,6 +111,7 @@ ckan_plugins:
   - validate_links
   - saha
   - paha
+  - apply_permissions_for_service
   - webpage_view
   - xroad_integration
   - forcetranslation
