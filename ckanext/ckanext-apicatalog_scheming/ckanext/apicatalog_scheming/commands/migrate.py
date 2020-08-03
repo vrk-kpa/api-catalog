@@ -184,18 +184,21 @@ def apply_patches(package_patches=[], resource_patches=[], organization_patches=
         context = {'ignore_auth': True, 'allow_partial_update': True}
         for patch in package_patches:
             try:
+                print("Migrating package %s" % patch['id'])
                 package_patch(context, patch)
             except toolkit.ValidationError as e:
                 print("Migration failed for package %s reason:" % patch['id'])
                 print(e)
         for patch in resource_patches:
             try:
+                print("Migrating resource %s" % patch['id'])
                 resource_patch(context, patch)
             except toolkit.ValidationError as e:
                 print("Migration failed for resource %s, reason" % patch['id'])
                 print(e)
         for patch in organization_patches:
             try:
+                print("Migrating organization %s" % patch['id'])
                 organization_patch(context, patch)
             except toolkit.ValidationError as e:
                 print("Migration failed for organization %s reason:" % patch['id'])
