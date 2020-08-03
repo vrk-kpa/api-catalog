@@ -281,7 +281,10 @@ def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
             return None
 
     if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
-        harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
+        try:
+            harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
+        except NotFound:
+            harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default'})
         all_announcements = (a for a in (activity_to_announcement(a)
                                          for a in harvest_activity)
                              if a is not None)
