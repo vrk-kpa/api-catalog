@@ -2,5 +2,5 @@
 {% if access_request_url %}
 <a href="{{ access_request_url }}" class="btn">{{ _('Request access') }}</a>
 {% elif h.service_permission_applications_enabled(subsystem_id) %}
-  {% link_for _('Request access'), named_route='apply_permissions_for_service.new_permission_application', subsystem_id=subsystem_id, class_='btn', icon='' %}
+  {% link_for _('Request access'), named_route='apply_permissions.new_permission_application', subsystem_id=subsystem_id, class_='btn', icon='' %}
 {% endif %}

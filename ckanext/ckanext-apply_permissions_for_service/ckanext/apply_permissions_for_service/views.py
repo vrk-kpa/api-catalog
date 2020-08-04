@@ -1,8 +1,10 @@
 import ckan.plugins.toolkit as toolkit
-
+from flask import Blueprint
 from logging import getLogger
 
 log = getLogger(__name__)
+
+apply_permissions = Blueprint("apply_permissions", __name__, url_prefix=u'/apply_permissions_for_service')
 
 
 def index():
@@ -158,3 +160,13 @@ def settings(subsystem_id):
             return settings_get(context, subsystem_id)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
+
+apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
+apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
+apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
+apply_permissions.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', view_func=manage)
+apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings', view_func=settings, methods=['GET', 'POST'])
+
+
+def get_blueprints():
+    return [apply_permissions]

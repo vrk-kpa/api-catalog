@@ -14,7 +14,7 @@
     {% if service %}
     <li>{% link_for h.resource_display_name(service)|truncate(30), controller='package', action='resource_read', id=pkg.name, resource_id=service.id %}</li>
     {% endif %}
-    <li class="active">{% link_for _('Request access'), named_route='apply_permissions_for_service.new_permission_application', subsystem_id=subsystem_id, service_id=service_id %}</li>
+    <li class="active">{% link_for _('Request access'), named_route='apply_permissions.new_permission_application', subsystem_id=subsystem_id, service_id=service_id %}</li>
 {% endblock %}
 
 {% block prelude %}

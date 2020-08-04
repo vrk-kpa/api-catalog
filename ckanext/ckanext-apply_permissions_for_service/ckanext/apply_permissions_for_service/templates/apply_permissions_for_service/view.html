@@ -2,7 +2,7 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions_for_service.view_permission_application', id=application.id%}</li>
+  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions.view_permission_application', id=application.id%}</li>
 {% endblock %}
 
 {% block prelude %}
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-{% link_for _('All access applications'), named_route='apply_permissions_for_service.manage_permission_applications', class_='btn', icon='arrow-left', subsystem_id=application.subsystem_id %}
+{% link_for _('All access applications'), named_route='apply_permissions.manage_permission_applications', class_='btn', icon='arrow-left', subsystem_id=application.subsystem_id %}
 
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">
