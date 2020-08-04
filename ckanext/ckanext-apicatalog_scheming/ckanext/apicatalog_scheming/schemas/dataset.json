@@ -225,6 +225,7 @@
       "field_name": "harvested_from_xroad",
       "label": "Harvested from X-Road",
       "form_snippet": false,
+      "display_snippet": false,
       "validators": "keep_old_value_if_missing default_value(false) boolean_validator ignore_not_sysadmin"
     },
     {
