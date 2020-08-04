@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-06-25 22:04+0000\n"
+"POT-Creation-Date: 2020-08-04 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
+
+#: ckanext/apply_permissions_for_service/views.py:22
+#: ckanext/apply_permissions_for_service/views.py:91
+#: ckanext/apply_permissions_for_service/views.py:101
+#: ckanext/apply_permissions_for_service/views.py:163
+msgid "Not authorized to see this page"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/views.py:54
+msgid "This API is not accepting access applications."
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/views.py:151
+msgid "Changes saved successfully"
+msgstr ""
 
 #: ckanext/apply_permissions_for_service/logic/action/create.py:24
 #: ckanext/apply_permissions_for_service/logic/action/create.py:27
@@ -49,7 +64,7 @@ msgstr ""
 msgid "Received applications"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:30
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:32
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:12
 msgid "You have not received any service access applications."
 msgstr ""
@@ -252,16 +267,5 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
 msgid "Edit settings for access requests"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/views/__init__.py:20
-#: ckanext/apply_permissions_for_service/views/__init__.py:85
-#: ckanext/apply_permissions_for_service/views/__init__.py:95
-#: ckanext/apply_permissions_for_service/views/__init__.py:157
-msgid "Not authorized to see this page"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/views/__init__.py:145
-msgid "Changes saved successfully"
 msgstr ""
 

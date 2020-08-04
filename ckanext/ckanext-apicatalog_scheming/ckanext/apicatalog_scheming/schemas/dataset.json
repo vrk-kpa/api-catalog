@@ -45,8 +45,7 @@
         "data-module-tags": "",
         "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
       },
-      "description": "",
-      "only_default_lang_required": true
+      "description": ""
     },
     {
       "field_name": "validSince",

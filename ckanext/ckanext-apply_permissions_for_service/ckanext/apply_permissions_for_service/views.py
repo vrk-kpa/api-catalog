@@ -49,7 +49,8 @@ def new_get(context, subsystem_id, errors={}, values={}):
     service_id = toolkit.request.args.get('service_id')
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
 
-    if package.get('service_permission_settings', {}).get('delivery_method') == "none":
+    if package.get('service_permission_settings', {}).get('delivery_method') == "none" \
+            or package.get('service_permission_settings', {}).get('delivery_method') is None:
         toolkit.abort(403, toolkit._("This API is not accepting access applications."))
     organization = toolkit.get_action('organization_show')(context, {'id': package['owner_org']})
     user_managed_organizations = toolkit.get_action('organization_list_for_user')(context, {

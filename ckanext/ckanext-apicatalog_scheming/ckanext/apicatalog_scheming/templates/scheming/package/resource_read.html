@@ -47,7 +47,7 @@
             {% endif %}
             {% if h.organizations_available() %}
               <li>
-                {% link_for _('Request access'), named_route='apply_permissions_for_service.new_permission_application', subsystem_id=pkg.name, service_id=res.id, class_='btn', icon='' %}
+                {% link_for _('Request access'), named_route='apply_permissions.new_permission_application', subsystem_id=pkg.name, service_id=res.id, class_='btn', icon='' %}
               </li>
             {% endif %}
             {% endblock %}
