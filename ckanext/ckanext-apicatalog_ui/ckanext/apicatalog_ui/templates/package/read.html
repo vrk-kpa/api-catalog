@@ -12,8 +12,7 @@
 {% endblock %}
 
 {% block package_tags %}
-  {%- set tags = h.scheming_language_text(pkg.keywords) -%}
-  {% snippet "package/snippets/tags.html", tags=tags %}
+  {% snippet "package/snippets/tags.html", tags=pkg.get('keywords', {}), field='keywords' %}
 {% endblock %}
 
 {% block package_resources %}

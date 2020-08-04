@@ -55,6 +55,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
         return {'scheming_field_only_default_required': scheming_field_only_default_required,
                 'scheming_language_text_or_empty': scheming_language_text_or_empty,
                 'get_lang_prefix': get_lang_prefix,
+                'call_toolkit_function': call_toolkit_function,
                 'add_locale_to_source': add_locale_to_source}
 
 
@@ -145,6 +146,8 @@ def get_lang_prefix():
 
     return language
 
+def call_toolkit_function(fn, args, kwargs):
+    return getattr(toolkit, fn)(*args, **kwargs)
 
 def create_vocabulary(name, defer=False):
     user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
