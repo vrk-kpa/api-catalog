@@ -43,4 +43,4 @@ def service_permission_settings_show(context, data_dict):
 
     pkg = plugins.toolkit.get_action('package_show')(context, {'id': subsystem_id})
 
-    return json.loads(pkg.get('service_permission_settings', '{}'))
+    return pkg.get('service_permission_settings', {})

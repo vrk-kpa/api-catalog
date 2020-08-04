@@ -1,5 +1,5 @@
-import ckan.plugins as plugins
-from plugins.toolkit import _, h, g, c, get_action, ValidationError, NotAuthorized
+import ckan.plugins.toolkit as toolkit
+
 from logging import getLogger
 
 log = getLogger(__name__)
@@ -7,21 +7,21 @@ log = getLogger(__name__)
 
 def index():
     try:
-        subsystem_id = plugins.toolkit.request.args.get('id')
-        context = {u'user': g.user, u'auth_user_obj': g.userobj}
+        subsystem_id = toolkit.request.args.get('id')
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
         data_dict = {'subsystem_id': subsystem_id}
-        applications = get_action('service_permission_application_list')(context, data_dict)
+        applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
         extra_vars = {
                 'sent_applications': applications,
                 'received_applications': applications
                 }
-        return plugins.toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
-    except NotAuthorized:
-        plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
+        return toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
 def new_post(context, subsystem_id):
-    form = plugins.toolkit.request.form
+    form = toolkit.request.form
     data_dict = {
             'organization': form.get('organization'),
             'business_code': form.get('businessCode'),
@@ -36,22 +36,25 @@ def new_post(context, subsystem_id):
             }
 
     try:
-        get_action('service_permission_application_create')(context, data_dict)
-    except ValidationError as e:
+        toolkit.get_action('service_permission_application_create')(context, data_dict)
+    except toolkit.ValidationError as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)
 
-    return plugins.toolkit.render('apply_permissions_for_service/sent.html')
+    return toolkit.render('apply_permissions_for_service/sent.html')
 
 
 def new_get(context, subsystem_id, errors={}, values={}):
-    service_id = plugins.toolkit.request.args.get('service_id')
-    package = get_action('package_show')(context, {'id': subsystem_id})
-    organization = get_action('organization_show')(context, {'id': package['owner_org']})
-    user_managed_organizations = get_action('organization_list_for_user')(context, {
+    service_id = toolkit.request.args.get('service_id')
+    package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
+
+    if package.get('service_permission_settings', {}).get('delivery_method') == "none":
+        toolkit.abort(403, toolkit._("This API is not accepting access applications."))
+    organization = toolkit.get_action('organization_show')(context, {'id': package['owner_org']})
+    user_managed_organizations = toolkit.get_action('organization_list_for_user')(context, {
         'permission': 'manage_group'
         })
     user_managed_datasets_query = 'owner_org:({})'.format(' OR '.join(o['id'] for o in user_managed_organizations))
-    user_managed_datasets = get_action('package_search')(context, {
+    user_managed_datasets = toolkit.get_action('package_search')(context, {
         'q': user_managed_datasets_query,
         'include_private': True,
         'rows': 1000
@@ -63,58 +66,58 @@ def new_get(context, subsystem_id, errors={}, values={}):
             'pkg': package,
             'service': next((r for r in package.get('resources', []) if r['id'] == service_id), None),
             'org': organization,
-            'user': g.userobj,
+            'user': toolkit.g.userobj,
             'user_managed_organizations': user_managed_organizations,
             'user_managed_datasets': user_managed_datasets,
             'values': values,
             'errors': errors
             }
-    return plugins.toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)
+    return toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)
 
 
 def new(subsystem_id):
     try:
-        context = {u'user': g.user, u'auth_user_obj': g.userobj}
-        plugins.toolkit.check_access('service_permission_application_create', context, {})
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
+        toolkit.check_access('service_permission_application_create', context, {})
 
-        if plugins.toolkit.request.method == u'POST':
+        if toolkit.request.method == u'POST':
             return new_post(context, subsystem_id)
         else:
             return new_get(context, subsystem_id)
-    except NotAuthorized:
-        plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 def view(application_id):
     try:
-        context = {u'user': g.user, u'auth_user_obj': g.userobj}
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
         data_dict = {'id': application_id}
-        application = get_action('service_permission_application_show')(context, data_dict)
+        application = toolkit.get_action('service_permission_application_show')(context, data_dict)
         extra_vars = {'application': application}
-        return plugins.toolkit.render('apply_permissions_for_service/view.html', extra_vars=extra_vars)
-    except NotAuthorized:
-        plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
+        return toolkit.render('apply_permissions_for_service/view.html', extra_vars=extra_vars)
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
 def manage(subsystem_id):
-    context = {u'user': g.user, u'auth_user_obj': g.userobj}
-    package = get_action('package_show')(context, {'id': subsystem_id})
-    c.pkg_dict = package
+    context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
+    package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
+    toolkit.c.pkg_dict = package
 
     data_dict = {'subsystem_id': subsystem_id}
-    applications = get_action('service_permission_application_list')(context, data_dict)
+    applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
 
     extra_vars = {
             'subsystem_id': subsystem_id,
             'pkg': package,
             'applications': applications
             }
-    return plugins.toolkit.render('apply_permissions_for_service/manage.html', extra_vars=extra_vars)
+    return toolkit.render('apply_permissions_for_service/manage.html', extra_vars=extra_vars)
 
 
 def settings_get(context, subsystem_id, errors={}, values=None):
-    package = get_action('package_show')(context, {'id': subsystem_id})
-    c.pkg_dict = package
-    settings = values or get_action('service_permission_settings_show')(context, {'subsystem_id': subsystem_id})
+    package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
+    toolkit.c.pkg_dict = package
+    settings = values or toolkit.get_action('service_permission_settings_show')(context, {'subsystem_id': subsystem_id})
 
     extra_vars = {
             'subsystem_id': subsystem_id,
@@ -123,11 +126,11 @@ def settings_get(context, subsystem_id, errors={}, values=None):
             'settings': settings,
             }
 
-    return plugins.toolkit.render('apply_permissions_for_service/settings.html', extra_vars=extra_vars)
+    return toolkit.render('apply_permissions_for_service/settings.html', extra_vars=extra_vars)
 
 
 def settings_post(context, subsystem_id):
-    form = plugins.toolkit.request.form
+    form = toolkit.request.form
     data_dict = {
             'subsystem_id': subsystem_id,
             'delivery_method': form.get('deliveryMethod'),
@@ -137,21 +140,21 @@ def settings_post(context, subsystem_id):
             }
 
     try:
-        get_action('service_permission_settings_update')(context, data_dict)
+        toolkit.get_action('service_permission_settings_update')(context, data_dict)
         pass
-    except ValidationError as e:
+    except toolkit.ValidationError as e:
         return settings_get(context, subsystem_id, e.error_dict, values=data_dict)
 
-    plugins.toolkit.h.flash_success(_('Changes saved successfully'))
+    toolkit.h.flash_success(toolkit._('Changes saved successfully'))
     return settings_get(context, subsystem_id, values=data_dict)
 
 
 def settings(subsystem_id):
     try:
-        context = {u'user': g.user, u'auth_user_obj': g.userobj}
-        if plugins.toolkit.request.method == u'POST':
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
+        if toolkit.request.method == u'POST':
             return settings_post(context, subsystem_id)
         else:
             return settings_get(context, subsystem_id)
-    except NotAuthorized:
-        plugins.toolkit.abort(403, plugins.toolkit._(u'Not authorized to see this page'))
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))

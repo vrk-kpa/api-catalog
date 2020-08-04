@@ -118,7 +118,7 @@
       "form_snippet": null,
       "display_snippet": null,
       "validators": "keep_old_value_if_missing ignore_missing",
-      "output_validators": "ignore_not_package_maintainer"
+      "output_validators": "scheming_load_json ignore_not_package_maintainer"
     }
   ],
   "resource_fields": [
