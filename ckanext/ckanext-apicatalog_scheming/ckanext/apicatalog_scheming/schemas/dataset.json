@@ -39,7 +39,7 @@
       "form_placeholder": "e.g. names",
       "form_languages": ["fi", "en", "sv"],
       "preset": "fluent_vocabulary_with_autocomplete",
-      "validators": "only_default_lang_required fluent_tags create_fluent_tags(keywords)",
+      "validators": "fluent_tags create_fluent_tags(keywords)",
       "form_attrs": {
         "data-module": "autocomplete",
         "data-module-tags": "",
