@@ -10,20 +10,20 @@
 
 {% if item.activity.activity_type == 'new organization' %}
   {% if item.organization.package_count == 0 %}
-    <a href="{{ org_url }}">{{ _('New consumer') }}</a>
+    <span>{{ _('New consumer') }}</span>>
   {% else %}
-  <a href="{{ org_url }}">{{ _('New producer') }}</a>
+  <span>{{ _('New producer') }}</span>
   {% endif %}
 {% elif item.activity.activity_type == 'new package' %}
-  <a href="{{ pkg_url }}">{{ _('New subsystem') }}</a>
+  <span>{{ _('New subsystem') }}</span>
 {% elif item.activity.activity_type == 'changed package' %}
-  <a href="{{ pkg_url }}">{{ _('Updated subsystem') }}</a>
+  <span>{{ _('Updated subsystem') }}</span>
 {% elif item.activity.activity_type == 'deleted package' %}
-  <a href="{{ pkg_url }}">{{ _('Deleted subsystem') }}</a>
+  <span>{{ _('Deleted subsystem') }}</span>
 {% elif item.activity.activity_type == 'new resource' %}
-  <a href="{{ res_url }}">{{ _('New service') }}</a>
+  <span>{{ _('New service') }}</span>
 {% elif item.activity.activity_type == 'changed resource' %}
-  <a href="{{ res_url }}">{{ _('Updated service') }}</a>
+  <span>{{ _('Updated service') }}</span>
 {% elif item.activity.activity_type == 'deleted resource' %}
-  <a href="{{ res_url }}">{{ _('Deleted service') }}</a>
+  <span>{{ _('Deleted service') }}</span>
 {% endif %}
