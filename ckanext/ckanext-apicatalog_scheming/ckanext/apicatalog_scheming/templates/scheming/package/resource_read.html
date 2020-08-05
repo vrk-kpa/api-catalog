@@ -45,11 +45,9 @@
             {% if 'datastore' in g.plugins %}
               <li>{% snippet 'package/snippets/data_api_button.html', resource=res, datastore_root_url=c.datastore_api %}</li>
             {% endif %}
-            {% if h.organizations_available() %}
-              <li>
-                {% link_for _('Request access'), named_route='apply_permissions.new_permission_application', subsystem_id=pkg.name, service_id=res.id, class_='btn', icon='' %}
-              </li>
-            {% endif %}
+                {% if h.organizations_available() and h.is_extension_loaded('apply_permissions_for_service') and not h.check_access('package_update', {'id':pkg.id }) %}
+                    {% snippet 'apply_permissions_for_service/snippets/request_access_button.html', subsystem_id=pkg.name %}
+                {% endif %}
             {% endblock %}
           </ul>
           {% endblock %}
