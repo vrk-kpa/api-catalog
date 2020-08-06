@@ -1,6 +1,15 @@
 {% ckan_extends %}
 {% import 'macros/form.html' as form %}
 
+
+{% block page_primary_action %}
+    {% if h.check_access('organization_member_create', {'id': organization.id}) %}
+
+        {% link_for _('Add Member'), controller='organization', action='member_new', id=c.group_dict.id, class_='btn btn-primary', icon='plus-square', named_route=group_type + '_member_new' %}
+    {% endif %}
+{% endblock %}
+
+
 {% block primary_content_inner %}
 {% set count = c.members|length %}
 {% set members_count = ungettext('{count} member', '{count} members', count).format(count=count) %}
@@ -21,7 +30,7 @@
         </td>
         <td>{{ role }}</td>
         <td>
-            {% if h.check_access('group_member_create', {'id': c.group_dict.id }) and h.check_access('group_member_delete', {'id': c.group_dict.id }) %}
+            {% if h.check_access('organization_member_create', {'id': c.group_dict.id }) and h.check_access('organization_member_delete', {'id': c.group_dict.id }) %}
             <div class="btn-group pull-right">
                 <a class="btn btn-default btn-sm" href="{% url_for controller='organization', action='member_new', id=c.group_dict.id, user=user_id %}" title="{{ _('Edit') }}">
                     <i class="fa fa-wrench"></i>
