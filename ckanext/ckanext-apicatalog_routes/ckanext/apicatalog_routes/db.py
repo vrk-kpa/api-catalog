@@ -23,6 +23,7 @@ class UserForOrganization(Base):
     email = Column(types.UnicodeText, nullable=False)
     business_id = Column(types.UnicodeText, nullable=False)
     organization_name = Column(types.UnicodeText, nullable=False)
+    state = Column(types.UnicodeText, nullable=False)
 
     @classmethod
     def create(cls, name, email, business_id, organization_name):
@@ -30,7 +31,8 @@ class UserForOrganization(Base):
         user_for_organization = UserForOrganization(name=name,
                                                     email=email,
                                                     business_id=business_id,
-                                                    organization_name=organization_name)
+                                                    organization_name=organization_name,
+                                                    state="pending")
         model.Session.add(user_for_organization)
         model.repo.commit()
 
