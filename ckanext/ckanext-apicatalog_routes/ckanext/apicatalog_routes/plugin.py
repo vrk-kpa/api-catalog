@@ -207,10 +207,10 @@ def create_user_to_organization(context, data_dict):
         session.rollback()
         raise ValidationError(errors)
 
-    UserForOrganization.create(data['name'], data['email'], data['business_id'], data['organization_name'])
+    created_user = UserForOrganization.create(data['fullname'], data['email'], data['business_id'], data['organization_name'])
 
     return {
-        "msg": _("User {name} stored in database.").format(name=data['name'])
+        "msg": _("User {name} stored in database.").format(name=created_user.fullname)
     }
 
 
