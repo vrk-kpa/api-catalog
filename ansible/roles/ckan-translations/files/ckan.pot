@@ -5272,3 +5272,20 @@ msgstr ""
 msgid "Additional information on the SLA of the API, e.g. response time or speed"
 msgstr ""
 
+msgid "X-Road instance"
+msgstr ""
+
+msgid "X-Road member class"
+msgstr ""
+
+msgid "X-Road member code"
+msgstr ""
+
+msgid "X-Road subsystem code"
+msgstr ""
+
+msgid "X-Road service code"
+msgstr ""
+
+msgid "X-Road service version"
+msgstr ""
