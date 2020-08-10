@@ -4,7 +4,7 @@
   display: none;
 }
 
-.opblock-colors(@background, @foreground) {
+.opblock-colors(@background, @foreground, @shadow: undefined) {
   border-color: @foreground;
   background: @background;
   .opblock-summary {
@@ -12,6 +12,10 @@
   }
   .opblock-summary-method {
     background: @foreground;
+  }
+
+  .opblock-summary-method when (@shadow = true){
+    text-shadow: 0 2px darken(@foreground, 5%)
   }
 }
 
@@ -24,10 +28,10 @@
     .opblock-colors(fade(@suomifi-highlight-base, 10%), @suomifi-highlight-base)
   }
   .opblock.opblock-post {
-    .opblock-colors(fade(@suomifi-success-base, 10%), @suomifi-success-base)
+    .opblock-colors(fade(@suomifi-success-base, 10%), @suomifi-success-base, true)
   }
   .opblock.opblock-put {
-    .opblock-colors(fade(@suomifi-warning-base, 10%), @suomifi-warning-base)
+    .opblock-colors(fade(@suomifi-warning-base, 10%), @suomifi-warning-base, true)
   }
   .opblock.opblock-delete {
     .opblock-colors(fade(@suomifi-alert-base, 10%), @suomifi-alert-base)
