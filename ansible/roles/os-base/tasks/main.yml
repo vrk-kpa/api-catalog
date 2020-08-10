@@ -55,3 +55,8 @@
     - "{{ cache_path }}"
 
 - include: pip.yml
+
+- name: Generate finnish locale
+  locale_gen:
+    name: fi_FI.UTF-8
+    state: present

@@ -31,5 +31,5 @@
   become_user: postgres
   postgresql_db: name={{ item.name }} owner={{ item.owner }} encoding={{ item.encoding }} lc_collate={{ item.collate }} lc_ctype={{ item.ctype }} template={{ item.template }}
   with_items:
-  - { name: "{{ database_ckan.name }}", owner: "{{ database_ckan.username }}", encoding: 'UTF-8', collate: 'en_US.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }
+  - { name: "{{ database_ckan.name }}", owner: "{{ database_ckan.username }}", encoding: 'UTF-8', collate: 'fi_FI.UTF-8', ctype: 'en_US.UTF-8', template: 'template0' }
   ignore_errors: True
