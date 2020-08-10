@@ -325,6 +325,7 @@ def custom_organization_list(params):
 
     data_dict_page_results = {
         'all_fields': True,
+        'include_extras': True,
         'q': q,
         'sort': sort_by,
     }

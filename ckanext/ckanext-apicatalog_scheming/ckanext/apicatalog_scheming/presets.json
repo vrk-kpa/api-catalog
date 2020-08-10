@@ -94,7 +94,7 @@
         "form_snippet": "fluent_title.html",
         "display_snippet": "fluent_text.html",
         "error_snippet": "fluent_text.html",
-        "validators": "only_default_lang_required fluent_text",
+        "validators": "only_default_lang_required fluent_text override_field_with_default_translation(title)",
         "output_validators": "fluent_core_translated_output",
         "classes": ["control-full"],
         "form_attrs": {

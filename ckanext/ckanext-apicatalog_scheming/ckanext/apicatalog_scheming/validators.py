@@ -147,10 +147,11 @@ def mark_as_modified_in_catalog_if_changed(field, schema):
     from ckan.logic import get_action
     def validator(key, data, errors, context):
 
-        old_organization = get_action('organization_show')(context, {'id': context['group'].id})
-        if json.dumps(old_organization.get(key[0])) != data[key] and 'for_edit' in context:
-            flattened = df.flatten_dict({ key[0] + '_modified_in_catalog': True })
-            data.update(flattened)
+        if context.get('group'):
+            old_organization = get_action('organization_show')(context, {'id': context['group'].id})
+            if json.dumps(old_organization.get(key[0])) != data[key] and 'for_edit' in context:
+                flattened = df.flatten_dict({ key[0] + '_modified_in_catalog': True })
+                data.update(flattened)
 
     return validator
 
@@ -210,3 +211,39 @@ def convert_to_json_compatible_str_if_str(value):
         except ValueError:
             value = json.dumps({'fi': value})
         return value
+
+def override_field_with_default_translation(overridden_field_name):
+    @scheming_validator
+    def implementation(field, schema):
+
+        from ckan.lib.navl.dictization_functions import missing
+
+        default_lang = config.get('ckan.locale_default', 'en')
+
+        def validator(key, data, errors, context):
+            value = data[key]
+            override_value = missing
+
+            if value is not missing:
+                if isinstance(value, basestring):
+                    try:
+                        value = json.loads(value)
+                    except ValueError:
+                        errors[key].append(_('Failed to decode JSON string'))
+                        return
+                    except UnicodeDecodeError:
+                        errors[key].append(_('Invalid encoding for JSON string'))
+                        return
+                if not isinstance(value, dict):
+                    errors[key].append(_('expecting JSON object'))
+                    return
+
+                override_value = value.get(default_lang, missing)
+
+            if override_value not in (None, missing):
+                overridden_key = tuple(overridden_field_name.split('.'))
+                data[overridden_key] = override_value
+
+        return validator
+
+    return implementation

@@ -23,7 +23,7 @@ Example:
   {% block title %}
     <h2 class="media-heading">
       <a href="{{ url }}" title="{{ _('View {organization_name}').format(organization_name=organization.display_name) }}">
-        {{ organization.display_name }}
+        {{ h.get_translated(organization, 'title') }}
       </a>
     </h2>
   {% endblock %}
