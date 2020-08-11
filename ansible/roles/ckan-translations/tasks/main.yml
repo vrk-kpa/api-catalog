@@ -5,7 +5,7 @@
   with_items: "{{ ckan_languages }}"
 
 - name: Copy CKAN translations
-  copy: src="{{ item }}.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po"
+  copy: src="{{ item }}/LC_MESSAGES/{{ item }}.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po"
   with_items: "{{ ckan_languages }}"
 
 - name: Compile translation files
@@ -32,3 +32,8 @@
   args:
     chdir: "{{ ckanext_sync_path }}/{{ item }}"
 
+- name: Add facet translations
+  command: >-
+    /usr/lib/ckan/default/bin/paster
+    --plugin=ckanext-apicatalog_scheming translations /usr/lib/ckan/default/src/ckan/ckan/i18n/
+    -c /etc/ckan/default/production.ini

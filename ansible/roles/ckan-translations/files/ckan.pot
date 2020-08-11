@@ -5289,3 +5289,12 @@ msgstr ""
 
 msgid "X-Road service version"
 msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Subsystems with services"
+msgstr ""
+
+msgid "Subsystems without services"
+msgstr ""

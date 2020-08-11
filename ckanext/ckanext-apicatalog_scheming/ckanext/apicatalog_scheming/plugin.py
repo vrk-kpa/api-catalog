@@ -67,7 +67,8 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
         facets_dict = OrderedDict([
             ('organization', _('Organization')),
             ('vocab_keywords_' + lang, _('Tags')),
-            ('res_format', _('Formats'))
+            ('res_format', _('Formats')),
+            ('services', _('Services'))
             ])
         return facets_dict
 
@@ -91,6 +92,12 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
 
         if 'date_released' in pkg_dict and ISO_DATETIME_FORMAT.match(pkg_dict['date_released']):
             pkg_dict['metadata_created'] = "%sZ" % pkg_dict['date_released']
+
+
+        if pkg_dict.get('num_resources', 0) > 0:
+            pkg_dict['services'] = "Subsystems with services"
+        else:
+            pkg_dict['services'] = "Subsystems without services"
 
         return pkg_dict
 

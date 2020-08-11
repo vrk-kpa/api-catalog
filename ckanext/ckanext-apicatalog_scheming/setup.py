@@ -81,5 +81,6 @@ setup(
         apicatalog_scheming=ckanext.apicatalog_scheming.plugin:Apicatalog_SchemingPlugin
         [paste.paster_command]
         content = ckanext.apicatalog_scheming.commands.migrate:content_group
+        translations = ckanext.apicatalog_scheming.commands.commands:apicatalog_translation_group
     ''',
 )

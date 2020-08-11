@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [liityntakatalogi.ckan-pot]
-file_filter = ansible/roles/ckan-translations/files/<lang>.po
+file_filter = ansible/roles/ckan-translations/files/<lang>/LC_MESSAGES/<lang>.po
 minimum_perc = 0
 source_file = ansible/roles/ckan-translations/files/ckan.pot
 source_lang = en
