@@ -87,7 +87,8 @@
       "label": "Webpage description",
       "preset": "fluent_text",
       "validators": "keep_old_value_if_missing fluent_text",
-      "form_snippet": null
+      "form_snippet": null,
+      "display_snippet": null
     },
     {
       "field_name": "webpage_description_modified_in_catalog",
