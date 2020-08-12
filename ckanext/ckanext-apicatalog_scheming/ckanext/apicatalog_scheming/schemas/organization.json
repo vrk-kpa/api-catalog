@@ -59,7 +59,8 @@
       "field_name": "email_address",
       "label": "Email address",
       "display_snippet": "email.html",
-      "validators": "ignore_missing"
+      "validators": "ignore_missing",
+      "display_email_name_field": "email_address_description"
     },
     {
       "field_name": "email_address_description",
@@ -70,7 +71,10 @@
       "field_name": "webpage_address",
       "label": "Webpage address",
       "preset": "fluent_text",
-      "form_snippet": null
+      "display_webpage_name_field": "webpage_description",
+      "display_snippet": "webpage.html",
+      "form_snippet": null,
+      "validators": "keep_old_value_if_missing fluent_text"
     },
     {
       "field_name": "webpage_address_modified_in_catalog",
@@ -82,6 +86,7 @@
       "field_name": "webpage_description",
       "label": "Webpage description",
       "preset": "fluent_text",
+      "validators": "keep_old_value_if_missing fluent_text",
       "form_snippet": null
     },
     {

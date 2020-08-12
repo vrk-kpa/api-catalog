@@ -1,0 +1,4 @@
+{{ h.link_to(h.scheming_language_text(data[field.display_webpage_name_field])
+    if field.display_webpage_name_field and data[field.display_webpage_name_field]
+    else h.scheming_language_text(data[field.field_name]), h.scheming_language_text(data[field.field_name]),
+    rel=field.display_property, target='_blank') }}
