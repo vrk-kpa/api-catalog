@@ -1,6 +1,7 @@
 import uuid
 
 from ckan.plugins import toolkit
+from ckanext.apicatalog_routes import views
 from pylons import config
 import ckan
 import json
@@ -62,6 +63,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     ckan.plugins.implements(ckan.plugins.IPermissionLabels)
     ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
     ckan.plugins.implements(ckan.plugins.IActions)
+    ckan.plugins.implements(ckan.plugins.IBlueprint)
 
     # IRoutes
 
@@ -187,6 +189,10 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             "send_reset_link": send_reset_link,
             "create_user_to_organization": create_user_to_organization
         }
+
+    # IBlueprint
+    def get_blueprint(self):
+        return views.get_blueprints()
 
 def send_reset_link(context, data_dict):
     ckan.logic.check_access('send_reset_link', context)

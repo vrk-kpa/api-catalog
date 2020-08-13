@@ -12,6 +12,7 @@ import itertools
 import requests
 from datetime import datetime, timedelta, date
 import ckan.lib.helpers as h
+from typing import List
 
 NotFound = logic.NotFound
 config = toolkit.config
@@ -280,13 +281,32 @@ def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
             log.warn('Error parsing announcement item: %s', e)
             return None
 
+    def fetch_activity(activity_count=3):
+
+        allowed_activity_types = ['new organization', 'new package', 'changed package', 'deleted package',
+                                  'new resource', 'changed resource', 'deleted resource']
+        offset = 0
+        limit = 100
+        collected_activities = []
+
+        while len(collected_activities) <= activity_count:
+            try:
+                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest', 'offset': offset, 'limit': limit})
+            except NotFound:
+                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default', 'offset': offset, 'limit': limit})
+
+            offset += limit
+            collected_activities += (activity for activity in harvest_activity
+                                     if activity.get('activity_type') in allowed_activity_types)
+        return collected_activities
+
+
     if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
-        try:
-            harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest'})
-        except NotFound:
-            harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default'})
+
+        harvest_activities = fetch_activity(count)
+
         all_announcements = (a for a in (activity_to_announcement(a)
-                                         for a in harvest_activity)
+                                         for a in harvest_activities)
                              if a is not None)
         announcements = list(itertools.islice(all_announcements, count))
         announcement_cache_timestamp = datetime.now()
