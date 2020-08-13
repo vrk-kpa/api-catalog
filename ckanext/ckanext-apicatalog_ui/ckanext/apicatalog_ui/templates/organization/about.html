@@ -1,11 +1,5 @@
 {% ckan_extends %}
 
-{% block subtitle %}
-	{{ _('About') }}
-	{{ g.template_title_delimiter }}
-	{{ super() }}
-{% endblock %}
-
 {% block primary %}
 	<div class="row">
 		<div class="col-sm-8">
@@ -16,32 +10,93 @@
 			{% endblock %}
 			{% block organization_extras %}
 
-
-                {%- set exclude_fields = [
-                    'id',
-                    'title',
-                    'title_translated',
-                    'name',
-                    'description_translated',
-                    'organization_guid',
-                    'old_business_ids'
-                ] -%}
-
+                <h2>{{ _('Contact Information') }}</h2>
                 <dl>
-                    {% if c.group_dict['webpage_address'] %}
 
+                    {% if c.group_dict['email_address'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'email_address') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
                     {% endif %}
 
-
-                    {% for f in c.scheming_fields %}
-                        {%- if f.field_name not in exclude_fields
-                            and f.display_snippet is not none
-                            and c.group_dict[f.field_name]-%}
-                        <dt>{{ h.scheming_language_text(f.label) }}:</dt>
+                    {% if c.group_dict['webpage_address'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'webpage_address') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
                         <dd>{%- snippet 'scheming/snippets/display_field.html',
-          field=f, data=c.group_dict, schema=schema -%}</dd>
-                        {% endif %}
-                    {% endfor %}
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['street_address'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'street_address') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['postal_address'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'postal_address') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['phone_number'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'phone_number') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+                </dl>
+                <dl>
+                <h2>{{ _(' X-Road related information') }}</h2>
+
+                    {% if c.group_dict['xroad_instance'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'xroad_instance') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['xroad_memberclass'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'xroad_memberclass') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['xroad_membercode'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'xroad_membercode') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+                </dl>
+                <h2>{{ _('Additional information') }}</h2>
+                <dl>
+
+
+                    {% if c.group_dict['company_type'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'company_type') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['company_language'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'company_language') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['company_registeration_date'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'company_registeration_date') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
                 </dl>
 			{% endblock %}
 		</div>

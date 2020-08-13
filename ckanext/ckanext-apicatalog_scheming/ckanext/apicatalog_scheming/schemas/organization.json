@@ -100,13 +100,15 @@
       "field_name": "company_type",
       "label": "Company type",
       "preset": "fluent_text",
-      "form_snippet": null
+      "form_snippet": null,
+      "display_snippet": "fluent_text.html"
     },
     {
       "field_name": "company_language",
       "label": "Company language",
       "preset": "fluent_text",
-      "form_snippet": null
+      "form_snippet": null,
+      "display_snippet": "fluent_text.html"
     },
     {
       "field_name": "organization_guid",

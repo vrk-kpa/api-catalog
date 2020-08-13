@@ -5298,3 +5298,18 @@ msgstr ""
 
 msgid "Subsystems without services"
 msgstr ""
+
+msgid "Contact Information"
+msgstr ""
+
+msgid "X-Road related information"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Company type"
+msgstr ""
+
+msgid "Company language"
+msgstr ""

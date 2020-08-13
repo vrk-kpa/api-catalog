@@ -5564,3 +5564,18 @@ msgstr "Alijärjestelmät joilla on palveluita"
 
 msgid "Subsystems without services"
 msgstr "Alijärjestelmät joilla ei ole palveluita"
+
+msgid "Contact Information"
+msgstr "Yhteystiedot"
+
+msgid "X-Road related information"
+msgstr "X-Roadiin liittyvät tiedot"
+
+msgid "Additional information"
+msgstr "Lisätiedot"
+
+msgid "Company type"
+msgstr ""
+
+msgid "Company language"
+msgstr ""
