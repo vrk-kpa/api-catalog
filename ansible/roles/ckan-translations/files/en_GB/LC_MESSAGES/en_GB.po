@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
+# Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -22,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2020\n"
+"Last-Translator: Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -676,7 +677,7 @@ msgstr "Unauthorized to delete related item %s"
 
 #: ckan/controllers/related.py:232 ckan/templates/package/search.html:52
 msgid "API"
-msgstr "API"
+msgstr "Subsystem"
 
 #: ckan/controllers/related.py:233
 msgid "Application"
@@ -2026,7 +2027,7 @@ msgstr "There is no API data to load for this attachment"
 
 #: ckan/public/base/javascript/modules/api-info.js:21
 msgid "Failed to load data API information"
-msgstr "Failed to load data API information"
+msgstr "Failed to load subsystem information"
 
 #: ckan/public/base/javascript/modules/autocomplete.js:31
 msgid "No matches found"
@@ -5092,9 +5093,9 @@ msgid ""
 "stated in the API."
 msgstr ""
 "We would like to receive feedback and development ideas regarding the API "
-"Catalog. You cannot submit feedback on individual APIs at this time. More "
-"information on specific APIs is available through the contact channels "
-"stated in the API."
+"Catalog. You cannot submit feedback on individual subsystems at this time. "
+"More information on specific subsystems is available through the contact "
+"channels stated in the subsystem."
 
 msgid ""
 "Please send your feedback or development ideas regarding the API Catalogue "
@@ -5253,6 +5254,9 @@ msgid ""
 "Users may have various roles and privileges to create, modify and publish "
 "APIs within an organization."
 msgstr ""
+"Organizations are used to create, manage and publish subsystems and "
+"services. Users may have various roles and privileges to create, modify and "
+"publish subsystems within an organization."
 
 msgid "{0} organizations"
 msgstr ""
@@ -5263,13 +5267,13 @@ msgid ""
 msgstr ""
 
 msgid "Active APIs"
-msgstr ""
+msgstr "Active subsystems"
 
 msgid "Filter list"
 msgstr ""
 
 msgid "Search API Catalog"
-msgstr "Search APIs"
+msgstr "Search subsystems"
 
 msgid "{0} datasets"
 msgstr "{0} APIs"
@@ -5464,13 +5468,13 @@ msgid ""
 msgstr ""
 
 msgid "Interfaces"
-msgstr ""
+msgstr "Services"
 
 msgid "Attachments"
 msgstr ""
 
 msgid "Information about the interface"
-msgstr ""
+msgstr "Information about the service"
 
 msgid ""
 "Other information about the API, e.g. how to take into use, parameters, "
@@ -5487,22 +5491,22 @@ msgid ""
 msgstr ""
 
 msgid "X-Road instance"
-msgstr ""
+msgstr "Data Exchange Layer environment (X-Road instance)"
 
 msgid "X-Road member class"
-msgstr ""
+msgstr "Organisation type (X-Road member class)"
 
 msgid "X-Road member code"
-msgstr ""
+msgstr "Organisation code (Business ID, X-Road member code)"
 
 msgid "X-Road subsystem code"
-msgstr ""
+msgstr "Organisation code (Business ID, X-Road member code)"
 
 msgid "X-Road service code"
-msgstr ""
+msgstr "Service name (X-Road service code)"
 
 msgid "X-Road service version"
-msgstr ""
+msgstr "Service version (X-Road service version)"
 
 msgid "Services"
 msgstr ""

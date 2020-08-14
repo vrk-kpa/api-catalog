@@ -3,9 +3,9 @@
 # This file is distributed under the same license as the ckan project.
 # 
 # Translators:
-# Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2020
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
+# Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -24,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2020\n"
+"Last-Translator: Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,8 +109,8 @@ msgid ""
 "Cannot purge package %s as associated revision %s includes non-deleted "
 "packages %s"
 msgstr ""
-"Ei voida poistaa liityntää %s, koska tähän liitetty revisio %s sisältää "
-"poistamattomia liityntöjä %s"
+"Ei voida poistaa alijärjestelmää %s, koska tähän liitetty revisio %s "
+"sisältää poistamattomia alijärjestelmiä %s"
 
 #: ckan/controllers/admin.py:179
 #, python-format
@@ -188,7 +188,7 @@ msgstr "Ei pystytä luomaan entiteettiä, joka on tyyppiä %s %s"
 
 #: ckan/controllers/api.py:389
 msgid "Unable to add package to search index"
-msgstr "Ei voitu lisätä liityntää hakuindeksiin"
+msgstr "Ei voitu lisätä alijärjestelmää hakuindeksiin"
 
 #: ckan/controllers/api.py:419
 #, python-format
@@ -462,7 +462,7 @@ msgstr "Parametri \"{parameter_name}\" ei ole kokonaisluku"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "Liityntää ei löydy"
+msgstr "Alijärjestelmää ei löydy"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791
@@ -471,7 +471,7 @@ msgstr "Liityntää ei löydy"
 #: ckan/controllers/package.py:1264 ckan/controllers/related.py:124
 #, python-format
 msgid "Unauthorized to read package %s"
-msgstr "Ei oikeuksia lukea liityntää %s"
+msgstr "Ei oikeuksia lukea alijärjestelmää %s"
 
 #: ckan/controllers/package.py:385 ckan/controllers/package.py:387
 #: ckan/controllers/package.py:389
@@ -484,20 +484,20 @@ msgid ""
 "Viewing {package_type} datasets in {format} format is not supported "
 "(template file {file} not found)."
 msgstr ""
-"{package_type}-liityntöjen katselu {format}-muodossa ei ole mahdollista  "
-"(mallitiedostoa {file} ei löydy)."
+"{package_type}-alijärjestelmien katselu {format}-muodossa ei ole mahdollista"
+"  (mallitiedostoa {file} ei löydy)."
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "Liitynnän muutoshistoria"
+msgstr "Alijärjestelmän muutoshistoria"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Viimeisimmät muutokset liityntään:"
+msgstr "Viimeisimmät muutokset alijärjestelmään:"
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
-msgstr "Ei oikeuksia luoda liityntää"
+msgstr "Ei oikeuksia luoda alijärjestelmää"
 
 #: ckan/controllers/package.py:609 ckanext/datapusher/plugin.py:59
 msgid "Unauthorized to edit this resource"
@@ -514,12 +514,12 @@ msgstr "Liitetiedostoa ei löydy"
 
 #: ckan/controllers/package.py:682
 msgid "Unauthorized to update dataset"
-msgstr "Ei oikeuksia päivittää liityntää"
+msgstr "Ei oikeuksia päivittää alijärjestelmää"
 
 #: ckan/controllers/package.py:685 ckan/controllers/package.py:721
 #: ckan/controllers/package.py:749
 msgid "The dataset {id} could not be found."
-msgstr "Liityntää {id} ei löydy."
+msgstr "Alijärjestelmää {id} ei löydy."
 
 #: ckan/controllers/package.py:688
 msgid "You must add at least one data resource"
@@ -536,7 +536,8 @@ msgstr "Ei oikeutta luoda liitetiedostoa"
 #: ckan/controllers/package.py:754
 msgid "Unauthorized to create a resource for this package"
 msgstr ""
-"Käyttäjällä ei ole oikeutta luoda uutta liitetiedostoa tähän liityntään."
+"Käyttäjällä ei ole oikeutta luoda uutta liitetiedostoa tähän "
+"alijärjestelmään."
 
 #: ckan/controllers/package.py:977
 msgid "Unable to add package to search index."
@@ -550,11 +551,11 @@ msgstr "Ei voitu päivittää hakuindeksiä"
 #: ckan/controllers/package.py:1087
 #, python-format
 msgid "Unauthorized to delete package %s"
-msgstr "Ei oikeutta poistaa liityntää %s"
+msgstr "Ei oikeutta poistaa alijärjestelmää %s"
 
 #: ckan/controllers/package.py:1065
 msgid "Dataset has been deleted."
-msgstr "Liityntä on poistettu."
+msgstr "Alijärjestelmä on poistettu."
 
 #: ckan/controllers/package.py:1092
 msgid "Resource has been deleted."
@@ -570,7 +571,7 @@ msgstr "Ei oikeuksia poistaa liitetiedostoa %s"
 #: ckan/controllers/package.py:1485 ckan/controllers/package.py:1598
 #, python-format
 msgid "Unauthorized to read dataset %s"
-msgstr "Ei oikeuksia lukea liityntää %s"
+msgstr "Ei oikeuksia lukea alijärjestelmää %s"
 
 #: ckan/controllers/package.py:1157 ckan/controllers/package.py:1619
 msgid "Resource view not found"
@@ -660,7 +661,7 @@ msgstr "Ei oikeutta"
 
 #: ckan/controllers/related.py:163
 msgid "Package not found"
-msgstr "Liityntää ei löydy"
+msgstr "Alijärjestelmää ei löydy"
 
 #: ckan/controllers/related.py:183
 msgid "Related item was successfully created"
@@ -718,7 +719,7 @@ msgstr "Viimeisimmät tietovarannon muutokset."
 #: ckan/controllers/revision.py:108
 #, python-format
 msgid "Datasets affected: %s.\n"
-msgstr "Muutetut liitynnät: %s.⏎\n"
+msgstr "Muutetut alijärjestelmät: %s.\n"
 
 #: ckan/controllers/revision.py:188
 msgid "Revision updated"
@@ -881,7 +882,7 @@ msgstr "Uudellenohjaus ulkopuoliseen sijaintiin ei sallittu."
 
 #: ckan/lib/activity_streams.py:64
 msgid "{actor} added the tag {tag} to the dataset {dataset}"
-msgstr "{actor} lisäsi asiasanan {tag} liityntään {dataset}"
+msgstr "{actor} lisäsi asiasanan {tag} alijärjestelmään {dataset}"
 
 #: ckan/lib/activity_streams.py:67
 msgid "{actor} updated the group {group}"
@@ -893,15 +894,16 @@ msgstr "{actor} päivitti organisaatiota {organization}"
 
 #: ckan/lib/activity_streams.py:73
 msgid "{actor} updated the dataset {dataset}"
-msgstr "{actor} päivitti liityntää {dataset}"
+msgstr "{actor} päivitti alijärjestelmää {dataset}"
 
 #: ckan/lib/activity_streams.py:76
 msgid "{actor} changed the extra {extra} of the dataset {dataset}"
-msgstr "{actor} muutti liitynnän {dataset} lisäystä {extra} "
+msgstr "{actor} muutti alijärjestelmän {dataset} lisäystä {extra} "
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
-msgstr "{actor} päivitti liitetiedostoa {resource} liitynnässä {dataset}"
+msgstr ""
+"{actor} päivitti liitetiedostoa {resource} alijärjestelmässä {dataset}"
 
 #: ckan/lib/activity_streams.py:82
 msgid "{actor} updated their profile"
@@ -910,7 +912,8 @@ msgstr "{actor} päivitti profiiliaan"
 #: ckan/lib/activity_streams.py:86
 msgid ""
 "{actor} updated the {related_type} {related_item} of the dataset {dataset}"
-msgstr "{actor} päivitti {related_type} {related_item} liitynnässä {dataset}"
+msgstr ""
+"{actor} päivitti {related_type} {related_item} alijärjestelmässä {dataset}"
 
 #: ckan/lib/activity_streams.py:89
 msgid "{actor} updated the {related_type} {related_item}"
@@ -926,15 +929,15 @@ msgstr "{actor} poisti organisaation {organization}"
 
 #: ckan/lib/activity_streams.py:98
 msgid "{actor} deleted the dataset {dataset}"
-msgstr "{actor} poisti liitynnän {dataset}"
+msgstr "{actor} poisti alijärjestelmän {dataset}"
 
 #: ckan/lib/activity_streams.py:101
 msgid "{actor} deleted the extra {extra} from the dataset {dataset}"
-msgstr "{actor} poisti lisäkentän {extra} liitynnästä {dataset}"
+msgstr "{actor} poisti lisäkentän {extra} alijärjestelmästä {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} poisti liitetiedoston {resource} liitynnästä {dataset}"
+msgstr "{actor} poisti liitetiedoston {resource} alijärjestelmästä {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
@@ -946,15 +949,15 @@ msgstr "{actor} loi organisaation {organization}"
 
 #: ckan/lib/activity_streams.py:114
 msgid "{actor} created the dataset {dataset}"
-msgstr "{actor} loi liitynnän {dataset}"
+msgstr "{actor} loi alijärjestelmän {dataset}"
 
 #: ckan/lib/activity_streams.py:117
 msgid "{actor} added the extra {extra} to the dataset {dataset}"
-msgstr "{actor} lisäsi lisäkentän {extra} liityntään {dataset}"
+msgstr "{actor} lisäsi lisäkentän {extra} alijärjestelmään {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
-msgstr "{actor} lisäsi liitetiedoston {resource} liityntään {dataset}"
+msgstr "{actor} lisäsi liitetiedoston {resource} alijärjestelmälle {dataset}"
 
 #: ckan/lib/activity_streams.py:123
 msgid "{actor} signed up"
@@ -962,7 +965,7 @@ msgstr "{actor} kirjautui sisään"
 
 #: ckan/lib/activity_streams.py:126
 msgid "{actor} removed the tag {tag} from the dataset {dataset}"
-msgstr "{actor} poisti asiasanan {tag} liitynnästä {dataset}"
+msgstr "{actor} poisti asiasanan {tag} alijärjestelmästä {dataset}"
 
 #: ckan/lib/activity_streams.py:129
 msgid "{actor} deleted the related item {related_item}"
@@ -970,7 +973,7 @@ msgstr "{actor} poisti tähän liittyvän kohteen {related_item}"
 
 #: ckan/lib/activity_streams.py:132
 msgid "{actor} started following {dataset}"
-msgstr "{actor} alkoi seurata liityntää {dataset}"
+msgstr "{actor} alkoi seurata alijärjestelmää {dataset}"
 
 #: ckan/lib/activity_streams.py:135
 msgid "{actor} started following {user}"
@@ -983,7 +986,8 @@ msgstr "{actor} alkoi seurata ryhmää {group}"
 #: ckan/lib/activity_streams.py:142
 msgid ""
 "{actor} added the {related_type} {related_item} to the dataset {dataset}"
-msgstr "{actor} lisäsi {related_type} {related_item} liityntään {dataset}"
+msgstr ""
+"{actor} lisäsi {related_type} {related_item} alijärjestelmään {dataset}"
 
 #: ckan/lib/activity_streams.py:145
 msgid "{actor} added the {related_type} {related_item}"
@@ -1162,7 +1166,7 @@ msgstr "Nimetön liitetiedosto"
 
 #: ckan/lib/helpers.py:1189
 msgid "Created new dataset."
-msgstr "Uusi liityntä luotu."
+msgstr "Uusi alijärjestelmä luotu."
 
 #: ckan/lib/helpers.py:1191
 msgid "Edited resources."
@@ -1269,7 +1273,7 @@ msgstr "Liitetiedostot"
 
 #: ckan/logic/__init__.py:102 ckan/logic/action/__init__.py:58
 msgid "Package resource(s) invalid"
-msgstr "Liitynnän tiedostolinkki(t) virheellisiä"
+msgstr "Alijärjestelmän tiedostolinkki(t) virheellisiä"
 
 #: ckan/logic/__init__.py:109 ckan/logic/__init__.py:111
 #: ckan/logic/action/__init__.py:60 ckan/logic/action/__init__.py:62
@@ -1295,7 +1299,7 @@ msgstr "Käyttäjä"
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
 msgid "Dataset"
-msgstr "Liityntä"
+msgstr "Alijärjestelmä"
 
 #: ckan/logic/converters.py:169 ckan/logic/validators.py:241
 #: ckanext/stats/templates/ckanext/stats/index.html:113
@@ -1317,7 +1321,7 @@ msgstr "Organisaatiota ei ole"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "Et voi lisätä liityntää tähän organisaatioon"
+msgstr "Et voi lisätä alijärjestelmää tähän organisaatioon"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1513,7 +1517,9 @@ msgstr "roolia ei ole."
 
 #: ckan/logic/validators.py:759
 msgid "Datasets with no organization can't be private."
-msgstr "Ilman organisaatiota olevat liitynnät eivät voi olla yksityisiä."
+msgstr ""
+"Alijärjestelmät, joita ei ole lisätty millekään organisaatiolle eivät voi "
+"olla yksityisiä."
 
 #: ckan/logic/validators.py:765
 msgid "Not a list"
@@ -1551,7 +1557,7 @@ msgstr "REST API: Luo objekti %s"
 #: ckan/logic/action/create.py:601
 #, python-format
 msgid "REST API: Create package relationship: %s %s %s"
-msgstr "REST API: Luo liityntöjen suhteet: %s %s %s "
+msgstr "REST API: Luo alijärjestelmien suhteet: %s %s %s "
 
 #: ckan/logic/action/create.py:642
 #, python-format
@@ -1564,7 +1570,7 @@ msgstr "Yrittää luoda organisaatiota ryhmäksi"
 
 #: ckan/logic/action/create.py:954
 msgid "You must supply a package id or name (parameter \"package\")."
-msgstr "Sinun täytyy antaa liitynnän id tai nimi (parametri \"package\")."
+msgstr "Sinun täytyy antaa alijärjestelmän id tai nimi (parametri \"package\")."
 
 #: ckan/logic/action/create.py:957
 msgid "You must supply a rating (parameter \"rating\")."
@@ -1594,7 +1600,7 @@ msgstr "Seuraat jo tätä: {0}"
 
 #: ckan/logic/action/create.py:1370 ckan/logic/action/create.py:1378
 msgid "You must be logged in to follow a dataset."
-msgstr "Sinun tulee olla kirjautunut seurataksesi liityntää."
+msgstr "Sinun tulee olla kirjautunut seurataksesi alijärjestelmää."
 
 #: ckan/logic/action/create.py:1430
 msgid "User {username} does not exist."
@@ -1607,7 +1613,7 @@ msgstr "Sinun tulee olla kirjautunut seurataksesi ryhmää."
 #: ckan/logic/action/delete.py:66
 #, python-format
 msgid "REST API: Delete Package: %s"
-msgstr "REST API: Poistetaan liityntä: %s"
+msgstr "REST API: Poistetaan alijärjestelmä: %s"
 
 #: ckan/logic/action/delete.py:195 ckan/logic/action/delete.py:324
 #, python-format
@@ -1670,7 +1676,7 @@ msgstr "Kohteita ei löytynyt."
 
 #: ckan/logic/action/update.py:296 ckan/logic/action/update.py:1179
 msgid "Package was not found."
-msgstr "Liityntää ei löytynyt"
+msgstr "Alijärjestelmää ei löytynyt"
 
 #: ckan/logic/action/update.py:339 ckan/logic/action/update.py:557
 #, python-format
@@ -1680,7 +1686,7 @@ msgstr "REST API: Päivitä objektit %s"
 #: ckan/logic/action/update.py:440
 #, python-format
 msgid "REST API: Update package relationship: %s %s %s"
-msgstr "REST API: Päivitä liityntöjen suhteet: %s %s %s"
+msgstr "REST API: Päivitä alijärjestelmien suhteet: %s %s %s"
 
 #: ckan/logic/action/update.py:792
 msgid "TaskStatus was not found."
@@ -1693,7 +1699,7 @@ msgstr "Organisaatiota ei löytynyt."
 #: ckan/logic/auth/create.py:25 ckan/logic/auth/create.py:43
 #, python-format
 msgid "User %s not authorized to create packages"
-msgstr "Käyttäjällä %s ei ole oikeutta luoda liityntöjä"
+msgstr "Käyttäjällä %s ei ole oikeutta luoda alijärjestelmiä"
 
 #: ckan/logic/auth/create.py:29 ckan/logic/auth/update.py:43
 #, python-format
@@ -1703,7 +1709,8 @@ msgstr "Käyttäjällä %s ei ole oikeutta muokata näitä ryhmiä"
 #: ckan/logic/auth/create.py:36
 #, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "Käyttäjällä %s ei ole oikeutta luoda liityntää tähän organisaatioon"
+msgstr ""
+"Käyttäjällä %s ei ole oikeutta luoda alijärjestelmää tähän organisaatioon"
 
 #: ckan/logic/auth/create.py:58
 msgid "You must be a sysadmin to create a featured related item"
@@ -1721,7 +1728,8 @@ msgstr "Tietojoukon id ei ole annettu, tekijää ei voida tarkistaa."
 #: ckan/logic/auth/get.py:135 ckan/logic/auth/update.py:61
 msgid "No package found for this resource, cannot check auth."
 msgstr ""
-"Liityntää ei löytynyt tälle aineistolinkille, ei voida tarkistaa valtuutusta"
+"Alijärjestelmää ei löytynyt tälle aineistolinkille, ei voida tarkistaa "
+"valtuutusta"
 
 #: ckan/logic/auth/create.py:92
 #, python-format
@@ -1759,7 +1767,7 @@ msgstr "Ryhmiä ei löytynyt."
 
 #: ckan/logic/auth/create.py:227
 msgid "Valid API key needed to create a package"
-msgstr "Liitynnän luomiseen tarvitaan voimassa oleva API-avain"
+msgstr "Alijärjestelmän luomiseen tarvitaan voimassa oleva API-avain"
 
 #: ckan/logic/auth/create.py:235
 msgid "Valid API key needed to create a group"
@@ -1821,12 +1829,12 @@ msgstr "Käyttäjällä %s ei ole oikeutta poistaa task_status"
 #: ckan/logic/auth/get.py:97
 #, python-format
 msgid "User %s not authorized to read these packages"
-msgstr "Käyttäjällä %s ei ole oikeuksia lukea näitä liityntöjä "
+msgstr "Käyttäjällä %s ei ole oikeuksia lukea näitä alijärjestelmiä"
 
 #: ckan/logic/auth/get.py:119
 #, python-format
 msgid "User %s not authorized to read package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia lukea liityntää %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia lukea alijärjestelmää %s"
 
 #: ckan/logic/auth/get.py:141
 #, python-format
@@ -1845,7 +1853,7 @@ msgstr "Sinun pitää olla kirjautunut päästäksesi omalle työpöydällesi"
 #: ckan/logic/auth/update.py:37
 #, python-format
 msgid "User %s not authorized to edit package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia muokata liityntää %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia muokata alijärjestelmää %s"
 
 #: ckan/logic/auth/update.py:69
 #, python-format
@@ -1855,7 +1863,7 @@ msgstr "Käyttäjällä %s ei oikeuksia muokata liitetiedostoa %s"
 #: ckan/logic/auth/update.py:98
 #, python-format
 msgid "User %s not authorized to change state of package %s"
-msgstr "Käyttäjällä %s ei ole oikeuksia muuttaa liitynnän tilaa %s"
+msgstr "Käyttäjällä %s ei ole oikeuksia muuttaa alijärjestelmän tilaa %s"
 
 #: ckan/logic/auth/update.py:126
 #, python-format
@@ -1910,7 +1918,7 @@ msgstr "Käyttäjällä %s ei ole oikeuksia päivittää term_translation taulua
 
 #: ckan/logic/auth/update.py:281
 msgid "Valid API key needed to edit a package"
-msgstr "Liitynnän muokkaukseen tarvitaan voimassa oleva API-avain"
+msgstr "Alijärjestelmän muokkaukseen tarvitaan voimassa oleva API-avain"
 
 #: ckan/logic/auth/update.py:291
 msgid "Valid API key needed to edit a group"
@@ -2293,11 +2301,11 @@ msgstr "Rekisteröidy"
 #: ckan/templates/user/read.html:5 ckan/templates/user/read_base.html:19
 #: ckan/templates/user/read_base.html:53
 msgid "Datasets"
-msgstr "Liitynnät"
+msgstr "Alijärjestelmät"
 
 #: ckan/templates/header.html:116
 msgid "Search Datasets"
-msgstr "Etsi liityntöjä"
+msgstr "Etsi alijärjestelmiä"
 
 #: ckan/templates/header.html:117 ckan/templates/home/snippets/search.html:11
 #: ckan/templates/snippets/simple_search.html:5
@@ -2826,7 +2834,7 @@ msgid ""
 "datasets from groups</p> "
 msgstr ""
 " <p><strong>Ylläpitäjä:</strong> Voi muokata ryhmän tietoja ja hallinnoida "
-"jäseniä.</p> <p><strong>Jäsen:</strong> Voi lisätä/poistaa liityntöjä "
+"jäseniä.</p> <p><strong>Jäsen:</strong> Voi lisätä/poistaa alijärjestelmiä "
 "ryhmästä</p> "
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
@@ -2871,11 +2879,11 @@ msgstr "Suositut"
 #: ckan/templates/group/read.html:21 ckan/templates/organization/read.html:25
 #: ckan/templates/snippets/search_form.html:3
 msgid "Search datasets..."
-msgstr "Etsi liitynnöistä..."
+msgstr "Etsi alijärjestelmistä..."
 
 #: ckan/templates/group/snippets/feeds.html:3
 msgid "Datasets in group: {group}"
-msgstr "Ryhmän: {group} liitynnät"
+msgstr "Ryhmän: {group} alijärjestelmät"
 
 #: ckan/templates/group/snippets/feeds.html:4
 #: ckan/templates/organization/snippets/feeds.html:4
@@ -2924,14 +2932,14 @@ msgstr "Tallenna ryhmä"
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
 msgstr[0] "{num} liityntää"
-msgstr[1] "{num} liityntää"
+msgstr[1] "{num} alijärjestelmää"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:25
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:24
 msgid "0 Datasets"
-msgstr "0 liityntää"
+msgstr "0 alijärjestelmää"
 
 #: ckan/templates/group/snippets/group_item.html:38
 #: ckan/templates/group/snippets/group_item.html:39
@@ -2940,7 +2948,7 @@ msgstr "Näkymä {name}"
 
 #: ckan/templates/group/snippets/group_item.html:43
 msgid "Remove dataset from this group"
-msgstr "Poista liityntä tästä ryhmästä"
+msgstr "Poista alijärjestelmä tästä ryhmästä"
 
 #: ckan/templates/group/snippets/helper.html:4
 msgid "What are Groups?"
@@ -2953,9 +2961,10 @@ msgid ""
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
 msgstr ""
-"Voit luoda ja hallinnoida liityntäkokonaisuuksia käyttämällä ryhmiä. Voit "
-"koota yhteen ryhmään liityntöjä esimerkiksi projektin, käyttäjäryhmän tai "
-"teeman mukaisesti ja siten helpottaa aineistojen löytymistä."
+"Voit luoda ja hallinnoida alijärjestelmäkokonaisuuksia käyttämällä ryhmiä. "
+"Voit koota yhteen ryhmään alijärjestelmiä esimerkiksi projektin, "
+"käyttäjäryhmän tai teeman mukaisesti ja siten helpottaa aineistojen "
+"löytymistä."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3064,19 +3073,19 @@ msgid ""
 "don't have any copy to go here yet but soon we will "
 msgstr ""
 "<p>Liityntäkatalogi on ajantasainen hakemisto Suomi.fi-palveluväylän "
-"liitynnöistä. Liityntäkatalogin tarkoituksena on auttaa palvelun tuottajia "
-"ja toteuttajia kehittämään tehokkaampia sähköisiä palveluita ja tukea "
-"tietojen uudelleenkäyttöä. Liityntäkatalogiin kuvataan sähköiset palvelut, "
-"joissa käsiteltävät tiedot ovat muiden tietojärjestelmien "
-"hyödynnettävissä.</p><p>Rekisteröityminen Liityntäkatalogiin tapahtuu Suomi"
-".fi-palveluväylän käyttöönoton yhteydessä. Organisaatio ilmoittaa yhden tai "
-"useamman pääkäyttäjän Liityntäkatalogin tietojen täydennystä "
-"varten.</p><p>Liityntäkatalogin tuottaa Digi- ja väestötietovirasto. "
-"Lisätietoja Suomi.fi-palveluista: esuomi.fi.</p>"
+"alijärjestelmistä ja palveluista. Liityntäkatalogin tarkoituksena on auttaa "
+"palvelun tuottajia ja toteuttajia kehittämään tehokkaampia sähköisiä "
+"palveluita ja tukea tietojen uudelleenkäyttöä. Liityntäkatalogiin kuvataan "
+"sähköiset palvelut, joissa käsiteltävät tiedot ovat muiden "
+"tietojärjestelmien hyödynnettävissä.</p><p>Rekisteröityminen "
+"Liityntäkatalogiin tapahtuu Suomi.fi-palveluväylän käyttöönoton yhteydessä. "
+"Organisaatio ilmoittaa yhden tai useamman pääkäyttäjän Liityntäkatalogin "
+"tietojen täydennystä varten.</p><p>Liityntäkatalogin tuottaa Digi- ja "
+"väestötietovirasto. Lisätietoja Suomi.fi-palveluista: esuomi.fi.</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
-msgstr "Kuukauden suosituin liityntä"
+msgstr "Kuukauden suosituin alijärjestelmä"
 
 #: ckan/templates/home/snippets/search.html:2
 msgid "E.g. environment"
@@ -3084,7 +3093,7 @@ msgstr "Esim. ajo-oikeuden tarkistus"
 
 #: ckan/templates/home/snippets/search.html:6
 msgid "Search data"
-msgstr "Etsi liityntöjä"
+msgstr "Etsi alijärjestelmiä"
 
 #: ckan/templates/home/snippets/search.html:16
 msgid "Popular tags"
@@ -3096,11 +3105,11 @@ msgstr "{0} tilastoa"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "dataset"
-msgstr "liityntä"
+msgstr "alijärjestelmä"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "datasets"
-msgstr "liityntää"
+msgstr "alijärjestelmää"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organization"
@@ -3174,11 +3183,11 @@ msgstr "Organisaatiolomake"
 #: ckan/templates/organization/bulk_process.html:3
 #: ckan/templates/organization/bulk_process.html:11
 msgid "Edit datasets"
-msgstr "Muokkaa liityntöjä"
+msgstr "Muokkaa alijärjestelmiä"
 
 #: ckan/templates/organization/bulk_process.html:6
 msgid "Add dataset"
-msgstr "Lisää liityntä"
+msgstr "Lisää alijärjestelmä"
 
 #: ckan/templates/organization/bulk_process.html:16
 msgid " found for \"{query}\""
@@ -3186,7 +3195,7 @@ msgstr "löytyi haulla \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
-msgstr "Haulla \"{query}\" ei löytynyt liityntöjä"
+msgstr "Haulla \"{query}\" ei löytynyt alijärjestelmiä"
 
 #: ckan/templates/organization/bulk_process.html:37
 msgid "Make public"
@@ -3213,7 +3222,7 @@ msgstr "Yksityinen"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr "Tällä organisaatiolla ei ole liityntöjä"
+msgstr "Tällä organisaatiolla ei ole alijärjestelmiä"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
@@ -3264,11 +3273,11 @@ msgid ""
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
 "but not add new datasets.</p> "
 msgstr ""
-" <p><strong>Ylläpitäjä:</strong> Voi lisätä, muokata ja poistaa liityntöjä "
-"sekä hallinnoida organisaation jäseniä.</p> <p><strong>Muokkaaja:</strong> "
-"Voi lisätä ja muokata liityntöjä.</p> <p><strong>Jäsen:</strong> Voi "
-"katsella oman organisaationsa yksityisiä liityntöjä, mutta ei muokata "
-"niitä.</p> "
+" <p><strong>Ylläpitäjä:</strong> Voi lisätä, muokata ja poistaa "
+"alijärjestelmiä sekä hallinnoida organisaation jäseniä.</p> "
+"<p><strong>Muokkaaja:</strong> Voi lisätä ja muokata alijärjestelmiä.</p> "
+"<p><strong>Jäsen:</strong> Voi katsella oman organisaationsa yksityisiä "
+"alijärjestelmiä, mutta ei muokata niitä.</p> "
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3289,7 +3298,7 @@ msgstr "Luo uusi organisaatio"
 #: ckan/templates/package/search.html:16
 #: ckan/templates/user/dashboard_datasets.html:7
 msgid "Add Dataset"
-msgstr "Lisää liityntä"
+msgstr "Lisää alijärjestelmä"
 
 #: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
@@ -3309,12 +3318,12 @@ msgid ""
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
 msgstr ""
-" <p>Organisaatiot ovat liityntöjä julkaisevia tahoja (esimerkiksi "
-"Tilastokeskus). Organisaatiossa julkaistut liitynnät kuuluvat yksittäisten "
-"käyttäjien sijaan ko. organisaatiolle.</p> <p> Organisaation ylläpitäjä voi "
-"antaa sen jäsenille rooleja ja oikeuksia, jotta yksittäiset käyttäjät voivat"
-" julkaista datasettejä organisaation (esimerkiksi Tilastokeskuksen) "
-"nimissä.</p> "
+" <p>Organisaatiot ovat alijärjestelmiä julkaisevia tahoja (esimerkiksi "
+"Tilastokeskus). Organisaatiossa julkaistut alijärjestelmät kuuluvat "
+"yksittäisten käyttäjien sijaan ko. organisaatiolle.</p> <p> Organisaation "
+"ylläpitäjä voi antaa sen jäsenille rooleja ja oikeuksia, jotta yksittäiset "
+"käyttäjät voivat julkaista alijärjestelmiä organisaation (esimerkiksi "
+"Tilastokeskuksen) nimissä.</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
@@ -3322,10 +3331,10 @@ msgid ""
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
 msgstr ""
-"Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, "
-"hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri "
-"rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen"
-" ja julkaisemiseen."
+"Organisaatioita käytetään alijärjestelmien ja aineistokokonaisuuksien "
+"luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla "
+"organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia "
+"alijärjestelmien luomiseen, muokkaamiseen ja julkaisemiseen."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3345,7 +3354,7 @@ msgid ""
 "public and private datasets belonging to this organization."
 msgstr ""
 "Haluatko varmasti poistaa tämän organisaation? Tämä poistaa kaikki julkiset "
-"ja yksityiset liitynnät, jotka kuuluvat tälle organisaatiolle."
+"ja yksityiset alijärjestelmät, jotka kuuluvat tälle organisaatiolle."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -3359,11 +3368,11 @@ msgstr "Näytä {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Luo uusi liityntä"
+msgstr "Luo uusi alijärjestelmä"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid "What are datasets?"
-msgstr "Mitä liitynnät ovat?"
+msgstr "Mitä alijärjestelmät ovat?"
 
 #: ckan/templates/package/base_form_page.html:25
 msgid ""
@@ -3374,7 +3383,7 @@ msgstr "Liityntä tarkoittaa liityntäkatalogissa kokoelmaa liitetiedostoja."
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
-msgstr "Haluatko varmasti poistaa liitynnän - {name}?"
+msgstr "Haluatko varmasti poistaa alijärjestelmän - {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
@@ -3382,7 +3391,7 @@ msgstr "Haluatko varmasti poistaa liitetiedoston - {name}?"
 
 #: ckan/templates/package/edit_base.html:16
 msgid "View dataset"
-msgstr "Tarkastele liityntää"
+msgstr "Tarkastele alijärjestelmää"
 
 #: ckan/templates/package/edit_base.html:20
 msgid "Edit metadata"
@@ -3417,15 +3426,15 @@ msgstr "Lisää ryhmään"
 
 #: ckan/templates/package/group_list.html:23
 msgid "There are no groups associated with this dataset"
-msgstr "Liityntään ei ole liitetty ryhmiä"
+msgstr "Alijärjestelmään ei ole liitetty ryhmiä"
 
 #: ckan/templates/package/new_package_form.html:15
 msgid "Update Dataset"
-msgstr "Päivitä liityntä"
+msgstr "Päivitä alijärjestelmä"
 
 #: ckan/templates/package/new_resource.html:5
 msgid "Add data to the dataset"
-msgstr "Lisää liitetiedostoja liityntään"
+msgstr "Lisää liitetiedostoja alijärjestelmälle"
 
 #: ckan/templates/package/new_resource.html:11
 #: ckan/templates/package/new_resource_not_draft.html:8
@@ -3473,12 +3482,12 @@ msgid ""
 "This is an old revision of this dataset, as edited at %(timestamp)s. It may "
 "differ significantly from the <a href=\"%(url)s\">current revision</a>."
 msgstr ""
-"Tämä on liitynnän vanha revisio, jota on muokattu %(timestamp)s. Se voi "
-"poiketa merkittävästi <a href=\"%(url)s\">nykyisestä revisiosta</a>."
+"Tämä on alijärjestelmän vanha revisio, jota on muokattu %(timestamp)s. Se "
+"voi poiketa merkittävästi <a href=\"%(url)s\">nykyisestä revisiosta</a>."
 
 #: ckan/templates/package/related_list.html:7
 msgid "Related Media for {dataset}"
-msgstr "Liityntään {dataset} liittyvät mediat"
+msgstr "Alijärjestelmään {dataset} liittyvät mediat"
 
 #: ckan/templates/package/related_list.html:12
 msgid "No related items"
@@ -3568,7 +3577,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "Liitynnän yhteenvedosta"
+msgstr "Alijärjestelmän yhteenvedosta"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
@@ -3666,7 +3675,7 @@ msgid ""
 " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
 "add some?</a></p> "
 msgstr ""
-" <p class=\"empty\">Tässä liitynnässä ei ole dataa, <a "
+" <p class=\"empty\">Tässä alijärjestelmässä ei ole dataa, <a "
 "href=\"%(url)s\">mikset lisäisi sitä?</a> "
 
 #: ckan/templates/package/search.html:53
@@ -3750,7 +3759,7 @@ msgstr "Nimike"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:4
 msgid "eg. A descriptive title"
-msgstr "liitynnän otsikko"
+msgstr "alijärjestelmän otsikko"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:13
 msgid "eg. my-dataset"
@@ -3758,7 +3767,7 @@ msgstr "esim. my-dataset"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:19
 msgid "eg. Some useful notes about the data"
-msgstr "liitynnän sanallinen kuvaus"
+msgstr "alijärjestelmän sanallinen kuvaus"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:24
 msgid "eg. economy, mental health, government"
@@ -3807,7 +3816,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
-msgstr "Haluatko varmasti poistaa liitynnän?"
+msgstr "Haluatko varmasti poistaa alijärjestelmän?"
 
 #: ckan/templates/package/snippets/package_form.html:44
 msgid "Next: Add Data"
@@ -3963,17 +3972,17 @@ msgstr "Liitetiedostot"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
-msgstr "Tässä liitynnässä ei ole liitetiedostoja"
+msgstr "Tällä alijärjestelmällä ei ole liitetiedostoja"
 
 #: ckan/templates/package/snippets/revisions_table.html:24
 #, python-format
 msgid "Read dataset as of %s"
-msgstr "Lue liityntä alkaen %s"
+msgstr "Lue alijärjestelmä alkaen %s"
 
 #: ckan/templates/package/snippets/stages.html:23
 #: ckan/templates/package/snippets/stages.html:25
 msgid "Create dataset"
-msgstr "Luo uusi liityntä"
+msgstr "Luo uusi alijärjestelmä"
 
 #: ckan/templates/package/snippets/stages.html:30
 #: ckan/templates/package/snippets/stages.html:34
@@ -4024,10 +4033,11 @@ msgid ""
 " or bar chart, an app using all or part of the data or even a news story "
 "that references this dataset.</p> "
 msgstr ""
-"<p>\"Liittyvä media\" on mikä tahansa liityntään liittyvä sovellus, "
+"<p>\"Liittyvä media\" on mikä tahansa alijärjestelmään liittyvä sovellus, "
 "artikkeli, visualisointi tai idea.</p> <p>Se voi olla esimerkiksi "
-"infograafi, kaavio tai sovellus, joka käyttää liityntää tai sen osaa. "
-"Liittyvä media voi olla jopa uutinen, joka viittaa tähän liityntään.</p> "
+"infograafi, kaavio tai sovellus, joka käyttää alijärjestelmää tai sen osaa. "
+"Liittyvä media voi olla jopa uutinen, joka viittaa tähän "
+"alijärjestelmään.</p> "
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -4066,8 +4076,8 @@ msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
 msgstr ""
-"Nämä ovat liityntää hyödyntäviä sovelluksia sekä ideoita asioista, joihin "
-"liityntää voisi hyödyntää."
+"Nämä ovat alijärjestelmää hyödyntäviä sovelluksia sekä ideoita asioista, "
+"joihin alijärjestelmää voisi hyödyntää."
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4186,7 +4196,7 @@ msgstr "Muutokset"
 
 #: ckan/templates/revision/read.html:74
 msgid "Datasets' Tags"
-msgstr "Liityntöjen asiasanat"
+msgstr "Alijärjestelmien asiasanat"
 
 #: ckan/templates/revision/snippets/revisions_list.html:7
 msgid "Entity"
@@ -4258,7 +4268,7 @@ msgstr "Ei lisenssiä"
 
 #: ckan/templates/snippets/license.html:28
 msgid "This dataset satisfies the Open Definition."
-msgstr "Tämä liityntä täyttää Open Definition -määrittelyn"
+msgstr "Tämä alijärjestelmä täyttää Open Definition -määrittelyn"
 
 #: ckan/templates/snippets/organization.html:48
 msgid "There is no description for this organization"
@@ -4266,15 +4276,15 @@ msgstr "Tällä organisaatiolla ei ole kuvausta"
 
 #: ckan/templates/snippets/package_item.html:57
 msgid "This dataset has no description"
-msgstr "Liitynnällä ei ole kuvausta"
+msgstr "Alijärjestelmällä ei ole kuvausta"
 
 #: ckan/templates/snippets/related.html:15
 msgid ""
 "No apps, ideas, news stories or images have been related to this dataset "
 "yet."
 msgstr ""
-"Tähän liityntään ei ole vielä liitetty sovelluksia, ideoita, uutisia tai "
-"kuvia."
+"Tähän alijärjestelmään ei ole vielä liitetty sovelluksia, ideoita, uutisia "
+"tai kuvia."
 
 #: ckan/templates/snippets/related.html:18
 msgid "Add Item"
@@ -4304,21 +4314,21 @@ msgstr " <p><strong>Haussa tapahtui virhe.</strong> Yritä uudelleen.</p> "
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
 msgstr[0] "Haulla \"{query}\" löytyi {number} liityntää"
-msgstr[1] "Haulla \"{query}\" löytyi {number} liityntää"
+msgstr[1] "Haulla \"{query}\" löytyi {number} alijärjestelmää"
 
 #: ckan/templates/snippets/search_result_text.html:16
 msgid "No datasets found for \"{query}\""
-msgstr "Haulla \"{query}\" ei löytynyt liityntöjä"
+msgstr "Haulla \"{query}\" ei löytynyt alijärjestelmiä"
 
 #: ckan/templates/snippets/search_result_text.html:17
 msgid "{number} dataset found"
 msgid_plural "{number} datasets found"
 msgstr[0] "Löytyi {number} liityntää"
-msgstr[1] "Löytyi {number} liityntää"
+msgstr[1] "Löytyi {number} alijärjestelmää"
 
 #: ckan/templates/snippets/search_result_text.html:18
 msgid "No datasets found"
-msgstr "Liityntöjä ei löytynyt"
+msgstr "Alijärjestelmiä ei löytynyt"
 
 #: ckan/templates/snippets/search_result_text.html:21
 msgid "{number} group found for \"{query}\""
@@ -4395,7 +4405,7 @@ msgstr "Uutisvirta"
 #: ckan/templates/user/dashboard.html:20
 #: ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
-msgstr "Minun liityntäni"
+msgstr "Minun alijärjestelmäni"
 
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
@@ -4414,7 +4424,7 @@ msgstr "Seuraamieni osioiden toiminta"
 #: ckan/templates/user/dashboard_datasets.html:17
 #: ckan/templates/user/read.html:14
 msgid "You haven't created any datasets."
-msgstr "Et ole vielä luonut yhtään liityntää"
+msgstr "Et ole vielä luonut yhtään alijärjestelmää"
 
 #: ckan/templates/user/dashboard_datasets.html:19
 #: ckan/templates/user/dashboard_groups.html:22
@@ -4589,7 +4599,7 @@ msgstr "Miksi rekisteröityä?"
 
 #: ckan/templates/user/new.html:28
 msgid "Create datasets, groups and other exciting things"
-msgstr "Luo uusia liityntöjä, ryhmiä ja muita kiinnostavia asioita"
+msgstr "Luo uusia alijärjestelmiä, ryhmiä ja muita kiinnostavia asioita"
 
 #: ckan/templates/user/new_user_form.html:5
 msgid "username"
@@ -4627,7 +4637,7 @@ msgstr "Anna salasanasi, niin päivitämme käyttäjätilisi tiedot"
 
 #: ckan/templates/user/read.html:21
 msgid "User hasn't created any datasets."
-msgstr "Käyttäjä ei ole luonut yhtään liityntää."
+msgstr "Käyttäjä ei ole luonut yhtään alijärjestelmää."
 
 #: ckan/templates/user/read_base.html:39
 msgid "You have not provided a biography."
@@ -4864,7 +4874,7 @@ msgstr "Klusterin markkerit"
 #: ckanext/stats/templates/ckanext/stats/index.html:10
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:57
 msgid "Total number of Datasets"
-msgstr "Liityntöjä yhteensä"
+msgstr "Alijärjestelmiä yhteensä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:17
 #: ckanext/stats/templates/ckanext/stats/index.html:40
@@ -4873,26 +4883,26 @@ msgstr "Päivämäärä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:18
 msgid "Total datasets"
-msgstr "Liityntöjä yhteensä"
+msgstr "Alijärjestelmiä yhteensä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:33
 #: ckanext/stats/templates/ckanext/stats/index.html:179
 msgid "Dataset Revisions per Week"
-msgstr "Viikon revisiot liitynnästä"
+msgstr "Viikon revisiot alijärjestelmästä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:41
 msgid "All dataset revisions"
-msgstr "Kaikki liityntöjen revisiot"
+msgstr "Kaikki alijärjestelmien revisiot"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:42
 msgid "New datasets"
-msgstr "Uudet liitynnät"
+msgstr "Uudet alijärjestelmät"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:58
 #: ckanext/stats/templates/ckanext/stats/index.html:180
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:63
 msgid "Top Rated Datasets"
-msgstr "Korkeimman arvostelun saaneet liitynnät"
+msgstr "Korkeimman arvostelun saaneet alijärjestelmät"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:64
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
@@ -4913,7 +4923,7 @@ msgstr "Ei arvosteluja"
 #: ckanext/stats/templates/ckanext/stats/index.html:181
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:72
 msgid "Most Edited Datasets"
-msgstr "Eniten muokatut liitynnät"
+msgstr "Eniten muokatut alijärjestelmät"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
@@ -4922,7 +4932,7 @@ msgstr "Muokkausten määrä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:103
 msgid "No edited datasets"
-msgstr "Ei muokattuja liityntöjä"
+msgstr "Ei muokattuja alijärjestelmiä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:108
 #: ckanext/stats/templates/ckanext/stats/index.html:182
@@ -4933,7 +4943,7 @@ msgstr "Suurimmat ryhmät"
 #: ckanext/stats/templates/ckanext/stats/index.html:114
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:82
 msgid "Number of datasets"
-msgstr "Liityntöjen lukumäärä"
+msgstr "Alijärjestelmien lukumäärä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:127
 msgid "No groups"
@@ -4952,12 +4962,12 @@ msgstr "Tunnisteen nimi"
 #: ckanext/stats/templates/ckanext/stats/index.html:137
 #: ckanext/stats/templates/ckanext/stats/index.html:157
 msgid "Number of Datasets"
-msgstr "Liityntöjen lukumäärä"
+msgstr "Alijärjestelmien lukumäärä"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:152
 #: ckanext/stats/templates/ckanext/stats/index.html:184
 msgid "Users Owning Most Datasets"
-msgstr "Eniten liityntöjä omistavat käyttäjät"
+msgstr "Eniten alijärjestelmiä omistavat käyttäjät"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:175
 msgid "Statistics Menu"
@@ -4965,7 +4975,7 @@ msgstr "Tilastovalikko"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:178
 msgid "Total Number of Datasets"
-msgstr "Liityntöjen kokonaismäärä"
+msgstr "Alijärjestelmien kokonaismäärä"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:6
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:8
@@ -4974,11 +4984,11 @@ msgstr "Tilastot"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:60
 msgid "Revisions to Datasets per week"
-msgstr "Revisioita liitynnöille viikossa"
+msgstr "Revisioita alijärjestelmille viikossa"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:95
 msgid "Users owning most datasets"
-msgstr "Eniten liityntöjä omistavat käyttäjät"
+msgstr "Eniten alijärjestelmiä omistavat käyttäjät"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:102
 msgid "Page last updated:"
@@ -4990,16 +5000,16 @@ msgstr "Johtotaulukko - Tilastot"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:17
 msgid "Dataset Leaderboard"
-msgstr "Liitynnän johtotaulukko"
+msgstr "Alijärjestelmän johtotaulukko"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:18
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
 msgstr ""
-"Valitse liitynnän attribuutti ja selvitä missä kategorioissa on valitulla "
-"alueella eniten liityntöjä. Esimerkiksi asiasanat, ryhmät, lisenssi, "
-"tiedostoformaatti tai maa"
+"Valitse alijärjestelmän attribuutti ja selvitä missä kategorioissa on "
+"valitulla alueella eniten alijärjestelmiä. Esimerkiksi asiasanat, ryhmät, "
+"lisenssi, tiedostoformaatti tai maa"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
@@ -5053,7 +5063,7 @@ msgid "Valid until"
 msgstr "Voimassaolo päättyy"
 
 msgid "Connection information"
-msgstr "Liityntätiedot"
+msgstr "Alijärjestelmän tiedot"
 
 msgid "Availability"
 msgstr "Saatavuus"
@@ -5077,7 +5087,7 @@ msgid "API Catalog"
 msgstr "Liityntäkatalogi"
 
 msgid "kapa-slogan-text"
-msgstr "Hakemisto kansallisen palveluväylän liitynnöistä"
+msgstr "Hakemisto kansallisen palveluväylän alijärjestelmistä"
 
 msgid ""
 "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
@@ -5114,9 +5124,9 @@ msgid ""
 "stated in the API."
 msgstr ""
 "Otamme vastaan palautetta ja kehittämisideoita Liityntäkatalogiin liittyen. "
-"Yksittäisistä liitynnöistä ei tässä vaiheessa voi antaa palautetta. "
-"Liityntäkohtaisia lisätietoja saa liityntään kirjattujen yhteystietojen "
-"kautta."
+"Yksittäisistä alijärjestelmistä ei tässä vaiheessa voi antaa palautetta. "
+"Alijärjestelmäkohtaisia lisätietoja saa liityntään kirjattujen "
+"yhteystietojen kautta."
 
 msgid ""
 "Please send your feedback or development ideas regarding the API Catalogue "
@@ -5184,7 +5194,7 @@ msgstr ""
 "käsittelyyn. Näitä kenttiä ei voi muokata."
 
 msgid "New package count"
-msgstr "Uusia liityntöjä"
+msgstr "Uusia alijärjestelmiä"
 
 msgid "Last week"
 msgstr "Viimeisen viikon aikana"
@@ -5196,16 +5206,16 @@ msgid "Last year"
 msgstr "Viimeisen vuoden aikana"
 
 msgid "Total package count"
-msgstr "Liityntöjen kokonaismäärä"
+msgstr "Alijärjestelmien kokonaismäärä"
 
 msgid "Harvester activity"
 msgstr "Harvesterin toiminta"
 
 msgid "Recent package activity"
-msgstr "Liityntöjen seuranta"
+msgstr "Alijärjestelmien seuranta"
 
 msgid "Recent activity for packages with resources"
-msgstr "Rajapinnallisten liityntöjen seuranta"
+msgstr "Sellaisten alijärjestelmien seuranta, joilla on palveluita"
 
 msgid "Recently made private"
 msgstr "Yksityisiksi muutetut"
@@ -5214,17 +5224,17 @@ msgid ""
 "Package changes highlighted with pink color signify changes to public "
 "visibility."
 msgstr ""
-"Vaaleanpunaisella korostetut muutokset liityntöihin sisältävät muutoksia "
-"liitynnän julkiseen näkymiseen."
+"Vaaleanpunaisella korostetut muutokset alijärjestelmiin sisältävät muutoksia"
+" alijärjestelmän julkiseen näkymiseen."
 
 msgid "Sample APIs"
-msgstr "Esimerkkejä liitynnöistä"
+msgstr "Esimerkkejä alijärjestelmistä"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Palveluväylään liittyneet organisaatiot"
 
 msgid "Package contains invalid resources"
-msgstr "Liitynnällä on virheellisiä liitetiedostoja"
+msgstr "Alijärjestelmällä on virheellisiä liitetiedostoja"
 
 msgid "Invalid content"
 msgstr "Virheellistä sisältöä"
@@ -5242,7 +5252,7 @@ msgstr ""
 "sen sisällön."
 
 msgid "Search datasets"
-msgstr "Etsi liitynnöistä"
+msgstr "Etsi alijärjestelmistä"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
@@ -5254,7 +5264,7 @@ msgid "total organizations"
 msgstr "organisaatiota"
 
 msgid "organizations with datasets"
-msgstr "organisaatiota, joilla liityntöjä"
+msgstr "organisaatiota, joilla alijärjestelmiä"
 
 msgid "Show all"
 msgstr "Näytä kaikki"
@@ -5276,10 +5286,10 @@ msgid ""
 "Users may have various roles and privileges to create, modify and publish "
 "APIs within an organization."
 msgstr ""
-"Organisaatioita käytetään liityntöjen ja aineistokokonaisuuksien luomiseen, "
-"hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla organisaatioissa eri "
-"rooleja ja eri tasoisia käyttöoikeuksia liityntöjen luomiseen, muokkaamiseen"
-" ja julkaisemiseen."
+"Organisaatioita käytetään alijärjestelmien ja aineistokokonaisuuksien "
+"luomiseen, hallinnointiin ja julkaisemiseen. Käyttäjillä voi olla "
+"organisaatioissa eri rooleja ja eri tasoisia käyttöoikeuksia "
+"alijärjestelmien luomiseen, muokkaamiseen ja julkaisemiseen."
 
 msgid "{0} organizations"
 msgstr "{0} organisaatiota"
@@ -5290,16 +5300,16 @@ msgid ""
 msgstr "Verkkopalvelun kehittämisestä vastaa Digi- ja väestötietovirasto."
 
 msgid "Active APIs"
-msgstr "Aktiiviset liitynnät"
+msgstr "Aktiiviset alijärjestelmät"
 
 msgid "Filter list"
 msgstr "Rajaa listaa"
 
 msgid "Search API Catalog"
-msgstr "Hae Liityntöjä"
+msgstr "Hae alijärjestelmiä"
 
 msgid "{0} datasets"
-msgstr "{0} liityntää"
+msgstr "{0} alijärjestelmää"
 
 msgid "Filter by text"
 msgstr "Rajaa sanalla"
@@ -5344,7 +5354,7 @@ msgid "Add user"
 msgstr "Lisää käyttäjä"
 
 msgid "Browse APIs"
-msgstr "Selaa liityntöjä"
+msgstr "Selaa alijärjestelmiä"
 
 msgid "News"
 msgstr "Uutiset"
@@ -5365,10 +5375,10 @@ msgid "Visitors"
 msgstr "Kävijää"
 
 msgid "New APIs"
-msgstr "Uutta liityntää"
+msgstr "Uutta alijärjestelmää"
 
 msgid "New attachments"
-msgstr "Uutta rajapintaa"
+msgstr "Uudet palvelut"
 
 msgid "Browse news"
 msgstr "Lue kaikki uutiset"
@@ -5377,7 +5387,7 @@ msgid "Show organizations without APIs"
 msgstr "Näytä kaikki organisaatiot"
 
 msgid "Show only organizations with APIs"
-msgstr "Näytä vain organisaatiot, joilla on liityntöjä"
+msgstr "Näytä vain organisaatiot, joilla on alijärjestelmiä"
 
 msgid "More options"
 msgstr "Lisää"
@@ -5427,7 +5437,7 @@ msgstr ""
 "käyttäjätiliä ei ole olemassa)"
 
 msgid "There are currently no APIs for this organization"
-msgstr "Organisaatiolla ei ole aktiivisia liityntöjä"
+msgstr "Organisaatiolla ei ole aktiivisia alijärjestelmiä"
 
 msgid "New consumer"
 msgstr "Uusi hyödyntäjä"
@@ -5516,13 +5526,13 @@ msgstr ""
 "href=\"{pkg_url}\">{pkg_title}</a>"
 
 msgid "Interfaces"
-msgstr ""
+msgstr "Palvelut"
 
 msgid "Attachments"
 msgstr ""
 
 msgid "Information about the interface"
-msgstr ""
+msgstr "Tietoa palvelusta"
 
 msgid ""
 "Other information about the API, e.g. how to take into use, parameters, "
@@ -5539,22 +5549,22 @@ msgid ""
 msgstr ""
 
 msgid "X-Road instance"
-msgstr ""
+msgstr "Palveluväylän ympäristö (X-Road instance)"
 
 msgid "X-Road member class"
-msgstr ""
+msgstr "Organisaation tyyppi (X-Road member class)"
 
 msgid "X-Road member code"
-msgstr ""
+msgstr "Organisaation koodi (Y-tunnus, X-Road member code)"
 
 msgid "X-Road subsystem code"
-msgstr ""
+msgstr "Alijärjestelmän nimi (X-Road subsystem code)"
 
 msgid "X-Road service code"
-msgstr ""
+msgstr "Palvelun nimi (X-Road service code)"
 
 msgid "X-Road service version"
-msgstr ""
+msgstr "Palvelun versio (X-Road service version)"
 
 msgid "Services"
 msgstr "Palvelut"
