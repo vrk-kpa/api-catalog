@@ -239,76 +239,10 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
 ANNOUNCEMENT_CACHE = None
 def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
     global ANNOUNCEMENT_CACHE
-    admin_context = {'ignore_auth': True}
-    organization_show = get_action('organization_show')
-    package_show = get_action('package_show')
-    resource_show = get_action('resource_show')
-
-    def activity_to_announcement(activity):
-        try:
-            published = parse_datetime(activity.get('timestamp'))
-            activity_type = activity.get('activity_type')
-            data = {'activity': activity, 'published': published}
-
-            if activity_type == 'new organization':
-                organization_id = activity.get('object_id')
-                data['organization'] = organization_show({}, {'id': organization_id})
-
-            elif activity_type in ('new package', 'changed package', 'deleted package'):
-                package_data = activity.get('data', {}).get('package', {})
-                if package_data.get('private', False):
-                    return None
-                package_id = activity.get('object_id')
-                organization_id = package_data.get('owner_org')
-                data['package'] = package_show({}, {'id': package_id})
-                data['organization'] = organization_show({}, {'id': organization_id})
-
-            elif activity_type in ('new resource', 'changed resource', 'deleted resource'):
-                resource_id = activity.get('object_id')
-                resource = activity.get('data', {}).get('resource', {})
-                package = package_show({}, {'id': resource.get('package_id')})
-                organization = organization_show({}, {'id': package.get('owner_org')})
-                data['resource'] = resource
-                data['package'] = package
-                data['organization'] = organization
-
-            else:
-                log.debug('Skipping announcement item of type %s', activity_type)
-                return None
-
-            return data
-        except Exception as e:
-            log.warn('Error parsing announcement item: %s', e)
-            return None
-
-    def fetch_activity(activity_count=3):
-
-        allowed_activity_types = ['new organization', 'new package', 'changed package', 'deleted package',
-                                  'new resource', 'changed resource', 'deleted resource']
-        offset = 0
-        limit = 100
-        collected_activities = []
-
-        while len(collected_activities) <= activity_count:
-            try:
-                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest', 'offset': offset, 'limit': limit})
-            except NotFound:
-                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default', 'offset': offset, 'limit': limit})
-
-            offset += limit
-            collected_activities += (activity for activity in harvest_activity
-                                     if activity.get('activity_type') in allowed_activity_types)
-        return collected_activities
-
-
+    from ckanext.apicatalog_routes.helpers import get_announcements
     if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
 
-        harvest_activities = fetch_activity(count)
-
-        all_announcements = (a for a in (activity_to_announcement(a)
-                                         for a in harvest_activities)
-                             if a is not None)
-        announcements = list(itertools.islice(all_announcements, count))
+        announcements = get_announcements(count)
         announcement_cache_timestamp = datetime.now()
         ANNOUNCEMENT_CACHE = (announcement_cache_timestamp, announcements)
     else:

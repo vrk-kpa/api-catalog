@@ -2,7 +2,14 @@
 
 {% block primary_content %}
 <h1>{{ _('Announcements') }}</h1>
-    {% for announcement in announcements %}
-        foo
-    {% endfor %}
+
+    {%  set announcements = c.announcement_list %}
+    <ul class="announcements-list">
+        {%- for item in announcements -%}<li>
+            <h4 class="title">{% snippet 'home/snippets/announcement_title.html', item=item %}</h4>
+            <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
+            <p class="content">{% snippet 'home/snippets/announcement_content.html', item=item %}</p>
+        </li>{%- endfor -%}
+    </ul>
+
 {% endblock %}
