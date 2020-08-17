@@ -12,7 +12,6 @@ import itertools
 import requests
 from datetime import datetime, timedelta, date
 import ckan.lib.helpers as h
-from typing import List
 
 NotFound = logic.NotFound
 config = toolkit.config
