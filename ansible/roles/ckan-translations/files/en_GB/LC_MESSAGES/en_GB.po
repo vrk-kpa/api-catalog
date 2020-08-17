@@ -459,7 +459,7 @@ msgstr "Parameter \"{parameter_name}\" is not an integer"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "API not found"
+msgstr "Subsystem not found"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791
@@ -481,16 +481,16 @@ msgid ""
 "Viewing {package_type} datasets in {format} format is not supported "
 "(template file {file} not found)."
 msgstr ""
-"Viewing {package_type} APIs in {format} format is not supported (template "
-"file {file} not found)."
+"Viewing {package_type} subsystems in {format} format is not supported "
+"(template file {file} not found)."
 
 #: ckan/controllers/package.py:472
 msgid "CKAN Dataset Revision History"
-msgstr "API Revision History"
+msgstr "Subsystem Revision History"
 
 #: ckan/controllers/package.py:475
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Recent changes to API: "
+msgstr "Recent changes to subsystem: "
 
 #: ckan/controllers/package.py:532
 msgid "Unauthorized to create a package"
@@ -511,12 +511,12 @@ msgstr "Resource not found"
 
 #: ckan/controllers/package.py:682
 msgid "Unauthorized to update dataset"
-msgstr "Unauthorized to update API"
+msgstr "Unauthorized to update subsystem"
 
 #: ckan/controllers/package.py:685 ckan/controllers/package.py:721
 #: ckan/controllers/package.py:749
 msgid "The dataset {id} could not be found."
-msgstr "The API {id} could not be found."
+msgstr "The subsystem {id} could not be found."
 
 #: ckan/controllers/package.py:688
 msgid "You must add at least one data resource"
@@ -550,7 +550,7 @@ msgstr "Unauthorized to delete package %s"
 
 #: ckan/controllers/package.py:1065
 msgid "Dataset has been deleted."
-msgstr "API has been deleted."
+msgstr "The subsystem has been deleted."
 
 #: ckan/controllers/package.py:1092
 msgid "Resource has been deleted."
@@ -566,7 +566,7 @@ msgstr "Unauthorized to delete attachment %s"
 #: ckan/controllers/package.py:1485 ckan/controllers/package.py:1598
 #, python-format
 msgid "Unauthorized to read dataset %s"
-msgstr "Unauthorized to read API %s"
+msgstr "Unauthorized to read subsystem %s"
 
 #: ckan/controllers/package.py:1157 ckan/controllers/package.py:1619
 msgid "Resource view not found"
@@ -714,7 +714,7 @@ msgstr "Recent changes to the repository."
 #: ckan/controllers/revision.py:108
 #, python-format
 msgid "Datasets affected: %s.\n"
-msgstr "APIs affected: %s.\n"
+msgstr "Subsystems affected: %s.\n"
 
 #: ckan/controllers/revision.py:188
 msgid "Revision updated"
@@ -877,7 +877,7 @@ msgstr "Redirecting to external site is not allowed."
 
 #: ckan/lib/activity_streams.py:64
 msgid "{actor} added the tag {tag} to the dataset {dataset}"
-msgstr "{actor} added the tag {tag} to the API {dataset}"
+msgstr "{actor} added the tag {tag} to the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:67
 msgid "{actor} updated the group {group}"
@@ -889,15 +889,15 @@ msgstr "{actor} updated the organization {organization}"
 
 #: ckan/lib/activity_streams.py:73
 msgid "{actor} updated the dataset {dataset}"
-msgstr "{actor} updated the API {dataset}"
+msgstr "{actor} updated the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:76
 msgid "{actor} changed the extra {extra} of the dataset {dataset}"
-msgstr "{actor} changed the extra {extra} of the API {dataset}"
+msgstr "{actor} changed the extra {extra} of the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
-msgstr "{actor} updated the attachment {resource} in the API {dataset}"
+msgstr "{actor} updated the attachment {resource} in the subsystems {dataset}"
 
 #: ckan/lib/activity_streams.py:82
 msgid "{actor} updated their profile"
@@ -907,7 +907,7 @@ msgstr "{actor} updated their profile"
 msgid ""
 "{actor} updated the {related_type} {related_item} of the dataset {dataset}"
 msgstr ""
-"{actor} updated the {related_type} {related_item} of the API {dataset}"
+"{actor} updated the {related_type} {related_item} of the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:89
 msgid "{actor} updated the {related_type} {related_item}"
@@ -923,15 +923,16 @@ msgstr "{actor} deleted the organization {organization}"
 
 #: ckan/lib/activity_streams.py:98
 msgid "{actor} deleted the dataset {dataset}"
-msgstr "{actor} deleted the API {dataset}"
+msgstr "{actor} deleted the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:101
 msgid "{actor} deleted the extra {extra} from the dataset {dataset}"
-msgstr "{actor} deleted the extra {extra} from the API {dataset}"
+msgstr "{actor} deleted the extra {extra} from the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
-msgstr "{actor} deleted the attachment {resource} from the API {dataset}"
+msgstr ""
+"{actor} deleted the attachment {resource} from the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:108
 msgid "{actor} created the group {group}"
@@ -943,15 +944,15 @@ msgstr "{actor} created the organization {organization}"
 
 #: ckan/lib/activity_streams.py:114
 msgid "{actor} created the dataset {dataset}"
-msgstr "{actor} created the API {dataset}"
+msgstr "{actor} created the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:117
 msgid "{actor} added the extra {extra} to the dataset {dataset}"
-msgstr "{actor} added the extra {extra} to the API {dataset}"
+msgstr "{actor} added the extra {extra} to the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
-msgstr "{actor} added the attachment {resource} to the API {dataset}"
+msgstr "{actor} added the attachment {resource} to the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:123
 msgid "{actor} signed up"
@@ -959,7 +960,7 @@ msgstr "{actor} signed up"
 
 #: ckan/lib/activity_streams.py:126
 msgid "{actor} removed the tag {tag} from the dataset {dataset}"
-msgstr "{actor} removed the tag {tag} from the API {dataset}"
+msgstr "{actor} removed the tag {tag} from the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:129
 msgid "{actor} deleted the related item {related_item}"
@@ -980,7 +981,8 @@ msgstr "{actor} started following {group}"
 #: ckan/lib/activity_streams.py:142
 msgid ""
 "{actor} added the {related_type} {related_item} to the dataset {dataset}"
-msgstr "{actor} added the {related_type} {related_item} to the API {dataset}"
+msgstr ""
+"{actor} added the {related_type} {related_item} to the subsystem {dataset}"
 
 #: ckan/lib/activity_streams.py:145
 msgid "{actor} added the {related_type} {related_item}"
@@ -1159,7 +1161,7 @@ msgstr "Unnamed attachment"
 
 #: ckan/lib/helpers.py:1189
 msgid "Created new dataset."
-msgstr "Created new API."
+msgstr "Created new subsystem."
 
 #: ckan/lib/helpers.py:1191
 msgid "Edited resources."
@@ -1292,7 +1294,7 @@ msgstr "User"
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
 msgid "Dataset"
-msgstr "API"
+msgstr "Subsystem"
 
 #: ckan/logic/converters.py:169 ckan/logic/validators.py:241
 #: ckanext/stats/templates/ckanext/stats/index.html:113
@@ -1314,7 +1316,7 @@ msgstr "Organization does not exist"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "You cannot add an API to this organization"
+msgstr "You cannot add a subsystem to this organization"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1338,7 +1340,7 @@ msgstr "No links are allowed in the log_message."
 
 #: ckan/logic/validators.py:156
 msgid "Dataset id already exists"
-msgstr "API id already exists"
+msgstr "Subsystem id already exists"
 
 #: ckan/logic/validators.py:197 ckan/logic/validators.py:288
 msgid "Resource"
@@ -1506,7 +1508,7 @@ msgstr "role does not exist."
 
 #: ckan/logic/validators.py:759
 msgid "Datasets with no organization can't be private."
-msgstr "APIs with no organization can't be private."
+msgstr "Subsystems with no organization can't be private."
 
 #: ckan/logic/validators.py:765
 msgid "Not a list"
@@ -1587,7 +1589,7 @@ msgstr "You are already following {0}"
 
 #: ckan/logic/action/create.py:1370 ckan/logic/action/create.py:1378
 msgid "You must be logged in to follow a dataset."
-msgstr "You must be logged in to follow an API."
+msgstr "You must be logged in to follow a subsystem."
 
 #: ckan/logic/action/create.py:1430
 msgid "User {username} does not exist."
@@ -1696,7 +1698,7 @@ msgstr "User %s not authorized to edit these groups"
 #: ckan/logic/auth/create.py:36
 #, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "User %s not authorized to add API to this organization"
+msgstr "User %s not authorized to add subsystem to this organization"
 
 #: ckan/logic/auth/create.py:58
 msgid "You must be a sysadmin to create a featured related item"
@@ -1708,7 +1710,7 @@ msgstr "You must be logged in to add a related item"
 
 #: ckan/logic/auth/create.py:77
 msgid "No dataset id provided, cannot check auth."
-msgstr "No API id provided, cannot check auth."
+msgstr "No subsystem id provided, cannot check auth."
 
 #: ckan/logic/auth/create.py:84 ckan/logic/auth/delete.py:28
 #: ckan/logic/auth/get.py:135 ckan/logic/auth/update.py:61
@@ -1718,7 +1720,7 @@ msgstr "No package found for this resource, cannot check auth."
 #: ckan/logic/auth/create.py:92
 #, python-format
 msgid "User %s not authorized to create resources on dataset %s"
-msgstr "User %s not authorized to create attachments on API %s"
+msgstr "User %s not authorized to create attachments on subsystem %s"
 
 #: ckan/logic/auth/create.py:124
 #, python-format
@@ -2283,11 +2285,11 @@ msgstr "Register"
 #: ckan/templates/user/read.html:5 ckan/templates/user/read_base.html:19
 #: ckan/templates/user/read_base.html:53
 msgid "Datasets"
-msgstr "APIs"
+msgstr "Subsystems"
 
 #: ckan/templates/header.html:116
 msgid "Search Datasets"
-msgstr "Search APIs"
+msgstr "Search subsystems"
 
 #: ckan/templates/header.html:117 ckan/templates/home/snippets/search.html:11
 #: ckan/templates/snippets/simple_search.html:5
@@ -2407,7 +2409,7 @@ msgstr "Purge"
 
 #: ckan/templates/admin/trash.html:32
 msgid " <p>Purge deleted datasets forever and irreversibly.</p> "
-msgstr " <p>Purge deleted APIs forever and irreversibly.</p> "
+msgstr " <p>Purge deleted subsystems forever and irreversibly.</p> "
 
 #: ckan/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
@@ -2812,8 +2814,8 @@ msgid ""
 "datasets from groups</p> "
 msgstr ""
 " <p><strong>Admin:</strong> Can edit group information, as well as manage "
-"organization members.</p> <p><strong>Member:</strong> Can add/remove APIs "
-"from groups</p> "
+"organization members.</p> <p><strong>Member:</strong> Can add/remove "
+"subsystems from groups</p> "
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
@@ -2857,11 +2859,11 @@ msgstr "Popular"
 #: ckan/templates/group/read.html:21 ckan/templates/organization/read.html:25
 #: ckan/templates/snippets/search_form.html:3
 msgid "Search datasets..."
-msgstr "Search APIs..."
+msgstr "Search subsystems..."
 
 #: ckan/templates/group/snippets/feeds.html:3
 msgid "Datasets in group: {group}"
-msgstr "APIs in group: {group}"
+msgstr "Subsystems in group: {group}"
 
 #: ckan/templates/group/snippets/feeds.html:4
 #: ckan/templates/organization/snippets/feeds.html:4
@@ -2910,14 +2912,14 @@ msgstr "Save Group"
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
 msgstr[0] "{num} API"
-msgstr[1] "{num} APIs"
+msgstr[1] "{num} subsystems"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
 #: ckanext/example_theme/v10_custom_snippet/templates/snippets/example_theme_most_popular_groups.html:25
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:24
 msgid "0 Datasets"
-msgstr "0 APIs"
+msgstr "0 subsystems"
 
 #: ckan/templates/group/snippets/group_item.html:38
 #: ckan/templates/group/snippets/group_item.html:39
@@ -2926,7 +2928,7 @@ msgstr "View {name}"
 
 #: ckan/templates/group/snippets/group_item.html:43
 msgid "Remove dataset from this group"
-msgstr "Remove API from this group"
+msgstr "Remove subsystem from this group"
 
 #: ckan/templates/group/snippets/helper.html:4
 msgid "What are Groups?"
@@ -2939,10 +2941,10 @@ msgid ""
 "particular theme, or as a very simple way to help people find and search "
 "your own published datasets. "
 msgstr ""
-" You can use Groups to create and manage collections of APIs. This could be "
-"to catalog APIs for a particular project or team, or on a particular theme, "
-"or as a very simple way to help people find and search your own published "
-"APIs. "
+" You can use Groups to create and manage collections of subsystems. This "
+"could be to catalog subsystems for a particular project or team, or on a "
+"particular theme, or as a very simple way to help people find and search "
+"your own published subsystems. "
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3049,15 +3051,15 @@ msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
 "don't have any copy to go here yet but soon we will "
 msgstr ""
-"<p>The API catalog is an up-to-date index of APIs within the National Data "
-"Exchange Layer.  The purpose of the API catalog is to help service providers"
-" and realisers to develop more efficient electronic services and support the"
-" reuse of data. The API catalog contains descriptions of electronic services"
-" whose data is available for use by other information systems.</p><p>The API"
-" catalog website is still being created. Registration is not possible during"
-" the beta phase.</p><p>The API catalog is provided by the Digital and "
-"Population Data Services Agency as part of the national service architecture"
-" programme (KaPA).</p>"
+"<p>The API catalog is an up-to-date index of sybsystems within the National "
+"Data Exchange Layer.  The purpose of the API catalog is to help service "
+"providers and realisers to develop more efficient electronic services and "
+"support the reuse of data. The API catalog contains descriptions of "
+"electronic services whose data is available for use by other information "
+"systems.</p><p>The API catalog website is still being created. Registration "
+"is not possible during the beta phase.</p><p>The API catalog is provided by "
+"the Digital and Population Data Services Agency as part of the national "
+"service architecture programme (KaPA).</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -3081,11 +3083,11 @@ msgstr "{0} statistics"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "dataset"
-msgstr "API"
+msgstr "subsystem"
 
 #: ckan/templates/home/snippets/stats.html:11
 msgid "datasets"
-msgstr "APIs"
+msgstr "subsystems"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organization"
@@ -3159,11 +3161,11 @@ msgstr "Organization Form"
 #: ckan/templates/organization/bulk_process.html:3
 #: ckan/templates/organization/bulk_process.html:11
 msgid "Edit datasets"
-msgstr "Edit APIs"
+msgstr "Edit subsystems"
 
 #: ckan/templates/organization/bulk_process.html:6
 msgid "Add dataset"
-msgstr "Add API"
+msgstr "Add a subsystem"
 
 #: ckan/templates/organization/bulk_process.html:16
 msgid " found for \"{query}\""
@@ -3171,7 +3173,7 @@ msgstr " found for \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
-msgstr "Sorry no APIs found for \"{query}\""
+msgstr "Sorry no subsystems found for \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:37
 msgid "Make public"
@@ -3198,7 +3200,7 @@ msgstr "Private"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr "This organization has no APIs associated to it"
+msgstr "This organization has no subsystems associated to it"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
@@ -3249,10 +3251,11 @@ msgid ""
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
 "but not add new datasets.</p> "
 msgstr ""
-" <p><strong>Admin:</strong> Can add/edit and delete APIs, as well as manage "
-"organization members.</p> <p><strong>Editor:</strong> Can add and edit APIs,"
-" but not manage organization members.</p> <p><strong>Member:</strong> Can "
-"view the organization's private APIs, but not add new APIs.</p> "
+" <p><strong>Admin:</strong> Can add/edit and delete subsystems, as well as "
+"manage organization members.</p> <p><strong>Editor:</strong> Can add and "
+"edit subsystems, but not manage organization members.</p> "
+"<p><strong>Member:</strong> Can view the organization's private subsystems, "
+"but not add new subsystems.</p> "
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3273,11 +3276,11 @@ msgstr "Create Organization"
 #: ckan/templates/package/search.html:16
 #: ckan/templates/user/dashboard_datasets.html:7
 msgid "Add Dataset"
-msgstr "Add API"
+msgstr "Add Subsystem"
 
 #: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
-msgstr "APIs in organization: {group}"
+msgstr "Subsystems in organization: {group}"
 
 #: ckan/templates/organization/snippets/help.html:4
 #: ckan/templates/organization/snippets/helper.html:4
@@ -3293,12 +3296,12 @@ msgid ""
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
 msgstr ""
-" <p>Organizations act like publishing departments for APIs (for example, the"
-" Department of Health). This means that APIs can be published by and belong "
-"to a department instead of an individual user.</p> <p>Within organizations, "
-"admins can assign roles and authorise its members, giving individual users "
-"the right to publish APIs from that particular organisation (e.g. Office of "
-"National Statistics).</p> "
+" <p>Organizations act like publishing departments for subsystems (for "
+"example, the Department of Health). This means that subsystems can be "
+"published by and belong to a department instead of an individual user.</p> "
+"<p>Within organizations, admins can assign roles and authorise its members, "
+"giving individual users the right to publish subsystems from that particular"
+" organisation (e.g. Office of National Statistics).</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
@@ -3306,9 +3309,9 @@ msgid ""
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
 msgstr ""
-" Organizations are used to create, manage and publish collections of APIs. "
-"Users can have different roles within an Organization, depending on their "
-"level of authorisation to create, edit and publish. "
+" Organizations are used to create, manage and publish collections of "
+"subsystems. Users can have different roles within an organization, depending"
+" on their level of authorisation to create, edit and publish. "
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3327,8 +3330,8 @@ msgid ""
 "Are you sure you want to delete this Organization? This will delete all the "
 "public and private datasets belonging to this organization."
 msgstr ""
-"Are you sure you want to delete this Organization? This will delete all the "
-"public and private APIs belonging to this organization."
+"Are you sure you want to delete this organization? This will delete all the "
+"public and private subsystems belonging to this organization."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -3342,11 +3345,11 @@ msgstr "View {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Create API"
+msgstr "Create Subsystem"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid "What are datasets?"
-msgstr "What are APIs?"
+msgstr "What are subsystems?"
 
 #: ckan/templates/package/base_form_page.html:25
 msgid ""
@@ -3354,13 +3357,13 @@ msgid ""
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
 msgstr ""
-" An API is a collection of attachments (such as wsdl files), together with a"
-" description and other information, at a fixed URL. APIs are what users see "
-"when searching for data. "
+" A subsystem is a collection of attachments (such as WSDL files), together "
+"with a description and other information, at a fixed URL. Subsystems are "
+"what users see when searching for data. "
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
-msgstr "Are you sure you want to delete API - {name}?"
+msgstr "Are you sure you want to delete subsystem- {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
@@ -3368,7 +3371,7 @@ msgstr "Are you sure you want to delete attachment - {name}?"
 
 #: ckan/templates/package/edit_base.html:16
 msgid "View dataset"
-msgstr "View API"
+msgstr "View subsystem"
 
 #: ckan/templates/package/edit_base.html:20
 msgid "Edit metadata"
@@ -3395,7 +3398,7 @@ msgstr "Update"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Associate this group with this dataset"
-msgstr "Associate this group with this API"
+msgstr "Associate this group with this subsystem"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Add to group"
@@ -3403,15 +3406,15 @@ msgstr "Add to group"
 
 #: ckan/templates/package/group_list.html:23
 msgid "There are no groups associated with this dataset"
-msgstr "There are no groups associated with this API"
+msgstr "There are no groups associated with this subsystem"
 
 #: ckan/templates/package/new_package_form.html:15
 msgid "Update Dataset"
-msgstr "Update API"
+msgstr "Update subsystem"
 
 #: ckan/templates/package/new_resource.html:5
 msgid "Add data to the dataset"
-msgstr "Add data to the API"
+msgstr "Add data to the subsystem"
 
 #: ckan/templates/package/new_resource.html:11
 #: ckan/templates/package/new_resource_not_draft.html:8
@@ -3459,8 +3462,8 @@ msgid ""
 "This is an old revision of this dataset, as edited at %(timestamp)s. It may "
 "differ significantly from the <a href=\"%(url)s\">current revision</a>."
 msgstr ""
-"This is an old revision of this API, as edited at %(timestamp)s. It may "
-"differ significantly from the <a href=\"%(url)s\">current revision</a>."
+"This is an old revision of this subsystem, as edited at %(timestamp)s. It "
+"may differ significantly from the <a href=\"%(url)s\">current revision</a>."
 
 #: ckan/templates/package/related_list.html:7
 msgid "Related Media for {dataset}"
@@ -3554,7 +3557,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "From the API abstract"
+msgstr "From the subsystem's abstract"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
@@ -3651,8 +3654,8 @@ msgid ""
 " <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
 "add some?</a></p> "
 msgstr ""
-" <p class=\"empty\">This API has no data, <a href=\"%(url)s\">why not add "
-"some?</a></p> "
+" <p class=\"empty\">This subsystem has no data, <a href=\"%(url)s\">why not "
+"add some?</a></p> "
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3739,7 +3742,7 @@ msgstr "eg. A descriptive title"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:13
 msgid "eg. my-dataset"
-msgstr "eg. my-API"
+msgstr "eg. my-subsystem"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:19
 msgid "eg. Some useful notes about the data"
@@ -3792,7 +3795,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
-msgstr "Are you sure you want to delete this API?"
+msgstr "Are you sure you want to delete this subsystem?"
 
 #: ckan/templates/package/snippets/package_form.html:44
 msgid "Next: Add Data"
@@ -3800,7 +3803,7 @@ msgstr "Next: Add Data"
 
 #: ckan/templates/package/snippets/package_metadata_fields.html:6
 msgid "http://example.com/dataset.json"
-msgstr "http://example.com/API"
+msgstr "http://example.com/subsystem"
 
 #: ckan/templates/package/snippets/package_metadata_fields.html:10
 msgid "1.0"
@@ -3947,17 +3950,17 @@ msgstr "Data and Resources"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
-msgstr "This API has no data"
+msgstr "This subsystem has no data"
 
 #: ckan/templates/package/snippets/revisions_table.html:24
 #, python-format
 msgid "Read dataset as of %s"
-msgstr "Read API as of %s"
+msgstr "Read subsystem as of %s"
 
 #: ckan/templates/package/snippets/stages.html:23
 #: ckan/templates/package/snippets/stages.html:25
 msgid "Create dataset"
-msgstr "Create API"
+msgstr "Create subsystem"
 
 #: ckan/templates/package/snippets/stages.html:30
 #: ckan/templates/package/snippets/stages.html:34
@@ -4009,9 +4012,9 @@ msgid ""
 "that references this dataset.</p> "
 msgstr ""
 " <p>Related Media is any app, article, visualisation or idea related to this"
-" API.</p> <p>For example, it could be a custom visualisation, pictograph or "
-"bar chart, an app using all or part of the data or even a news story that "
-"references this API.</p> "
+" subsystem.</p> <p>For example, it could be a custom visualisation, "
+"pictograph or bar chart, an app using all or part of the data or even a news"
+" story that references this subsystem.</p> "
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -4050,8 +4053,8 @@ msgid ""
 " These are applications built with the datasets as well as ideas for things "
 "that could be done with them. "
 msgstr ""
-" These are applications built with the APIs as well as ideas for things that"
-" could be done with them. "
+" These are applications built with the subsystems as well as ideas for "
+"things that could be done with them. "
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4170,7 +4173,7 @@ msgstr "Changes"
 
 #: ckan/templates/revision/read.html:74
 msgid "Datasets' Tags"
-msgstr "APIs' Tags"
+msgstr "Subsystems' Tags"
 
 #: ckan/templates/revision/snippets/revisions_list.html:7
 msgid "Entity"
@@ -4242,7 +4245,7 @@ msgstr "No License Provided"
 
 #: ckan/templates/snippets/license.html:28
 msgid "This dataset satisfies the Open Definition."
-msgstr "This API satisfies the Open Definition."
+msgstr "This subsystem satisfies the Open Definition."
 
 #: ckan/templates/snippets/organization.html:48
 msgid "There is no description for this organization"
@@ -4250,14 +4253,15 @@ msgstr "There is no description for this organization"
 
 #: ckan/templates/snippets/package_item.html:57
 msgid "This dataset has no description"
-msgstr "This API has no description"
+msgstr "This subsystem has no description"
 
 #: ckan/templates/snippets/related.html:15
 msgid ""
 "No apps, ideas, news stories or images have been related to this dataset "
 "yet."
 msgstr ""
-"No apps, ideas, news stories or images have been related to this API yet."
+"No apps, ideas, news stories or images have been related to this subsystem "
+"yet."
 
 #: ckan/templates/snippets/related.html:18
 msgid "Add Item"
@@ -4289,21 +4293,21 @@ msgstr ""
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
 msgstr[0] "{number} API found for \"{query}\""
-msgstr[1] "{number} APIs found for \"{query}\""
+msgstr[1] "{number} subsystems found for \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:16
 msgid "No datasets found for \"{query}\""
-msgstr "No APIs found for \"{query}\""
+msgstr "No subsystems found for \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:17
 msgid "{number} dataset found"
 msgid_plural "{number} datasets found"
 msgstr[0] "{number} API found"
-msgstr[1] "{number} APIs found"
+msgstr[1] "{number} subsystems found"
 
 #: ckan/templates/snippets/search_result_text.html:18
 msgid "No datasets found"
-msgstr "No APIs found"
+msgstr "No subsystems found"
 
 #: ckan/templates/snippets/search_result_text.html:21
 msgid "{number} group found for \"{query}\""
@@ -4380,7 +4384,7 @@ msgstr "News feed"
 #: ckan/templates/user/dashboard.html:20
 #: ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
-msgstr "My APIs"
+msgstr "My Subsystems"
 
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
@@ -4399,7 +4403,7 @@ msgstr "Activity from items that I'm following"
 #: ckan/templates/user/dashboard_datasets.html:17
 #: ckan/templates/user/read.html:14
 msgid "You haven't created any datasets."
-msgstr "You haven't created any APIs."
+msgstr "You haven't created any subsystems."
 
 #: ckan/templates/user/dashboard_datasets.html:19
 #: ckan/templates/user/dashboard_groups.html:22
@@ -4572,7 +4576,7 @@ msgstr "Why Sign Up?"
 
 #: ckan/templates/user/new.html:28
 msgid "Create datasets, groups and other exciting things"
-msgstr "Create APIs, groups and other exciting things"
+msgstr "Create subsystems, groups and other exciting things"
 
 #: ckan/templates/user/new_user_form.html:5
 msgid "username"
@@ -4610,7 +4614,7 @@ msgstr "Simply enter a new password and we'll update your account"
 
 #: ckan/templates/user/read.html:21
 msgid "User hasn't created any datasets."
-msgstr "User hasn't created any APIs."
+msgstr "User hasn't created any subsystems."
 
 #: ckan/templates/user/read_base.html:39
 msgid "You have not provided a biography."
@@ -4719,7 +4723,7 @@ msgstr "User {0} not authorized to update attachment {1}"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:11
 msgid "Datasets per page"
-msgstr "APIs per page"
+msgstr "Subsystems per page"
 
 #: ckanext/example_iconfigurer/templates/admin/config.html:13
 msgid "Test conf"
@@ -4766,7 +4770,7 @@ msgstr "Image url"
 
 #: ckanext/imageview/theme/templates/image_form.html:3
 msgid "eg. http://example.com/image.jpg (if blank uses resource url)"
-msgstr "eg. http://example.com/interface.wsdl (if blank uses attachment url)"
+msgstr "eg. http://example.com/service.wsdl (if blank uses attachment url)"
 
 #: ckanext/reclineview/plugin.py:84
 msgid "Data Explorer"
@@ -4843,7 +4847,7 @@ msgstr "Cluster markers"
 #: ckanext/stats/templates/ckanext/stats/index.html:10
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:57
 msgid "Total number of Datasets"
-msgstr "Total number of APIs"
+msgstr "Total number of subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:17
 #: ckanext/stats/templates/ckanext/stats/index.html:40
@@ -4852,26 +4856,26 @@ msgstr "Date"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:18
 msgid "Total datasets"
-msgstr "Total APIs"
+msgstr "Total subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:33
 #: ckanext/stats/templates/ckanext/stats/index.html:179
 msgid "Dataset Revisions per Week"
-msgstr "API Revisions per Week"
+msgstr "Subsystem Revisions per Week"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:41
 msgid "All dataset revisions"
-msgstr "All API revisions"
+msgstr "All subsystem revisions"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:42
 msgid "New datasets"
-msgstr "New APIs"
+msgstr "New subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:58
 #: ckanext/stats/templates/ckanext/stats/index.html:180
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:63
 msgid "Top Rated Datasets"
-msgstr "Top Rated APIs"
+msgstr "Top Rated Subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:64
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:65
@@ -4892,7 +4896,7 @@ msgstr "No ratings"
 #: ckanext/stats/templates/ckanext/stats/index.html:181
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:72
 msgid "Most Edited Datasets"
-msgstr "Most Edited APIs"
+msgstr "Most Edited Subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
@@ -4901,7 +4905,7 @@ msgstr "Number of edits"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:103
 msgid "No edited datasets"
-msgstr "No edited APIs"
+msgstr "No edited subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:108
 #: ckanext/stats/templates/ckanext/stats/index.html:182
@@ -4912,7 +4916,7 @@ msgstr "Largest Groups"
 #: ckanext/stats/templates/ckanext/stats/index.html:114
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:82
 msgid "Number of datasets"
-msgstr "Number of APIs"
+msgstr "Number of subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:127
 msgid "No groups"
@@ -4931,12 +4935,12 @@ msgstr "Tag Name"
 #: ckanext/stats/templates/ckanext/stats/index.html:137
 #: ckanext/stats/templates/ckanext/stats/index.html:157
 msgid "Number of Datasets"
-msgstr "Number of APIs"
+msgstr "Number of subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:152
 #: ckanext/stats/templates/ckanext/stats/index.html:184
 msgid "Users Owning Most Datasets"
-msgstr "Users Owning Most APIs"
+msgstr "Users Owning Most Subsystems"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:175
 msgid "Statistics Menu"
@@ -4944,7 +4948,7 @@ msgstr "Statistics Menu"
 
 #: ckanext/stats/templates/ckanext/stats/index.html:178
 msgid "Total Number of Datasets"
-msgstr "Total Number of APIs"
+msgstr "Total Number of subsystems"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:6
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:8
@@ -4953,11 +4957,11 @@ msgstr "Statistics"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:60
 msgid "Revisions to Datasets per week"
-msgstr "Revisions to APIs per week"
+msgstr "Revisions to subsystems per week"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:95
 msgid "Users owning most datasets"
-msgstr "Users owning most APIs"
+msgstr "Users owning most subsystems"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:102
 msgid "Page last updated:"
@@ -4969,15 +4973,15 @@ msgstr "Leaderboard - Stats"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:17
 msgid "Dataset Leaderboard"
-msgstr "API Leaderboard"
+msgstr "Subsystem Leaderboard"
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:18
 msgid ""
 "Choose a dataset attribute and find out which categories in that area have "
 "the most datasets. E.g. tags, groups, license, res_format, country."
 msgstr ""
-"Choose an API attribute and find out which categories in that area have the "
-"most APIs. E.g. tags, groups, license, res_format, country."
+"Choose a subsystem attribute and find out which categories in that area have"
+" the most subsystems. E.g. tags, groups, license, res_format, country."
 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
@@ -5220,7 +5224,7 @@ msgstr ""
 "File size too large for preview, download the file to view its contents."
 
 msgid "Search datasets"
-msgstr "Search APIs"
+msgstr "Search subsystems"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
 msgstr "Consumes data available via the Suomi.fi-Data Exchange Layer."
@@ -5232,7 +5236,7 @@ msgid "total organizations"
 msgstr "organizations"
 
 msgid "organizations with datasets"
-msgstr "organizations with APIs"
+msgstr "organizations with subsystems"
 
 msgid "Show all"
 msgstr "Show all"
@@ -5276,7 +5280,7 @@ msgid "Search API Catalog"
 msgstr "Search subsystems"
 
 msgid "{0} datasets"
-msgstr "{0} APIs"
+msgstr "{0} subsystems"
 
 msgid "Filter by text"
 msgstr ""
