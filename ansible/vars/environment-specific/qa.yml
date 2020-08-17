@@ -126,3 +126,6 @@ allowed_user_creators:
 
 allowed_user_editors:
   - paha
+
+allowed_member_editors:
+  - csc_admin
