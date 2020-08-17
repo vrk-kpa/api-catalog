@@ -115,3 +115,15 @@ ckan_plugins:
   - webpage_view
   - xroad_integration
   - forcetranslation
+
+
+allowed_user_creators:
+  - paha
+  - csc_admin
+
+allowed_user_editors:
+  - paha
+  - csc_admin
+
+allowed_member_editors:
+  - csc_admin
