@@ -64,6 +64,10 @@ def get_announcements(count=3, offset=0):
             except NotFound:
                 harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default', 'offset': activity_offset, 'limit': limit})
 
+            if len(harvest_activity) is 0:
+                log.info("No activities left, stopping search..")
+                break
+
             activity_offset += limit
 
             collected_activities += (activity for activity in harvest_activity
