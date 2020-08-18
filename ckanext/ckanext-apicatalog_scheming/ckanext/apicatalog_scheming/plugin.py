@@ -65,10 +65,10 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     def dataset_facets(self, facets_dict, package_type):
         lang = get_lang_prefix()
         facets_dict = OrderedDict([
+            ('services', _('Services')),
             ('organization', _('Organization')),
             ('vocab_keywords_' + lang, _('Tags')),
-            ('res_format', _('Formats')),
-            ('services', _('Services'))
+            ('res_format', _('Formats'))
             ])
         return facets_dict
 
