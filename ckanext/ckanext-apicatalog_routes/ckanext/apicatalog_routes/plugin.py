@@ -14,6 +14,7 @@ import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.authz as authz
 import ckan.logic as logic
 import ckan.lib.helpers as h
+from helpers import lang
 import ckan.lib.authenticator as authenticator
 import ckan.lib.base as base
 import ckan.lib.csrf_token as csrf_token
@@ -64,6 +65,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
     ckan.plugins.implements(ckan.plugins.IActions)
     ckan.plugins.implements(ckan.plugins.IBlueprint)
+    ckan.plugins.implements(ckan.plugins.ITemplateHelpers)
 
     # IRoutes
 
@@ -193,6 +195,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     # IBlueprint
     def get_blueprint(self):
         return views.get_blueprints()
+
+    def get_helpers(self):
+        return {
+            "lang": lang
+        }
 
 def send_reset_link(context, data_dict):
     ckan.logic.check_access('send_reset_link', context)

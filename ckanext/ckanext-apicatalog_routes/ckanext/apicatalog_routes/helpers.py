@@ -1,6 +1,6 @@
 import itertools
 
-from ckan.plugins.toolkit import get_action
+from ckan.plugins.toolkit import get_action, request
 
 from ckan.logic import NotFound
 from ckanext.apicatalog_ui.plugin import parse_datetime
@@ -83,3 +83,13 @@ def get_announcements(count=3, offset=0):
     announcements = list(itertools.islice(all_announcements, count))
 
     return announcements
+
+# Override core helper to map en_GB to en
+# TODO: Convert to chained helper once upgraded to ckan 2.9
+def lang():
+    ''' Return the language code for the current locale eg `en` '''
+    current_lang = request.environ.get('CKAN_LANG')
+
+    if current_lang == "en_GB":
+        return "en"
+    return current_lang
