@@ -5313,3 +5313,6 @@ msgstr ""
 
 msgid "Company language"
 msgstr ""
+
+msgid "Show only service providers"
+msgstr ""
