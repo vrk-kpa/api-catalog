@@ -1,0 +1,19 @@
+{% extends 'snippets/search_form_without_title.html' %}
+
+{% block search_input %}
+  {{ super() }}
+  <label for="apis-selection">{{ _('Show only service providers') }}</label>
+  <div>
+  {% if request.params.with_datasets %}
+      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
+          {{ _('Show organizations without APIs') }}
+      </a>
+      <input type="hidden" name="with_datasets" value="True"></input>
+  {% else %}
+      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, with_datasets=True) }}">
+          {{ _('Show only organizations with APIs') }}
+      </a>
+  {% endif %}
+  </div>
+{% endblock %}
+
