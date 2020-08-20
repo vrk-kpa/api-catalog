@@ -81,7 +81,7 @@ index af6a87f6c..15aebccde 100644
          <ul class="nav nav-pills">
 -          {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets')), ('organizations_index', _('Organizations')),
 -          ('group_index', _('Groups')), ('home.about', _('About')) ) }} {% endblock %}
-+          {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets'),  ["dataset", "resource"]), ('organizations_index', _('Organizations'), ['organization']),
++          {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets'),  ["package", "resource"]), ('organizations_index', _('Organizations'), ['organization']),
 +          ('group_index', _('Groups'), ['group']), ('home.about', _('About')) ) }} {% endblock %}
          </ul>
        </nav>
