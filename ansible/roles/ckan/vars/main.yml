@@ -33,6 +33,7 @@ ckan_patches:
   - { file: "disable_leftover_with_capacity" }
   - { file: "remove_is_sysadmin_or_user_itself_check" } # https://github.com/ckan/ckan/pull/5405
   - { file: "retain_allow_anonymous_access_in-chained_auth" }
+  - { file: "correctly_unflatten_extras" } # https://github.com/ckan/ckan/pull/5546
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
