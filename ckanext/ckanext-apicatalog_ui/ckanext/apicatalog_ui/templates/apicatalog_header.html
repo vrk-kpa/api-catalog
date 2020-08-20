@@ -55,11 +55,9 @@
               {% block header_site_navigation_tabs %}
                   {% set current_lang = request.environ.CKAN_LANG %}
                   {% set lang_code = 'en' if current_lang == 'en_GB' else current_lang %}
-                {{ h.build_nav_main(
-                        ('home.index', _('Home')),
-                        ('search', _('Datasets'), ["package", "resource"]),
-                        ('organizations_index', _('Organizations'), ["organization"])
-                        )}}
+                  {{ h.build_nav('home.index', _('Home')) }}
+                  {{ h.build_nav('search', _('Datasets'), highlight_controllers=['package', 'resource']) }}
+                  {{ h.build_nav('organizations_index', _('Organizations'), highlight_controllers=['organization']) }}
                 <li><a class="nav-external-link" href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Information about National Data Exchange Layer') }}
                   <svg viewbox="0 0 24 24">
                     <use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
