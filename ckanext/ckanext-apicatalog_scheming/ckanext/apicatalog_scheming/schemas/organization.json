@@ -130,6 +130,12 @@
       "output_validators": "scheming_load_json"
     },
     {
+      "field_name": "metadata_updated_from_xroad_timestamp",
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()",
+      "form_snippet": null,
+      "display_snippet": null
+    },
+    {
       "field_name": "xroad_instance",
       "label": "X-Road instance",
       "form_snippet": null,
