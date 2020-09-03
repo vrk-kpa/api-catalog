@@ -58,14 +58,9 @@
     {
       "field_name": "email_address",
       "label": "Email address",
-      "display_snippet": "email.html",
-      "validators": "ignore_missing",
-      "display_email_name_field": "email_address_description"
-    },
-    {
-      "field_name": "email_address_description",
-      "label": "Email address description",
-      "validators": "ignore_missing"
+      "preset": "fluent_list",
+      "validators": "fluent_list ignore_missing",
+      "display_snippet": "fluent_email_list.html"
     },
     {
       "field_name": "webpage_address",

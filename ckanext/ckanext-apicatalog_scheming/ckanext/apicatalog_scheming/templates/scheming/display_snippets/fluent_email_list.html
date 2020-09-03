@@ -1,0 +1,7 @@
+{% for value in h.scheming_language_text(data[field.field_name]) %}
+  {% set email_address = value[field.display_email_address_field] if field.display_email_address_field and value[field.display_email_address_field] else value %}
+  {% set email_name = value[field.display_email_name_field] if field.display_email_name_field and value[field.display_email_name_field] else value %}
+  {{ h.mail_to(email_address=email_address, name=email_name) }}
+  {%- if not loop.last %}, {% endif %}
+ {% endfor %}
+

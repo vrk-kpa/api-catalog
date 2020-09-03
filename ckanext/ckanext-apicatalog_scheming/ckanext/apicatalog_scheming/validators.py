@@ -1,12 +1,16 @@
 import re
 from ckan.common import _
 import ckan.lib.navl.dictization_functions as df
+from ckanext.fluent.validators import fluent_text
 from ckan.common import config
 import ckan.plugins.toolkit as toolkit
 import ckan.logic.validators as validators
 import json
 import plugin
+from logging import getLogger
+from pprint import pformat
 
+log = getLogger(__name__)
 missing = toolkit.missing
 get_action = toolkit.get_action
 
@@ -247,3 +251,55 @@ def override_field_with_default_translation(overridden_field_name):
         return validator
 
     return implementation
+
+@scheming_validator
+def fluent_list(field, schema):
+    fluent_text_validator = fluent_text(field, schema)
+
+    def validator(key, data, errors, context):
+        value = None
+        if data.get(key):
+            value = data[key]
+            if not isinstance(value, dict):
+                try:
+                    value = json.loads(value)
+                except ValueError:
+                    value = None
+
+        if not value:
+            fluent_text_validator(key, data, errors, context)
+
+            if errors[key]:
+                return
+
+            json_value = data[key]
+
+            if json_value is missing:
+                return
+
+            value = json.loads(json_value)
+
+        result = {lang: lang_value
+                        if isinstance(lang_value, list)
+                        else [item.strip() for item in lang_value.split(',')]
+                  for lang, lang_value in value.items()}
+
+        data[key] = json.dumps(result)
+
+
+    return validator
+
+def fluent_list_output(value):
+    """
+    Return stored json representation as a multilingual dict, if
+    value is already a dict just pass it through.
+    """
+    if isinstance(value, dict):
+        return value
+    try:
+        result = json.loads(value)
+        return {k: v if isinstance(v, list) else [v] for k, v in result.items()}
+
+    except ValueError:
+        # plain string in the db, return as is so it can be migrated
+        return value

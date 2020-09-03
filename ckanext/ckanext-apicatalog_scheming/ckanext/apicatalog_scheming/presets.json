@@ -78,6 +78,16 @@
       }
     },
     {
+      "preset_name": "fluent_list",
+      "values": {
+        "form_snippet": "fluent_list.html",
+        "display_snippet": "fluent_list.html",
+        "error_snippet": "fluent_text.html",
+        "validators": "fluent_list",
+        "output_validators": "fluent_list_output"
+      }
+    },
+    {
       "preset_name": "fluent_core_markdown_translated",
       "values": {
         "form_snippet": "fluent_markdown.html",
