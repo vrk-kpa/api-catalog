@@ -7,10 +7,8 @@ import ckan.plugins.toolkit as toolkit
 import ckan.logic.validators as validators
 import json
 import plugin
-from logging import getLogger
-from pprint import pformat
 
-log = getLogger(__name__)
+
 missing = toolkit.missing
 get_action = toolkit.get_action
 
