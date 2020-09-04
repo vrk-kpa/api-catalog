@@ -78,7 +78,10 @@ def migrations():
     return [('1.49.0', '1.50.0', no_changes),
             ('1.50.0', '1.51.0', migrate_1_50_0_to_1_51_0),
             ('1.51.0', '1.52.0', no_changes),
-            ('1.52.0', '1.53.0', migrate_1_52_0_to_1_53_0)
+            ('1.52.0', '1.53.0', migrate_1_52_0_to_1_53_0),
+            ('1.53.0', '1.54.0', no_changes),
+            ('1.54.0', '1.54.1', no_changes),
+            ('1.54.1', '1.55.0', migrate_1_54_1_to_1_55_0),
             ]
 
 
@@ -118,6 +121,24 @@ def migrate_1_52_0_to_1_53_0(ctx, config, dryrun):
 
     apply_patches(package_patches=package_patches, resource_patches=resource_patches,
                   organization_patches=organization_patches, dryrun=dryrun)
+
+
+def migrate_1_54_1_to_1_55_0(ctx, config, dryrun):
+    def is_json_object(s):
+        if isinstance(s, dict):
+            return True
+        try:
+            return isinstance(json.loads(s), dict)
+        except ValueError:
+            return False
+
+    organization_patches = [{'id': org['id'],
+                             'email_address': {lang: [org['email_address']]
+                                               for lang in ['fi', 'sv', 'en']}}
+                            for org in org_generator()
+                            if 'email_address' in org
+                            and not is_json_object(org['email_address'])]
+    apply_patches(organization_patches=organization_patches, dryrun=dryrun)
 
 
 #

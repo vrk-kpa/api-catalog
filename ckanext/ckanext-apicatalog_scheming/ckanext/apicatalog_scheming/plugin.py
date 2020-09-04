@@ -49,7 +49,9 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'create_fluent_tags': validators.create_fluent_tags,
             'convert_to_json_compatible_str_if_str': validators.convert_to_json_compatible_str_if_str,
             'mark_as_modified_in_catalog_if_changed': validators.mark_as_modified_in_catalog_if_changed,
-            'override_field_with_default_translation': validators.override_field_with_default_translation
+            'override_field_with_default_translation': validators.override_field_with_default_translation,
+            'fluent_list': validators.fluent_list,
+            'fluent_list_output': validators.fluent_list_output,
             }
 
     def get_helpers(self):
