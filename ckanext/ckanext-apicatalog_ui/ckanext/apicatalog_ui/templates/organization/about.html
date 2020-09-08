@@ -111,7 +111,7 @@
 			{% endblock %}
 		</div>
 		<div class="col-sm-4">
-			<img src="{{c.group_dict.image_display_url}}"/>
-		</div>
+            <img src="{{c.group_dict.image_display_url}}" alt="{{ _('Logo of organization {org}').format(org=h.get_translated(c.group_dict, 'title')) }}"/>
+        </div>
 	</div>
 {% endblock %}
