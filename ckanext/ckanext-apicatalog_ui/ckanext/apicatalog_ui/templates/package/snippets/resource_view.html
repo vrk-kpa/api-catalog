@@ -47,7 +47,7 @@
           {% set src = h.url(qualified=true, controller='package', action='resource_view', id=package['name'], resource_id=resource['id']) + '?' + h.urlencode({'resource_view': h.dump_json(resource_view)}) %}
         {% endif %}
         <div style="overflow:auto;-webkit-overflow-scrolling:touch;max-height:670px;">
-          <iframe src="{{ src }}" frameborder="0" width="100%" data-module="data-viewer">
+          <iframe aria-label="{{ _('Data preview') }}" src="{{ src }}" frameborder="0" width="100%" data-module="data-viewer">
             <p>{{ _('Your browser does not support iframes.') }}</p>
           </iframe>
         </div>
