@@ -1,0 +1,22 @@
+diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
+index 8e16f9d7d..42b9bc410 100644
+--- a/ckan/lib/helpers.py
++++ b/ckan/lib/helpers.py
+@@ -1347,13 +1352,16 @@ class Page(paginate.Page):
+     # our custom layout set as default.
+
+     def pager(self, *args, **kwargs):
+-        kwargs.update(
++        params = dict(
+             format=u"<div class='pagination-wrapper'><ul class='pagination'>"
+             "$link_previous ~2~ $link_next</ul></div>",
+             symbol_previous=u'«', symbol_next=u'»',
+             curpage_attr={'class': 'active'}, link_attr={}
+         )
+-        return super(Page, self).pager(*args, **kwargs)
++        params.update(kwargs)
++        params['symbol_previous'] = literal(params['symbol_previous'])
++        params['symbol_next'] = literal(params['symbol_next'])
++        return super(Page, self).pager(*args, **params)
+
+     # Put each page link into a <li> (for Bootstrap to style it)
