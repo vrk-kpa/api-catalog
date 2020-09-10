@@ -1,9 +1,12 @@
 <header>
+  {% set welcome_text = h.get_welcome_text() %}
+  {% if welcome_text|length > 0 %}
   <div class="row">
     <div class="col-sm-12">
-      <h2 class="page-heading">{{ h.get_welcome_text() }}</h2>
+      <h2 class="page-heading">{{ welcome_text }}</h2>
     </div>
   </div>
+  {% endif %}
   <div class="row">
     {% set columns = h.column_contents() %}
     <div class="col-md-6">
