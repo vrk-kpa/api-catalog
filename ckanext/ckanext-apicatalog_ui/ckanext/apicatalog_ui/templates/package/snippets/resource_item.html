@@ -31,9 +31,9 @@
         {% block resource_item_explore %}
         {% if not url_is_edit %}
             {% if res.url and h.is_url(res.url) %}
-              <a href="{{ res.url }}" class="resource-url-analytics" target="_blank">
-                  <i class="fal fa-download"></i>
-                  {{ _('Download') }}
+              <a href="{{ res.url }}" class="resource-url-analytics" target="_blank" aria-label="{{ _('Download') + ' ' + h.resource_display_name(res) + ' ' + res.format  }}">
+                  <i class="fal fa-download" aria-hidden="true"></i>
+                  <span aria-hidden="true">{{ _('Download') }}</span>
               </a>
             {% endif %}
         {% endif %}
