@@ -5538,3 +5538,27 @@ msgstr ""
 
 msgid "Show only service providers"
 msgstr ""
+
+msgid "Skip twitter feed"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Show all datasets"
+msgstr ""
+
+msgid "Show all organizations"
+msgstr ""
+
+msgid "Show all organizations with datasets"
+msgstr ""
+
+msgid "link opens in new tab or window"
+msgstr ""
+
+msgid "Logo of organization {org}"
+msgstr ""
+
+msgid "Webpage address"
+msgstr ""

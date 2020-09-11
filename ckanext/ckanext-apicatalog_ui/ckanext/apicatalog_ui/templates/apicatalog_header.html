@@ -13,8 +13,8 @@
           <div class="center">
             <form class="search-form header-search" method="get" action="{{ h.url('search') }}">
             <div class="search-input control-group">
-              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" />
-              <button type="submit" aria-label="{{ _('Search API Catalog') }}"><i class="fa fa-search"></i></button>
+              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" aria-label="{{ _('Search API Catalog') }}"/>
+              <button type="submit" aria-label="{{ _('Search') }}"><i class="fa fa-search"></i></button>
             </div>
             </form>
             {% snippet 'home/snippets/apicatalog_language-changer.html' %}
@@ -58,8 +58,8 @@
                   {{ h.build_nav('home.index', _('Home')) }}
                   {{ h.build_nav('search', _('Datasets'), highlight_controllers=['package', 'resource']) }}
                   {{ h.build_nav('organizations_index', _('Organizations'), highlight_controllers=['organization']) }}
-                <li><a class="nav-external-link" href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Information about National Data Exchange Layer') }}
-                  <svg viewbox="0 0 24 24">
+                <li><a class="nav-external-link" href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Information about National Data Exchange Layer') }} <span class="sr-only">{{ _('link opens in new tab or window') }}</span>
+                  <svg viewbox="0 0 24 24" aria-hidden="true">
                     <use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
                   </svg></a></li>
 

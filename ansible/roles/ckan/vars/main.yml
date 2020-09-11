@@ -36,6 +36,7 @@ ckan_patches:
   - { file: "correctly_unflatten_extras" } # https://github.com/ckan/ckan/pull/5546
   - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
   - { file: "make_pagination_customizable" } # https://github.com/ckan/ckan/pull/5223/commits/67aaf4a0c493e94471f616fa13fa915a81a7a651
+  - { file: "upgrade_jquery" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
