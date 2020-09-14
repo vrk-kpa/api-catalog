@@ -3,7 +3,7 @@
 {% block facet_list_items %}
   {% with items = items or h.get_facet_items_dict(name) %}
   {% if items %}
-    <nav>
+    <nav title="{{ _(title + ' filters') }}">
       <ul class="{{ nav_class or 'unstyled nav nav-simple nav-facet' + ' filtertype-' + name }}">
         {% for item in items %}
           {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
