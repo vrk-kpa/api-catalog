@@ -12,9 +12,9 @@
           {% set count = count_label(item['count']) if count_label else ('(%d)' % item['count']) %}
             <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %}">
               <a href="{{ href }}" title="{{ label if label != label_truncated else '' }}">
-                <span>{{ _(label_truncated) }} {{ count }}</span>
-                <span class="plusglyph pull-right">+</span>
-                <span class="minusglyph pull-right">&minus;</span>
+                <span>{{ _(label_truncated) }} {{ count }} <span class="sr-only">{{ _('results with this filter') }}</span></span>
+                <span aria-label="{{_('Add this filter')}}" class="plusglyph pull-right"><span aria-hidden="true">+</span></span>
+                <span aria-label="{{_('Remove this filter')}}" class="minusglyph pull-right"><span aria-hidden="true">&minus;</span></span>
               </a>
             </li>
         {% endfor %}
