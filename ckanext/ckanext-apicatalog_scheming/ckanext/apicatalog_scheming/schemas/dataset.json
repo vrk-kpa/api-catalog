@@ -70,6 +70,8 @@
       "label": "Maintainer",
       "form_placeholder": "Joe Bloggs",
       "display_property": "dc:contributor",
+      "display_snippet": "email.html",
+      "display_email_name_field": "maintainer_email",
       "classes": ["control-full"]
     },
     {
@@ -77,8 +79,7 @@
       "label": "Maintainer Email",
       "form_placeholder": "joe@example.com",
       "display_property": "dc:contributor",
-      "display_snippet": "email.html",
-      "display_email_name_field": "maintainer_email",
+      "display_snippet": null,
       "classes": ["control-full"]
     },
     {

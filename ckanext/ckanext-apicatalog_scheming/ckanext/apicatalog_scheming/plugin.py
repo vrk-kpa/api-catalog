@@ -59,7 +59,8 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
                 'scheming_language_text_or_empty': scheming_language_text_or_empty,
                 'get_lang_prefix': get_lang_prefix,
                 'call_toolkit_function': call_toolkit_function,
-                'add_locale_to_source': add_locale_to_source}
+                'add_locale_to_source': add_locale_to_source,
+                'get_field_from_schema': get_field_from_schema}
 
 
     # IFacets
@@ -197,4 +198,7 @@ def create_tag_to_vocabulary(tag, vocab, defer=False):
     except toolkit.ValidationError:
         pass
 
+def get_field_from_schema(schema, field_name):
 
+    field = next(field for field in schema.get('dataset_fields', []) if field.get('field_name') == field_name)
+    return field
