@@ -4,7 +4,7 @@
 {%- block page -%}
 
   {% block skip %}
-    <div class="hide"><a href="#content">{{ _('Skip to content') }}</a></div>
+    <div><a class="sr-only sr-only-focusable" href="#main_content">{{ _('Skip to content') }}</a></div>
   {% endblock %}
 
   {#
@@ -90,13 +90,13 @@
                   {% endblock %}
                 #}
                 {% block primary_content %}
-                  <article class="module">
+                  <section id="main_content" class="module">
                     <div class="module-content">
                       {% block primary_content_inner %}
                       {% endblock %}
 
                     </div>
-                  </article>
+                  </section>
                 {% endblock %}
 
               </div>
