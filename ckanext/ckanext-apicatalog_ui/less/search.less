@@ -14,6 +14,7 @@
   font-style: italic;
 }
 
+
 .search-form {
   // .clearfix;
 
@@ -52,6 +53,10 @@
       height: auto;
       border-radius: 2px;
       border: 1px solid @kapa-input-border;
+
+      &:focus {
+        .input-focus
+      }
     }
     button {
       cursor: pointer;
@@ -69,6 +74,10 @@
       i {
         color: #999;
         .transition(color 0.2s ease-in);
+      }
+
+      &:focus {
+        .button-focus;
       }
     }
     &.search-giant {
