@@ -320,13 +320,13 @@ def get_statistics():
                'with_private': True}
 
     packages = toolkit.get_action('package_search')(context, {})
-    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True})
-    organizations_with_packages = [o for o in organizations if o.get('package_count', 0) > 0]
+    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_extras": True})
+    provider_organizations = [o for o in organizations if o.get('xroad_member_type', '') == 'provider']
 
     result_dict = {
         'package_count': packages.get('count', 0),
         'organization_count': len(organizations),
-        'organizations_with_packages_count': len(organizations_with_packages)
+        'provider_organizations': len(provider_organizations)
     }
 
     return result_dict
