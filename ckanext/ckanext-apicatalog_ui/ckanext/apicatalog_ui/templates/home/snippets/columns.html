@@ -1,4 +1,4 @@
-<header>
+<section>
   {% set welcome_text = h.get_welcome_text() %}
   {% if welcome_text|length > 0 %}
   <div class="row">
@@ -16,4 +16,4 @@
         {{ h.render_markdown(columns.right) }}
     </div>
   </div>
-</header>
+</section>
