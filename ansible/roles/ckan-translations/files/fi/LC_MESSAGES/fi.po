@@ -5645,3 +5645,6 @@ msgstr ""
 
 msgid "Service providers first"
 msgstr "Palveluntarjoajat ensin"
+
+msgid "service providers"
+msgstr "palveluntarjoajaa"

@@ -4,7 +4,7 @@
 {%- block page -%}
 
   {% block skip %}
-    <div class="hide"><a href="#content">{{ _('Skip to content') }}</a></div>
+    <div><a class="sr-only sr-only-focusable" href="#main_content">{{ _('Skip to content') }}</a></div>
   {% endblock %}
 
   {#
@@ -90,20 +90,20 @@
                   {% endblock %}
                 #}
                 {% block primary_content %}
-                  <article class="module">
+                  <section id="main_content" class="module">
                     <div class="module-content">
                       {% block primary_content_inner %}
                       {% endblock %}
 
                     </div>
-                  </article>
+                  </section>
                 {% endblock %}
 
               </div>
             {% endblock %}
             {% block secondary %}
                 {%  if not no_nav %}
-                <aside class="secondary border-right {% block secondary_col %}col-sm-4{% endblock %} navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
+                <section class="secondary border-right {% block secondary_col %}col-sm-4{% endblock %} navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
               {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
               {#
               The secondary_content block can be used to add content to the
@@ -118,7 +118,7 @@
                 {% endblock %}
               #}
               {% block secondary_content %}{% endblock %}
-            </aside>
+            </section>
                 {% endif %}
             {% endblock %}
           </div>

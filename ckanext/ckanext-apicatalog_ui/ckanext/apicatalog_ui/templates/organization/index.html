@@ -31,15 +31,15 @@
 {% endblock %}
 
 {% block secondary_content %}
-  <section class="module main-heading">
+  <div class="module main-heading">
     <h2 class="module-heading">{{ _('Filter list') }}</h2>
-  </section>
-  <section class="module module-shallow">
+  </div>
+  <div class="module module-shallow">
     <div class="sorter-wrapper with-search">
         {% set sorting_selected = c.sort_by_selected or '' %}
         {% snippet 'organization/snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=sorting_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
     </div>
-  </section>
+  </div>
 {% endblock %}
 
 {% block page_pagination %}

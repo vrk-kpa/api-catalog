@@ -4,16 +4,15 @@
   {{ super() }}
   <label for="apis-selection">{{ _('Show only service providers') }}</label>
   <div>
-  {% if request.params.with_datasets %}
+  {% if request.params.provider_orgs %}
       <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
           {{ _('Show organizations without APIs') }}
       </a>
-      <input type="hidden" name="with_datasets" value="True"></input>
+      <input type="hidden" name="provider_orgs" value="True"></input>
   {% else %}
-      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, with_datasets=True) }}">
-          {{ _('Show only organizations with APIs') }}
+      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, provider_orgs=True) }}">
+          {{ _('Show only service providers') }}
       </a>
   {% endif %}
   </div>
 {% endblock %}
-

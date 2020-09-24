@@ -1,5 +1,6 @@
-<div role="main" class="hero">
-  <div class="hero-background-container {% if h.is_test_environment() %}test-environment{% endif %}">
+
+<div class="hero">
+  <section aria-label="{{ _('hero') }}" class="hero-background-container {% if h.is_test_environment() %}test-environment{% endif %}">
     <div class="container">
       {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
       <div id="hero-stats" class="col-sm-8 col-sm-offset-2">
@@ -16,14 +17,14 @@
           <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all organizations') }}">{{_('Show all')}}</a></div>
         </div>
         <div class="col-sm-4">
-          <div class="count">{{statistics.organizations_with_packages_count}}</div>
-          <div class="stats-title">{{_('organizations with datasets')}}</div class="stats-title">
-          <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all organizations with datasets') }}">{{_('Show all')}}</a></div>
+          <div class="count">{{statistics.provider_organizations}}</div>
+          <div class="stats-title">{{_('service providers')}}</div class="stats-title">
+          <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all service provider organizations') }}">{{_('Show all')}}</a></div>
         </div>
       </div>
     </div>
-  </div>
-  <div role="main">
+  </section>
+  <section role="main">
     {% block service_alerts %}
       {% snippet 'snippets/service_alerts.html' %}
     {% endblock %}
@@ -86,5 +87,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
