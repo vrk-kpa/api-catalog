@@ -35,7 +35,8 @@ Example:
   {% block datasets %}
     {% if organization.package_count %}
       <span class="count">{{ ungettext('{num} Dataset', '{num} Datasets', organization.package_count).format(num=organization.package_count) }}</span>
-    {% else %}
+    {% endif %}
+    {% if organization.xroad_member_type == "consumer" %}
       <span class="count">{{ _('Consumes data available via the Suomi.fi-Data Exchange Layer.') }}</span>
     {% endif %}
   {% endblock %}

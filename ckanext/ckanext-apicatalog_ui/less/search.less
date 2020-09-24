@@ -14,13 +14,14 @@
   font-style: italic;
 }
 
+
 .search-form {
   // .clearfix;
 
   &.header-search {
     margin: auto;
     width: 356px;
-    
+
     .search-input {
       margin: 0px;
     }
@@ -52,6 +53,10 @@
       height: auto;
       border-radius: 2px;
       border: 1px solid @kapa-input-border;
+
+      &:focus {
+        .input-focus
+      }
     }
     button {
       cursor: pointer;
@@ -60,8 +65,7 @@
       top: 50%;
       margin-top: -10px;
       right: 10px;
-      height: 20px;
-      padding: 0;
+      padding: 0 3px;
       border: none;
       background: transparent;
       span {
@@ -70,6 +74,10 @@
       i {
         color: #999;
         .transition(color 0.2s ease-in);
+      }
+
+      &:focus {
+        .button-focus;
       }
     }
     &.search-giant {
