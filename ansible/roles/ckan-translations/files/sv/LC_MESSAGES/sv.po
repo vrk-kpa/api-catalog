@@ -5577,3 +5577,16 @@ msgstr ""
 
 msgid "Webpage address"
 msgstr ""
+
+msgid ""
+"If you have forgotten your username and email, contact <a "
+"href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>."
+msgstr ""
+
+msgid ""
+"If you do not have a user account, contact your organisation's administrator"
+" and ask them to invite you. If you do not know who the administrator is, or"
+" if your organisation does not have one, contact <a "
+"href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>"
+" and request a user account."
+msgstr ""
