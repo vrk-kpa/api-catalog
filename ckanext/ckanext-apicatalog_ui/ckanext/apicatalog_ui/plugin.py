@@ -286,9 +286,9 @@ def custom_organization_list(params):
     }
     results = toolkit.get_action('organization_list')(context, data_dict_page_results)
 
-    with_datasets = params.get('with_datasets', '').lower() in ('true', '1', 'yes')
-    if with_datasets:
-        results = [group for group in results if group.get('package_count') > 0]
+    provider_orgs = params.get('provider_orgs', '').lower() in ('true', '1', 'yes')
+    if provider_orgs:
+        results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
     def group_by_content(a, b):
         a_has_content = 1 if a['package_count'] else 0
@@ -312,7 +312,7 @@ def custom_organization_list(params):
         'organizations': results[page_start:page_end],
         'count': len(results),
         'page': custom_page,
-        "with_datasets": with_datasets
+        "provider_orgs": provider_orgs
     }
 
 
@@ -322,13 +322,13 @@ def get_statistics():
                'with_private': True}
 
     packages = toolkit.get_action('package_search')(context, {})
-    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True})
-    organizations_with_packages = [o for o in organizations if o.get('package_count', 0) > 0]
+    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_extras": True})
+    provider_organizations = [o for o in organizations if o.get('xroad_member_type', '') == 'provider']
 
     result_dict = {
         'package_count': packages.get('count', 0),
         'organization_count': len(organizations),
-        'organizations_with_packages_count': len(organizations_with_packages)
+        'provider_organizations': len(provider_organizations)
     }
 
     return result_dict
