@@ -9,7 +9,7 @@
         <a href="{{ url }}" title="{{ res.name or res.description }}">
           <div class="container-fluid">
             {% block resource_item_title %}
-              <span class="resource-title">{{ h.resource_display_name(res) | truncate(50) }}</span>
+              <span class="resource-title">{{ h.resource_display_name(res) | truncate(50) }} {% if res.xroad_service_type and res.xroad_service_type != 'error' %}({{res.xroad_service_type|upper}}){% endif %}</span>
               <span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">
                 {{ res.format }}
               </span>
