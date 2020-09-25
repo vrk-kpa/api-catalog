@@ -1,7 +1,7 @@
 {% set news = news or [] %}
 {% set language = language or h.lang() %}
 {% if news %}
-<h3>{{ _('News') }}</h3>
+<h2 class="visual-h3">{{ _('News') }}</h2>
 {% if note %}
   <div class="section-note">{{ note }}</div>
 {% endif %}
@@ -12,7 +12,7 @@
         <img class="image" src="{{ item.image }}" alt="{{ item.image_alt }}"></img>
       {% endif %}
       <div>
-        <a href="{{ h.get_translated(item, 'url', language=language) }}"><h4 class="title">{{ h.get_translated(item, 'title', language=language) | safe}}</h4></a>
+        <a href="{{ h.get_translated(item, 'url', language=language) }}"><h3 class="visual-h4 title">{{ h.get_translated(item, 'title', language=language) | safe}}</h3></a>
         <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
         <p class="content">{{ h.get_translated(item, 'content', language=language) | safe }}</p>
       </div>

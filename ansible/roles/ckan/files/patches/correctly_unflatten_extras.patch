@@ -1,37 +1,47 @@
-diff --git a/ckan/logic/converters.py b/ckan/logic/converters.py
-index c87cad49a..a6d99d2a0 100644
---- a/ckan/logic/converters.py
-+++ b/ckan/logic/converters.py
-@@ -25,14 +25,24 @@ def convert_to_extras(key, data, errors, context):
- 
- def convert_from_extras(key, data, errors, context):
- 
--    def remove_from_extras(data, key):
--        to_remove = []
--        for data_key, data_value in data.iteritems():
--            if (data_key[0] == 'extras'
--                and data_key[1] == key):
--                to_remove.append(data_key)
--        for item in to_remove:
--            del data[item]
-+    def remove_from_extras(data, idx):
-+        for key in sorted(data):
-+            if key[0] != 'extras' or key[1] < idx:
-+                continue
-+            if key[1] == idx:
-+                del data[key]
+From 7c3dbf1ccd050a09e6d84872e166411f060b2dc5 Mon Sep 17 00:00:00 2001
+From: Ian Ward <ian@excess.org>
+Date: Mon, 21 Sep 2020 13:42:04 -0400
+Subject: [PATCH 1/2] [#5602] unflatten: skip empty items regression + test
+
+---
+ ckan/lib/navl/dictization_functions.py | 14 +++++++++++---
+ ckan/tests/legacy/lib/test_navl.py     | 16 ++++++++++++++++
+ 2 files changed, 27 insertions(+), 3 deletions(-)
+
+diff --git a/ckan/lib/navl/dictization_functions.py b/ckan/lib/navl/dictization_functions.py
+index a4cfc00bc5..314600d377 100644
+--- a/ckan/lib/navl/dictization_functions.py
++++ b/ckan/lib/navl/dictization_functions.py
+@@ -405,7 +405,7 @@ def unflatten(data):
+     '''
+
+     unflattened = {}
+-    convert_to_list = []
++    clean_lists = {}
+
+     for flattend_key in sorted(data.keys(), key=flattened_order_key):
+         current_pos = unflattened
+@@ -414,8 +414,13 @@ def unflatten(data):
+             try:
+                 current_pos = current_pos[key]
+             except IndexError:
+-                new_pos = {}
+-                current_pos.append(new_pos)
++                while True:
++                    new_pos = {}
++                    current_pos.append(new_pos)
++                    if key < len(current_pos):
++                        break
++                    # skipped list indexes need to be removed before returning
++                    clean_lists[id(current_pos)] = current_pos
+                 current_pos = new_pos
+             except KeyError:
+                 new_pos = []
+@@ -423,6 +428,9 @@ def unflatten(data):
+                 current_pos = new_pos
+         current_pos[flattend_key[-1]] = data[flattend_key]
+
++    for cl in clean_lists.values():
++        cl[:] = [i for i in cl if i]
 +
-+            # Following block required for unflattening extras with
-+            # "gaps" created sometimes by `convert_from_extra`
-+            # validator :
-+            #
-+            #   {
-+            #     ('extras', 0, 'key'): 'x',
-+            #     ('extras', 2, 'key): 'y'
-+            #   }
-+            if key[1] > idx:
-+                new_key = (key[0], key[1] - 1) + key[2:]
-+                data[new_key] = data.pop(key)
- 
-     for data_key, data_value in data.iteritems():
-         if (data_key[0] == 'extras'
+     return unflattened
