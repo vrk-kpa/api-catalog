@@ -291,8 +291,8 @@ def custom_organization_list(params):
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
     def group_by_content(a, b):
-        a_has_content = 1 if a['xroad_member_type'] == "provider" else 0
-        b_has_content = 1 if b['xroad_member_type'] == "provider" else 0
+        a_has_content = 1 if a.get('xroad_member_type', '') == "provider" else 0
+        b_has_content = 1 if b.get('xroad_member_type', '') == "provider" else 0
         return b_has_content - a_has_content
 
     if not sort_by:
