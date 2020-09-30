@@ -4,6 +4,7 @@ from paste.deploy.converters import asbool
 from ckan import model
 
 import ckan.logic as logic
+import cgi
 import random
 import urllib
 import ckan.lib.i18n as i18n
@@ -11,6 +12,7 @@ import logging
 import itertools
 import requests
 from datetime import datetime, timedelta, date
+from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
 
 NotFound = logic.NotFound
@@ -289,8 +291,8 @@ def custom_organization_list(params):
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
     def group_by_content(a, b):
-        a_has_content = 1 if a['package_count'] else 0
-        b_has_content = 1 if b['package_count'] else 0
+        a_has_content = 1 if a.get('xroad_member_type', '') == "provider" else 0
+        b_has_content = 1 if b.get('xroad_member_type', '') == "provider" else 0
         return b_has_content - a_has_content
 
     if not sort_by:
@@ -404,11 +406,62 @@ def is_test_environment():
 def is_extension_loaded(extension_name):
     return extension_name in config.get('ckan.plugins', '').split()
 
+
 def get_submenu_content():
 
     pages_list = toolkit.get_action('ckanext_pages_list')(None, {'private': False})
     submenu_pages = [page for page in pages_list if page.get('submenu_order')]
     return sorted(submenu_pages, key = lambda p: p['submenu_order'])
+
+
+def build_pages_nav_main(*args):
+    about_menu = toolkit.asbool(config.get('ckanext.pages.about_menu', True))
+    group_menu = toolkit.asbool(config.get('ckanext.pages.group_menu', True))
+    org_menu = toolkit.asbool(config.get('ckanext.pages.organization_menu', True))
+
+    # Different CKAN versions use different route names - gotta catch em all!
+    about_menu_routes = ['about', 'home.about']
+    group_menu_routes = ['group_index', 'home.group_index']
+    org_menu_routes = ['organizations_index', 'home.organizations_index']
+
+    language = lang()
+
+    new_args = []
+    for arg in args:
+        if arg[0] in about_menu_routes and not about_menu:
+            continue
+        if arg[0] in org_menu_routes and not org_menu:
+            continue
+        if arg[0] in group_menu_routes and not group_menu:
+            continue
+        new_args.append(arg)
+
+    output = h.build_nav_main(*new_args)
+
+    # do not display any private datasets in menu even for sysadmins
+    pages_list = toolkit.get_action('ckanext_pages_list')(None, {'order': True, 'private': False})
+
+    page_name = ''
+
+    if (hasattr(toolkit.c, 'action') and toolkit.c.action in ('pages_show', 'blog_show')
+            and toolkit.c.controller == 'ckanext.pages.controller:PagesController'):
+        page_name = toolkit.c.environ['routes.url'].current().split('/')[-1]
+
+    for page in pages_list:
+        type_ = 'blog' if page['page_type'] == 'blog' else 'pages'
+        name = urllib.quote(page['name'].encode('utf-8')).decode('utf-8')
+        if page.get('title_' + language):
+            title = cgi.escape(page['title' + '_' + language])
+        else:
+            title = cgi.escape(page['title'])
+        link = h.literal(u'<a href="/{}/{}/{}">{}</a>'.format(language, type_, name, title))
+        if page['name'] == page_name:
+            li = h.literal('<li class="active">') + link + h.literal('</li>')
+        else:
+            li = h.literal('<li>') + link + h.literal('</li>')
+        output = output + li
+
+    return output
 
 
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
@@ -471,6 +524,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'get_last_12_months_statistics': get_last_12_months_statistics,
                 'is_test_environment': is_test_environment,
                 'get_submenu_content': get_submenu_content,
+                'build_nav_main': build_pages_nav_main,
                 'get_slogan': get_slogan,
                 'get_welcome_text': get_welcome_text,
                 'is_extension_loaded': is_extension_loaded
