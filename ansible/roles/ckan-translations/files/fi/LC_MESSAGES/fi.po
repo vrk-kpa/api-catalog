@@ -2932,7 +2932,7 @@ msgstr "Tallenna ryhmä"
 #: ckanext/example_theme/v11_HTML_and_CSS/templates/snippets/example_theme_most_popular_groups.html:22
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
-msgstr[0] "{num} liityntää"
+msgstr[0] "{num} alijärjestelmä"
 msgstr[1] "{num} alijärjestelmää"
 
 #: ckan/templates/group/snippets/group_item.html:34
@@ -5256,7 +5256,7 @@ msgid "Search datasets"
 msgstr "Etsi alijärjestelmistä"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
-msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
+msgstr "Organisaatio hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
 
 msgid "Service Management"
 msgstr "Palveluhallinta"
@@ -5648,3 +5648,6 @@ msgstr "Palveluntarjoajat ensin"
 
 msgid "service providers"
 msgstr "palveluntarjoajaa"
+
+msgid "Filter by role"
+msgstr "Rajaa organisaatiolistaa"
