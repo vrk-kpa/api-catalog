@@ -5642,3 +5642,9 @@ msgstr ""
 "yhteyttä <a "
 "href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>"
 "  ja pyydä käyttäjätiliä."
+
+msgid "Service providers first"
+msgstr "Palveluntarjoajat ensin"
+
+msgid "service providers"
+msgstr "palveluntarjoajaa"

@@ -8,6 +8,39 @@ input {
   .input;
 }
 
+.input-focus {
+  border-color:#66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+input:focus{
+  .input-focus
+}
+
+.button-focus {
+  outline: 1px auto rgb(77, 144, 254);
+}
+
+button:focus {
+  .button-focus;
+}
+
+.link-focus {
+  outline: 1px auto rgb(77, 144, 254);
+  outline-offset: 0;
+}
+
+a:focus {
+  .link-focus;
+}
+
+select:focus {
+  .link-focus;
+}
+
+
 .js .js-hide {
   display:none;
 }

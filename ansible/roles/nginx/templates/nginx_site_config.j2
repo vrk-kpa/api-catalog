@@ -1,6 +1,8 @@
 # Default server to block undefined hostnames
 server {
     listen 443 ssl;
+    ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
+    ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
     return 404;
 }
 
@@ -8,6 +10,8 @@ server {
 
   listen 443 ssl;
   server_name {{ public_facing_hostname }};
+  ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
+  ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
 
   error_page 500 502 503 504 /50x.html;
 
@@ -29,10 +33,25 @@ server {
 # Redirect from alternative hostnames to primary hostname
 server {
   listen 443 ssl;
+  ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
+  ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
   server_name {{ nginx.alternative_hostnames }};
   return 301 https://{{ public_facing_hostname }}$request_uri;
 }
 {% endif %}
+
+{% if nginx.alternative_hostnames_with_alternative_certificate | default("") %}
+# Redirect from alternative hostnames to primary hostname
+server {
+  listen 443 ssl;
+  ssl_certificate {{ ssl_certificate_path }}/{{ alternative_ssl_cert_filename }};
+  ssl_certificate_key {{ ssl_certificate_path }}/{{ alternative_ssl_key_filename }};
+  server_name {{ nginx.alternative_hostnames_with_alternative_certificates }};
+  return 301 https://{{ public_facing_hostname }}$request_uri;
+}
+{% endif %}
+
+
 
 # Redirect HTTP to HTTPS
 server {
