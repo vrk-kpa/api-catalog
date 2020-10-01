@@ -158,17 +158,6 @@
   }
 }
 
-// pad main content by headers height so local anchors don't scroll too far
-#main_content {
-  padding-top: @masthead-height;
-  margin-top: -@masthead-height;
-
-  @media (min-width: @screen-sm-min) and (max-width: @screen-md-min) {
-    padding-top: @masthead-doublerow-height;
-    margin-top: -@masthead-doublerow-height;
-  }
-}
-
 .main-navbar {
   -webkit-box-shadow: 0 1px 0 0 rgba(201, 205, 207, 1.0);
   box-shadow: 0 1px 0 0 rgba(201, 205, 207, 1.0);
