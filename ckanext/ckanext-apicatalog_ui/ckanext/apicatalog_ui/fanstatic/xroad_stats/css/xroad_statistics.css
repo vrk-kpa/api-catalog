@@ -1,0 +1,38 @@
+.btn.active, .btn.active:focus, .btn.active:hover {
+  background: #2a6ebb;
+  color: white;
+}
+
+.btn.btn-env {
+  margin: 3px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 80px;
+}
+
+.growthMetricContainer{
+  text-align: center;
+}
+.growthMetricNeutral{
+  font-size: 30px;
+  color: #ffd11a;
+  text-align: center;
+}
+.growthMetricPositive{
+  font-size: 30px;
+  color: #00cc00;
+  text-align: center;
+}
+.growthMetricNegative{
+  font-size: 30px;
+  color: #ff3300;
+  text-align: center;
+}
+
+.sectionHeader{
+  text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
