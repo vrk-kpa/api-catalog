@@ -46,7 +46,7 @@ server {
   listen 443 ssl;
   ssl_certificate {{ ssl_certificate_path }}/{{ alternative_ssl_cert_filename }};
   ssl_certificate_key {{ ssl_certificate_path }}/{{ alternative_ssl_key_filename }};
-  server_name {{ nginx.alternative_hostnames_with_alternative_certificates }};
+  server_name {{ nginx.alternative_hostnames_with_alternative_certificate }};
   return 301 https://{{ public_facing_hostname }}$request_uri;
 }
 {% endif %}
