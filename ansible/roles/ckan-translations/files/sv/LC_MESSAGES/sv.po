@@ -5257,10 +5257,8 @@ msgstr "Visa alla"
 msgid "Filter search"
 msgstr "Filtrera sökningen"
 
-msgid "Show more tweets by Väestörekisterikeskus"
-msgstr ""
-"Visa tweetar från användaren Myndigheten för digitalisering och "
-"befolkningsdata"
+msgid "Show more tweets by Suomi.fi"
+msgstr "Visa andra tweetar från användaren Suomi.fi"
 
 msgid "Show more tweets by NIIS"
 msgstr "Visa andra tweetar från användaren NIIS"

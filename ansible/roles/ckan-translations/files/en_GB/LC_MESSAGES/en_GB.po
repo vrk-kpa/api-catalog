@@ -5247,7 +5247,7 @@ msgstr "Show all"
 msgid "Filter search"
 msgstr ""
 
-msgid "Show more tweets by Väestörekisterikeskus"
+msgid "Show more tweets by Suomi.fi"
 msgstr ""
 
 msgid "Show more tweets by NIIS"

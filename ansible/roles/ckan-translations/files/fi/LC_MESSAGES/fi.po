@@ -5273,8 +5273,8 @@ msgstr "Näytä kaikki"
 msgid "Filter search"
 msgstr "Rajaa hakua"
 
-msgid "Show more tweets by Väestörekisterikeskus"
-msgstr "Näytä käyttäjän Väestorekisterikeskus muut twiitit"
+msgid "Show more tweets by Suomi.fi"
+msgstr "Näytä käyttäjän Suomi.fi muut twiitit"
 
 msgid "Show more tweets by NIIS"
 msgstr "Näytä käyttäjän NIIS muut twiitit"
