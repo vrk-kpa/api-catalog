@@ -5256,7 +5256,7 @@ msgid "Search datasets"
 msgstr "Etsi alijärjestelmistä"
 
 msgid "Consumes data available via the Suomi.fi-Data Exchange Layer."
-msgstr "Hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
+msgstr "Organisaatio hyödyntää Suomi.fi-Palveluväylän kautta saatavaa tietoa."
 
 msgid "Service Management"
 msgstr "Palveluhallinta"
