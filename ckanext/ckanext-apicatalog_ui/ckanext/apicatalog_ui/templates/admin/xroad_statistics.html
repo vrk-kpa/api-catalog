@@ -2,11 +2,7 @@
 
 {% block primary_content %}
 
-{% resource "apicatalog_ui/xroad_stats/css/Chart.css" %}
-{% resource "apicatalog_ui/xroad_stats/css/xroad_statistics.css" %}
-{% resource "apicatalog_ui/xroad_stats/js/libs/Chart.js" %}
-{% resource "apicatalog_ui/xroad_stats/js/libs/chartjs-datalabels.js" %}
-{% resource "apicatalog_ui/xroad_stats/js/xroad_statistics.js" %}
+{% resource "apicatalog_ui/xroad_stats" %}
 
 {% set xroad_stats = h.fetch_xroad_statistics() %}
 <div class="container" style="max-width: 100%;">
