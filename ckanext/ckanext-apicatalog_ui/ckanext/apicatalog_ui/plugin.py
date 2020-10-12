@@ -38,10 +38,10 @@ def get_translated(data_dict, field, language=None):
     if isinstance(translated, dict):
         language = language or i18n.get_lang()
         if language in translated:
-            return translated[language]
+            return translated[language] or data_dict.get(field)
         dialects = [l for l in translated if l.startswith(language) or language.startswith(l)]
         if dialects:
-            return translated[dialects[0]]
+            return translated[dialects[0]] or data_dict.get(field)
     return data_dict.get(field)
 
 
