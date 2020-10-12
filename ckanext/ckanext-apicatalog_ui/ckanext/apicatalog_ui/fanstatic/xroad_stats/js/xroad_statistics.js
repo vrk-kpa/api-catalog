@@ -93,12 +93,16 @@ ckan.module('xroad_statistics', function ($) {
               memberClassLabels.push('Governmental members');
               memberClassData.push(sortedMemberClasses[i].memberCount);
               break;
-            case 'NGO':
+            case 'ORG':
               memberClassLabels.push('Non-profit members');
               memberClassData.push(sortedMemberClasses[i].memberCount);
               break;
-            case 'NEE':
-              memberClassLabels.push('Non-Estonian members');
+            case 'MUN':
+              memberClassLabels.push('Municipal members');
+              memberClassData.push(sortedMemberClasses[i].memberCount);
+              break;
+            case 'EDU':
+              memberClassLabels.push('Educational members');
               memberClassData.push(sortedMemberClasses[i].memberCount);
               break;
           }
