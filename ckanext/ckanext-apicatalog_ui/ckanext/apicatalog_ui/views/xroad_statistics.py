@@ -3,7 +3,8 @@ import ckan.plugins as p
 
 from flask import Blueprint
 from ckan import logic
-from ckan.common import g
+from ckan.common import g, _
+
 
 xroad_statistics = Blueprint(u'admin_xroadstats', __name__, url_prefix=u'/ckan-admin')
 
@@ -15,7 +16,7 @@ def read():
     try:
         p.toolkit.check_access('admin_xroadstats', context, {})
     except logic.NotAuthorized:
-        p.toolkit.abort(403)
+        p.toolkit.abort(403, _(u'Not authorized to see this page'))
         return
 
     return p.toolkit.render('admin/xroad_statistics.html')
