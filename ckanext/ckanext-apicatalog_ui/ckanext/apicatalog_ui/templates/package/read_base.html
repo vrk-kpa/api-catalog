@@ -14,7 +14,9 @@
             {% block content_primary_nav %}
                 {{ h.build_nav_icon('dataset_read', _('Dataset'), id=pkg.name) }}
                 {{ h.build_nav_icon('dataset_groups', _('Groups'), id=pkg.name, icon=None) }}
-                {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name, icon=None) }}
+                {% if h.check_access('organization_update', {'id': pkg.organization.id}) %}
+                    {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name, icon=None) }}
+                {% endif %}
             {% endblock %}
         </ul>
     </div>

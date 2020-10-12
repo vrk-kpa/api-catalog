@@ -5056,7 +5056,7 @@ msgstr ""
 msgid "Filter search"
 msgstr ""
 
-msgid "Show more tweets by Väestörekisterikeskus"
+msgid "Show more tweets by Suomi.fi"
 msgstr ""
 
 msgid "Show more tweets by NIIS"
@@ -5351,4 +5351,7 @@ msgid "Service providers first"
 msgstr ""
 
 msgid "service providers"
+msgstr ""
+
+msgid "Filter by role"
 msgstr ""
