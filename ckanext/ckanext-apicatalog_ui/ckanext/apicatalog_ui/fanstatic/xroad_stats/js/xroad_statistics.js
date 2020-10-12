@@ -46,9 +46,9 @@ ckan.module('xroad_statistics', function ($) {
 
       const history = collection.history;
 
-      this.generateSubsystemsTimelineGraph(history);
-      this.generateSecurityServersTimelineGraph(history);
-      this.generateMembersTimelineGraph(history);
+      this.generateSubsystemsTimelineGraph(history, stats);
+      this.generateSecurityServersTimelineGraph(history, stats);
+      this.generateMembersTimelineGraph(history, stats);
       this.displayYearlyChange(env, history, stats);
 
       this.setEnvButton(env);
@@ -263,7 +263,7 @@ ckan.module('xroad_statistics', function ($) {
       return resultArray.reverse();
     },
 
-    generateSubsystemsTimelineGraph: function (metricsJson) {
+    generateSubsystemsTimelineGraph: function (metricsJson, stats) {
       let allMetricsDates = [];
       let allMetricsSubsystemsData = [];
       let latestDates = [];
@@ -273,6 +273,8 @@ ckan.module('xroad_statistics', function ($) {
         allMetricsDates.push(metricsJson[i].date);
         allMetricsSubsystemsData.push(metricsJson[i].subsystems);
       }
+      allMetricsDates.push(stats.date);
+      allMetricsSubsystemsData.push(stats.subsystems);
 
       latestDates = this.getXLatestEntries(allMetricsDates, 12, 1);
       latestData = this.getXLatestEntries(allMetricsSubsystemsData, 12, 1);
@@ -338,7 +340,7 @@ ckan.module('xroad_statistics', function ($) {
       graphsArray.push(subsystemsTimelineChart);
     },
 
-    generateMembersTimelineGraph: function (metricsJson) {
+    generateMembersTimelineGraph: function (metricsJson, stats) {
       let allMetricsDates = [];
       let allMetricsMembersData = [];
       let latestDates = [];
@@ -350,6 +352,8 @@ ckan.module('xroad_statistics', function ($) {
           allMetricsMembersData.push(metricsJson[i].members);
         }
       }
+      allMetricsDates.push(stats.date);
+      allMetricsMembersData.push(stats.members);
 
       latestDates = this.getXLatestEntries(allMetricsDates, 12, 1);
       latestData = this.getXLatestEntries(allMetricsMembersData, 12, 1);
@@ -415,7 +419,7 @@ ckan.module('xroad_statistics', function ($) {
       graphsArray.push(membersTimelineChart);
     },
 
-    generateSecurityServersTimelineGraph: function (metricsJson) {
+    generateSecurityServersTimelineGraph: function (metricsJson, stats) {
       let allMetricsDates = [];
       let allMetricsSecurityServersData = [];
       let latestDates = [];
@@ -427,6 +431,8 @@ ckan.module('xroad_statistics', function ($) {
           allMetricsSecurityServersData.push(metricsJson[i].securityServers);
         }
       }
+      allMetricsDates.push(stats.date);
+      allMetricsSecurityServersData.push(stats.securityServers);
 
       latestDates = this.getXLatestEntries(allMetricsDates, 12, 1);
       latestData = this.getXLatestEntries(allMetricsSecurityServersData, 12, 1);
