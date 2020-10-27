@@ -38,7 +38,7 @@ def read():
     try:
         p.toolkit.check_access('admin_useradd', context, {})
     except logic.NotAuthorized:
-        p.toolkit.abort(403)
+        p.toolkit.abort(403, _(u'Not authorized to see this page'))
         return
 
     if p.toolkit.request.method == u'GET':

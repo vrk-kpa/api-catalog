@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.8.5
+ckan_version: 2.8.6
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
@@ -28,15 +28,12 @@ ckan_patches:
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
   - { file: "set_attachment_content_disposition" }
-  - { file: "fix_unicode_decode_error_in_error_page" } # https://github.com/ckan/ckan/pull/4727
   - { file: "reorder_bulk_process" } # https://github.com/ckan/ckan/pull/5147
   - { file: "disable_leftover_with_capacity" }
   - { file: "remove_is_sysadmin_or_user_itself_check" } # https://github.com/ckan/ckan/pull/5405
   - { file: "retain_allow_anonymous_access_in-chained_auth" }
-  - { file: "correctly_unflatten_extras" } # https://github.com/ckan/ckan/pull/5546
   - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
   - { file: "make_pagination_customizable" } # https://github.com/ckan/ckan/pull/5223/commits/67aaf4a0c493e94471f616fa13fa915a81a7a651
-  - { file: "upgrade_jquery" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

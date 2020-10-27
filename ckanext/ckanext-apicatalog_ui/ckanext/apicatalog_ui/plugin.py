@@ -11,6 +11,7 @@ import ckan.lib.i18n as i18n
 import logging
 import itertools
 import requests
+import json
 from datetime import datetime, timedelta, date
 from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
@@ -37,10 +38,10 @@ def get_translated(data_dict, field, language=None):
     if isinstance(translated, dict):
         language = language or i18n.get_lang()
         if language in translated:
-            return translated[language]
+            return translated[language] or data_dict.get(field)
         dialects = [l for l in translated if l.startswith(language) or language.startswith(l)]
         if dialects:
-            return translated[dialects[0]]
+            return translated[dialects[0]] or data_dict.get(field)
     return data_dict.get(field)
 
 
@@ -464,6 +465,50 @@ def build_pages_nav_main(*args):
     return output
 
 
+XROAD_STATS_CACHE = None
+def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
+    global XROAD_STATS_CACHE
+    if XROAD_STATS_CACHE is None or datetime.now() - XROAD_STATS_CACHE[0] > cache_duration:
+        try:
+            xroad_stats_api_base_url = 'https://api.stats.x-road.global/v1'
+            fi_test_instance = 'FI-TEST'
+            fi_prod_instance = 'FI'
+
+            stats_test = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
+                                                               fi_test_instance)).json()
+            history_test = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
+                                                                         fi_test_instance)).json()
+            stats_prod = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
+                                                               fi_prod_instance)).json()
+            history_prod = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
+                                                                         fi_prod_instance)).json()
+
+            stats_collection = {
+                fi_test_instance: {
+                    'stats': stats_test,
+                    'history': history_test
+                },
+                fi_prod_instance: {
+                    'stats': stats_prod,
+                    'history': history_prod
+                }
+            }
+
+        except Exception as e:
+            # Fetch failed for some reason, keep old value until cache invalidates
+            if XROAD_STATS_CACHE is None:
+                stats_collection = {}
+            else:
+                stats_collection = XROAD_STATS_CACHE[1]
+
+        xroad_stats_cache_timestamp = datetime.now()
+        XROAD_STATS_CACHE = (xroad_stats_cache_timestamp, stats_collection)
+    else:
+        xroad_stats_cache_timestamp, stats_collection = XROAD_STATS_CACHE
+
+    return json.dumps(stats_collection)
+
+
 class Apicatalog_UiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
@@ -527,7 +572,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
                 'build_nav_main': build_pages_nav_main,
                 'get_slogan': get_slogan,
                 'get_welcome_text': get_welcome_text,
-                'is_extension_loaded': is_extension_loaded
+                'is_extension_loaded': is_extension_loaded,
+                'fetch_xroad_statistics': fetch_xroad_statistics
                 }
 
     def get_actions(self):
@@ -537,7 +583,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin):
 
     def get_blueprint(self):
         from views.useradd import useradd
-        return [useradd]
+        from views import xroad_statistics
+        return xroad_statistics.get_blueprints() + [useradd]
 
     # IFacets
 
@@ -559,6 +606,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
     def update_config(self, config):
         toolkit.add_ckan_admin_tab(config, 'admin_dashboard', 'Dashboard')
         toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
+        toolkit.add_ckan_admin_tab(config, 'admin_xroadstats.read', 'X-Road stats')
 
     def before_map(self, m):
         controller = 'ckanext.apicatalog_ui.admindashboard:AdminDashboardController'
@@ -567,4 +615,5 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
 
     def get_auth_functions(self):
         return {'admin_dashboard': admin_only,
-                'admin_useradd': admin_only}
+                'admin_useradd': admin_only,
+                'admin_xroadstats': admin_only}

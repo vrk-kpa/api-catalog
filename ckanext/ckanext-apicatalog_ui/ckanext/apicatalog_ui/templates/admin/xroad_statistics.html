@@ -1,0 +1,72 @@
+{% extends "page.html" %}
+
+{% block primary_content %}
+
+{% resource "apicatalog_ui/xroad_stats" %}
+
+{% set xroad_stats = h.fetch_xroad_statistics() %}
+<div class="container" style="max-width: 100%;">
+
+  <div class="row" id="titleRow">
+      <div class="col-12" style="text-align: center;">
+          <h1 id="title" class="display-2">{% trans %}X-Road Statistics{% endtrans %}</h1>
+          <h4 id="gatheredDate"></h4>
+          <h4 id="environmentTag"></h4>
+      </div>
+  </div>
+
+  <button disabled class="btn btn-dark btn-env" value="FI" id="prodButton" data-module="xroad_statistics" data-module-stats-collection="{{xroad_stats}}">{% trans %}FI{% endtrans %}</button>
+  <button disabled class="btn btn-dark btn-env" value="FI-TEST" id="testButton" data-module="xroad_statistics" data-module-stats-collection="{{xroad_stats}}">{% trans %}FI-TEST{% endtrans %}</button>
+
+  <br>
+  <div class="row">
+      <div class="col-md-6">
+          <canvas id="membersPieCanvas"></canvas>
+      </div>
+      <div class="col-md-6">
+          <canvas id="environmentTotalsBarCanvas"></canvas>
+      </div>
+  </div>
+  <br>
+  <hr id="horizontalLine">
+  <div class="row">
+      <div class="mb-20 col-md-12">
+          <canvas id="subsystemsTimelineCanvas"></canvas>
+      </div>
+      <div class="mb-20 col-md-12">
+          <canvas id="membersTimelineCanvas"></canvas>
+      </div>
+      <div class="mb-20 col-md-12">
+          <canvas id="securityserversTimelineCanvas"></canvas>
+      </div>
+  </div>
+  <br>
+  <h2 class="sectionHeader">Yearly change</h2>
+  <div class="mb-20 row">
+      <div class="col-md-4">
+          <div id="growth-subsystems" class="growthMetricContainer">
+              <p style="font-weight: bold;">Subsystems</p>
+              <p id="subsystemsBeginningValue" style="margin: 0px;"></p>
+              <p id="subsystemsCurrentValue" style="margin: 0px;"></p>
+              <p id="subsystemsGrowthChange" class="growthMetricNeutral"></p>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div id="growth-members" class="growthMetricContainer">
+              <p style="font-weight: bold;">Members</p>
+              <p id="membersBeginningValue" style="margin: 0px;"></p>
+              <p id="membersCurrentValue" style="margin: 0px;"></p>
+              <p id="membersGrowthChange" class="growthMetricNeutral"></p>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div id="growth-servers" class="growthMetricContainer">
+              <p style="font-weight: bold;">Security Servers</p>
+              <p id="serversBeginningValue" style="margin: 0px;"></p>
+              <p id="serversCurrentValue" style="margin: 0px;"></p>
+              <p id="serversGrowthChange" class="growthMetricNeutral"></p>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
