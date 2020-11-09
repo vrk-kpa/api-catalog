@@ -16,6 +16,8 @@ from datetime import datetime, timedelta, date
 from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
 
+from utils import package_generator
+
 NotFound = logic.NotFound
 config = toolkit.config
 log = logging.getLogger(__name__)
@@ -337,16 +339,16 @@ def get_statistics():
 
 @logic.side_effect_free
 def get_last_12_months_statistics(context=None, data_dict=None):
-    packages = toolkit.get_action('package_search')(context, {'q':'metadata_modified:[NOW-12MONTHS TO *]'})
+    packages = list(p for p in package_generator(context, query='metadata_modified:[NOW-12MONTHS TO *]'))
     organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_dataset_count": False})
 
     package_create_dates = (
         datetime.strptime(result['metadata_created'], '%Y-%m-%dT%H:%M:%S.%f')
-        for result in packages.get('results', []) if 'metadata_created' in result)
+        for result in packages if 'metadata_created' in result)
 
     resource_create_dates = (
         datetime.strptime(resource['created'], '%Y-%m-%dT%H:%M:%S.%f')
-        for result in packages.get('results', [])
+        for result in packages
         for resource in result.get('resources', [])
         if 'created' in resource)
 
