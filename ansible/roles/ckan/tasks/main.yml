@@ -67,6 +67,9 @@
 - name: Ensure link validation cronjob
   cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/paster --plugin=ckanext-validate_links links crawl -c {{ ckan_ini }}"
 
+- name: Ensure fetch xroad errors cronjob
+  cron: name="Fetch XRoad Errors" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_errors -c {{ ckan_ini }}"
+
 - name: Send harvester status report emails as a cron job
   cron:
     name: "Send harvester status report emails"

@@ -40,3 +40,6 @@
 
 - name: Initialize users for organization database
   shell: ./bin/paster --plugin=ckanext-apicatalog_routes apicatalog_db init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+
+- name: Initialize xroad errors database
+  shell: ./bin/paster --plugin=ckanext-xroad_integration xroad init_db "--config={{ ckan_ini }}" chdir={{ virtualenv }}
