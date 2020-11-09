@@ -68,7 +68,8 @@ def service_permission_application_create(context, data_dict):
                                                   request_date=request_date)
 
 
-    service_permission_settings = json.loads(package.get('service_permission_settings', '{}'))
+    log.info(package.get('service_permission_settings', '{}'))
+    service_permission_settings = package.get('service_permission_settings', {})
     delivery_method = service_permission_settings.get('delivery_method', 'email')
 
     if delivery_method == 'api':
