@@ -8,7 +8,7 @@ import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
 from sqlalchemy import func, text
 from datetime import datetime, timedelta
-import itertools
+from utils import package_generator
 
 get_action = logic.get_action
 check_access = logic.check_access
@@ -53,20 +53,10 @@ class AdminDashboardController(base.BaseController):
 
 
 def fetch_invalid_resources():
-    def package_generator(query, page_size):
-        context = {'ignore_auth': True}
-        package_search = get_action('package_search')
-
-        for index in itertools.count(start=0, step=page_size):
-            data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index}
-            packages = package_search(context, data_dict).get('results', [])
-            for package in packages:
-                yield package
-            else:
-                return
+    context = {'ignore_auth': True}
 
     def invalid_resource_generator():
-        for package in package_generator('*:*', 1000):
+        for package in package_generator(context, '*:*', 1000):
             for resource in package.get('resources', []):
                 if resource.get('valid_content', 'yes') == 'no':
                     yield (resource, package)
