@@ -337,16 +337,16 @@ def get_statistics():
 
 @logic.side_effect_free
 def get_last_12_months_statistics(context=None, data_dict=None):
-    packages = toolkit.get_action('package_search')(context, {'q':'metadata_modified:[NOW-12MONTHS TO *]'})
+    packages = list(p for p in package_generator(context, query='metadata_modified:[NOW-12MONTHS TO *]'))
     organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_dataset_count": False})
 
     package_create_dates = (
         datetime.strptime(result['metadata_created'], '%Y-%m-%dT%H:%M:%S.%f')
-        for result in packages.get('results', []) if 'metadata_created' in result)
+        for result in packages if 'metadata_created' in result)
 
     resource_create_dates = (
         datetime.strptime(resource['created'], '%Y-%m-%dT%H:%M:%S.%f')
-        for result in packages.get('results', [])
+        for result in packages
         for resource in result.get('resources', [])
         if 'created' in resource)
 
@@ -617,3 +617,21 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
         return {'admin_dashboard': admin_only,
                 'admin_useradd': admin_only,
                 'admin_xroadstats': admin_only}
+
+
+def package_generator(context, query='*:*', page_size=1000, dataset_type='dataset'):
+    package_search = toolkit.get_action('package_search')
+
+    # Loop through all items. Each page has {page_size} items.
+    # Stop iteration when all items have been looped.
+    for index in itertools.count(start=0, step=page_size):
+        data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index,
+                     'fq': '+dataset_type:' + dataset_type}
+        data = package_search(context, data_dict)
+        packages = data.get('results', [])
+        for package in packages:
+            yield package
+
+        # Stop iteration all query results have been looped through
+        if data["count"] < (index + page_size):
+            return
