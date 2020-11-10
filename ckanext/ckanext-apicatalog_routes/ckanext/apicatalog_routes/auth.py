@@ -114,3 +114,7 @@ def member_delete(next_auth, context, data_dict=None):
 @chained_auth_function
 def organization_member_delete(next_auth, context, data_dict=None):
     return {"success": True} if _is_member_editor(context) else next_auth(context, data_dict)
+
+@chained_auth_function
+def user_invite(next_auth, context, data_dict=None):
+    return {"success": True} if _is_member_editor(context) else next_auth(context, data_dict)
