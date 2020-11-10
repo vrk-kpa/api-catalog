@@ -1,0 +1,28 @@
+From 5c083c9833f80b229829dce91b64dc83a97a0170 Mon Sep 17 00:00:00 2001
+From: Jari Voutilainen <jari.voutilainen@iki.fi>
+Date: Tue, 10 Nov 2020 09:40:26 +0200
+Subject: [PATCH] Add allow_partial_update to fix losing users
+
+---
+ ckan/logic/action/patch.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ckan/logic/action/patch.py b/ckan/logic/action/patch.py
+index 90a832da0c..6de71846fa 100644
+--- a/ckan/logic/action/patch.py
++++ b/ckan/logic/action/patch.py
+@@ -107,6 +107,7 @@ def group_patch(context, data_dict):
+     patched = dict(group_dict)
+     patched.pop('display_name', None)
+     patched.update(data_dict)
++    context['allow_partial_update'] = True
+     return _update.group_update(context, patched)
+
+
+@@ -137,6 +138,7 @@ def organization_patch(context, data_dict):
+     patched = dict(organization_dict)
+     patched.pop('display_name', None)
+     patched.update(data_dict)
++    context['allow_partial_update'] = True
+     return _update.organization_update(context, patched)
+

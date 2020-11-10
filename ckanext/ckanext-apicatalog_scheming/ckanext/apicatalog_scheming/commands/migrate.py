@@ -202,7 +202,7 @@ def apply_patches(package_patches=[], resource_patches=[], organization_patches=
         package_patch = get_action('package_patch')
         resource_patch = get_action('resource_patch')
         organization_patch = get_action('organization_patch')
-        context = {'ignore_auth': True, 'allow_partial_update': True}
+        context = {'ignore_auth': True}
         for patch in package_patches:
             try:
                 print("Migrating package %s" % patch['id'])
