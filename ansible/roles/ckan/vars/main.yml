@@ -34,6 +34,7 @@ ckan_patches:
   - { file: "retain_allow_anonymous_access_in-chained_auth" }
   - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
   - { file: "make_pagination_customizable" } # https://github.com/ckan/ckan/pull/5223/commits/67aaf4a0c493e94471f616fa13fa915a81a7a651
+  - { file: "add_allow_partial_update_to_patch_actions" } # https://github.com/ckan/ckan/pull/5734
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
