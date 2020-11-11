@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-pro": "^5.12.1"
   },
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "yargs-parser": "^5.0.0-security.0"
   }
 }
