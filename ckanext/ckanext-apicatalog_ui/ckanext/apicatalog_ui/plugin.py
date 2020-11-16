@@ -609,7 +609,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
         toolkit.add_ckan_admin_tab(config, 'admin_dashboard', 'Dashboard')
         toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
         toolkit.add_ckan_admin_tab(config, 'admin_xroadstats.read', 'X-Road stats')
-        toolkit.add_ckan_admin_tab(config, 'xroad_error.index', 'X-Road errors')
+        toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
 
     def before_map(self, m):
         controller = 'ckanext.apicatalog_ui.admindashboard:AdminDashboardController'
