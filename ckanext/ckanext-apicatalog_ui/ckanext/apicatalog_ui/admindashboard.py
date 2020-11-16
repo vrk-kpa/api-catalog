@@ -28,6 +28,9 @@ class AdminDashboardController(base.BaseController):
             # Query package statistics
             statistics = fetch_package_statistics()
 
+            # Find packageless organizations
+            packageless_organizations = fetch_packageless_organizations(context)
+
             # Generate activity stream snippet
             package_activity_html = fetch_recent_package_activity_list_html(
                     context, user_not='harvest')
@@ -44,6 +47,7 @@ class AdminDashboardController(base.BaseController):
                     'harvest_activity_html': harvest_activity_html,
                     'privatized_activity_html': privatized_activity_html,
                     'interesting_activity_html': interesting_activity_html,
+                    'packageless_organizations': packageless_organizations,
                     'stats': statistics
                     }
             template = 'admin/dashboard.html'
@@ -219,3 +223,26 @@ def fetch_recent_package_activity_list_html(
     changed_packages = model_dictize.activity_list_dictize(activity_objects, context)
     return activity_streams.activity_list_to_html(
             context, changed_packages, {'offset': 0})
+
+
+def fetch_packageless_organizations(context):
+    organizations = get_action('organization_list')(context, {'all_fields': True, 'include_dataset_count': True})
+    packageless_organizations = [o for o in organizations if o.get('package_count', 0) == 0]
+    packageless_organizations_ids = [o['id'] for o in packageless_organizations]
+    from pprint import pformat
+    log.info("packageless_organizations_ids: %s", pformat(packageless_organizations_ids))
+
+    last_deleted_revisions_query = (
+            model.Session.query(model.PackageRevision.owner_org,
+                                func.max(model.Revision.timestamp))
+            .filter(model.PackageRevision.state != 'active')
+            .filter(model.PackageRevision.owner_org.in_(packageless_organizations_ids))
+            .group_by(model.PackageRevision.owner_org))
+    last_deleted_revisions = dict(last_deleted_revisions_query.all())
+
+    log.info("last_deleted_revisions: %s", pformat(last_deleted_revisions))
+    for o in packageless_organizations:
+        created_date = datetime.strptime(o['created'], '%Y-%m-%dT%H:%M:%S.%f')
+        o['packageless_since'] = last_deleted_revisions.get(o['id'], created_date)
+
+    return packageless_organizations

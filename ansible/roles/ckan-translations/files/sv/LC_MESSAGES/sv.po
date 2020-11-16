@@ -5599,3 +5599,9 @@ msgstr ""
 
 msgid "Filter by role"
 msgstr "Filtrera organisationslistan"
+
+msgid "Organizations without active subsystems"
+msgstr ""
+
+msgid "Since"
+msgstr ""

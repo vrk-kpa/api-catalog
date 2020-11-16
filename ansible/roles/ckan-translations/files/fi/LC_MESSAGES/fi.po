@@ -5651,3 +5651,9 @@ msgstr "palveluntarjoajaa"
 
 msgid "Filter by role"
 msgstr "Rajaa organisaatiolistaa"
+
+msgid "Organizations without active subsystems"
+msgstr "Organisaatiot, joilla ei ole aktiivisia alijärjestelmiä"
+
+msgid "Since"
+msgstr "Alkaen"

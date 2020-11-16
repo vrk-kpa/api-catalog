@@ -1,6 +1,23 @@
 {% extends "admin/base.html" %}
 
 {% block primary_content_inner %}
+<div class="module module-narrow module-shallow">
+  <div class="module-content">
+
+    {% set docs_url = "http://docs.ckan.org/en/{0}/sysadmin-guide.html".format(g.ckan_doc_version) %}
+    {% trans %}
+      <p>As a sysadmin user you have full control over this CKAN instance. Proceed with care!</p>
+      <p>For guidance on using sysadmin features, see the CKAN  <a href="{{ docs_url }}" target="_blank">sysadmin guide</a></p>
+    {% endtrans %}
+
+    <div class="activity" style="margin-top: 2em">
+      <span class="item changed-package-privacy">
+        <i class="icon fa fa-sitemap"></i>
+        <p>{% trans %}Package changes highlighted with pink color signify changes to public visibility.{% endtrans %}</p>
+      </span>
+    </div>
+  </div>
+</div>
 <h1>{{ _('Dashboard') }}</h1>
 <div class="row">
   <div class="col-md-12">
@@ -113,6 +130,38 @@
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
               <header class="module-heading">
+                <h3 class="media-heading">{{ _('Organizations without active subsystems') }}</h3>
+              </header>
+              <div class="module-content">
+                <table class="table table-condensed" data-module="tablesorter">
+                  <thead>
+                    <tr>
+                      <th>{{ _('Organization') }}</th>
+                      <th data-sorter="shortDate" data-date-format="ddmmyyyy">{{ _('Since') }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for org in packageless_organizations %}
+                    {% set url = h.url_for(controller='organization', action='read', id=org.name) %}
+                    <tr>
+                      <td>
+                        <a href="{{ url }}">{{ h.get_translated(org, 'title') or '(no title)' | truncate(50) }}</a>
+                      </td>
+                      <td>
+                        {{ org.packageless_since.strftime('%d.%m.%Y') }}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-narrow module-shallow">
+              <header class="module-heading">
                 <h3 class="media-heading">{{ _('Recent activity for packages with resources') }}</h3>
               </header>
               <div class="module-content">
@@ -140,26 +189,4 @@
 {% endblock %}
 
 {% block secondary_content %}
-  <div class="module module-narrow module-shallow">
-    <h2 class="module-heading">
-      <i class="fa fa-info-circle"></i>
-      {{ _('Administer CKAN') }}
-    </h2>
-    <div class="module-content">
-
-      {% set docs_url = "http://docs.ckan.org/en/{0}/sysadmin-guide.html".format(g.ckan_doc_version) %}
-      {% trans %}
-        <p>As a sysadmin user you have full control over this CKAN instance. Proceed with care!</p>
-        <p>For guidance on using sysadmin features, see the CKAN  <a href="{{ docs_url }}" target="_blank">sysadmin guide</a></p>
-      {% endtrans %}
-      
-      <div class="activity" style="margin-top: 2em">
-        <span class="item changed-package-privacy">
-          <i class="icon fa fa-sitemap"></i>
-          <p>{% trans %}Package changes highlighted with pink color signify changes to public visibility.{% endtrans %}</p>
-        </span>
-      </div>
-      
-    </div>
-  </div>
 {% endblock %}
