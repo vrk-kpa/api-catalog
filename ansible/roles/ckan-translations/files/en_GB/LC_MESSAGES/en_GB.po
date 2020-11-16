@@ -5587,3 +5587,9 @@ msgstr ""
 
 msgid "Filter by role"
 msgstr "Filter list of organizations"
+
+msgid "Organizations without active subsystems"
+msgstr ""
+
+msgid "Since"
+msgstr ""
