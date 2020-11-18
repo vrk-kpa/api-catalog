@@ -131,6 +131,10 @@ ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | def
 ckanext.apicatalog_routes.allowed_user_editors = {{ allowed_user_editors | default([]) | join(" ")  }}
 ckanext.apicatalog_routes.allowed_member_editors = {{ allowed_member_editors | default([]) | join(" ") }}
 
+ckanext.xroad_integration.xroad_catalog_address = https://{{ xroad.securityserver.host }}:{{ xroad.securityserver.port }}/r1/{{ xroad.service_id | replace('.', '/') }}{% if xroad.service_name %}/{{ xroad.service_name }}{% endif %}
+
+ckanext.xroad_integration.xroad_client_id = {{ xroad.client_id | replace('.', '/') }}
+
 ofs.impl = pairtree
 
 # 2.1 filestore:

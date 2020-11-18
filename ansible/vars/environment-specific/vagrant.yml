@@ -70,6 +70,7 @@ xroad:
     port: 443
   client_id: ICE.COM.222.XROAD-CATALOG
   service_id: ICE.COM.222.XROAD-CATALOG
+  service_name: REST
 
 elk:
   logstash:
