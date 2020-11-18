@@ -70,6 +70,10 @@
 - name: Ensure fetch xroad errors cronjob
   cron: name="Fetch XRoad Errors" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_errors -c {{ ckan_ini }}"
 
+- name: Ensure fetch xroad stats cronjob
+  cron: name="Fetch X-Road Stats" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_stats -c {{ ckan_ini }}"
+
+
 - name: Send harvester status report emails as a cron job
   cron:
     name: "Send harvester status report emails"
