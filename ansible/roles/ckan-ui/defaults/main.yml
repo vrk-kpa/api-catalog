@@ -1,4 +1,4 @@
 ---
 
-apicatalog_ui_path: "/src/ckanext/ckanext-apicatalog_ui"
+apicatalog_ui_path: "/vagrant/ckanext/ckanext-apicatalog_ui"
 apicatalog_ui_ckanext_path: "{{ apicatalog_ui_path }}/ckanext/apicatalog_ui"
