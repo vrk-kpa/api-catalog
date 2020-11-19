@@ -42,3 +42,6 @@ files_created_by_patches:
 search_engine_robots_filename: robots_disallowed.txt
 
 ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"
+
+xroad_securityserver_public_cert_filename: "{{ xroad.securityserver.alias }}.crt"
+xroad_securityserver_private_cert_filename: "{{ xroad.securityserver.alias }}.p12"

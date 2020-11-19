@@ -25,7 +25,7 @@
   when: deployment_environment_id == "vagrant"
 
 - name: Symlink extension sources from host machine (Vagrant)
-  file: src="/src/ckanext/{{ ckanext }}" path="{{ ckanext_sync_path }}/{{ ckanext }}" state=link
+  file: src="/vagrant/ckanext/{{ ckanext }}" path="{{ ckanext_sync_path }}/{{ ckanext }}" state=link
   when: deployment_environment_id == "vagrant"
 
 #

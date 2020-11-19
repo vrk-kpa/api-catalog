@@ -39,6 +39,45 @@
     - /etc/ckan/default
     - "{{ ckan_public_source_path }}"
 
+- name: Find public certificate status
+  stat: path={{ server_path }}/{{ xroad_securityserver_public_cert_filename }}
+  register: ss_public_cert
+
+- name: Register warning about public certificate
+  set_stats:
+    data:
+      warnings: '{{ warnings | default([]) + ["[WARNING] You need to add the public SSL certificate manually to {{ server_path }}/{{ xroad_securityserver_public_cert_filename }}"] }}'
+  when: ss_public_cert.stat.exists==False
+
+
+- name: Make sure public cert has proper file permissions
+  file:
+    dest: "{{ server_path }}/{{ xroad_securityserver_public_cert_filename }}"
+    owner: "{{ www_user }}"
+    group: "{{ www_user }}"
+    mode: "0600"
+  when: ss_public_cert.stat.exists
+
+- name: Find private certificate status
+  stat: path={{ server_path }}/{{ xroad_securityserver_private_cert_filename }}
+  register: ss_private_cert
+
+- name: Register warning about private certificate
+  set_stats:
+    data:
+      warnings: '{{ warnings | default([]) + ["[WARNING] You need to add the private SSL certificate manually to {{ server_path }}/{{ xroad_securityserver_private_cert_filename }}"]  }}'
+  when: ss_private_cert.stat.exists==False
+
+
+- name: Make sure private cert has proper file permissions
+  file:
+    dest: "{{ server_path }}/{{ xroad_securityserver_private_cert_filename }}"
+    owner: "{{ www_user }}"
+    group: "{{ www_user }}"
+    mode: "0600"
+  when: ss_private_cert.stat.exists
+
+
 - name: Copy CKAN configuration
   template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.group }}
   with_items:

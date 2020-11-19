@@ -133,7 +133,9 @@ ckanext.apicatalog_routes.allowed_member_editors = {{ allowed_member_editors | d
 
 ckanext.xroad_integration.xroad_catalog_address = https://{{ xroad.securityserver.host }}:{{ xroad.securityserver.port }}/r1/{{ xroad.service_id | replace('.', '/') }}{% if xroad.service_name %}/{{ xroad.service_name }}{% endif %}
 
+ckanext.xroad_integration.xroad_catalog_certificate = {{ server_path }}/{{ xroad_securityserver_public_cert_filename }}
 ckanext.xroad_integration.xroad_client_id = {{ xroad.client_id | replace('.', '/') }}
+ckanext.xroad_integration.xroad_client_certificate = {{ server_path }}/{{ xroad_securityserver_private_cert_filename }}
 
 ofs.impl = pairtree
 
