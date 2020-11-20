@@ -112,6 +112,9 @@
 - name: Ensure fetch xroad stats cronjob
   cron: name="Fetch X-Road Stats" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_stats -c {{ ckan_ini }}"
 
+- name: Ensure fetch xroad services cronjob
+  cron: name="Fetch X-Road Services" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_service_list -c {{ ckan_ini }}"
+
 
 - name: Send harvester status report emails as a cron job
   cron:
