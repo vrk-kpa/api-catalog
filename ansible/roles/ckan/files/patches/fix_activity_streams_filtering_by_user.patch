@@ -1,0 +1,167 @@
+diff --git a/ckan/logic/action/get.py b/ckan/logic/action/get.py
+index 38e14d1a2..bdf1a2b31 100644
+--- a/ckan/logic/action/get.py
++++ b/ckan/logic/action/get.py
+@@ -53,23 +53,6 @@ _case = sqlalchemy.case
+ _text = sqlalchemy.text
+
+
+-def _filter_activity_by_user(activity_list, users=[]):
+-    '''
+-    Return the given ``activity_list`` with activities from the specified
+-    users removed. The users parameters should be a list of ids.
+-
+-    A *new* filtered list is returned, the given ``activity_list`` itself is
+-    not modified.
+-    '''
+-    if not len(users):
+-        return activity_list
+-    new_list = []
+-    for activity in activity_list:
+-        if activity.user_id not in users:
+-            new_list.append(activity)
+-    return new_list
+-
+-
+ def _activity_stream_get_filtered_users():
+     '''
+     Get the list of users from the :ref:`ckan.hide_activity_from_users` config
+@@ -2503,10 +2486,8 @@ def user_activity_list(context, data_dict):
+     limit = int(
+         data_dict.get('limit', config.get('ckan.activity_list_limit', 31)))
+
+-    _activity_objects = model.activity.user_activity_list(user.id, limit=limit,
++    activity_objects = model.activity.user_activity_list(user.id, limit=limit,
+             offset=offset)
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+
+     return model_dictize.activity_list_dictize(activity_objects, context)
+
+@@ -2545,10 +2526,8 @@ def package_activity_list(context, data_dict):
+     limit = int(
+         data_dict.get('limit', config.get('ckan.activity_list_limit', 31)))
+
+-    _activity_objects = model.activity.package_activity_list(package.id,
++    activity_objects = model.activity.package_activity_list(package.id,
+             limit=limit, offset=offset)
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+
+     return model_dictize.activity_list_dictize(activity_objects, context)
+
+@@ -2586,10 +2565,8 @@ def group_activity_list(context, data_dict):
+     group_show = logic.get_action('group_show')
+     group_id = group_show(context, {'id': group_id})['id']
+
+-    _activity_objects = model.activity.group_activity_list(group_id,
++    activity_objects = model.activity.group_activity_list(group_id,
+             limit=limit, offset=offset)
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+
+     return model_dictize.activity_list_dictize(activity_objects, context)
+
+@@ -2618,10 +2595,8 @@ def organization_activity_list(context, data_dict):
+     org_show = logic.get_action('organization_show')
+     org_id = org_show(context, {'id': org_id})['id']
+
+-    _activity_objects = model.activity.group_activity_list(org_id,
++    activity_objects = model.activity.group_activity_list(org_id,
+             limit=limit, offset=offset)
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+
+     return model_dictize.activity_list_dictize(activity_objects, context)
+
+@@ -2648,10 +2623,8 @@ def recently_changed_packages_activity_list(context, data_dict):
+     limit = int(
+         data_dict.get('limit', config.get('ckan.activity_list_limit', 31)))
+
+-    _activity_objects = model.activity.recently_changed_packages_activity_list(
++    activity_objects = model.activity.recently_changed_packages_activity_list(
+             limit=limit, offset=offset)
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+
+     return model_dictize.activity_list_dictize(activity_objects, context)
+
+@@ -3327,11 +3300,9 @@ def dashboard_activity_list(context, data_dict):
+
+     # FIXME: Filter out activities whose subject or object the user is not
+     # authorized to read.
+-    _activity_objects = model.activity.dashboard_activity_list(user_id,
++    activity_objects = model.activity.dashboard_activity_list(user_id,
+             limit=limit, offset=offset)
+
+-    activity_objects = _filter_activity_by_user(_activity_objects,
+-            _activity_stream_get_filtered_users())
+     activity_dicts = model_dictize.activity_list_dictize(
+         activity_objects, context)
+
+diff --git a/ckan/model/activity.py b/ckan/model/activity.py
+index b56d91ecc..631c75da7 100644
+--- a/ckan/model/activity.py
++++ b/ckan/model/activity.py
+@@ -15,6 +15,7 @@ from sqlalchemy import (
+     text,
+ )
+
++from ckan.common import config
+ import ckan.model
+ import meta
+ import types as _types
+@@ -150,6 +151,9 @@ def user_activity_list(user_id, limit, offset):
+
+     '''
+     q = _user_activity_query(user_id, limit + offset)
++
++    q = _filter_activitites_from_users(q)
++
+     return _activities_at_offset(q, limit, offset)
+
+
+@@ -327,6 +331,9 @@ def dashboard_activity_list(user_id, limit, offset):
+
+     '''
+     q = _dashboard_activity_query(user_id, limit + offset)
++
++    q = _filter_activitites_from_users(q)
++
+     return _activities_at_offset(q, limit, offset)
+
+ def _changed_packages_activity_query():
+@@ -351,3 +358,33 @@ def recently_changed_packages_activity_list(limit, offset):
+     '''
+     q = _changed_packages_activity_query()
+     return _activities_at_offset(q, limit, offset)
++
++
++def _filter_activitites_from_users(q):
++    '''
++    Adds a filter to an existing query object ot avoid activities from users
++    defined in :ref:`ckan.hide_activity_from_users` (defaults to the site user)
++    '''
++    users_to_avoid = _activity_stream_get_filtered_users()
++    if users_to_avoid:
++        q = q.filter(ckan.model.Activity.user_id.notin_(users_to_avoid))
++
++    return q
++
++
++def _activity_stream_get_filtered_users():
++    '''
++    Get the list of users from the :ref:`ckan.hide_activity_from_users` config
++    option and return a list of their ids. If the config is not specified,
++    returns the id of the site user.
++    '''
++    users = config.get('ckan.hide_activity_from_users')
++    if users:
++        users_list = users.split()
++    else:
++        from ckan.logic import get_action
++        context = {'ignore_auth': True}
++        site_user = get_action('get_site_user')(context)
++        users_list = [site_user.get('name')]
++
++    return ckan.model.User.user_ids_for_name_or_id(users_list)
