@@ -138,8 +138,11 @@
 {%- endblock -%}
 
 {%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
     {% resource 'apicatalog_ui/main' %}
     {% resource 'apicatalog_ui/ckan' %}
+    {% resource 'apicatalog_ui/cookieconsent' %}
 
     {% if g.tracking_enabled %}
       {% resource 'base/tracking.js' %}
@@ -147,6 +150,7 @@
   {{ super() }}
 
   <!-- Piwik -->
+{% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
   <script type="text/javascript">
     var _paq = _paq || [];
     _paq.push(['trackPageView']);
@@ -161,4 +165,5 @@
   </script>
   <noscript><p><img src="{{ h.piwik_url() }}/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
   <!-- End Piwik Code -->
+{% endif %}
 {% endblock -%}

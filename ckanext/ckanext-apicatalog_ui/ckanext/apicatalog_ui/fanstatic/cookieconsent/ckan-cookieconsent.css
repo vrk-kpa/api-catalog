@@ -1,0 +1,15 @@
+.cc-theme-suomifi {
+    background-color: #292929;
+    color: #ffffff;
+    font-family: "SourceSansPro-Regular", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 60px;
+}
+
+.cc-theme-suomifi .cc-btn {
+    color: #ffffff;
+}
+
+.cc-animate.cc-revoke.cc-top {
+    display: block;
+    transform: translateY(0);
+}

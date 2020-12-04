@@ -81,5 +81,16 @@ setup(
         apicatalog_ui=ckanext.apicatalog_ui.plugin:Apicatalog_UiPlugin
         apicatalog_admin_dashboard=ckanext.apicatalog_ui.plugin:Apicatalog_AdminDashboardPlugin
         apicatalog_pages=ckanext.apicatalog_ui.pages:Apicatalog_PagesPlugin
+        
+        [babel.extractors]
+        ckan = ckan.lib.extract:extract_ckan
     ''',
+
+    message_extractors={
+        'ckanext': [
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )

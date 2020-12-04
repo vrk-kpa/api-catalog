@@ -1,0 +1,26 @@
+index 4a4f78fe2..1b67fe906 100644
+--- a/ckan/public/base/javascript/plugins/jquery.slug-preview.js
++++ b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
+@@ -40,11 +40,12 @@
+
+       preview.find('strong').html(required + ' ' + options.i18n['URL'] + ':');
+       preview.find('.slug-preview-prefix').text(options.prefix);
++      /*
+       preview.find('button').text(options.i18n['Edit']).click(function (event) {
+         event.preventDefault();
+         element.show();
+         preview.hide();
+-      });
++      });'*/
+
+       setValue();
+       field.on('change', setValue);
+@@ -70,7 +71,7 @@
+       '<div class="slug-preview">',
+       '<strong></strong>',
+       '<span class="slug-preview-prefix"></span><span class="slug-preview-value"></span>',
+-      '<button class="btn btn-default btn-xs"></button>',
++      //'<button class="btn btn-default btn-xs"></button>',
+       '</div>'
+     ].join('\n')
+   };
