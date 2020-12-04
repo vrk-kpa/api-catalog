@@ -138,6 +138,8 @@
 {%- endblock -%}
 
 {%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
     {% resource 'apicatalog_ui/main' %}
     {% resource 'apicatalog_ui/ckan' %}
     {% resource 'apicatalog_ui/cookieconsent' %}

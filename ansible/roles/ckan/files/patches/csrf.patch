@@ -817,3 +817,18 @@ index 00efe36b7..e75c144d9 100644
          if id in (g.userobj.id, g.userobj.name):
              current_user = True
          else:
+index 8afd65a80..cac803a30 100644
+--- a/ckan/public/base/javascript/modules/confirm-action.js
++++ b/ckan/public/base/javascript/modules/confirm-action.js
+@@ -83,6 +83,12 @@ this.ckan.module('confirm-action', function (jQuery) {
+         action: this.el.attr('href'),
+         method: 'POST'
+       });
++      var csrf = jQuery('<input/>', {
++        type: 'hidden',
++        name: 'csrf-token',
++        value: $('form[method=POST]').find('input[type=hidden][name=csrf-token]').attr('value') || this.el.attr('csrf-token')
++      });
++      csrf.appendTo(form);
+       form.appendTo('body').submit();
+     },
