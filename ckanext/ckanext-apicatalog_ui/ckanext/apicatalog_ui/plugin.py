@@ -15,6 +15,7 @@ import json
 from datetime import datetime, timedelta, date
 from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
+from ckan.lib.plugins import DefaultTranslation
 
 from utils import package_generator
 
@@ -511,12 +512,13 @@ def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
     return json.dumps(stats_collection)
 
 
-class Apicatalog_UiPlugin(plugins.SingletonPlugin):
+class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
