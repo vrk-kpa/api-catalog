@@ -13,12 +13,12 @@
 
         <div class="col-sm-4">
           <div class="count">{{statistics.organization_count}}</div>
-          <div class="stats-title">{{_('total organizations')}}</div class="stats-title">
+          <div class="stats-title">{{_('total organizations')}}</div>
           <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all organizations') }}">{{_('Show all')}}</a></div>
         </div>
         <div class="col-sm-4">
           <div class="count">{{statistics.provider_organizations}}</div>
-          <div class="stats-title">{{_('service providers')}}</div class="stats-title">
+          <div class="stats-title">{{_('service providers')}}</div>
           <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all service provider organizations') }}">{{_('Show all')}}</a></div>
         </div>
       </div>

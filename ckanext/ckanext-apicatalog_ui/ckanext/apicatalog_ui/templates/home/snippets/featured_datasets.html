@@ -3,7 +3,7 @@
 {% set truncate_title = truncate_title or 80 %}
 
 {% if datasets %}
-<h2 class="visual-h3">{{ _('Sample APIs') }}</h3>
+<h2 class="visual-h3">{{ _('Sample APIs') }}</h2>
 <div class="row horizontal-dataset-list">
 {% for dataset in datasets %}
     {% set title = h.get_translated(dataset, 'title') or dataset.name %}
