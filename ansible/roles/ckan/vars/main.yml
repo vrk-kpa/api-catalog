@@ -37,6 +37,7 @@ ckan_patches:
   - { file: "add_allow_partial_update_to_patch_actions" } # https://github.com/ckan/ckan/pull/5734
   - { file: "fix_activity_streams_filtering_by_user" } # https://github.com/ckan/ckan/pull/5699
   - { file: "remove_edit_button_from_slugs" }
+  - { file: "fix_javascript_error_on_edge" } # https://github.com/ckan/ckan/pull/5782
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
