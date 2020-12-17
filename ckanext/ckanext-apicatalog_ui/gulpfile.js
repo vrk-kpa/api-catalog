@@ -45,11 +45,11 @@ function bootstrapDatepickerCss() {
   
 }
 
-const momentPath = './node_modules/moment/'
+const glyphiconsPath = './node_modules/bootstrap/fonts/'
 
-function momentJs() {
-    return src(momentPath + 'moment.js')
-        .pipe(dest("ckanext/apicatalog_ui/fanstatic/datetimepicker/"))
+function glyphicons() {
+    return src(glyphiconsPath + '*')
+        .pipe(dest("ckanext/apicatalog_ui/fanstatic/fonts/"))
   
 }
 
@@ -59,11 +59,11 @@ exports.cookieConsentJs = cookieConsentJs;
 exports.cookieConsentCss = cookieConsentCss;
 exports.bootstrapDatepickerJs = bootstrapDatepickerJs;
 exports.bootstrapDatepickerCss = bootstrapDatepickerCss;
-exports.momentJs = momentJs;
+exports.glyphicons = glyphicons
 
 exports.default = parallel(
   fontAwesomeCss, fontAwesomeFonts,
   cookieConsentJs, cookieConsentCss,
   bootstrapDatepickerJs, bootstrapDatepickerCss,
-  momentJs
+  glyphicons
 );
