@@ -14,7 +14,7 @@
       <div>
         <a href="{{ h.get_translated(item, 'url', language=language) }}"><h3 class="visual-h4 title">{{ h.get_translated(item, 'title', language=language) | safe}}</h3></a>
         <span class="published">{{ _('Published') }} {{ item.published.strftime('%d.%m.%Y') }}</span>
-        <span class="content">{{ h.get_translated(item, 'content', language=language) | safe }}</span>
+        <span class="content">{{ h.get_translated(item, 'brief', language=language) | safe }}</span>
       </div>
     </li>{%- endfor -%}
   </ul>
