@@ -48,7 +48,7 @@ function bootstrapDatepickerCss() {
 const momentPath = './node_modules/moment/'
 
 function momentJs() {
-    return src(momentPath + 'src/moment.js')
+    return src(momentPath + 'moment.js')
         .pipe(dest("ckanext/apicatalog_ui/fanstatic/datetimepicker/"))
   
 }
