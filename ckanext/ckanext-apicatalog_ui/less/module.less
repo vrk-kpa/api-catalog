@@ -75,77 +75,8 @@
   color: @suomifi-highlight-base;
 }
 
-.module .pagination {
-  height: 34px;
-  margin-bottom: 0;
-}
-
-.module-content .pagination {
-  margin-left: -25px;
-  margin-right: -25px;
-  margin-bottom: -20px;
-}
-
-.module .pagination > ul {
-  .border-radius(0);
-  .box-shadow(none);
-  border: 0;
-}
-
-.module .pagination li a {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-
-.module .pagination li:first-child a,
-.module .pagination li:last-child a {
-  .border-radius(0);
-}
-
 .module .pagination li.active a {
-  border-left-width: 1px;
-  border-right-width: 1px;
   border-color: #ddd;
-}
-
-.pagination > ul {
-  .pagination;
-  margin: 0;
-}
-
-.pagination-centered{
-    text-align: center;
-    display: block;
-}
-
-.module-content-shallow {
-  padding: 0;
-  margin-top: 10px;
-  padding-bottom: 10px;
-}
-
-.module h1 {
-  margin-bottom: 20px;
-}
-
-// Module Shallow
-
-.module-shallow .module-content {
-  padding: 10px;
-  margin: 0;
-}
-
-.module-shallow .module-tags {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.module-shallow .module-content:first-child {
-  padding-top: 10px;
-}
-
-.module-shallow .module-content:last-child {
-  padding-bottom: 10px;
 }
 
 // Secondary column specific
@@ -159,81 +90,6 @@
   }
 }
 
-// Module Grid
-
-.module-grid {
-  .list-unstyled;
-  .media-grid;
-  // .media-wide;
-}
-
-.module-item {
-  .media-item;
-  .make-lg-column(6);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 50px;
-  overflow: hidden;
-  position: relative;
-}
-
-.module-item.first {
-  clear: left;
-}
-
-// GROUP
-
-.group .content img {
-  margin: 0 -5px 5px;
-  max-width: initial;
-}
-
-.group .content h3 {
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-.group-listing {
-  margin-left: -20px; // Same as .row
-}
-
-// PREVIEW
-
-.ckanext-datapreview {
-  position: relative;
-  clear: both;
-
-  padding-top: 15px;
-  margin-top: 0;
-
-  & > iframe {
-    min-height: 400px;
-  }
-  & > img {
-    max-height: 500px;
-    max-width: 100%;
-    overflow: hidden;
-  }
-}
-
-.package-info {
-  h4 {
-    margin-bottom: 10px;
-  }
-}
-
-.module-resource {
-  .actions {
-    position: relative;
-    float: right;
-    top: -10px;
-    right: -15px;
-  }
-}
-
-.module .module-tags {
-  padding-bottom: 8px;
-}
 .secondary,
 .primary {
   .module {
@@ -249,10 +105,6 @@
     margin-left: 20px;
     margin-right: 20px;
   }
-}
-
-.no-nav .module:last-child {
-  margin-top: 0;
 }
 
 .module-image {

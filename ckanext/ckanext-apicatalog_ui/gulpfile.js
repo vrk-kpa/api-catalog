@@ -32,10 +32,16 @@ function cookieConsentCss() {
         .pipe(dest("ckanext/apicatalog_ui/fanstatic/cookieconsent/"))
 }
 
+const bootstrapLessPath = './node_modules/bootstrap/less';
+function bootstrapLess() {
+    return src(bootstrapLessPath + '/**/*')
+        .pipe(dest("vendor/bootstrap/less"))
+}
 
 exports.fontAwesomeCss = fontAwesomeCss;
 exports.fontAwesomeFonts = fontAwesomeFonts;
 exports.cookieConsentJs = cookieConsentJs;
-exports.cookieConsentCss = cookieConsentCss
+exports.cookieConsentCss = cookieConsentCss;
+exports.bootstrapLess = bootstrapLess;
 
-exports.default = parallel(fontAwesomeCss, fontAwesomeFonts, cookieConsentJs, cookieConsentCss);
+exports.default = parallel(fontAwesomeCss, fontAwesomeFonts, cookieConsentJs, cookieConsentCss, bootstrapLess);
