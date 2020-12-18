@@ -31,3 +31,9 @@
   shell: ./bin/paster --plugin=ckan minify {{ ckan_source_path }}/ckan/public/base/vendor "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
   tags:
     - patch_ckan
+
+- name: CKAN front end build
+  shell: ./bin/paster --plugin=ckan front-end-build "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
+  tags:
+    - patch_ckan
+
