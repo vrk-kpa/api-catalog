@@ -106,6 +106,8 @@ li:not(.active) .minusglyph {
 
 .navbar-default {
 
+  background-color: @kapa-header-color;
+
   .navbar-toggle {
     border: none;
     margin-right: 10px;
@@ -125,6 +127,14 @@ li:not(.active) .minusglyph {
       font-size: 32px;
       margin-top: -7px;
 
+    }
+  }
+
+  .navbar-nav{
+    & > li {
+      & > a {
+        color: @kapa-black;
+      }
     }
   }
 }
