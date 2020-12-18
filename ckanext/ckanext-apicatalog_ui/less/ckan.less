@@ -1,6 +1,5 @@
 @import "variables.less";
 @import "custom.less";
-@import "mixins.less";
 @import "module.less";
 @import "media.less";
 @import "nav.less";
@@ -16,12 +15,8 @@
 @import "masthead.less";
 @import "footer.less";
 @import "tables.less";
-@import "profile.less";
 @import "activity.less";
 @import "dropdown.less";
-@import "dashboard.less";
-@import "resource-view.less";
-@import "datapusher.less";
 @import "offcanvas.less";
 @import "contact.less";
 
@@ -29,68 +24,6 @@ body {
   // Using the masthead/footer gradient prevents the color from changing
   // at the bottom of the window on pages with little content.
   background: @accountMastheadColor;
-}
-
-[hidden] {
-  display: none;
-}
-
-table {
-  table-layout: fixed;
-}
-
-thead th {
-  vertical-align: top;
-}
-
-td, th {
-  word-wrap: break-word;
-}
-
-table .metric {
-  width: 140px;
-}
-
-code {
-  color: @codeTextColor;
-  border: none;
-  background: none;
-  white-space: normal;
-}
-
-pre {
-  border: none;
-  background: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-mark {
-  background: @highlightBackground;
-}
-
-blockquote p {
-  font-size: 1em;
-}
-
-iframe {
-  border: none;
-}
-
-.embedded-content h1 {
-  font-size: 1.4em;
-}
-
-.embedded-content h2 {
-  font-size: 1.4em;
-}
-
-.embedded-content h3 {
-  font-size: 1.2em;
-}
-
-.popular {
-  text-indent: -999em;
 }
 
 .empty {
@@ -105,48 +38,9 @@ iframe {
   margin-bottom: 25px;
 }
 
-.m-top {
-  margin-top: @gutterSmallX;
-}
-.m-left {
-  margin-left: @gutterSmallX;
-}
-.m-right {
-  margin-right: @gutterSmallX;
-}
-.m-bottom {
-  margin-bottom: @gutterSmallX;
-}
-.no-margin {
-  margin: 0;
-}
-.reduced-margin {
-  margin: 3px 5px;
-}
-
-.p-top {
-  padding-top: @gutterSmallX;
-}
-.p-left {
-  padding-left: @gutterSmallX;
-}
-.p-right {
-  padding-right: @gutterSmallX;
-}
-.p-bottom {
-  padding-bottom: @gutterSmallX;
-}
-.no-padding {
-  padding: 0;
-}
-.reduced-padding {
-  padding: 3px 5px;
-}
-
 input[type="checkbox"]#field-remember {
   // Fix layout for "remember me"-checkbox at login screen breaks on small screens
   margin-top: 2px;
   min-height: 0px;
 }
 
-@import "iehacks.less";
