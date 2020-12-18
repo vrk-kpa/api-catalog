@@ -9,6 +9,7 @@
                 {% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
                     {{ h.build_nav_icon('organization_edit', _('Edit'), id=c.group_dict.name) }}
                     {{ h.build_nav_icon('organization_bulk_process', _('Datasets'), id=c.group_dict.name) }}
+                    {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road Errors'), organization=c.group_dict.id) }}
                 {% endif %}
                 {% if h.check_access('read_members') %}
                     {{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name) }}

@@ -14,7 +14,7 @@
           <div class="center">
             <form class="search-form header-search" method="get" action="{{ h.url('search') }}">
             <div class="search-input control-group">
-              <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" aria-label="{{ _('Search API Catalog') }}"/>
+              <input type="text" class="search" name="q" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('Search API Catalog') }}" aria-label="{{ _('Search API Catalog') }}"/>
               <button type="submit" aria-label="{{ _('Search') }}"><i class="fa fa-search"></i></button>
             </div>
             </form>

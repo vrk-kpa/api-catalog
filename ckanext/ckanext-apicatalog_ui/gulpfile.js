@@ -45,12 +45,10 @@ function bootstrapDatepickerCss() {
   
 }
 
-const glyphiconsPath = './node_modules/bootstrap/fonts/'
-
-function glyphicons() {
-    return src(glyphiconsPath + '*')
-        .pipe(dest("ckanext/apicatalog_ui/fanstatic/fonts/"))
-  
+const bootstrapLessPath = './node_modules/bootstrap/less';
+function bootstrapLess() {
+    return src(bootstrapLessPath + '/**/*')
+        .pipe(dest("vendor/bootstrap/less"))
 }
 
 exports.fontAwesomeCss = fontAwesomeCss;
@@ -59,11 +57,11 @@ exports.cookieConsentJs = cookieConsentJs;
 exports.cookieConsentCss = cookieConsentCss;
 exports.bootstrapDatepickerJs = bootstrapDatepickerJs;
 exports.bootstrapDatepickerCss = bootstrapDatepickerCss;
-exports.glyphicons = glyphicons
+exports.bootstrapLess = bootstrapLess;
 
 exports.default = parallel(
   fontAwesomeCss, fontAwesomeFonts,
   cookieConsentJs, cookieConsentCss,
   bootstrapDatepickerJs, bootstrapDatepickerCss,
-  glyphicons
+  bootstrapLess
 );
