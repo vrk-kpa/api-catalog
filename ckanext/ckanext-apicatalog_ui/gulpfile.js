@@ -32,6 +32,19 @@ function cookieConsentCss() {
         .pipe(dest("ckanext/apicatalog_ui/fanstatic/cookieconsent/"))
 }
 
+const bootstrapDatepickerPath = './node_modules/eonasdan-bootstrap-datetimepicker/'
+
+function bootstrapDatepickerJs() {
+    return src(bootstrapDatepickerPath + 'src/js/bootstrap-datetimepicker.js')
+        .pipe(dest("ckanext/apicatalog_ui/fanstatic/datetimepicker/"))
+  
+}
+function bootstrapDatepickerCss() {
+    return src(bootstrapDatepickerPath + 'build/css/bootstrap-datetimepicker.css')
+        .pipe(dest("ckanext/apicatalog_ui/fanstatic/datetimepicker/"))
+  
+}
+
 const bootstrapLessPath = './node_modules/bootstrap/less';
 function bootstrapLess() {
     return src(bootstrapLessPath + '/**/*')
@@ -42,6 +55,13 @@ exports.fontAwesomeCss = fontAwesomeCss;
 exports.fontAwesomeFonts = fontAwesomeFonts;
 exports.cookieConsentJs = cookieConsentJs;
 exports.cookieConsentCss = cookieConsentCss;
+exports.bootstrapDatepickerJs = bootstrapDatepickerJs;
+exports.bootstrapDatepickerCss = bootstrapDatepickerCss;
 exports.bootstrapLess = bootstrapLess;
 
-exports.default = parallel(fontAwesomeCss, fontAwesomeFonts, cookieConsentJs, cookieConsentCss, bootstrapLess);
+exports.default = parallel(
+  fontAwesomeCss, fontAwesomeFonts,
+  cookieConsentJs, cookieConsentCss,
+  bootstrapDatepickerJs, bootstrapDatepickerCss,
+  bootstrapLess
+);
