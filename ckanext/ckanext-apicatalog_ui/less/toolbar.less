@@ -4,6 +4,12 @@
   margin-top: 15px;
   margin-bottom: 10px;
   padding: 5px 0;
+
+  .home {
+    span {
+      display: inline;
+    }
+  }
 }
 
 .page_primary_action {
@@ -15,6 +21,16 @@
 }
 
 
+.breadcrumb {
+  > li {
+    + li:before {
+      content: "@{breadcrumb-separator}\00a0";
+      color: @breadcrumb-active-color;
+    }
+  }
+}
+
+
 .toolbar .breadcrumb a {
   color: @breadcrumbTextColor;
   font-size: 16px;
@@ -23,6 +39,7 @@
 .toolbar .breadcrumb .active a,
 .toolbar .breadcrumb a.active {
   color: @breadcrumb-active-color;
+  font-weight: 400;
 }
 
 .actions {
