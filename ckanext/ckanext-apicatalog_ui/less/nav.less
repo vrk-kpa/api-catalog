@@ -38,7 +38,7 @@ li:not(.active) .minusglyph {
 .nav-aside li.active a {
   position: relative;
   color:@black;
-  background: @white;
+  background-color: initial;
 
   &:before {
     content: initial;
@@ -59,6 +59,7 @@ li:not(.active) .minusglyph {
 .nav-facet {
   .nav-item {
     &.active, &:hover {
+      background: @white;
       > a:after {
         background: none;
       }
