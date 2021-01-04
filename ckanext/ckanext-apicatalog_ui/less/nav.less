@@ -36,9 +36,16 @@ li:not(.active) .minusglyph {
 
 .nav-item.active > a,
 .nav-aside li.active a {
-
   position: relative;
   color:@black;
+  background: @white;
+
+  &:before {
+    content: initial;
+    border: none;
+  }
+
+
 }
 
 .nav.nav-facet > li.nav-item a {
@@ -46,6 +53,20 @@ li:not(.active) .minusglyph {
     .transition(0.2s);
     background-color: #EAF2FA;
     color: @black;
+  }
+}
+
+.nav-facet {
+  .nav-item {
+    &.active, &:hover {
+      > a:after {
+        background: none;
+      }
+    }
+
+    > a:hover:after {
+      background: none;
+    }
   }
 }
 
