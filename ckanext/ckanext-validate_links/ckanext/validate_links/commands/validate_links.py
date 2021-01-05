@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from urllib2 import urlopen, URLError, HTTPError
+from urllib2 import urlopen, URLError, HTTPError, build_opener
 import urlparse as parse
 import re
 
@@ -72,9 +72,11 @@ class ValidateLinks(CkanCommand):
 
         external_urls = get_external_children(site_url, site_map)
         url_errors = {}
+        opener = build_opener()
+        opener.addheaders = [('User-Agent', 'Liityntakatalogi link validator')]
         for url in sorted(external_urls):
             try:
-                urlopen(url)
+                opener.open(url)
             except HTTPError as e:
                 referrers = find_referrers(url, site_map)
                 url_errors[url] = referrers
