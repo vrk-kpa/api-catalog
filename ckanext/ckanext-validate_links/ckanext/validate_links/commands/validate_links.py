@@ -45,12 +45,17 @@ class ValidateLinks(CkanCommand):
             self.initdb()
         elif cmd == 'crawl':
             self.crawl()
+        elif cmd == 'clear':
+            self.clear()
 
     def initdb(self):
         from ckanext.validate_links.model import setup as db_setup
         db_setup()
 
     def crawl(self):
+        # Clear previous results
+        self.clear()
+
         site_url = config.get('ckan.site_url')
         crawl_url_blacklist_regex = re.compile(r'/activity/')
         crawl_content_type_whitelist_regex = re.compile(r'text/html')
@@ -97,6 +102,9 @@ class ValidateLinks(CkanCommand):
             admin = User.get('admin')
             mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.iteritems()))
 
+    def clear(self):
+        from ckanext.validate_links.model import clear_tables
+        clear_tables()
 
 def find_referrers(url, site_map):
     results = []

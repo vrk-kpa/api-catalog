@@ -4,9 +4,10 @@ import logging
 import datetime
 
 from sqlalchemy import Table, Column, ForeignKey, types
+from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm import relation
 
-from ckan.model.meta import metadata, mapper
+from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 
@@ -72,3 +73,14 @@ def define_tables():
                'result': relation(LinkValidationResult, backref='referrers'),
                }
            )
+
+
+def clear_tables():
+    Session.query(LinkValidationReferrer).delete()
+    Session.query(LinkValidationResult).delete()
+    try:
+        Session.commit()
+    except InvalidRequestError:
+        Session.rollback()
+        log.error("Clearing LinkValidation tables failed")
+    log.info("LinkValidation tables cleared")
