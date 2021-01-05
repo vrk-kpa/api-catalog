@@ -47,10 +47,16 @@ class ValidateLinks(CkanCommand):
             self.crawl()
         elif cmd == 'clear':
             self.clear()
+        elif cmd == 'migrate':
+            self.migrate()
 
     def initdb(self):
         from ckanext.validate_links.model import setup as db_setup
         db_setup()
+
+    def migrate(self):
+        from ckanext.validate_links.model import migrate
+        migrate()
 
     def crawl(self):
         # Clear previous results
@@ -79,18 +85,19 @@ class ValidateLinks(CkanCommand):
                 opener.open(url)
             except HTTPError as e:
                 referrers = find_referrers(url, site_map)
-                url_errors[url] = referrers
+                url_errors[url] = {"referrers": referrers, "reason": str(e.reason)}
             except URLError as e:
                 referrers = find_referrers(url, site_map)
-                url_errors[url] = referrers
+                url_errors[url] = {"referrers": referrers, "reason": str(e.reason)}
 
-        for url, referrers in url_errors.iteritems():
+        for url, errors in url_errors.iteritems():
             result = LinkValidationResult()
             result.type = u'error'
             result.url = url
+            result.reason = errors['reason']
             result.referrers = []
 
-            for referrer_url in referrers:
+            for referrer_url in errors['referrers']:
                 referrer = LinkValidationReferrer()
                 referrer.result_id = result.id
                 referrer.url = referrer_url

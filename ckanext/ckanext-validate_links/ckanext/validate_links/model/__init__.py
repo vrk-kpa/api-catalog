@@ -54,6 +54,7 @@ def define_tables():
         Column('type', types.UnicodeText, default=None),
         Column('timestamp', types.DateTime, default=datetime.datetime.utcnow),
         Column('url', types.UnicodeText, nullable=False),
+        Column('reason', types.UnicodeText, nullable=False),
     )
     link_validation_result_table = Table('link_validation_result', metadata,
                                          *link_validation_result_columns)
@@ -84,3 +85,10 @@ def clear_tables():
         Session.rollback()
         log.error("Clearing LinkValidation tables failed")
     log.info("LinkValidation tables cleared")
+
+def migrate():
+    q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
+    current_cols = list([m[0] for m in Session.execute(q)])
+    if "reason" not in current_cols:
+        Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason character varying")
+        Session.commit()
