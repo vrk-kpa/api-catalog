@@ -90,5 +90,5 @@ def migrate():
     q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
     current_cols = list([m[0] for m in Session.execute(q)])
     if "reason" not in current_cols:
-        Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason character varying NOT NULL")
+        Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason character varying NOT NULL default 'Reason was not stored in database.'")
         Session.commit()
