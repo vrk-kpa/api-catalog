@@ -1,15 +1,15 @@
 # Translations template for ckanext-apicatalog_ui.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apicatalog_ui
 # project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-04 08:45+0000\n"
+"POT-Creation-Date: 2021-01-08 10:19+0000\n"
 "PO-Revision-Date: 2020-12-04 08:49+0000\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,24 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:11
 msgid "Cookie Policy"
+msgstr ""
+
+#: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:12
+msgid ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+msgstr ""
+
+#: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:13
+msgid "Allow cookies"
+msgstr ""
+
+#: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:14
+msgid "Decline"
+msgstr ""
+
+#: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:15
+msgid "Learn more"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/apicatalog_header.html:10
@@ -277,6 +295,7 @@ msgid "Organizations without active subsystems"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/dashboard.html:139
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:171
 msgid "Organization"
 msgstr ""
 
@@ -284,11 +303,31 @@ msgstr ""
 msgid "Since"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:165
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:162
+msgid "Show/hide change log"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:172
+msgid "Timestamp"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:173
+msgid "Has active subsystems"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:187
+msgid "Yes"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:187
+msgid "No"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:205
 msgid "Recent activity for packages with resources"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:177
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:217
 msgid "Harvester activity"
 msgstr ""
 
@@ -337,7 +376,7 @@ msgid "FI-TEST"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/announcements/index.html:4
-#: ckanext/apicatalog_ui/templates/home/layout1.html:73
+#: ckanext/apicatalog_ui/templates/home/layout1.html:75
 msgid "Announcements"
 msgstr ""
 
@@ -497,7 +536,7 @@ msgstr ""
 msgid "Show all service provider organizations"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/home/layout1.html:64
+#: ckanext/apicatalog_ui/templates/home/layout1.html:66
 msgid ""
 "This content is not available in English. If you have any questions about "
 "this topic, please contact our customer service at <a "
@@ -721,12 +760,16 @@ msgstr ""
 msgid "Logo of organization {org}"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/organization/edit_base.html:14
+#: ckanext/apicatalog_ui/templates/organization/edit_base.html:12
+msgid "X-Road Errors"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/organization/edit_base.html:15
 #: ckanext/apicatalog_ui/templates/organization/read_base.html:12
 msgid "Members"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/organization/edit_base.html:25
+#: ckanext/apicatalog_ui/templates/organization/edit_base.html:26
 msgid "View"
 msgstr ""
 
