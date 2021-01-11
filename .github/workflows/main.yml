@@ -1,0 +1,26 @@
+name: Code Quality
+
+on:
+  push:
+    paths:
+      - "**.py"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Python Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "2.7"
+      - name: Run flake8
+        uses: julianwachholz/flake8-action@v1.1.0
+        with:
+          checkName: "Python Lint"
+          path: ckanext
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
