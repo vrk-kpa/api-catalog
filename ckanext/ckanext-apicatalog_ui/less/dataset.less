@@ -71,9 +71,18 @@
 }
 
 .resource-item {
-  background-color: white;
+  background-color: @white;
+  padding: 0;
+  
+  &:hover {
+    background-color: @white;
+  }
+
   &:nth-child(even) {
     background-color: @suomifi-striped-background;
+    &:hover {
+      background-color: @suomifi-striped-background;
+    }
   }
 
   position: relative;

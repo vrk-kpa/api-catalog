@@ -6,7 +6,7 @@ import ckan.lib.activity_streams as activity_streams
 from ckan.common import c
 import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
-from sqlalchemy import func, text
+from sqlalchemy import func, text, or_, and_
 from datetime import datetime, timedelta
 from utils import package_generator
 
@@ -28,8 +28,8 @@ class AdminDashboardController(base.BaseController):
             # Query package statistics
             statistics = fetch_package_statistics()
 
-            # Find packageless organizations
-            packageless_organizations = fetch_packageless_organizations(context)
+            # Find packageless organizations and produce a changelog
+            (packageless_organizations, packageless_organizations_changelog) = fetch_packageless_organizations_and_changelog(context)
 
             # Generate activity stream snippet
             package_activity_html = fetch_recent_package_activity_list_html(
@@ -48,6 +48,7 @@ class AdminDashboardController(base.BaseController):
                     'privatized_activity_html': privatized_activity_html,
                     'interesting_activity_html': interesting_activity_html,
                     'packageless_organizations': packageless_organizations,
+                    'packageless_organizations_changelog': packageless_organizations_changelog,
                     'stats': statistics
                     }
             template = 'admin/dashboard.html'
@@ -225,24 +226,98 @@ def fetch_recent_package_activity_list_html(
             context, changed_packages, {'offset': 0})
 
 
-def fetch_packageless_organizations(context):
-    organizations = get_action('organization_list')(context, {'all_fields': True, 'include_dataset_count': True})
-    packageless_organizations = [o for o in organizations if o.get('package_count', 0) == 0]
-    packageless_organizations_ids = [o['id'] for o in packageless_organizations]
-    from pprint import pformat
-    log.info("packageless_organizations_ids: %s", pformat(packageless_organizations_ids))
+def fetch_packageless_organizations_and_changelog(context):
+    # Query package owners
+    package_owners = dict(model.Session.query(model.Package.id, model.Package.owner_org).all())
 
-    last_deleted_revisions_query = (
-            model.Session.query(model.PackageRevision.owner_org,
-                                func.max(model.Revision.timestamp))
-            .filter(model.PackageRevision.state != 'active')
-            .filter(model.PackageRevision.owner_org.in_(packageless_organizations_ids))
-            .group_by(model.PackageRevision.owner_org))
-    last_deleted_revisions = dict(last_deleted_revisions_query.all())
+    # Query organization data
+    organizations = (model.Session.query(model.Group.id, model.Group.created, model.Group.title, model.GroupExtra.value)
+            .join(model.GroupExtra, and_(model.GroupExtra.group_id == model.Group.id,
+                                         model.GroupExtra.key == 'title_translated',
+                                         model.GroupExtra.active == True), isouter=True)
+            .filter(model.Group.type == 'organization')
+            .all())
 
-    log.info("last_deleted_revisions: %s", pformat(last_deleted_revisions))
-    for o in packageless_organizations:
-        created_date = datetime.strptime(o['created'], '%Y-%m-%dT%H:%M:%S.%f')
-        o['packageless_since'] = last_deleted_revisions.get(o['id'], created_date)
+    # Query package new/delete activity events
+    package_new_delete_activities = (model.Session.query(model.Activity.timestamp, model.Activity.object_id, model.Activity.activity_type)
+            .filter(or_(model.Activity.activity_type == 'new package', model.Activity.activity_type == 'deleted package'))
+            .order_by(model.Activity.timestamp)
+            .all())
 
-    return packageless_organizations
+    # Define organization objects required for UI
+    organizations_by_id = {oid: {'id': oid, 'created': created, 'title': title, 'title_translated': title_translated}
+                           for oid, created, title, title_translated in organizations}
+
+    # Initialize organization timelines with no packages at the time of their creation
+    organization_timelines = {oid: [(created, set())] for oid, created, _, _ in organizations}
+
+    # Create a timeline of contained packages for each organization
+    for timestamp, package_id, activity_type in package_new_delete_activities:
+        owner_id = package_owners.get(package_id)
+
+        if not owner_id:
+            log.warning('No owner found for package "%s"', package_id)
+            continue
+
+        organization_timeline = organization_timelines.get(owner_id)
+
+        if not organization_timeline:
+            log.warning('No timeline found for organization "%s"', owner_id)
+            continue
+
+        latest_timestamp, latest_package_set = organization_timeline[-1]
+
+        if activity_type == 'new package':
+            if package_id not in latest_package_set:
+                new_package_set = latest_package_set.copy()
+                new_package_set.add(package_id)
+                organization_timeline.append((timestamp, new_package_set))
+            else:
+                log.warning('Adding package "%s" a second time?', package_id)
+                continue
+
+        if activity_type == 'deleted package':
+            if package_id in latest_package_set:
+                new_package_set = latest_package_set.copy()
+                new_package_set.remove(package_id)
+                organization_timeline.append((timestamp, new_package_set))
+            else:
+                log.warning('Removing package "%s" before adding?', package_id)
+                continue
+
+    # Produce a collective changelog for all organizations
+    changelog = []
+
+    for oid, organization_timeline in organization_timelines.items():
+        organization = organizations_by_id.get(oid)
+
+        if not organization:
+            log.warning('Organization "%s" not found', oid)
+            continue
+
+        for timestamp, package_set in organization_timeline:
+            if len(package_set) == 0:
+                changelog.append((timestamp, organization, False))
+            elif len(package_set) == 1:
+                changelog.append((timestamp, organization, True))
+
+    changelog.sort()
+
+    # Collect currently packageless organizations
+    packageless_organizations = []
+
+    for oid, organization_timeline in organization_timelines.items():
+        latest_timestamp, latest_package_set = organization_timeline[-1]
+
+        if len(latest_package_set) == 0:
+            organization = organizations_by_id.get(oid)
+
+            if not organization:
+                log.warning('Organization "%s" not found', oid)
+                continue
+
+            packageless_organization = organization.copy()
+            packageless_organization['packageless_since'] = latest_timestamp
+            packageless_organizations.append(packageless_organization)
+
+    return (packageless_organizations, changelog)

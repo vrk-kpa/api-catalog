@@ -4,9 +4,10 @@ import logging
 import datetime
 
 from sqlalchemy import Table, Column, ForeignKey, types
+from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm import relation
 
-from ckan.model.meta import metadata, mapper
+from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 
@@ -53,6 +54,7 @@ def define_tables():
         Column('type', types.UnicodeText, default=None),
         Column('timestamp', types.DateTime, default=datetime.datetime.utcnow),
         Column('url', types.UnicodeText, nullable=False),
+        Column('reason', types.UnicodeText, nullable=False),
     )
     link_validation_result_table = Table('link_validation_result', metadata,
                                          *link_validation_result_columns)
@@ -72,3 +74,21 @@ def define_tables():
                'result': relation(LinkValidationResult, backref='referrers'),
                }
            )
+
+
+def clear_tables():
+    Session.query(LinkValidationReferrer).delete()
+    Session.query(LinkValidationResult).delete()
+    try:
+        Session.commit()
+    except InvalidRequestError:
+        Session.rollback()
+        log.error("Clearing LinkValidation tables failed")
+    log.info("LinkValidation tables cleared")
+
+def migrate():
+    q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
+    current_cols = list([m[0] for m in Session.execute(q)])
+    if "reason" not in current_cols:
+        Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason character varying NOT NULL default 'Reason was not stored in database.'")
+        Session.commit()

@@ -150,6 +150,8 @@ def mark_as_modified_in_catalog_if_changed(field, schema):
     def validator(key, data, errors, context):
 
         if context.get('group'):
+            # Auth audit will fail during harvester updates
+            context.pop('__auth_audit', None)
             old_organization = get_action('organization_show')(context, {'id': context['group'].id})
             if json.dumps(old_organization.get(key[0])) != data[key] and 'for_edit' in context:
                 flattened = df.flatten_dict({ key[0] + '_modified_in_catalog': True })

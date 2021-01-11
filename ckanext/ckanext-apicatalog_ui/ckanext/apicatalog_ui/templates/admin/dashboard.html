@@ -154,6 +154,46 @@
                     {% endfor %}
                   </tbody>
                 </table>
+                <div class="panel-group" id="changelog" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="changelogHeading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#changelog" href="#collapseChangelog" aria-expanded="true" aria-controls="collapseChangelog">
+                          {% trans %}Show/hide change log{% endtrans %}
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseChangelog" class="panel-collapse collapse" role="tabpanel" aria-labelledby="changelogHeading">
+                      <div class="panel-body">
+                        <table class="table table-condensed" data-module="tablesorter">
+                          <thead>
+                            <tr>
+                              <th>{{ _('Organization') }}</th>
+                              <th data-sorter="shortDate" data-date-format="ddmmyyyy">{{ _('Timestamp') }}</th>
+                              <th>{{ _('Has active subsystems') }}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for timestamp, org, has_packages in packageless_organizations_changelog %}
+                            {% set url = h.url_for(controller='organization', action='read', id=org.id) %}
+                            <tr>
+                              <td>
+                                <a href="{{ url }}">{{ h.get_translated(org, 'title') or '(no title)' | truncate(50) }}</a>
+                              </td>
+                              <td>
+                                {{ timestamp.strftime('%d.%m.%Y') }}
+                              </td>
+                              <td>
+                                {% if has_packages %}{% trans %}Yes{% endtrans %}{% else %}{% trans %}No{% endtrans %}{% endif %}
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
           </div>

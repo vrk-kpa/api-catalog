@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from urllib2 import urlopen, URLError, HTTPError
+from urllib2 import urlopen, URLError, HTTPError, build_opener
 import urlparse as parse
 import re
 
@@ -45,12 +45,23 @@ class ValidateLinks(CkanCommand):
             self.initdb()
         elif cmd == 'crawl':
             self.crawl()
+        elif cmd == 'clear':
+            self.clear()
+        elif cmd == 'migrate':
+            self.migrate()
 
     def initdb(self):
         from ckanext.validate_links.model import setup as db_setup
         db_setup()
 
+    def migrate(self):
+        from ckanext.validate_links.model import migrate
+        migrate()
+
     def crawl(self):
+        # Clear previous results
+        self.clear()
+
         site_url = config.get('ckan.site_url')
         crawl_url_blacklist_regex = re.compile(r'/activity/')
         crawl_content_type_whitelist_regex = re.compile(r'text/html')
@@ -67,23 +78,26 @@ class ValidateLinks(CkanCommand):
 
         external_urls = get_external_children(site_url, site_map)
         url_errors = {}
+        opener = build_opener()
+        opener.addheaders = [('User-Agent', 'Liityntakatalogi link validator')]
         for url in sorted(external_urls):
             try:
-                urlopen(url)
+                opener.open(url)
             except HTTPError as e:
                 referrers = find_referrers(url, site_map)
-                url_errors[url] = referrers
+                url_errors[url] = {"referrers": referrers, "reason": str(e.reason)}
             except URLError as e:
                 referrers = find_referrers(url, site_map)
-                url_errors[url] = referrers
+                url_errors[url] = {"referrers": referrers, "reason": str(e.reason)}
 
-        for url, referrers in url_errors.iteritems():
+        for url, errors in url_errors.iteritems():
             result = LinkValidationResult()
             result.type = u'error'
             result.url = url
+            result.reason = errors['reason']
             result.referrers = []
 
-            for referrer_url in referrers:
+            for referrer_url in errors['referrers']:
                 referrer = LinkValidationReferrer()
                 referrer.result_id = result.id
                 referrer.url = referrer_url
@@ -97,6 +111,9 @@ class ValidateLinks(CkanCommand):
             admin = User.get('admin')
             mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.iteritems()))
 
+    def clear(self):
+        from ckanext.validate_links.model import clear_tables
+        clear_tables()
 
 def find_referrers(url, site_map):
     results = []
