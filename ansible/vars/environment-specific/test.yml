@@ -92,7 +92,6 @@ paha_key_whitelist:
 apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
 
 ckan_plugins:
-  - text_view
   - apicatalog_scheming
   - scheming_datasets
   - scheming_organizations
@@ -113,7 +112,6 @@ ckan_plugins:
   - saha
   - paha
   - apply_permissions_for_service
-  - webpage_view
   - xroad_integration
   - forcetranslation
 
