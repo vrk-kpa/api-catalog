@@ -110,6 +110,7 @@ ckan_plugins:
   - apicatalog_harvesterstatus
   - harvest
   - xroad_harvester
+  - text_view
   - wsdl_view
   - validate_links
   - saha
