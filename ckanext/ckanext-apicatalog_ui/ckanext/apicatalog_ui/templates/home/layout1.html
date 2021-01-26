@@ -19,7 +19,7 @@
         <div class="col-sm-4">
           <div class="count">{{statistics.provider_organizations}}</div>
           <div class="stats-title">{{_('service providers')}}</div>
-          <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index') }}" aria-label="{{ _('Show all service provider organizations') }}">{{_('Show all')}}</a></div>
+          <div><i class="fa fa-angle-right" aria-hidden="true"></i><a href="{{ h.url_for(controller='organization', action='index', provider_orgs=True) }}" aria-label="{{ _('Show all service provider organizations') }}">{{_('Show all')}}</a></div>
         </div>
       </div>
     </div>
