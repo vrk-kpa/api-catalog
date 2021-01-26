@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-18 13:38+0000\n"
+"POT-Creation-Date: 2021-01-26 11:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -363,7 +363,7 @@ msgid "Submit"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:12
-msgid "X-Road Statistics"
+msgid "X-Road Graphs"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:18
