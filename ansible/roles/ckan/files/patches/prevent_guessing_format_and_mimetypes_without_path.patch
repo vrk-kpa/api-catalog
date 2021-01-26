@@ -1,0 +1,47 @@
+From c25374000db5a03403fc1720e1c1dfe0961a72b6 Mon Sep 17 00:00:00 2001
+From: Jari Voutilainen <jari.voutilainen@iki.fi>
+Date: Fri, 22 Jan 2021 09:51:31 +0200
+Subject: [PATCH] Prevent guessing format and mimetype from resource urls
+ without path
+
+---
+ ckan/lib/uploader.py     | 3 ++-
+ ckan/logic/validators.py | 6 ++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/ckan/lib/uploader.py b/ckan/lib/uploader.py
+index eaebc207d1..246f1817bc 100644
+--- a/ckan/lib/uploader.py
++++ b/ckan/lib/uploader.py
+@@ -6,6 +6,7 @@
+ import logging
+ import magic
+ import mimetypes
++from six.moves.urllib.parse import urlparse
+
+ from werkzeug.datastructures import FileStorage as FlaskFileStorage
+
+@@ -225,7 +226,7 @@ def __init__(self, resource):
+         upload_field_storage = resource.pop('upload', None)
+         self.clear = resource.pop('clear_upload', None)
+
+-        if config_mimetype_guess == 'file_ext':
++        if config_mimetype_guess == 'file_ext' and urlparse(url).path:
+             self.mimetype = mimetypes.guess_type(url)[0]
+
+         if bool(upload_field_storage) and \
+diff --git a/ckan/logic/validators.py b/ckan/logic/validators.py
+index c266417fd2..4d31e99d31 100644
+--- a/ckan/logic/validators.py
++++ b/ckan/logic/validators.py
+@@ -769,6 +769,12 @@ def if_empty_guess_format(key, data, errors, context):
+         url = data.get(key[:-1] + ('url',), '')
++
++        # Uploaded files have only the filename as url, so check scheme to determine if it's an actual url
++        parsed = urlparse(url)
++        if parsed.scheme and not parsed.path:
++            return
++
+         mimetype, encoding = mimetypes.guess_type(url)
+         if mimetype:
+             data[key] = mimetype
