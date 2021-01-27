@@ -3,7 +3,7 @@ ckan.module('cookie_consent', function (jQuery){
         initialize: function() {
             window.cookieconsent.initialise({
                 container: document.getElementById("cookie_consent"),
-                position: "top",
+                position: "bottom",
                 type: "opt-in",
                 static: false,
                 theme: "suomifi",
