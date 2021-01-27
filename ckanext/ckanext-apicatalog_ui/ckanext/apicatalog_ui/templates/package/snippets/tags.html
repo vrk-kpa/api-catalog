@@ -9,7 +9,7 @@
                         'action': 'search',
                         'vocab_' + field + '_' + lang: tag }) %}
                     <li>
-                        <a class="{% block tag_list_item_class %}tag{% endblock %}" href="{{ h.call_toolkit_function('url_for',[], tag_dict) }}">
+                        <a class="{% block tag_list_item_class %}{% endblock %}" href="{{ h.call_toolkit_function('url_for',[], tag_dict) }}">
                             {{ h.truncate(tag, 22) }}
                         </a>
                     </li>
