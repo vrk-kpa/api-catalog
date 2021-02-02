@@ -21,6 +21,14 @@ database_ckan:
   username: ckan_default
   password: "{{ secret.database_ckan_password }}"
 
+database_test:
+  host: 127.0.0.1
+  port: 5432
+  allowed_ip_range: 10.0.0.0/8
+  name: ckan_test
+  username: ckan_default
+  password: "{{ secret.database_ckan_password }}"
+
 nginx:
   alternative_hostnames: catalog-alternative www.{{ public_facing_hostname }}
 
