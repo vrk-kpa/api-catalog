@@ -1,0 +1,502 @@
+{
+   "$schema" : "http://json-schema.org/schema#",
+   "properties" : {
+      "memberList" : {
+         "properties" : {
+            "member" : {
+               "items" : {
+                  "properties" : {
+                     "changed" : {
+                        "type" : "string"
+                     },
+                     "created" : {
+                        "type" : "string"
+                     },
+                     "fetched" : {
+                        "type" : "string"
+                     },
+                     "memberClass" : {
+                        "type" : "string"
+                     },
+                     "memberCode" : {
+                        "type" : "string"
+                     },
+                     "name" : {
+                        "type" : "string"
+                     },
+                     "removed" : {
+                        "type" : "string"
+                     },
+                     "subsystems" : {
+                        "anyOf" : [
+                           {
+                              "type" : "string"
+                           },
+                           {
+                              "properties" : {
+                                 "subsystem" : {
+                                    "anyOf" : [
+                                       {
+                                          "properties" : {
+                                             "changed" : {
+                                                "type" : "string"
+                                             },
+                                             "created" : {
+                                                "type" : "string"
+                                             },
+                                             "fetched" : {
+                                                "type" : "string"
+                                             },
+                                             "removed" : {
+                                                "type" : "string"
+                                             },
+                                             "services" : {
+                                                "anyOf" : [
+                                                   {
+                                                      "type" : "string"
+                                                   },
+                                                   {
+                                                      "properties" : {
+                                                         "service" : {
+                                                            "anyOf" : [
+                                                               {
+                                                                  "properties" : {
+                                                                     "changed" : {
+                                                                        "type" : "string"
+                                                                     },
+                                                                     "created" : {
+                                                                        "type" : "string"
+                                                                     },
+                                                                     "fetched" : {
+                                                                        "type" : "string"
+                                                                     },
+                                                                     "serviceCode" : {
+                                                                        "type" : "string"
+                                                                     },
+                                                                     "serviceVersion" : {
+                                                                        "type" : [
+                                                                            "integer",
+                                                                            "string"
+                                                                        ]
+                                                                     },
+                                                                     "wsdl" : {
+                                                                        "properties" : {
+                                                                           "changed" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "created" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "externalId" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "fetched" : {
+                                                                              "type" : "string"
+                                                                           }
+                                                                        },
+                                                                        "required" : [
+                                                                           "changed",
+                                                                           "created",
+                                                                           "externalId",
+                                                                           "fetched"
+                                                                        ],
+                                                                        "type" : "object"
+                                                                     },
+                                                                     "openapi" : {
+                                                                        "properties" : {
+                                                                           "changed" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "created" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "externalId" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "fetched" : {
+                                                                              "type" : "string"
+                                                                           }
+                                                                        },
+                                                                        "required" : [
+                                                                           "changed",
+                                                                           "created",
+                                                                           "externalId",
+                                                                           "fetched"
+                                                                        ],
+                                                                        "type" : "object"
+                                                                     }
+                                                                  },
+                                                                  "required" : [
+                                                                     "changed",
+                                                                     "created",
+                                                                     "fetched",
+                                                                     "serviceCode"
+                                                                  ],
+                                                                  "type" : "object"
+                                                               },
+                                                               {
+                                                                  "items" : {
+                                                                     "properties" : {
+                                                                        "changed" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "created" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "fetched" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "serviceCode" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "serviceVersion" : {
+                                                                           "type" : [
+                                                                               "integer",
+                                                                               "string"
+                                                                           ]
+                                                                        },
+                                                                        "wsdl" : {
+                                                                           "properties" : {
+                                                                              "changed" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "created" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "externalId" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "fetched" : {
+                                                                                 "type" : "string"
+                                                                              }
+                                                                           },
+                                                                           "required" : [
+                                                                              "changed",
+                                                                              "created",
+                                                                              "externalId",
+                                                                              "fetched"
+                                                                           ],
+                                                                           "type" : "object"
+                                                                        },
+                                                                        "openapi" : {
+                                                                         "properties" : {
+                                                                            "changed" : {
+                                                                               "type" : "string"
+                                                                            },
+                                                                            "created" : {
+                                                                               "type" : "string"
+                                                                            },
+                                                                            "externalId" : {
+                                                                               "type" : "string"
+                                                                            },
+                                                                            "fetched" : {
+                                                                               "type" : "string"
+                                                                            }
+                                                                         },
+                                                                         "required" : [
+                                                                            "changed",
+                                                                            "created",
+                                                                            "externalId",
+                                                                            "fetched"
+                                                                         ],
+                                                                         "type" : "object"
+                                                                      }
+                                                                     },
+                                                                     "required" : [
+                                                                        "changed",
+                                                                        "created",
+                                                                        "fetched",
+                                                                        "serviceCode"
+                                                                     ],
+                                                                     "type" : "object"
+                                                                  },
+                                                                  "type" : "array"
+                                                               }
+                                                            ]
+                                                         }
+                                                      },
+                                                      "required" : [
+                                                         "service"
+                                                      ],
+                                                      "type" : "object"
+                                                   }
+                                                ]
+                                             },
+                                             "subsystemCode" : {
+                                                "type" : "string"
+                                             }
+                                          },
+                                          "required" : [
+                                             "changed",
+                                             "created",
+                                             "fetched",
+                                             "services",
+                                             "subsystemCode"
+                                          ],
+                                          "type" : "object"
+                                       },
+                                       {
+                                          "items" : {
+                                             "properties" : {
+                                                "changed" : {
+                                                   "type" : "string"
+                                                },
+                                                "created" : {
+                                                   "type" : "string"
+                                                },
+                                                "fetched" : {
+                                                   "type" : "string"
+                                                },
+                                                "removed" : {
+                                                   "type" : "string"
+                                                },
+                                                "services" : {
+                                                   "anyOf" : [
+                                                      {
+                                                         "type" : "string"
+                                                      },
+                                                      {
+                                                         "properties" : {
+                                                            "service" : {
+                                                               "anyOf" : [
+                                                                  {
+                                                                     "properties" : {
+                                                                        "changed" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "created" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "fetched" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "serviceCode" : {
+                                                                           "type" : "string"
+                                                                        },
+                                                                        "serviceVersion" : {
+                                                                           "type" : [
+                                                                               "integer",
+                                                                               "string"
+                                                                           ]
+                                                                        },
+                                                                        "wsdl" : {
+                                                                           "properties" : {
+                                                                              "changed" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "created" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "externalId" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "fetched" : {
+                                                                                 "type" : "string"
+                                                                              }
+                                                                           },
+                                                                           "required" : [
+                                                                              "changed",
+                                                                              "created",
+                                                                              "externalId",
+                                                                              "fetched"
+                                                                           ],
+                                                                           "type" : "object"
+                                                                        },
+                                                                        "openapi" : {
+                                                                           "properties" : {
+                                                                              "changed" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "created" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "externalId" : {
+                                                                                 "type" : "string"
+                                                                              },
+                                                                              "fetched" : {
+                                                                                 "type" : "string"
+                                                                              }
+                                                                           },
+                                                                           "required" : [
+                                                                              "changed",
+                                                                              "created",
+                                                                              "externalId",
+                                                                              "fetched"
+                                                                           ],
+                                                                           "type" : "object"
+                                                                        }
+                                                                     },
+                                                                     "required" : [
+                                                                        "changed",
+                                                                        "created",
+                                                                        "fetched",
+                                                                        "serviceCode"
+                                                                     ],
+                                                                     "type" : "object"
+                                                                  },
+                                                                  {
+                                                                     "items" : {
+                                                                        "properties" : {
+                                                                           "changed" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "created" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "fetched" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "openapi" : {
+                                                                              "properties" : {
+                                                                                 "changed" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "created" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "externalId" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "fetched" : {
+                                                                                    "type" : "string"
+                                                                                 }
+                                                                              },
+                                                                              "required" : [
+                                                                                 "changed",
+                                                                                 "created",
+                                                                                 "externalId",
+                                                                                 "fetched"
+                                                                              ],
+                                                                              "type" : "object"
+                                                                           },
+                                                                           "serviceCode" : {
+                                                                              "type" : "string"
+                                                                           },
+                                                                           "serviceVersion" : {
+                                                                              "type" : [
+                                                                                 "integer",
+                                                                                 "string"
+                                                                              ]
+                                                                           },
+                                                                           "wsdl" : {
+                                                                              "properties" : {
+                                                                                 "changed" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "created" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "externalId" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "fetched" : {
+                                                                                    "type" : "string"
+                                                                                 }
+                                                                              },
+                                                                              "required" : [
+                                                                                 "changed",
+                                                                                 "created",
+                                                                                 "externalId",
+                                                                                 "fetched"
+                                                                              ],
+                                                                              "type" : "object"
+                                                                           },
+                                                                           "openapi" : {
+                                                                              "properties" : {
+                                                                                 "changed" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "created" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "externalId" : {
+                                                                                    "type" : "string"
+                                                                                 },
+                                                                                 "fetched" : {
+                                                                                    "type" : "string"
+                                                                                 }
+                                                                              },
+                                                                              "required" : [
+                                                                                 "changed",
+                                                                                 "created",
+                                                                                 "externalId",
+                                                                                 "fetched"
+                                                                              ],
+                                                                              "type" : "object"
+                                                                           }
+                                                                        },
+                                                                        "required" : [
+                                                                           "changed",
+                                                                           "created",
+                                                                           "fetched",
+                                                                           "serviceCode"
+                                                                        ],
+                                                                        "type" : "object"
+                                                                     },
+                                                                     "type" : "array"
+                                                                  }
+                                                               ]
+                                                            }
+                                                         },
+                                                         "required" : [
+                                                            "service"
+                                                         ],
+                                                         "type" : "object"
+                                                      }
+                                                   ]
+                                                },
+                                                "subsystemCode" : {
+                                                   "type" : "string"
+                                                }
+                                             },
+                                             "required" : [
+                                                "changed",
+                                                "created",
+                                                "fetched",
+                                                "services",
+                                                "subsystemCode"
+                                             ],
+                                             "type" : "object"
+                                          },
+                                          "type" : "array"
+                                       }
+                                    ]
+                                 }
+                              },
+                              "required" : [
+                                 "subsystem"
+                              ],
+                              "type" : "object"
+                           }
+                        ]
+                     },
+                     "xRoadInstance" : {
+                        "type" : "string"
+                     }
+                  },
+                  "required" : [
+                     "changed",
+                     "created",
+                     "fetched",
+                     "memberClass",
+                     "memberCode",
+                     "name",
+                     "subsystems",
+                     "xRoadInstance"
+                  ],
+                  "type" : "object"
+               },
+               "type" : "array"
+            }
+         },
+         "required" : [
+            "member"
+         ],
+         "type" : "object"
+      }
+   },
+   "required" : [
+      "memberList"
+   ],
+   "type" : "object"
+}
