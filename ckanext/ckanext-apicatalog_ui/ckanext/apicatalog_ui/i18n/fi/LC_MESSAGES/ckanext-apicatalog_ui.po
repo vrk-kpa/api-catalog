@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-18 13:38+0000\n"
+"POT-Creation-Date: 2021-02-05 09:52+0000\n"
 "PO-Revision-Date: 2020-12-04 08:49+0000\n"
 "Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2021\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
@@ -378,7 +378,7 @@ msgid "Submit"
 msgstr "Lähetä"
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:12
-msgid "X-Road Statistics"
+msgid "X-Road Graphs"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:18
@@ -781,8 +781,8 @@ msgid "Skip twitter feed"
 msgstr "Hyppää twitter syötteen yli"
 
 #: ckanext/apicatalog_ui/templates/home/snippets/twitter.html:7
-msgid "Show more tweets by Suomi.fi"
-msgstr "Näytä käyttäjän Suomi.fi muut twiitit"
+msgid "Show more tweets by Suomi.fi yritys"
+msgstr "Näytä käyttäjän Suomi.fi yrityksille muut twiitit"
 
 #: ckanext/apicatalog_ui/templates/home/snippets/twitter.html:16
 msgid "Show more tweets by NIIS"
