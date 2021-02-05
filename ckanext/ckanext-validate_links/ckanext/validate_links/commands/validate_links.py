@@ -66,6 +66,7 @@ class ValidateLinks(CkanCommand):
         crawl_url_blacklist_regex = re.compile(r'/activity/')
         crawl_content_type_whitelist_regex = re.compile(r'text/html')
         url_regex = re.compile(r'href="((http[s]?://|/)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"')
+        url_blacklist = config.get('ckanext.validate_links.url_blacklist', "").split(" ")
         site_map = {}
         to_crawl = [site_url]
         while to_crawl:
@@ -76,7 +77,7 @@ class ValidateLinks(CkanCommand):
                               url_regex)
             to_crawl += new_crawl
 
-        external_urls = get_external_children(site_url, site_map)
+        external_urls = get_external_children(site_url, site_map, url_blacklist)
         url_errors = {}
         opener = build_opener()
         opener.addheaders = [('User-Agent', 'Liityntakatalogi link validator')]
@@ -128,13 +129,13 @@ def find_referrers(url, site_map):
     return results
 
 
-def get_external_children(site_url, site_map):
+def get_external_children(site_url, site_map, url_blacklist):
     site_host = strip_path(site_url)
     external = set()
 
     for item in site_map.values():
         for child in item.children:
-            if not child.startswith(site_host):
+            if not child.startswith(site_host) and not child in url_blacklist:
                 external.add(child)
 
     return external
