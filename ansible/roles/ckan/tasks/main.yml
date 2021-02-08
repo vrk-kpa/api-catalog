@@ -9,10 +9,10 @@
     msg: Please run npm install in ckanext_apicatalog_ui on host machine
   when: not node_modules.stat.exists
 
-- include: custom_requirements.yml
-
-- name: Install CKAN
-  pip: name="git+https://github.com/ckan/ckan.git@ckan-{{ ckan_version }}#egg=ckan" virtualenv={{ virtualenv }} extra_args="--exists-action=s -e"
+- name: Install project requirements
+  pip:
+   requirements: "{{ playbook_dir }}/../requirements.txt"
+   virtualenv: "{{ virtualenv }}"
   register: ckan_installation
 
 - name: Install CKAN requirements
@@ -22,7 +22,11 @@
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
   when: deployment_environment_id == "vagrant"
 
-- include: override_requirements.yml
+- name: Re-install project requirements as ckan requirements might override them
+  pip:
+    requirements: "{{ playbook_dir }}/../requirements.txt"
+    virtualenv: "{{ virtualenv }}"
+
 
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}

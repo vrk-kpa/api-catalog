@@ -1,7 +1,0 @@
----
-
-- name: Copy requirements file
-  template: src=requirements.txt.j2 dest="{{ cache_path }}/requirements.txt" mode="0644" owner=root group=root
-
-- name: Install custom Python requirements
-  pip: requirements="{{ cache_path }}/requirements.txt" virtualenv="{{ virtualenv }}" extra_args='--exists-action=w --timeout=30'

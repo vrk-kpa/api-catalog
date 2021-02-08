@@ -1,0 +1,14 @@
+-e git+https://github.com/ckan/ckan.git@ckan-2.8.6#egg=ckan
+testrepository==0.0.20
+lxml==3.6.0
+typing
+
+# psycopg2 < 2.8.2 does not work with libssl 1.1.x
+psycopg2==2.8.2
+beaker==1.10.1
+repoze.who==2.4
+# Use the same WebOb as ckan does
+WebOb==1.0.8
+
+# harvest requires newer six
+six>=1.12.0
