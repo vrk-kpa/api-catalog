@@ -15,17 +15,12 @@
    virtualenv: "{{ virtualenv }}"
   register: ckan_installation
 
-- name: Install CKAN requirements
-  pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
+#- name: Install CKAN requirements
+#  pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
 
 - name: Install CKAN dev requirements
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
   when: deployment_environment_id == "vagrant"
-
-- name: Re-install project requirements as ckan requirements might override them
-  pip:
-    requirements: "{{ playbook_dir }}/../requirements.txt"
-    virtualenv: "{{ virtualenv }}"
 
 
 - name: Create CKAN paths
