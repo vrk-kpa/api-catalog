@@ -135,7 +135,7 @@ def get_external_children(site_url, site_map, url_blacklist):
 
     for item in site_map.values():
         for child in item.children:
-            if not child.startswith(site_host) and not child in url_blacklist:
+            if not child.startswith(site_host) and child not in url_blacklist:
                 external.add(child)
 
     return external
