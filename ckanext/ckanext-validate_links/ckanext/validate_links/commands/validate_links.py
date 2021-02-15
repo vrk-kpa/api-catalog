@@ -66,7 +66,7 @@ class ValidateLinks(CkanCommand):
         crawl_url_blacklist_regex = re.compile(r'/activity/')
         crawl_content_type_whitelist_regex = re.compile(r'text/html')
         url_regex = re.compile(r'href="((http[s]?://|/)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)"')
-        url_blacklist = config.get('ckanext.validate_links.url_blacklist', "").split(" ")
+        url_blacklist = config.get('ckanext.validate_links.url_blacklist', "").split()
         site_map = {}
         to_crawl = [site_url]
         while to_crawl:
