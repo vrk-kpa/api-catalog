@@ -39,9 +39,13 @@ ckan_patches:
   - { file: "remove_edit_button_from_slugs" }
   - { file: "fix_javascript_error_on_edge" } # https://github.com/ckan/ckan/pull/5782
   - { file: "fix_bootstrap_font_path" }
+  - { file: "upgrade_highlightjs" } # https://github.com/ckan/ckan/pull/5838
+  - { file: "prevent_guessing_format_and_mimetypes_without_path" } # https://github.com/ckan/ckan/pull/5851
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
+  - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/styles/a11y-light.css'}
+  - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/vendor/highlight.js'}
 
 search_engine_robots_filename: robots_disallowed.txt
 

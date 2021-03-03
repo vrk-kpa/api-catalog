@@ -1,3 +1,8 @@
 local all postgres peer
 host {{ database_ckan.name }} {{ database_ckan.username }} {{ database_ckan.allowed_ip_range }} md5
 host {{ database_ckan.name }} {{ database_ckan.username }} 127.0.0.0/8 md5
+host {{ database_ckan.name }} {{ database_ckan.username }} ::1/128 md5
+{% if deployment_environment_id == "vagrant" %}
+host {{ database_test.name }} {{ database_test.username }} 127.0.0.0/8 md5
+host {{ database_test.name }} {{ database_test.username }} ::1/128 md5
+{% endif %}

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-08 10:19+0000\n"
+"POT-Creation-Date: 2021-02-05 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -363,7 +363,7 @@ msgid "Submit"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:12
-msgid "X-Road Statistics"
+msgid "X-Road Graphs"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:18
@@ -506,7 +506,7 @@ msgid "hero"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/home/layout1.html:10
-msgid "datasets"
+msgid "public datasets"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/home/layout1.html:11
@@ -728,7 +728,7 @@ msgid "Skip twitter feed"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/home/snippets/twitter.html:7
-msgid "Show more tweets by Suomi.fi"
+msgid "Show more tweets by Suomi.fi yritys"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/home/snippets/twitter.html:16

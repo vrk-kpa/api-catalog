@@ -16,6 +16,9 @@ cache_dir = /tmp/%(ckan.site_id)s/
 
 beaker.session.key = ckan
 beaker.session.secret = {{ secret.ckan_config.beaker_session_secret }}
+beaker.session.secure = True
+beaker.session.httponly = True
+beaker.session.samesite = Strict
 
 app_instance_uuid = {{ secret.ckan_config.app_instance_uuid }}
 
@@ -137,6 +140,8 @@ ckanext.xroad_integration.xroad_catalog_certificate = {{ server_path }}/{{ xroad
 ckanext.xroad_integration.xroad_client_id = {{ xroad.client_id | replace('.', '/') }}
 ckanext.xroad_integration.xroad_client_certificate = {{ server_path }}/{{ xroad_securityserver_private_cert_filename }}
 ckanext.xroad_integration.unknown_service_link_url = {{ unknown_service_link_url }}
+
+ckanext.validate_links.url_blacklist = https://twitter.com/suomifiyritys https://www.facebook.com/Suomifiyritykselle
 
 ofs.impl = pairtree
 

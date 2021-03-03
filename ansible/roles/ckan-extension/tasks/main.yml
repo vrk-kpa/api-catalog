@@ -48,6 +48,15 @@
   pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/pip-requirements.txt" virtualenv={{ virtualenv}}
   when: piprequirements.stat.exists
 
+- block:
+    - name: Register extension dev-requirements.txt
+      stat: path="{{ ckanext_sync_path }}/{{ ckanext }}/dev-requirements.txt"
+      register: devrequirements
+
+    - name: Install extension dev requirements
+      pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/dev-requirements.txt" virtualenv={{ virtualenv}}
+      when: devrequirements.stat.exists
+  when: deployment_environment_id == "vagrant"
 
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
