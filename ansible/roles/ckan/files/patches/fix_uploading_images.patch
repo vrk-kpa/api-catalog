@@ -1,0 +1,115 @@
+From 8610b732467c2f886ce6215b77c6e2e41b34fa27 Mon Sep 17 00:00:00 2001
+From: shasan <shasan@marsdd.com>
+Date: Fri, 11 Oct 2019 10:08:51 -0400
+Subject: [PATCH 1/4] Issue occurs when updating groups/organizations, it
+ changes the saved filename for the file_url field when I'm not actually
+ uploading a new file, just changing other metadata (such as description).
+ This effectively kills kills the uploaded image link for the
+ organization/groups.
+
+---
+ ckan/lib/uploader.py | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/ckan/lib/uploader.py b/ckan/lib/uploader.py
+index fee5a7ac0a..b16139a10d 100644
+--- a/ckan/lib/uploader.py
++++ b/ckan/lib/uploader.py
+@@ -145,13 +145,14 @@ def update_data_dict(self, data_dict, url_field, file_field, clear_field):
+             return
+
+         if isinstance(self.upload_field_storage, (ALLOWED_UPLOAD_TYPES)):
+-            self.filename = self.upload_field_storage.filename
+-            self.filename = str(datetime.datetime.utcnow()) + self.filename
+-            self.filename = munge.munge_filename_legacy(self.filename)
+-            self.filepath = os.path.join(self.storage_path, self.filename)
+-            data_dict[url_field] = self.filename
+-            self.upload_file = _get_underlying_file(self.upload_field_storage)
+-            self.tmp_filepath = self.filepath + '~'
++            if self.upload_field_storage:
++                self.filename = self.upload_field_storage.filename
++                self.filename = str(datetime.datetime.utcnow()) + self.filename
++                self.filename = munge.munge_filename_legacy(self.filename)
++                self.filepath = os.path.join(self.storage_path, self.filename)
++                data_dict[url_field] = self.filename
++                self.upload_file = _get_underlying_file(self.upload_field_storage)
++                self.tmp_filepath = self.filepath + '~'
+         # keep the file if there has been no change
+         elif self.old_filename and not self.old_filename.startswith('http'):
+             if not self.clear:
+
+From e69a5038579a15957abb9f148949358de7ff58dc Mon Sep 17 00:00:00 2001
+From: shasan <shasan@marsdd.com>
+Date: Fri, 11 Oct 2019 10:43:24 -0400
+Subject: [PATCH 2/4] Fixing pep-8 error
+
+---
+ ckan/lib/uploader.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ckan/lib/uploader.py b/ckan/lib/uploader.py
+index b16139a10d..0045e76632 100644
+--- a/ckan/lib/uploader.py
++++ b/ckan/lib/uploader.py
+@@ -151,7 +151,8 @@ def update_data_dict(self, data_dict, url_field, file_field, clear_field):
+                 self.filename = munge.munge_filename_legacy(self.filename)
+                 self.filepath = os.path.join(self.storage_path, self.filename)
+                 data_dict[url_field] = self.filename
+-                self.upload_file = _get_underlying_file(self.upload_field_storage)
++                self.upload_file = _get_underlying_file(
++                    self.upload_field_storage)
+                 self.tmp_filepath = self.filepath + '~'
+         # keep the file if there has been no change
+         elif self.old_filename and not self.old_filename.startswith('http'):
+
+From e2e58db052e5d2a77b42540585d2fbcb0b2eb15b Mon Sep 17 00:00:00 2001
+From: shasan <shasan@marsdd.com>
+Date: Tue, 15 Oct 2019 09:03:31 -0400
+Subject: [PATCH 3/4] Changed code in order to account for backwards
+ compatibility with cgi.Fieldstorage
+
+---
+ ckan/lib/uploader.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ckan/lib/uploader.py b/ckan/lib/uploader.py
+index 0045e76632..d814414de1 100644
+--- a/ckan/lib/uploader.py
++++ b/ckan/lib/uploader.py
+@@ -144,8 +144,9 @@ def update_data_dict(self, data_dict, url_field, file_field, clear_field):
+         if not self.storage_path:
+             return
+
+-        if isinstance(self.upload_field_storage, (ALLOWED_UPLOAD_TYPES)):
+-            if self.upload_field_storage:
++        if isinstance(self.upload_field_storage, (ALLOWED_UPLOAD_TYPES,)):
++            if self.upload_field_storage \
++               and self.upload_field_storage.filename:
+                 self.filename = self.upload_field_storage.filename
+                 self.filename = str(datetime.datetime.utcnow()) + self.filename
+                 self.filename = munge.munge_filename_legacy(self.filename)
+
+From 408982dce5c3aa23c8631dbe540b34aa46e0252b Mon Sep 17 00:00:00 2001
+From: shasan <shasan@marsdd.com>
+Date: Tue, 15 Oct 2019 09:08:10 -0400
+Subject: [PATCH 4/4] Changed code in order to account for backwards
+ compatibility with cgi.Fieldstorage (correction code)
+
+---
+ ckan/lib/uploader.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/ckan/lib/uploader.py b/ckan/lib/uploader.py
+index d814414de1..0d83da0244 100644
+--- a/ckan/lib/uploader.py
++++ b/ckan/lib/uploader.py
+@@ -145,8 +145,7 @@ def update_data_dict(self, data_dict, url_field, file_field, clear_field):
+             return
+
+         if isinstance(self.upload_field_storage, (ALLOWED_UPLOAD_TYPES,)):
+-            if self.upload_field_storage \
+-               and self.upload_field_storage.filename:
++            if self.upload_field_storage.filename:
+                 self.filename = self.upload_field_storage.filename
+                 self.filename = str(datetime.datetime.utcnow()) + self.filename
+                 self.filename = munge.munge_filename_legacy(self.filename)

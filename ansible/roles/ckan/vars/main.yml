@@ -41,6 +41,7 @@ ckan_patches:
   - { file: "fix_bootstrap_font_path" }
   - { file: "upgrade_highlightjs" } # https://github.com/ckan/ckan/pull/5838
   - { file: "prevent_guessing_format_and_mimetypes_without_path" } # https://github.com/ckan/ckan/pull/5851
+  - { file: "fix_uploading_images" } # https://github.com/ckan/ckan/pull/5020
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
