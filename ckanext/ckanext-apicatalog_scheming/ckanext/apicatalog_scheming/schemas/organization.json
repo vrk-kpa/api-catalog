@@ -35,10 +35,9 @@
     },
     {
       "field_name": "url",
-      "preset": "resource_url_upload_ex",
+      "preset": "organization_url_upload",
       "upload_label": "Image URL",
-      "form_placeholder": "http://example.com/my-image.jpg",
-      "validators": "ignore_missing"
+      "form_placeholder": "http://example.com/my-image.jpg"
     },
     {
       "field_name": "street_address",
