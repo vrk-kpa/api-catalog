@@ -131,6 +131,13 @@
     hour: "11"
     job: "{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog-harvest send-status-emails --force --config={{ ckan_ini }}"
 
+- name: Send batch run report emails as a cron job
+  cron:
+    name: "Send batch run report emails"
+    minute: "0"
+    hour: "11"
+    job: "{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad send_latest_batch_run_results_email --config={{ ckan_ini }}"
+
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
   when: not robots_allowed
