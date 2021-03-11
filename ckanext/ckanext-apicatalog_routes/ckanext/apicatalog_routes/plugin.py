@@ -1,27 +1,20 @@
-import uuid
-
 from ckan.plugins import toolkit
 from ckanext.apicatalog_routes import views
 from pylons import config
 import ckan
 import json
 from ckan.controllers.revision import RevisionController
-from ckan.controllers.user import UserController
-from ckan.controllers.organization import OrganizationController
 from ckan.common import c, _, request, response
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
-import ckan.authz as authz
 import ckan.logic as logic
-import ckan.lib.helpers as h
 from helpers import lang
-import ckan.lib.authenticator as authenticator
 import ckan.lib.base as base
-import ckan.lib.csrf_token as csrf_token
 import ckan.lib.mailer as mailer
-
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
 from db import UserForOrganization
+import logging
+import auth
 
 abort = base.abort
 render = base.render
@@ -36,19 +29,14 @@ DataError = dictization_functions.DataError
 UsernamePasswordError = logic.UsernamePasswordError
 ValidationError = logic.ValidationError
 
-
-
 _validate = dictization_functions.validate
 
-import logging
-
 log = logging.getLogger(__name__)
-
-import auth
 
 
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
+
 
 def set_repoze_user(user_id):
     '''Set the repoze.who cookie to match a given user_id'''
@@ -74,9 +62,6 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         m.connect('/revision', action='index', controller=controller)
         m.connect('/revision/list', action='list', controller=controller)
         m.connect('/revision/diff/{id}', action='diff', controller=controller)
-
-        health_controller = 'ckanext.apicatalog_routes.health:HealthController'
-        m.connect('/health', action='check', controller=health_controller)
 
         extra_information_controller = 'ckanext.apicatalog_routes.plugin:ExtraInformationController'
         m.connect('data_exchange_layer_user_organizations',
@@ -132,7 +117,6 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     def get_user_dataset_labels(self, user_obj):
 
         labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
-
 
         if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
             labels.append(u'read_only_admin-%s' % user_obj.id)
@@ -203,16 +187,17 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             "lang": lang
         }
 
+
 def send_reset_link(context, data_dict):
     ckan.logic.check_access('send_reset_link', context)
 
     user_obj = model.User.get(data_dict['user_id'])
     mailer.send_reset_link(user_obj)
 
+
 def create_user_to_organization(context, data_dict):
 
     toolkit.check_access('create_user_to_organization', context)
-    model = context['model']
     schema = context.get('schema') or create_user_to_organization_schema()
     session = context['session']
 
@@ -227,7 +212,6 @@ def create_user_to_organization(context, data_dict):
     return {
         "msg": _("User {name} stored in database.").format(name=created_user.fullname)
     }
-
 
 
 def auth_context():
