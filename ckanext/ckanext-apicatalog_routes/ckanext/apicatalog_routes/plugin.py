@@ -75,9 +75,6 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         m.connect('/revision/list', action='list', controller=controller)
         m.connect('/revision/diff/{id}', action='diff', controller=controller)
 
-        health_controller = 'ckanext.apicatalog_routes.health:HealthController'
-        m.connect('/health', action='check', controller=health_controller)
-
         extra_information_controller = 'ckanext.apicatalog_routes.plugin:ExtraInformationController'
         m.connect('data_exchange_layer_user_organizations',
                   '/data_exchange_layer_user_organizations',
