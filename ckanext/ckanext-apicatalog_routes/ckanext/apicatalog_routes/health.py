@@ -9,6 +9,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_TIMEOUT = 3  # seconds
 
+
 # Add default timeout
 class TimeoutHTTPAdapter(requests.adapters.HTTPAdapter):
     def __init__(self, *args, **kwargs):
@@ -35,6 +36,7 @@ FAILURE_MESSAGE = "An error has occurred, check the server log for details"
 
 HARVEST_JOB_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 HARVEST_JOB_TIMEOUT = datetime.timedelta(days=1)
+
 
 def check_url(url, **kwargs):
     try:

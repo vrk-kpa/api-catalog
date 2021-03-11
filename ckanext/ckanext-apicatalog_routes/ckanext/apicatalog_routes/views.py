@@ -1,5 +1,5 @@
 from flask import Blueprint, Response
-from ckan.plugins.toolkit import render, h, request, c
+from ckan.plugins.toolkit import render, c
 from ckanext.apicatalog_routes.helpers import get_announcements
 import ckanext.apicatalog_routes.health as health
 
@@ -16,6 +16,7 @@ def get_blueprints():
 def announcements():
     c.announcement_list = get_announcements(50)
     return render(u'announcements/index.html')
+
 
 announcements_bp = Blueprint("announcements", __name__)
 announcements_bp.add_url_rule(u'/announcements', view_func=announcements)
