@@ -149,21 +149,29 @@
     {% endif %}
   {{ super() }}
 
-  <!-- Piwik -->
+  <!-- Piwik & Matomo-->
 {% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
-  <script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="{{ h.piwik_url() + '/' }}";
-      _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', {{ h.piwik_site_id() }} ]);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <noscript><p><img src="{{ h.piwik_url() }}/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-  <!-- End Piwik Code -->
+    {% set matomo_config = h.get_matomo_config() %}
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="{{ h.piwik_url() + '/' }}";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', {{ h.piwik_site_id() }} ]);
+
+          var secondaryTracker = '{{ matomo_config.site_url }}' + '/matomo.php';
+          var secondaryWebsiteId = '{{ matomo_config.site_id }}';
+          // Also send all of the tracking data to the new Matomo server
+          _paq.push(['addTracker', secondaryTracker, secondaryWebsiteId]);
+
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="{{ h.piwik_url() }}/piwik.php?idsite={{ h.piwik_site_id() }}" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
 {% endif %}
 {% endblock -%}

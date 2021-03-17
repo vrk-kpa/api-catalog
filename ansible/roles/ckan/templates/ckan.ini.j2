@@ -41,6 +41,9 @@ piwik.site_id = {{ analytics_site_id }}
 piwik.token_auth = {{ analytics_auth_token }}
 piwik.ssl_verify = False
 
+matomo.site_url = {{ matomo.public_facing_hostname }}
+matomo.site_id = {{ matomo.site_id }}
+
 ckan.auth.anon_create_dataset = false
 ckan.auth.create_unowned_dataset = false
 ckan.auth.create_dataset_if_not_in_organization = false
