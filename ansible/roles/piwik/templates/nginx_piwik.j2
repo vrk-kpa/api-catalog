@@ -3,6 +3,8 @@ server {
 
   listen 443 ssl;
   server_name 10.100.10.11;
+  ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
+  ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
 
   location / {
     proxy_pass http://127.0.0.1:8081/;
