@@ -1,8 +1,5 @@
 # For local use only
 
-#- name: Copy MySQL configuration
-#  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf mode="0644" owner=root group=root
-
 - name: Add Piwik MySQL database
   mysql_db: name="piwik" state="present" login_user="root" login_password=""
 
