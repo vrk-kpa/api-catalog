@@ -153,6 +153,17 @@
 {% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
     {% set matomo_config = h.get_matomo_config() %}
     <script type="text/javascript">
+
+        window.matomoAsyncInit = function () {
+            var piwikTracker = Matomo.getAsyncTracker('{{ h.piwik_url() }}/piwik.php', {{ h.piwik_site_id() }});
+
+            if (piwikTracker.HeatmapSessionRecording) {
+                piwikTracker.HeatmapSessionRecording.disable();
+            }
+        }
+
+
+
         var _paq = window._paq = window._paq || [];
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
