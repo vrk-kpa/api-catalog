@@ -11,13 +11,14 @@
     - unzip
     - mysql-server
     - apache2
-    - php5-gd
-    - php5-mysql
-    - libapache2-mod-php5
+    - php-gd
+    - php-mysql
+    - libapache2-mod-php
     - python-mysqldb
-    - php5-geoip
-    - php5-dev
+    - php-geoip
+    - php-dev
     - libgeoip-dev
+    - php-mbstring
 
 - name: Enable automatic installation of security upgrades
   template: src=apt-auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades mode="0644" owner=root group=root

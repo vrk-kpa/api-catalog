@@ -66,6 +66,12 @@ def piwik_url():
 def piwik_site_id():
     return config.get('piwik.site_id', 0)
 
+def get_matomo_config():
+    return {
+        "site_url": config.get('matomo.site_url', ''),
+        "site_id": config.get('matomo.site_id', 0)
+    }
+
 
 def service_alerts():
     locale = i18n.get_lang()
@@ -577,7 +583,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'get_slogan': get_slogan,
                 'get_welcome_text': get_welcome_text,
                 'is_extension_loaded': is_extension_loaded,
-                'fetch_xroad_statistics': fetch_xroad_statistics
+                'fetch_xroad_statistics': fetch_xroad_statistics,
+                'get_matomo_config': get_matomo_config
                 }
 
     def get_actions(self):

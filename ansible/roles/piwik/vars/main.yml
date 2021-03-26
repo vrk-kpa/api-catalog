@@ -6,6 +6,6 @@ timezone: UTC
 
 # Apt repository configuration
 apt_source_url: http://archive.ubuntu.com
-ubuntu_codename: trusty
+ubuntu_codename: bionic
 
 search_engine_robots_filename: robots_disallowed.txt

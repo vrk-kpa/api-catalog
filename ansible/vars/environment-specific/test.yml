@@ -10,6 +10,10 @@ analytics_server_public_facing_hostname: kapastats01.csc.fi
 analytics_site_id: 3
 analytics_auth_token: "{{ secret.analytics_auth_token }}"
 
+matomo:
+  public_facing_hostname: https://suomi.matomo.cloud
+  site_id: 16
+
 database_ckan:
   host: 127.0.0.1
   port: 5432
