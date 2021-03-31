@@ -1,8 +1,7 @@
 import uuid
+import six
 
 from ckan import model
-from ckan.lib import dictization
-from ckan.plugins import toolkit
 from sqlalchemy import Column, types
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -11,8 +10,10 @@ log = logging.getLogger(__name__)
 
 Base = declarative_base()
 
+
 def make_uuid():
-    return unicode(uuid.uuid4())
+    return six.text_type(uuid.uuid4())
+
 
 class UserForOrganization(Base):
 
@@ -37,6 +38,34 @@ class UserForOrganization(Base):
         model.repo.commit()
 
         return user_for_organization
+
+    @classmethod
+    def get_pending(cls, include_failed=False):
+        if include_failed:
+            return model.Session.query(UserForOrganization).filter(UserForOrganization.state != 'done').all()
+        else:
+            return model.Session.query(UserForOrganization).filter(UserForOrganization.state == 'pending').all()
+
+    def mark_done(self):
+        self.state = 'done'
+        model.Session.add(self)
+        model.repo.commit()
+
+    def mark_duplicate(self):
+        self.state = 'duplicate'
+        model.Session.add(self)
+        model.repo.commit()
+
+    def mark_invalid(self):
+        self.state = 'invalid'
+        model.Session.add(self)
+        model.repo.commit()
+
+    def mark_ambiguous(self):
+        self.state = 'ambiguous'
+        model.Session.add(self)
+        model.repo.commit()
+
 
 def init_table(engine):
     Base.metadata.create_all(engine)

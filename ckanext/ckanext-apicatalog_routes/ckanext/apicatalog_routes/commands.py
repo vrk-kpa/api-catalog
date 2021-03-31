@@ -19,6 +19,31 @@ from ckan.lib.cli import (
 
 import itertools
 
+apicatalog_admin_group = paster_click_group(
+    summary=u'Administration related commands.'
+)
+
+
+@apicatalog_admin_group.command(
+    u'create-organization-users',
+    help='Creates users based on records uploaded to create_user_to_organization endpoint'
+)
+@click_config_option
+@click.pass_context
+@click.option(u'--retry', is_flag=True)
+def create_organization_users(ctx, config, retry):
+    load_config(config or ctx.obj['config'])
+    result = t.get_action('create_organization_users')({'ignore_auth': True}, {'retry': retry}).get('result', {})
+    created = result.get('created', [])
+    invalid = result.get('invalid', [])
+    ambiguous = result.get('ambiguous', [])
+    duplicate = result.get('duplicate', [])
+    print('Created users: %s' % ', '.join(created))
+    print('Duplicate users: %s' % ', '.join(duplicate))
+    print('Unknown business ids: %s' % ', '.join(invalid))
+    print('Ambiguous business ids: %s' % ', '.join(ambiguous))
+
+
 apicatalog_harvest_group = paster_click_group(
     summary=u'Harvester related commands.'
 )

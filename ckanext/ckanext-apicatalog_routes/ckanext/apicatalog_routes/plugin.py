@@ -83,6 +83,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                 'group_edit_permissions': auth.read_members,
                 'send_reset_link': admin_only,
                 'create_user_to_organization': auth.create_user_to_organization,
+                'create_organization_users': admin_only,
                 'user_create': auth.user_create,
                 'user_update': auth.user_update,
                 'user_show': auth.user_show,
@@ -175,7 +176,8 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     def get_actions(self):
         return {
             "send_reset_link": send_reset_link,
-            "create_user_to_organization": create_user_to_organization
+            "create_user_to_organization": create_user_to_organization,
+            "create_organization_users": create_organization_users,
         }
 
     # IBlueprint
@@ -212,6 +214,61 @@ def create_user_to_organization(context, data_dict):
     return {
         "msg": _("User {name} stored in database.").format(name=created_user.fullname)
     }
+
+
+def create_organization_users(context, data_dict):
+    toolkit.check_access('create_organization_users', context)
+    retry = data_dict.get('retry', False)
+    pending_user_applications = UserForOrganization.get_pending(include_failed=retry)
+
+    organizations = toolkit.get_action('organization_list')(context, {'all_fields': True, 'include_extras': True})
+    organizations_by_membercode = {}
+    for organization in organizations:
+        xroad_member_code = organization.get('xroad_membercode')
+
+        if not xroad_member_code:
+            continue
+
+        organizations_by_membercode.setdefault(xroad_member_code, []).append(organization)
+
+    user_list = toolkit.get_action('user_list')
+    user_invite = toolkit.get_action('user_invite')
+    created = []
+    invalid = []
+    ambiguous = []
+    duplicate = []
+
+    for application in pending_user_applications:
+        matching_organizations = organizations_by_membercode.get(application.business_id, [])
+
+        if len(matching_organizations) == 0:
+            log.warn('No organization found for business id %s, skipping invalid user application', application.business_id)
+            application.mark_invalid()
+            invalid.append(application.business_id)
+            continue
+        elif len(matching_organizations) > 1:
+            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application', application.business_id)
+            application.mark_ambiguous()
+            ambiguous.append(application.business_id)
+            continue
+
+        organization = next(iter(matching_organizations))
+
+        matching_users = user_list(context, {'email': application.email, 'all_fields': False})
+        if matching_users:
+            log.warn('Existing user found for email address %s, skipping duplicate user', application.email)
+            application.mark_duplicate()
+            duplicate.append(application.email)
+            continue
+
+        log.info('Inviting user %s to organization %s (%s)', application.email, organization['title'], organization['id'])
+        user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'editor'})
+
+        application.mark_done()
+        created.append(user.get('name'))
+
+    context.get('session', model.Session).commit()
+    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous, 'duplicate': duplicate}}
 
 
 def auth_context():
