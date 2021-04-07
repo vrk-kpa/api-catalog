@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-07 06:17+0000\n"
+"POT-Creation-Date: 2021-04-07 07:14+0000\n"
 "PO-Revision-Date: 2020-12-04 08:49+0000\n"
 "Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
@@ -802,13 +802,13 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
 #: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:58
+#: ckanext/apicatalog_ui/templates/package/search.html:57
 msgid "Name Ascending"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
 #: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:59
+#: ckanext/apicatalog_ui/templates/package/search.html:58
 msgid "Name Descending"
 msgstr ""
 
@@ -823,7 +823,7 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:35
 #: ckanext/apicatalog_ui/templates/organization/read.html:38
-#: ckanext/apicatalog_ui/templates/package/search.html:52
+#: ckanext/apicatalog_ui/templates/package/search.html:51
 msgid "Filter list"
 msgstr ""
 
@@ -833,13 +833,13 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:46
 #: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:22
+#: ckanext/apicatalog_ui/templates/package/search.html:21
 msgid "Previous"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:46
 #: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:22
+#: ckanext/apicatalog_ui/templates/package/search.html:21
 msgid "Next"
 msgstr ""
 
@@ -941,10 +941,6 @@ msgid "Views"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/package/search.html:5
-msgid "{0} datasets"
-msgstr ""
-
-#: ckanext/apicatalog_ui/templates/package/search.html:6
 msgid ""
 "Subsystems lists services and service descriptions offered by organisations "
 "that have joined the Suomi.fi Data Exchange Layer. A subsystem is used to "
@@ -952,43 +948,37 @@ msgid ""
 "are used for consuming services to the Data Exchange Layer."
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:7
-msgid ""
-"If you wish to implement a service that is listed in the API Catalogue, read"
-" our <a "
-"href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5f182709341bb40241fa9713\">instructions"
-" on implementing services</a> and contact the service provider. Note that it"
-" is not possible to get access rights only to a specific service under one "
-"subsystem because access rights are defined on the subsystem level."
+#: ckanext/apicatalog_ui/templates/package/search.html:6
+msgid "{0} datasets"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:31
+#: ckanext/apicatalog_ui/templates/package/search.html:30
 msgid "API"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:32
+#: ckanext/apicatalog_ui/templates/package/search.html:31
 msgid "API Docs"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:34
+#: ckanext/apicatalog_ui/templates/package/search.html:33
 msgid "full {format} dump"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:35
+#: ckanext/apicatalog_ui/templates/package/search.html:34
 #, python-format
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s) or download a %(dump_link)s. "
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:39
+#: ckanext/apicatalog_ui/templates/package/search.html:38
 #, python-format
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s). "
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:57
+#: ckanext/apicatalog_ui/templates/package/search.html:56
 msgid "Relevance"
 msgstr ""
 
