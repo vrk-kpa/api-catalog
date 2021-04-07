@@ -2,9 +2,9 @@
 
 {% block prelude %}
 <h1>{{ _('Datasets') }}</h1>
-<div class="result-count">{{ _('{0} datasets').format(c.page.item_count) }}</div>
 <p>{% trans %}Subsystems lists services and service descriptions offered by organisations that have joined the Suomi.fi Data Exchange Layer. A subsystem is used to provide services through the Data Exchange Layer and connect systems that are used for consuming services to the Data Exchange Layer.{% endtrans %}</p>
 <p>{% trans %}If you wish to implement a service that is listed in the API Catalogue, read our <a href="https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5f182709341bb40241fa9713">instructions on implementing services</a> and contact the service provider. Note that it is not possible to get access rights only to a specific service under one subsystem because access rights are defined on the subsystem level.{% endtrans %}</p>
+<div class="result-count">{{ _('{0} datasets').format(c.page.item_count) }}</div>
 {% endblock %}
 
 {% block primary_content %}
