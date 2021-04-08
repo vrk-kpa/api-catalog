@@ -262,7 +262,14 @@ def create_organization_users(context, data_dict):
             continue
 
         log.info('Inviting user %s to organization %s (%s)', application.email, organization['title'], organization['id'])
-        user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'editor'})
+        try:
+            user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'editor'})
+        except ValidationError as e:
+            log.warn(e)
+            continue
+        except NotFound as e:
+            log.warn(e)
+            continue
 
         application.mark_done()
         created.append(user.get('name'))
