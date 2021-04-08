@@ -64,17 +64,25 @@
                     <use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
                   </svg></a></li>
 
+                  {% set lang = h.lang().split('_')[0] %}
                   {% set submenu_content = h.get_submenu_content() %}
-                  {% if submenu_content | length > 0 %}
+                  {% if submenu_content | length > 1 %}
                   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('More options') }}<span class="caret"></span></a>
                        <ul class="dropdown-menu">
                            {% for page in submenu_content %}
                                {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
-                            <li>{{ h.literal('<a href="/{}/{}">{}</a>'.format(type_, page.name, page.title)) }}</li>
+                               {% set page_title = page.get('title_' + lang) or page.title %}
+                               <li>{{ h.literal('<a href="/{}/{}/{}">{}</a>'.format(lang, type_, page.name, page_title)) }}</li>
                            {% endfor %}
                        </ul>
                   </li>
+                  {% elif submenu_content | length == 1 %}
+                      {% set page = submenu_content[0] %}
+                      {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
+                      {% set page_title = page.get('title_' + lang) or page.title %}
+                      <li>{{ h.literal('<a href="/{}/{}/{}">{}</a>'.format(lang, type_, page.name, page_title)) }}</li>
                   {% endif %}
+
                 {% if c.userobj %}
                   {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
                 {% else %}
