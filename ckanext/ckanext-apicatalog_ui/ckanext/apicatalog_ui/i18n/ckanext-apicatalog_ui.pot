@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-02-05 09:52+0000\n"
+"POT-Creation-Date: 2021-04-07 07:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -789,13 +789,13 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
 #: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:56
+#: ckanext/apicatalog_ui/templates/package/search.html:58
 msgid "Name Ascending"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
 #: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:57
+#: ckanext/apicatalog_ui/templates/package/search.html:59
 msgid "Name Descending"
 msgstr ""
 
@@ -810,7 +810,7 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:35
 #: ckanext/apicatalog_ui/templates/organization/read.html:38
-#: ckanext/apicatalog_ui/templates/package/search.html:50
+#: ckanext/apicatalog_ui/templates/package/search.html:52
 msgid "Filter list"
 msgstr ""
 
@@ -820,13 +820,13 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:46
 #: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:20
+#: ckanext/apicatalog_ui/templates/package/search.html:22
 msgid "Previous"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:46
 #: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:20
+#: ckanext/apicatalog_ui/templates/package/search.html:22
 msgid "Next"
 msgstr ""
 
@@ -928,36 +928,52 @@ msgid "Views"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/package/search.html:5
+msgid ""
+"Subsystems lists services and service descriptions offered by organisations "
+"that have joined the Suomi.fi Data Exchange Layer. A subsystem is used to "
+"provide services through the Data Exchange Layer and connect systems that are"
+" used for consuming services to the Data Exchange Layer."
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/search.html:6
+msgid ""
+"If you wish to implement a service that is listed in the API Catalogue, read "
+"our <a "
+"href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5f182709341bb40241fa9713\">instructions"
+" on implementing services</a> and contact the service provider."
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/search.html:7
 msgid "{0} datasets"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:29
+#: ckanext/apicatalog_ui/templates/package/search.html:31
 msgid "API"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:30
+#: ckanext/apicatalog_ui/templates/package/search.html:32
 msgid "API Docs"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:32
+#: ckanext/apicatalog_ui/templates/package/search.html:34
 msgid "full {format} dump"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:33
+#: ckanext/apicatalog_ui/templates/package/search.html:35
 #, python-format
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s) or download a %(dump_link)s. "
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:37
+#: ckanext/apicatalog_ui/templates/package/search.html:39
 #, python-format
 msgid ""
 " You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s). "
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/search.html:55
+#: ckanext/apicatalog_ui/templates/package/search.html:57
 msgid "Relevance"
 msgstr ""
 
