@@ -124,7 +124,7 @@
   cron: name="Fetch X-Road Services" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-xroad_integration xroad fetch_service_list -c {{ ckan_ini }}"
 
 - name: Ensure create organization users cronjob
-  cron: name="Create organization users" special_time=hourly job="{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog_admin create-organization-users --retry -c {{ ckan_ini }}"
+  cron: name="Create organization users" special_time=daily job="{{ virtualenv }}/bin/paster --plugin=ckanext-apicatalog_routes apicatalog_admin create-organization-users --retry -c {{ ckan_ini }}"
 
 
 - name: Send harvester status report emails as a cron job
