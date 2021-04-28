@@ -46,3 +46,6 @@
 
 - name: Initialize xroad errors database
   shell: ./bin/paster --plugin=ckanext-xroad_integration xroad init_db "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+
+- name: Initialize pages database
+  shell: ./bin/paster --plugin=ckanext-pages pages initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
