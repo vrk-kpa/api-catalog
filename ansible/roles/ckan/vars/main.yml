@@ -51,6 +51,8 @@ files_created_by_patches:
 search_engine_robots_filename: robots_disallowed.txt
 
 ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"
+ckan_fault_recipients: "{{ secret.ckan_fault_recipients }}"
+ckan_harvester_instruction_url: "{{ secret.ckan_harvester_instruction_url }}"
 unknown_service_link_url: "https://{{ public_facing_hostname }}/pages/unknown-service"
 
 xroad_securityserver_public_cert_filename: "{{ xroad.securityserver.alias }}.crt"
