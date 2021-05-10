@@ -112,6 +112,9 @@ ckan.harvest.mq.port = {{ redis.port }}
 ckan.harvest.mq.redis_db = {{ redis_harvest_database }}
 
 ckanext.apicatalog.harvester_status_recipients = {{ ckan_harvester_status_email_recipients|join(' ') }}
+ckanext.apicatalog.fault_recipients = {{ ckan_fault_recipients|join(' ') }}
+ckanext.apicatelog.harvester_instruction_url = {{ ckan_harvester_instruction_url }}
+
 ckanext.apicatalog_ui.test_environment = {{ ckan_test_environment | default(False) }}
 
 ckanext.apicatalog_ui.news.endpoint_url = {{ content.news.endpoint_url }}
