@@ -12,7 +12,7 @@
     {{ wysiwyg.editor('content_sv', id='field-content-sv', label=_('Content') + ' SV', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
     {{ wysiwyg.editor('content_en', id='field-content-en', label=_('Content') + ' EN', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
   {% elif editor == 'ckeditor' %}
-    {% resource 'ckanext-pages/main' %}
+    {% resource 'pages/main' %}
     <div class="control-group">
         <label for="field-content-ck" class="control-label">{{ _('Content') }} FI</label>
     </div>
