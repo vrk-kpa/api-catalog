@@ -72,7 +72,7 @@
                            {% for page in submenu_content %}
                                {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
                                {% set page_title = page.get('title_' + lang) or page.title %}
-                               <li>{{ h.literal('<a href="/{}/{}/{}">{}</a>'.format(lang, type_, page.name, page_title)) }}</li>
+                               <li>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
                            {% endfor %}
                        </ul>
                   </li>
@@ -80,7 +80,7 @@
                       {% set page = submenu_content[0] %}
                       {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
                       {% set page_title = page.get('title_' + lang) or page.title %}
-                      <li>{{ h.literal('<a href="/{}/{}/{}">{}</a>'.format(lang, type_, page.name, page_title)) }}</li>
+                      <li>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
                   {% endif %}
 
                 {% if c.userobj %}
