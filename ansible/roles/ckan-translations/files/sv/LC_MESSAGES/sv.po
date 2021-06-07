@@ -5172,13 +5172,6 @@ msgstr "Stäng"
 msgid "Locked fields"
 msgstr "Låsta fält"
 
-msgid ""
-"Fields marked with a thick gray border are used in automatic processing and "
-"cannot be modified."
-msgstr ""
-"Fält markerade med en tjock grå kantlinje används vid automatisk behandling "
-"och kan inte ändras."
-
 msgid "New package count"
 msgstr "Nya paket"
 
