@@ -5161,13 +5161,6 @@ msgstr ""
 msgid "Locked fields"
 msgstr "Locked fields"
 
-msgid ""
-"Fields marked with a thick gray border are used in automatic processing and "
-"cannot be modified."
-msgstr ""
-"Fields marked with a thick gray border are filled in automatically and "
-"cannot be modified."
-
 msgid "New package count"
 msgstr "New package count"
 
