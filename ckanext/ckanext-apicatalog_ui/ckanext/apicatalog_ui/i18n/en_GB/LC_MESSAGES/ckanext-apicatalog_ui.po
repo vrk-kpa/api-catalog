@@ -919,6 +919,8 @@ msgid ""
 "Fields marked with a thick gray border are used in automatic processing and "
 "cannot be modified."
 msgstr ""
+"Fields marked with a thick gray border are filled in automatically and cannot be modified.\n"
+"<a href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">How to describe services and subsystems?</a>"
 
 #: ckanext/apicatalog_ui/templates/package/read.html:5
 msgid "Service bus identifier"

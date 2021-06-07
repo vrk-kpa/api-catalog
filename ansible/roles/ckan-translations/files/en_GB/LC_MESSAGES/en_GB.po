@@ -6,6 +6,7 @@
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2020
+# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -24,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2020\n"
+"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5164,7 +5165,7 @@ msgid ""
 "Fields marked with a thick gray border are used in automatic processing and "
 "cannot be modified."
 msgstr ""
-"Fields marked with a thick gray border are used in automatic processing and "
+"Fields marked with a thick gray border are filled in automatically and "
 "cannot be modified."
 
 msgid "New package count"
@@ -5202,7 +5203,7 @@ msgstr ""
 "visibility."
 
 msgid "Sample APIs"
-msgstr ""
+msgstr "Examples of subsystems"
 
 msgid "Organization that have joined the Data Exchange Layer"
 msgstr "Organization that have joined the Data Exchange Layer"
@@ -5324,7 +5325,7 @@ msgid "Add user"
 msgstr ""
 
 msgid "Browse APIs"
-msgstr ""
+msgstr "Browse subsystems"
 
 msgid "News"
 msgstr ""
@@ -5345,7 +5346,7 @@ msgid "Visitors"
 msgstr ""
 
 msgid "New APIs"
-msgstr ""
+msgstr "New subsystems"
 
 msgid "New attachments"
 msgstr ""
@@ -5354,10 +5355,10 @@ msgid "Browse news"
 msgstr ""
 
 msgid "Show organizations without APIs"
-msgstr ""
+msgstr "Show organisations without subsystems"
 
 msgid "Show only organizations with APIs"
-msgstr ""
+msgstr "Show only organisations with subsystems"
 
 msgid "More options"
 msgstr ""
@@ -5405,7 +5406,7 @@ msgid ""
 msgstr ""
 
 msgid "There are currently no APIs for this organization"
-msgstr ""
+msgstr "There are currently no subsystems for this organisation"
 
 msgid "New consumer"
 msgstr ""
@@ -5487,15 +5488,21 @@ msgid ""
 "Other information about the API, e.g. how to take into use, parameters, "
 "terms of use (unless available in a separate document)"
 msgstr ""
+"Other information about the subsystem, e.g. how to take into use, "
+"parameters, terms of use (unless available in a separate document)"
 
 msgid ""
 "Information on the availability of the API, e.g. available 24/7, or "
 "available only during business hours"
 msgstr ""
+"Information on the availability of the subsystem, e.g. available 24/7, or "
+"available only during business hours"
 
 msgid ""
 "Additional information on the SLA of the API, e.g. response time or speed"
 msgstr ""
+"Additional information on the SLA of the subsystem, e.g. response time or "
+"speed"
 
 msgid "X-Road instance"
 msgstr "Data Exchange Layer environment (X-Road instance)"
