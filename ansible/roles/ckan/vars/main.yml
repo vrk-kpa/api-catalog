@@ -1,6 +1,6 @@
 ---
 
-ckan_version: 2.8.6
+ckan_version: 2.9.3
 
 ckan_internal_port: 5000
 harvester_user: "{{ www_user }}"
@@ -23,25 +23,14 @@ service_database_enabled: false
 auto_author_enabled: true
 
 ckan_patches:
-  - { file: "remove_gravatar" }
-  - { file: "csrf" }
   - { file: "alert_fix" }
   - { file: "allow_org_admins_create_users" }
-  - { file: "set_attachment_content_disposition" }
-  - { file: "reorder_bulk_process" } # https://github.com/ckan/ckan/pull/5147
+  - { file: "csrf" }
   - { file: "disable_leftover_with_capacity" }
-  - { file: "remove_is_sysadmin_or_user_itself_check" } # https://github.com/ckan/ckan/pull/5405
-  - { file: "retain_allow_anonymous_access_in-chained_auth" }
-  - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
-  - { file: "make_pagination_customizable" } # https://github.com/ckan/ckan/pull/5223/commits/67aaf4a0c493e94471f616fa13fa915a81a7a651
-  - { file: "add_allow_partial_update_to_patch_actions" } # https://github.com/ckan/ckan/pull/5734
-  - { file: "fix_activity_streams_filtering_by_user" } # https://github.com/ckan/ckan/pull/5699
-  - { file: "remove_edit_button_from_slugs" }
-  - { file: "fix_javascript_error_on_edge" } # https://github.com/ckan/ckan/pull/5782
   - { file: "fix_bootstrap_font_path" }
-  - { file: "upgrade_highlightjs" } # https://github.com/ckan/ckan/pull/5838
-  - { file: "prevent_guessing_format_and_mimetypes_without_path" } # https://github.com/ckan/ckan/pull/5851
-  - { file: "fix_uploading_images" } # https://github.com/ckan/ckan/pull/5020
+  - { file: "remove_edit_button_from_slugs" }
+  - { file: "remove_gravatar" }
+  - { file: "set_attachment_content_disposition" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
@@ -57,3 +46,6 @@ unknown_service_link_url: "https://{{ public_facing_hostname }}/pages/unknown-se
 
 xroad_securityserver_public_cert_filename: "{{ xroad.securityserver.alias }}.crt"
 xroad_securityserver_private_cert_filename: "{{ xroad.securityserver.alias }}.p12"
+
+ckan_wsgi_script: /etc/ckan/default/wsgi.py
+ckan_uwsgi_conf: /etc/ckan/default/ckan-uwsgi.ini 

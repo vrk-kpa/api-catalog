@@ -24,8 +24,7 @@
     - solr6
     - redis
     - ssl
-    - nginx
-    - apache
+    #- apache
     - postfix
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
@@ -45,6 +44,7 @@
     - { role: ckan-extension, ckanext: ckanext-forcetranslation }
     - ckan
     - { role: ckan-ui }
+    - nginx
     - ckan-translations
     - supervisor
     - solr-reindex

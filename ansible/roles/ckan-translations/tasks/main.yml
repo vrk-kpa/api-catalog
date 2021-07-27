@@ -36,4 +36,4 @@
   command: >-
     /usr/lib/ckan/default/bin/paster
     --plugin=ckanext-apicatalog_scheming translations /usr/lib/ckan/default/src/ckan/ckan/i18n/
-    -c /etc/ckan/default/production.ini
+    -c {{ ckan_ini }}

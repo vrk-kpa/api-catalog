@@ -1,5 +1,5 @@
 - name: re-minify ckanext-apicatalog_ui module javascript files
-  shell: ./bin/paster --plugin=ckan minify "{{ apicatalog_ui_ckanext_path }}/fanstatic/javascript/modules" "--config={{ ckan_ini }}" chdir="{{ virtualenv }}"
+  shell: ./bin/ckan --config "{{ ckan_ini }}" minify "{{ apicatalog_ui_ckanext_path }}/fanstatic/javascript/modules" chdir="{{ virtualenv }}"
   tags:
     - frontend-build
 
@@ -9,6 +9,9 @@
 - name: rebuild ckanext-openapi_view less
   shell: lessc "{{ apicatalog_ui_path }}/less/openapi_view.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/openapi_view.css"
 
-- name: Start CKAN
+- name: Restart CKAN
+  shell: supervisorctl restart "ckan-uwsgi:*"
+
+- name: Verify CKAN is running
   uri:
     url: "http://127.0.0.1:8080"

@@ -60,5 +60,5 @@
 
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
-  notify: Restart Apache
+  notify: Restart CKAN
 

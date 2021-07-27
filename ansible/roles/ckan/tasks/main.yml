@@ -31,13 +31,13 @@
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
   when: deployment_environment_id == "vagrant"
 
-
 - name: Create CKAN paths
   file: path={{ item }} state=directory mode="0770" owner={{ www_user }} group={{ www_group }}
   with_items:
     - "{{ ckan_storage_path }}"
     - "{{ ckan_uploads_path }}"
     - /etc/ckan/default
+    - /var/log/ckan
 
 - name: Ensure path ownerships
   file: path={{ item }} state=directory recurse=yes owner={{ www_user }} group={{ www_group }}
@@ -93,6 +93,12 @@
     - { src: ckan.ini.j2, dest: "{{ ckan_ini }}", mode: "0640", owner: root, group: "{{ www_group }}" }
     - { src: apache.wsgi.j2, dest: /etc/ckan/default/apache.wsgi, mode: "0640", owner: root, group: "{{ www_group }}" }
     - { src: who.ini.j2, dest: /etc/ckan/default/who.ini, mode: "0640", owner: root, group: "{{ www_group }}" }
+    - { src: ckan-uwsgi-supervisor.conf.j2, dest: /etc/supervisor/conf.d/ckan-uwsgi.conf, mode: "0640", owner: root, group: "{{ www_group }}" }
+    - { src: wsgi.py, dest: "{{ ckan_wsgi_script }}", mode: "0640", owner: root, group: "{{ www_group }}" }
+    - { src: ckan-uwsgi.ini.j2, dest: "{{ ckan_uwsgi_conf }}", mode: "0640", owner: root, group: "{{ www_group }}" }
+
+- name: Install CKAN frontend requirements
+  shell: npm install --only=prod chdir={{ virtualenv }}/src/ckan
 
 - include: patch.yml
 
@@ -145,16 +151,8 @@
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
   when: not robots_allowed
 
-- name: Restart Apache (stop)
-  service: name=apache2 state=stopped
+- name: Update supervisor configuration
+  shell: supervisorctl update
 
-- name: Restart Apache (wait)
-  wait_for:
-    host: "127.0.0.1"
-    port: "{{ ckan_internal_port }}"
-    timeout: 60
-    state: stopped
-
-- name: Restart Apache (start)
-  service: name=apache2 state=started
-
+- name: Start CKAN
+  shell: supervisorctl restart "ckan-uwsgi:*"

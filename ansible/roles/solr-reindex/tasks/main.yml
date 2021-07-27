@@ -2,7 +2,7 @@
 
 # For now (as there is very little data), let's always reindex to catch Solr problems.
 - name: Force Solr reindex
-  shell: ./bin/paster --plugin=ckan search-index rebuild --config="{{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" search-index rebuild chdir={{ virtualenv }}
 
 #- name: Reindex
 #  shell: touch "{{ data_path }}/.solr-reindex" && ./bin/paster --plugin=ckan search-index rebuild --config="{{ ckan_ini }}" chdir="{{ virtualenv }}" creates="{{ data_path }}/.solr-reindex"

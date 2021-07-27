@@ -6,5 +6,5 @@
 - name: Restart Nginx
   service: name=nginx state=restarted
 
-- name: Restart Apache
-  service: name=apache2 state=restarted
+- name: Restart CKAN
+  shell: supervisorctl restart "ckan-uwsgi:*"

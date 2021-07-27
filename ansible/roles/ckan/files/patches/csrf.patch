@@ -1,5 +1,5 @@
 diff --git a/ckan/controllers/admin.py b/ckan/controllers/admin.py
-index 3d2f44559..3041dd6a2 100644
+index bed19630c..e435a3a3c 100644
 --- a/ckan/controllers/admin.py
 +++ b/ckan/controllers/admin.py
 @@ -6,6 +6,7 @@ import ckan.lib.base as base
@@ -9,8 +9,8 @@ index 3d2f44559..3041dd6a2 100644
 +import ckan.lib.csrf_token as csrf_token
  import ckan.model as model
  import ckan.logic as logic
- import ckan.plugins as plugins
-@@ -73,6 +74,13 @@ class AdminController(base.BaseController):
+ from ckan.controllers.home import CACHE_PARAMETERS
+@@ -72,6 +73,13 @@ class AdminController(base.BaseController):
              h.redirect_to(controller='admin', action='config')
  
          if request.method == 'POST':
@@ -24,7 +24,7 @@ index 3d2f44559..3041dd6a2 100644
              # remove sys info items
              for item in self._get_config_form_items():
                  name = item['name']
-@@ -96,10 +104,17 @@ class AdminController(base.BaseController):
+@@ -95,10 +103,17 @@ class AdminController(base.BaseController):
                              logic.parse_params(
                                  request.POST, ignore_keys=CACHE_PARAMETERS))))
  
@@ -42,7 +42,7 @@ index 3d2f44559..3041dd6a2 100644
              except logic.ValidationError as e:
                  errors = e.error_dict
                  error_summary = e.error_summary
-@@ -134,6 +149,13 @@ class AdminController(base.BaseController):
+@@ -133,6 +148,13 @@ class AdminController(base.BaseController):
                                    in request.params):
              return base.render('admin/trash.html')
          else:
@@ -57,18 +57,18 @@ index 3d2f44559..3041dd6a2 100644
              # this is obviously inefficient (but probably not *that* bad)
              # but has to be done to avoid (odd) sqlalchemy errors (when doing
 diff --git a/ckan/controllers/group.py b/ckan/controllers/group.py
-index 6aa3d1f77..303f94e3c 100644
+index 3e9e99d55..e2701534e 100644
 --- a/ckan/controllers/group.py
 +++ b/ckan/controllers/group.py
-@@ -15,6 +15,7 @@ import ckan.lib.search as search
+@@ -16,6 +16,7 @@ import ckan.lib.search as search
  import ckan.model as model
  import ckan.authz as authz
  import ckan.lib.plugins
 +import ckan.lib.csrf_token as csrf_token
  import ckan.plugins as plugins
- from ckan.common import OrderedDict, c, config, request, _
+ from ckan.common import c, config, request, _
  
-@@ -526,6 +527,7 @@ class GroupController(base.BaseController):
+@@ -538,6 +539,7 @@ class GroupController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.params))))
@@ -76,7 +76,7 @@ index 6aa3d1f77..303f94e3c 100644
              data_dict['type'] = group_type or 'group'
              context['message'] = data_dict.get('log_message', '')
              data_dict['users'] = [{'name': c.user, 'capacity': 'admin'}]
-@@ -541,6 +543,9 @@ class GroupController(base.BaseController):
+@@ -553,6 +555,9 @@ class GroupController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.new(data_dict, errors, error_summary)
@@ -86,7 +86,7 @@ index 6aa3d1f77..303f94e3c 100644
  
      def _force_reindex(self, grp):
          ''' When the group name has changed, we need to force a reindex
-@@ -555,6 +560,7 @@ class GroupController(base.BaseController):
+@@ -567,6 +572,7 @@ class GroupController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.params))))
@@ -94,7 +94,7 @@ index 6aa3d1f77..303f94e3c 100644
              context['message'] = data_dict.get('log_message', '')
              data_dict['id'] = id
              context['allow_partial_update'] = True
-@@ -571,6 +577,9 @@ class GroupController(base.BaseController):
+@@ -583,6 +589,9 @@ class GroupController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.edit(id, data_dict, errors, error_summary)
@@ -104,7 +104,7 @@ index 6aa3d1f77..303f94e3c 100644
  
      def authz(self, id):
          group = model.Group.get(id)
-@@ -616,6 +625,7 @@ class GroupController(base.BaseController):
+@@ -628,6 +637,7 @@ class GroupController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -112,7 +112,7 @@ index 6aa3d1f77..303f94e3c 100644
                  self._action('group_delete')(context, {'id': id})
                  if group_type == 'organization':
                      h.flash_notice(_('Organization has been deleted.'))
-@@ -628,6 +638,9 @@ class GroupController(base.BaseController):
+@@ -640,6 +650,9 @@ class GroupController(base.BaseController):
              c.group_dict = self._action('group_show')(context, {'id': id})
          except NotAuthorized:
              abort(403, _('Unauthorized to delete group %s') % '')
@@ -122,7 +122,7 @@ index 6aa3d1f77..303f94e3c 100644
          except NotFound:
              abort(404, _('Group not found'))
          except ValidationError as e:
-@@ -680,6 +693,7 @@ class GroupController(base.BaseController):
+@@ -692,6 +705,7 @@ class GroupController(base.BaseController):
              if request.method == 'POST':
                  data_dict = clean_dict(dict_fns.unflatten(
                      tuplize_dict(parse_params(request.params))))
@@ -130,7 +130,7 @@ index 6aa3d1f77..303f94e3c 100644
                  data_dict['id'] = id
  
                  email = data_dict.get('email')
-@@ -714,6 +728,8 @@ class GroupController(base.BaseController):
+@@ -726,6 +740,8 @@ class GroupController(base.BaseController):
              abort(404, _('Group not found'))
          except ValidationError as e:
              h.flash_error(e.error_summary)
@@ -139,7 +139,7 @@ index 6aa3d1f77..303f94e3c 100644
          return self._render_template('group/member_new.html', group_type)
  
      def member_delete(self, id):
-@@ -733,6 +749,7 @@ class GroupController(base.BaseController):
+@@ -745,6 +761,7 @@ class GroupController(base.BaseController):
          try:
              user_id = request.params.get('user')
              if request.method == 'POST':
@@ -147,7 +147,7 @@ index 6aa3d1f77..303f94e3c 100644
                  self._action('group_member_delete')(
                      context, {'id': id, 'user_id': user_id})
                  h.flash_notice(_('Group member has been deleted.'))
-@@ -744,6 +761,9 @@ class GroupController(base.BaseController):
+@@ -756,6 +773,9 @@ class GroupController(base.BaseController):
              abort(403, _('Unauthorized to delete group %s members') % '')
          except NotFound:
              abort(404, _('Group not found'))
@@ -158,7 +158,7 @@ index 6aa3d1f77..303f94e3c 100644
                                       group_type)
  
 diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index fb28d93aa..05ec42d46 100644
+index ebfe82c70..f67cf3dc1 100644
 --- a/ckan/controllers/package.py
 +++ b/ckan/controllers/package.py
 @@ -21,6 +21,7 @@ import ckan.model as model
@@ -169,7 +169,7 @@ index fb28d93aa..05ec42d46 100644
  import ckan.plugins as p
  import ckan.lib.render
  
-@@ -584,6 +585,7 @@ class PackageController(base.BaseController):
+@@ -583,6 +584,7 @@ class PackageController(base.BaseController):
  
              data['package_id'] = id
              try:
@@ -177,7 +177,7 @@ index fb28d93aa..05ec42d46 100644
                  if resource_id:
                      data['id'] = resource_id
                      get_action('resource_update')(context, data)
-@@ -596,6 +598,11 @@ class PackageController(base.BaseController):
+@@ -595,6 +597,11 @@ class PackageController(base.BaseController):
                                            errors, error_summary)
              except NotAuthorized:
                  abort(403, _('Unauthorized to edit this resource'))
@@ -189,7 +189,7 @@ index fb28d93aa..05ec42d46 100644
              h.redirect_to(controller='package', action='resource_read', id=id,
                            resource_id=resource_id)
  
-@@ -690,6 +697,7 @@ class PackageController(base.BaseController):
+@@ -693,6 +700,7 @@ class PackageController(base.BaseController):
  
              data['package_id'] = id
              try:
@@ -197,7 +197,7 @@ index fb28d93aa..05ec42d46 100644
                  if resource_id:
                      data['id'] = resource_id
                      get_action('resource_update')(context, data)
-@@ -704,6 +712,11 @@ class PackageController(base.BaseController):
+@@ -707,6 +715,11 @@ class PackageController(base.BaseController):
              except NotFound:
                  abort(404, _('The dataset {id} could not be found.'
                               ).format(id=id))
@@ -209,7 +209,7 @@ index fb28d93aa..05ec42d46 100644
              if save_action == 'go-metadata':
                  # XXX race condition if another user edits/deletes
                  data_dict = get_action('package_show')(context, {'id': id})
-@@ -888,6 +901,7 @@ class PackageController(base.BaseController):
+@@ -891,6 +904,7 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -217,7 +217,7 @@ index fb28d93aa..05ec42d46 100644
              if ckan_phase:
                  # prevent clearing of groups etc
                  context['allow_partial_update'] = True
-@@ -960,6 +974,9 @@ class PackageController(base.BaseController):
+@@ -963,6 +977,9 @@ class PackageController(base.BaseController):
                                   errors, error_summary)
              data_dict['state'] = 'none'
              return self.new(data_dict, errors, error_summary)
@@ -227,7 +227,7 @@ index fb28d93aa..05ec42d46 100644
  
      def _save_edit(self, name_or_id, context, package_type=None):
          from ckan.lib.search import SearchIndexError
-@@ -968,6 +985,9 @@ class PackageController(base.BaseController):
+@@ -971,6 +988,9 @@ class PackageController(base.BaseController):
          try:
              data_dict = clean_dict(dict_fns.unflatten(
                  tuplize_dict(parse_params(request.POST))))
@@ -237,7 +237,7 @@ index fb28d93aa..05ec42d46 100644
              if '_ckan_phase' in data_dict:
                  # we allow partial updates to not destroy existing resources
                  context['allow_partial_update'] = True
-@@ -1000,6 +1020,9 @@ class PackageController(base.BaseController):
+@@ -1003,6 +1023,9 @@ class PackageController(base.BaseController):
              errors = e.error_dict
              error_summary = e.error_summary
              return self.edit(name_or_id, data_dict, errors, error_summary)
@@ -247,7 +247,7 @@ index fb28d93aa..05ec42d46 100644
  
      def _form_save_redirect(self, pkgname, action, package_type=None):
          '''This redirects the user to the CKAN package/read page,
-@@ -1031,6 +1054,7 @@ class PackageController(base.BaseController):
+@@ -1034,6 +1057,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -255,7 +255,7 @@ index fb28d93aa..05ec42d46 100644
                  get_action('package_delete')(context, {'id': id})
                  h.flash_notice(_('Dataset has been deleted.'))
                  h.redirect_to(controller='package', action='search')
-@@ -1040,6 +1064,9 @@ class PackageController(base.BaseController):
+@@ -1043,6 +1067,9 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete package %s') % '')
          except NotFound:
              abort(404, _('Dataset not found'))
@@ -265,7 +265,7 @@ index fb28d93aa..05ec42d46 100644
          return render('package/confirm_delete.html',
                        extra_vars={'dataset_type': dataset_type})
  
-@@ -1059,6 +1086,7 @@ class PackageController(base.BaseController):
+@@ -1062,6 +1089,7 @@ class PackageController(base.BaseController):
  
          try:
              if request.method == 'POST':
@@ -273,7 +273,7 @@ index fb28d93aa..05ec42d46 100644
                  get_action('resource_delete')(context, {'id': resource_id})
                  h.flash_notice(_('Resource has been deleted.'))
                  pkg_dict = get_action('package_show')(None, {'id': id})
-@@ -1074,6 +1102,9 @@ class PackageController(base.BaseController):
+@@ -1077,6 +1105,9 @@ class PackageController(base.BaseController):
              abort(403, _('Unauthorized to delete resource %s') % '')
          except NotFound:
              abort(404, _('Resource not found'))
@@ -283,7 +283,7 @@ index fb28d93aa..05ec42d46 100644
          return render('package/confirm_delete_resource.html',
                        {'dataset_type': self._get_package_type(id)})
  
-@@ -1471,6 +1502,9 @@ class PackageController(base.BaseController):
+@@ -1473,6 +1504,9 @@ class PackageController(base.BaseController):
              data['resource_id'] = resource_id
  
              try:
@@ -293,7 +293,7 @@ index fb28d93aa..05ec42d46 100644
                  if to_delete:
                      data['id'] = view_id
                      get_action('resource_view_delete')(context, data)
-@@ -1488,6 +1522,11 @@ class PackageController(base.BaseController):
+@@ -1490,6 +1524,11 @@ class PackageController(base.BaseController):
                  # This should never happen unless the user maliciously changed
                  # the resource_id in the url.
                  abort(403, _('Unauthorized to edit resource'))
@@ -306,7 +306,7 @@ index fb28d93aa..05ec42d46 100644
                  if not to_preview:
                      h.redirect_to(controller='package',
 diff --git a/ckan/controllers/user.py b/ckan/controllers/user.py
-index fc965c59c..a0bf55cb8 100644
+index 87388ebad..c94c1b08b 100644
 --- a/ckan/controllers/user.py
 +++ b/ckan/controllers/user.py
 @@ -16,6 +16,7 @@ import ckan.lib.captcha as captcha
@@ -317,7 +317,7 @@ index fc965c59c..a0bf55cb8 100644
  import ckan.plugins as p
  
  from ckan.common import _, c, request, response
-@@ -225,6 +226,12 @@ class UserController(base.BaseController):
+@@ -220,6 +221,12 @@ class UserController(base.BaseController):
                  abort(400, _('No user specified'))
          data_dict = {'id': id}
  
@@ -330,7 +330,7 @@ index fc965c59c..a0bf55cb8 100644
          try:
              result = get_action('user_generate_apikey')(context, data_dict)
          except NotAuthorized:
-@@ -351,6 +358,8 @@ class UserController(base.BaseController):
+@@ -340,6 +347,8 @@ class UserController(base.BaseController):
  
              email_changed = data_dict['email'] != c.userobj.email
  
@@ -339,7 +339,7 @@ index fc965c59c..a0bf55cb8 100644
              if (data_dict['password1'] and data_dict['password2']) \
                      or email_changed:
                  identity = {'login': c.user,
-@@ -386,6 +395,9 @@ class UserController(base.BaseController):
+@@ -375,6 +384,9 @@ class UserController(base.BaseController):
              errors = {'oldpassword': [_('Password entered was incorrect')]}
              error_summary = {_('Old Password'): _('incorrect password')}
              return self.edit(id, data_dict, errors, error_summary)
@@ -420,18 +420,18 @@ index 000000000..9eb29df99
 +    if not _compare_tokens(token, existing_token):
 +        raise CsrfTokenValidationError()
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index 3f6ed6ad6..d12bac598 100644
+index 0d9a2ed8c..ad0d2ea30 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
-@@ -47,6 +47,7 @@ import ckan.lib.uploader as uploader
+@@ -46,6 +46,7 @@ import ckan.lib.uploader as uploader
  import ckan.authz as authz
  import ckan.plugins as p
  import ckan
 +import ckan.lib.csrf_token as csrf_token
  
+ from ckan.lib.pagination import Page
  from ckan.common import _, ungettext, c, g, request, session, json
- from markupsafe import Markup, escape
-@@ -2588,6 +2589,11 @@ def clean_html(html):
+@@ -2825,6 +2826,11 @@ def clean_html(html):
      return bleach_clean(text_type(html))
  
  
@@ -443,6 +443,24 @@ index 3f6ed6ad6..d12bac598 100644
  core_helper(flash, name='flash')
  core_helper(localised_number)
  core_helper(localised_SI_number)
+diff --git a/ckan/public/base/javascript/modules/confirm-action.js b/ckan/public/base/javascript/modules/confirm-action.js
+index e55380926..68a5a64bb 100644
+--- a/ckan/public/base/javascript/modules/confirm-action.js
++++ b/ckan/public/base/javascript/modules/confirm-action.js
+@@ -100,6 +100,13 @@ this.ckan.module('confirm-action', function (jQuery) {
+         var form = this.el.closest('form');
+       }
+ 
++      var csrf = jQuery('<input/>', {
++        type: 'hidden',
++        name: 'csrf-token',
++        value: $('form[method=POST]').find('input[type=hidden][name=csrf-token]').attr('value') || this.el.attr('csrf-token')
++      });
++      csrf.appendTo(form);
++
+       form.appendTo('body').submit();
+     },
+ 
 diff --git a/ckan/templates/admin/config.html b/ckan/templates/admin/config.html
 index 2fb72909f..80b142e49 100644
 --- a/ckan/templates/admin/config.html
@@ -472,25 +490,29 @@ index 9f0ba36ba..1bd6bb3cf 100644
      <p class="form-actions">
        <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
 diff --git a/ckan/templates/admin/trash.html b/ckan/templates/admin/trash.html
-index 108ce9e6b..05f5acd0c 100644
+index 5a82f1c32..c473e6117 100644
 --- a/ckan/templates/admin/trash.html
 +++ b/ckan/templates/admin/trash.html
-@@ -1,4 +1,5 @@
+@@ -1,8 +1,10 @@
  {% extends "admin/base.html" %}
 +{% import 'macros/form.html' as form %}
  
  {% block primary_content_inner %}
-   {% set truncate = truncate or 180 %}
-@@ -11,6 +12,7 @@
- 
-   </ul>
-   <form method="POST" id="form-purge-packages">
+ <form method="POST" action="{{ h.url_for('admin.trash') }}" id="form-purge-all">
+   <div class="form-actions">
 +    {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-     <button
-       type="submit"
-       name="purge-packages"
+     <input type="hidden" name="action" value="all">
+     <a class="btn btn-danger purge-all"
+        type="submit"
+@@ -34,4 +36,4 @@
+     </p>
+   </div>
+ </div>
+-{% endblock %}
+\ No newline at end of file
++{% endblock %}
 diff --git a/ckan/templates/group/confirm_delete.html b/ckan/templates/group/confirm_delete.html
-index 1be7c8aa7..ed8e7fce7 100644
+index ba01d3f1f..b2b532f9d 100644
 --- a/ckan/templates/group/confirm_delete.html
 +++ b/ckan/templates/group/confirm_delete.html
 @@ -1,4 +1,5 @@
@@ -500,15 +522,15 @@ index 1be7c8aa7..ed8e7fce7 100644
  {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
  
 @@ -11,6 +12,7 @@
-         <p>{{ _('Are you sure you want to delete group - {name}?').format(name=c.group_dict.name) }}</p>
+         <p>{{ _('Are you sure you want to delete group - {name}?').format(name=group_dict.name) }}</p>
          <p class="form-actions">
-           <form id="group-confirm-delete-form" action="{% url_for controller='group', action='delete', id=c.group_dict.name %}" method="post">
+           <form id="group-confirm-delete-form" action="{% url_for group_type+'.delete', id=group_dict.name %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
            </form>
 diff --git a/ckan/templates/group/confirm_delete_member.html b/ckan/templates/group/confirm_delete_member.html
-index a1b9cd46b..dd479f202 100644
+index 2a52064ef..8ec770a10 100644
 --- a/ckan/templates/group/confirm_delete_member.html
 +++ b/ckan/templates/group/confirm_delete_member.html
 @@ -1,4 +1,5 @@
@@ -518,15 +540,15 @@ index a1b9cd46b..dd479f202 100644
  {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
  
 @@ -11,6 +12,7 @@
-         <p>{{ _('Are you sure you want to delete member - {name}?').format(name=c.user_dict.name) }}</p>
+         <p>{{ _('Are you sure you want to delete member - {name}?').format(name=user_dict.name) }}</p>
          <p class="form-actions">
-           <form action="{% url_for controller='group', action='member_delete', id=c.group_id %}" method="post">
+           <form action="{% url_for group_type+'.member_delete', id=group_id %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-             <input type="hidden" name="user" value="{{ c.user_id }}" />
+             <input type="hidden" name="user" value="{{ user_id }}" />
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
 diff --git a/ckan/templates/group/member_new.html b/ckan/templates/group/member_new.html
-index 0f6949d86..aaccccc45 100644
+index f7858fd6c..42249e350 100644
 --- a/ckan/templates/group/member_new.html
 +++ b/ckan/templates/group/member_new.html
 @@ -11,6 +11,7 @@
@@ -538,7 +560,7 @@ index 0f6949d86..aaccccc45 100644
        <div class="col-md-5">
          <div class="form-group control-medium">
 diff --git a/ckan/templates/group/snippets/group_form.html b/ckan/templates/group/snippets/group_form.html
-index 8398d519b..0a80377e0 100644
+index 69b10f5c9..381e0a331 100644
 --- a/ckan/templates/group/snippets/group_form.html
 +++ b/ckan/templates/group/snippets/group_form.html
 @@ -1,6 +1,7 @@
@@ -550,25 +572,25 @@ index 8398d519b..0a80377e0 100644
      {{ form.errors(error_summary) }}
    {% endblock %}
 diff --git a/ckan/templates/organization/bulk_process.html b/ckan/templates/organization/bulk_process.html
-index 5fdef0265..cfb17ce0c 100644
+index 7d00cf101..139de324f 100644
 --- a/ckan/templates/organization/bulk_process.html
 +++ b/ckan/templates/organization/bulk_process.html
 @@ -1,4 +1,5 @@
  {% extends "organization/edit_base.html" %}
 +{% import 'macros/form.html' as form %}
  
- {% block subtitle %}{{ _('Edit datasets') }} - {{ super() }}{% endblock %}
+ {% block subtitle %}{{ _('Edit datasets') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
  
-@@ -24,6 +25,7 @@
+@@ -34,6 +35,7 @@
        {% block form %}
-         {% if c.page.item_count %}
+         {% if page.item_count %}
            <form method="POST" data-module="basic-form">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <table class="table table-bordered table-header table-hover table-bulk-edit table-edit-hover" data-module="table-selectable-rows">
                <col width="8">
                <col width="120">
 diff --git a/ckan/templates/organization/confirm_delete.html b/ckan/templates/organization/confirm_delete.html
-index d09c3f7d4..cc2837f8c 100644
+index 2966b3d7e..347066247 100644
 --- a/ckan/templates/organization/confirm_delete.html
 +++ b/ckan/templates/organization/confirm_delete.html
 @@ -1,4 +1,5 @@
@@ -578,15 +600,15 @@ index d09c3f7d4..cc2837f8c 100644
  {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
  
 @@ -11,6 +12,7 @@
-         <p>{{ _('Are you sure you want to delete organization - {name}?').format(name=c.group_dict.name) }}</p>
+         <p>{{ _('Are you sure you want to delete organization - {name}?').format(name=group_dict.name) }}</p>
          <p class="form-actions">
-           <form id="organization-confirm-delete-form" action="{% url_for controller='organization', action='delete', id=c.group_dict.name %}" method="post">
+           <form id="organization-confirm-delete-form" action="{% url_for group_type+'.delete', id=group_dict.name %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
            </form>
 diff --git a/ckan/templates/organization/confirm_delete_member.html b/ckan/templates/organization/confirm_delete_member.html
-index 968890a3a..69a778afa 100644
+index 2a52064ef..8ec770a10 100644
 --- a/ckan/templates/organization/confirm_delete_member.html
 +++ b/ckan/templates/organization/confirm_delete_member.html
 @@ -1,4 +1,5 @@
@@ -596,15 +618,15 @@ index 968890a3a..69a778afa 100644
  {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
  
 @@ -11,6 +12,7 @@
-         <p>{{ _('Are you sure you want to delete member - {name}?').format(name=c.user_dict.name) }}</p>
+         <p>{{ _('Are you sure you want to delete member - {name}?').format(name=user_dict.name) }}</p>
          <p class="form-actions">
-           <form action="{% url_for controller='organization', action='member_delete', id=c.group_id %}" method="post">
+           <form action="{% url_for group_type+'.member_delete', id=group_id %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-             <input type="hidden" name="user" value="{{ c.user_id }}" />
+             <input type="hidden" name="user" value="{{ user_id }}" />
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
 diff --git a/ckan/templates/organization/member_new.html b/ckan/templates/organization/member_new.html
-index 2d7bfb18c..b13ca1c3c 100644
+index 0da826f7c..88914210b 100644
 --- a/ckan/templates/organization/member_new.html
 +++ b/ckan/templates/organization/member_new.html
 @@ -13,6 +13,7 @@
@@ -616,20 +638,20 @@ index 2d7bfb18c..b13ca1c3c 100644
        <div class="col-md-5">
          <div class="form-group control-medium">
 diff --git a/ckan/templates/organization/members.html b/ckan/templates/organization/members.html
-index 618c1f62f..34fd00245 100644
+index 04380945a..cfe312a88 100644
 --- a/ckan/templates/organization/members.html
 +++ b/ckan/templates/organization/members.html
 @@ -33,7 +33,7 @@
-                 <a class="btn btn-default btn-sm" href="{{ h.url_for(group_type + '_member_new', id=c.group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
+                 <a class="btn btn-default btn-sm" href="{{ h.url_for(group_type + '.member_new', id=group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
                  <i class="fa fa-wrench"></i>
                </a>
--              <a class="btn btn-danger btn-sm" href="{{ h.url_for(group_type + '_member_delete', id=c.group_dict.id, user=user_id) }}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
-+              <a class="btn btn-danger btn-sm" href="{{ h.url_for(group_type + '_member_delete', id=c.group_dict.id, user=user_id) }}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}" csrf-token="{{ h.generate_csrf_token() }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
+-              <a class="btn btn-danger btn-sm" href="{{ h.url_for(group_type + '.member_delete', id=group_dict.id, user=user_id) }}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
++              <a class="btn btn-danger btn-sm" href="{{ h.url_for(group_type + '_member_delete', id=group_dict.id, user=user_id) }}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}" csrf-token="{{ h.generate_csrf_token() }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
              </div>
            </td>
          </tr>
 diff --git a/ckan/templates/organization/snippets/organization_form.html b/ckan/templates/organization/snippets/organization_form.html
-index a3cd308a1..e57204135 100644
+index f092bf4e1..f6824a732 100644
 --- a/ckan/templates/organization/snippets/organization_form.html
 +++ b/ckan/templates/organization/snippets/organization_form.html
 @@ -1,6 +1,7 @@
@@ -641,7 +663,7 @@ index a3cd308a1..e57204135 100644
      {{ form.errors(error_summary) }}
    {% endblock %}
 diff --git a/ckan/templates/package/confirm_delete.html b/ckan/templates/package/confirm_delete.html
-index 1cc19928a..cdad60cbd 100644
+index 61013a12f..d713862e9 100644
 --- a/ckan/templates/package/confirm_delete.html
 +++ b/ckan/templates/package/confirm_delete.html
 @@ -1,4 +1,5 @@
@@ -653,13 +675,13 @@ index 1cc19928a..cdad60cbd 100644
 @@ -12,6 +13,7 @@
          <p>{{ _('Are you sure you want to delete dataset - {name}?').format(name=dataset) }}</p>
          <p class="form-actions">
-           <form id='confirm-dataset-delete-form' action="{% url_for controller='package', action='delete', id=c.pkg_dict.name %}" method="post">
+           <form id='confirm-dataset-delete-form' action="{% url_for pkg_dict.type ~ '.delete', id=pkg_dict.name %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
            </form>
 diff --git a/ckan/templates/package/confirm_delete_resource.html b/ckan/templates/package/confirm_delete_resource.html
-index 4a610cd54..bc1ef2c2f 100644
+index 74e82c508..796629361 100644
 --- a/ckan/templates/package/confirm_delete_resource.html
 +++ b/ckan/templates/package/confirm_delete_resource.html
 @@ -1,4 +1,5 @@
@@ -669,22 +691,22 @@ index 4a610cd54..bc1ef2c2f 100644
  {% block subtitle %}{{ _("Confirm Delete") }}{% endblock %}
  
 @@ -11,6 +12,7 @@
-         <p>{{ _('Are you sure you want to delete resource - {name}?').format(name=h.resource_display_name(c.resource_dict)) }}</p>
+         <p>{{ _('Are you sure you want to delete resource - {name}?').format(name=h.resource_display_name(resource_dict)) }}</p>
          <p class="form-actions">
-           <form id='confirm-resource-delete-form' action="{% url_for controller='package', action='resource_delete', resource_id=c.resource_dict.id, id=c.pkg_id %}" method="post">
+           <form id='confirm-resource-delete-form' action="{% url_for 'resource.delete', resource_id=resource_dict.id, id=pkg_id %}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
            </form>
 diff --git a/ckan/templates/package/edit_view.html b/ckan/templates/package/edit_view.html
-index 923cba50e..9ffc538f0 100644
+index e470c20e8..ddc2e01e1 100644
 --- a/ckan/templates/package/edit_view.html
 +++ b/ckan/templates/package/edit_view.html
 @@ -1,4 +1,5 @@
  {% extends "package/view_edit_base.html" %}
 +{% import 'macros/form.html' as form %}
  
- {% block subtitle %}{{ _('Edit view') }} - {{ h.resource_display_name(c.resource) }}{% endblock %}
+ {% block subtitle %}{{ _('Edit view') }} {{ g.template_title_delimiter }} {{ h.resource_display_name(resource) }}{% endblock %}
  {% block form_title %}{{ _('Edit view') }}{% endblock %}
 @@ -14,6 +15,7 @@
  
@@ -695,26 +717,26 @@ index 923cba50e..9ffc538f0 100644
      <div class="form-actions">
        <button class="btn btn-danger pull-left" name="delete" value="Delete"> {{ _('Delete') }} </button>
 diff --git a/ckan/templates/package/group_list.html b/ckan/templates/package/group_list.html
-index ce409594b..a0b0143f1 100644
+index cde880e21..ee7fa0f03 100644
 --- a/ckan/templates/package/group_list.html
 +++ b/ckan/templates/package/group_list.html
 @@ -6,6 +6,7 @@
  
-   {% if c.group_dropdown %}
+   {% if group_dropdown %}
      <form class="add-to-group" method="post">
 +      {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
        <select id="field-add_group" name="group_added" data-module="autocomplete">
-         {% for option in c.group_dropdown %}
+         {% for option in group_dropdown %}
            <option value="{{ option[0] }}"> {{ option[1] }}</option>
 diff --git a/ckan/templates/package/new_view.html b/ckan/templates/package/new_view.html
-index b7fea8255..b9ed5e191 100644
+index 173771f31..02480fdcb 100644
 --- a/ckan/templates/package/new_view.html
 +++ b/ckan/templates/package/new_view.html
 @@ -1,4 +1,5 @@
  {% extends "package/view_edit_base.html" %}
 +{% import 'macros/form.html' as form %}
  
- {% block subtitle %}{{ _('Add view') }} - {{ h.resource_display_name(c.resource) }}{% endblock %}
+ {% block subtitle %}{{ _('Add view') }} {{ g.template_title_delimiter }} {{ h.resource_display_name(resource) }}{% endblock %}
  {% block form_title %}{{ _('Add view') }}{% endblock %}
 @@ -23,6 +24,7 @@
    {% endif %}
@@ -725,7 +747,7 @@ index b7fea8255..b9ed5e191 100644
      <div class="form-actions">
          <button class="btn btn-default {% if not h.resource_view_display_preview(data) %}hide{%endif%}" name="preview" value="True" type="submit">{{ _('Preview') }}</button>
 diff --git a/ckan/templates/package/snippets/package_form.html b/ckan/templates/package/snippets/package_form.html
-index 4991dadb8..6b888b3f1 100644
+index 38fb31778..966d16680 100644
 --- a/ckan/templates/package/snippets/package_form.html
 +++ b/ckan/templates/package/snippets/package_form.html
 @@ -4,6 +4,7 @@
@@ -737,7 +759,7 @@ index 4991dadb8..6b888b3f1 100644
      {{ h.snippet('package/snippets/stages.html', stages=stage) }}
    {% endblock %}
 diff --git a/ckan/templates/package/snippets/resource_form.html b/ckan/templates/package/snippets/resource_form.html
-index 640234be3..bad63329d 100644
+index fe3261bbe..041103b56 100644
 --- a/ckan/templates/package/snippets/resource_form.html
 +++ b/ckan/templates/package/snippets/resource_form.html
 @@ -6,6 +6,7 @@
@@ -749,11 +771,11 @@ index 640234be3..bad63329d 100644
    {% block stages %}
      {# An empty stages variable will not show the stages #}
 diff --git a/ckan/templates/user/edit_user_form.html b/ckan/templates/user/edit_user_form.html
-index b11ae5b36..0c3cb40ef 100644
+index f63298b2a..40365a221 100644
 --- a/ckan/templates/user/edit_user_form.html
 +++ b/ckan/templates/user/edit_user_form.html
 @@ -3,6 +3,8 @@
- <form id="user-edit-form" class="dataset-form" method="post" action="{{ action }}">
+ <form id="user-edit-form" class="dataset-form" method="post" action="{{ action }}" enctype="multipart/form-data">
    {{ form.errors(error_summary) }}
  
 +  {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
@@ -762,10 +784,10 @@ index b11ae5b36..0c3cb40ef 100644
      <legend>{{ _('Change details') }}</legend>
      {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
 diff --git a/ckan/views/admin.py b/ckan/views/admin.py
-index defd3850f..2e9759521 100644
+index 1b58adbb9..80eb109f3 100644
 --- a/ckan/views/admin.py
 +++ b/ckan/views/admin.py
-@@ -9,6 +9,7 @@ from flask.views import MethodView
+@@ -8,6 +8,7 @@ from flask.views import MethodView
  import ckan.lib.app_globals as app_globals
  import ckan.lib.base as base
  import ckan.lib.helpers as h
@@ -773,9 +795,9 @@ index defd3850f..2e9759521 100644
  import ckan.lib.navl.dictization_functions as dict_fns
  import ckan.logic as logic
  import ckan.model as model
-@@ -118,11 +119,18 @@ class ConfigView(MethodView):
-                         logic.parse_params(
-                             req, ignore_keys=CACHE_PARAMETERS))))
+@@ -119,11 +120,18 @@ class ConfigView(MethodView):
+                         logic.parse_params(req,
+                                            ignore_keys=CACHE_PARAMETERS))))
  
 +            csrf_token.validate(data_dict.get('csrf-token', ''))
 +            del data_dict['csrf-token']
@@ -793,10 +815,10 @@ index defd3850f..2e9759521 100644
              items = _get_config_options()
              data = request.form
 diff --git a/ckan/views/user.py b/ckan/views/user.py
-index 00efe36b7..e75c144d9 100644
+index b94324232..df412106f 100644
 --- a/ckan/views/user.py
 +++ b/ckan/views/user.py
-@@ -12,6 +12,7 @@ import ckan.lib.captcha as captcha
+@@ -13,6 +13,7 @@ import ckan.lib.captcha as captcha
  import ckan.lib.helpers as h
  import ckan.lib.mailer as mailer
  import ckan.lib.navl.dictization_functions as dictization_functions
@@ -804,7 +826,7 @@ index 00efe36b7..e75c144d9 100644
  import ckan.logic as logic
  import ckan.logic.schema as schema
  import ckan.model as model
-@@ -179,6 +180,12 @@ class EditView(MethodView):
+@@ -263,6 +264,12 @@ class EditView(MethodView):
          if not context[u'save']:
              return self.get(id)
  
@@ -817,18 +839,3 @@ index 00efe36b7..e75c144d9 100644
          if id in (g.userobj.id, g.userobj.name):
              current_user = True
          else:
-index 8afd65a80..cac803a30 100644
---- a/ckan/public/base/javascript/modules/confirm-action.js
-+++ b/ckan/public/base/javascript/modules/confirm-action.js
-@@ -83,6 +83,12 @@ this.ckan.module('confirm-action', function (jQuery) {
-         action: this.el.attr('href'),
-         method: 'POST'
-       });
-+      var csrf = jQuery('<input/>', {
-+        type: 'hidden',
-+        name: 'csrf-token',
-+        value: $('form[method=POST]').find('input[type=hidden][name=csrf-token]').attr('value') || this.el.attr('csrf-token')
-+      });
-+      csrf.appendTo(form);
-       form.appendTo('body').submit();
-     },

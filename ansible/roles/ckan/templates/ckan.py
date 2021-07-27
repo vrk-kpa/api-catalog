@@ -21,10 +21,10 @@ for num, arg in enumerate(sys.argv):
 
 if not config:
     try:
-        config_file = '/etc/ckan/default/production.ini'
+        config_file = '{{ ckan_ini }}'
         fh = open(config_file)
     except IOError as e:
-        raise Exception('No production.ini in /etc/ckan/default. '
+        raise Exception('No {{ ckan_ini }}. '
                         'Either create one from production.ini.temp or use '
                         '-i instance_name or -c config_file')
 

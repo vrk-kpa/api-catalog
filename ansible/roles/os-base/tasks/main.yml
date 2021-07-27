@@ -18,29 +18,32 @@
   apt: upgrade=dist update_cache=yes
 
 - name: Ensure common packages
-  apt: pkg={{ item }} state=latest
-  with_items:
-    - htop
-    - unattended-upgrades
-    - python-pip
-    - python-dev
-    - python-virtualenv
-    - python-psycopg2
-    - postgresql-server-dev-all
-    - libpq5
-    - git-core
-    - zip
-    - bzip2
-    - unzip
-    - gettext
-    - build-essential
-    - libz-dev
-    - libssl-dev
-    - supervisor
-    - libxml2-dev
-    - libxslt1-dev
-    - node-less
-    - acl
+  apt:
+    state: latest
+    pkg:
+      - htop
+      - unattended-upgrades
+      - python-pip
+      - python-dev
+      - python-virtualenv
+      - python-psycopg2
+      - postgresql-server-dev-all
+      - libpq5
+      - git-core
+      - zip
+      - bzip2
+      - unzip
+      - gettext
+      - build-essential
+      - libz-dev
+        #- libssl-dev
+      - supervisor
+      - libxml2-dev
+      - libxslt1-dev
+      - node-less
+      - acl
+      - npm
+      - gulp
 
 # Note: psycopg2 requires postgresql-server-dev
 

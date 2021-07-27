@@ -3,7 +3,6 @@ from ckanext.apicatalog_routes import views
 from pylons import config
 import ckan
 import json
-from ckan.controllers.revision import RevisionController
 from ckan.common import c, _, request, response
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
@@ -282,30 +281,6 @@ def auth_context():
     return {'model': ckan.model,
             'user': c.user or c.author,
             'auth_user_obj': c.userobj}
-
-
-class Apicatalog_RevisionController(RevisionController):
-
-    def index(self):
-        try:
-            ckan.logic.check_access('revision_index', auth_context())
-            return super(Apicatalog_RevisionController, self).index()
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
-
-    def list(self):
-        try:
-            ckan.logic.check_access('revision_list', auth_context())
-            return super(Apicatalog_RevisionController, self).list()
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
-
-    def diff(self, id=None):
-        try:
-            ckan.logic.check_access('revision_diff', auth_context())
-            return super(Apicatalog_RevisionController, self).diff(id=id)
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
 
 
 class ExtraInformationController(base.BaseController):
