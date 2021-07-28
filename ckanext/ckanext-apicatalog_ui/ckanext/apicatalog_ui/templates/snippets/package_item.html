@@ -35,7 +35,7 @@ Example:
                         </span>
                       {% endif %}
                     {% endblock %}
-                    <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}">{{title}}</a>
+                    <a href="{{ h.url_for('dataset.read', id=package.name) }}">{{title}}</a>
                     {% block heading_meta %}
                       {% if package.get('state', '').startswith('draft') %}
                         <span class="label label-info">{{ _('Draft') }}</span>

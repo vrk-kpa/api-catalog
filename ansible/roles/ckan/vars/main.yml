@@ -28,6 +28,7 @@ ckan_patches:
   - { file: "csrf" }
   - { file: "disable_leftover_with_capacity" }
   - { file: "fix_bootstrap_font_path" }
+  - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
   - { file: "remove_edit_button_from_slugs" }
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }

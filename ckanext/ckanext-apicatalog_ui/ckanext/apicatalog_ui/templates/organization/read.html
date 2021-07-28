@@ -1,8 +1,8 @@
 {% extends "organization/read_base.html" %}
 
 {% block page_primary_action %}
-	{% if h.check_access('package_create', {'owner_org': c.group_dict.id}) %}
-		{% snippet 'snippets/add_dataset.html', group=c.group_dict.id %}
+	{% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+		{% snippet 'snippets/add_dataset.html', group=group_dict.id %}
 	{% endif %}
 {% endblock %}
 
@@ -10,19 +10,19 @@
 {% block primary_content_inner %}
   {% block groups_search_form %}{% endblock %}
   {% block packages_list %}
-    {% if c.page.items %}
-      {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+    {% if page.items %}
+      {{ h.snippet('snippets/package_list.html', packages=page.items) }}
     {% else %}
       <p class="empty">
         {{ _('There are currently no APIs for this organization') }}.
         {% if h.check_access('package_create') %}
-          {% link_for _('How about creating one?'), controller='package', action='new', group=c.group_dict.id %}
+          {% link_for _('How about creating one?'), controller='package', action='new', group=group_dict.id %}
         {% endif %}
       </p>
     {% endif %}
   {% endblock %}
   {% block page_pagination %}
-    {{ c.page.pager(q=c.q, symbol_previous="<span aria-hidden='true'>«</span><span class='sr-only'>" + _('Previous') + "</span>", symbol_next="<span aria-hidden='true'>»</span><span class='sr-only'>" + _('Next') + "</span>") }}
+    {{ page.pager(q=q, symbol_previous="<span aria-hidden='true'>«</span><span class='sr-only'>" + _('Previous') + "</span>", symbol_next="<span aria-hidden='true'>»</span><span class='sr-only'>" + _('Next') + "</span>") }}
   {% endblock %}
 {% endblock %}
 
@@ -39,16 +39,16 @@
     </div>
     <div class="module module-narrow module-shallow">
         {% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
-        {% set sorting_selected = c.sort_by_selected or 'title asc' %}
+        {% set sorting_selected = sort_by_selected or 'title asc' %}
         <div class="sorter-wrapper">
-            {% snippet 'snippets/search_form_without_input.html', q=c.q, sorting=sorting, sorting_selected=sorting_selected %}
+            {% snippet 'snippets/search_form_without_input.html', q=q, sorting=sorting, sorting_selected=sorting_selected %}
         </div>
     </div>
     {% block organization_facets %}
         <div class="filters">
             <div>
-                {% for facet in c.facet_titles %}
-                    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, extras={'id':c.group_dict.id}) }}
+                {% for facet in facet_titles %}
+                    {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
                 {% endfor %}
             </div>
             <a class="close no-text hide-filters">

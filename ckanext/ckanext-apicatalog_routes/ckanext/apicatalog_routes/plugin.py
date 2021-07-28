@@ -147,10 +147,15 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     # After package_show, filter out the resources which the user doesn't have access to
     def after_show(self, context, data_dict):
         # Skip access check if sysadmin
-        if (c.userobj and c.userobj.sysadmin):
+        if (context.get('sysadmin')):
             return data_dict
 
-        user_orgs = get_action('organization_list_for_user')(context, {})
+        user_name = context.get('user')
+
+        if user_name:
+            user_orgs = get_action('organization_list_for_user')(context, {'id': user_name})
+        else:
+            user_orgs = []
 
         # Allowed resources are the ones where:
         # 1) access_restriction_level is public
