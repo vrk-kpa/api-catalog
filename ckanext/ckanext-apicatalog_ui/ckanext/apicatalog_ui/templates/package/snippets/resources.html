@@ -5,7 +5,7 @@
     {% for resource in resources %}
       <li class="nav-item{{ ' active' if active == resource.id }}">
         {% set service_type = ' (' + resource.xroad_service_type|upper + ')' if resource.xroad_service_type and resource.xroad_service_type else '' %}
-        {% link_for h.resource_display_name(resource)|truncate(25) + service_type, controller='package', action=action or 'resource_read', id=pkg.name, resource_id=resource.id, inner_span=true %}
+        {% link_for h.resource_display_name(resource)|truncate(25) + service_type, 'resource_read', id=pkg.name, resource_id=resource.id, inner_span=true %}
       </li>
     {% endfor %}
   </ul>

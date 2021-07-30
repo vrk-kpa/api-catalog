@@ -38,10 +38,10 @@ li:not(.active) .minusglyph {
 .nav-aside li.active a {
   position: relative;
   color:@black;
-  background-color: initial;
+  background-color: initial !important;
 
   &:before {
-    content: initial;
+    content: initial !important;
     border: none;
   }
 
@@ -128,7 +128,8 @@ li:not(.active) .minusglyph {
 
 .navbar-default {
 
-  background-color: @kapa-header-color;
+  background-color: @kapa-header-color !important;
+  border-color: none !important;
 
   .navbar-toggle {
     border: none;
