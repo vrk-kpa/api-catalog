@@ -9,12 +9,12 @@ if (!fs.existsSync('./node_modules/@fortawesome/fontawesome-pro')){
 
 function fontAwesomeCss() {
     return src(fontawesomePath + '/css/*.css')
-        .pipe(dest("ckanext/apicatalog_ui/fanstatic/font-awesome/css/"))
+        .pipe(dest("ckanext/apicatalog_ui/public/fonts/font-awesome/css/"))
 }
 
 function fontAwesomeFonts() {
     return src(fontawesomePath + '/webfonts/*')
-        .pipe(dest("ckanext/apicatalog_ui/fanstatic/font-awesome/webfonts/"))
+        .pipe(dest("ckanext/apicatalog_ui/public/fonts/font-awesome/webfonts/"))
 }
 
 const cookieConsentPath = './node_modules/cookieconsent/'

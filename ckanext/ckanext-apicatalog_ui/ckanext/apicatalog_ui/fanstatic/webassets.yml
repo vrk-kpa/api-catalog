@@ -1,0 +1,94 @@
+main_js:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_main.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - javascript/multiple_input.js
+    - javascript/multiselect.js
+    - javascript/mutexfield.js
+    - javascript/util.js
+    - javascript/bootstrap.offcanvas.js
+    - javascript/submit-on-change.js
+
+main_css:
+  filters: cssrewrite
+  output: ckanext-apicatalog_ui/%(version)s_main.css
+  contents:
+    - apicatalog_ui/main.css
+
+cookieconsent_js:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_cookieconsent.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - cookieconsent/cookieconsent.js
+    - cookieconsent/ckan-cookieconsent.js
+
+cookieconsent_css:
+  filters: cssrewrite
+  output: ckanext-apicatalog_ui/%(version)s_cookieconsent.css
+  contents:
+    - cookieconsent/cookieconsent.css
+    - cookieconsent/ckan-cookieconsent.css
+
+chartjs_js:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_chartjs.js
+  contents:
+    - xroad_stats/js/libs/Chart.js
+    - xroad_stats/js/libs/chartjs-datalabels.js
+  
+chartjs_css:
+  filters: cssrewrite
+  output: ckanext-apicatalog_ui/%(version)s_chartjs.css
+  contents:
+    - xroad_stats/css/Chart.css
+
+xroad_stats_js:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.js
+  extra:
+    preload:
+      - base/main
+      - apicatalog_ui/chartjs_js
+  contents:
+    - xroad_stats/js/xroad_statistics.js
+
+xroad_stats_css:
+  filters: cssrewrite
+  output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.css
+  extra:
+    preload:
+      - apicatalog_ui/chartjs_css
+  contents:
+    - xroad_stats/css/xroad_statistics.css
+
+datetimepicker_js:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_datetimepicker.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - datetimepicker/bootstrap-datetimepicker.js
+    - datetimepicker/datepicker.js
+
+datetimepicker_css:
+  filters: cssrewrite
+  output: ckanext-apicatalog_ui/%(version)s_datetimepicker.css
+  contents:
+    - datetimepicker/bootstrap-datetimepicker.css
+
+tablesorter:
+  filters: rjsmin 
+  output: ckanext-apicatalog_ui/%(version)s_tablesorter.js
+  extra:
+    preload:
+      - base/main
+  contents:
+    - javascript/plugins/jquery.tablesorter.js
+    - javascript/modules/tablesorter.js

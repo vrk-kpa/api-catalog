@@ -2,7 +2,8 @@
 
 {% block primary_content %}
 
-{% resource "apicatalog_ui/xroad_stats" %}
+{% asset "apicatalog_ui/xroad_stats_js" %}
+{% asset "apicatalog_ui/xroad_stats_css" %}
 
 {% set xroad_stats = h.fetch_xroad_statistics() %}
 <div class="container" style="max-width: 100%;">

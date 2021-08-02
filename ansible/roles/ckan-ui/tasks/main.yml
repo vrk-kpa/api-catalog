@@ -4,7 +4,7 @@
     - frontend-build
 
 - name: rebuild ckanext-apicatalog_ui less
-  shell: lessc "{{ apicatalog_ui_path }}/less/main.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/main.css"
+  shell: lessc "{{ apicatalog_ui_path }}/less/main.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/apicatalog_ui/main.css"
 
 - name: rebuild ckanext-openapi_view less
   shell: lessc "{{ apicatalog_ui_path }}/less/openapi_view.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/openapi_view.css"
