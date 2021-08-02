@@ -16,7 +16,7 @@
         that: deployment_environment_id == vagrant
 
     - name: Stop CKAN
-      service: name=apache2 state=stopped
+      service: name=supervisor state=stopped
 
     - name: Delete Postgresql databases
       become_user: postgres
@@ -53,7 +53,7 @@
       with_items: ckan_admins
 
     - name: Start CKAN
-      service: name=apache2 state=restarted
+      service: name=supervisor state=restarted
 
   handlers:
     - include: handlers/handlers.yml

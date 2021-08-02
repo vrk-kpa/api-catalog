@@ -2,16 +2,11 @@ filebeat:
   prospectors:
     -
       paths:
-        - /var/log/apache2/ckan.log
-      exclude_lines: ['/usr/lib/ckan/default/lib/python2.7/site-packages/sqlalchemy/orm/unitofwork.py:79: SAWarning']
-      multiline:
-        pattern: '^\[.*?\] (Error|[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]+)'
-        negate: true
-        match: after
+        - /var/log/ckan/ckan.log
       type: log
       fields:
         environment: "catalog-{{ deployment_environment_id }}"
-        document_type: catalog-apache
+        document_type: catalog-uwsgi
 
   #spool_size: 1024
   #idle_timeout: 5s
