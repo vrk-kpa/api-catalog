@@ -142,23 +142,19 @@
   <link rel="stylesheet" href="/fonts/source-sans-pro/css/source-sans-pro.css" />
   <link rel="stylesheet" href="/fonts/font-awesome/css/all.css" />
   <link rel="stylesheet" href="/fonts/font-awesome/css/v4-shims.css" />
+  {% asset 'apicatalog_ui/main_css' %}
+  {% asset 'apicatalog_ui/cookieconsent_css' %}
 {% endblock %}
 
 {%- block scripts %}
     {% resource 'base/main' %}
     {% resource 'base/ckan' %}
-    {#{% resource 'apicatalog_ui/main' %}
-    {% resource 'apicatalog_ui/ckan' %}
-    {% resource 'apicatalog_ui/tablesorter' %}
-    {% resource 'apicatalog_ui/cookieconsent' %}#}
     {% asset 'apicatalog_ui/main_js' %}
-    {% asset 'apicatalog_ui/main_css' %}
     {% asset 'apicatalog_ui/cookieconsent_js' %}
-    {% asset 'apicatalog_ui/cookieconsent_css' %}
     {% asset 'apicatalog_ui/tablesorter' %}
 
     {% if g.tracking_enabled %}
-      {% asset 'base/tracking.js' %}
+      {% asset 'base/tracking' %}
     {% endif %}
   {{ super() }}
 
