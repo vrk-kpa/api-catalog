@@ -43,5 +43,5 @@
 {% endblock %}
 
 {% block page_pagination %}
-    {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', with_datasets=org_list.with_datasets or '', symbol_previous="<span aria-hidden='true'>«</span><span class='sr-only'>" + _('Previous') + "</span>", symbol_next="<span aria-hidden='true'>»</span><span class='sr-only'>" + _('Next') + "</span>" ) }}
+{{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', with_datasets=org_list.with_datasets or '', raw_symbols=True, symbol_previous="<span aria-hidden='true'>«</span><span class='sr-only'>" + _('Previous') + "</span>", symbol_next="<span aria-hidden='true'>»</span><span class='sr-only'>" + _('Next') + "</span>" ) }}
 {% endblock %}

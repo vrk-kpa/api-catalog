@@ -32,6 +32,7 @@ ckan_patches:
   - { file: "remove_edit_button_from_slugs" }
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
+  - { file: "make_pagination_customizable" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
