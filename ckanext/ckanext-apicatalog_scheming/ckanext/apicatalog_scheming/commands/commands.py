@@ -5,37 +5,33 @@ import os
 import click
 import polib
 import re
-from ckan.lib.cli import load_config, paster_click_group, click_config_option
-
 from ckanext.apicatalog_scheming.translations import facet_translations
 
 from ckan.plugins.toolkit import get_action
+from migrate import content
 
-import logging
-log = logging.getLogger(__name__)
 
-apicatalog_translation_group = paster_click_group(
-    summary=u'Translation commands for apicatalog'
-)
+def get_commands():
+    return [apicatalog_translation, content]
 
-@apicatalog_translation_group.command(
-    u'add_facet_translations',
-    help='Adds facet translations to database'
-)
 
-@click_config_option
+@click.group()
+def apicatalog_translation():
+    'Translation commands for apicatalog'
+    pass
+
+
+@apicatalog_translation.command()
 @click.pass_context
 @click.argument('i18n_root')
-def add_facet_translation(ctx, config, i18n_root):
-    load_config(config or ctx.obj['config'])
-
+def add_facet_translations(ctx, i18n_root):
+    'Adds facet translations to database'
     terms = facet_translations()
     if len(terms) <= 0:
-        print "No terms provided"
+        click.echo("No terms provided")
         return 1
 
     translated = []
-
 
     for locale, po_path in _get_po_files(i18n_root):
         found = 0
@@ -44,7 +40,7 @@ def add_facet_translation(ctx, config, i18n_root):
                 translated.append((locale, entry.msgid, entry.msgstr))
                 found += 1
         if found != len(terms):
-            print "Term not found"
+            click.echo("Term not found")
             return 1
 
     for term in terms:
@@ -52,8 +48,9 @@ def add_facet_translation(ctx, config, i18n_root):
 
     for locale, term, translation in translated:
         if translation:
-            print(translated)
+            click.echo(translated)
             get_action('term_translation_update')({'ignore_auth': True}, {'term': term, 'term_translation': translation, 'lang_code': locale})
+
 
 def _get_po_files(path):
     pattern = re.compile('^[a-z]{2}(?:_[A-Z]{2})?$')

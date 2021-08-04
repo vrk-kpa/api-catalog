@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import ckanext.validate_links.cli as cli
 
 
 def admin_only(context, data_dict=None):
@@ -10,6 +11,7 @@ class Validate_LinksPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IClick)
 
     # IConfigurer
 
@@ -26,3 +28,8 @@ class Validate_LinksPlugin(plugins.SingletonPlugin):
 
     def get_auth_functions(self):
         return {'admin_broken_links': admin_only}
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()

@@ -33,20 +33,20 @@
   shell: ./bin/ckan --config {{ ckan_ini }} harvester initdb chdir={{ virtualenv }}
 
 - name: Initialize Link Validation database
-  shell: ./bin/paster --plugin=ckanext-validate_links links initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} links initdb chdir={{ virtualenv }}
 
 - name: Migrate Link Validation database
-  shell: ./bin/paster --plugin=ckanext-validate_links links migrate "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} links migrate chdir={{ virtualenv }}
 
 - name: Initialize service permission application database
-  shell: ./bin/paster --plugin=ckanext-apply_permissions_for_service apply_permissions init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" apply-permissions init chdir={{ virtualenv }}
   when: "'apply_permissions_for_service' in ckan_plugins"
 
 - name: Initialize users for organization database
-  shell: ./bin/paster --plugin=ckanext-apicatalog_routes apicatalog_db init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-database init chdir={{ virtualenv }}
 
 - name: Initialize xroad errors database
-  shell: ./bin/paster --plugin=ckanext-xroad_integration xroad init_db "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" xroad init-db chdir={{ virtualenv }}
 
 - name: Initialize pages database
   shell: ./bin/ckan --config {{ ckan_ini }} pages initdb  chdir={{ virtualenv }}

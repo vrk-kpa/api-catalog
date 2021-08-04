@@ -3,39 +3,37 @@
 import sys
 import itertools
 import json
-import re
 from pprint import pformat
+from collections import deque
 
 from ckan.common import config
 import click
-from ckan.lib.cli import load_config, paster_click_group, click_config_option
 import ckan.plugins.toolkit as toolkit
 get_action = toolkit.get_action
-
-from collections import deque
-
 
 #
 # Commands
 #
 
-content_group = paster_click_group(
-    summary=u'Content modification tools'
-)
 
-@content_group.command(
-    u'migrate',
-    help=u'Migrates site content from one version to another'
-)
-@click_config_option
+def get_commands():
+    return [content]
+
+
+@click.group()
+def content():
+    'Content modification tools'
+    pass
+
+
+@content.command()
 @click.argument('current_version')
 @click.argument('target_version')
 @click.option(u'--dryrun', is_flag=True)
 @click.option(u'--path-index', type=int)
 @click.pass_context
-def migrate(ctx, config, current_version, target_version, dryrun, path_index):
-
-    load_config(config or ctx.obj['config'])
+def migrate(ctx, current_version, target_version, dryrun, path_index):
+    'Migrates site content from one version to another'
     m = Migrate()
 
     for v1, v2, step in migrations():
@@ -44,12 +42,12 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
     plans = m.plan(current_version, target_version)
 
     if not plans:
-        print('No migration paths found from {} to {}'.format(current_version, target_version))
+        click.echo('No migration paths found from {} to {}'.format(current_version, target_version))
         sys.exit(1)
     elif len(plans) > 1:
         if path_index is None:
-            print('Multiple migration paths found from {} to {}.'.format(current_version, target_version))
-            print('Run this command again with the option --path-index <your selection>')
+            click.echo('Multiple migration paths found from {} to {}.'.format(current_version, target_version))
+            click.echo('Run this command again with the option --path-index <your selection>')
             for i, plan in enumerate(plans):
                 print('{}: {}'.format(i, ' -> '.join(plan_to_path(plan))))
             sys.exit(1)
@@ -58,7 +56,7 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
     else:
         plan = plans[0]
 
-    print('Using migration path: {}'.format(' -> '.join(plan_to_path(plan))))
+    click.echo('Using migration path: {}'.format(' -> '.join(plan_to_path(plan))))
 
     if dryrun:
         print('Performing a dry run')
@@ -67,7 +65,7 @@ def migrate(ctx, config, current_version, target_version, dryrun, path_index):
         print('Migrating from {} to {}'.format(v1, v2))
         step(ctx, config, dryrun)
 
-    print('Finished migration successfully')
+    click.echo('Finished migration successfully')
 
 
 #
@@ -91,6 +89,7 @@ def migrations():
 
 def no_changes(*args, **kwargs):
     pass
+
 
 def migrate_1_50_0_to_1_51_0(ctx, config, dryrun):
     organization_patches = [{'id': org['id'],
@@ -146,39 +145,39 @@ def migrate_1_54_1_to_1_55_0(ctx, config, dryrun):
 #
 
 def breadth_first_search(graph, start, end):
-  visited = set()
-  queue = deque([(start, [start])])
-  results = []
-  while queue:
-    node, path = queue.popleft()
-    if node == end:
-      results.append(path)
-      continue
-    if node in visited:
-      continue
-    visited.add(node)
-    for child in graph.get(node, []):
-      queue.append((child, path + [child]))
-  return results
+    visited = set()
+    queue = deque([(start, [start])])
+    results = []
+    while queue:
+        node, path = queue.popleft()
+        if node == end:
+            results.append(path)
+            continue
+        if node in visited:
+            continue
+        visited.add(node)
+        for child in graph.get(node, []):
+            queue.append((child, path + [child]))
+    return results
 
 
 class Migrate:
-  def __init__(self):
-    self.callbacks = {}
-    self.graph = {}
+    def __init__(self):
+        self.callbacks = {}
+        self.graph = {}
 
-  def add(self, version_from, version_to, callback):
-    self.graph.setdefault(version_from, []).append(version_to)
-    self.callbacks.setdefault(version_from, {})[version_to] = callback
+    def add(self, version_from, version_to, callback):
+        self.graph.setdefault(version_from, []).append(version_to)
+        self.callbacks.setdefault(version_from, {})[version_to] = callback
 
-  def plan(self, version_from, version_to):
-    paths = breadth_first_search(self.graph, version_from, version_to)
-    plans = []
-    for path in paths:
-      plan = [(path[i-1], path[i], self.callbacks[path[i-1]][path[i]])
-              for i in range(1, len(path))]
-      plans.append(plan)
-    return plans
+    def plan(self, version_from, version_to):
+        paths = breadth_first_search(self.graph, version_from, version_to)
+        plans = []
+        for path in paths:
+            plan = [(path[i-1], path[i], self.callbacks[path[i-1]][path[i]])
+                    for i in range(1, len(path))]
+            plans.append(plan)
+        return plans
 
 
 def plan_to_path(plan):

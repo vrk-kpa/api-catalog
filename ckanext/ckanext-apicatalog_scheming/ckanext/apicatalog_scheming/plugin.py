@@ -5,6 +5,7 @@ import ckan.plugins.toolkit as toolkit
 from ckan.common import config
 import ckan.lib.navl.dictization_functions as dictization_functions
 from ckanext.scheming.helpers import lang
+from ckanext.apicatalog_scheming.commands import commands
 import json
 
 try:
@@ -28,6 +29,8 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IClick)
+
 
     # IConfigurer
 
@@ -103,6 +106,12 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             pkg_dict['services'] = "Subsystems without services"
 
         return pkg_dict
+
+    # IClick
+
+    def get_commands(self):
+        return commands.get_commands()
+
 
 def scheming_field_only_default_required(field, lang):
     if (field

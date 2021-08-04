@@ -1,5 +1,7 @@
 from ckan.plugins import toolkit
 from ckanext.apicatalog_routes import views
+import ckanext.apicatalog_routes.cli as cli
+
 from pylons import config
 import ckan
 import json
@@ -53,6 +55,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     ckan.plugins.implements(ckan.plugins.IActions)
     ckan.plugins.implements(ckan.plugins.IBlueprint)
     ckan.plugins.implements(ckan.plugins.ITemplateHelpers)
+    ckan.plugins.implements(ckan.plugins.IClick)
 
     # IRoutes
 
@@ -192,6 +195,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
         return {
             "lang": lang
         }
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()
 
 
 def send_reset_link(context, data_dict):

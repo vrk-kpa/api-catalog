@@ -1,5 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+import ckanext.apply_permissions_for_service.cli as cli
 from ckan.lib.plugins import DefaultTranslation
 from logic import action, auth
 from flask import Blueprint
@@ -15,6 +16,7 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.ITranslation)
+    plugins.implements(plugins.IClick)
 
     # IConfigurer
 
@@ -53,3 +55,8 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     def get_helpers(self):
         return {'service_permission_application_url': helpers.service_permission_application_url,
                 'service_permission_applications_enabled': helpers.service_permission_applications_enabled}
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()

@@ -82,11 +82,6 @@ setup(
         [ckan.plugins]
         validate_links=ckanext.validate_links.plugin:Validate_LinksPlugin
 
-        [ckan.test_plugins]
-
-        [paste.paster_command]
-        links = ckanext.validate_links.commands.validate_links:ValidateLinks
-
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
     ''',
