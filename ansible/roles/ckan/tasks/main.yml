@@ -153,4 +153,4 @@
   shell: supervisorctl update
 
 - name: Start CKAN
-  shell: supervisorctl restart "ckan-uwsgi:*"
+  shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"

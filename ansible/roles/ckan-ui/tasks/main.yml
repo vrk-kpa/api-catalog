@@ -10,7 +10,7 @@
   shell: lessc "{{ apicatalog_ui_path }}/less/openapi_view.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/openapi_view.css"
 
 - name: Restart CKAN
-  shell: supervisorctl restart "ckan-uwsgi:*"
+  shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"
 
 - name: Verify CKAN is running
   uri:

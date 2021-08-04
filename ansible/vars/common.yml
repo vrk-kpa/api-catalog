@@ -9,6 +9,7 @@ data_path: "{{ server_path }}/data"
 
 ckan_ini: /etc/ckan/default/ckan.ini
 virtualenv: /usr/lib/ckan/default
+ckan_supervisor_name: ckan
 
 certificates_path: /etc/ssl/apicatalog
 
