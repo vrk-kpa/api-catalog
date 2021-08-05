@@ -131,7 +131,11 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermis
         if not has_request_context():
             return search_results
 
-        user_orgs = get_action('organization_list_for_user')({}, {'id': toolkit.g.user})
+        if toolkit.g.get('user', None):
+            user_orgs = get_action('organization_list_for_user')({}, {'id': toolkit.g.user})
+        else:
+            user_orgs = []
+
         for result in search_results['results']:
             # Accessible resources are:
             # 1) access_restriction_level is public
