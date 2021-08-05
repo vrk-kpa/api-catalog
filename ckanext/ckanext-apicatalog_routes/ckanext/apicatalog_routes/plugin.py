@@ -1,34 +1,33 @@
-from ckan.plugins import toolkit
 from ckanext.apicatalog_routes import views
 import ckanext.apicatalog_routes.cli as cli
+from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
 
-from pylons import config
-import ckan
-import json
-from ckan.common import c, _, request, response
+from ckan.plugins import toolkit
+import ckan.lib.plugins as lib_plugins
+import ckan.plugins as plugins
+from ckan.common import _, request, response
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
-import ckan.logic as logic
-from helpers import lang
-import ckan.lib.base as base
 import ckan.lib.mailer as mailer
-from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
+
+import json
+from helpers import lang
 from db import UserForOrganization
 import logging
 import auth
+from flask import has_request_context
 
-abort = base.abort
-render = base.render
-check_access = ckan.logic.check_access
-NotAuthorized = ckan.logic.NotAuthorized
-NotFound = ckan.logic.NotFound
-get_action = ckan.logic.get_action
+abort = toolkit.abort
+render = toolkit.render
+check_access = toolkit.check_access
+NotAuthorized = toolkit.NotAuthorized
+ObjectNotFound = toolkit.ObjectNotFound
+get_action = toolkit.get_action
 
 unflatten = dictization_functions.unflatten
 DataError = dictization_functions.DataError
 
-UsernamePasswordError = logic.UsernamePasswordError
-ValidationError = logic.ValidationError
+ValidationError = toolkit.ValidationError
 
 _validate = dictization_functions.validate
 
@@ -47,15 +46,15 @@ def set_repoze_user(user_id):
         response.headerlist += rememberer.remember(request.environ, identity)
 
 
-class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.DefaultPermissionLabels):
-    ckan.plugins.implements(ckan.plugins.IRoutes, inherit=True)
-    ckan.plugins.implements(ckan.plugins.IAuthFunctions)
-    ckan.plugins.implements(ckan.plugins.IPermissionLabels)
-    ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
-    ckan.plugins.implements(ckan.plugins.IActions)
-    ckan.plugins.implements(ckan.plugins.IBlueprint)
-    ckan.plugins.implements(ckan.plugins.ITemplateHelpers)
-    ckan.plugins.implements(ckan.plugins.IClick)
+class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermissionLabels):
+    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IPermissionLabels)
+    plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IBlueprint)
+    plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IClick)
 
     # IRoutes
 
@@ -108,11 +107,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             'ignore_auth': True
         }
 
-        for user_name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+        for user_name in toolkit.config.get('ckanext.apicatalog_routes.readonly_users', '').split():
             try:
                 user_obj = get_action('user_show')(context, {'id': user_name})
                 labels.append(u'read_only_admin-%s' % user_obj['id'])
-            except NotFound:
+            except ObjectNotFound:
                 continue
 
         return labels
@@ -121,13 +120,17 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
 
         labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
 
-        if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+        if user_obj and user_obj.name in toolkit.config.get('ckanext.apicatalog_routes.readonly_users', '').split():
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
         return labels
 
     # After package_search, filter out the resources which the user doesn't have access to
     def after_search(self, search_results, search_params):
+        # Only filter results if processing a request
+        if not has_request_context():
+            return search_results
+
         user_orgs = get_action('organization_list_for_user')(auth_context(), {})
         for result in search_results['results']:
             # Accessible resources are:
@@ -140,7 +143,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('access_restriction_level', '') in ('', 'public') or
                                  (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                                  and c.user in resource.get('allowed_users', '').split(',')) or
+                                  and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
                                  (resource.get('access_restriction_level', '') == 'same_organization' and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
@@ -171,7 +174,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                              if 'access_restriction_level' not in resource or
                              resource.get('access_restriction_level', '') in ('', 'public') or
                              (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                              and c.user in resource.get('allowed_users', '').split(',')) or
+                              and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
                              (resource.get('access_restriction_level', '') == 'same_organization' and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
@@ -203,7 +206,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
 
 
 def send_reset_link(context, data_dict):
-    ckan.logic.check_access('send_reset_link', context)
+    toolkit.check_access('send_reset_link', context)
 
     user_obj = model.User.get(data_dict['user_id'])
     mailer.send_reset_link(user_obj)
@@ -279,7 +282,7 @@ def create_organization_users(context, data_dict):
         except ValidationError as e:
             log.warn(e)
             continue
-        except NotFound as e:
+        except ObjectNotFound as e:
             log.warn(e)
             continue
 
@@ -291,12 +294,12 @@ def create_organization_users(context, data_dict):
 
 
 def auth_context():
-    return {'model': ckan.model,
-            'user': c.user or c.author,
-            'auth_user_obj': c.userobj}
+    return {'model': model,
+            'session': model.Session,
+            'user': toolkit.g.get('user') or toolkit.g.get('author')}
 
 
-class ExtraInformationController(base.BaseController):
+class ExtraInformationController(toolkit.BaseController):
 
     def data_exchange_layer_user_organizations(self):
         context = {}
