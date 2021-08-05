@@ -131,7 +131,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermis
         if not has_request_context():
             return search_results
 
-        user_orgs = get_action('organization_list_for_user')(auth_context(), {})
+        user_orgs = get_action('organization_list_for_user')({}, {'id': toolkit.g.user})
         for result in search_results['results']:
             # Accessible resources are:
             # 1) access_restriction_level is public
@@ -291,12 +291,6 @@ def create_organization_users(context, data_dict):
 
     context.get('session', model.Session).commit()
     return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous, 'duplicate': duplicate}}
-
-
-def auth_context():
-    return {'model': model,
-            'session': model.Session,
-            'user': toolkit.g.get('user') or toolkit.g.get('author')}
 
 
 class ExtraInformationController(toolkit.BaseController):
