@@ -14,7 +14,6 @@
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
-    - { role: ckan-extension, ckanext: ckanext-fluentall }
     - { role: ckan-extension, ckanext: ckanext-scheming }
     - { role: ckan-extension, ckanext: ckanext-fluent }
     - { role: ckan-extension, ckanext: ckanext-pages }
@@ -22,8 +21,6 @@
     - { role: ckan-extension, ckanext: ckanext-harvest }
     - { role: ckan-extension, ckanext: ckanext-xroad_integration }
     - { role: ckan-extension, ckanext: ckanext-validate_links }
-    - { role: ckan-extension, ckanext: ckanext-saha }
-    - { role: ckan-extension, ckanext: ckanext-paha }
     - { role: ckan-extension, ckanext: ckanext-openapiviewer }
     - { role: ckan-extension, ckanext: ckanext-apply_permissions_for_service }
     - ckan

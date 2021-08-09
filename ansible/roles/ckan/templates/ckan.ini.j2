@@ -126,10 +126,6 @@ ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000
 ckan.celery.queues = celery bulk priority
 
-ckanext.saha.username = {{ saha.username }}
-ckanext.saha.password = {{ saha.password }}
-ckanext.saha.api_url = {{ saha.api_url }}
-
 # Force using of core translations, change this when translations are moved to extensions
 ckanext.forcetranslation.module = ckan
 ckanext.forcetranslation.path = i18n
@@ -162,8 +158,6 @@ solr_url = http://{{ solr.host }}:{{ solr.port }}/solr/ckan
 ckan.tracking_enabled = true
 
 ckan.max_resource_size = {{ ckan_max_resource_size }}
-
-ckanext.paha.key_whitelist = {{ paha_key_whitelist }}
 
 [loggers]
 

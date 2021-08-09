@@ -75,11 +75,6 @@ elk:
       - "kapalogtest02.csc.fi:5044"
       - "kapalogtest03.csc.fi:5044"
 
-saha:
-  api_url: "https://asiointi.dev.vrk.fi/api"
-  username: "PahaIntegrationUser"
-  password: "{{ secret.saha_integration_password }}"
-
 content:
   news:
     endpoint_url: "https://palveluhallinta.test.suomi.fi/api/articles/importantTopical"
@@ -89,9 +84,6 @@ content:
 debug_enabled: false
 
 robots_allowed: false
-
-paha_key_whitelist: 
-  - "{{ secret.ckan_paha_apikey }}"
 
 apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
 
@@ -114,8 +106,6 @@ ckan_plugins:
   - text_view
   - wsdl_view
   - validate_links
-  - saha
-  - paha
   - apply_permissions_for_service
   - xroad_integration
   - forcetranslation

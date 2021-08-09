@@ -89,11 +89,6 @@ elk:
   logstash:
     hosts: ["localhost"]
 
-saha:
-  api_url: "https://asiointi.dev.vrk.fi/api"
-  username: "PahaIntegrationUser"
-  password: "{{ secret.saha_integration_password }}"
-
 content:
   news:
     endpoint_url: "https://palveluhallinta.test.suomi.fi/api/articles/importantTopical"
@@ -103,9 +98,6 @@ content:
 debug_enabled: true
 
 robots_allowed: true
-
-paha_key_whitelist:
-  - "{{ secret.ckan_paha_apikey }}"
 
 ckan_plugins:
   - apicatalog_scheming
@@ -126,8 +118,6 @@ ckan_plugins:
   - text_view
   - wsdl_view
   - validate_links
-  - saha
-  - paha
   - apply_permissions_for_service
   - xroad_integration
   - forcetranslation
