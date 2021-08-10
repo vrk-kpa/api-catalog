@@ -7,6 +7,7 @@ from sqlalchemy import Table, Column, ForeignKey, types
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm import relation
 
+import ckan.model as model
 from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
@@ -23,7 +24,11 @@ log = logging.getLogger(__name__)
 
 
 class LinkValidationResult(DomainObject):
-    pass
+    @classmethod
+    def get_since(cls, t):
+        return (model.Session.query(cls)
+                .filter(cls.timestamp > t)
+                .all())
 
 
 class LinkValidationReferrer(DomainObject):
@@ -85,6 +90,7 @@ def clear_tables():
         Session.rollback()
         log.error("Clearing LinkValidation tables failed")
     log.info("LinkValidation tables cleared")
+
 
 def migrate():
     q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
