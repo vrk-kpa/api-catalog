@@ -23,10 +23,6 @@
     pkg:
       - htop
       - unattended-upgrades
-      - python-pip
-      - python-dev
-      - python-virtualenv
-      - python-psycopg2
       - postgresql-server-dev-all
       - libpq5
       - git-core
@@ -57,7 +53,6 @@
     - "{{ server_path }}"
     - "{{ cache_path }}"
 
-- include: pip.yml
 
 - name: Generate finnish locale
   locale_gen:

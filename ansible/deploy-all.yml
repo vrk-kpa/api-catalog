@@ -18,6 +18,7 @@
       tags: mailhog
   roles:
     - os-base
+    - python
     - java8
     - postgres
     - postgres-backup
