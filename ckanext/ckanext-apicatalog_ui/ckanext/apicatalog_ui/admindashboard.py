@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import ckan.lib.base as base
 import logging
 import ckan.logic as logic
@@ -8,7 +9,7 @@ import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
 from sqlalchemy import func, text, or_, and_
 from datetime import datetime, timedelta
-from utils import package_generator
+from .utils import package_generator
 
 get_action = logic.get_action
 check_access = logic.check_access
@@ -146,7 +147,7 @@ def fetch_recent_package_activity_list_html(
     packages = {r.id: None for r, uid in recent_revisions}
     packages_query = (
             model.Session.query(model.Package)
-            .filter(model.Package.id.in_(packages.keys())))
+            .filter(model.Package.id.in_(list(packages.keys()))))
     for package in packages_query:
         packages[package.id] = package
 
@@ -156,7 +157,7 @@ def fetch_recent_package_activity_list_html(
             model.Session.query(
                 model.PackageRevision.id.label('id'),
                 func.min(model.PackageRevision.metadata_modified).label('ts'))
-            .filter(model.PackageRevision.id.in_(packages.keys()))
+            .filter(model.PackageRevision.id.in_(list(packages.keys())))
             .group_by(model.PackageRevision.id))
     for package_id, created in packages_created_query:
         packages_created[package_id] = created
@@ -288,7 +289,7 @@ def fetch_packageless_organizations_and_changelog(context):
     # Produce a collective changelog for all organizations
     changelog = []
 
-    for oid, organization_timeline in organization_timelines.items():
+    for oid, organization_timeline in list(organization_timelines.items()):
         organization = organizations_by_id.get(oid)
 
         if not organization:
@@ -306,7 +307,7 @@ def fetch_packageless_organizations_and_changelog(context):
     # Collect currently packageless organizations
     packageless_organizations = []
 
-    for oid, organization_timeline in organization_timelines.items():
+    for oid, organization_timeline in list(organization_timelines.items()):
         latest_timestamp, latest_package_set = organization_timeline[-1]
 
         if len(latest_package_set) == 0:
