@@ -83,7 +83,7 @@ def service_permission_application_create(context, data_dict):
             data['service_code_list'] = service_code_list
 
             requests.post(api_url, data=json.dumps(data), timeout=5).raise_for_status()
-        except Exception, e:
+        except Exception as e:
             log.error('Error calling request application API: %s', e)
 
     elif delivery_method == 'email':

@@ -1,12 +1,13 @@
+from __future__ import absolute_import
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.apply_permissions_for_service.cli as cli
 from ckan.lib.plugins import DefaultTranslation
-from logic import action, auth
+from .logic import action, auth
 from flask import Blueprint
 
-import views
-import helpers
+from . import views
+from . import helpers
 
 
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):

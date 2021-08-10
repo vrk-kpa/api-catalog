@@ -1,3 +1,4 @@
+from builtins import str
 import uuid
 
 from ckan import model
@@ -12,7 +13,7 @@ log = logging.getLogger(__name__)
 Base = declarative_base()
 
 def make_uuid():
-    return unicode(uuid.uuid4())
+    return str(uuid.uuid4())
 
 class ApplyPermission(Base):
 

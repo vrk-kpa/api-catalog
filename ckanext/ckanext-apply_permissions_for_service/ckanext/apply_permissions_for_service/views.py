@@ -1,3 +1,4 @@
+from builtins import next
 import ckan.plugins.toolkit as toolkit
 from flask import Blueprint
 from logging import getLogger
