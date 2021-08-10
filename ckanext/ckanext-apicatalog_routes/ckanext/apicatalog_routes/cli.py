@@ -1,4 +1,7 @@
 # -*- coding: utf8 -*-
+from __future__ import division
+from __future__ import absolute_import
+from past.utils import old_div
 import six
 import ckan.plugins.toolkit as t
 import ckan.lib.mailer as mailer
@@ -55,8 +58,8 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
     status = t.get_action('harvester_status')({}, status_opts)
 
-    errored_runs = any(item.get('errors') != 0 for item in status.values())
-    running = (item.get('started') for item in status.values() if item.get('status') == 'running')
+    errored_runs = any(item.get('errors') != 0 for item in list(status.values()))
+    running = (item.get('started') for item in list(status.values()) if item.get('status') == 'running')
     stuck_runs = any(_elapsed_since(started).days > 1 for started in running)
 
     if not (errored_runs or stuck_runs) and not force:
@@ -91,7 +94,7 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
     msg = '%(site_title)s - Harvester summary %(today)s\n\n%(status)s' % {
             'site_title': site_title,
             'today': today,
-            'status': '\n'.join(status_string(title, values) for title, values in status.items())
+            'status': '\n'.join(status_string(title, values) for title, values in list(status.items()))
             }
 
     subject = '%s - Harvester summary %s' % (site_title, today)
@@ -180,9 +183,9 @@ def _pretty_time(t):
     elif delta.days < 30:
         return '%d days ago' % delta.days
     elif delta.days < 365:
-        return '%d months ago' % int(delta.days / 30)
+        return '%d months ago' % int(old_div(delta.days, 30))
     else:
-        return '%d years ago' % int(delta.days / 365)
+        return '%d years ago' % int(old_div(delta.days, 365))
 
 
 @click.group()
@@ -195,7 +198,7 @@ def apicatalog_database():
 def init(ctx):
     'Initializes database for apicatalog'
     import ckan.model as model
-    from db import init_table
+    from .db import init_table
     init_table(model.meta.engine)
 
 

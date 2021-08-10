@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from builtins import next
 from ckanext.apicatalog_routes import views
 import ckanext.apicatalog_routes.cli as cli
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
@@ -11,10 +13,10 @@ import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.lib.mailer as mailer
 
 import json
-from helpers import lang
-from db import UserForOrganization
+from .helpers import lang
+from .db import UserForOrganization
 import logging
-import auth
+from . import auth
 from flask import has_request_context
 
 abort = toolkit.abort
