@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import object
 import sys
-from urllib2 import urlopen, URLError, HTTPError, build_opener
-import urlparse as parse
+from urllib.request import urlopen, build_opener
+from urllib.error import URLError, HTTPError
+import urllib.parse as parse
 import re
 
 from ckanext.validate_links.model import define_tables, clear_tables, LinkValidationResult, LinkValidationReferrer
@@ -80,7 +85,7 @@ def crawl():
             referrers = find_referrers(url, site_map)
             url_errors[url] = {"referrers": referrers, "reason": str(e.reason)}
 
-    for url, errors in url_errors.iteritems():
+    for url, errors in url_errors.items():
         result = LinkValidationResult()
         result.type = u'error'
         result.url = url
@@ -99,13 +104,13 @@ def crawl():
     if url_errors:
         from ckan.model.user import User
         admin = User.get('admin')
-        mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.iteritems()))
+        mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.items()))
 
 
 def find_referrers(url, site_map):
     results = []
 
-    for referrer, item in site_map.items():
+    for referrer, item in list(site_map.items()):
         for child in item.children:
             if child == url:
 
@@ -119,7 +124,7 @@ def get_external_children(site_url, site_map, url_blacklist):
     site_host = strip_path(site_url)
     external = set()
 
-    for item in site_map.values():
+    for item in list(site_map.values()):
         for child in item.children:
             if not child.startswith(site_host) and child not in url_blacklist:
                 external.add(child)
@@ -127,7 +132,7 @@ def get_external_children(site_url, site_map, url_blacklist):
     return external
 
 
-class MapItem:
+class MapItem(object):
     def __init__(self):
         self.code = 200
         self.children = []
