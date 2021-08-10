@@ -24,6 +24,7 @@
     - solr6
     - redis
     - ssl
+    - apache
     - postfix
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
