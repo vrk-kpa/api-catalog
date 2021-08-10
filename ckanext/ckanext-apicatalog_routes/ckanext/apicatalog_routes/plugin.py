@@ -7,7 +7,7 @@ from ckanext.apicatalog_scheming.schema import create_user_to_organization_schem
 from ckan.plugins import toolkit
 import ckan.lib.plugins as lib_plugins
 import ckan.plugins as plugins
-from ckan.common import _, request, response
+from ckan.plugins.toolkit import _, request
 import ckan.model as model
 import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.lib.mailer as mailer
@@ -39,13 +39,6 @@ log = logging.getLogger(__name__)
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
 
-
-def set_repoze_user(user_id):
-    '''Set the repoze.who cookie to match a given user_id'''
-    if 'repoze.who.plugins' in request.environ:
-        rememberer = request.environ['repoze.who.plugins']['friendlyform']
-        identity = {'repoze.who.userid': user_id}
-        response.headerlist += rememberer.remember(request.environ, identity)
 
 
 class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermissionLabels):
@@ -298,12 +291,12 @@ def create_organization_users(context, data_dict):
     context.get('session', model.Session).commit()
     return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous, 'duplicate': duplicate}}
 
+# TODO: If some asks for /data_exchange_layer_user_organizations url, convert this to action
+# class ExtraInformationController(toolkit.BaseController):
 
-class ExtraInformationController(toolkit.BaseController):
-
-    def data_exchange_layer_user_organizations(self):
-        context = {}
-        all_organizations = get_action('organization_list')(context, {"all_fields": True})
-        packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
-        response.headers['content-type'] = 'application/json'
-        return json.dumps(packageless_organizations)
+#    def data_exchange_layer_user_organizations(self):
+#        context = {}
+#        all_organizations = get_action('organization_list')(context, {"all_fields": True})
+#        packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
+#        response.headers['content-type'] = 'application/json'
+#        return json.dumps(packageless_organizations)
