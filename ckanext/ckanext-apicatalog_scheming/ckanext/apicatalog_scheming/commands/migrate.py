@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+from builtins import range
+from builtins import object
 import sys
 import itertools
 import json
@@ -161,7 +164,7 @@ def breadth_first_search(graph, start, end):
     return results
 
 
-class Migrate:
+class Migrate(object):
     def __init__(self):
         self.callbacks = {}
         self.graph = {}

@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from builtins import next
 import uuid
 
 import ckan.plugins as plugins
@@ -13,7 +17,7 @@ try:
 except ImportError:
     from sqlalchemy.util import OrderedDict
 
-import validators
+from . import validators
 import logging
 
 
@@ -185,7 +189,7 @@ def create_vocabulary(name, defer=False):
         if defer:
             context['defer_commit'] = True
         return toolkit.get_action('vocabulary_create')(context, data)
-    except Exception, e:
+    except Exception as e:
         log.error('%s' % e)
 
 

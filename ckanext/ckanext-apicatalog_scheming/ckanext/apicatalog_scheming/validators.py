@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+from past.builtins import basestring
 import re
 from ckan.common import _
 import ckan.lib.navl.dictization_functions as df
@@ -6,7 +8,7 @@ from ckan.common import config
 import ckan.plugins.toolkit as toolkit
 import ckan.logic.validators as validators
 import json
-import plugin
+from . import plugin
 
 
 missing = toolkit.missing
@@ -282,7 +284,7 @@ def fluent_list(field, schema):
         result = {lang: lang_value
                         if isinstance(lang_value, list)
                         else [item.strip() for item in lang_value.split(',')]
-                  for lang, lang_value in value.items()}
+                  for lang, lang_value in list(value.items())}
 
         data[key] = json.dumps(result)
 
@@ -298,7 +300,7 @@ def fluent_list_output(value):
         return value
     try:
         result = json.loads(value)
-        return {k: v if isinstance(v, list) else [v] for k, v in result.items()}
+        return {k: v if isinstance(v, list) else [v] for k, v in list(result.items())}
 
     except ValueError:
         # plain string in the db, return as is so it can be migrated
