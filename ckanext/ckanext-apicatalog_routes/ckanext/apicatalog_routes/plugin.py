@@ -1,21 +1,19 @@
-from ckanext.apicatalog_routes import views
-import ckanext.apicatalog_routes.cli as cli
+import json
+import logging
+from flask import has_request_context
+
+from ckanext.apicatalog_routes import views, cli, auth, helpers, db
+
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
 
+from ckan import plugins, model
 from ckan.plugins import toolkit
-import ckan.lib.plugins as lib_plugins
-import ckan.plugins as plugins
-from ckan.common import _, request, response
-import ckan.model as model
-import ckan.lib.navl.dictization_functions as dictization_functions
+from ckan.plugins.toolkit import _, request, response
+from ckan.lib.plugins import DefaultPermissionLabels
+
+from ckan.lib.navl.dictization_functions import validate as _validate
 import ckan.lib.mailer as mailer
 
-import json
-from helpers import lang
-from db import UserForOrganization
-import logging
-import auth
-from flask import has_request_context
 
 abort = toolkit.abort
 render = toolkit.render
@@ -24,12 +22,7 @@ NotAuthorized = toolkit.NotAuthorized
 ObjectNotFound = toolkit.ObjectNotFound
 get_action = toolkit.get_action
 
-unflatten = dictization_functions.unflatten
-DataError = dictization_functions.DataError
-
 ValidationError = toolkit.ValidationError
-
-_validate = dictization_functions.validate
 
 log = logging.getLogger(__name__)
 
@@ -46,7 +39,7 @@ def set_repoze_user(user_id):
         response.headerlist += rememberer.remember(request.environ, identity)
 
 
-class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermissionLabels):
+class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IPermissionLabels)
@@ -119,8 +112,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermis
     def get_user_dataset_labels(self, user_obj):
 
         labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
+        readonly_users = toolkit.aslist(toolkit.config.get('ckanext.apicatalog_routes.readonly_users', ''))
 
-        if user_obj and user_obj.name in toolkit.config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+        if user_obj and user_obj.name in readonly_users:
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
         return labels
@@ -200,7 +194,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, lib_plugins.DefaultPermis
 
     def get_helpers(self):
         return {
-            "lang": lang
+            "lang": helpers.lang
         }
 
     # IClick
@@ -228,7 +222,10 @@ def create_user_to_organization(context, data_dict):
         session.rollback()
         raise ValidationError(errors)
 
-    created_user = UserForOrganization.create(data['fullname'], data['email'], data['business_id'], data['organization_name'])
+    created_user = db.UserForOrganization.create(data['fullname'],
+                                                 data['email'],
+                                                 data['business_id'],
+                                                 data['organization_name'])
 
     return {
         "msg": _("User {name} stored in database.").format(name=created_user.fullname)
@@ -238,7 +235,7 @@ def create_user_to_organization(context, data_dict):
 def create_organization_users(context, data_dict):
     toolkit.check_access('create_organization_users', context)
     retry = data_dict.get('retry', False)
-    pending_user_applications = UserForOrganization.get_pending(include_failed=retry)
+    pending_user_applications = db.UserForOrganization.get_pending(include_failed=retry)
 
     organizations = toolkit.get_action('organization_list')(context, {'all_fields': True, 'include_extras': True})
     organizations_by_membercode = {}
