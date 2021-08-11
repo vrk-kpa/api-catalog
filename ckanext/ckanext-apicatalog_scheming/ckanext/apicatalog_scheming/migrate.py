@@ -1,4 +1,13 @@
+from __future__ import print_function
+
+import itertools
+from builtins import range
+from builtins import object
 from collections import deque
+from pprint import pformat
+from ckan.plugins import toolkit
+
+get_action = toolkit.get_action
 
 
 def breadth_first_search(graph, start, end):
@@ -18,7 +27,7 @@ def breadth_first_search(graph, start, end):
     return results
 
 
-class Migrate:
+class Migrate(object):
     def __init__(self):
         self.callbacks = {}
         self.graph = {}

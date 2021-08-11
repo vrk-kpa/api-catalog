@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import logging
 import ckan.logic as logic
 import ckan.model as model
@@ -5,7 +6,7 @@ import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
 from sqlalchemy import func, text, or_, and_
 from datetime import datetime, timedelta
-from utils import package_generator
+from .utils import package_generator
 
 import flask
 from ckan.plugins import toolkit
@@ -35,7 +36,8 @@ def read():
         statistics = fetch_package_statistics()
 
         # Find packageless organizations and produce a changelog
-        (packageless_organizations, packageless_organizations_changelog) = fetch_packageless_organizations_and_changelog(context)
+        (packageless_organizations, packageless_organizations_changelog) = \
+            fetch_packageless_organizations_and_changelog(context)
 
         # Generate activity stream snippet
         # FIXME: Disabled because fetch_recent_package_activity_list_html is not ported to CKAN 2.9
@@ -156,7 +158,7 @@ def fetch_recent_package_activity_list_html(
     packages = {r.id: None for r, uid in recent_revisions}
     packages_query = (
             model.Session.query(model.Package)
-            .filter(model.Package.id.in_(packages.keys())))
+            .filter(model.Package.id.in_(list(packages.keys()))))
     for package in packages_query:
         packages[package.id] = package
 
@@ -166,7 +168,7 @@ def fetch_recent_package_activity_list_html(
             model.Session.query(
                 model.PackageRevision.id.label('id'),
                 func.min(model.PackageRevision.metadata_modified).label('ts'))
-            .filter(model.PackageRevision.id.in_(packages.keys()))
+            .filter(model.PackageRevision.id.in_(list(packages.keys())))
             .group_by(model.PackageRevision.id))
     for package_id, created in packages_created_query:
         packages_created[package_id] = created
@@ -248,7 +250,8 @@ def fetch_packageless_organizations_and_changelog(context):
                      .all())
 
     # Query package new/delete activity events
-    package_new_delete_activities = (model.Session.query(model.Activity.timestamp, model.Activity.object_id, model.Activity.activity_type)
+    package_new_delete_activities = (model.Session.query(model.Activity.timestamp,
+                                                         model.Activity.object_id, model.Activity.activity_type)
                                      .filter(or_(model.Activity.activity_type == 'new package',
                                                  model.Activity.activity_type == 'deleted package'))
                                      .order_by(model.Activity.timestamp)
@@ -298,7 +301,7 @@ def fetch_packageless_organizations_and_changelog(context):
     # Produce a collective changelog for all organizations
     changelog = []
 
-    for oid, organization_timeline in organization_timelines.items():
+    for oid, organization_timeline in list(organization_timelines.items()):
         organization = organizations_by_id.get(oid)
 
         if not organization:
@@ -316,7 +319,7 @@ def fetch_packageless_organizations_and_changelog(context):
     # Collect currently packageless organizations
     packageless_organizations = []
 
-    for oid, organization_timeline in organization_timelines.items():
+    for oid, organization_timeline in list(organization_timelines.items()):
         latest_timestamp, latest_package_set = organization_timeline[-1]
 
         if len(latest_package_set) == 0:

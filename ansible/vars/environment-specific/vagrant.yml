@@ -111,7 +111,6 @@ ckan_plugins:
   - apicatalog_admin_dashboard
   - apicatalog_routes
   - contact
-  - apicatalog_feed
   - apicatalog_harvesterstatus
   - harvest
   - xroad_harvester

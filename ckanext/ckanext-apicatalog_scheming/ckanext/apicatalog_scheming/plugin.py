@@ -1,8 +1,10 @@
-import uuid
+from __future__ import absolute_import
+from future import standard_library
+
+from builtins import next
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-import ckan.lib.navl.dictization_functions as dictization_functions
 from ckanext.scheming.helpers import lang
 from ckanext.apicatalog_scheming import cli
 import json
@@ -12,9 +14,10 @@ try:
 except ImportError:
     from sqlalchemy.util import OrderedDict
 
-import validators
+from . import validators
 import logging
 
+standard_library.install_aliases()
 
 log = logging.getLogger(__name__)
 _ = toolkit._
@@ -29,7 +32,6 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IFacets, inherit=True)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IClick)
-
 
     # IConfigurer
 
@@ -62,7 +64,6 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
                 'add_locale_to_source': add_locale_to_source,
                 'get_field_from_schema': get_field_from_schema}
 
-
     # IFacets
 
     def dataset_facets(self, facets_dict, package_type):
@@ -74,7 +75,6 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             ('res_format', _('Formats'))
             ])
         return facets_dict
-
 
     # IPackageController
 
@@ -89,13 +89,9 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
                 continue
             prop_value = json.loads(prop_json)
             # Add for each language
-            for lang in languages:
-                if prop_value.get(lang):
-                    pkg_dict['vocab_%s_%s' % (prop_key, lang)] = [tag for tag in prop_value[lang]]
-
-        if 'date_released' in pkg_dict and ISO_DATETIME_FORMAT.match(pkg_dict['date_released']):
-            pkg_dict['metadata_created'] = "%sZ" % pkg_dict['date_released']
-
+            for language in languages:
+                if prop_value.get(language):
+                    pkg_dict['vocab_%s_%s' % (prop_key, language)] = [tag for tag in prop_value[language]]
 
         if pkg_dict.get('num_resources', 0) > 0:
             pkg_dict['services'] = "Subsystems with services"
@@ -116,6 +112,7 @@ def scheming_field_only_default_required(field, lang):
             and lang == toolkit.config.get('ckan.locale_default', 'en')):
         return True
     return False
+
 
 def add_locale_to_source(kwargs, locale):
     copy = kwargs.copy()
@@ -150,7 +147,7 @@ def scheming_language_text_or_empty(text, prefer_lang=None):
             except KeyError:
                 return ''
 
-    t = gettext(text)
+    t = _(text)
     if isinstance(t, str):
         return t.decode('utf-8')
     return t
@@ -163,8 +160,10 @@ def get_lang_prefix():
 
     return language
 
+
 def call_toolkit_function(fn, args, kwargs):
     return getattr(toolkit, fn)(*args, **kwargs)
+
 
 def create_vocabulary(name, defer=False):
     user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
@@ -182,7 +181,7 @@ def create_vocabulary(name, defer=False):
         if defer:
             context['defer_commit'] = True
         return toolkit.get_action('vocabulary_create')(context, data)
-    except Exception, e:
+    except Exception as e:
         log.error('%s' % e)
 
 
@@ -203,6 +202,7 @@ def create_tag_to_vocabulary(tag, vocab, defer=False):
         toolkit.get_action('tag_create')(context, data)
     except toolkit.ValidationError:
         pass
+
 
 def get_field_from_schema(schema, field_name):
 

@@ -1,10 +1,10 @@
+from builtins import range
 import random
 import string
 
 import ckan.plugins as p
 
 from flask import Blueprint
-from flask.views import MethodView
 from ckan.model.user import User
 from ckan.lib import mailer
 from logging import getLogger
@@ -70,7 +70,7 @@ def read():
         else:
             try:
                 password = _generate_random_password()
-                user_dict = p.toolkit.get_action('user_create')(context, {
+                p.toolkit.get_action('user_create')(context, {
                     'name': name, 'email': email, 'password': password
                     })
                 user = User.get(name)
@@ -82,18 +82,18 @@ def read():
                 error = _('Error sending password reset link to address {}.').format(email)
                 errors['email'] = error
                 log.error(error)
-            except Exception as e:
+            except Exception:
                 # We may have managed to create a user, try deleting it just in case
                 try:
                     p.toolkit.get_action('user_delete')(context, {'id': name})
-                except:
+                except Exception:
                     pass
                 error = _('Error creating user {} <{}>.').format(name, email)
                 errors[''] = error
                 log.error(error)
 
         extra_vars = {
-                'errors': errors ,
+                'errors': errors,
                 'error_summary': error_summary,
                 'success': not errors,
                 'name': name,

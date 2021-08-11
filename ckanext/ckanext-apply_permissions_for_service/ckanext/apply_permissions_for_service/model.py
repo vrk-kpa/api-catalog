@@ -1,3 +1,4 @@
+from builtins import str
 import uuid
 
 from ckan import model
@@ -11,8 +12,10 @@ log = logging.getLogger(__name__)
 
 Base = declarative_base()
 
+
 def make_uuid():
-    return unicode(uuid.uuid4())
+    return str(uuid.uuid4())
+
 
 class ApplyPermission(Base):
 
@@ -56,11 +59,15 @@ class ApplyPermission(Base):
         context = {'model': model}
         application_dict = dictization.table_dictize(self, context)
 
-        application_dict['requester_subsystem'] = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': application_dict['subsystem_id']})
+        application_dict['requester_subsystem'] = toolkit.get_action('package_show')(
+            {'ignore_auth': True}, {'id': application_dict['subsystem_id']})
 
-        application_dict['subsystem'] = toolkit.get_action('package_show')({'ignore_auth': True}, {'id': application_dict['subsystem_code']})
-        application_dict['member'] = toolkit.get_action('organization_show')({'ignore_auth': True}, {'id': application_dict['subsystem']['owner_org']})
-        application_dict['services'] = [toolkit.get_action('resource_show')({'ignore_auth': True}, {'id': service}) for service in application_dict['service_code_list']]
+        application_dict['subsystem'] = toolkit.get_action('package_show')(
+            {'ignore_auth': True}, {'id': application_dict['subsystem_code']})
+        application_dict['member'] = toolkit.get_action('organization_show')(
+            {'ignore_auth': True}, {'id': application_dict['subsystem']['owner_org']})
+        application_dict['services'] = [toolkit.get_action('resource_show')(
+            {'ignore_auth': True}, {'id': service}) for service in application_dict['service_code_list']]
 
         return application_dict
 

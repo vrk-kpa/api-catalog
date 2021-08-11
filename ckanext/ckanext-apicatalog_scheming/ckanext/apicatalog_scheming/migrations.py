@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
 from pprint import pformat
 import itertools
 import json
@@ -80,6 +83,7 @@ def migrate_1_54_1_to_1_55_0(ctx, config, dryrun):
 #
 # Utilities
 #
+
 
 def apply_patches(package_patches=[], resource_patches=[], organization_patches=[], dryrun=False):
     if not (package_patches or resource_patches or organization_patches):

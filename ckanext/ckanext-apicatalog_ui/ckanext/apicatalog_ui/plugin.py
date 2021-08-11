@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from future import standard_library
+from builtins import str
+from builtins import range
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from paste.deploy.converters import asbool
@@ -6,7 +10,9 @@ from ckan import model
 import ckan.logic as logic
 import cgi
 import random
-import urllib
+import urllib.request
+import urllib.parse
+import urllib.error
 import ckan.lib.i18n as i18n
 import logging
 import itertools
@@ -18,8 +24,10 @@ from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
 from ckan.lib.plugins import DefaultTranslation
 
-import admindashboard
-from utils import package_generator
+from .utils import package_generator
+import ckanext.apicatalog_ui.admindashboard as admindashboard
+
+standard_library.install_aliases()
 
 NotFound = logic.NotFound
 config = toolkit.config
@@ -192,7 +200,7 @@ def get_homepage_datasets(count=1):
 def parse_datetime(t):
     try:
         return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
-    except Exception as e:
+    except Exception:
         try:
             return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
         except Exception as e:
@@ -227,14 +235,14 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
                     log.debug('Filtering with tags: %s', repr(tags))
                     news_items = [n for n in news_items if any(t.get('slug') in tags for t in n.get('tags', []))]
 
-                news = [{'title': {tl: t for tl, t in item.get('title', {}).items() if t != 'undefined'},
-                         'content': {tl: t for tl, t in item.get('content', {}).items() if t != 'undefined'},
+                news = [{'title': {tl: t for tl, t in list(item.get('title', {}).items()) if t != 'undefined'},
+                         'content': {tl: t for tl, t in list(item.get('content', {}).items()) if t != 'undefined'},
                          'published': parse_datetime(item.get('publishedAt')),
                          'brief': item.get('brief', {}),
                          'image': '',
                          'image_alt': '',
                          'url': {lang: news_url_template.format(**{'id': item.get('id'), 'language': lang})
-                                 for lang in item.get('title').keys()}}
+                                 for lang in list(item.get('title').keys())}}
                         for item in news_items]
                 news.sort(key=lambda x: x['published'], reverse=True)
 
@@ -274,7 +282,7 @@ def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
 
 
 def unquote_url(url):
-    return urllib.unquote(url)
+    return urllib.parse.unquote(url)
 
 
 def get_xroad_organizations():
@@ -409,8 +417,8 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
                     'token_auth': piwik_token_auth}
             stats = requests.get('{}/index.php'.format(piwik_site_url),
                                  verify=piwik_ssl_verify, params=params).json()
-            visitor_count = sum(iter(stats.values()))
-        except Exception as e:
+            visitor_count = sum(iter(list(stats.values())))
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             visitor_count = 0 if VISITOR_CACHE is None else VISITOR_CACHE[1]
 
@@ -472,7 +480,7 @@ def build_pages_nav_main(*args):
 
     for page in pages_list:
         type_ = 'blog' if page['page_type'] == 'blog' else 'pages'
-        name = urllib.quote(page['name'].encode('utf-8')).decode('utf-8')
+        name = urllib.parse.quote(page['name'])
         if page.get('title_' + language):
             title = cgi.escape(page['title' + '_' + language])
         else:
@@ -518,7 +526,7 @@ def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
                 }
             }
 
-        except Exception as e:
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             if XROAD_STATS_CACHE is None:
                 stats_collection = {}
@@ -608,8 +616,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # IBlueprint
 
     def get_blueprint(self):
-        from views.useradd import useradd
-        from views import xroad_statistics
+        from .views.useradd import useradd
+        from .views import xroad_statistics
         return xroad_statistics.get_blueprints() + [useradd]
 
     # IFacets

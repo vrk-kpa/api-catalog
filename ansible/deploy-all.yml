@@ -18,12 +18,14 @@
       tags: mailhog
   roles:
     - os-base
+    - python
     - java8
     - postgres
     - postgres-backup
     - solr6
     - redis
     - ssl
+    - apache
     - postfix
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }

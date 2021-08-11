@@ -8,6 +8,7 @@ from ckanext.apicatalog_ui.plugin import parse_datetime
 import logging
 log = logging.getLogger(__name__)
 
+
 def get_announcements(count=3, offset=0):
 
     organization_show = get_action('organization_show')
@@ -33,7 +34,7 @@ def get_announcements(count=3, offset=0):
                 data['organization'] = organization_show({}, {'id': organization_id})
 
             elif activity_type in ('new resource', 'changed resource', 'deleted resource'):
-                resource_id = activity.get('object_id')
+                activity.get('object_id')
                 resource = activity.get('data', {}).get('resource', {})
                 package = package_show({}, {'id': resource.get('package_id')})
                 organization = organization_show({}, {'id': package.get('owner_org')})
@@ -60,11 +61,15 @@ def get_announcements(count=3, offset=0):
 
         while len(collected_activities) <= activity_count:
             try:
-                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest', 'offset': activity_offset, 'limit': limit})
+                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'harvest',
+                                                                                    'offset': activity_offset,
+                                                                                    'limit': limit})
             except NotFound:
-                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default', 'offset': activity_offset, 'limit': limit})
+                harvest_activity = get_action('user_activity_list')(admin_context, {'id': 'default',
+                                                                                    'offset': activity_offset,
+                                                                                    'limit': limit})
 
-            if len(harvest_activity) is 0:
+            if len(harvest_activity) == 0:
                 log.info("No activities left, stopping search..")
                 break
 
@@ -83,6 +88,7 @@ def get_announcements(count=3, offset=0):
     announcements = list(itertools.islice(all_announcements, count))
 
     return announcements
+
 
 # Override core helper to map en_GB to en
 # TODO: Convert to chained helper once upgraded to ckan 2.9
