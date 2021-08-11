@@ -1,60 +1,63 @@
-import ckan.lib.base as base
 import logging
 import ckan.logic as logic
 import ckan.model as model
-import ckan.lib.activity_streams as activity_streams
-from ckan.common import c
 import ckan.lib.dictization.model_dictize as model_dictize
 import ckan.lib.dictization as dictization
 from sqlalchemy import func, text, or_, and_
 from datetime import datetime, timedelta
 from utils import package_generator
 
+import flask
+from ckan.plugins import toolkit
+
 get_action = logic.get_action
 check_access = logic.check_access
 NotAuthorized = logic.NotAuthorized
 log = logging.getLogger(__name__)
 
+admin_dashboard = flask.Blueprint('admin_dashboard', __name__, url_prefix='/ckan-admin')
 
-class AdminDashboardController(base.BaseController):
-    def read(self):
-        context = {'model': model, 'user': c.user, 'auth_user_obj': c.userobj}
-        try:
-            check_access('admin_dashboard', context, {})
 
-            # Fetch invalid resources
-            invalid_resources = fetch_invalid_resources()
+def get_blueprint():
+    return [admin_dashboard]
 
-            # Query package statistics
-            statistics = fetch_package_statistics()
 
-            # Find packageless organizations and produce a changelog
-            (packageless_organizations, packageless_organizations_changelog) = fetch_packageless_organizations_and_changelog(context)
+@admin_dashboard.route('/admin_dashboard')
+def read():
+    context = {'user': toolkit.g.user, 'auth_user_obj': toolkit.g.userobj}
+    try:
+        toolkit.check_access('admin_dashboard', context, {})
 
-            # Generate activity stream snippet
-            package_activity_html = fetch_recent_package_activity_list_html(
-                    context, user_not='harvest')
-            harvest_activity_html = fetch_recent_package_activity_list_html(
-                    context, user='harvest')
-            privatized_activity_html = fetch_recent_package_activity_list_html(
-                    context, only_privatized=True)
-            interesting_activity_html = fetch_recent_package_activity_list_html(
-                    context, only_resourceful=True)
+        # Fetch invalid resources
+        invalid_resources = fetch_invalid_resources()
 
-            # Render template
-            vars = {'invalid_resources': invalid_resources,
-                    'package_activity_html': package_activity_html,
-                    'harvest_activity_html': harvest_activity_html,
-                    'privatized_activity_html': privatized_activity_html,
-                    'interesting_activity_html': interesting_activity_html,
-                    'packageless_organizations': packageless_organizations,
-                    'packageless_organizations_changelog': packageless_organizations_changelog,
-                    'stats': statistics
-                    }
-            template = 'admin/dashboard.html'
-            return base.render(template, extra_vars=vars)
-        except NotAuthorized:
-            base.abort(403)
+        # Query package statistics
+        statistics = fetch_package_statistics()
+
+        # Find packageless organizations and produce a changelog
+        (packageless_organizations, packageless_organizations_changelog) = fetch_packageless_organizations_and_changelog(context)
+
+        # Generate activity stream snippet
+        # FIXME: Disabled because fetch_recent_package_activity_list_html is not ported to CKAN 2.9
+        # package_activity_html = fetch_recent_package_activity_list_html(context, user_not='harvest')
+        # harvest_activity_html = fetch_recent_package_activity_list_html(context, user='harvest')
+        # privatized_activity_html = fetch_recent_package_activity_list_html(context, only_privatized=True)
+        # interesting_activity_html = fetch_recent_package_activity_list_html(context, only_resourceful=True)
+
+        # Render template
+        vars = {'invalid_resources': invalid_resources,
+                # 'package_activity_html': package_activity_html,
+                # 'harvest_activity_html': harvest_activity_html,
+                # 'privatized_activity_html': privatized_activity_html,
+                # 'interesting_activity_html': interesting_activity_html,
+                'packageless_organizations': packageless_organizations,
+                'packageless_organizations_changelog': packageless_organizations_changelog,
+                'stats': statistics
+                }
+        template = 'admin/dashboard.html'
+        return toolkit.render(template, extra_vars=vars)
+    except toolkit.NotAuthorized:
+        toolkit.abort(403)
 
 
 def fetch_invalid_resources():
@@ -90,9 +93,9 @@ def fetch_package_statistics():
     def new_packages_since(dt):
         created = (
                 model.Session.query(
-                    model.PackageRevision.id.label('id'),
-                    func.min(model.PackageRevision.metadata_modified).label('ts'))
-                .group_by(model.PackageRevision.id)
+                    model.Package.id.label('id'),
+                    model.Package.metadata_created.label('ts'))
+                .filter(model.Package.type == 'dataset')
                 .subquery())
 
         return (model.Session.query(func.count(created.c.id))
@@ -114,6 +117,13 @@ def fetch_package_statistics():
 def fetch_recent_package_activity_list_html(
         context, user=None, user_not=None, only_privatized=False,
         only_resourceful=False, limit=30):
+
+    # FIXME: disable function pending porting to CKAN 2.9
+    raise Exception('fetch_recent_package_activity_list_html is not yet ported for CKAN 2.9')
+
+    # FIXME: activity_streams was removed in CKAN 2.9, hack to "fix" references until porting
+    activity_streams = None
+
     # Fetch recent revisions, store as list oredered by time
     recent_revisions_query = (
             model.Session.query(model.PackageRevision, model.User.id)
@@ -222,8 +232,7 @@ def fetch_recent_package_activity_list_html(
 
     # Render activity list snippet
     changed_packages = model_dictize.activity_list_dictize(activity_objects, context)
-    return activity_streams.activity_list_to_html(
-            context, changed_packages, {'offset': 0})
+    return activity_streams.activity_list_to_html(context, changed_packages, {'offset': 0})
 
 
 def fetch_packageless_organizations_and_changelog(context):
@@ -232,17 +241,18 @@ def fetch_packageless_organizations_and_changelog(context):
 
     # Query organization data
     organizations = (model.Session.query(model.Group.id, model.Group.created, model.Group.title, model.GroupExtra.value)
-            .join(model.GroupExtra, and_(model.GroupExtra.group_id == model.Group.id,
-                                         model.GroupExtra.key == 'title_translated',
-                                         model.GroupExtra.active == True), isouter=True)
-            .filter(model.Group.type == 'organization')
-            .all())
+                     .join(model.GroupExtra, and_(model.GroupExtra.group_id == model.Group.id,
+                                                  model.GroupExtra.key == 'title_translated',
+                                                  model.GroupExtra.active == True), isouter=True) # noqa
+                     .filter(model.Group.type == 'organization')
+                     .all())
 
     # Query package new/delete activity events
     package_new_delete_activities = (model.Session.query(model.Activity.timestamp, model.Activity.object_id, model.Activity.activity_type)
-            .filter(or_(model.Activity.activity_type == 'new package', model.Activity.activity_type == 'deleted package'))
-            .order_by(model.Activity.timestamp)
-            .all())
+                                     .filter(or_(model.Activity.activity_type == 'new package',
+                                                 model.Activity.activity_type == 'deleted package'))
+                                     .order_by(model.Activity.timestamp)
+                                     .all())
 
     # Define organization objects required for UI
     organizations_by_id = {oid: {'id': oid, 'created': created, 'title': title, 'title_translated': title_translated}

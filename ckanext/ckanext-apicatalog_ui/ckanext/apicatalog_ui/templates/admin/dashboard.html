@@ -10,12 +10,14 @@
       <p>For guidance on using sysadmin features, see the CKAN  <a href="{{ docs_url }}" target="_blank">sysadmin guide</a></p>
     {% endtrans %}
 
+    {# FIXME: Activity streams not ported to CKAN 2.9 yet
     <div class="activity" style="margin-top: 2em">
       <span class="item changed-package-privacy">
         <i class="icon fa fa-sitemap"></i>
         <p>{% trans %}Package changes highlighted with pink color signify changes to public visibility.{% endtrans %}</p>
       </span>
     </div>
+    #}
   </div>
 </div>
 <h1>{{ _('Dashboard') }}</h1>
@@ -65,6 +67,7 @@
             </section>
           </div>
         </div>
+        {# FIXME: Not ported to CKAN 2.9 yet
         <div class="module">
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
@@ -89,6 +92,7 @@
             </section>
           </div>
         </div>
+        #}
       </div>
       <div class="col-sm-6 col-md-6">
         <div class="module">
@@ -198,6 +202,7 @@
             </section>
           </div>
         </div>
+        {# FIXME: Not ported to CKAN 2.9 yet
         <div class="module">
           <div class="box">
             <section class="group-list module module-narrow module-shallow">
@@ -222,6 +227,7 @@
             </section>
           </div>
         </div>
+        #}
       </div>
     </div>
   </div>
