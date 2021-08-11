@@ -24,7 +24,7 @@ import ckan.lib.helpers as h
 from ckan.lib.plugins import DefaultTranslation
 
 from .utils import package_generator
-import admindashboard
+import ckanext.apicatalog_ui.admindashboard as admindashboard
 
 NotFound = logic.NotFound
 config = toolkit.config
@@ -232,14 +232,14 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
                     log.debug('Filtering with tags: %s', repr(tags))
                     news_items = [n for n in news_items if any(t.get('slug') in tags for t in n.get('tags', []))]
 
-                news = [{'title': {tl: t for tl, t in item.get('title', {}).items() if t != 'undefined'},
-                         'content': {tl: t for tl, t in item.get('content', {}).items() if t != 'undefined'},
+                news = [{'title': {tl: t for tl, t in list(item.get('title', {}).items()) if t != 'undefined'},
+                         'content': {tl: t for tl, t in list(item.get('content', {}).items()) if t != 'undefined'},
                          'published': parse_datetime(item.get('publishedAt')),
                          'brief': item.get('brief', {}),
                          'image': '',
                          'image_alt': '',
                          'url': {lang: news_url_template.format(**{'id': item.get('id'), 'language': lang})
-                                 for lang in item.get('title').keys()}}
+                                 for lang in list(item.get('title').keys())}}
                         for item in news_items]
                 news.sort(key=lambda x: x['published'], reverse=True)
 
