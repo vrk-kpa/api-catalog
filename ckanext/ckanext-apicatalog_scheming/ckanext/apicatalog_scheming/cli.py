@@ -1,3 +1,5 @@
+from __future__ import print_function
+from __future__ import absolute_import
 import glob
 
 import os
@@ -9,8 +11,8 @@ import re
 from ckanext.apicatalog_scheming.translations import facet_translations
 
 from ckan.plugins.toolkit import get_action, config
-from migrate import Migrate, plan_to_path
-from migrations import migrations
+from .migrate import Migrate, plan_to_path
+from .migrations import migrations
 
 
 def get_commands():
