@@ -464,7 +464,7 @@ def build_pages_nav_main(*args):
 
     for page in pages_list:
         type_ = 'blog' if page['page_type'] == 'blog' else 'pages'
-        name = urllib.parse.quote(page['name'].encode('utf-8')).decode('utf-8')
+        name = urllib.parse.quote(page['name'])
         if page.get('title_' + language):
             title = cgi.escape(page['title' + '_' + language])
         else:
