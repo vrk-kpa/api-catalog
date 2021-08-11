@@ -1,9 +1,7 @@
 from __future__ import absolute_import
 from builtins import next
 from ckanext.apicatalog_routes import views, cli, auth, helpers, db
-import ckanext.apicatalog_routes.cli as cli
 
-import json
 from flask import has_request_context
 
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
@@ -11,22 +9,14 @@ from ckanext.apicatalog_scheming.schema import create_user_to_organization_schem
 from ckan import plugins, model
 from ckan.plugins import toolkit
 
-import ckan.lib.plugins as lib_plugins
-import ckan.plugins as plugins
-import ckan.model as model
 
-import json
-from .helpers import lang
-from .db import UserForOrganization
 import logging
-from . import auth
 
-from ckan.plugins.toolkit import _, request
+from ckan.plugins.toolkit import _
 from ckan.lib.plugins import DefaultPermissionLabels
 
 from ckan.lib.navl.dictization_functions import validate as _validate
 import ckan.lib.mailer as mailer
-
 
 
 abort = toolkit.abort
@@ -43,7 +33,6 @@ log = logging.getLogger(__name__)
 
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
-
 
 
 class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
@@ -270,7 +259,8 @@ def create_organization_users(context, data_dict):
             invalid.append(application.business_id)
             continue
         elif len(matching_organizations) > 1:
-            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application', application.business_id)
+            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application',
+                     application.business_id)
             application.mark_ambiguous()
             ambiguous.append(application.business_id)
             continue
@@ -298,7 +288,8 @@ def create_organization_users(context, data_dict):
         created.append(user.get('name'))
 
     context.get('session', model.Session).commit()
-    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous, 'duplicate': duplicate}}
+    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
+                                        'duplicate': duplicate}}
 
 # TODO: If some asks for /data_exchange_layer_user_organizations url, convert this to action
 # class ExtraInformationController(toolkit.BaseController):

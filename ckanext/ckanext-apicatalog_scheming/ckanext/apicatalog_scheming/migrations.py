@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
-from builtins import range
-from builtins import object
-import sys
 from pprint import pformat
 import itertools
 import json

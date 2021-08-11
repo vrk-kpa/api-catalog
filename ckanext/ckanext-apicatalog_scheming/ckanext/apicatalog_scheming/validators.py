@@ -78,7 +78,6 @@ def only_default_lang_required(field, schema):
                     errors[key].append(_('Invalid encoding for JSON string'))
                     return
 
-            from pprint import pformat
             if not isinstance(value, dict):
                 errors[key].append(_('expecting JSON object'))
                 return
@@ -100,6 +99,7 @@ def only_default_lang_required(field, schema):
 @scheming_validator
 def keep_old_value_if_missing(field, schema):
     from ckan.lib.navl.dictization_functions import missing, flatten_dict
+
     def validator(key, data, errors, context):
 
         if 'package' not in context:
@@ -113,8 +113,10 @@ def keep_old_value_if_missing(field, schema):
 
     return validator
 
+
 def default_value(default):
     from ckan.lib.navl.dictization_functions import missing
+
     def converter(value, context):
         return value if value is not missing else default
     return converter
@@ -126,16 +128,16 @@ def business_id_validator(value):
         raise toolkit.Invalid(_("Business id is incorrect format."))
 
     business_id = matches.group(1)
-    if len(business_id) is 6:
+    if len(business_id) == 6:
         business_id = "0" + business_id
 
     verification_number = (7 * int(business_id[0]) +
-                          9 * int(business_id[1]) +
-                          10 * int(business_id[2]) +
-                          5 * int(business_id[3]) +
-                          8 * int(business_id[4]) +
-                          4 * int(business_id[5]) +
-                          2 * int(business_id[6])) % 11
+                           9 * int(business_id[1]) +
+                           10 * int(business_id[2]) +
+                           5 * int(business_id[3]) +
+                           8 * int(business_id[4]) +
+                           4 * int(business_id[5]) +
+                           2 * int(business_id[6])) % 11
 
     if verification_number > 1:
         verification_number = 11 - verification_number
@@ -149,6 +151,7 @@ def business_id_validator(value):
 @scheming_validator
 def mark_as_modified_in_catalog_if_changed(field, schema):
     from ckan.logic import get_action
+
     def validator(key, data, errors, context):
 
         if context.get('group'):
@@ -156,7 +159,7 @@ def mark_as_modified_in_catalog_if_changed(field, schema):
             context.pop('__auth_audit', None)
             old_organization = get_action('organization_show')(context, {'id': context['group'].id})
             if json.dumps(old_organization.get(key[0])) != data[key] and 'for_edit' in context:
-                flattened = df.flatten_dict({ key[0] + '_modified_in_catalog': True })
+                flattened = df.flatten_dict({key[0] + '_modified_in_catalog': True})
                 data.update(flattened)
 
     return validator
@@ -170,6 +173,7 @@ def ignore_not_package_maintainer(key, data, errors, context):
 
     if not toolkit.check_access('package_update', context, {'id': context['package'].id}):
         data.pop(key)
+
 
 def create_fluent_tags(vocab):
     def callable(key, data, errors, context):
@@ -218,6 +222,7 @@ def convert_to_json_compatible_str_if_str(value):
             value = json.dumps({'fi': value})
         return value
 
+
 def override_field_with_default_translation(overridden_field_name):
     @scheming_validator
     def implementation(field, schema):
@@ -254,6 +259,7 @@ def override_field_with_default_translation(overridden_field_name):
 
     return implementation
 
+
 @scheming_validator
 def fluent_list(field, schema):
     fluent_text_validator = fluent_text(field, schema)
@@ -281,15 +287,13 @@ def fluent_list(field, schema):
 
             value = json.loads(json_value)
 
-        result = {lang: lang_value
-                        if isinstance(lang_value, list)
-                        else [item.strip() for item in lang_value.split(',')]
+        result = {lang: lang_value if isinstance(lang_value, list) else [item.strip() for item in lang_value.split(',')]
                   for lang, lang_value in list(value.items())}
 
         data[key] = json.dumps(result)
 
-
     return validator
+
 
 def fluent_list_output(value):
     """

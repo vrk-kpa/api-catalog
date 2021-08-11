@@ -7,7 +7,6 @@ from ckanext.apply_permissions_for_service import cli, views, helpers
 from ckanext.apply_permissions_for_service.logic import action, auth
 
 
-
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IBlueprint)

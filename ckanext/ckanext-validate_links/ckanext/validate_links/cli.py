@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from future import standard_library
-standard_library.install_aliases()
 from builtins import str
 from builtins import object
 import sys
@@ -19,6 +18,8 @@ import click
 import ssl
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
 ssl_context.options &= ssl.CERT_NONE
+
+standard_library.install_aliases()
 
 
 def get_commands():
@@ -104,7 +105,8 @@ def crawl():
     if url_errors:
         from ckan.model.user import User
         admin = User.get('admin')
-        mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs)) for u, rs in url_errors.items()))
+        mailer.mail_user(admin, 'URL errors', '\n\n'.join('%s\n%s' % (u, '\n'.join('  - %s' % r for r in rs))
+                                                          for u, rs in url_errors.items()))
 
 
 def find_referrers(url, site_map):

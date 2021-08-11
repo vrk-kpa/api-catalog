@@ -53,7 +53,8 @@ def add_facet_translations(ctx, i18n_root):
     for locale, term, translation in translated:
         if translation:
             click.echo(translated)
-            get_action('term_translation_update')({'ignore_auth': True}, {'term': term, 'term_translation': translation, 'lang_code': locale})
+            get_action('term_translation_update')({'ignore_auth': True},
+                                                  {'term': term, 'term_translation': translation, 'lang_code': locale})
 
 
 def _get_po_files(path):

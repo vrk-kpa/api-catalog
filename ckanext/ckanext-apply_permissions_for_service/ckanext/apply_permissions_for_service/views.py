@@ -91,6 +91,7 @@ def new(subsystem_id):
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
+
 def view(application_id):
     try:
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
@@ -163,11 +164,13 @@ def settings(subsystem_id):
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
+
 apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
 apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
 apply_permissions.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', view_func=manage)
-apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings', view_func=settings, methods=['GET', 'POST'])
+apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings',
+                               view_func=settings, methods=['GET', 'POST'])
 
 
 def get_blueprints():

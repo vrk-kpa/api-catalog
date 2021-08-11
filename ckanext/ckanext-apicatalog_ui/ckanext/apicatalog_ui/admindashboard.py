@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-import ckan.lib.base as base
 import logging
 import ckan.logic as logic
 import ckan.model as model
@@ -37,7 +36,8 @@ def read():
         statistics = fetch_package_statistics()
 
         # Find packageless organizations and produce a changelog
-        (packageless_organizations, packageless_organizations_changelog) = fetch_packageless_organizations_and_changelog(context)
+        (packageless_organizations, packageless_organizations_changelog) = \
+            fetch_packageless_organizations_and_changelog(context)
 
         # Generate activity stream snippet
         # FIXME: Disabled because fetch_recent_package_activity_list_html is not ported to CKAN 2.9
@@ -250,7 +250,8 @@ def fetch_packageless_organizations_and_changelog(context):
                      .all())
 
     # Query package new/delete activity events
-    package_new_delete_activities = (model.Session.query(model.Activity.timestamp, model.Activity.object_id, model.Activity.activity_type)
+    package_new_delete_activities = (model.Session.query(model.Activity.timestamp,
+                                                         model.Activity.object_id, model.Activity.activity_type)
                                      .filter(or_(model.Activity.activity_type == 'new package',
                                                  model.Activity.activity_type == 'deleted package'))
                                      .order_by(model.Activity.timestamp)

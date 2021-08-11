@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 from future import standard_library
-standard_library.install_aliases()
 from builtins import str
 from builtins import range
 import ckan.plugins as plugins
@@ -11,7 +10,9 @@ from ckan import model
 import ckan.logic as logic
 import cgi
 import random
-import urllib.request, urllib.parse, urllib.error
+import urllib.request
+import urllib.parse
+import urllib.error
 import ckan.lib.i18n as i18n
 import logging
 import itertools
@@ -25,6 +26,8 @@ from ckan.lib.plugins import DefaultTranslation
 
 from .utils import package_generator
 import ckanext.apicatalog_ui.admindashboard as admindashboard
+
+standard_library.install_aliases()
 
 NotFound = logic.NotFound
 config = toolkit.config
@@ -197,7 +200,7 @@ def get_homepage_datasets(count=1):
 def parse_datetime(t):
     try:
         return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
-    except Exception as e:
+    except Exception:
         try:
             return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
         except Exception as e:
@@ -415,7 +418,7 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
             stats = requests.get('{}/index.php'.format(piwik_site_url),
                                  verify=piwik_ssl_verify, params=params).json()
             visitor_count = sum(iter(list(stats.values())))
-        except Exception as e:
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             visitor_count = 0 if VISITOR_CACHE is None else VISITOR_CACHE[1]
 
@@ -523,7 +526,7 @@ def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
                 }
             }
 
-        except Exception as e:
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             if XROAD_STATS_CACHE is None:
                 stats_collection = {}

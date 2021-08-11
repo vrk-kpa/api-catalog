@@ -4,7 +4,6 @@ import json
 
 from ckan.plugins import toolkit as tk
 from ckan.lib.mailer import mail_recipient
-from ckan.model.user import User
 from ... import model
 import logging
 
@@ -12,12 +11,10 @@ _ = tk._
 log = logging.getLogger(__name__)
 
 
-
 def service_permission_application_create(context, data_dict):
     tk.check_access('service_permission_application_create', context, data_dict)
 
     errors = {}
-    error_summary = {}
 
     organization = data_dict.get('organization')
     if organization is None or organization == "":
@@ -44,7 +41,6 @@ def service_permission_application_create(context, data_dict):
     if service_code_list is None or service_code_list == "":
         errors['service_code_list'] = _('Missing value')
 
-
     if errors:
         raise tk.ValidationError(errors)
 
@@ -67,7 +63,6 @@ def service_permission_application_create(context, data_dict):
                                                   usage_description=usage_description,
                                                   request_date=request_date)
 
-
     log.info(package.get('service_permission_settings', '{}'))
     service_permission_settings = package.get('service_permission_settings', {})
     delivery_method = service_permission_settings.get('delivery_method', 'email')
@@ -79,7 +74,8 @@ def service_permission_application_create(context, data_dict):
 
             data = data_dict.copy()
             data['subsystem_code'] = package.get('xroad_subsystemcode') or package['title']
-            service_code_list = [r['xroad_servicecode'] or r['name'] for r in package.get('resources') if r['id'] in data_dict['service_code_list']]
+            service_code_list = [r['xroad_servicecode'] or r['name'] for r in package.get('resources')
+                                 if r['id'] in data_dict['service_code_list']]
             data['service_code_list'] = service_code_list
 
             requests.post(api_url, data=json.dumps(data), timeout=5).raise_for_status()
@@ -96,9 +92,11 @@ def service_permission_application_create(context, data_dict):
             email_content = tk.render('apply_permissions_for_service/notification_email.html',
                                       extra_vars={'application': application})
             try:
-                mail_recipient(owner_org['title'], email_address, email_subject, email_content, headers={'content-type': 'text/html'})
+                mail_recipient(owner_org['title'], email_address, email_subject, email_content,
+                               headers={'content-type': 'text/html'})
             except Exception as e:
                 # Email exceptions are not user relevant nor action critical, but should be logged
                 log.warning(e)
         else:
-            log.info('Organization %s has no email address defined, not sending permission application notification.', owner_org['name'])
+            log.info('Organization %s has no email address defined, not sending permission application notification.',
+                     owner_org['name'])

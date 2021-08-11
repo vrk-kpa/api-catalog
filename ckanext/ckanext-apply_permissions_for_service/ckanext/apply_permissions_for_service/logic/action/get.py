@@ -1,10 +1,9 @@
-import json
-
 from ckan.logic import NotFound, check_access, side_effect_free
 from ckan import plugins
 from ckan import model
 
 from ... import model as apply_permission_model
+
 
 @side_effect_free
 def service_permission_application_list(context, data_dict):
