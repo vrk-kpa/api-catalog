@@ -1,13 +1,11 @@
 from __future__ import absolute_import
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-import ckanext.apply_permissions_for_service.cli as cli
 from ckan.lib.plugins import DefaultTranslation
-from .logic import action, auth
-from flask import Blueprint
 
-from . import views
-from . import helpers
+from ckanext.apply_permissions_for_service import cli, views, helpers
+from ckanext.apply_permissions_for_service.logic import action, auth
+
 
 
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -23,8 +21,6 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'applypermissionsforservice')
 
     # IBlueprint
 

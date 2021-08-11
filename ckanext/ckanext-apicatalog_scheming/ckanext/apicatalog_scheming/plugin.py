@@ -6,10 +6,9 @@ import uuid
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.common import config
 import ckan.lib.navl.dictization_functions as dictization_functions
 from ckanext.scheming.helpers import lang
-from ckanext.apicatalog_scheming.commands import commands
+from ckanext.apicatalog_scheming import cli
 import json
 
 try:
@@ -40,8 +39,6 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'apicatalog_scheming')
 
     def get_validators(self):
         return {
@@ -114,13 +111,13 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
     # IClick
 
     def get_commands(self):
-        return commands.get_commands()
+        return cli.get_commands()
 
 
 def scheming_field_only_default_required(field, lang):
     if (field
             and field.get('only_default_lang_required')
-            and lang == config.get('ckan.locale_default', 'en')):
+            and lang == toolkit.config.get('ckan.locale_default', 'en')):
         return True
     return False
 
