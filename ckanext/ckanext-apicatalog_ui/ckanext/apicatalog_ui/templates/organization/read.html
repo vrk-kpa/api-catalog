@@ -16,7 +16,7 @@
       <p class="empty">
         {{ _('There are currently no APIs for this organization') }}.
         {% if h.check_access('package_create') %}
-          {% link_for _('How about creating one?'), controller='package', action='new', group=group_dict.id %}
+            {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
         {% endif %}
       </p>
     {% endif %}
