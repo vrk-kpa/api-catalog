@@ -320,13 +320,11 @@ def custom_organization_list(params):
     if provider_orgs:
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
-    def group_by_content(a, b):
-        a_has_content = 1 if a.get('xroad_member_type', '') == "provider" else 0
-        b_has_content = 1 if b.get('xroad_member_type', '') == "provider" else 0
-        return b_has_content - a_has_content
+    def sort_by_providers_first(g):
+        return 0 if g.get('xroad_member_type') == 'provider' else 1
 
     if not sort_by:
-        results.sort(cmp=group_by_content)
+        results.sort(key=sort_by_providers_first)
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
