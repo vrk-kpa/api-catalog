@@ -2,7 +2,7 @@
 
 {% block content_action %}
   {{ super() }}
-{% link_for _('Views'), controller='package', action='resource_views', id=pkg.name, resource_id=res.id, class_='btn btn-default' %}
+  {% link_for _('Views'), named_route=pkg.type ~ '_resource.views', id=pkg.name, resource_id=res.id, class_='btn btn-default' %}
 {% endblock %}
 {% block secondary_content %}
   {% snippet 'package/snippets/resource_info.html', res=res %}
