@@ -73,7 +73,7 @@ jinja2==2.10.1
     #   flask-babel
 linecache2==1.0.0
     # via traceback2
-lxml==4.4.2
+lxml==4.6.3 # upgraded from ckan core
     # via
     #   ckan
     #   feedgen
