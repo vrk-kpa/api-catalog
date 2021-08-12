@@ -20,6 +20,7 @@
   {% endcall %}
 {% endmacro %}
 
+{% set read_endpoint = '.read' if h.ckan_version() > '2.9' else '_read' %}
 
 {%- if entity_type == 'dataset' %}
     {%- set controller = 'package' -%}
@@ -32,9 +33,8 @@
     {%- set module_placeholder = '<group>' -%}
 {%- endif -%}
 
-{%- set prefix = h.url_for(controller=controller, action='read', id='') -%}
-{%- set domain = h.url_for(controller=controller, action='read', id='',
-    qualified=true) -%}
+{%- set prefix = h.url_for(object_type + read_endpoint, id='') -%}
+{%- set domain = h.url_for(object_type + read_endpoint, id='', qualified=true) -%}
 {%- set domain = domain|replace("http://", "")|replace("https://", "") -%}
 {%- set attrs = {
     'data-module': 'slug-preview-slug',
