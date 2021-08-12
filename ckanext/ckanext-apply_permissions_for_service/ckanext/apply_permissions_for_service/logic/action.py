@@ -3,11 +3,15 @@ import requests
 import json
 
 from ckan.plugins import toolkit as tk
+from ckan.logic import NotFound
 from ckan.lib.mailer import mail_recipient
-from ... import model
+from .. import model
 import logging
 
 _ = tk._
+
+check_access = tk.check_access
+side_effect_free = tk.side_effect_free
 log = logging.getLogger(__name__)
 
 
@@ -88,7 +92,7 @@ def service_permission_application_create(context, data_dict):
             log.info('Sending permission application notification email to {}'.format(email_address))
             application = model.ApplyPermission.get(application_id).as_dict()
             email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
-                            application['organization'])
+                application['organization'])
             email_content = tk.render('apply_permissions_for_service/notification_email.html',
                                       extra_vars={'application': application})
             try:
@@ -100,3 +104,62 @@ def service_permission_application_create(context, data_dict):
         else:
             log.info('Organization %s has no email address defined, not sending permission application notification.',
                      owner_org['name'])
+
+
+@side_effect_free
+def service_permission_application_list(context, data_dict):
+    check_access('service_permission_application_list', context, data_dict)
+
+    applications = model.Session.query(model.ApplyPermission)
+
+    subsystem_id = data_dict.get('subsystem_id')
+    if subsystem_id:
+        applications = applications.filter(model.ApplyPermission.subsystem_id == subsystem_id)
+
+    applications = applications.all()
+
+    return [application.as_dict() for application in applications]
+
+
+@side_effect_free
+def service_permission_application_show(context, data_dict):
+    check_access('service_permission_application_show', context, data_dict)
+    application_id = data_dict.get('id')
+
+    if application_id is None:
+        raise NotFound
+
+    application = model.ApplyPermission.get(application_id).as_dict()
+    return application
+
+
+@side_effect_free
+def service_permission_settings_show(context, data_dict):
+    check_access('service_permission_settings', context, data_dict)
+    subsystem_id = data_dict.get('subsystem_id')
+
+    if subsystem_id is None:
+        raise NotFound
+
+    pkg = tk.get_action('package_show')(context, {'id': subsystem_id})
+
+    return pkg.get('service_permission_settings', {})
+
+
+def service_permission_settings_update(context, data_dict):
+    tk.check_access('service_permission_settings', context, data_dict)
+    subsystem_id = data_dict.get('subsystem_id')
+
+    if subsystem_id is None:
+        raise NotFound
+
+    settings = {field: data_dict[field]
+                for field in ('delivery_method', 'api', 'web', 'email')
+                if field in data_dict}
+
+    tk.get_action('package_patch')(context, {
+        'id': data_dict['subsystem_id'],
+        'service_permission_settings': json.dumps(settings)
+    })
+
+    return settings

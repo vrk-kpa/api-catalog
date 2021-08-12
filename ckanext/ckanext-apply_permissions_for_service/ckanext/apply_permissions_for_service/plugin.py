@@ -30,20 +30,20 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     # IActions
 
     def get_actions(self):
-        return {'service_permission_application_list': action.get.service_permission_application_list,
-                'service_permission_application_show': action.get.service_permission_application_show,
-                'service_permission_application_create': action.create.service_permission_application_create,
-                'service_permission_settings_show': action.get.service_permission_settings_show,
-                'service_permission_settings_update': action.update.service_permission_settings_update,
+        return {'service_permission_application_list': action.service_permission_application_list,
+                'service_permission_application_show': action.service_permission_application_show,
+                'service_permission_application_create': action.service_permission_application_create,
+                'service_permission_settings_show': action.service_permission_settings_show,
+                'service_permission_settings_update': action.service_permission_settings_update,
                 }
 
     # IAuthFunctions
 
     def get_auth_functions(self):
-        return {'service_permission_application_list': auth.get.service_permission_application_list,
-                'service_permission_application_show': auth.get.service_permission_application_show,
-                'service_permission_application_create': auth.create.service_permission_application_create,
-                'service_permission_settings': auth.get.service_permission_settings,
+        return {'service_permission_application_list': auth.service_permission_application_list,
+                'service_permission_application_show': auth.service_permission_application_show,
+                'service_permission_application_create': auth.service_permission_application_create,
+                'service_permission_settings': auth.service_permission_settings,
                 }
 
     # ITemplateHelpers
