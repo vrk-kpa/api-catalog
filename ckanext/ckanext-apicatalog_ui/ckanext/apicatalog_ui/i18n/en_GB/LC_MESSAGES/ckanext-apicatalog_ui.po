@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-04-07 07:23+0000\n"
+"POT-Creation-Date: 2021-08-05 05:17+0000\n"
 "PO-Revision-Date: 2020-12-04 08:49+0000\n"
 "Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
@@ -90,16 +90,16 @@ msgstr ""
 msgid "link opens in new tab or window"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/apicatalog_header.html:69
+#: ckanext/apicatalog_ui/templates/apicatalog_header.html:70
 msgid "More options"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/apicatalog_header.html:81
+#: ckanext/apicatalog_ui/templates/apicatalog_header.html:89
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile.html:20
 msgid "Log in"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/apicatalog_header.html:83
+#: ckanext/apicatalog_ui/templates/apicatalog_header.html:91
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile.html:22
 msgid "Register"
 msgstr ""
@@ -919,8 +919,31 @@ msgid ""
 "Fields marked with a thick gray border are used in automatic processing and "
 "cannot be modified."
 msgstr ""
-"Fields marked with a thick gray border are filled in automatically and cannot be modified.\n"
-"<a href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">How to describe services and subsystems?</a>"
+"<p> Fields marked with a thick gray border are filled in automatically and "
+"cannot be modified. </p> <p><a "
+"href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">How"
+" to describe services and subsystems?</a> </p>"
+
+#: ckanext/apicatalog_ui/templates/package/edit.html:12
+msgid ""
+" <h2>Subsystem description</h2> <p> Use <strong>simple language</strong> in "
+"the description and disclose: </p> <dl> <dt>What does the service "
+"offer?</dt> <dd>Explain how other organizations can benefit from your "
+"service. An overview of the service allows others to assess whether their "
+"organization should implement it.</dd> <dt>What terms apply to the use of "
+"the service?</dt> <dd>Describe who can use the service and any other "
+"restrictions on using the service.</dd> <dt>How to implement the "
+"service?</dt> <dd>Instruct how other organizations should proceed when they "
+"want to implement your service. Briefly describe the deployment process and "
+"provide a contact person for more information.</dd> </dl> <p> Using "
+"<strong>keywords</strong> and <strong>Markdown formatting</strong> makes it "
+"easier to find and read content. </p> <p> Also provide versions of the "
+"description in <strong>Finnish</strong> and <strong>Swedish</strong>. </p> "
+"<p> <i class=\"fas fa-arrow-right\"></i> More detailed instructions in the "
+"<a target=\"_blank\" "
+"href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">Palveluhallinta.fi"
+" support article.</a> </p> "
+msgstr ""
 
 #: ckanext/apicatalog_ui/templates/package/read.html:5
 msgid "Service bus identifier"
