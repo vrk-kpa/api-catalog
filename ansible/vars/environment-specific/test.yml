@@ -107,6 +107,7 @@ ckan_plugins:
   - validate_links
   - apply_permissions_for_service
   - xroad_integration
+  - sentry
   - forcetranslation
 
 

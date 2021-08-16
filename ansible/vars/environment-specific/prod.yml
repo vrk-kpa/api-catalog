@@ -111,6 +111,7 @@ ckan_plugins:
   - wsdl_view
   - validate_links
   - xroad_integration
+  - sentry
   - forcetranslation
 
 allowed_user_creators:

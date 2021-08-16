@@ -39,6 +39,7 @@
     - { role: ckan-extension, ckanext: ckanext-validate_links }
     - { role: ckan-extension, ckanext: ckanext-openapiviewer }
     - { role: ckan-extension, ckanext: ckanext-apply_permissions_for_service }
+    - { role: ckan-extension, ckanext: ckanext-sentry }
     - { role: ckan-extension, ckanext: ckanext-forcetranslation }
     - ckan
     - { role: ckan-ui }

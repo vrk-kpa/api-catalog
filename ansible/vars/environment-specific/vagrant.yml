@@ -17,6 +17,9 @@ matomo:
   public_facing_hostname: https://suomi.matomo.cloud
   site_id: 15
 
+sentry:
+  dsn: "https://dc3f89506d5f43baae74108b0219fc37@o277154.ingest.sentry.io/5908510"
+
 
 database_ckan:
   host: 127.0.0.1
@@ -119,6 +122,7 @@ ckan_plugins:
   - validate_links
   - apply_permissions_for_service
   - xroad_integration
+  - sentry
   - forcetranslation
 
 allowed_user_creators:
