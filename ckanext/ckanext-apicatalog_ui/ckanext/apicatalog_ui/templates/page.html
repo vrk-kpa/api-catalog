@@ -55,14 +55,12 @@
           <div class="row">
             <div class="col-xs-12 prelude">
                 <div class="pull-right page-actions">
-                    {#
                     {% block content_action %}{% endblock %}
                     {% if self.page_primary_action() | trim %}
                         <div class="page_primary_action">
                             {% block page_primary_action %}{% endblock %}
                         </div>
                     {% endif %}
-                     #}
                 </div>
                 {% block prelude %}
               {% endblock %}
