@@ -22,6 +22,6 @@
 [submodule "ckanext/ckanext-forcetranslation"]
 	path = ckanext/ckanext-forcetranslation
 	url = https://github.com/vrk-kpa/ckanext-forcetranslation.git
-[submodule ".\\ckanext\\ckanext-sentry"]
-	path = .\\ckanext\\ckanext-sentry
+[submodule "ckanext/ckanext-sentry"]
+	path = ckanext/ckanext-sentry
 	url = https://github.com/vrk-kpa/ckanext-sentry.git
