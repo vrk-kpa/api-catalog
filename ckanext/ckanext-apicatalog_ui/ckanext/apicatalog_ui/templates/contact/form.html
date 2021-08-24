@@ -1,10 +1,5 @@
 {% ckan_extends %}
 
-{% block breadcrumb_content %}
-	<li>
-		<a class="active" href="{{ h.url_for('contact_form') }}">{{ _("Feedback") }}</a>
-	</li>
-{% endblock %}
 
 {% block primary %}
 	<div class="page-container">
@@ -17,7 +12,7 @@
 		</div>
 		<div>
 			{% block contact_form_content %}
-				{% include "contact/snippets/form.html" %}
+                {{ super() }}
 			{% endblock %}
 		</div>
 	</div>
