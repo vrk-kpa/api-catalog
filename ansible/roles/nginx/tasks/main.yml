@@ -23,7 +23,7 @@
   with_items:
     - { "src": "50x.html", "dest": "50x.html" }
 
-- name: Ensure static file ermissions
+- name: Ensure static file permissions
   command: chmod -R "0775" "{{ static_path }}"
 
 - name: Disable default site

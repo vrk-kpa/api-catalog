@@ -14,6 +14,9 @@ matomo:
   public_facing_hostname: https://suomi.matomo.cloud
   site_id: 15
 
+sentry:
+  dsn: "https://dc3f89506d5f43baae74108b0219fc37@o277154.ingest.sentry.io/5908510"
+
 database_ckan:
   host: 127.0.0.1
   port: 5432
@@ -80,11 +83,6 @@ elk:
       - "kapalogtest02.csc.fi:5044"
       - "kapalogtest03.csc.fi:5044"
 
-saha:
-  api_url: "https://asiointi.dev.vrk.fi/api"
-  username: "PahaIntegrationUser"
-  password: "{{ secret.saha_integration_password }}"
-
 content:
   news:
     endpoint_url: "https://palveluhallinta.suomi.fi/api/articles/importantTopical"
@@ -94,9 +92,6 @@ content:
 debug_enabled: false
 
 robots_allowed: false
-
-paha_key_whitelist: 
-  - "{{ secret.ckan_paha_apikey }}"
 
 apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
 
@@ -112,17 +107,15 @@ ckan_plugins:
   - apicatalog_admin_dashboard
   - apicatalog_routes
   - contact
-  - apicatalog_feed
   - apicatalog_harvesterstatus
   - harvest
   - xroad_harvester
   - text_view
   - wsdl_view
   - validate_links
-  - saha
-  - paha
   - apply_permissions_for_service
   - xroad_integration
+  - sentry
   - forcetranslation
 
 allowed_user_creators:

@@ -84,9 +84,6 @@ setup(
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
-        
-        [paste.paster_command]
-        apply_permissions=ckanext.apply_permissions_for_service.commands:ApplyPermissionsCommand
     ''',
 
     # If you are changing from the default layout of your extension, you may

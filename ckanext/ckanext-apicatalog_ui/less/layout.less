@@ -2,10 +2,14 @@
   .clearfix();
   position: relative;
   margin-bottom: 20px;
-  margin-left: 0;
   background: initial;
   border: none;
   box-shadow: initial;
+
+  &:before {
+    // Remove sidebar covering invisible element
+    display: none;
+  }
 }
 .pull-right-sm-up {
   @media (min-width: @screen-sm-min) {
@@ -85,7 +89,7 @@
 
 }
 
-.wrapper.no-nav {
+.row.wrapper.no-nav {
   background-color: white;
   border: 1px solid @suomifi-border-light;
 
@@ -192,7 +196,9 @@
 }
 
 .prelude {
+  padding-left: 0;
   padding-right: 0;
+
   h1 {
     color: @suomifi-text-base;
     font-family: SourceSansPro-Light;

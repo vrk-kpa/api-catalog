@@ -1,6 +1,6 @@
 {% ckan_extends %}
 
-{% set org_list = h.custom_organization_list(request.params) %}
+{% set org_list = h.custom_organization_list(request.args) %}
 
 {% block prelude %}
 <h1>{{ _('Organizations') }}</h1>
@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block organizations_list %}
-  {% if org_list.organizations or request.params %}
+  {% if org_list.organizations or request.args %}
     {% if org_list.organizations %}
     <div class="fill-module">
       {% snippet "organization/snippets/organization_list.html", organizations=org_list.organizations %}
@@ -37,15 +37,17 @@
   <div class="module module-shallow">
     <div class="sorter-wrapper with-search">
         {% set sorting_selected = c.sort_by_selected or '' %}
-        {% snippet 'organization/snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=sorting_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.params, no_bottom_border=true if c.page.items, sorting = sorting %}
+        {% snippet 'organization/snippets/search_form.html', form_id='organization-search-form', type='organization', query=c.q, sorting_selected=sorting_selected, count=c.page.item_count, placeholder=_('Type in name of organization'), show_empty=request.args, no_bottom_border=true if c.page.items, sorting = sorting %}
     </div>
   </div>
 {% endblock %}
 
 {% block page_pagination %}
-    {{ org_list.page.pager(q=q or '',
-    sort=c.sort_by_selected or '',
-    provider_orgs=org_list.provider_orgs or '',
-    symbol_previous="<span aria-hidden='true'>«</span><span class='sr-only'>" + _('Previous') + "</span>",
-    symbol_next="<span aria-hidden='true'>»</span><span class='sr-only'>" + _('Next') + "</span>" ) }}
+  {% set symbol_next %}
+    <span aria-hidden='true'>»</span><span class='sr-only'>{{ _('Next') }}</span>
+  {% endset %}
+  {% set symbol_previous %}
+    <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
+  {% endset %}
+  {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', provider_orgs=org_list.provider_orgs or '') }}
 {% endblock %}

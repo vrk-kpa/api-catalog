@@ -1,10 +1,10 @@
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index 8e16f9d7d..4d19ecc4c 100644
+index 0d9a2ed8c..798623d4c 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
-@@ -720,6 +720,10 @@ def _link_active(kwargs):
-
-
+@@ -797,6 +797,10 @@ def _link_active(kwargs):
+ 
+ 
  def _link_active_pylons(kwargs):
 +    highlight_controllers = kwargs.get('highlight_controllers', [])
 +    if highlight_controllers and c.controller in highlight_controllers:
@@ -13,10 +13,10 @@ index 8e16f9d7d..4d19ecc4c 100644
      highlight_actions = kwargs.get('highlight_actions',
                                     kwargs.get('action', '')).split()
      return (c.controller == kwargs.get('controller')
-@@ -728,8 +732,12 @@ def _link_active_pylons(kwargs):
-
+@@ -805,8 +809,12 @@ def _link_active_pylons(kwargs):
+ 
  def _link_active_flask(kwargs):
-     blueprint, endpoint = request.url_rule.endpoint.split('.')
+     blueprint, endpoint = p.toolkit.get_endpoint()
 -    return(kwargs.get('controller') == blueprint and
 -           kwargs.get('action') == endpoint)
 +    highlight_controllers = kwargs.get('highlight_controllers', [])
@@ -25,16 +25,16 @@ index 8e16f9d7d..4d19ecc4c 100644
 +
 +    return (kwargs.get('controller') == blueprint and
 +            kwargs.get('action') == endpoint)
-
-
+ 
+ 
  def _link_to(text, *args, **kwargs):
-@@ -848,17 +856,25 @@ def subnav_named_route(text, named_route, **kwargs):
-
+@@ -1002,17 +1010,25 @@ def subnav_named_route(text, named_route, **kwargs):
+ 
  @core_helper
  def build_nav_main(*args):
 -    ''' build a set of menu items.
 +    """Build a set of menu items.
-
+ 
 -    args: tuples of (menu type, title) eg ('login', _('Login'))
 -    outputs <li><a href="...">title</a></li>
 -    '''
@@ -59,9 +59,9 @@ index 8e16f9d7d..4d19ecc4c 100644
 +        output += _make_menu_item(menu_item, title,
 +                                  highlight_controllers=highlight_controllers)
      return output
-
-
-@@ -964,6 +980,9 @@ def _make_menu_item(menu_item, title, **kw):
+ 
+ 
+@@ -1114,6 +1130,9 @@ def _make_menu_item(menu_item, title, **kw):
      item = copy.copy(_menu_items[menu_item])
      item.update(kw)
      active = _link_active(item)
@@ -72,17 +72,19 @@ index 8e16f9d7d..4d19ecc4c 100644
      for need in needed:
          if need not in kw:
 diff --git a/ckan/templates/header.html b/ckan/templates/header.html
-index af6a87f6c..15aebccde 100644
+index ed01b34ac..76a0b4859 100644
 --- a/ckan/templates/header.html
 +++ b/ckan/templates/header.html
-@@ -84,8 +84,8 @@
-       {% block header_site_navigation %}
-       <nav class="section navigation">
+@@ -87,9 +87,9 @@
          <ul class="nav nav-pills">
--          {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets')), ('organizations_index', _('Organizations')),
--          ('group_index', _('Groups')), ('home.about', _('About')) ) }} {% endblock %}
-+          {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets'),  ["package", "resource"]), ('organizations_index', _('Organizations'), ['organization']),
-+          ('group_index', _('Groups'), ['group']), ('home.about', _('About')) ) }} {% endblock %}
+             {% block header_site_navigation_tabs %}
+ 		{{ h.build_nav_main(
+-		    ('dataset.search', _('Datasets')),
+-		    ('organization.index', _('Organizations')),
+-		    ('group.index', _('Groups')),
++		    ('dataset.search', _('Datasets'), ['package', 'resource']),
++		    ('organization.index', _('Organizations'), ['organization']),
++		    ('group.index', _('Groups'), ['group']),
+ 		    ('home.about', _('About')) ) }}
+ 	    {% endblock %}
          </ul>
-       </nav>
-       {% endblock %} {% block header_site_search %}

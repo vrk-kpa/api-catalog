@@ -1,35 +1,32 @@
-from ckan.plugins import toolkit
-from ckanext.apicatalog_routes import views
-from pylons import config
-import ckan
-import json
-from ckan.controllers.revision import RevisionController
-from ckan.common import c, _, request, response
-import ckan.model as model
-import ckan.lib.navl.dictization_functions as dictization_functions
-import ckan.logic as logic
-from helpers import lang
-import ckan.lib.base as base
-import ckan.lib.mailer as mailer
+from __future__ import absolute_import
+from builtins import next
+from ckanext.apicatalog_routes import views, cli, auth, helpers, db
+
+from flask import has_request_context
+
 from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
-from db import UserForOrganization
+
+from ckan import plugins, model
+from ckan.plugins import toolkit
+
+
 import logging
-import auth
 
-abort = base.abort
-render = base.render
-check_access = ckan.logic.check_access
-NotAuthorized = ckan.logic.NotAuthorized
-NotFound = ckan.logic.NotFound
-get_action = ckan.logic.get_action
+from ckan.plugins.toolkit import _
+from ckan.lib.plugins import DefaultPermissionLabels
 
-unflatten = dictization_functions.unflatten
-DataError = dictization_functions.DataError
+from ckan.lib.navl.dictization_functions import validate as _validate
+import ckan.lib.mailer as mailer
 
-UsernamePasswordError = logic.UsernamePasswordError
-ValidationError = logic.ValidationError
 
-_validate = dictization_functions.validate
+abort = toolkit.abort
+render = toolkit.render
+check_access = toolkit.check_access
+NotAuthorized = toolkit.NotAuthorized
+ObjectNotFound = toolkit.ObjectNotFound
+get_action = toolkit.get_action
+
+ValidationError = toolkit.ValidationError
 
 log = logging.getLogger(__name__)
 
@@ -38,22 +35,15 @@ def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
 
 
-def set_repoze_user(user_id):
-    '''Set the repoze.who cookie to match a given user_id'''
-    if 'repoze.who.plugins' in request.environ:
-        rememberer = request.environ['repoze.who.plugins']['friendlyform']
-        identity = {'repoze.who.userid': user_id}
-        response.headerlist += rememberer.remember(request.environ, identity)
-
-
-class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.DefaultPermissionLabels):
-    ckan.plugins.implements(ckan.plugins.IRoutes, inherit=True)
-    ckan.plugins.implements(ckan.plugins.IAuthFunctions)
-    ckan.plugins.implements(ckan.plugins.IPermissionLabels)
-    ckan.plugins.implements(ckan.plugins.IPackageController, inherit=True)
-    ckan.plugins.implements(ckan.plugins.IActions)
-    ckan.plugins.implements(ckan.plugins.IBlueprint)
-    ckan.plugins.implements(ckan.plugins.ITemplateHelpers)
+class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
+    plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IPermissionLabels)
+    plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IBlueprint)
+    plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IClick)
 
     # IRoutes
 
@@ -106,11 +96,11 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             'ignore_auth': True
         }
 
-        for user_name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+        for user_name in toolkit.config.get('ckanext.apicatalog_routes.readonly_users', '').split():
             try:
                 user_obj = get_action('user_show')(context, {'id': user_name})
                 labels.append(u'read_only_admin-%s' % user_obj['id'])
-            except NotFound:
+            except ObjectNotFound:
                 continue
 
         return labels
@@ -118,15 +108,24 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     def get_user_dataset_labels(self, user_obj):
 
         labels = super(Apicatalog_RoutesPlugin, self).get_user_dataset_labels(user_obj)
+        readonly_users = toolkit.aslist(toolkit.config.get('ckanext.apicatalog_routes.readonly_users', ''))
 
-        if user_obj and user_obj.name in config.get('ckanext.apicatalog_routes.readonly_users', '').split():
+        if user_obj and user_obj.name in readonly_users:
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
         return labels
 
     # After package_search, filter out the resources which the user doesn't have access to
     def after_search(self, search_results, search_params):
-        user_orgs = get_action('organization_list_for_user')(auth_context(), {})
+        # Only filter results if processing a request
+        if not has_request_context():
+            return search_results
+
+        if toolkit.g.get('user', None):
+            user_orgs = get_action('organization_list_for_user')({}, {'id': toolkit.g.user})
+        else:
+            user_orgs = []
+
         for result in search_results['results']:
             # Accessible resources are:
             # 1) access_restriction_level is public
@@ -138,7 +137,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('access_restriction_level', '') in ('', 'public') or
                                  (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                                  and c.user in resource.get('allowed_users', '').split(',')) or
+                                  and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
                                  (resource.get('access_restriction_level', '') == 'same_organization' and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
@@ -148,10 +147,15 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
     # After package_show, filter out the resources which the user doesn't have access to
     def after_show(self, context, data_dict):
         # Skip access check if sysadmin
-        if (c.userobj and c.userobj.sysadmin):
+        if (context.get('sysadmin')):
             return data_dict
 
-        user_orgs = get_action('organization_list_for_user')(context, {})
+        user_name = context.get('user')
+
+        if user_name:
+            user_orgs = get_action('organization_list_for_user')(context, {'id': user_name})
+        else:
+            user_orgs = []
 
         # Allowed resources are the ones where:
         # 1) access_restriction_level is public
@@ -164,7 +168,7 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
                              if 'access_restriction_level' not in resource or
                              resource.get('access_restriction_level', '') in ('', 'public') or
                              (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                              and c.user in resource.get('allowed_users', '').split(',')) or
+                              and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
                              (resource.get('access_restriction_level', '') == 'same_organization' and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
@@ -186,12 +190,17 @@ class Apicatalog_RoutesPlugin(ckan.plugins.SingletonPlugin, ckan.lib.plugins.Def
 
     def get_helpers(self):
         return {
-            "lang": lang
+            "lang": helpers.lang
         }
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()
 
 
 def send_reset_link(context, data_dict):
-    ckan.logic.check_access('send_reset_link', context)
+    toolkit.check_access('send_reset_link', context)
 
     user_obj = model.User.get(data_dict['user_id'])
     mailer.send_reset_link(user_obj)
@@ -209,7 +218,10 @@ def create_user_to_organization(context, data_dict):
         session.rollback()
         raise ValidationError(errors)
 
-    created_user = UserForOrganization.create(data['fullname'], data['email'], data['business_id'], data['organization_name'])
+    created_user = db.UserForOrganization.create(data['fullname'],
+                                                 data['email'],
+                                                 data['business_id'],
+                                                 data['organization_name'])
 
     return {
         "msg": _("User {name} stored in database.").format(name=created_user.fullname)
@@ -219,7 +231,7 @@ def create_user_to_organization(context, data_dict):
 def create_organization_users(context, data_dict):
     toolkit.check_access('create_organization_users', context)
     retry = data_dict.get('retry', False)
-    pending_user_applications = UserForOrganization.get_pending(include_failed=retry)
+    pending_user_applications = db.UserForOrganization.get_pending(include_failed=retry)
 
     organizations = toolkit.get_action('organization_list')(context, {'all_fields': True, 'include_extras': True})
     organizations_by_membercode = {}
@@ -247,7 +259,8 @@ def create_organization_users(context, data_dict):
             invalid.append(application.business_id)
             continue
         elif len(matching_organizations) > 1:
-            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application', application.business_id)
+            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application',
+                     application.business_id)
             application.mark_ambiguous()
             ambiguous.append(application.business_id)
             continue
@@ -267,7 +280,7 @@ def create_organization_users(context, data_dict):
         except ValidationError as e:
             log.warn(e)
             continue
-        except NotFound as e:
+        except ObjectNotFound as e:
             log.warn(e)
             continue
 
@@ -275,44 +288,15 @@ def create_organization_users(context, data_dict):
         created.append(user.get('name'))
 
     context.get('session', model.Session).commit()
-    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous, 'duplicate': duplicate}}
+    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
+                                        'duplicate': duplicate}}
 
+# TODO: If some asks for /data_exchange_layer_user_organizations url, convert this to action
+# class ExtraInformationController(toolkit.BaseController):
 
-def auth_context():
-    return {'model': ckan.model,
-            'user': c.user or c.author,
-            'auth_user_obj': c.userobj}
-
-
-class Apicatalog_RevisionController(RevisionController):
-
-    def index(self):
-        try:
-            ckan.logic.check_access('revision_index', auth_context())
-            return super(Apicatalog_RevisionController, self).index()
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
-
-    def list(self):
-        try:
-            ckan.logic.check_access('revision_list', auth_context())
-            return super(Apicatalog_RevisionController, self).list()
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
-
-    def diff(self, id=None):
-        try:
-            ckan.logic.check_access('revision_diff', auth_context())
-            return super(Apicatalog_RevisionController, self).diff(id=id)
-        except ckan.logic.NotAuthorized:
-            ckan.lib.base.abort(403, _('Not authorized to see this page'))
-
-
-class ExtraInformationController(base.BaseController):
-
-    def data_exchange_layer_user_organizations(self):
-        context = {}
-        all_organizations = get_action('organization_list')(context, {"all_fields": True})
-        packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
-        response.headers['content-type'] = 'application/json'
-        return json.dumps(packageless_organizations)
+#    def data_exchange_layer_user_organizations(self):
+#        context = {}
+#        all_organizations = get_action('organization_list')(context, {"all_fields": True})
+#        packageless_organizations = [o for o in all_organizations if o.get('package_count', 0) == 0]
+#        response.headers['content-type'] = 'application/json'
+#        return json.dumps(packageless_organizations)

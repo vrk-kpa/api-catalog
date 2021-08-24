@@ -1,11 +1,10 @@
+from __future__ import absolute_import
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
-from logic import action, auth
-from flask import Blueprint
 
-import views
-import helpers
+from ckanext.apply_permissions_for_service import cli, views, helpers
+from ckanext.apply_permissions_for_service.logic import action, auth
 
 
 class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -15,13 +14,12 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.ITranslation)
+    plugins.implements(plugins.IClick)
 
     # IConfigurer
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'applypermissionsforservice')
 
     # IBlueprint
 
@@ -32,20 +30,20 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     # IActions
 
     def get_actions(self):
-        return {'service_permission_application_list': action.get.service_permission_application_list,
-                'service_permission_application_show': action.get.service_permission_application_show,
-                'service_permission_application_create': action.create.service_permission_application_create,
-                'service_permission_settings_show': action.get.service_permission_settings_show,
-                'service_permission_settings_update': action.update.service_permission_settings_update,
+        return {'service_permission_application_list': action.service_permission_application_list,
+                'service_permission_application_show': action.service_permission_application_show,
+                'service_permission_application_create': action.service_permission_application_create,
+                'service_permission_settings_show': action.service_permission_settings_show,
+                'service_permission_settings_update': action.service_permission_settings_update,
                 }
 
     # IAuthFunctions
 
     def get_auth_functions(self):
-        return {'service_permission_application_list': auth.get.service_permission_application_list,
-                'service_permission_application_show': auth.get.service_permission_application_show,
-                'service_permission_application_create': auth.create.service_permission_application_create,
-                'service_permission_settings': auth.get.service_permission_settings,
+        return {'service_permission_application_list': auth.service_permission_application_list,
+                'service_permission_application_show': auth.service_permission_application_show,
+                'service_permission_application_create': auth.service_permission_application_create,
+                'service_permission_settings': auth.service_permission_settings,
                 }
 
     # ITemplateHelpers
@@ -53,3 +51,8 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
     def get_helpers(self):
         return {'service_permission_application_url': helpers.service_permission_application_url,
                 'service_permission_applications_enabled': helpers.service_permission_applications_enabled}
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()

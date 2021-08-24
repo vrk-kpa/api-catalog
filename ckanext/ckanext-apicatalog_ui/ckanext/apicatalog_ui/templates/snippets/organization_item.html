@@ -1,6 +1,6 @@
 <section class="group-list module module-narrow module-shallow">
   <header class="module-heading">
-    {% set url=h.url_for(controller='organization', action='read', id=organization.name) %}
+    {% set url=h.url_for('organization.read', id=organization.name) %}
     {% set truncate=truncate or 0 %}
     <h3 class="media-heading">
       <a href={{ url }}>

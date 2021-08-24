@@ -7,45 +7,46 @@
   shell: supervisorctl stop all
 
 - name: Initialize CKAN database
-  shell: ckan db init
+  shell: ./bin/ckan --config {{ ckan_ini }} db init chdir={{ virtualenv }}
   ignore_errors: True
 
 - name: Upgrade CKAN database
-  shell: ckan db upgrade
+  shell: ./bin/ckan --config {{ ckan_ini }} db upgrade chdir={{ virtualenv }}
   ignore_errors: True
 
-- name: Upgrade CKAN filestore
-  shell: ./bin/paster --plugin=ckan db migrate-filestore "--config={{ ckan_ini }}" chdir={{ virtualenv }}
-  ignore_errors: True
+# Not supported in CKAN 2.9
+#- name: Upgrade CKAN filestore
+#  shell: ./bin/ckan --config {{ ckan_ini }} db migrate-filestore chdir={{ virtualenv }}
+#  ignore_errors: True
 
 - name: Create initial CKAN users
-  shell: ./bin/paster --plugin=ckan user add "{{ item.value.username }}" "password={{ item.value.password }}" "email={{ item.value.email }}" "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} user add "{{ item.value.username }}" "password={{ item.value.password }}" "email={{ item.value.email }}" chdir={{ virtualenv }}
   ignore_errors: True
   with_dict: "{{ ckan_users }}"
 
 - name: Set CKAN sysadmins
-  shell: ./bin/paster --plugin=ckan sysadmin add {{ item }} --config={{ ckan_ini }} chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} sysadmin add {{ item }} chdir={{ virtualenv }}
   ignore_errors: True
   with_items: "{{ ckan_admins }}"
 
 - name: Initialize Harvest database
-  shell: ./bin/paster --plugin=ckanext-harvest harvester initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} harvester initdb chdir={{ virtualenv }}
 
 - name: Initialize Link Validation database
-  shell: ./bin/paster --plugin=ckanext-validate_links links initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} links initdb chdir={{ virtualenv }}
 
 - name: Migrate Link Validation database
-  shell: ./bin/paster --plugin=ckanext-validate_links links migrate "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} links migrate chdir={{ virtualenv }}
 
 - name: Initialize service permission application database
-  shell: ./bin/paster --plugin=ckanext-apply_permissions_for_service apply_permissions init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" apply-permissions init chdir={{ virtualenv }}
   when: "'apply_permissions_for_service' in ckan_plugins"
 
 - name: Initialize users for organization database
-  shell: ./bin/paster --plugin=ckanext-apicatalog_routes apicatalog_db init "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-database init chdir={{ virtualenv }}
 
 - name: Initialize xroad errors database
-  shell: ./bin/paster --plugin=ckanext-xroad_integration xroad init_db "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config "{{ ckan_ini }}" xroad init-db chdir={{ virtualenv }}
 
 - name: Initialize pages database
-  shell: ./bin/paster --plugin=ckanext-pages pages initdb "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} pages initdb  chdir={{ virtualenv }}

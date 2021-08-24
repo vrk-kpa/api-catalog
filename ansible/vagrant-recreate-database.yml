@@ -16,7 +16,7 @@
         that: deployment_environment_id == vagrant
 
     - name: Stop CKAN
-      service: name=apache2 state=stopped
+      service: name=supervisor state=stopped
 
     - name: Delete Postgresql databases
       become_user: postgres
@@ -41,19 +41,19 @@
       ignore_errors: True
 
     - name: Create initial CKAN users
-      shell: ./bin/paster --plugin=ckan user add "{{ item.username }}" "password={{ item.password }}" "email={{ item.email }}" "--config={{ ckan_ini }}" chdir={{ virtualenv }}
+      shell: ./bin/ckan --config "{{ ckan_ini }}" user add "{{ item.username }}" "password={{ item.password }}" "email={{ item.email }}" chdir={{ virtualenv }}
       ignore_errors: True
       with_flattened:
         - harvest_user
         - admin
 
     - name: Add CKAN sysadmins
-      shell: ./bin/paster --plugin=ckan sysadmin add "{{ item }}" --config="{{ ckan_ini }}" chdir="{{ virtualenv }}"
+      shell: ./bin/ckan --config "{{ ckan_ini }}" sysadmin add "{{ item }}" chdir="{{ virtualenv }}"
       ignore_errors: True
       with_items: ckan_admins
 
     - name: Start CKAN
-      service: name=apache2 state=restarted
+      service: name=supervisor state=restarted
 
   handlers:
     - include: handlers/handlers.yml

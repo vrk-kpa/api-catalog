@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+from future import standard_library
+from builtins import str
+from builtins import range
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from paste.deploy.converters import asbool
@@ -6,18 +10,24 @@ from ckan import model
 import ckan.logic as logic
 import cgi
 import random
-import urllib
+import urllib.request
+import urllib.parse
+import urllib.error
 import ckan.lib.i18n as i18n
 import logging
 import itertools
 import requests
 import json
-from datetime import datetime, timedelta, date
+import six
+from datetime import datetime, timedelta
 from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
 from ckan.lib.plugins import DefaultTranslation
 
-from utils import package_generator
+from .utils import package_generator
+import ckanext.apicatalog_ui.admindashboard as admindashboard
+
+standard_library.install_aliases()
 
 NotFound = logic.NotFound
 config = toolkit.config
@@ -27,10 +37,10 @@ get_action = toolkit.get_action
 
 def ensure_translated(s):
     ts = type(s)
-    if ts == unicode:
+    if ts == six.text_type:
         return s
     elif ts == str:
-        return unicode(s)
+        return six.text_type(s)
     elif ts == dict:
         language = i18n.get_lang()
         return ensure_translated(s.get(language, u""))
@@ -42,7 +52,7 @@ def get_translated(data_dict, field, language=None):
         language = language or i18n.get_lang()
         if language in translated:
             return translated[language] or data_dict.get(field)
-        dialects = [l for l in translated if l.startswith(language) or language.startswith(l)]
+        dialects = [tl for tl in translated if tl.startswith(language) or language.startswith(tl)]
         if dialects:
             return translated[dialects[0]] or data_dict.get(field)
     return data_dict.get(field)
@@ -66,6 +76,7 @@ def piwik_url():
 def piwik_site_id():
     return config.get('piwik.site_id', 0)
 
+
 def get_matomo_config():
     return {
         "site_url": config.get('matomo.site_url', ''),
@@ -82,9 +93,11 @@ def service_alerts():
     else:
         return []
 
+
 def info_message():
     locale = i18n.get_lang()
     return config.get('ckanext.apicatalog_ui.info_message.' + locale, '')
+
 
 def column_contents():
     locale = i18n.get_lang()
@@ -93,6 +106,7 @@ def column_contents():
         'right': config.get('ckanext.apicatalog_ui.right_column.' + locale, '')
     }
 
+
 def get_slogan():
     locale = i18n.get_lang()
     if locale == 'fi':
@@ -100,12 +114,14 @@ def get_slogan():
 
     return config.get('ckanext.apicatalog_ui.site_description.' + locale, '')
 
+
 def get_welcome_text():
     locale = i18n.get_lang()
     if locale == 'fi':
         return config.get('ckan.site_intro_text', '')
 
     return config.get('ckanext.apicatalog_ui.site_intro_text.' + locale, '')
+
 
 def is_service_bus_id(identifier):
     # GUIDs don't have dots, bus IDs do
@@ -184,7 +200,7 @@ def get_homepage_datasets(count=1):
 def parse_datetime(t):
     try:
         return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
-    except Exception as e:
+    except Exception:
         try:
             return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
         except Exception as e:
@@ -193,6 +209,8 @@ def parse_datetime(t):
 
 
 NEWS_CACHE = None
+
+
 def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
     global NEWS_CACHE
     log.debug('Fetching homepage news')
@@ -217,15 +235,15 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
                     log.debug('Filtering with tags: %s', repr(tags))
                     news_items = [n for n in news_items if any(t.get('slug') in tags for t in n.get('tags', []))]
 
-                news = [{'title': {l: t for l, t in item.get('title', {}).items() if t != 'undefined'},
-                         'content': {l: t for l, t in item.get('content', {}).items() if t != 'undefined'},
+                news = [{'title': {tl: t for tl, t in list(item.get('title', {}).items()) if t != 'undefined'},
+                         'content': {tl: t for tl, t in list(item.get('content', {}).items()) if t != 'undefined'},
                          'published': parse_datetime(item.get('publishedAt')),
                          'brief': item.get('brief', {}),
                          'image': '',
                          'image_alt': '',
                          'url': {lang: news_url_template.format(**{'id': item.get('id'), 'language': lang})
-                                 for lang in item.get('title').keys()}}
-                         for item in news_items]
+                                 for lang in list(item.get('title').keys())}}
+                        for item in news_items]
                 news.sort(key=lambda x: x['published'], reverse=True)
 
                 log.debug('Updating news cache with %i news', len(news))
@@ -248,6 +266,8 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
 
 
 ANNOUNCEMENT_CACHE = None
+
+
 def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
     global ANNOUNCEMENT_CACHE
     from ckanext.apicatalog_routes.helpers import get_announcements
@@ -262,7 +282,7 @@ def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
 
 
 def unquote_url(url):
-    return urllib.unquote(url)
+    return urllib.parse.unquote(url)
 
 
 def get_xroad_organizations():
@@ -300,13 +320,11 @@ def custom_organization_list(params):
     if provider_orgs:
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
-    def group_by_content(a, b):
-        a_has_content = 1 if a.get('xroad_member_type', '') == "provider" else 0
-        b_has_content = 1 if b.get('xroad_member_type', '') == "provider" else 0
-        return b_has_content - a_has_content
+    def sort_by_providers_first(g):
+        return 0 if g.get('xroad_member_type') == 'provider' else 1
 
     if not sort_by:
-        results.sort(cmp=group_by_content)
+        results.sort(key=sort_by_providers_first)
 
     page_start = (page - 1) * items_per_page
     page_end = page * items_per_page
@@ -372,6 +390,8 @@ def get_last_12_months_statistics(context=None, data_dict=None):
 
 
 VISITOR_CACHE = None
+
+
 def fetch_visitor_count(cache_duration=timedelta(days=1)):
     global VISITOR_CACHE
     if VISITOR_CACHE is None or datetime.now() - VISITOR_CACHE[0] > cache_duration:
@@ -395,8 +415,8 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
                     'token_auth': piwik_token_auth}
             stats = requests.get('{}/index.php'.format(piwik_site_url),
                                  verify=piwik_ssl_verify, params=params).json()
-            visitor_count = sum(iter(stats.values()))
-        except Exception as e:
+            visitor_count = sum(iter(list(stats.values())))
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             visitor_count = 0 if VISITOR_CACHE is None else VISITOR_CACHE[1]
 
@@ -406,7 +426,6 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
         visitor_cache_timestamp, visitor_count = VISITOR_CACHE
 
     return visitor_count
-
 
 
 def is_test_environment():
@@ -421,7 +440,7 @@ def get_submenu_content():
 
     pages_list = toolkit.get_action('ckanext_pages_list')(None, {'private': False})
     submenu_pages = [page for page in pages_list if page.get('submenu_order')]
-    return sorted(submenu_pages, key = lambda p: p['submenu_order'])
+    return sorted(submenu_pages, key=lambda p: p['submenu_order'])
 
 
 def build_pages_nav_main(*args):
@@ -459,7 +478,7 @@ def build_pages_nav_main(*args):
 
     for page in pages_list:
         type_ = 'blog' if page['page_type'] == 'blog' else 'pages'
-        name = urllib.quote(page['name'].encode('utf-8')).decode('utf-8')
+        name = urllib.parse.quote(page['name'])
         if page.get('title_' + language):
             title = cgi.escape(page['title' + '_' + language])
         else:
@@ -475,6 +494,8 @@ def build_pages_nav_main(*args):
 
 
 XROAD_STATS_CACHE = None
+
+
 def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
     global XROAD_STATS_CACHE
     if XROAD_STATS_CACHE is None or datetime.now() - XROAD_STATS_CACHE[0] > cache_duration:
@@ -503,7 +524,7 @@ def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
                 }
             }
 
-        except Exception as e:
+        except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
             if XROAD_STATS_CACHE is None:
                 stats_collection = {}
@@ -537,23 +558,23 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
         ignore_missing = toolkit.get_validator('ignore_missing')
 
         schema.update({
-            'ckanext.apicatalog_ui.service_alert.fi.message': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.service_alert.sv.message': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.service_alert.en_GB.message': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.info_message.fi': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.info_message.sv': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.info_message.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.left_column.fi': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.left_column.sv': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.left_column.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.site_intro_text.sv': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.site_intro_text.en_GB': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.site_description.sv': [ignore_missing, unicode],
-            'ckanext.apicatalog_ui.site_description.en_GB': [ignore_missing, unicode]
+            'ckanext.apicatalog_ui.service_alert.fi.message': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.service_alert.sv.message': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.service_alert.en_GB.message': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.info_message.fi': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.info_message.sv': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.info_message.en_GB': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.left_column.fi': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.left_column.sv': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.left_column.en_GB': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.right_column.fi': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.right_column.sv': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.right_column.en_GB': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.site_intro_text.sv': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.site_intro_text.en_GB': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.site_description.sv': [ignore_missing, six.text_type],
+            'ckanext.apicatalog_ui.site_description.en_GB': [ignore_missing, six.text_type]
         })
 
         return schema
@@ -593,8 +614,8 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # IBlueprint
 
     def get_blueprint(self):
-        from views.useradd import useradd
-        from views import xroad_statistics
+        from .views.useradd import useradd
+        from .views import xroad_statistics
         return xroad_statistics.get_blueprints() + [useradd]
 
     # IFacets
@@ -610,24 +631,28 @@ def admin_only(context, data_dict=None):
 
 
 class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IRoutes, inherit=True)
-    plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IBlueprint)
+
+    # IConfigurer
 
     def update_config(self, config):
-        toolkit.add_ckan_admin_tab(config, 'admin_dashboard', 'Dashboard')
+        toolkit.add_ckan_admin_tab(config, 'admin_dashboard.read', 'Dashboard')
         toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
         toolkit.add_ckan_admin_tab(config, 'admin_xroadstats.read', 'X-Road graphs')
         toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
         toolkit.add_ckan_admin_tab(config, 'xroad.services', 'X-Road services')
         toolkit.add_ckan_admin_tab(config, 'xroad.stats', 'X-Road statistics')
 
-    def before_map(self, m):
-        controller = 'ckanext.apicatalog_ui.admindashboard:AdminDashboardController'
-        m.connect('admin_dashboard', '/admindashboard', action='read', controller=controller)
-        return m
+    # IAuthFunctions
 
     def get_auth_functions(self):
         return {'admin_dashboard': admin_only,
                 'admin_useradd': admin_only,
                 'admin_xroadstats': admin_only}
+
+    # IBlueprint
+
+    def get_blueprint(self):
+        return admindashboard.get_blueprint()

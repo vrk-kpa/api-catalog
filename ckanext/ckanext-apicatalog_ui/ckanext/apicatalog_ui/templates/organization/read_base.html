@@ -9,7 +9,7 @@
 				{{ h.build_nav_icon(group_type + '_about', _('About'), id=c.group_dict.name, icon=None) }}
 				{{ h.build_nav_icon(group_type + '_activity', _('Activity Stream'), id=c.group_dict.name, offset=0, icon=None) }}
 				{% if h.check_access('read_members', {'id': c.group_dict.name}) %}
-					{{ h.build_nav_icon('organization_members', _('Members'), id=c.group_dict.name, icon=None) }}
+					{{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name, icon=None) }}
 				{% endif %}
 			{% endblock %}
 		</ul>

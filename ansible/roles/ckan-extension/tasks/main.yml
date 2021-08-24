@@ -41,7 +41,7 @@
   register: piprequirements
 
 - name: Install extension requirements
-  pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt" virtualenv={{ virtualenv}}
+  pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt" virtualenv={{ virtualenv}} chdir="{{ ckanext_sync_path }}/{{ ckanext }}"
   when: requirements.stat.exists
 
 - name: Install extension piprequirements
@@ -60,5 +60,5 @@
 
 - name: Link extension sources
   command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
-  notify: Restart Apache
+  notify: Restart CKAN
 

@@ -33,7 +33,4 @@
     chdir: "{{ ckanext_sync_path }}/{{ item }}"
 
 - name: Add facet translations
-  command: >-
-    /usr/lib/ckan/default/bin/paster
-    --plugin=ckanext-apicatalog_scheming translations /usr/lib/ckan/default/src/ckan/ckan/i18n/
-    -c /etc/ckan/default/production.ini
+  shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-translation add-facet-translations "{{ virtualenv }}/src/ckan/ckan/i18n/" chdir={{ virtualenv }}

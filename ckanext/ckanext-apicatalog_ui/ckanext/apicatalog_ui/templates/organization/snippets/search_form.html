@@ -4,7 +4,7 @@
   {{ super() }}
   <label for="apis-selection">{{ _('Filter by role') }}</label>
   <div>
-  {% if request.params.provider_orgs %}
+  {% if request.args.provider_orgs %}
       <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
           {{ _('Show organizations without APIs') }}
       </a>
