@@ -159,7 +159,6 @@
   {{ super() }}
 
   <!-- Piwik & Matomo-->
-{% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
     {% set matomo_config = h.get_matomo_config() %}
     <script type="text/javascript">
 
@@ -171,9 +170,14 @@
             }
         }
 
-
-
         var _paq = window._paq = window._paq || [];
+
+        _paq.push(['requireConsent']);
+
+        {% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
+            _paq.push(['setConsentGiven']);
+        {% endif %}
+
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
@@ -193,5 +197,4 @@
     <noscript><p><img src="{{ h.piwik_url() }}/piwik.php?idsite={{ h.piwik_site_id() }}" style="border:0;" alt="" /></p></noscript>
     <noscript><p><img src="https://suomi.matomo.cloud/matomo.php?idsite={{ matomo_config.site_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
     <!-- End Piwik Code -->
-{% endif %}
 {% endblock -%}
