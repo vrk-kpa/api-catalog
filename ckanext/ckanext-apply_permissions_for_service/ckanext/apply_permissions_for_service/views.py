@@ -1,7 +1,11 @@
 from builtins import next
+import ckan.lib.uploader as uploader
 import ckan.plugins.toolkit as toolkit
+import ckan.lib.helpers as h
 from flask import Blueprint
 from logging import getLogger
+import ckan.lib.navl.dictization_functions as dict_fns
+import ckan.logic as logic
 
 log = getLogger(__name__)
 
@@ -141,7 +145,7 @@ def settings_post(context, subsystem_id):
             'delivery_method': form.get('deliveryMethod'),
             'email': form.get('email'),
             'api': form.get('api'),
-            'web': form.get('web')
+            'web': form.get('web'),
             }
 
     try:

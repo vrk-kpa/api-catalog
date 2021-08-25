@@ -1,0 +1,22 @@
+.btn {
+    border-radius: @border-radius__button;
+    font-weight: normal;
+
+    &&-primary {
+        background: linear-gradient(0deg, @suomifi-highlight-base, @suomifi-highlight-dark);
+
+        &:hover {
+            background: linear-gradient(0deg, @suomifi-highlight-base, @suomifi-highlight-light);
+        }
+    }
+
+    &&-outline-primary {
+        border: 1px solid @suomifi-highlight-base;
+        font-weight: bold;
+
+        &:hover {
+            border-color: @suomifi-highlight-light;
+            color: @suomifi-highlight-light;
+        }
+    }
+}

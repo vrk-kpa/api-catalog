@@ -2,35 +2,56 @@
 {% import 'macros/form.html' as form %}
 {% resource 'apicatalog_ui/javascript/mutexfield.js' %}
 
-{% block primary_content_inner %}
-<h2>{{ _('Settings') }}</h2>
-{% block errors %}{{ form.errors(errors) }}{% endblock %}
-<form class="col-sm-8" method="POST">
-  {{ form.hidden('subsystemId', value=subsystem_id) }}
-  <div data-module="mutexfield">
-    <div class="select-wrapper">
-      {{ form.select('deliveryMethod', label=_('Delivery method for access requests'), options=[
-      {'value': 'none', 'text': _('Disable access requests for this API')},
-      {'value': 'email', 'text': _('E-mail')},
-      {'value': 'api', 'text': _('Ticketing service API call')},
-      {'value': 'web', 'text': _('Access is requested on a web page managed by my organization')},
-      ], is_required=True, selected=(settings.delivery_method or 'none')) }}
+{% block primary_content %}
+<section id="main_content" class="module">
+  <div class="module-content module-content--no-padding">
+    {% block primary_content_inner %}
+    <h2 class="p-0">{{ _('Subsystem permission') }}</h2>
+    <p>{{ _('Instructions about apply permission options') }}</p>
+    {% block errors %}{{ form.errors(errors) }}{% endblock %}
+    <div class="row">
+      <form class="col-sm-6" method="POST">
+        {{ form.hidden('subsystemId', value=subsystem_id) }}
+        <div data-module="mutexfield">
+          <div class="select-wrapper">
+            {{ form.select('deliveryMethod', label=_('Delivery method for access requests'), options=[
+            {'value': 'none', 'text': _('Disable access requests for this API')},
+            {'value': 'api', 'text': _('Ticketing service API call')},
+            {'value': 'file', 'text': _('Upload your access request file')},
+            {'value': 'web', 'text': _('Access is requested on a web page managed by my organization')},
+            ], is_required=True, selected=(settings.delivery_method or 'none')) }}
+          </div>
+          <div data-mutex-field="deliveryMethod">
+            <div data-mutex-value="api">
+              {{ form.input('api', label=_('Endpoint URL'), value=settings.api) }}
+            </div>
+            <div data-mutex-value="file">
+              {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
+              {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
+              {{ form.image_upload(
+                  settings,
+                  errors,
+                  is_upload_enabled=h.uploads_enabled(),
+                  is_url=is_url,
+                  is_upload=is_upload,
+                  field_url='file_url',
+                  field_upload='upload',
+                  field_clear='clear_upload'
+                  )
+              }}
+            </div>
+            <div data-mutex-value="web">
+              {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
+        <a class="btn btn-outline-primary">{{ _('Cancel') }}</a>
+      </form>
     </div>
-    <div data-mutex-field="deliveryMethod">
-      <div data-mutex-value="email">
-        {{ form.input('email', label=_('Email address'), value=settings.email) }}
-      </div>
-      <div data-mutex-value="api">
-        {{ form.input('api', label=_('Endpoint URL'), value=settings.api) }}
-      </div>
-      <div data-mutex-value="web">
-        {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
-      </div>
-    </div>
+    {% endblock %}
   </div>
-  <input class="btn btn-primary" type="submit" value="{{ _('Save') }}"></input>
-  <a class="btn btn-secondary">{{ _('Cancel') }}</a>
-</form>
+</section>
 {% endblock %}
 
 {% block secondary_content %}
