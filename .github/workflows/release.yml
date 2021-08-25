@@ -20,3 +20,4 @@ jobs:
         with:
           environment: qa
           ignore_missing: true
+          ignore_empty: true
