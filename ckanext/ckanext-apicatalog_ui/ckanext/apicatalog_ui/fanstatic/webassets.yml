@@ -13,7 +13,6 @@ main_js:
     - javascript/submit-on-change.js
 
 main_css:
-  filters: cssrewrite
   output: ckanext-apicatalog_ui/%(version)s_main.css
   contents:
     - apicatalog_ui/main.css
@@ -29,7 +28,6 @@ cookieconsent_js:
     - cookieconsent/ckan-cookieconsent.js
 
 cookieconsent_css:
-  filters: cssrewrite
   output: ckanext-apicatalog_ui/%(version)s_cookieconsent.css
   contents:
     - cookieconsent/cookieconsent.css
@@ -43,7 +41,6 @@ chartjs_js:
     - xroad_stats/js/libs/chartjs-datalabels.js
   
 chartjs_css:
-  filters: cssrewrite
   output: ckanext-apicatalog_ui/%(version)s_chartjs.css
   contents:
     - xroad_stats/css/Chart.css
@@ -59,7 +56,6 @@ xroad_stats_js:
     - xroad_stats/js/xroad_statistics.js
 
 xroad_stats_css:
-  filters: cssrewrite
   output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.css
   extra:
     preload:
@@ -78,7 +74,6 @@ datetimepicker_js:
     - datetimepicker/datepicker.js
 
 datetimepicker_css:
-  filters: cssrewrite
   output: ckanext-apicatalog_ui/%(version)s_datetimepicker.css
   contents:
     - datetimepicker/bootstrap-datetimepicker.css
