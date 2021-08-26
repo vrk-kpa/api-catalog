@@ -113,7 +113,7 @@ def manage(subsystem_id):
 
     extra_vars = {
             'subsystem_id': subsystem_id,
-            'pkg': package,
+            'pkg_dict': package,
             'applications': applications
             }
     return toolkit.render('apply_permissions_for_service/manage.html', extra_vars=extra_vars)
@@ -126,7 +126,7 @@ def settings_get(context, subsystem_id, errors={}, values=None):
 
     extra_vars = {
             'subsystem_id': subsystem_id,
-            'pkg': package,
+            'pkg_dict': package,
             'errors': errors,
             'settings': settings,
             }

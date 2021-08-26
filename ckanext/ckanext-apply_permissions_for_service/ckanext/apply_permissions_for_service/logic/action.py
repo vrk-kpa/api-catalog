@@ -109,7 +109,6 @@ def service_permission_application_create(context, data_dict):
 @side_effect_free
 def service_permission_application_list(context, data_dict):
     check_access('service_permission_application_list', context, data_dict)
-
     applications = model.Session.query(model.ApplyPermission)
 
     subsystem_id = data_dict.get('subsystem_id')
