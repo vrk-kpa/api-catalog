@@ -54,11 +54,11 @@
                 <table class="table table-condensed">
                   <tbody>
                     <tr>
-                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:true') }}">{{ _('Private') }}</a></td>
+                      <td><a href="{{ h.url_for('dataset.search', q='private:true') }}">{{ _('Private') }}</a></td>
                       <td>{{ stats.private }}</td>
                     </tr>
                     <tr>
-                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:false') }}">{{ _('Public') }}</a></td>
+                      <td><a href="{{ h.url_for('dataset.search', q='private:false') }}">{{ _('Public') }}</a></td>
                       <td>{{ stats.public }}</td>
                     </tr>
                   </tbody>
