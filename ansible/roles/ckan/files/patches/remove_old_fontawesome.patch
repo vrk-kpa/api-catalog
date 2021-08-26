@@ -1,11 +1,11 @@
 diff --git a/ckan/public/base/vendor/webassets.yml b/ckan/public/base/vendor/webassets.yml
-index 45ea87b74..8a89ee5c1 100644
+index 45ea87b74..8f7b253de 100644
 --- a/ckan/public/base/vendor/webassets.yml
 +++ b/ckan/public/base/vendor/webassets.yml
 @@ -4,12 +4,6 @@ select2-css:
    contents:
      - select2/select2.css
-
+ 
 -font-awesome:
 -  output: vendor/%(version)s_font-awesome.css
 -  filters: cssrewrite
@@ -15,3 +15,11 @@ index 45ea87b74..8a89ee5c1 100644
  jquery:
    filters: rjsmin
    output: vendor/%(version)s_jquery.js
+@@ -40,7 +34,6 @@ bootstrap:
+   output: vendor/%(version)s_bootstrap.js
+   extra:
+     preload:
+-      - vendor/font-awesome
+       - vendor/jquery
+   contents:
+     - bootstrap/js/bootstrap.js
