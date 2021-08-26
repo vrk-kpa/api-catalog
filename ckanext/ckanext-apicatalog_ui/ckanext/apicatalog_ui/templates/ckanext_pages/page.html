@@ -12,7 +12,7 @@
 	<div class="apicatalog-page-wrapper">
 		<section class="module-content">
 			{% if h.check_access('ckanext_pages_update') %}
-				{% link_for _('Edit'), controller='ckanext.pages.controller:PagesController', action='pages_edit', page='/' + c.page.name, class_='btn btn-primary pull-right', icon='edit' %}
+                {% link_for _('Edit'), named_route='pages.edit', page=c.page.name, class_='btn btn-primary pull-right', icon='edit' %}
 			{% endif %}
 			<h1 class="page-heading">{{ page_title }}</h1>
 			{% if page_content %}
