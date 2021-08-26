@@ -4,6 +4,10 @@
 # ckanext-apply_permissions_for_service project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
+# Translators:
+# Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
+# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,6 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-08-04 11:08+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
+"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +33,7 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/views.py:54
 msgid "This API is not accepting access applications."
-msgstr ""
+msgstr "This subsystem is not accepting access applications."
 
 #: ckanext/apply_permissions_for_service/views.py:151
 msgid "Changes saved successfully"
@@ -76,7 +81,7 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:11
 msgid "Datasets"
-msgstr ""
+msgstr "Subsystems"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:17
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/request_access_button.html:3
@@ -234,7 +239,7 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:13
 msgid "Disable access requests for this API"
-msgstr ""
+msgstr "Disable access requests for this subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:14
 msgid "E-mail"
