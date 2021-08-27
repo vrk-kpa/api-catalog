@@ -17,6 +17,9 @@
 - name: Set certificate file ownership and mode
   shell: chmod 600 /var/lib/postgresql/10/main/server.* && chown "postgres:postgres" /var/lib/postgresql/10/main/server.*
 
+- name: Ensure CKAN is not running before making changes to the database
+  supervisorctl: name="{{ ckan_supervisor_name }}:" state=stopped
+
 - name: Restart postgres
   service: name=postgresql state=restarted
 
