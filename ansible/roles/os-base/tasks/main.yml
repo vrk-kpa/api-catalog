@@ -15,7 +15,10 @@
   when: apt_source_url != false
 
 - name: Upgrade packages
-  apt: upgrade=dist update_cache=yes
+  apt:
+    upgrade: dist
+    update_cache: yes
+  when: deployment_environment_id != 'vagrant'
 
 - name: Ensure common packages
   apt:
