@@ -78,7 +78,7 @@ datetimepicker_css:
   contents:
     - datetimepicker/bootstrap-datetimepicker.css
 
-openapiview_css:
+openapi_view_css:
   output: ckanext-apicatalog_ui/%(version)s_openapi_view.css
   contents:
     - openapi_view.css
