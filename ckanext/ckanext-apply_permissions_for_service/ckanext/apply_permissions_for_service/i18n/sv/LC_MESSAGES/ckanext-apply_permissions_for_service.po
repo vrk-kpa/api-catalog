@@ -4,6 +4,9 @@
 # ckanext-apply_permissions_for_service project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
+# Translators:
+# Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,6 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-08-04 11:08+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
+"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,15 +28,15 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/views.py:101
 #: ckanext/apply_permissions_for_service/views.py:163
 msgid "Not authorized to see this page"
-msgstr ""
+msgstr "Inga rättigheter att se denna sida"
 
 #: ckanext/apply_permissions_for_service/views.py:54
 msgid "This API is not accepting access applications."
-msgstr ""
+msgstr "Detta subsystem tar inte emot ansökningar om användningstillstånd."
 
 #: ckanext/apply_permissions_for_service/views.py:151
 msgid "Changes saved successfully"
-msgstr ""
+msgstr "Ändringarna har sparats"
 
 #: ckanext/apply_permissions_for_service/logic/action/create.py:24
 #: ckanext/apply_permissions_for_service/logic/action/create.py:27
@@ -43,55 +47,58 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/logic/action/create.py:42
 #: ckanext/apply_permissions_for_service/logic/action/create.py:45
 msgid "Missing value"
-msgstr ""
+msgstr "Värde som saknas"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/base.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:4
 msgid "Service access applications"
-msgstr ""
+msgstr "Ansökningar om användningstillstånd för tjänster"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:9
 msgid "Sent applications"
-msgstr ""
+msgstr "Skickade ansökningar"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:19
 msgid ""
 "You have not sent any service access applications. You can apply for access "
 "to services by clicking the \"Request access\" button on the service page."
 msgstr ""
+"Du har inte skickat några ansökningar om användningstillstånd. Du kan ansöka"
+" om användningstillstånd på tjänstens sida genom att välja \"Be om "
+"användningstillstånd\"."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:22
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:4
 msgid "Received applications"
-msgstr ""
+msgstr "Mottagna ansökningar"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:32
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:12
 msgid "You have not received any service access applications."
-msgstr ""
+msgstr "Inga mottagna ansökningar om användningstillstånd."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:8
 msgid "Organizations"
-msgstr ""
+msgstr "Organisationer"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:11
 msgid "Datasets"
-msgstr ""
+msgstr "Subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:17
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/request_access_button.html:3
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/request_access_button.html:5
 msgid "Request access"
-msgstr ""
+msgstr "Be om användarlicens"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:21
 msgid "Apply for permission to use API {}"
-msgstr ""
+msgstr "Be om tillstånd att använda subsystemet {}"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:28
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:9
 msgid "API access application"
-msgstr ""
+msgstr "Ansökan om användningstillstånd för subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:29
 msgid ""
@@ -101,11 +108,16 @@ msgid ""
 "approved, Valtori is automatically notified of the needed firewall "
 "configurations."
 msgstr ""
+"Med denna blankett kan du ansöka om tillstånd för din organisation att "
+"använda subsystem i Informationsleden. Din tillståndsbegäran förmedlas till "
+"den organisation vars subsystem du ber om användningstillstånd för. Valtori "
+"informeras om det godkända användningstillståndet för nödvändiga öppningar i"
+" brandväggen."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:31
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:15
 msgid "Applicant information"
-msgstr ""
+msgstr "Uppgifter om den sökande"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:32
 msgid ""
@@ -113,161 +125,171 @@ msgid ""
 "information provided when your organization joined the National Data "
 "Exchange layer. Modify the prefilled information if necessary."
 msgstr ""
+"Kontaktuppgifterna har fyllts i på förhand utifrån de uppgifter som fyllts i"
+" i samband med att Informationsleden togs i bruk. Du kan redigera "
+"förhandsifyllda uppgifter vid behov."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:37
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
 msgid "Organization"
-msgstr ""
+msgstr "Organisation"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:38
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
 msgid "Business code"
-msgstr ""
+msgstr "FO-nummer"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:40
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:20
 msgid "Contact name"
-msgstr ""
+msgstr "Kontaktpersonens namn"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:41
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:21
 msgid "Contact email"
-msgstr ""
+msgstr "Kontaktpersonens e-post"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:44
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Details of your Security Server and Subsystem"
-msgstr ""
+msgstr "Uppgifter om din organisations anslutningsserver och subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:45
 msgid ""
 "Fill in the details of the Security Server and subsystem that you are "
 "applying permission for, and need the firewall opened to."
 msgstr ""
+"Fyll i IP-adressen till anslutningsservern och uppgifterna i subsystemet för"
+" vilka du ansöker om användningstillstånd och brandväggsöppning. "
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:30
 msgid "IP address"
-msgstr ""
+msgstr "IP-adress"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 msgid "Write the IP address"
-msgstr ""
+msgstr "Skriv in IP-adress"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 msgid ""
 "Select one or several IP addresses of your organization's security servers"
 msgstr ""
+"Välj en eller flera IP-adresser för din organisations anslutningsserver"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:54
 msgid "Add an IP address"
-msgstr ""
+msgstr "Lägg till IP-adress"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:58
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Subsystem code"
-msgstr ""
+msgstr "Subsystemets kod"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:63
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:37
 msgid "Details of the service and API you are applying to access"
 msgstr ""
+"Uppgifter om tjänsten och subsystemet, för vilket du begär "
+"användningstillstånd"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:68
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
 msgid "Organization name"
-msgstr ""
+msgstr "Organisationens namn"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:68
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41
 msgid "Subsystem"
-msgstr ""
+msgstr "Subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Service code"
-msgstr ""
+msgstr "Tjänstens kod"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
 msgid "Select one or several APIs you are applying to access"
 msgstr ""
+"Välj en eller flera subsystemets tjänster för vilka du ber om "
+"användningstillstånd"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:82
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
 msgid "Explain how the service will be used"
-msgstr ""
+msgstr "Berätta för vilket ändamål tillståndet begärs"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:82
 msgid "Reason for requesting access"
-msgstr ""
+msgstr "Skriv en motivering till användningstillståndet"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
 msgid "Date when access is needed"
-msgstr ""
+msgstr "Från och med när behövs subsystemet"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:87
 msgid "Send access application"
-msgstr ""
+msgstr "Skicka ansökan om användningstillstånd"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:88
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:32
 msgid "Cancel"
-msgstr ""
+msgstr "Ångra"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/sent.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:13
 msgid "All access applications"
-msgstr ""
+msgstr "Alla ansökningar om användningstillstånd"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/sent.html:6
 msgid "Application sent successfully"
-msgstr ""
+msgstr "Ansökan har skickats"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:6
 msgid "Settings"
-msgstr ""
+msgstr "Inställningar"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:12
 msgid "Delivery method for access requests"
-msgstr ""
+msgstr "Leveranssätt för tillståndsbegäran"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:13
 msgid "Disable access requests for this API"
-msgstr ""
+msgstr "Det går inte att begära tillstånd för detta subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:14
 msgid "E-mail"
-msgstr ""
+msgstr "E-post"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:15
 msgid "Ticketing service API call"
-msgstr ""
+msgstr "Via gränssnittet till mitt eget ärendehanteringssystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:16
 msgid "Access is requested on a web page managed by my organization"
-msgstr ""
+msgstr "Begäran görs på min organisations sida"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:21
 msgid "Email address"
-msgstr ""
+msgstr "E-postadress"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:24
 msgid "Endpoint URL"
-msgstr ""
+msgstr "Gränssnittets URL"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:27
 msgid "Webpage URL"
-msgstr ""
+msgstr "Webbplatsens URL"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:31
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
 msgid "Manage access requests"
-msgstr ""
+msgstr "Administrerar tillståndsbegäran"
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
 msgid "Edit settings for access requests"
-msgstr ""
+msgstr "Ändra inställningarna för tillståndsbegäran"

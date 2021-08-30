@@ -5,8 +5,8 @@
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2020
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2020
-# Teemu Erkkola <teemu.erkkola@iki.fi>, 2020
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2021
+# Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -25,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2021\n"
+"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -4662,17 +4662,19 @@ msgstr "Begär återställning"
 
 #: ckan/templates/user/request_reset.html:17
 msgid "Email or username"
-msgstr ""
+msgstr "E-postadress eller användarnamn"
 
 #: ckan/templates/user/request_reset.html:22
 msgid "Request Reset"
-msgstr ""
+msgstr "Skicka begäran"
 
 #: ckan/templates/user/request_reset.html:38
 msgid ""
 "Enter your email address or username into the box and we will send you an "
 "email with a link to enter a new password."
 msgstr ""
+"Ange din e-postadress eller ditt användarnamn i fältet. Vi skickar dig en "
+"länk per e-post för att byta lösenord."
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14
 #: ckan/templates/user/snippets/followee_dropdown.html:15
@@ -5131,40 +5133,40 @@ msgid "Shared resource"
 msgstr "Delad resurs"
 
 msgid "Service message in finnish"
-msgstr ""
+msgstr "Serviceanmälan på finska"
 
 msgid "Service message in swedish"
-msgstr ""
+msgstr "Serviceanmälan på svenska"
 
 msgid "Service message in english"
-msgstr ""
+msgstr "Serviceanmälan på engelska"
 
 msgid "Info message in finnish"
-msgstr ""
+msgstr "Infomeddelande på finska"
 
 msgid "Info message in swedish"
-msgstr ""
+msgstr "Infomeddelande på svenska"
 
 msgid "Info message in english"
-msgstr ""
+msgstr "Infomeddelande på engelska"
 
 msgid "Left column in finnish"
-msgstr ""
+msgstr "Vänster spalt på finska"
 
 msgid "Left column in swedish"
-msgstr ""
+msgstr "Vänster spalt på svenska"
 
 msgid "Left column in english"
-msgstr ""
+msgstr "Vänster spalt på engelska"
 
 msgid "Right column in finnish"
-msgstr ""
+msgstr "Höger spalt på finska"
 
 msgid "Right column in swedish"
-msgstr ""
+msgstr "Höger spalt på svenska"
 
 msgid "Right column in english"
-msgstr ""
+msgstr "Höger spalt på engelska"
 
 msgid "Close"
 msgstr "Stäng"
@@ -5304,278 +5306,309 @@ msgid "Type in name of organization"
 msgstr "Ange organisationens namn"
 
 msgid "User name is required."
-msgstr ""
+msgstr "Användarnamnet är obligatorisk uppgift."
 
 msgid "Email is required."
-msgstr ""
+msgstr "E-postadressen är obligatorisk uppgift."
 
 msgid "User name {} already exists."
-msgstr ""
+msgstr "Användarnamnet {} är redan i bruk."
 
 msgid "Email address {} already has the following users: {}."
-msgstr ""
+msgstr "E-postadressen {} används redan av följande användare: {}"
 
 msgid "Error sending password reset link to address {}."
-msgstr ""
+msgstr "Fel vid sändning av återställningslänken för lösenordet till {}"
 
 msgid "Error creating user {} <{}>."
-msgstr ""
+msgstr "Fel vid skapande av användare {} <{}>"
 
 msgid ""
 "Successfully created user %(name)s &lt;%(email)s&gt;. Password reset mail "
 "sent."
 msgstr ""
+"Användare %(name)s &lt;%(email)s&gt; skapades. Länken för inställning av "
+"lösenord har skickats."
 
 msgid "Add user"
-msgstr ""
+msgstr "Lägg till användare"
 
 msgid "Browse APIs"
-msgstr ""
+msgstr "Bläddra bland subsystemen"
 
 msgid "News"
-msgstr ""
+msgstr "Nyheter"
 
 msgid "Published"
-msgstr ""
+msgstr "Publicerad"
 
 msgid "Announcements"
-msgstr ""
+msgstr "Pressmeddelanden"
 
 msgid "API catalog statistics for the last 12 months"
-msgstr ""
+msgstr "API-katalogens statistik för de senaste 12 månaderna"
 
 msgid "Browse announcements"
-msgstr ""
+msgstr "Läs alla meddelanden"
 
 msgid "Visitors"
-msgstr ""
+msgstr "Besökare"
 
 msgid "New APIs"
-msgstr ""
+msgstr "Nya subsystem"
 
 msgid "New attachments"
-msgstr ""
+msgstr "Nya tjänster"
 
 msgid "Browse news"
-msgstr ""
+msgstr "Läs alla nyheter"
 
 msgid "Show organizations without APIs"
-msgstr ""
+msgstr "Visa alla organisationer"
 
 msgid "Show only organizations with APIs"
-msgstr ""
+msgstr "Visa endast organisationer med subsystem"
 
 msgid "More options"
-msgstr ""
+msgstr "Fler alternativ"
 
 msgid "Site Tag Line in swedish"
-msgstr ""
+msgstr "Sidans slogan på svenska"
 
 msgid "Site Tag Line in english"
-msgstr ""
+msgstr "Sidans slogan på engelska"
 
 msgid "Intro text in swedish"
-msgstr ""
+msgstr "Inledningstext på svenska"
 
 msgid "Intro text in english"
-msgstr ""
+msgstr "Inledningstext på engelska"
 
 msgid "Not selected"
-msgstr ""
+msgstr "Inget valt"
 
 msgid "selected"
-msgstr ""
+msgstr "vald"
 
 msgid "Street address"
-msgstr ""
+msgstr "Besöksadress"
 
 msgid "Postal address"
-msgstr ""
+msgstr "Postadress"
 
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 msgid "Email address description"
-msgstr ""
+msgstr "Beskrivning av e-postadress"
 
 msgid "Access Restriction Level"
-msgstr ""
+msgstr "Begränsningar i åtkomsträttigheterna"
 
 msgid "Allowed Users"
-msgstr ""
+msgstr "Tillåtna användare"
 
 #: ckan/views/user.py:571
 msgid ""
 "A reset link has been emailed to you (unless the account specified does not "
 "exist)"
 msgstr ""
+"Länken för att returnera lösenordet har skickats till din e-post (såvida "
+"inget användarkonto finns)"
 
 msgid "There are currently no APIs for this organization"
-msgstr ""
+msgstr "Organisationen har inga aktiva subsystem"
 
 msgid "New consumer"
-msgstr ""
+msgstr "Ny utnyttjare"
 
 msgid "New producer"
-msgstr ""
+msgstr "Ny producent"
 
 msgid "New subsystem"
-msgstr ""
+msgstr "Nytt subsystem"
 
 msgid "Updated subsystem"
-msgstr ""
+msgstr "Uppdaterat subsystem"
 
 msgid "Deleted subsystem"
-msgstr ""
+msgstr "Subsystem som raderats"
 
 msgid "New service"
-msgstr ""
+msgstr "Ny tjänst"
 
 msgid "Updated service"
-msgstr ""
+msgstr "Uppdaterad tjänst"
 
 msgid "Deleted service"
-msgstr ""
+msgstr "Raderad tjänst"
 
 msgid ""
 "Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
 "Exchange Layer to utilise services"
 msgstr ""
+"Organisationen <a href=\"{org_url}\">{org_title}</a> började utnyttja "
+"Informationsledens tjänster "
 
 msgid ""
 "Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
 "Exchange Layer as a service provider"
 msgstr ""
+"Organisationen <a href=\"{org_url}\">{org_title}</a> anslöt sig till "
+"Informationsleden som tjänsteleverantör"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> added a new subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> skapade subsystemet <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> updated the subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> uppdaterade subsystemets<a "
+"href=\"{pkg_url}\">{pkg_title}</a> uppgifter"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> deleted the subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a> and its services"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> raderade subsystemet <a "
+"href=\"{pkg_url}\">{pkg_title}</a>och dess uppgifter"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> added a new service <a "
 "href=\"{res_url}\">{res_title}</a> to subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> skapade en ny tjänst <a "
+"href=\"{res_url}\">{res_title}</a> i subsystemet <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> updated the service <a "
 "href=\"{res_url}\">{res_title}</a> to subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> uppdaterade tjänstens <a "
+"href=\"{res_url}\">{res_title}</a> uppgifter i subsystemet <a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> deleted the service <a "
 "href=\"{res_url}\">{res_title}</a> to subsystem <a "
 "href=\"{pkg_url}\">{pkg_title}</a>"
 msgstr ""
+"<a href=\"{org_url}\">{org_title}</a> raderade tjänsten <a "
+"href=\"{res_url}\">{res_title}</a> från subsystemet<a "
+"href=\"{pkg_url}\">{pkg_title}</a>"
 
 msgid "Interfaces"
-msgstr ""
+msgstr "Tjänster"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Tilläggsuppgifter om subsystemet"
 
 msgid "Information about the interface"
-msgstr ""
+msgstr "Information om tjänsten"
 
 msgid ""
 "Other information about the API, e.g. how to take into use, parameters, "
 "terms of use (unless available in a separate document)"
 msgstr ""
+"Information om gränssnittet, t.ex. ibruktagande, parametrar, användarvillkor"
+" (om inte i ett separat dokument)"
 
 msgid ""
 "Information on the availability of the API, e.g. available 24/7, or "
 "available only during business hours"
 msgstr ""
+"Information om tillgången till tjänsten. T.ex. 24/7 eller svarar endast "
+"vardagar 8–16."
 
 msgid ""
 "Additional information on the SLA of the API, e.g. response time or speed"
 msgstr ""
+"Information om tjänstens (gränssnittets) servicenivå, t.ex. responstid, "
+"hastighet."
 
 msgid "X-Road instance"
-msgstr ""
+msgstr "Informationsledens miljö (X-Road instance)"
 
 msgid "X-Road member class"
-msgstr ""
+msgstr "Organisationstyp (X-Road member class)"
 
 msgid "X-Road member code"
-msgstr ""
+msgstr "Organisationens kod (FO-nummer, X-Road member code)"
 
 msgid "X-Road subsystem code"
-msgstr ""
+msgstr "Subsystemets namn (X-Road subsystem code)"
 
 msgid "X-Road service code"
-msgstr ""
+msgstr "Tjänstens namn (X-Road service code)"
 
 msgid "X-Road service version"
-msgstr ""
+msgstr "Version av tjänsten (X-Road service version)"
 
 msgid "Services"
-msgstr ""
+msgstr "Tjänster"
 
 msgid "Subsystems with services"
-msgstr ""
+msgstr "Subsystem med tjänster"
 
 msgid "Subsystems without services"
-msgstr ""
+msgstr "Subsystem som saknar tjänster"
 
 msgid "Contact Information"
-msgstr ""
+msgstr "Kontaktuppgifter"
 
 msgid "X-Road related information"
-msgstr ""
+msgstr "Uppgifter som hänför sig till X-Road"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Mer information"
 
 msgid "Company type"
-msgstr ""
+msgstr "Typ av företag"
 
 msgid "Company language"
-msgstr ""
+msgstr "Företagets språk"
 
 msgid "Show only service providers"
-msgstr ""
+msgstr "Visa endast tjänsteleverantörer"
 
 msgid "Skip twitter feed"
-msgstr ""
+msgstr "Hoppa över Twitter-flödet"
 
 msgid "Next"
 msgstr "Nästa"
 
 msgid "Show all datasets"
-msgstr ""
+msgstr "Visa alla subsystem"
 
 msgid "Show all organizations"
-msgstr ""
+msgstr "Visa alla organisationer"
 
 msgid "Show all organizations with datasets"
-msgstr ""
+msgstr "Visa alla organisationer med subsystem"
 
 msgid "link opens in new tab or window"
-msgstr ""
+msgstr "Öppnas i nytt fönster"
 
 msgid "Logo of organization {org}"
-msgstr ""
+msgstr "Organisationens {org} logo"
 
 msgid "Webpage address"
-msgstr ""
+msgstr "Webbplatsens adress"
 
 msgid ""
 "If you have forgotten your username and email, contact <a "
 "href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>."
 msgstr ""
+"Om du har glömt ditt användarnamn och din e-postadress, kontakta <a "
+"href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>."
 
 msgid ""
 "If you do not have a user account, contact your organisation's administrator"
@@ -5584,18 +5617,24 @@ msgid ""
 "href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>"
 " and request a user account."
 msgstr ""
+"Om du inte har ett användarkonto ska du kontakta administratören för din "
+"organisation och be honom eller henne bjuda in dig som medlem i "
+"organisationen. Om du inte vet vem som är administratör för din organisation"
+" eller om din organisation inte har någon administratör, kontakta <a "
+"href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>"
+" och be om ett användarkonto"
 
 msgid "Service providers first"
-msgstr ""
+msgstr "Tjänsteleverantörerna först"
 
 msgid "service providers"
-msgstr ""
+msgstr "tjänsteleverantör"
 
 msgid "Filter by role"
 msgstr "Filtrera organisationslistan"
 
 msgid "Organizations without active subsystems"
-msgstr ""
+msgstr "Organisationer som inte har aktiva subsystem"
 
 msgid "Since"
-msgstr ""
+msgstr "Från"
