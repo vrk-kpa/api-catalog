@@ -20,13 +20,13 @@
     - os-base
     - python
     - java8
-    - postgres
-    - postgres-backup
     - solr6
     - redis
     - ssl
     - apache
     - postfix
+    - postgres
+    - postgres-backup
     - { role: ckan-extension, ckanext: ckanext-sentry }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
     - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }

@@ -54,11 +54,11 @@
                 <table class="table table-condensed">
                   <tbody>
                     <tr>
-                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:true') }}">{{ _('Private') }}</a></td>
+                      <td><a href="{{ h.url_for('dataset.search', q='private:true') }}">{{ _('Private') }}</a></td>
                       <td>{{ stats.private }}</td>
                     </tr>
                     <tr>
-                      <td><a href="{{ h.url_for(controller='package', action='search', q='private:false') }}">{{ _('Public') }}</a></td>
+                      <td><a href="{{ h.url_for('dataset.search', q='private:false') }}">{{ _('Public') }}</a></td>
                       <td>{{ stats.public }}</td>
                     </tr>
                   </tbody>
@@ -111,8 +111,8 @@
                   </thead>
                   <tbody>
                     {% for (res, pkg) in invalid_resources %}
-                    {% set pkg_url = h.url_for(controller='package', action='read', id=pkg.name) %}
-                    {% set url = h.url_for(controller='package', action='resource_read', id=pkg.name, resource_id=res.id) %}
+                    {% set pkg_url = h.url_for('dataset.read', id=pkg.name) %}
+                    {% set url = h.url_for('dataset_resource.read', id=pkg.name, resource_id=res.id) %}
                     <tr>
                       <td>
                         <a href="{{ url }}">{{ h.resource_display_name(res) | truncate(50) }}</a>
@@ -146,7 +146,7 @@
                   </thead>
                   <tbody>
                     {% for org in packageless_organizations %}
-                    {% set url = h.url_for(controller='organization', action='read', id=org.name) %}
+                    {% set url = h.url_for('organization.read', id=org.id) %}
                     <tr>
                       <td>
                         <a href="{{ url }}">{{ h.get_translated(org, 'title') or '(no title)' | truncate(50) }}</a>
@@ -179,7 +179,7 @@
                           </thead>
                           <tbody>
                             {% for timestamp, org, has_packages in packageless_organizations_changelog %}
-                            {% set url = h.url_for(controller='organization', action='read', id=org.id) %}
+                            {% set url = h.url_for('organization.read', id=org.id) %}
                             <tr>
                               <td>
                                 <a href="{{ url }}">{{ h.get_translated(org, 'title') or '(no title)' | truncate(50) }}</a>

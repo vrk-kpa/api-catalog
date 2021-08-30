@@ -146,6 +146,10 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
     # After package_show, filter out the resources which the user doesn't have access to
     def after_show(self, context, data_dict):
+        # Only filter results if processing a request
+        if not has_request_context():
+            return data_dict
+
         # Skip access check if sysadmin
         if (context.get('sysadmin')):
             return data_dict
