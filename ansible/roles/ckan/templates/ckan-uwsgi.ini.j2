@@ -14,3 +14,8 @@ vacuum          =  true
 callable        =  application
 buffer-size     =  32768
 strict          =  true
+
+# Fix SQLAlchemy SSL errors
+# <https://stackoverflow.com/questions/22752521/uwsgi-flask-sqlalchemy-and-postgres-ssl-error-decryption-failed-or-bad-reco>
+lazy = true
+lazy-apps = true
