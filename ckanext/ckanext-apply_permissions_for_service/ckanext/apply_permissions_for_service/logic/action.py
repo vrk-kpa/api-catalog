@@ -3,6 +3,7 @@ import requests
 import json
 
 from ckan.plugins import toolkit as tk
+from ckan import model as ckan_model
 from ckan.logic import NotFound
 from ckan.lib.mailer import mail_recipient
 from .. import model
@@ -109,7 +110,7 @@ def service_permission_application_create(context, data_dict):
 @side_effect_free
 def service_permission_application_list(context, data_dict):
     check_access('service_permission_application_list', context, data_dict)
-    applications = model.Session.query(model.ApplyPermission)
+    applications = ckan_model.Session.query(model.ApplyPermission)
 
     subsystem_id = data_dict.get('subsystem_id')
     if subsystem_id:
