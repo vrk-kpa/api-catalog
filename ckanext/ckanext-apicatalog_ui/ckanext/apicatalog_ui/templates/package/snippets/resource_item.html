@@ -13,7 +13,9 @@
               <span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">
                 {{ res.format }}
               </span>
+              {% if res.tracking_summary %}
               {{ h.popular('views', res.tracking_summary.total, min=10) }}
+              {% endif %}
             {% endblock %}
             {% block resource_item_description %}
               <p class="description">
