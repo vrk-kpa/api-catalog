@@ -2,15 +2,20 @@
 {% import 'macros/form.html' as form %}
 {% resource 'apicatalog_ui/javascript/mutexfield.js' %}
 
+{% block content_action %}
+{% link_for _('Exit the settings'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default' %}
+{% endblock %}
+
 {% block primary_content %}
 <section id="main_content" class="module">
-  <div class="module-content module-content--no-padding">
+  <div class="module-content">
     {% block primary_content_inner %}
     <h2 class="p-0">{{ _('Subsystem permission') }}</h2>
-    <p>{{ _('Instructions about apply permission options') }}</p>
+    <p class="module__instructions">{{ _('Instructions about apply permission options') }}</p>
     {% block errors %}{{ form.errors(errors) }}{% endblock %}
     <div class="row">
-      <form class="col-sm-6" method="POST">
+      <form class="col-sm-6" method="POST" data-module="form-change-listener" data-module-confirm-modal-selector="#test">
+        <div id="test"></div>
         {{ form.hidden('subsystemId', value=subsystem_id) }}
         <div data-module="mutexfield">
           <div class="select-wrapper">
@@ -31,6 +36,7 @@
               {{ form.image_upload(
                   settings,
                   errors,
+                  upload_label=_('Add your file'),
                   is_upload_enabled=h.uploads_enabled(),
                   is_url=is_url,
                   is_upload=is_upload,
@@ -45,8 +51,10 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
-        <a class="btn btn-outline-primary">{{ _('Cancel') }}</a>
+        <div class="module__actions">
+          <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
+          <a class="btn btn-outline-primary">{{ _('Cancel') }}</a>
+        </div>
       </form>
     </div>
     {% endblock %}
