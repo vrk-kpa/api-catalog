@@ -33,6 +33,7 @@ ckan_patches:
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_old_fontawesome" }
+  - { file: "remove_stacktraces_from_http_errors" } # https://github.com/ckan/ckan/pull/6345
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

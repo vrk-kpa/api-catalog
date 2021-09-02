@@ -1,0 +1,87 @@
+From 240a0e14049f2044dcee65a803ed8758ad914f8b Mon Sep 17 00:00:00 2001
+From: Shubham Mahajan <mr.shubhammahajan@gmail.com>
+Date: Fri, 27 Aug 2021 12:57:35 +0530
+Subject: [PATCH 1/3] [#6340] Handle Traceback Exception for HTTP and HTTP
+ status Code in logging
+
+The traceback for HTTP Exception will be added only when debug is true
+---
+ ckan/config/middleware/flask_app.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/ckan/config/middleware/flask_app.py b/ckan/config/middleware/flask_app.py
+index 108a042158..d752e38acc 100644
+--- a/ckan/config/middleware/flask_app.py
++++ b/ckan/config/middleware/flask_app.py
+@@ -395,8 +395,8 @@ def ckan_after_request(response):
+
+     r_time = time.time() - g.__timer
+     url = request.environ['PATH_INFO']
+-
+-    log.info(' %s render time %.3f seconds' % (url, r_time))
++    status_code = response.status_code
++    log.info(' %s %s render time %.3f seconds' % (status_code, url, r_time))
+
+     return response
+
+@@ -525,8 +525,9 @@ def _register_error_handler(app):
+     u'''Register error handler'''
+
+     def error_handler(e):
+-        log.error(e, exc_info=sys.exc_info)
++        debug = asbool(config.get('debug', config.get('DEBUG', False)))
+         if isinstance(e, HTTPException):
++            log.error(e, exc_info=sys.exc_info) if debug else log.error(e)
+             extra_vars = {
+                 u'code': e.code,
+                 u'content': e.description,
+@@ -535,6 +536,7 @@ def error_handler(e):
+
+             return base.render(
+                 u'error_document_template.html', extra_vars), e.code
++        log.error(e, exc_info=sys.exc_info)
+         extra_vars = {u'code': [500], u'content': u'Internal server error'}
+         return base.render(u'error_document_template.html', extra_vars), 500
+
+
+From 645a7e2c47a3dec88f0b85347e1991b44c7c4019 Mon Sep 17 00:00:00 2001
+From: Shubham Mahajan <mr.shubhammahajan@gmail.com>
+Date: Fri, 27 Aug 2021 13:01:16 +0530
+Subject: [PATCH 2/3] [#6340] Add the changelog
+
+---
+ changes/6340.bugfix | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 changes/6340.bugfix
+
+diff --git a/changes/6340.bugfix b/changes/6340.bugfix
+new file mode 100644
+index 0000000000..edd8b857a4
+--- /dev/null
++++ b/changes/6340.bugfix
+@@ -0,0 +1,2 @@
++Prevent Traceback to logged for HTTP Exception until debug is true
++Add the HTTP status Code in logging for HTTP requests
+\ No newline at end of file
+
+From 894d6a0bfaca1e75d39d721a0a739cb8bf951539 Mon Sep 17 00:00:00 2001
+From: Shubham Mahajan <mr.shubhammahajan@gmail.com>
+Date: Fri, 27 Aug 2021 13:04:36 +0530
+Subject: [PATCH 3/3] [#6340] Coding Standard
+
+---
+ ckan/config/middleware/flask_app.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ckan/config/middleware/flask_app.py b/ckan/config/middleware/flask_app.py
+index d752e38acc..6a1aa0b1e8 100644
+--- a/ckan/config/middleware/flask_app.py
++++ b/ckan/config/middleware/flask_app.py
+@@ -396,6 +396,7 @@ def ckan_after_request(response):
+     r_time = time.time() - g.__timer
+     url = request.environ['PATH_INFO']
+     status_code = response.status_code
++
+     log.info(' %s %s render time %.3f seconds' % (status_code, url, r_time))
+
+     return response
