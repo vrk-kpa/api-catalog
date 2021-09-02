@@ -39,6 +39,7 @@ files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
   - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/styles/a11y-light.css'}
   - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/vendor/highlight.js'}
+  - { file: '/usr/lib/ckan/default/src/ckan/changes/6340.bugfix' }
 
 search_engine_robots_filename: robots_disallowed.txt
 
