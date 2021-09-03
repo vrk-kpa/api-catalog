@@ -24,7 +24,7 @@ from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
 from ckan.lib.plugins import DefaultTranslation
 
-from .utils import package_generator
+from .utils import package_generator, organization_generator
 import ckanext.apicatalog_ui.admindashboard as admindashboard
 
 standard_library.install_aliases()
@@ -308,13 +308,16 @@ def custom_organization_list(params):
         context['user_id'] = toolkit.c.userobj.id
         context['user_is_admin'] = toolkit.c.userobj.sysadmin
 
-    data_dict_page_results = {
+    organization_list_options = {
+        'q': q,
         'all_fields': True,
         'include_extras': True,
-        'q': q,
-        'sort': sort_by,
+        'sort': sort_by
     }
-    results = toolkit.get_action('organization_list')(context, data_dict_page_results)
+
+    # FIXME: Fetching every organization with all fields to filter for paging, could this be improved?
+
+    results = list(organization_generator(context, organization_list_options))
 
     provider_orgs = params.get('provider_orgs', '').lower() in ('true', '1', 'yes')
     if provider_orgs:
@@ -350,7 +353,7 @@ def get_statistics():
                'with_private': True}
 
     packages = toolkit.get_action('package_search')(context, {})
-    organizations = toolkit.get_action('organization_list')(context, {"all_fields": True, "include_extras": True})
+    organizations = list(organization_generator(context, {"all_fields": True, "include_extras": True}))
     provider_organizations = [o for o in organizations if o.get('xroad_member_type', '') == 'provider']
 
     result_dict = {
