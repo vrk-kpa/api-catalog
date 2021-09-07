@@ -1,18 +1,36 @@
 {% ckan_extends %}
 
-{% block page_heading %}
+{% block package_description %}
 
-<span class="subheading">{{ _('Service bus identifier') }}:
-  {% if h.is_service_bus_id(pkg.id) %}
-  <span class="nowrap">{{ pkg.id }}</span>
-  {% else %}
-  -
+  {% if pkg.private %}
+  <span class="dataset-private label label-inverse pull-right">
+    <i class="fa fa-lock"></i>
+    {{ _('Private') }}
+  </span>
   {% endif %}
-</span>
-{% endblock %}
+  {% block package_archive_notice %}
+    {{ super() }}
+  {% endblock %}
 
-{% block package_tags %}
-  {% snippet "package/snippets/tags.html", tags=pkg.get('keywords', {}), field='keywords' %}
+  {% block page_heading %}
+    <h2>{{_('Request permission to use this subsystem')}}</h2>
+    {{ pkg.get('service_permission_settings').get('delivery_method') }}
+    <p>{{_('Request permission to use this subsystem')}}</p>
+    <h2>{{_('Subsystem information')}}</h2>
+
+    <h3>{{ _('Service bus identifier') }}</h3>
+
+    {% if h.is_service_bus_id(pkg.id) %}
+    <span class="nowrap">{{ pkg.id }}</span>
+    {% else %}
+    <span class="nowrap">-</span>
+    {% endif %}
+
+  {% endblock %}
+
+  {% block package_notes %}
+   {{ super() }}
+  {% endblock %}
 {% endblock %}
 
 {% block package_resources %}
@@ -22,6 +40,10 @@
 {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=interfaces, title=_('Interfaces') %}
 {% endif %}
 {% if attachments %}
-{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Attachments') %}
+{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Services') %}
 {% endif %}
+{% endblock %}
+
+{% block package_tags %}
+  {% snippet "package/snippets/tags.html", tags=pkg.get('keywords', {}), field='keywords' %}
 {% endblock %}

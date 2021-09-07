@@ -3,21 +3,11 @@
     font-weight: normal;
 
     &&-primary {
-        background: linear-gradient(0deg, @suomifi-highlight-base, @suomifi-highlight-dark);
+        background: linear-gradient(0deg, @suomifi-highlight-dark, @suomifi-highlight-base);
         border-color: @suomifi-highlight-base;
 
         &:hover {
-            background: linear-gradient(0deg, @suomifi-highlight-base, @suomifi-highlight-light);
-        }
-    }
-
-    &&-outline-primary {
-        border: 1px solid @suomifi-highlight-base;
-        font-weight: bold;
-
-        &:hover {
-            border-color: @suomifi-highlight-light;
-            color: @suomifi-highlight-light;
+            background: linear-gradient(0deg, @suomifi-highlight-light, @suomifi-highlight-base);
         }
     }
 }

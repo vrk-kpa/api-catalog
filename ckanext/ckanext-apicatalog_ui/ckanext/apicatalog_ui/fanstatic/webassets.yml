@@ -11,7 +11,6 @@ main_js:
     - javascript/util.js
     - javascript/bootstrap.offcanvas.js
     - javascript/submit-on-change.js
-    - javascript/plugins/modal.js
     - javascript/form-change-listener.js
 
 main_css:
