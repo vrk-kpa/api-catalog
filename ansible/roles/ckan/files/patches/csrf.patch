@@ -351,7 +351,7 @@ index 87388ebad..c94c1b08b 100644
          # Do any plugin login stuff
 diff --git a/ckan/lib/csrf_token.py b/ckan/lib/csrf_token.py
 new file mode 100644
-index 000000000..9eb29df99
+index 000000000..e884650a2
 --- /dev/null
 +++ b/ckan/lib/csrf_token.py
 @@ -0,0 +1,64 @@
@@ -379,7 +379,7 @@ index 000000000..9eb29df99
 +
 +def _generate_new_token():
 +    token_bytes = os.urandom(64)
-+    token = base64.urlsafe_b64encode(token_bytes)
++    token = base64.urlsafe_b64encode(token_bytes).hex()
 +    return token
 +
 +def _get_user():
@@ -390,7 +390,7 @@ index 000000000..9eb29df99
 +    if not a or not b or len(a) != len(b):
 +        return False
 +
-+    indices = range(len(a))
++    indices = list(range(len(a)))
 +    random.shuffle(indices)
 +
 +    for i in indices:
