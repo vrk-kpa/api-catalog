@@ -37,6 +37,18 @@
       'maintainer',
       'maintainer_email'
       ] -%}
+  {%- set include_fields = [
+      'validSince',
+      'validUntil',
+      'url',
+      'maintainer',
+      'maintainer_email',
+      'maintainer_phone',
+      'xroad_instance',
+      'xroad_memberclass',
+      'xroad_membercode',
+      'xroad_subsystemcode'
+      ] -%}
   {% snippet "scheming/package/snippets/additional_info.html",
-  pkg_dict=pkg, dataset_type=dataset_type, schema=schema, exclude_fields=exclude_fields %}
+  pkg_dict=pkg, dataset_type=dataset_type, schema=schema, exclude_fields=exclude_fields, include_fields=include_fields %}
 {% endblock %}

@@ -13,35 +13,48 @@
   {% endblock %}
 
   {% block page_heading %}
-    <h2>{{_('Request permission to use this subsystem')}}</h2>
-    {{ pkg.get('service_permission_settings').get('delivery_method') }}
-    <p>{{_('Request permission to use this subsystem')}}</p>
-    <h2>{{_('Subsystem information')}}</h2>
-
-    <h3>{{ _('Service bus identifier') }}</h3>
-
-    {% if h.is_service_bus_id(pkg.id) %}
-    <span class="nowrap">{{ pkg.id }}</span>
-    {% else %}
-    <span class="nowrap">-</span>
+    {%- set delivery_method = pkg.get('service_permission_settings').get('delivery_method') -%}
+    {% if delivery_method != 'none' %}
+      <h2>{{ _('Request permission to use this subsystem') }}</h2>
+      <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
+    {% endif %}
+    {% if delivery_method == 'api' %}
+      <a href="{{pkg.get('service_permission_settings').get('api')}}" target="_blank">{{ _('Request permission') }} <i class="fal fa-external-link-alt"></i></a>
+    {% elif delivery_method == 'file' %}
+      <a href="{{pkg.get('service_permission_settings').get('file_url')}}" target="_blank">{{ _('Download file') }}</a>
+    {% elif delivery_method == 'web' %}
+      <a href="{{pkg.get('service_permission_settings').get('web')}}" target="_blank">{{ _('Request permission in organizations website') }} <i class="fal fa-external-link-alt"></i></a>
     {% endif %}
 
-  {% endblock %}
+    <div class="dataset__subsystem-information">
+      <h2>{{_('Subsystem information')}}</h2>
+      <h2 class="visual-h3">{{ _('Service bus identifier') }}</h2>
 
-  {% block package_notes %}
-   {{ super() }}
+      <span class="nowrap">
+        {% if h.is_service_bus_id(pkg.id) %}
+        {{ pkg.id }}
+        {% else %}
+        -
+        {% endif %}
+      </span>
+
+      <h2 class="visual-h3">{{_('Description')}}</h2>
+      {% block package_notes %}
+       {{ super() }}
+      {% endblock %}
+    </div>
   {% endblock %}
 {% endblock %}
 
 {% block package_resources %}
-{% set interfaces = pkg.resources|selectattr('harvested_from_xroad')|list %}
-{% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
-{% if interfaces %}
-{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=interfaces, title=_('Interfaces') %}
-{% endif %}
-{% if attachments %}
-{% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Services') %}
-{% endif %}
+  {% set interfaces = pkg.resources|selectattr('harvested_from_xroad')|list %}
+  {% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
+  {% if interfaces %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=interfaces, title=_('Interfaces') %}
+  {% endif %}
+  {% if attachments %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Services') %}
+  {% endif %}
 {% endblock %}
 
 {% block package_tags %}

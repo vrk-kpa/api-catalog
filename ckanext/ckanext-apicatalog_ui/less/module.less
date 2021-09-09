@@ -37,7 +37,7 @@
 
 .module-content {
   padding: 0 @gutterX;
-  margin: 20px 0;
+  margin: 20px auto;
 
   > .fill-module {
     margin: -20px 0;
@@ -136,6 +136,26 @@
     .btn {
       margin-left: @grid-gutter-width / 4;
       margin-right: @grid-gutter-width / 4;
+    }
+  }
+
+  &__settings-instructions {
+    background-color: @suomifi-brand--extra-light;
+    padding: @grid-gutter-width;
+    margin: @margin-y__module-child 0;
+
+    &__header {
+      margin-top: 0;
+
+      i {
+        margin-right: @grid-gutter-width / 4;
+      }
+    }
+
+    &__content {
+      :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -11,11 +11,10 @@
   <div class="module-content">
     {% block primary_content_inner %}
     <h2 class="p-0">{{ _('Subsystem permission') }}</h2>
-    <p class="module__instructions">{{ _('Instructions about apply permission options') }}</p>
+    <p class="module__instructions">{{ _('You can allow permission requests for authenticated API-Catalog users. Permission requests are disabled by default in a new subsystem.') }}</p>
     {% block errors %}{{ form.errors(errors) }}{% endblock %}
     <div class="row">
-      <form class="col-sm-6" method="POST" data-module="form-change-listener" data-module-confirm-modal-selector="#test">
-        <div id="test"></div>
+      <form class="col-sm-7" method="POST" data-module="form-change-listener" data-module-confirm-modal-selector>
         {{ form.hidden('subsystemId', value=subsystem_id) }}
         <div data-module="mutexfield">
           <div class="select-wrapper">
@@ -41,7 +40,7 @@
                   is_url=is_url,
                   is_upload=is_upload,
                   field_url='file_url',
-                  field_upload='upload',
+                  field_upload='file',
                   field_clear='clear_upload'
                   )
               }}
@@ -54,6 +53,13 @@
         <div class="module__actions">
           <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
           <a class="btn btn-default">{{ _('Cancel') }}</a>
+        </div>
+
+        <div class="module__settings-instructions">
+          <h3 class="module__settings-instructions__header"><i class="fal fa-info-circle"></i>{{ _('Permission request alternatives:')}}</h3>
+          <div class="module__settings-instructions__content">
+            {{ _('Permission request alternatives instructions') | safe }}
+          </div>
         </div>
       </form>
     </div>

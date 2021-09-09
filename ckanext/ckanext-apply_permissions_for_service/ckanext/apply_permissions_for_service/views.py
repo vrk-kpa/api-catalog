@@ -140,13 +140,35 @@ def settings_get(context, subsystem_id, errors={}, values=None):
 
 def settings_post(context, subsystem_id):
     form = toolkit.request.form
+
     data_dict = {
-            'subsystem_id': subsystem_id,
-            'delivery_method': form.get('deliveryMethod'),
-            'email': form.get('email'),
-            'api': form.get('api'),
-            'web': form.get('web'),
-            }
+        'subsystem_id': subsystem_id,
+        'delivery_method': form.get('deliveryMethod'),
+        'email': form.get('email'),
+        'api': form.get('api'),
+        'file': form.get('file'),
+        'file_url': form.get('file_url'),
+        'clear_upload': form.get('clear_upload'),
+        'web': form.get('web'),
+    }
+
+    # TODO: Fix uploading, I couldn't get it working.
+    if toolkit.check_ckan_version(min_version='2.5'):
+        upload = uploader.get_uploader('apply_permission')
+    else:
+        upload = uploader.Upload('apply_permission')
+
+    upload.update_data_dict(data_dict, 'file_url',
+                            'file', 'clear_upload')
+    upload.upload(uploader.get_max_image_size())
+
+    file_url = data_dict.get('file_url')
+    if file_url and file_url[0:6] not in {'http:/', 'https:'}:
+        file_url = h.url_for_static(
+            'uploads/apply_permission/%s' % file_url,
+            qualified=True
+        )
+        data_dict['file_url'] = file_url
 
     try:
         toolkit.get_action('service_permission_settings_update')(context, data_dict)

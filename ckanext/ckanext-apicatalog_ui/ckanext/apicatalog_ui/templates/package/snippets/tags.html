@@ -1,6 +1,7 @@
 {% set lang = h.get_lang_prefix() %}
 {% if tags.get(lang) %}
     <section class="tags">
+        <h2 class="visual-h3">{{ _('Keywords') }}</h2>
         {% block tag_list %}
             <ul class="tag-list">
                 {% for tag in tags.get(lang) %}
