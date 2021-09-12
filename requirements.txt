@@ -181,7 +181,7 @@ sqlalchemy==1.3.5
     #   sqlalchemy-migrate
 sqlalchemy-migrate==0.12.0 #; extra == "requirements"
     # via ckan
-sqlparse==0.2.2
+sqlparse==0.4.2
     # via
     #   ckan
     #   sqlalchemy-migrate
