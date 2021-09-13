@@ -22,24 +22,10 @@
 {% endblock %}
 
 {% block package_additional_info %}
-  {%- set exclude_fields = [
-      'id',
-      'title',
-      'title_translated',
-      'keywords',
-      'keywords_translated',
-      'name',
-      'notes',
-      'notes_translated',
-      'tag_string',
-      'license_id',
-      'owner_org',
-      'maintainer',
-      'maintainer_email'
-      ] -%}
   {%- set include_fields = [
       'validSince',
       'validUntil',
+      'shared_resource',
       'url',
       'maintainer',
       'maintainer_email',
@@ -50,5 +36,5 @@
       'xroad_subsystemcode'
       ] -%}
   {% snippet "scheming/package/snippets/additional_info.html",
-  pkg_dict=pkg, dataset_type=dataset_type, schema=schema, exclude_fields=exclude_fields, include_fields=include_fields %}
+  pkg_dict=pkg, dataset_type=dataset_type, schema=schema, include_fields=include_fields %}
 {% endblock %}

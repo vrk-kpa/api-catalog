@@ -19,11 +19,15 @@
       <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
     {% endif %}
     {% if delivery_method == 'api' %}
-      <a href="{{pkg.get('service_permission_settings').get('api')}}" target="_blank">{{ _('Request permission') }} <i class="fal fa-external-link-alt"></i></a>
+      <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('api')}}" target="_blank">{{ _('Request permission') }}
+        <i class="fal fa-external-link-alt btn-icon--right"></i>
+      </a>
     {% elif delivery_method == 'file' %}
       <a href="{{pkg.get('service_permission_settings').get('file_url')}}" target="_blank">{{ _('Download file') }}</a>
     {% elif delivery_method == 'web' %}
-      <a href="{{pkg.get('service_permission_settings').get('web')}}" target="_blank">{{ _('Request permission in organizations website') }} <i class="fal fa-external-link-alt"></i></a>
+      <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('web')}}" target="_blank">{{ _('Request permission in organizations website') }}
+        <i class="fal fa-external-link-alt btn-icon--right"></i>
+      </a>
     {% endif %}
 
     <div class="dataset__subsystem-information">
