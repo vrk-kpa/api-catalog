@@ -275,17 +275,16 @@
           "label": "Same Organization Members"
         },
         {
-          "value": "only_allowed_users",
-          "label": "Allowed Users Only"
+          "value": "only_allowed_organizations",
+          "label": "Allowed Organizations Only"
         }
       ]
     },
     {
-      "field_name": "allowed_users",
-      "label": "Allowed Users",
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
       "classes": ["control-full"],
-      "preset": "tag_string_autocomplete",
-      "data-module-source": "/api/2/util/user/autocomplete?q=?",
+      "preset": "apicatalog_organization_string_autocomplete",
       "validators": "ignore_missing"
     }
   ]
