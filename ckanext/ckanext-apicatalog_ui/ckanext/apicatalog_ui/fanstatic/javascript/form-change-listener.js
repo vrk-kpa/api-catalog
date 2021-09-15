@@ -31,7 +31,6 @@ this.ckan.module('form-change-listener', function($) {
     },
 
     beforeunload: function(e) {
-      console.log(e);
       e.returnValue = "Are you sure you want to exit page with unsaved changes?";
       return e;
     }
