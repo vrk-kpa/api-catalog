@@ -162,7 +162,7 @@ def settings_post(context, subsystem_id):
     upload.upload(uploader.get_max_image_size())
 
     file_url = data_dict.get('file_url', '')
-    if re.match('https?:', file_url) == None:
+    if re.match('https?:', file_url) is None:
         file_url = h.url_for_static(
             'uploads/apply_permission/%s' % file_url,
             qualified=True
