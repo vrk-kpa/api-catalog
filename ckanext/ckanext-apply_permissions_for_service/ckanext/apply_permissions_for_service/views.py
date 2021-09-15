@@ -4,8 +4,6 @@ import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
 from flask import Blueprint
 from logging import getLogger
-import ckan.lib.navl.dictization_functions as dict_fns
-import ckan.logic as logic
 
 log = getLogger(__name__)
 
@@ -162,8 +160,8 @@ def settings_post(context, subsystem_id):
                             'file', 'clear_upload')
     upload.upload(uploader.get_max_image_size())
 
-    file_url = data_dict.get('file_url')
-    if file_url and file_url[0:6] not in {'http:/', 'https:'}:
+    file_url = data_dict.get('file_url', '')
+    if re.match('https?:', file_url):
         file_url = h.url_for_static(
             'uploads/apply_permission/%s' % file_url,
             qualified=True

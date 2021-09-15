@@ -17,11 +17,11 @@
                       field=field, data=pkg_dict, schema=schema -%}</td>
               </tr>
             {%- endif -%}
-            {%- elif field_key == 'url' -%}
-              <tr>
-                <th>{{ _('Source') }}</th>
-                <td>{{ pkg_dict.get('url') }}</td>
-              </tr>
+          {%- elif field_key == 'url' -%}
+            <tr>
+              <th>{{ _('Source') }}</th>
+              <td>{{ pkg_dict.get('url') }}</td>
+            </tr>
           {%- endif -%}
         {%- endfor -%}
 
