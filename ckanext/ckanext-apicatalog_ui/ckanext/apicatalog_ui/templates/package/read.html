@@ -13,8 +13,8 @@
   {% endblock %}
 
   {% block page_heading %}
-    {%- set delivery_method = pkg.get('service_permission_settings').get('delivery_method') -%}
-    {% if delivery_method != 'none' %}
+    {%- set delivery_method = pkg.get('service_permission_settings', {}).get('delivery_method') -%}
+    {% if delivery_method not in (None, 'none') %}
       <h2>{{ _('Request permission to use this subsystem') }}</h2>
       <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
     {% endif %}

@@ -13,6 +13,7 @@ server {
   ssl_certificate {{ ssl_certificate_path }}/{{ ssl_cert_filename }};
   ssl_certificate_key {{ ssl_certificate_path }}/{{ ssl_key_filename }};
 
+  client_max_body_size {{ nginx_max_resource_size }}M;
   error_page 500 502 503 504 /50x.html;
 
   location = /50x.html {
