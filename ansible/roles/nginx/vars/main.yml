@@ -8,5 +8,6 @@ ssl_key_filename: server.key
 alternative_ssl_cert_filename: alternative_server.crt
 alternative_ssl_key_filename: alternative_server.key
 ssl_dh_parameters_path: "{{ ssl_certificate_path }}/dhparams.pem"
+nginx_max_resource_size: "{{ ckan_max_resource_size }}"
 
 static_path: /var/www/static

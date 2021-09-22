@@ -14,7 +14,7 @@
     <p class="module__instructions">{{ _('You can allow permission requests for authenticated API-Catalog users. Permission requests are disabled by default in a new subsystem.') }}</p>
     {% block errors %}{{ form.errors(errors) }}{% endblock %}
     <div class="row">
-      <form class="col-sm-7" method="POST" data-module="form-change-listener" data-module-confirm-modal-selector>
+      <form class="col-sm-7" method="POST" enctype="multipart/form-data" data-module="form-change-listener" data-module-confirm-modal-selector>
         {{ form.hidden('subsystemId', value=subsystem_id) }}
         <div data-module="mutexfield">
           <div class="select-wrapper">
