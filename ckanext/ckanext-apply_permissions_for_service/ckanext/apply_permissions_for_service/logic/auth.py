@@ -14,4 +14,5 @@ def service_permission_settings(context, data_dict):
 
 
 def service_permission_application_create(context, data_dict):
-    return {'success': True}
+    editor_or_admin_orgs = toolkit.get_action('organization_list_for_user')(context, {'permission': 'create_dataset'})
+    return {'success': len(editor_or_admin_orgs) > 0}
