@@ -41,8 +41,18 @@ And you can also run Ansible manually inside the virtual machine:
 With Vagrant, the host machine shares the working directory into the virtual machine. The web server uses the CKAN extensions directly from the source code via symlinks. Depending on what you change however, some extra rules apply:
 
 - If you edit a Jinja template, changes apply instantly (only page refresh required)
-- If you edit Python code of the extensions, you need to restart the WSGI server (`vagrant ssh` and `sudo service apache2 restart`).
-- If you edit Javascript, you need to run the frontend build to compile and minify files (`vagrant ssh`, `cd /src/ansible` and `ansible-playbook -v -i inventories/vagrant frontend-build.yml`).
+- If you edit Python code of the extensions, you need to restart the WSGI server (`vagrant ssh` and `sudo supervisorctl restart all`).
+- If you edit Javascript, you need to run the frontend build to compile and minify files (`vagrant ssh`, `cd /vagrant/ansible` and `ansible-playbook -v -i inventories/vagrant frontend-build.yml`).
+
+#### Translations ####
+
+Navigate into the root folder of module which translation keys need to be updated and run following commands:
+
+```
+# Need to be ran only if it's first time to extract translations
+. /usr/lib/ckan/default/bin/activate
+python setup.py extract_messages
+```
 
 ### Repository structure
 

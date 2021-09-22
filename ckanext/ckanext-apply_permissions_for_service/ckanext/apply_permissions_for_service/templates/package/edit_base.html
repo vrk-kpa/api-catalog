@@ -2,6 +2,6 @@
 
 {% block content_primary_nav %}
   {{ super() }}
+  {{ h.build_nav_icon('apply_permissions.permission_application_settings', _('Permission management'), subsystem_id=pkg.name) }}
   {{ h.build_nav_icon('apply_permissions.manage_permission_applications', _('Manage access requests'), subsystem_id=pkg.name) }}
-  {{ h.build_nav_icon('apply_permissions.permission_application_settings', _('Edit settings for access requests'), subsystem_id=pkg.name) }}
 {% endblock %}

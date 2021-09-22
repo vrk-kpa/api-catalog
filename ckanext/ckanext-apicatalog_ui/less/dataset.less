@@ -57,7 +57,14 @@
   background-color: @resourceFormatBackground;
 }
 
+.dataset__subsystem-information {
+  margin-top: @margin-y__module-child;
+  margin-bottom: @margin-y__module-child;
+}
+
 .resources {
+  margin-top: @margin-y__module-child;
+  margin-bottom: @margin-y__module-child;
   background-color: white;
 }
 
@@ -68,12 +75,13 @@
   border: 1px solid @suomifi-border;
   border-top: 2px solid @suomifi-highlight-base;
   border-radius: 2px;
+  margin: 1rem 0;
 }
 
 .resource-item {
   background-color: @white;
   padding: 0;
-  
+
   &:hover {
     background-color: @white;
   }
@@ -207,23 +215,33 @@
 
 // Additional Info
 
-.additional-info table {
-  border: 1px solid @suomifi-border;
+.additional-info {
+  margin-top: @margin-y__module-child;
+  margin-bottom: @margin-y__module-child;
 
-  font-size: 16px;
+  table {
+    border: 1px solid @suomifi-border;
 
-  th {
-    font-family: @headings-font-family;
-    width: 50%;
-  }
+    font-size: 16px;
 
-  td {
-    font-family: @font-family-base;
-    width: 50%;
-  }
+    th {
+      font-family: @headings-font-family;
+      width: 50%;
+    }
 
-  tbody tr:nth-child(even) {
-    background-color: @suomifi-striped-background;
+    td {
+      font-family: @font-family-base;
+      width: 50%;
+    }
+
+    tr > th,
+    tr > td {
+      padding: @padding-y__table-cell @padding-x__table-cell;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: @suomifi-striped-background;
+    }
   }
 }
 

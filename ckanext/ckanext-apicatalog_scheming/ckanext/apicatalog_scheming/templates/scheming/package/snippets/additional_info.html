@@ -4,50 +4,26 @@
     <thead> </thead>
     <tbody>
       {% block package_additional_info %}
-
-        {% if pkg_dict.maintainer_email %}
-          {% set field = h.get_field_from_schema(schema, 'maintainer')  %}
-
-            <tr>
+        {%- for field_key in include_fields -%}
+          {%- set fields = schema.dataset_fields | selectattr('field_name', 'equalto', field_key) | list -%}
+          {%- if fields|length > 0 -%}
+            {%- set field = fields[0] -%}
+            {%- if field.display_snippet is not none -%}
+              <tr>
                 <th scope="row" class="dataset-label">{{ h.scheming_language_text(field.label) }}</th>
-                <td class="dataset-details"{%
-                        if field.display_property %} property="{{ field.display_property
-                        }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
-                    field=field, data=pkg_dict, schema=schema -%}</td>
-            </tr>
-        {% endif %}
-
-        {% if pkg_dict.metadata_modified %}
-          <tr>
-            <th scope="row" class="dataset-label">{{ _("Last Updated") }}</th>
-            <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified, with_hours=True) }}</td>
-          </tr>
-        {% endif %}
-        {% if pkg_dict.metadata_created %}
-          <tr>
-            <th scope="row" class="dataset-label">{{ _("Created") }}</th>
-            <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</td>
-          </tr>
-        {% endif %}
-
-        {%- for field in schema.dataset_fields -%}
-          {%- if field.field_name not in exclude_fields and field.display_snippet is not none -%}
+                  <td class="dataset-details"{%
+                    if field.display_property %} property="{{ field.display_property
+                    }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
+                      field=field, data=pkg_dict, schema=schema -%}</td>
+              </tr>
+            {%- endif -%}
+          {%- elif field_key == 'url' -%}
             <tr>
-              <th scope="row" class="dataset-label">{{ h.scheming_language_text(field.label) }}</th>
-                <td class="dataset-details"{%
-                  if field.display_property %} property="{{ field.display_property
-                  }}"{% endif %}>{%- snippet 'scheming/snippets/display_field.html',
-                    field=field, data=pkg_dict, schema=schema -%}</td>
+              <th>{{ _('Source') }}</th>
+              <td>{{ pkg_dict.get('url') }}</td>
             </tr>
           {%- endif -%}
         {%- endfor -%}
-
-        {% if h.check_access('package_update',{'id':pkg_dict.id}) %}
-          <tr>
-              <th scope="row" class="dataset-label">{{ _("State") }}</th>
-              <td class="dataset-details">{{ _(pkg_dict.state) }}</td>
-          </tr>
-      {% endif %}
 
       {% block extras scoped %}
         {% for extra in h.sorted_extras(pkg_dict.extras) %}

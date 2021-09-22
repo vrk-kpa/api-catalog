@@ -1,46 +1,46 @@
 # Translations template for ckanext-apply_permissions_for_service.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the
 # ckanext-apply_permissions_for_service project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-04 11:08+0000\n"
+"POT-Creation-Date: 2021-09-09 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.7.0\n"
 
-#: ckanext/apply_permissions_for_service/views.py:22
-#: ckanext/apply_permissions_for_service/views.py:91
-#: ckanext/apply_permissions_for_service/views.py:101
-#: ckanext/apply_permissions_for_service/views.py:163
+#: ckanext/apply_permissions_for_service/views.py:27
+#: ckanext/apply_permissions_for_service/views.py:96
+#: ckanext/apply_permissions_for_service/views.py:107
+#: ckanext/apply_permissions_for_service/views.py:191
 msgid "Not authorized to see this page"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:54
+#: ckanext/apply_permissions_for_service/views.py:59
 msgid "This API is not accepting access applications."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:151
+#: ckanext/apply_permissions_for_service/views.py:179
 msgid "Changes saved successfully"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/logic/action/create.py:24
-#: ckanext/apply_permissions_for_service/logic/action/create.py:27
-#: ckanext/apply_permissions_for_service/logic/action/create.py:30
-#: ckanext/apply_permissions_for_service/logic/action/create.py:33
-#: ckanext/apply_permissions_for_service/logic/action/create.py:36
-#: ckanext/apply_permissions_for_service/logic/action/create.py:39
-#: ckanext/apply_permissions_for_service/logic/action/create.py:42
-#: ckanext/apply_permissions_for_service/logic/action/create.py:45
+#: ckanext/apply_permissions_for_service/logic/action.py:26
+#: ckanext/apply_permissions_for_service/logic/action.py:29
+#: ckanext/apply_permissions_for_service/logic/action.py:32
+#: ckanext/apply_permissions_for_service/logic/action.py:35
+#: ckanext/apply_permissions_for_service/logic/action.py:38
+#: ckanext/apply_permissions_for_service/logic/action.py:41
+#: ckanext/apply_permissions_for_service/logic/action.py:44
+#: ckanext/apply_permissions_for_service/logic/action.py:47
 msgid "Missing value"
 msgstr ""
 
@@ -208,7 +208,7 @@ msgid "Send access application"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:88
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:32
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
 msgid "Cancel"
 msgstr ""
 
@@ -222,50 +222,68 @@ msgid "Application sent successfully"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:6
-msgid "Settings"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:12
-msgid "Delivery method for access requests"
+msgid "Exit the settings"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:13
-msgid "Disable access requests for this API"
+msgid "Subsystem permission"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:14
-msgid "E-mail"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:15
-msgid "Ticketing service API call"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:16
-msgid "Access is requested on a web page managed by my organization"
+msgid ""
+"You can allow permission requests for authenticated API-Catalog users. "
+"Permission requests are disabled by default in a new subsystem."
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:21
-msgid "Email address"
+msgid "Delivery method for access requests"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:22
+msgid "Disable access requests for this API"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:23
+msgid "Ticketing service API call"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:24
+msgid "Upload your access request file"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:25
+msgid "Access is requested on a web page managed by my organization"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:30
 msgid "Endpoint URL"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:27
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:38
+msgid "Add your file"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:49
 msgid "Webpage URL"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:31
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:54
 msgid "Save"
 msgstr ""
 
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:59
+msgid "Permission request alternatives:"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
+msgid "Permission request alternatives instructions"
+msgstr ""
+
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
-msgid "Manage access requests"
+msgid "Permission management"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
-msgid "Edit settings for access requests"
+msgid "Manage access requests"
 msgstr ""
 

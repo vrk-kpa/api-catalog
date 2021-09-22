@@ -1,12 +1,10 @@
-@import "variables";
-@module-vertical-margin: 30px;
-
 .secondary {
   .module {
-    margin: @module-vertical-margin 0;
+    margin: @margin-y__module 0;
 
     &.main-heading {
       margin: 0;
+
       .module-heading{
         height: 78px;
         background-color: @suomifi-highlight-base;
@@ -39,7 +37,7 @@
 
 .module-content {
   padding: 0 @gutterX;
-  margin: 20px 0;
+  margin: 20px auto;
 
   > .fill-module {
     margin: -20px 0;
@@ -65,7 +63,7 @@
 }
 
 .module:last-child {
-  margin-bottom: @module-vertical-margin;
+  margin-bottom: @margin-y__module;
 }
 
 .module-footer {
@@ -122,5 +120,42 @@
     max-width: 50px;
     max-height: 50px;
     vertical-align: middle;
+  }
+}
+
+.module {
+  &__instructions {
+    margin-top: @grid-gutter-width;
+    margin-bottom: @grid-gutter-width * 1.5;
+  }
+
+  &__actions {
+    margin-left: -@grid-gutter-width / 4;
+    margin-right: -@grid-gutter-width / 4;
+
+    .btn {
+      margin-left: @grid-gutter-width / 4;
+      margin-right: @grid-gutter-width / 4;
+    }
+  }
+
+  &__settings-instructions {
+    background-color: @suomifi-brand--extra-light;
+    padding: @grid-gutter-width;
+    margin: @margin-y__module-child 0;
+
+    &__header {
+      margin-top: 0;
+
+      i {
+        margin-right: @grid-gutter-width / 4;
+      }
+    }
+
+    &__content {
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }

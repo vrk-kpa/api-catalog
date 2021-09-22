@@ -1,0 +1,17 @@
+.btn {
+    border-radius: @border-radius__button;
+    font-weight: normal;
+
+    &&-primary {
+        background: linear-gradient(0deg, @suomifi-highlight-dark, @suomifi-highlight-base);
+        border-color: @suomifi-highlight-base;
+
+        &:hover {
+            background: linear-gradient(0deg, @suomifi-highlight-light, @suomifi-highlight-base);
+        }
+    }
+
+    &-icon--right {
+        margin-left: @grid-gutter-width / 4;
+    }
+}

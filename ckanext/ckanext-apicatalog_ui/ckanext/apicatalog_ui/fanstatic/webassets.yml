@@ -1,5 +1,5 @@
 main_js:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_main.js
   extra:
     preload:
@@ -11,6 +11,7 @@ main_js:
     - javascript/util.js
     - javascript/bootstrap.offcanvas.js
     - javascript/submit-on-change.js
+    - javascript/form-change-listener.js
 
 main_css:
   output: ckanext-apicatalog_ui/%(version)s_main.css
@@ -18,7 +19,7 @@ main_css:
     - apicatalog_ui/main.css
 
 cookieconsent_js:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_cookieconsent.js
   extra:
     preload:
@@ -34,19 +35,19 @@ cookieconsent_css:
     - cookieconsent/ckan-cookieconsent.css
 
 chartjs_js:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_chartjs.js
   contents:
     - xroad_stats/js/libs/Chart.js
     - xroad_stats/js/libs/chartjs-datalabels.js
-  
+
 chartjs_css:
   output: ckanext-apicatalog_ui/%(version)s_chartjs.css
   contents:
     - xroad_stats/css/Chart.css
 
 xroad_stats_js:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.js
   extra:
     preload:
@@ -64,7 +65,7 @@ xroad_stats_css:
     - xroad_stats/css/xroad_statistics.css
 
 datetimepicker_js:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_datetimepicker.js
   extra:
     preload:
@@ -84,7 +85,7 @@ openapi_view_css:
     - openapi_view.css
 
 tablesorter:
-  filters: rjsmin 
+  filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_tablesorter.js
   extra:
     preload:
