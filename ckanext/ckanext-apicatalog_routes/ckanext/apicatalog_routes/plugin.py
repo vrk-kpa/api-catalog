@@ -134,10 +134,13 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             # OR
             # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
             #    the organization of the package
+            user_orgs = toolkit.get_action('organization_list_for_user')(
+                    {'ignore_auth': True},
+                    {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('access_restriction_level', '') in ('', 'public') or
-                                 (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                                  and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
+                                 (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
+                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                                  (resource.get('access_restriction_level', '') == 'same_organization' and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
@@ -168,11 +171,15 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         # OR
         # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
         #    the organization of the package
+        user_orgs = [o['name'] for o in toolkit.get_action('organization_list_for_user')(
+                {'ignore_auth': True},
+                {'id': toolkit.g.user, 'permission': 'read'})]
+
         allowed_resources = [resource for resource in data_dict.get('resources', [])
                              if 'access_restriction_level' not in resource or
                              resource.get('access_restriction_level', '') in ('', 'public') or
-                             (resource.get('access_restriction_level', '') == 'only_allowed_users'
-                              and toolkit.g.user in resource.get('allowed_users', '').split(',')) or
+                             (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
+                                 and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                              (resource.get('access_restriction_level', '') == 'same_organization' and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
@@ -294,6 +301,7 @@ def create_organization_users(context, data_dict):
     context.get('session', model.Session).commit()
     return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
                                         'duplicate': duplicate}}
+
 
 # TODO: If some asks for /data_exchange_layer_user_organizations url, convert this to action
 # class ExtraInformationController(toolkit.BaseController):

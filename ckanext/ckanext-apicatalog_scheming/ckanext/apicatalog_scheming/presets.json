@@ -16,6 +16,18 @@
       }
     },
     {
+      "preset_name": "apicatalog_organization_string_autocomplete",
+      "values": {
+        "validators": "ignore_missing lower_if_exists tag_string_convert",
+        "classes": ["control-full"],
+        "form_attrs": {
+          "data-module": "autocomplete",
+          "data-module-tags": "",
+          "data-module-source": "/api/2/util/organization/autocomplete?q=?"
+        }
+      }
+    },
+    {
       "preset_name": "apicatalog_resource_format_autocomplete",
       "values": {
         "validators": "if_empty_guess_format ignore_missing clean_format upper_if_exists unicode",

@@ -1,0 +1,84 @@
+# Translations template for ckanext-apicatalog_scheming.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the
+# ckanext-apicatalog_scheming project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-09-14 09:07+0000\n"
+"PO-Revision-Date: 2021-09-14 09:09+0000\n"
+"Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ckanext/apicatalog_scheming/plugin.py:72
+msgid "Services"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/plugin.py:73
+msgid "Organization"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/plugin.py:74
+msgid "Tags"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/plugin.py:75
+msgid "Formats"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:9
+msgid "Same Organization Members"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:10
+msgid "Allowed Organizations Only"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:11
+msgid "Allowed Organizations"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:82
+#: ckanext/apicatalog_scheming/validators.py:249
+msgid "expecting JSON object"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:86
+#, python-format
+msgid "Required language \"%s\" missing"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:94
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:128
+msgid "Business id is incorrect format."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:146
+msgid "Business id verification number does match business id."
+msgstr ""

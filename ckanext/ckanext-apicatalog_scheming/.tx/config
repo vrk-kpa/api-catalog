@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[liityntakatalogi.ckanext-apicatalog_scheming]
+file_filter = ckanext/apicatalog_scheming/i18n/<lang>/LC_MESSAGES/ckanext-apicatalog_scheming.po
+source_file = ckanext/apicatalog_scheming/i18n/ckanext-apicatalog_scheming.pot
+source_lang = en
+type = PO
+
