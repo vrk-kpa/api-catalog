@@ -103,6 +103,15 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             except ObjectNotFound:
                 continue
 
+        pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
+
+        if pkg_dict.get('access_restriction_level') and \
+                pkg_dict.get('access_restriction_level') == 'only_allowed_organizations':
+            allowed_organizations = pkg_dict.get('allowed_organizations', "").split(',')
+            for org_name in allowed_organizations:
+                organization_dict = get_action('organization_show')(context, {'id': org_name})
+                labels.append(u'allowed_organization_members-%s' % organization_dict['id'])
+
         return labels
 
     def get_user_dataset_labels(self, user_obj):
@@ -113,6 +122,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         if user_obj and user_obj.name in readonly_users:
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
+        if user_obj:
+            orgs = get_action(u'organization_list_for_user')({u'user': user_obj.id}, {})
+            labels.extend(u'allowed_organization_members-%s' % o['id'] for o in orgs)
         return labels
 
     # After package_search, filter out the resources which the user doesn't have access to
