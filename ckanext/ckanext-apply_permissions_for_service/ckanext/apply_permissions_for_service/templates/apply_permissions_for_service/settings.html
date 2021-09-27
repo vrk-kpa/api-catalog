@@ -20,15 +20,15 @@
           <div class="select-wrapper">
             {{ form.select('deliveryMethod', label=_('Delivery method for access requests'), options=[
             {'value': 'none', 'text': _('Disable access requests for this API')},
-            {'value': 'api', 'text': _('Ticketing service API call')},
+            {'value': 'email', 'text': _('E-mail')},
             {'value': 'file', 'text': _('Upload your access request file')},
             {'value': 'web', 'text': _('Access is requested on a web page managed by my organization')},
             ], is_required=True, selected=(settings.delivery_method or 'none')) }}
           </div>
           <div data-mutex-field="deliveryMethod">
-            <div data-mutex-value="api">
-              {{ form.input('api', label=_('Endpoint URL'), value=settings.api) }}
-            </div>
+             <div data-mutex-value="email">
+                  {{ form.input('email', label=_('Email address'), value=settings.email) }}
+             </div>
             <div data-mutex-value="file">
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}

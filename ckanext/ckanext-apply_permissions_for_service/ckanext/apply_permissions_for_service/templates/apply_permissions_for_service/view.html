@@ -2,7 +2,7 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions.view_permission_application', id=application.id%}</li>
+  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions.view_permission_application', application_id=application.id%}</li>
 {% endblock %}
 
 {% block prelude %}
