@@ -15,8 +15,8 @@
 {% endblock %}
 
 {% block content_action %}
-  {% if h.check_access('service_permission_application_create', {})
-     and h.is_extension_loaded('apply_permissions_for_service')
+  {% if h.is_extension_loaded('apply_permissions_for_service')
+     and h.check_access('service_permission_application_create', {})
      and not h.check_access('package_update', {'id':pkg.id }) %}
     {% snippet 'apply_permissions_for_service/snippets/request_access_button.html', subsystem_id=pkg.name %}
   {% endif %}
