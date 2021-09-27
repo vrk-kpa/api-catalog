@@ -16,9 +16,6 @@ def service_permission_application_show(context, data_dict):
     if organization_id in [org.get('id') for org in membership_organizations]:
         return {'success': True}
 
-    import logging
-    log = logging.getLogger(__name__)
-    log.info("Failed")
     return {'success': False,
             "msg": toolkit._("User not authorized to view permission application.")}
 
