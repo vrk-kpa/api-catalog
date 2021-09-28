@@ -172,7 +172,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         user_name = context.get('user')
 
         if user_name:
-            user_orgs = get_action('organization_list_for_user')(context, {'id': user_name})
+            user_orgs = [o['name'] for o in toolkit.get_action('organization_list_for_user')(
+                {'ignore_auth': True},
+                {'id': user_name, 'permission': 'read'})]
         else:
             user_orgs = []
 
@@ -183,9 +185,6 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         # OR
         # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
         #    the organization of the package
-        user_orgs = [o['name'] for o in toolkit.get_action('organization_list_for_user')(
-                {'ignore_auth': True},
-                {'id': toolkit.g.user, 'permission': 'read'})]
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
                              if 'access_restriction_level' not in resource or
