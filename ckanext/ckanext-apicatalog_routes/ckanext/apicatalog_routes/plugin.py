@@ -166,7 +166,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             return data_dict
 
         # Skip access check if sysadmin
-        if (context.get('sysadmin')):
+        if context.get('auth_user_obj', {}).get('sysadmin'):
             return data_dict
 
         user_name = context.get('user')
