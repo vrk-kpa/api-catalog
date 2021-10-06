@@ -28,7 +28,8 @@ def create_organization_users(ctx, retry):
 
     flask_app = ctx.meta["flask_app"]
     with flask_app.test_request_context():
-        result = t.get_action('create_organization_users')({'ignore_auth': True, 'user': site_user['name'] }, {'retry': retry}).get('result', {})
+        result = t.get_action('create_organization_users')({'ignore_auth': True, 'user': site_user['name']},
+                                                           {'retry': retry}).get('result', {})
 
     created = result.get('created', [])
     invalid = result.get('invalid', [])
