@@ -46,7 +46,7 @@ chartjs_css:
   contents:
     - xroad_stats/css/Chart.css
 
-xroad_stats_js:
+xroad_statistics_js:
   filters: rjsmin
   output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.js
   extra:
@@ -56,7 +56,7 @@ xroad_stats_js:
   contents:
     - xroad_stats/js/xroad_statistics.js
 
-xroad_stats_css:
+xroad_statistics_css:
   output: ckanext-apicatalog_ui/%(version)s_xroad-statistics.css
   extra:
     preload:
