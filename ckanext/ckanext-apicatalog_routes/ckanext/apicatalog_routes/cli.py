@@ -23,7 +23,14 @@ def apicatalog_admin():
 @click.pass_context
 @click.option(u'--retry', is_flag=True)
 def create_organization_users(ctx, retry):
-    result = t.get_action('create_organization_users')({'ignore_auth': True}, {'retry': retry}).get('result', {})
+
+    site_user = t.get_action('get_site_user')({'ignore_auth': True})
+
+    flask_app = ctx.meta["flask_app"]
+    with flask_app.test_request_context():
+        result = t.get_action('create_organization_users')({'ignore_auth': True, 'user': site_user['name']},
+                                                           {'retry': retry}).get('result', {})
+
     created = result.get('created', [])
     invalid = result.get('invalid', [])
     ambiguous = result.get('ambiguous', [])
