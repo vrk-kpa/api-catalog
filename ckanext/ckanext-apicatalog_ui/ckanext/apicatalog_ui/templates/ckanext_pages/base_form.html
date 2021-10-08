@@ -6,13 +6,19 @@
   {{ form.input('title_en', label=_('Title') + ' EN', value=data.title_en, error=errors.title) }}
 
   {% set editor = h.get_wysiwyg_editor() %}
+  {% set type = 'asset' if h.ckan_version().split('.')[1] | int >= 9 else 'resource' %}
 
   {% if editor == 'medium' %}
     {{ wysiwyg.editor('content_fi', id='field-content-fi', label=_('Content') + ' FI', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
     {{ wysiwyg.editor('content_sv', id='field-content-sv', label=_('Content') + ' SV', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
     {{ wysiwyg.editor('content_en', id='field-content-en', label=_('Content') + ' EN', placeholder=_('Enter content here'), value=data.content|safe, error=errors.content) }}
   {% elif editor == 'ckeditor' %}
-    {% resource 'pages/main' %}
+      {% if ckan_29_or_higher %}
+          {% snippet 'ckanext_pages/snippets/pages_' ~ type ~ '.html', name='pages/main-js' %}
+          {% snippet 'ckanext_pages/snippets/pages_' ~ type ~ '.html', name='pages/main-css' %}
+      {% else %}
+          {% snippet 'ckanext_pages/snippets/pages_' ~ type ~ '.html', name='pages/main' %}
+      {% endif %}
     <div class="control-group">
         <label for="field-content-ck" class="control-label">{{ _('Content') }} FI</label>
     </div>
