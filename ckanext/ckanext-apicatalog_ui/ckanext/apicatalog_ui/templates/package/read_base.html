@@ -14,7 +14,7 @@
             {% block content_primary_nav %}
                 {{ h.build_nav_icon('dataset.read', _('Dataset'), id=pkg.name) }}
                 {{ h.build_nav_icon('dataset.groups', _('Groups'), id=pkg.name, icon=None) }}
-                {% if h.check_access('organization.update', {'id': pkg.organization.id}) %}
+                {% if h.check_access('organization_update', {'id': pkg.organization.id}) %}
                     {{ h.build_nav_icon('dataset.activity', _('Activity Stream'), id=pkg.name, icon=None) }}
                 {% endif %}
             {% endblock %}
