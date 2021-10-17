@@ -463,7 +463,7 @@ msgstr "Parametri \"{parameter_name}\" ei ole kokonaisluku"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "Alijärjestelmää ei löydy"
+msgstr "Alijärjestelmää ei löytynyt tai se on yksityinen"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791
