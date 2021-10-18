@@ -1356,27 +1356,3 @@ msgstr ""
 #: ckanext/apicatalog_ui/views/useradd.py:91
 msgid "Error creating user {} <{}>."
 msgstr "Virhe luotaessa käyttäjää {} <{}>"
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:10
-msgid "Subsystem could not be found, or it is private."
-msgstr "Alijärjestelmää ei löytynyt tai se on yksityinen."
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:13
-msgid "Check that you typed the address correctly."
-msgstr "Tarkista, että kirjoitit osoitteen oikein."
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:14
-msgid "Try finding the subsystem you are looking for by using our search or browsing our <a href=\"https://liityntakatalogi.suomi.fi/en_GB/dataset\">list of subsystems.</a>"
-msgstr "Voit myös etsiä alijärjestelmiä haulla tai <a href=\"https://liityntakatalogi.suomi.fi/fi/dataset\">selaamalla kaikkia alijärjestelmiä.</a>"
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:17
-msgid "If you do not have access to the subsystem even though you should have:"
-msgstr "Jos sinulla ei ole alijärjestelmään pääsyoikeuksia, vaikka pitäisi olla:"
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:19
-msgid "Check that you are logged in to API Catalogue"
-msgstr "Varmista, että olet kirjautuneena Liityntäkatalogiin"
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:20
-msgid "Contact the maintainer of the subsystem and ask for access rights"
-msgstr "Ota yhteyttä alijärjestelmän ylläpitäjään ja pyydä pääsyoikeuksia"

@@ -1359,23 +1359,3 @@ msgstr ""
 #: ckanext/apicatalog_ui/views/useradd.py:91
 msgid "Error creating user {} <{}>."
 msgstr "Fel vid skapande av användare {} <{}>"
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:10
-msgid "Subsystem could not be found, or it is private."
-msgstr ""
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:14
-msgid ""
-"Check that you typed the address correctly."
-"Try finding the subsystem you are looking for by using our search or browsing our"
-"<a href=\"https://liityntakatalogi.suomi.fi/en_GB/dataset\">list of subsystems.</a>"
-msgstr ""
-
-#: ckanext/apicatalog_ui/templates/error_document_template.html:20
-msgid ""
-"If you do not have access to the subsystem even though you should have:"
-"<ul>"
-"<li>Check that you are logged in to API Catalogue</li>"
-"<li>Contact the maintainer of the subsystem and ask for access rights</li>"
-"</ul>"
-msgstr ""
