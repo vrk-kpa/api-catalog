@@ -461,7 +461,7 @@ msgstr "Parameter \"{parameter_name}\" is not an integer"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "Subsystem could not be found, or it is private."
+msgstr "Subsystem not found"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791

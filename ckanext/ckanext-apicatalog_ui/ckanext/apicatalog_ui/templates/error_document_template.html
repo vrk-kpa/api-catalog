@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ gettext('Error %(error_code)s', error_code=code) }}{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <p class="module-content">
+        {% if code == 404 %}
+            {% if name %}
+                <h3>{% trans %}Subsystem could not be found, or it is private.{% endtrans %}</h3>
+            {% endif %}
+            <p>
+                {% trans %}Check that you typed the address correctly.{% endtrans %}
+                {% trans %}Try finding the subsystem you are looking for by using our search or browsing our <a href="https://liityntakatalogi.suomi.fi/en_GB/dataset">list of subsystems.</a>{% endtrans %}
+            </p>
+            <p>
+            {% trans %}If you do not have access to the subsystem even though you should have:{% endtrans %}
+            <ul>
+                <li>{% trans %}Check that you are logged in to API Catalogue{% endtrans %}</li>
+                <li>{% trans %}Contact the maintainer of the subsystem and ask for access rights{% endtrans %}</li>
+            </ul>
+            </p>
+        {% else %}
+            {% if name %}
+                <h1>{{ code }} {{ name }}</h1>
+            {% endif %}
+            {{ content}}
+        {% endif %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block flash %}
+  {# eat the flash messages caused by the 404 #}
+  {% set flash_messages = h.flash.pop_messages() %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
