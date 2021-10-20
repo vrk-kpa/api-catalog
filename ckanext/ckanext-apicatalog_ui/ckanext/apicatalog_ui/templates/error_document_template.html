@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block primary %}
+  <article class="module">
+    <p class="module-content">
+      {% if name %}
+      <h1>{{ code }} {{ name }}</h1>
+      {% endif %}
+      {% if code == 404 %}
+      {{ content|safe }}
+      {% else %}
+      {{ content }}
+      {% endif %}
+    </div>
+  </article>
+{% endblock %}
