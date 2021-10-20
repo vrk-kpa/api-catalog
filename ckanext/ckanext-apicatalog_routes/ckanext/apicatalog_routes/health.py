@@ -2,7 +2,6 @@ from ckan.plugins.toolkit import config, get_action
 import requests
 import logging
 import datetime
-import os
 from pprint import pformat
 import ckan.model as model
 log = logging.getLogger(__name__)
@@ -36,6 +35,8 @@ FAILURE_MESSAGE = "An error has occurred, check the server log for details"
 
 HARVEST_JOB_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 HARVEST_JOB_TIMEOUT = datetime.timedelta(days=1)
+
+HEARTBEAT_TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 def check_url(url, **kwargs):
@@ -87,30 +88,24 @@ def heartbeat():
 
 
 def xroad_catalog_heartbeat():
-    xroad_catalog_address = config.get('ckanext.xroad_integration.xroad_catalog_address', '')  # type: str
-    xroad_catalog_certificate = config.get('ckanext.xroad_integration.xroad_catalog_certificate')
-    xroad_client_id = config.get('ckanext.xroad_integration.xroad_client_id')
-    xroad_client_certificate = config.get('ckanext.xroad_integration.xroad_client_certificate')
+    result = get_action('xroad_heartbeat')({'ignore_auth': True}, {})
+    hb = result.get('heartbeat', {})
+    success = hb.get('success', False)
 
-    if not xroad_catalog_address.startswith('http'):
+    if not success:
+        log.warn('X-Road catalog did not respond')
         raise HealthError(FAILURE_MESSAGE)
 
-    service = 'heartbeat'
-    url = '{address}/{service}'.format(address=xroad_catalog_address, service=service)
+    timestamp_string = hb.get('timestamp')
 
-    headers = {'X-Road-Client': xroad_client_id}
+    try:
+        timestamp = datetime.datetime.strptime(timestamp_string, HEARTBEAT_TIMESTAMP_FORMAT)
+    except ValueError:
+        log.warn('Malformed timestamp in heartbeat object: %s', timestamp_string)
+        raise HealthError(FAILURE_MESSAGE)
 
-    certificate_args = {}
-    if xroad_catalog_certificate and os.path.isfile(xroad_catalog_certificate):
-        certificate_args['verify'] = xroad_catalog_certificate
-    else:
-        certificate_args['verify'] = False
-
-    if xroad_client_certificate and os.path.isfile(xroad_client_certificate):
-        certificate_args['cert'] = xroad_client_certificate
-
-    if check_url(url, headers=headers, **certificate_args) is False:
-        log.warn('Error checking xroad-catalog heartbeat')
+    if datetime.datetime.now() - timestamp > datetime.timedelta(hours=2):
+        log.warn('X-Road catalog heartbeat has not been logged in a while')
         raise HealthError(FAILURE_MESSAGE)
 
 
