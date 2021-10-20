@@ -13,6 +13,7 @@ def get_announcements(count=3, offset=0):
 
     organization_show = get_action('organization_show')
     package_show = get_action('package_show')
+    activity_show = get_action('activity_show')
 
     def activity_to_announcement(activity):
         try:
@@ -25,14 +26,15 @@ def get_announcements(count=3, offset=0):
                 data['organization'] = organization_show({}, {'id': organization_id})
 
             elif activity_type in ('new package', 'changed package', 'deleted package'):
-                package_data = activity.get('data', {}).get('package', {})
+                package_data = activity_show({'ignore_auth': True}, {'id': activity.get('id'), 'include_data': True})\
+                    .get('data', {}).get('package', {})
                 if package_data.get('private', False):
                     return None
-                package_id = activity.get('object_id')
                 organization_id = package_data.get('owner_org')
-                data['package'] = package_show({}, {'id': package_id})
+                data['package'] = package_data
                 data['organization'] = organization_show({}, {'id': organization_id})
 
+            # TODO: Update these once ckan 2.9 has resource activities
             elif activity_type in ('new resource', 'changed resource', 'deleted resource'):
                 activity.get('object_id')
                 resource = activity.get('data', {}).get('resource', {})

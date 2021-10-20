@@ -35,9 +35,9 @@ def health_check():
 def health_xroad_catalog_heartbeat():
     try:
         health.xroad_catalog_heartbeat()
+        return Response('OK')
     except health.HealthError as e:
         return Response(e.message, status=503)
-    return Response('OK')
 
 
 health_bp = Blueprint('health', __name__)

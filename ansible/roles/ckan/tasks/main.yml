@@ -139,6 +139,9 @@
 - name: Ensure fetch xroad services cronjob
   cron: name="Fetch X-Road Services" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-service-list"
 
+- name: Ensure check xroad heartbeat cronjob
+  cron: name="Check X-Road Catalog Heartbeat" special_time=hourly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-heartbeat"
+
 - name: Ensure create organization users cronjob
   cron: name="Create organization users" special_time=daily job="{{ virtualenv }}/bin/ckan --config '{{ ckan_ini }}' apicatalog-admin create-organization-users --retry"
 
@@ -156,6 +159,13 @@
     minute: "0"
     hour: "11"
     job: "{{ virtualenv }}/bin/ckan --config '{{ ckan_ini }}' xroad send-latest-batch-run-results-email"
+
+- name: Ensure clear beaker sessions cronjob
+  cron:
+    name: "Clear beaker sessions from disk"
+    minute: "0"
+    hour: "0"
+    job: "find /tmp/default/sessions -type f -mtime +3 -print -exec rm {} ';'"
 
 - name: Disallow robots
   template: src={{ search_engine_robots_filename }} dest={{ virtualenv }}/src/ckan/ckan/public/robots.txt owner=root group=root mode=0644
