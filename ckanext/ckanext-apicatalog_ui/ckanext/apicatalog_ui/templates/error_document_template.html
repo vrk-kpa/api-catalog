@@ -1,4 +1,4 @@
-{% extends "page.html" %}
+{% ckan_extends %}
 
 {% block primary %}
   <article class="module">
@@ -13,9 +13,4 @@
       {% endif %}
     </div>
   </article>
-{% endblock %}
-
-{% block flash %}
-  {# eat the flash messages caused by the 404 #}
-  {% set flash_messages = h.flash.pop_messages() %}
 {% endblock %}
