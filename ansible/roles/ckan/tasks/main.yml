@@ -139,6 +139,9 @@
 - name: Ensure fetch xroad services cronjob
   cron: name="Fetch X-Road Services" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-service-list"
 
+- name: Ensure check xroad heartbeat cronjob
+  cron: name="Check X-Road Catalog Heartbeat" special_time=hourly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-heartbeat"
+
 - name: Ensure create organization users cronjob
   cron: name="Create organization users" special_time=daily job="{{ virtualenv }}/bin/ckan --config '{{ ckan_ini }}' apicatalog-admin create-organization-users --retry"
 
