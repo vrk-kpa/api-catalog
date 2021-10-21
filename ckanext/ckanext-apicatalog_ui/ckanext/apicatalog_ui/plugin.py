@@ -647,7 +647,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
         toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
         toolkit.add_ckan_admin_tab(config, 'xroad.services', 'X-Road services')
         toolkit.add_ckan_admin_tab(config, 'xroad.stats', 'X-Road statistics')
-
+        toolkit.add_ckan_admin_tab(config, 'xroad.distinct_service_stats', 'X-Road distinct service statistics')
     # IAuthFunctions
 
     def get_auth_functions(self):
