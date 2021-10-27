@@ -461,7 +461,14 @@ msgstr "Parameter \"{parameter_name}\" is not an integer"
 #: ckan/controllers/package.py:1596 ckan/controllers/related.py:111
 #: ckan/controllers/related.py:122
 msgid "Dataset not found"
-msgstr "Subsystem not found"
+msgstr ""
+"<p>Subsystem could not be found, or it is private.</p>"
+"<p>Check that you typed the address correctly."
+"Try finding the subsystem you are looking for by using our search or browsing "
+"our <a href=\"https://liityntakatalogi.suomi.fi/en_GB/dataset\">list of subsystems.</a></p>"
+"<p>If you do not have access to the subsystem even though you should have:"
+"<ul><li>Check that you are logged in to API Catalogue</li>"
+"<li>Contact the maintainer of the subsystem and ask for access rights</li></ul></p>"
 
 #: ckan/controllers/package.py:346 ckan/controllers/package.py:399
 #: ckan/controllers/package.py:463 ckan/controllers/package.py:791
