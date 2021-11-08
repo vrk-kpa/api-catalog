@@ -69,14 +69,6 @@ def dataset_display_name(package_or_package_dict):
         return package_or_package_dict.title or package_or_package_dict.name
 
 
-def piwik_url():
-    return config.get('piwik.site_url', '')
-
-
-def piwik_site_id():
-    return config.get('piwik.site_id', 0)
-
-
 def get_matomo_config():
     return {
         "site_url": config.get('matomo.site_url', ''),
@@ -399,25 +391,24 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
     global VISITOR_CACHE
     if VISITOR_CACHE is None or datetime.now() - VISITOR_CACHE[0] > cache_duration:
         try:
-            piwik_site_url = config['piwik.site_url']
-            piwik_site_id = config['piwik.site_id']
-            piwik_token_auth = config['piwik.token_auth']
-            piwik_ssl_verify = asbool(config.get('piwik.ssl_verify', 'True'))
+            matomo_site_url = config['matomo.site_url']
+            matomo_site_id = config['matomo.site_id']
+            matomo_token_auth = config['matomo.token_auth']
 
-            if piwik_token_auth == "":
-                log.info("Piwik auth key not set, returning 0...")
+            if matomo_token_auth == "":
+                log.info("Matomo auth key not set, returning 0...")
                 return 0
 
             params = {
                     'module': 'API',
                     'method': 'VisitsSummary.getVisits',
-                    'idSite': piwik_site_id,
+                    'idSite': matomo_site_id,
                     'period': 'month',
                     'date': 'last12',
                     'format': 'json',
-                    'token_auth': piwik_token_auth}
-            stats = requests.get('{}/index.php'.format(piwik_site_url),
-                                 verify=piwik_ssl_verify, params=params).json()
+                    'token_auth': matomo_token_auth}
+            stats = requests.get('{}/index.php'.format(matomo_site_url),
+                                 params=params).json()
             visitor_count = sum(iter(list(stats.values())))
         except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
