@@ -574,12 +574,10 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return schema
 
     def get_helpers(self):
-        return {'piwik_url': piwik_url,
-                'get_homepage_organizations': get_homepage_organizations,
+        return {'get_homepage_organizations': get_homepage_organizations,
                 'get_homepage_datasets': get_homepage_datasets,
                 'get_homepage_news': get_homepage_news,
                 'get_homepage_announcements': get_homepage_announcements,
-                'piwik_site_id': piwik_site_id,
                 'service_alerts': service_alerts,
                 'info_message': info_message,
                 'column_contents': column_contents,
