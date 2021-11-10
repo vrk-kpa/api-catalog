@@ -158,15 +158,15 @@
     {% endif %}
   {{ super() }}
 
-  <!-- Piwik & Matomo-->
+  <!-- Matomo -->
     {% set matomo_config = h.get_matomo_config() %}
     <script type="text/javascript">
 
         window.matomoAsyncInit = function () {
-            var piwikTracker = Matomo.getAsyncTracker('{{ h.piwik_url() }}/piwik.php', {{ h.piwik_site_id() }});
+            var matomoTracker = Matomo.getAsyncTracker('{{ matomo_config.site_url }}/matomo.php', {{ matomo_config.site_id }});
 
-            if (piwikTracker.HeatmapSessionRecording) {
-                piwikTracker.HeatmapSessionRecording.disable();
+            if (matomoTracker.HeatmapSessionRecording) {
+                matomoTracker.HeatmapSessionRecording.disable();
             }
         }
 
@@ -181,20 +181,14 @@
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
-          var u="{{ h.piwik_url() + '/' }}";
-          _paq.push(['setTrackerUrl', u+'piwik.php']);
-          _paq.push(['setSiteId', {{ h.piwik_site_id() }} ]);
-
-          var secondaryTracker = '{{ matomo_config.site_url }}' + '/matomo.php';
-          var secondaryWebsiteId = '{{ matomo_config.site_id }}';
-          // Also send all of the tracking data to the new Matomo server
-          _paq.push(['addTracker', secondaryTracker, secondaryWebsiteId]);
+          var u="{{ matomo_config.site_url + '/' }}";
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', {{ matomo_config.site_id }} ]);
 
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
           g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/suomi.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
         })();
     </script>
-    <noscript><p><img src="{{ h.piwik_url() }}/piwik.php?idsite={{ h.piwik_site_id() }}" style="border:0;" alt="" /></p></noscript>
     <noscript><p><img src="https://suomi.matomo.cloud/matomo.php?idsite={{ matomo_config.site_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->
+    <!-- End Matomo Code -->
 {% endblock -%}
