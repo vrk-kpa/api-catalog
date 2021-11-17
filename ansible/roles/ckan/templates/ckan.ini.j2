@@ -36,13 +36,9 @@ sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.passwo
 ckan.site_url = https://{{ public_facing_hostname }}
 ckan.site_url_internally = https://{{ public_facing_hostname }}/data/
 
-piwik.site_url = https://{{ analytics_server_public_facing_hostname }}
-piwik.site_id = {{ analytics_site_id }}
-piwik.token_auth = {{ analytics_auth_token }}
-piwik.ssl_verify = False
-
 matomo.site_url = {{ matomo.public_facing_hostname }}
 matomo.site_id = {{ matomo.site_id }}
+matomo.token_auth = {{ analytics_auth_token }}
 
 ckan.auth.anon_create_dataset = false
 ckan.auth.create_unowned_dataset = false

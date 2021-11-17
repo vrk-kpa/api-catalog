@@ -46,6 +46,26 @@ def read():
         # privatized_activity_html = fetch_recent_package_activity_list_html(context, only_privatized=True)
         # interesting_activity_html = fetch_recent_package_activity_list_html(context, only_resourceful=True)
 
+        def prepare_heartbeat(hb):
+            if hb:
+                return {'success': hb.get('success'),
+                        'timestamp': datetime.strptime(hb.get('timestamp'), '%Y-%m-%dT%H:%M:%S.%f')}
+            else:
+                return hb
+
+        xroad_heartbeat_latest = toolkit.get_action('xroad_heartbeat')(context, {})
+
+        # 'success' here means heartbeat checks have been performed, the check success is within the 'heartbeat' property
+        if xroad_heartbeat_latest.get('success'):
+            one_day_ago = datetime.now() - timedelta(days=1)
+            xroad_heartbeat_history = toolkit.get_action('xroad_heartbeat_history')(context, {'since': one_day_ago})
+            xroad_heartbeat = {
+                    'latest': prepare_heartbeat(xroad_heartbeat_latest.get('heartbeat')),
+                    'history': [prepare_heartbeat(item) for item in xroad_heartbeat_history.get('items', [])]
+                    }
+        else:
+            xroad_heartbeat = False
+
         # Render template
         vars = {'invalid_resources': invalid_resources,
                 # 'package_activity_html': package_activity_html,
@@ -54,7 +74,8 @@ def read():
                 # 'interesting_activity_html': interesting_activity_html,
                 'packageless_organizations': packageless_organizations,
                 'packageless_organizations_changelog': packageless_organizations_changelog,
-                'stats': statistics
+                'stats': statistics,
+                'xroad_heartbeat': xroad_heartbeat,
                 }
         template = 'admin/dashboard.html'
         return toolkit.render(template, extra_vars=vars)
