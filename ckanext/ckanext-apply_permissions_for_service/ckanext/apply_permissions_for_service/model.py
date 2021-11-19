@@ -36,8 +36,8 @@ class ApplyPermission(Base):
     request_date = Column(types.Date)
 
     @classmethod
-    def create(cls, organization_id, target_organization_id, business_code, contact_name, contact_email, ip_address_list, subsystem_code,
-               subsystem_id, service_code_list, usage_description, request_date):
+    def create(cls, organization_id, target_organization_id, business_code, contact_name, contact_email,
+               ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date):
 
         apply_permission = ApplyPermission(organization_id=organization_id,
                                            target_organization_id=target_organization_id,
@@ -77,7 +77,6 @@ class ApplyPermission(Base):
 
         application_dict['target_organization'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['target_organization_id']})
-
 
         return application_dict
 

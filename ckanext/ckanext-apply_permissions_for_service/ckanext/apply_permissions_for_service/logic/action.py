@@ -55,8 +55,6 @@ def service_permission_application_create(context, data_dict):
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
 
-
-
     # Need sysadmin privileges to see permission_application_settings
     sysadmin_context = {'ignore_auth': True, 'use_cache': False}
     package = tk.get_action('package_show')(sysadmin_context, {'id': subsystem_id})
