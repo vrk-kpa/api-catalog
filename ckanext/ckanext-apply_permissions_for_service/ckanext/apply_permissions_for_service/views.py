@@ -29,7 +29,7 @@ def index():
 def new_post(context, subsystem_id):
     form = toolkit.request.form
     data_dict = {
-            'organization': form.get('organization'),
+            'target_organization_id': form.get('target_organization_id'),
             'business_code': form.get('businessCode'),
             'contact_name': form.get('contactName'),
             'contact_email': form.get('contactEmail'),
@@ -42,6 +42,8 @@ def new_post(context, subsystem_id):
             }
 
     try:
+        organization = toolkit.get_action('organization_show')(context, {'id': form.get('organization')})
+        data_dict['organization_id'] = organization['id']
         toolkit.get_action('service_permission_application_create')(context, data_dict)
     except toolkit.ValidationError as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)

@@ -8,7 +8,7 @@
   {% set subsystem_title =  h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') %}
   <p>Hei,</p>
 
-  <p>{{ application.organization }} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua {{ subsystem_title }}.</p>
+  <p>{{ application.organization['title'] }} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua {{ subsystem_title }}.</p>
 
   <p><strong>Lupaa pyydetään palveluusi:</strong>
     <ul>
@@ -22,7 +22,7 @@
 
   <p><strong>Luvan pyytäjän tiedot:</strong>
     <ul>
-      <li>Organisaatio: {{ application.organization }}</li>
+      <li>Organisaatio: {{ application.organization['title'] }}</li>
       <li>Yritystunnus: {{ application.business_code }}</li>
       <li>Yhteyshenkilö: {{ application.contact_name }} </li>
       <li>Yhteyshenkilön sähköposti: {{ application.contact_email }}</li>

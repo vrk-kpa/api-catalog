@@ -15,7 +15,7 @@
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">
     <tbody>
-      <tr><th>{{ _('Organization') }}</th><td>{{ application.organization }}</td></tr>
+      <tr><th>{{ _('Organization') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
       <tr><th>{{ _('Business code') }}</th><td>{{ application.business_code }}</td></tr>
       <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
       <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
@@ -37,7 +37,7 @@
   <h3>{{ _('Details of the service and API you are applying to access') }}</h3>
   <table class="table">
     <tbody>
-      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.member, 'title') }}</td></tr>
+      <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.target_organization, 'title') }}</td></tr>
       <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
       <tr>
         <th>{{ _('Service code') }}</th>

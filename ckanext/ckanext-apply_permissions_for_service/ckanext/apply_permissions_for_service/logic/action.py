@@ -21,9 +21,12 @@ def service_permission_application_create(context, data_dict):
 
     errors = {}
 
-    organization = data_dict.get('organization')
-    if organization is None or organization == "":
+    organization_id = data_dict.get('organization_id')
+    if organization_id is None or organization_id == "":
         errors['organization_id'] = _('Missing value')
+    target_organization_id = data_dict.get('target_organization_id')
+    if target_organization_id is None or target_organization_id == "":
+        errors['target_organization_id'] = _('Missing value')
     business_code = data_dict.get('business_code')
     if business_code is None or business_code == "":
         errors['business_code'] = _('Missing value')
@@ -52,12 +55,15 @@ def service_permission_application_create(context, data_dict):
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
 
+
+
     # Need sysadmin privileges to see permission_application_settings
     sysadmin_context = {'ignore_auth': True, 'use_cache': False}
     package = tk.get_action('package_show')(sysadmin_context, {'id': subsystem_id})
     owner_org = tk.get_action('organization_show')(context, {'id': package['owner_org']})
 
-    application_id = model.ApplyPermission.create(organization=organization,
+    application_id = model.ApplyPermission.create(organization_id=organization_id,
+                                                  target_organization_id=target_organization_id,
                                                   business_code=business_code,
                                                   contact_name=contact_name,
                                                   contact_email=contact_email,
@@ -93,7 +99,7 @@ def service_permission_application_create(context, data_dict):
             log.info('Sending permission application notification email to {}'.format(email_address))
             application = model.ApplyPermission.get(application_id).as_dict()
             email_subject = u'{} pyytää lupaa käyttää Suomi.fi-palveluväylässä tarjoamaasi palvelua'.format(
-                application['organization'])
+                application['organization']['title'])
             email_content = tk.render('apply_permissions_for_service/notification_email.html',
                                       extra_vars={'application': application})
             try:

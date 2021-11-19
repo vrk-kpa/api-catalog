@@ -72,6 +72,8 @@
     </tbody>
   </table>
 
+  {{ form.hidden('target_organization_id', org.id) }}
+
   {% set service_options = [] %}
   {% set service_selected = values.service_code_list or ([service_id] if service_id else []) %}
   {% for res in pkg.resources %}
