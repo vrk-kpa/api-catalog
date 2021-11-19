@@ -12,7 +12,7 @@ def service_permission_application_show(context, data_dict):
     application = model.ApplyPermission.get(permission_application_id).as_dict()
     membership_organizations = toolkit.get_action('organization_list_for_user')(context, {'permission': 'read'})
 
-    if any(True for x in [org.get('id') for org in membership_organizations]
+    if any(True for x in (org.get('id') for org in membership_organizations)
            if x in (application['organization']['id'], application['target_organization']['id'])):
         return {'success': True}
 
