@@ -1,14 +1,14 @@
 {% if item.package %}
   {% set pkg_title = h.get_translated(item.package, 'title') or item.package.name %}
-  {% set pkg_url = h.url_for('dataset_read', id=item.package.name) %}
+  {% set pkg_url = h.url_for('dataset.read', id=item.package.name) %}
 {% endif %}
 {% if item.resource %}
   {% set res_title = item.resource.name %}
-  {% set res_url = h.url_for('resource_read', id=item.package.name, resource_id=item.resource.id) %}
+  {% set res_url = h.url_for('resource.read', id=item.package.name, resource_id=item.resource.id) %}
 {% endif %}
 {% if item.organization %}
   {% set org_title = h.get_translated(item.organization, 'title') or item.organization.name %}
-  {% set org_url = h.url_for('organization_read', id=item.organization.name) %}
+  {% set org_url = h.url_for('organization.read', id=item.organization.name) %}
 {% endif %}
 
 {% if item.activity.activity_type == 'new organization' %}

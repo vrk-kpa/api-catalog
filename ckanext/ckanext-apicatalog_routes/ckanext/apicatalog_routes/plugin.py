@@ -107,7 +107,8 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         if pkg_dict.get('access_restriction_level') and \
                 pkg_dict.get('access_restriction_level') == 'only_allowed_organizations':
-            allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')]
+            allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
+                                     if pkg_dict.get('allowed_organizations', "")]
             for org_name in allowed_organizations:
                 organization_dict = get_action('organization_show')(context, {'id': org_name})
                 labels.append(u'allowed_organization_members-%s' % organization_dict['id'])

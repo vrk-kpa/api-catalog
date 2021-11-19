@@ -21,13 +21,14 @@
   </div>
 </div>
 <h1>{{ _('Dashboard') }}</h1>
+
 <div class="row">
   <div class="col-md-12">
     <div class="row">
       <div class="col-sm-6 col-md-6">
         <div class="module">
           <div class="box">
-            <section class="group-list module module-narrow module-shallow">
+            <section class="group-list module module-shallow">
               <header class="module-heading">
                 <h3 class="media-heading">{{ _('Statistics') }}</h3>
               </header>
@@ -93,6 +94,67 @@
           </div>
         </div>
         #}
+        <div class="module">
+          <div class="box">
+            <section class="group-list module module-shallow">
+              <header class="module-heading">
+                <h3 class="media-heading">{{ _('Heartbeat status') }}</h3>
+              </header>
+              <div class="module-content">
+                {% set timestamp_format = '%d.%m.%Y, %H:%M' %}
+                {% if not xroad_heartbeat %}
+                  <p>X-Road heartbeat not fetched yet.</p>
+                {% else %}
+                  <h4>Latest status</h4>
+                  {% if xroad_heartbeat.latest.success %}
+                  <p><i class="far fa-check-circle success-icon"></i> {{ _('Success') }}, {{ xroad_heartbeat.latest.timestamp.strftime(timestamp_format) }}</p>
+                  {% else %}
+                  <p><i class="far fa-exclamation-circle failure-icon"></i> {{ _('Failed') }}, {{ xroad_heartbeat.latest.timestamp.strftime(timestamp_format) }}</p>
+                  {% endif %}
+                  <div class="panel-group" id="heartbeat" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="heartbeatHeading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#heartbeat" href="#collapseHeartbeat" aria-expanded="true" aria-controls="collapseHeartbeat">
+                            {% trans %}Show/hide change log{% endtrans %}
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseHeartbeat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heartbeatHeading">
+                        <div class="panel-body">
+                          <table class="table table-condensed" data-module="tablesorter" data-sortlist="[[1,1]]">
+                            <thead>
+                              <tr>
+                                <th>{{ _('Status') }}</th>
+                                <th data-sorter="shortDate" data-date-format="ddmmyyyyhhmm">{{ _('Timestamp') }}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for item in xroad_heartbeat.history %}
+                              <tr>
+                                <td>
+                                  {% if item.success %}
+                                  <i class="far fa-check-circle success-icon"></i> {{ _('Success') }}
+                                  {% else %}
+                                  <i class="far fa-exclamation-circle failure-icon"></i> {{ _('Failed') }}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {{ item.timestamp.strftime(timestamp_format) }}
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
       <div class="col-sm-6 col-md-6">
         <div class="module">
