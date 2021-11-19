@@ -42,10 +42,10 @@ def new_post(context, subsystem_id):
             }
 
     try:
-        organization = toolkit.get_action('organization_show')(context, {'id': form.get('organization')})
+        organization = toolkit.get_action('organization_show')(context, {'id': form['organization']})
         data_dict['organization_id'] = organization['id']
         toolkit.get_action('service_permission_application_create')(context, data_dict)
-    except toolkit.ValidationError as e:
+    except (toolkit.ValidationError, KeyError) as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)
 
     return toolkit.render('apply_permissions_for_service/sent.html')
