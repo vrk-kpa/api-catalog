@@ -2,15 +2,15 @@
 
 {% block primary %}
   <article class="module">
-    <p class="module-content">
+    <div class="module-content">
       {% if name %}
-          <h1 class="error-heading">{{ code }} {{ name }}</h1>
+          <h1>{{ code }} {{ name }}</h1>
       {% endif %}
       {% if code == 404 %}
-          <p class="module-content">{{ content|safe }}</p>
+          {{ content|safe }}
       {% else %}
       {{ content }}
       {% endif %}
-    </p>
+    </div>
   </article>
 {% endblock %}
