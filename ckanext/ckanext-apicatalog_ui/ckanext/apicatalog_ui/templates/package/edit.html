@@ -6,7 +6,8 @@
   <section class="module module-narrow">
     <div class="module context-info">
       <div class="module-content">
-          <a class="dataset-sidebar" href="{{ h.url_for(pkg.type + '_read', controller='dataset', action='read', id=pkg.name) }}">{{ _("Subsystem's information") }}</a>
+          {# The first option will always be the selected one for now until the new UI is also implemented for the other linked views #}
+          <a class="dataset-sidebar dataset-sidebar-selected" href="{{ h.url_for(pkg.type + '_read', controller='dataset', action='read', id=pkg.name) }}">{{ _("Subsystem's information") }}</a>
           <a class="dataset-sidebar" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Access request settings') }}</a>
           <a class="dataset-sidebar" href="{{ h.url_for('apply_permissions.manage_permission_applications', subsystem_id=pkg.name) }}">{{ _('Received access requests') }}</a>
       </div>
