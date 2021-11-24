@@ -1,9 +1,9 @@
 .wrapper {
   .clearfix();
+  .box();
   position: relative;
   margin-bottom: 20px;
-  background: initial;
-  border: none;
+  background: @white;
   box-shadow: initial;
   border-radius: 0;
 
@@ -261,9 +261,16 @@
   }
 
   .prelude-dataset {
-    .box();
-    background-color: @white;
+    background-color: transparent;
     padding: @spacing-y @spacing-x 0;
+  }
+
+  .dataset-edit-cancel {
+    font-family: @headings-font-family;
+    font-weight: @headings-font-weight;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    line-height: 20px;
   }
 }
 
