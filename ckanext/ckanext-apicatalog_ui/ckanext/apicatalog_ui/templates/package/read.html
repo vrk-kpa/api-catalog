@@ -16,18 +16,22 @@
     {%- set delivery_method = pkg.get('service_permission_settings', {}).get('delivery_method') -%}
     {% if delivery_method not in (None, 'none') %}
       <h2>{{ _('Request permission to use this subsystem') }}</h2>
-      <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
     {% endif %}
     {% if delivery_method == 'api' %}
-      <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('api')}}" target="_blank">{{ _('Request permission') }}
-        <i class="fal fa-external-link-alt btn-icon--right"></i>
-      </a>
+        <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
+        <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('api')}}" target="_blank">{{ _('Request permission') }}
+          <i class="fal fa-external-link-alt btn-icon--right"></i>
+        </a>
     {% elif delivery_method == 'file' %}
-      <a href="{{pkg.get('service_permission_settings').get('file_url')}}" target="_blank">{{ _('Download file') }}</a>
+        <p>{{ _('Request permission to use this subsystem in the Suomi.fi Data Exchange Layer if you want to have access to one or several of its services. Download and complete the form below and submit it to the email address provided by the owner of the subsystem. See the form and the subsystem description for more detailed instructions. Note that some subsystems may require that you apply for data access authorisation before you can request permission in the API Catalogue.') }}</p>
+        <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('file_url')}}" target="_blank">{{ _('Download file') }}
+          <i class="fal fa-arrow-down btn-icon--right"></i>
+        </a>
     {% elif delivery_method == 'web' %}
-      <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('web')}}" target="_blank">{{ _('Request permission in organizations website') }}
-        <i class="fal fa-external-link-alt btn-icon--right"></i>
-      </a>
+        <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
+        <a class="btn btn-primary" href="{{pkg.get('service_permission_settings').get('web')}}" target="_blank">{{ _('Request permission in organizations website') }}
+            <i class="fal fa-external-link-alt btn-icon--right"></i>
+        </a>
     {% endif %}
 
     <div class="dataset__subsystem-information">
