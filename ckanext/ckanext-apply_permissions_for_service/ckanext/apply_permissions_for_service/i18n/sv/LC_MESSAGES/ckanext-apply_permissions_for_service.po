@@ -1,51 +1,53 @@
 # Translations template for ckanext-apply_permissions_for_service.
-# Copyright (C) 2020 ORGANIZATION
+# Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the
 # ckanext-apply_permissions_for_service project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
+# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
+# Bert Viikmäe, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-04 11:08+0000\n"
+"POT-Creation-Date: 2021-09-09 13:01+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2021\n"
+"Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.7.0\n"
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/apply_permissions_for_service/views.py:22
-#: ckanext/apply_permissions_for_service/views.py:91
-#: ckanext/apply_permissions_for_service/views.py:101
-#: ckanext/apply_permissions_for_service/views.py:163
+#: ckanext/apply_permissions_for_service/views.py:27
+#: ckanext/apply_permissions_for_service/views.py:96
+#: ckanext/apply_permissions_for_service/views.py:107
+#: ckanext/apply_permissions_for_service/views.py:191
 msgid "Not authorized to see this page"
 msgstr "Inga rättigheter att se denna sida"
 
-#: ckanext/apply_permissions_for_service/views.py:54
+#: ckanext/apply_permissions_for_service/views.py:59
 msgid "This API is not accepting access applications."
 msgstr "Detta subsystem tar inte emot ansökningar om användningstillstånd."
 
-#: ckanext/apply_permissions_for_service/views.py:151
+#: ckanext/apply_permissions_for_service/views.py:179
 msgid "Changes saved successfully"
 msgstr "Ändringarna har sparats"
 
-#: ckanext/apply_permissions_for_service/logic/action/create.py:24
-#: ckanext/apply_permissions_for_service/logic/action/create.py:27
-#: ckanext/apply_permissions_for_service/logic/action/create.py:30
-#: ckanext/apply_permissions_for_service/logic/action/create.py:33
-#: ckanext/apply_permissions_for_service/logic/action/create.py:36
-#: ckanext/apply_permissions_for_service/logic/action/create.py:39
-#: ckanext/apply_permissions_for_service/logic/action/create.py:42
-#: ckanext/apply_permissions_for_service/logic/action/create.py:45
+#: ckanext/apply_permissions_for_service/logic/action.py:26
+#: ckanext/apply_permissions_for_service/logic/action.py:29
+#: ckanext/apply_permissions_for_service/logic/action.py:32
+#: ckanext/apply_permissions_for_service/logic/action.py:35
+#: ckanext/apply_permissions_for_service/logic/action.py:38
+#: ckanext/apply_permissions_for_service/logic/action.py:41
+#: ckanext/apply_permissions_for_service/logic/action.py:44
+#: ckanext/apply_permissions_for_service/logic/action.py:47
 msgid "Missing value"
 msgstr "Värde som saknas"
 
@@ -108,11 +110,12 @@ msgid ""
 "approved, Valtori is automatically notified of the needed firewall "
 "configurations."
 msgstr ""
-"Med denna blankett kan du ansöka om tillstånd för din organisation att "
-"använda subsystem i Informationsleden. Din tillståndsbegäran förmedlas till "
-"den organisation vars subsystem du ber om användningstillstånd för. Valtori "
-"informeras om det godkända användningstillståndet för nödvändiga öppningar i"
-" brandväggen."
+"Med blanketten kan du ansöka om användningstillstånd för din organisation "
+"att använda subsystemets tjänster i Suomi.fi-informationsleden. "
+"Kontaktuppgifterna förmedlas tillsammans med ansökan om användningstillstånd"
+" till den organisation vars subsystem du ber om användningstillstånd för. "
+"Valtori informeras om det godkända användningstillståndet för nödvändiga "
+"öppningar i brandväggen."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:31
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:15
@@ -233,7 +236,7 @@ msgid "Send access application"
 msgstr "Skicka ansökan om användningstillstånd"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:88
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:32
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
 msgid "Cancel"
 msgstr "Ångra"
 
@@ -247,49 +250,108 @@ msgid "Application sent successfully"
 msgstr "Ansökan har skickats"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:6
-msgid "Settings"
-msgstr "Inställningar"
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:12
-msgid "Delivery method for access requests"
-msgstr "Leveranssätt för tillståndsbegäran"
+msgid "Exit the settings"
+msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:13
+msgid "Subsystem permission"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:14
+msgid ""
+"You can allow permission requests for authenticated API-Catalog users. "
+"Permission requests are disabled by default in a new subsystem."
+msgstr ""
+"Du kan tillåta användare som loggat in i API-katalogen att ansöka om "
+"användningstillstånd för tjänsterna i ditt subsystem. Begäran om tillstånd "
+"är som standard avstängda i varje subsystem."
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:21
+msgid "Delivery method for access requests"
+msgstr "Välj typ av tillståndsbegäran"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:22
 msgid "Disable access requests for this API"
 msgstr "Det går inte att begära tillstånd för detta subsystem"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:14
-msgid "E-mail"
-msgstr "E-post"
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:15
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:23
 msgid "Ticketing service API call"
 msgstr "Via gränssnittet till mitt eget ärendehanteringssystem"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:16
-msgid "Access is requested on a web page managed by my organization"
-msgstr "Begäran görs på min organisations sida"
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:21
-msgid "Email address"
-msgstr "E-postadress"
-
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:24
+msgid "Upload your access request file"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:25
+msgid "Access is requested on a web page managed by my organization"
+msgstr "Länk till tillståndsansökan på organisationens webbplats"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:30
 msgid "Endpoint URL"
 msgstr "Gränssnittets URL"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:27
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:38
+msgid "Add your file"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:49
 msgid "Webpage URL"
 msgstr "Webbplatsens URL"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:31
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:54
 msgid "Save"
 msgstr "Spara"
 
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:59
+msgid "Permission request alternatives:"
+msgstr "Alternativ för tillståndsbegäran:"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
+msgid "Permission request alternatives instructions"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
+msgid ""
+"<p style=\"font-weight: bold;\">Application in API "
+"Catalogue</p><ul><li>Request permission to use a subsystem by using the "
+"predefined electronic form in the API Catalogue.</li></ul><p style=\"font-"
+"weight: bold;\">Organisation’s downloadable application "
+"(PDF)</p><ul><li>Upload your organisation's own PDF form to the API "
+"Catalogue that can be used to request permission to use the subsystem. The "
+"applicant must download the form from the API Catalogue and send the "
+"completed form to the email address you specified.</li><li>In the form, "
+"explain to which email address the form should be returned "
+"to.</li><li>Access requests sent in this way will not appear in the API "
+"Catalogue.</li></ul><p style=\"font-weight: bold;\">Link to the access "
+"licence application on the organisation's website</p><ul><li>Enter the URL "
+"for your organisation’s web page where the person requesting access can "
+"apply for access to your organisation’s services.</li><li>Access requests "
+"sent in this way will not appear in the API Catalogue.</li></ul><p>For more "
+"information on the administration of access rights, see the instructions in "
+"the<a target=\"_blank\" href=\"https://liityntakatalogi.suomi.fi/\">API "
+"Catalogue.</a></p>"
+msgstr ""
+"<p style=\"font-weight: bold;\">Färdig tillståndsansökan för API-"
+"katalogen</p><ul><li>Användningstillstånd söks med en färdig elektronisk "
+"blankett i API-katalogen.</li></ul><p style=\"font-weight: bold;\">Egen "
+"tillståndsansökan (PDF)</p><ul><li>Ladda upp din organisations egen PDF-"
+"blankett i API-katalogen för ansökan om användningstillstånd för "
+"subsystemet. Den som begär tillstånd laddar ner blanketten från API-"
+"katalogen och skickar den ifyllda blanketten till den e-postadress du "
+"angett.</li><li>Ange på blanketten till vilken e-postadress blanketten ska "
+"returneras.</li><li>Begäran om tillstånd som skickats på detta sätt syns "
+"inte i API-katalogen.</li></ul><p style=\"font-weight: bold;\">Länk till "
+"tillståndsansökan på organisationens webbplats</p><ul><li>Ange URL-adressen "
+"till din organisations webbplats där den som begär tillstånd kan ansöka om "
+"användningstillstånd för subsystemet.</li><li>Begäran om tillstånd som "
+"skickats på detta sätt syns inte i API-katalogen.</li></ul><p>Läs mer om "
+"administrering av användningstillstånd i anvisningarna i<a target=\"_blank\""
+" href=\"https://liityntakatalogi.suomi.fi/\">API-katalogen.</a></p>"
+
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
-msgid "Manage access requests"
-msgstr "Administrerar tillståndsbegäran"
+msgid "Permission management"
+msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
-msgid "Edit settings for access requests"
-msgstr "Ändra inställningarna för tillståndsbegäran"
+msgid "Manage access requests"
+msgstr "Administrerar tillståndsbegäran"
