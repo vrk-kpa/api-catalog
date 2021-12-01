@@ -368,3 +368,27 @@
 .lika-logo {
   height: 54px;
 }
+
+.collapsible-container {
+  box-shadow: 0px 2px 4px 1px rgba(41, 41, 41, 0.2);
+}
+
+.collapsible {
+  background: transparent;
+  border: none;
+  margin: 10px;
+
+  &:after {
+    // Unicode for downwards facing arrow head
+    content: '\02304';
+    float: right;
+    margin-right: 15px;
+  }
+}
+
+.collapsible-active {
+  &:after {
+    // Unicode for upwards facing arrow head
+    content: '\02303';
+  }
+}
