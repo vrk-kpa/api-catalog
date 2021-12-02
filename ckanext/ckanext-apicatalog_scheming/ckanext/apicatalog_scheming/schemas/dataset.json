@@ -50,32 +50,18 @@
         "data-module-tags": "",
         "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
       },
-      "description": ""
-    },
-    {
-      "field_name": "validSince",
-      "label": "Valid since",
-      "preset": "date",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "validUntil",
-      "label": "Valid until",
-      "preset": "date",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "private",
-      "validators": "boolean_validator valid_resources",
-      "form_snippet": null,
-      "display_snippet": null
+      "description": "",
+      "group_title": "Keywords",
+      "group_description": "Using keywords the user can easily find this application or similar applications through the search function. Choose at least one Finnish keyword."
     },
     {
       "field_name": "maintainer",
       "label": "Maintainer",
       "form_placeholder": "Joe Bloggs",
       "display_property": "dc:contributor",
-      "classes": ["control-full"]
+      "classes": ["control-full"],
+      "group_title": "Maintainer's information",
+      "group_description": "Use the maintainer's common contact information."
     },
     {
       "field_name": "maintainer_email",
@@ -91,6 +77,25 @@
       "form_placeholder": "+358123456789",
       "display_property": "dc:contributor",
       "classes": ["control-full"]
+    },
+    {
+      "field_name": "validSince",
+      "label": "Valid since",
+      "preset": "date",
+      "classes": ["control-full"],
+      "group_title": "Other information"
+    },
+    {
+      "field_name": "validUntil",
+      "label": "Valid until",
+      "preset": "date",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "private",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": null,
+      "display_snippet": null
     },
     {
       "field_name": "xroad_instance",
