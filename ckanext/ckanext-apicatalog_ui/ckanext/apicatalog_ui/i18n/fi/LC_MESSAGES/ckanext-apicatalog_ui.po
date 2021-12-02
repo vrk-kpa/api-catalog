@@ -1008,13 +1008,13 @@ msgstr "Tunniste Palveluväylässä"
 msgid "Description"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/read.html:53
-msgid "Interfaces"
+#: ckanext/apicatalog_ui/templates/package/read.html:61
+msgid "Services"
 msgstr "Palvelut"
 
-#: ckanext/apicatalog_ui/templates/package/read.html:56
-msgid "Services"
-msgstr ""
+#: ckanext/apicatalog_ui/templates/package/read.html:64
+msgid "Attachments"
+msgstr "Liitteet"
 
 #: ckanext/apicatalog_ui/templates/package/read_base.html:16
 msgid "Groups"

@@ -57,7 +57,7 @@
 {% block package_resources %}
   {% set services = pkg.resources|selectattr('harvested_from_xroad')|list %}
   {% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
-  {% if interfaces %}
+  {% if services %}
     {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=services, title=_('Services') %}
   {% endif %}
   {% if attachments %}
