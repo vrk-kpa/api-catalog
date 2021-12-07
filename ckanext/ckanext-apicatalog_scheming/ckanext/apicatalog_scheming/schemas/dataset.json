@@ -13,7 +13,7 @@
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
       "group_title": "Dataset title",
-      "group_description": "* Required field <br><br> We recommend that the subsystem is given a clear name that describes its real name or purpose"
+      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose"
 
     },
     {
