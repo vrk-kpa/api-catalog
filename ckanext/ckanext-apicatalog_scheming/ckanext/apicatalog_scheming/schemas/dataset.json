@@ -79,6 +79,33 @@
       "classes": ["control-full"]
     },
     {
+      "field_name": "access_restriction_level",
+      "label": "Access Restriction Level",
+      "preset": "select",
+      "classes": ["control-full"],
+      "form_snippet": "radio.html",
+      "group_title": "Service visibility",
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public"
+        },
+        {
+          "value": "only_allowed_organizations",
+          "label": "Allowed Organizations Only"
+        }
+      ],
+      "default_value": "only_allowed_organizations",
+      "validators": "boolean_validator"
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "validators": "ignore_missing"
+    },
+    {
       "field_name": "validSince",
       "label": "Valid since",
       "preset": "date",
@@ -127,29 +154,6 @@
       "display_snippet": null,
       "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
       "output_validators": "scheming_load_json ignore_not_package_maintainer"
-    },
-    {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "public",
-          "label": "Public"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
-        }
-      ]
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete",
-      "validators": "ignore_missing"
     }
   ],
   "resource_fields": [
