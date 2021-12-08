@@ -12,7 +12,7 @@
       "form_placeholder": "eg. A descriptive title",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
-      "group_title": "Dataset title",
+      "group_title": "Subsystem's title",
       "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose"
 
     },
