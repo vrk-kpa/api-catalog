@@ -13,15 +13,7 @@
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
       "group_title": "Subsystem's title",
-      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose.<br><br>The URL for the subsystem is generated automatically."
-
-    },
-    {
-      "field_name": "name",
-      "label": "URL",
-      "preset": "dataset_slug_ex",
-      "form_placeholder": "eg. my-dataset",
-      "final": true,
+      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose.",
       "end_of_section": true
     },
     {
@@ -115,7 +107,14 @@
       "field_name": "validUntil",
       "label": "Valid until",
       "preset": "date",
-      "classes": ["control-full"],
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "form_placeholder": "eg. my-dataset",
+      "final": true,
+      "form_snippet": "url.html",
       "end_of_section": true
     },
     {
