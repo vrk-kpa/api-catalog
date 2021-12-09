@@ -9,5 +9,8 @@
 
 {% endblock %}
 {% block content_action %}
-    {% link_for _('Cancel editing'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default dataset-edit-cancel', icon='long-arrow-left' %}
+    <a href="{{ h.url_for('dataset.read', id=pkg.name) }}" class="btn btn-default dataset-edit-cancel">
+        <i class="far fa-long-arrow-left"></i>
+        {{ _('Cancel editing') }}
+    </a>
 {% endblock %}
