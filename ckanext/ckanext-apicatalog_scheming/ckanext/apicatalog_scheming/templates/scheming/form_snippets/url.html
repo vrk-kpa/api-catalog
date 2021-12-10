@@ -1,7 +1,7 @@
 {% import 'macros/form.html' as form %}
 
 {% macro prepend_url(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=False) %}
-    <h4>{{ _('Web address') }}</h4>
+    <h5>{{ _('Web address') }}</h5>
     <p>{{ _('The URL is automatically generated from the subsystem\'s name') }}</p>
     <p>{{ domain }}<span class="dataset-url-slug">{{ data[field.field_name] }}</span></p>
 {% endmacro %}
