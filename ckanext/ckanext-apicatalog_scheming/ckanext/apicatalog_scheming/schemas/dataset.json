@@ -13,7 +13,12 @@
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
       "group_title": "Subsystem's title",
-      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose.",
+      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose."
+    },
+    {
+      "field_name": "title_in_data_exchange_layer",
+      "label": "Title in Data Exchange Layer",
+      "form_snippet": "data_exchange_layer_title.html",
       "end_of_section": true
     },
     {
