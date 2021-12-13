@@ -1,0 +1,56 @@
+diff --git a/ckan/lib/search/__init__.py b/ckan/lib/search/__init__.py
+index 99ef9618c..90402d773 100644
+--- a/ckan/lib/search/__init__.py
++++ b/ckan/lib/search/__init__.py
+@@ -38,7 +38,7 @@ def text_traceback():
+     return res
+
+
+-SUPPORTED_SCHEMA_VERSIONS = ['2.8', '2.9']
++SUPPORTED_SCHEMA_VERSIONS = ['2.8', '2.9', '2.10']
+
+ DEFAULT_OPTIONS = {
+     'limit': 20,
+@@ -314,7 +314,15 @@ def check_solr_schema_version(schema_file=None):
+
+     tree = xml.dom.minidom.parseString(schema_content)
+
+-    version = tree.documentElement.getAttribute('version')
++    # Up to CKAN 2.9 the schema version was stored in the `version` attribute.
++    # Going forward, we are storing it in the `name` one in the form `ckan-X.Y`
++    version = ''
++    name_attr = tree.documentElement.getAttribute('name')
++    if name_attr.startswith('ckan-'):
++        version = name_attr.split('-')[1]
++    else:
++        version = tree.documentElement.getAttribute('version')
++
+     if not len(version):
+         msg = 'Could not extract version info from the SOLR schema'
+         if schema_file:
+diff --git a/ckan/lib/search/common.py b/ckan/lib/search/common.py
+index f951fcbdc..35d93d55c 100644
+--- a/ckan/lib/search/common.py
++++ b/ckan/lib/search/common.py
+@@ -24,7 +24,7 @@ class SearchQueryError(SearchError):
+     pass
+
+
+-DEFAULT_SOLR_URL = 'http://127.0.0.1:8983/solr'
++DEFAULT_SOLR_URL = 'http://127.0.0.1:8983/solr/ckan'
+
+
+ class SolrSettings(object):
+diff --git a/ckan/lib/search/query.py b/ckan/lib/search/query.py
+index 4d83f850e..908915bc2 100644
+--- a/ckan/lib/search/query.py
++++ b/ckan/lib/search/query.py
+@@ -366,6 +366,8 @@ class PackageSearchQuery(SearchQuery):
+             query['mm'] = query.get('mm', '2<-1 5<80%')
+             query['qf'] = query.get('qf', QUERY_FIELDS)
+
++            query.setdefault("df", "text")
++            query.setdefault("q.op", "AND")
+         try:
+             if query['q'].startswith('{!'):
+                 raise SearchError('Local parameters are not supported.')
