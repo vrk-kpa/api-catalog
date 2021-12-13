@@ -36,6 +36,7 @@
       "label": "Keywords",
       "form_placeholder": "e.g. names",
       "form_languages": ["fi", "en", "sv"],
+      "only_default_lang_required": true,
       "preset": "fluent_vocabulary_with_autocomplete",
       "validators": "fluent_tags create_fluent_tags(keywords)",
       "form_attrs": {
