@@ -13,6 +13,7 @@ main_js:
     - javascript/submit-on-change.js
     - javascript/form-change-listener.js
     - javascript/collapsible.js
+    - javascript/api_catalog_select2.js
 
 main_css:
   output: ckanext-apicatalog_ui/%(version)s_main.css
