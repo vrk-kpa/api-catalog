@@ -1,8 +1,10 @@
 {% import 'macros/form.html' as form %}
 
-{% set title = data['name'] %}
-{% set capitalized_title = title.title() %}
-{% set stripped_title = ''.join(capitalized_title.split('-')) %}
+{% if data['name'] %}
+    {% set title = data['name'] %}
+    {% set capitalized_title = title.title() %}
+    {% set stripped_title = ''.join(capitalized_title.split('-')) %}
+{% endif %}
 
 <h5><span class="control-required">* </span>{{ _('Title in Data Exchange Layer') }}</h5>
 <p class="ytp-description">{{ _('The title used in Data Exchange Layer in the absence of a translation.') }}</p>
