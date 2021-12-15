@@ -111,7 +111,7 @@ msgid "Description in Finnish"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/schemas/organization.json:21
-msgid "Description in Swedisn"
+msgid "Description in Swedish"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/schemas/organization.json:21
