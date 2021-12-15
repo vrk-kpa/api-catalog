@@ -104,7 +104,8 @@ msgstr ""
 
 #: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
 msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick reference\">Markdown formatting</a> here."
+"You can use <a href=\"#markdown\" title=\"Markdown quick "
+"reference\">Markdown formatting</a> here."
 msgstr ""
 
 #: ckanext/apicatalog_scheming/schemas/organization.json:21
