@@ -1,0 +1,22 @@
+{% import 'macros/form.html' as form %}
+
+<h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
+{%- if field.extra_label is not none -%}
+    <p style="margin-left: -15px;">
+        {{ _(field.extra_label) }}
+    {% trans %}You can use <a href="#markdown" title="Markdown quick reference">Markdown formatting</a> here.{% endtrans %}
+    </p>
+{%- endif -%}
+
+  <div class="form-group control-full">
+  {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
+      <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
+          {{ _(field.input_title[loop.index - 1]) }}
+        <span title="{{ _('Required field') }}" class="control-required">*</span>
+      </label>
+      <div class="controls">
+        <textarea id="{{ 'field-' + field.field_name + '-' + lang }}" name="{{ field.field_name + '-' + lang }}"
+                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
+      </div>
+  {%- endfor -%}
+  </div>

@@ -7,6 +7,7 @@
 {%- endif -%}
 
 <form class="dataset-form form-horizontal" method="post" data-module="basic-form" enctype="multipart/form-data">
+    <p class="control-required-message">{{ _('Required field') }}<span class="control-required">*</span></p>
   {% block error_summary %}
     {{ form.errors(error_summary) }}
   {% endblock %}
@@ -22,15 +23,9 @@
     {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
 
     <div class="form-actions">
-        {% block delete_button %}
-        {% if action == 'edit' %}
-          {% if h.check_access('group_delete', {'id': data.id}) and action=='edit'  %}
-            {% set locale = h.dump_json({'content': _('Are you sure you want to delete this Organization?')}) %}
-            <a class="btn btn-danger pull-left" href="{% url_for controller='organization', action='delete', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
-          {% endif %}
-        {% endif %}
+        {% block save_text %}
+            <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save Organization') }}</button>
+            <a class="btn pull-left" href="{% url_for controller='organization', action='read', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Discard changes') }}</a>
         {% endblock %}
-        <button class="btn btn-primary" name="save" type="submit">{% block save_text %}{{ _('Save Organization') }}{% endblock %}</button>
-        {{ form.required_message() }}
     </div>
 </form>

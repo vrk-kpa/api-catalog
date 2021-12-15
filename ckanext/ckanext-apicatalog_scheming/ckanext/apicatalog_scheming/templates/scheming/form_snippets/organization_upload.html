@@ -1,0 +1,31 @@
+{% import 'macros/form.html' as form %}
+
+{% set is_upload = data.image_url and not data.image_url.startswith('http') %}
+{% set is_url = data.image_url and data.image_url.startswith('http') %}
+
+<h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
+<br/><p style="margin-left: -15px;"><b>{{_(field.field_name)}}</b></p>
+{%- if field.extra_label is not none -%}
+    <p style="margin-left: -15px;">{{_(field.extra_label)}}</p>
+{%- endif -%}
+
+<div class="form-group control-full" style="">
+  <div class="controls ">
+      <a href="javascript:;"
+         class="btn btn-default"
+         style="">
+          <i class="fa fa-cloud-upload"></i>
+          {{ _('Upload') }}
+      </a>
+      <a href="javascript:;"
+         class="btn btn-default"
+         title="{{  _('Link to a URL on the internet (you can also link to an API)') }}"
+         style="">
+          <i class="fa fa-globe"></i>
+          {{ _('Link') }}
+      </a>
+  </div>
+</div>
+
+{# image_upload macro doesn't support call #}
+{%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
