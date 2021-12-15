@@ -82,3 +82,62 @@ msgstr ""
 msgid "Business id verification number does match business id."
 msgstr ""
 
+#: ckanext/apicatalog_scheming/schemas/organization.json:10
+msgid "Name in Finnish"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:10
+msgid "Name in Swedish"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:10
+msgid "Name in English"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:19
+msgid "Organisation description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:20
+msgid "A general, concise, and easy-to-understand description of the organization"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
+msgid "You can use Markdown formatting here."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:21
+msgid "Description in Finnish"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:21
+msgid "Description in Swedisn"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:21
+msgid "Description in English"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:36
+msgid "Other information and settings"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:35
+msgid "Organisation logo"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:37
+msgid "The logo is displayed on the organization page in API Catalogue."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:56
+msgid "If possible, provide a telephone number for the organization's switchboard or customer service, not an individual number."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:64
+msgid "If possible, enter the email address of the organization or customer service, not the email address of the individual."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:28
+msgid "Discard changes"
+msgstr ""
