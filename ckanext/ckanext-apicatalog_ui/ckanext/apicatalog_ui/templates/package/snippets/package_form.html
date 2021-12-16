@@ -6,8 +6,8 @@
             <button class="btn btn-primary pull-left" type="submit" name="save">
                 {% block save_button_text %}{{ _('Next: Add Data') }}{% endblock %}</button>
         {% endblock %}
-        <a class="btn suomifi-button-secondary-noborder pull-left"
-               href="{% url_for controller='dataset', action='search' %}">{{ _("Discard changes") }}</a>
+        <button class="btn suomifi-button-secondary-noborder pull-left"
+               href="{% url_for controller='dataset', action='search' %}">{{ _("Discard changes") }}</button>
         {% block delete_button %}
             {% if h.check_access('package_delete', {'id': data.id}) and not data.state == 'deleted' %}
                 <a class="btn btn-danger pull-right" href="{% url_for 'dataset.delete', id=data.id %}"

@@ -381,3 +381,21 @@
   font-size: @font-size-base;
   font-weight: 600;
 }
+
+.suomifi-button-secondary-noborder {
+  background-color: @white;
+  color: @suomifi-highlight-base;
+  font-family: @headings-font-family;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  margin: 1px 0;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+  text-align: center;
+
+  &:hover {
+    color: @suomifi-highlight-base;
+    background: rgba(0, 0, 0, 0) linear-gradient(-180deg, rgb(236, 237, 238) 0%, rgba(255, 255, 255, 0) 100%) repeat scroll 0% 0%;
+  }
+}
