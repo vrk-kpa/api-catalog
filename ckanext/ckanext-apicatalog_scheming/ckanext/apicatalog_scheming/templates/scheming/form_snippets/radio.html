@@ -1,24 +1,14 @@
 {% import 'macros/form.html' as form %}
 
-{% call form.input(
-    field.field_name,
-    id='field-' + field.field_name,
-    label=h.scheming_language_text(field.label),
-    placeholder=h.scheming_language_text(field.form_placeholder),
-    value=data[field.field_name],
-    error=errors[field.field_name],
-    classes=field.classes if 'classes' in field else ['control-medium'],
-    attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
-    is_required=h.scheming_field_required(field)
-    )
-%}
+{%- call form.input_block(
+  label=h.scheming_language_text(field.label),
+  classes=['control-medium'],
+  error=errors[field.field_name],
+  is_required=h.scheming_field_required(field)) -%}
   {% set selected = data[field.field_name] if data[field.field_name] is defined else field.default_value %}
   <fieldset class="radios">
       {%- for c in field.choices -%}
           <label for="field-{{ field.field_name }}-{{ c.value }}">
-            {% if description and description.strip() %}
-                <div class="field-assistive-text">{{ _(description) }}</div>
-            {% endif %}
             <input id="field-{{ field.field_name }}-{{ c.value }}"
                 type="radio"
                 name="{{ field.field_name }}"

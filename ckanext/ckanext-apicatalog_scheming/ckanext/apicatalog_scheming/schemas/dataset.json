@@ -92,8 +92,7 @@
           "label": "Allowed Organizations Only"
         }
       ],
-      "default_value": "only_allowed_organizations",
-      "validators": "boolean_validator"
+      "default_value": "only_allowed_organizations"
     },
     {
       "field_name": "allowed_organizations",
