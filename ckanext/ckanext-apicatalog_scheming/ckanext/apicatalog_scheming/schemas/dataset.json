@@ -34,7 +34,6 @@
     {
       "field_name": "keywords",
       "label": "Keywords",
-      "form_placeholder": "e.g. names",
       "form_languages": ["fi", "en", "sv"],
       "only_default_lang_required": true,
       "form_placeholder": "Write a keyword",
