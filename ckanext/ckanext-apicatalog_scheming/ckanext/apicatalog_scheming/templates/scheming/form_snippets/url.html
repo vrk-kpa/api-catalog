@@ -2,8 +2,8 @@
 
 {% macro prepend_url(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=False) %}
     <h5>{{ _('Web address') }}</h5>
-    <p class="ytp-description">{{ _('The URL is automatically generated from the subsystem\'s name') }}</p>
-    <p class="ytp-description">{{ domain }}<span id="dataset-url-slug" class="dataset-url-slug" data-module="title_to_del_title_and_url_slug" /></p>
+    <p class="api-catalog-description">{{ _('The URL is automatically generated from the subsystem\'s name') }}</p>
+    <p class="api-catalog-description">{{ domain }}<span id="dataset-url-slug" class="dataset-url-slug" data-module="title_to_del_title_and_url_slug" /></p>
 {% endmacro %}
 
 {%- if entity_type == 'dataset' %}
