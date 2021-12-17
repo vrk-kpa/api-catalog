@@ -38,24 +38,24 @@
   service: name=solr state=started
   when: fetch_solr is changed
 
+- name: Check if Solr core already exists
+  uri:
+    url: http://localhost:8983/solr/admin/cores?action=reload&core=ckan
+    status_code:
+      - 200
+      - 400
+  register: solr_core_response
+
 - name: Create Solr core
   command: "/opt/solr/solr/bin/solr create -c ckan"
   become: true
   become_user: solr
-  when: fetch_solr is changed
+  when: "'error' in solr_core_response.json and 'No such core' in solr_core_response.json.error.msg"
 
 - name: Copy CKAN Solr schema
   copy: src=schema.xml dest=/var/solr/data/ckan/conf/managed-schema mode="0644" owner=solr group=solr
   become: true
   become_user: solr
-
-# Can be removed once solr is updated to 8.11.1
-- name: Configure solr opts
-  lineinfile:
-    path: /etc/default/solr.in.sh
-    state: present
-    line: 'SOLR_OPTS="$SOLR_OPTS -Dlog4j2.formatMsgNoLookups=true"'
-    search_string: 'log4j2.formatMsgNoLookups=true'
 
 - name: Restart solr
   service: name=solr state=restarted
