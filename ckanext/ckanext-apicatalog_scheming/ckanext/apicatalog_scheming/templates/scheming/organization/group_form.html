@@ -5,9 +5,9 @@
         might not be compatible with ckanext-scheming
     </p>
 {%- endif -%}
-
+<div class="module-content" style="width: 60%">
 <form class="dataset-form form-horizontal" method="post" data-module="basic-form" enctype="multipart/form-data">
-    <p class="control-required-message">{{ _('Required field') }}<span class="control-required">*</span></p>
+    <p class="control-required-message"><span class="control-required" style="color:black">*&nbsp;</span>{{ _('Required field') }}</p>
   {% block error_summary %}
     {{ form.errors(error_summary) }}
   {% endblock %}
@@ -22,10 +22,11 @@
     {%- endfor -%}
     {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
 
-    <div class="form-actions">
+    <div class="form-actions" style="margin-left: -15px">
         {% block save_text %}
-            <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save Organization') }}</button>
+            <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save changes') }}</button>
             <a class="btn pull-left" href="{% url_for controller='organization', action='read', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Discard changes') }}</a>
         {% endblock %}
     </div>
 </form>
+</div>

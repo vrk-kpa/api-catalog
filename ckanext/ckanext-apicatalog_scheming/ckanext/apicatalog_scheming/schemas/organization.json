@@ -12,6 +12,7 @@
       "only_default_lang_required": true,
       "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
+      "show_url": true,
       "display_snippet": null
     },
     {
@@ -21,7 +22,8 @@
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "required": true,
-      "form_placeholder": "A little information about my organization...",
+      "only_default_lang_required": false,
+      "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
       "form_snippet": "fluent_markdown.html"
     },

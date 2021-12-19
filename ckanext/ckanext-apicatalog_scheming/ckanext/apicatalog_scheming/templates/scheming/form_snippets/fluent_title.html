@@ -22,9 +22,12 @@
 
        <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
           {{ _(field.input_title[0]) }}
-        <span title="{{ _('Required field') }}" class="control-required">*</span>
+        <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
       </label>
       <div class="controls">
+          {%- if field.additional_description is not none -%}
+              <p>{{ _(field.additional_description) }}</p>
+          {%- endif -%}
           <input id="{{ 'field-' + field.field_name + '-' + lang }}"
                  type="text"
                  name="{{ field.field_name + '-' + lang }}"
@@ -32,10 +35,11 @@
                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
                  {{ field.form_attrs if 'form_attrs' in field else {} }} />
 
-          <div class="slug-preview">
-              <span class="slug-preview-prefix">{{ domain }}</span>
-              <span class="slug-preview-value">{{ data['name'] }}</span>
-          </div>
+          {%- if field.show_url -%}
+            <div class="slug-preview">
+                <span class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
+            </div>
+          {%- endif -%}
       </div>
 
   {%- for lang in langs -%}
@@ -55,3 +59,4 @@
   {%- endfor -%}
   </div>
 </div>
+<hr/>

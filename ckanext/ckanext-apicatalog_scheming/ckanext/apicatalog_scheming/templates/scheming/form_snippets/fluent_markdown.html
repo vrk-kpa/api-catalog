@@ -12,11 +12,16 @@
   {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
       <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
           {{ _(field.input_title[loop.index - 1]) }}
-        <span title="{{ _('Required field') }}" class="control-required">*</span>
+          {%- if field.required and not field.only_default_lang_required -%}
+            <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+          {%- elif field.only_default_lang_required and loop.index == 1 -%}
+            <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+          {%- endif -%}
       </label>
       <div class="controls">
         <textarea id="{{ 'field-' + field.field_name + '-' + lang }}" name="{{ field.field_name + '-' + lang }}"
-                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
+                  rows="6" placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
       </div>
   {%- endfor -%}
   </div>
+<hr/>

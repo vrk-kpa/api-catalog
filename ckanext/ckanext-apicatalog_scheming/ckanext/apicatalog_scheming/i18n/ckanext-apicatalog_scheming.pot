@@ -143,3 +143,11 @@ msgstr ""
 #: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:28
 msgid "Discard changes"
 msgstr ""
+
+#: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:27
+msgid "Save changes"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:26
+msgid "Write subsystem description"
+msgstr ""

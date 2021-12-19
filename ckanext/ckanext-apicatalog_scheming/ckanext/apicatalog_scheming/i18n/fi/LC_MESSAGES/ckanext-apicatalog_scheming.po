@@ -160,3 +160,11 @@ msgstr ""
 #: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:28
 msgid "Discard changes"
 msgstr "Hylkää muutokset"
+
+#: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:27
+msgid "Save changes"
+msgstr "Päivitä tiedot"
+
+#: ckanext/apicatalog_scheming/schemas/organization.json:26
+msgid "Write subsystem description"
+msgstr "Kirjoita alijärjestelmän kuvaus"
