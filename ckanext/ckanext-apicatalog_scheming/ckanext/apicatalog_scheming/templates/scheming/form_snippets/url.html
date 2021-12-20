@@ -2,13 +2,13 @@
 
 {% macro prepend_url(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=False) %}
     <div class="form-group control-full">
-        <label class="control-label">{{ _('Web address') }}</label>
+        <label class="control-label" for="field-{{ field.field_name }}">{{ _('Web address') }}</label>
         <div class="controls">
             <h5 class="api-catalog-group-description">{{ _('The URL is automatically generated from the subsystem\'s name') }}</h5>
             {{ domain }}<input id="field-{{ field.field_name }}"
-                                                                  class="dataset-url-slug"
-                                                                  data-module="title_to_del_title_and_url_slug" readonly
-                                                                  disabled/>
+                               class="dataset-url-slug"
+                               data-module="title_to_del_title_and_url_slug" readonly
+                               disabled/>
         </div>
     </div>
 {% endmacro %}
