@@ -32,7 +32,7 @@ this.ckan.module('title_to_del_title_and_url_slug', function($) {
       var dashSeparatedWords = this.processWords(element.value, false);
 
       $('#title_in_data_exchange_layer')[0].value = capitalizedWords;
-      $('#dataset-url-slug')[0].textContent = dashSeparatedWords
+      $('.dataset-url-slug')[0].value = dashSeparatedWords
     },
 
     // Yes, extracting the loop into a function results in it being run multiple times when it could only run once

@@ -1,31 +1,23 @@
 {% import 'macros/form.html' as form %}
 
 {% macro prepend_url(name, id='', label='', prepend='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=False) %}
-    <h5>{{ _('Web address') }}</h5>
-    <p class="api-catalog-description">{{ _('The URL is automatically generated from the subsystem\'s name') }}</p>
-    <p id="field-{{ field.field_name }}" class="api-catalog-description">{{ domain }}<span id="dataset-url-slug" class="dataset-url-slug" data-module="title_to_del_title_and_url_slug" /></p>
+    <div class="form-group control-full">
+        <label class="control-label">{{ _('Web address') }}</label>
+        <div class="controls">
+            <h5 class="api-catalog-group-description">{{ _('The URL is automatically generated from the subsystem\'s name') }}</h5>
+            {{ domain }}<input id="field-{{ field.field_name }}"
+                                                                  class="dataset-url-slug"
+                                                                  data-module="title_to_del_title_and_url_slug" readonly
+                                                                  disabled/>
+        </div>
+    </div>
 {% endmacro %}
-
-{%- if entity_type == 'dataset' %}
-    {%- set controller = 'package' -%}
-    {%- set module_placeholder = '<dataset>' -%}
-{%- elif entity_type == 'organization' %}
-    {%- set controller = 'organization' -%}
-    {%- set module_placeholder = '<organization>' -%}
-{%- elif entity_type == 'group' -%}
-    {%- set controller = 'group' -%}
-    {%- set module_placeholder = '<group>' -%}
-{%- endif -%}
 
 {% set read_endpoint = '.read' if h.ckan_version() > '2.9' else '_read' %}
 
 {%- set prefix = h.url_for(object_type + read_endpoint, id='') -%}
 {%- set domain = h.url_for(object_type + read_endpoint, id='', qualified=true) -%}
 {%- set domain = domain|replace("http://", "")|replace("https://", "") -%}
-{%- set attrs = {
-    'data-module': 'url',
-    'data-module-prefix': domain,
-    'data-module-placeholder': module_placeholder } -%}
 
 {{ prepend_url(
     field.field_name,
@@ -37,6 +29,5 @@
     value=data[field.field_name],
     error=errors[field.field_name],
     final=field.final if 'final' in field else False,
-    attrs=attrs,
     is_required=h.scheming_field_required(field)
     ) }}
