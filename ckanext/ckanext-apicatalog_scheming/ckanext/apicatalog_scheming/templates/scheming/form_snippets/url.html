@@ -21,7 +21,7 @@
     final=field.final if 'final' in field else False,
     value=data[field.field_name],
     error=errors[field.field_name],
-    classes=['control-full', 'control-maybe-final'],
+    classes=[],
     attrs=dict({'data-module': 'title_to_del_title_and_url_slug', 'class': 'dataset-url-slug'}),
     is_required=h.scheming_field_required(field)
     )
