@@ -18,11 +18,7 @@ this.ckan.module('title_to_del_title_and_url_slug', function($) {
       var el = $('#field-title_translated-fi');
 
       // Run the code once in the case of the title being already filled in on page load (e.g. when opening the subsystem
-      // (in an edit mode)
-      $(window).on('load', function() {
-        this.processTitle(el[0]);
-      });
-
+      // in an edit mode)
       this.processTitle(el[0]);
 
       // Set the input element to listen to changes to its value
