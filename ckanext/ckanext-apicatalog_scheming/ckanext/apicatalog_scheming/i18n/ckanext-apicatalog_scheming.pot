@@ -164,10 +164,6 @@ msgstr ""
 msgid "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:73
-msgid "Allowed Organizations"
-msgstr ""
-
 #: ckanext/apicatalog_scheming/schemas/dataset.json:88
 msgid "Chargeable"
 msgstr ""

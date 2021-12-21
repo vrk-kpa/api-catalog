@@ -28,7 +28,6 @@ def schema_translatable_strings():
             _('Service name will be filled automatically and should not be edited'),
             _('Service visibility'),
             _('When service visibility is private, it is only visible to the owner organisation or users from allowed organisations'),
-            _('Allowed Organizations'),
             _('Chargeable'),
             _('Free of charge'),
             _('Mentioned in service description'),
