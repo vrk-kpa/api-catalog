@@ -1,0 +1,84 @@
+{#{% extends 'package/new_package_form.html' %}#}
+
+{%- set exclude_fields = [
+  'owner_org',
+  'keywords',
+  'maintainer',
+  'maintainer_email',
+  'maintainer_phone',
+  ] -%}
+
+<div class="module-content" style="width: 60%">
+{% block errors %}
+  {%- if errors -%}
+    {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+    {%- snippet 'scheming/snippets/errors.html',
+      errors=errors, fields=schema.dataset_fields,
+      entity_type='dataset', object_type=dataset_type -%}
+  {%- endif -%}
+{% endblock %}
+
+{% block basic_fields %}
+  {%- if not dataset_type -%}
+    <p>
+    dataset_type not passed to template. your version of CKAN
+    might not be compatible with ckanext-scheming
+    </p>
+  {%- endif -%}
+<form class="dataset-form form-horizontal" method="post" data-module="basic-form" enctype="multipart/form-data">
+    <p class="control-required-message"><span class="control-required" style="color:black">*&nbsp;</span>{{ _('Required field') }}</p>
+  {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+  {%- for field in schema.dataset_fields -%}
+        {%- if field.field_name not in exclude_fields -%}
+                {%- if field.form_snippet is not none -%}
+                    {%- if field.field_name not in data %}
+                        {# Set the field default value before rendering but only if
+                        it doesn't already exist in data which would mean the form
+                        has been submitted. #}
+                        {% if field.default_jinja2 %}
+                           {% do data.__setitem__(
+                               field.field_name,
+                               h.scheming_render_from_string(field.default_jinja2)) %}
+                        {% elif field.default %}
+                            {% do data.__setitem__(field.field_name, field.default) %}
+                        {% endif %}
+                    {% endif -%}
+                    {%- snippet 'scheming/snippets/form_field.html',
+                        field=field,
+                        data=data,
+                        errors=errors,
+                        licenses=c.licenses,
+                        entity_type='dataset',
+                        object_type=dataset_type
+                    -%}
+                {%- endif -%}
+        {%- endif -%}
+  {%- endfor -%}
+
+  {%- if 'resource_fields' not in schema -%}
+    <!-- force controller to skip resource-editing step for this type -->
+    <input type="hidden" name="_ckan_phase" value="" />
+  {%- endif -%}
+
+{% endblock %}
+
+{% block form_actions %}
+    <div class="form-actions" style="margin-left: -15px">
+        {% block save_text %}
+            <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save changes') }}</button>
+            <a class="btn pull-left" href="{% url_for controller='dataset', action='read', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Discard changes') }}</a>
+        {% endblock %}
+    </div>
+{% endblock %}
+{% block disclaimer %}
+{% endblock %}
+{% block metadata_fields %}
+{% endblock %}
+{% block delete_button %}
+{% endblock %}
+{% block secondary_content %}
+{% endblock %}
+{% block additional_info %}
+{% endblock %}
+</form>
+</div>

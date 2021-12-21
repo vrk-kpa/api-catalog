@@ -1,5 +1,8 @@
 {% import 'macros/form.html' as form %}
 
+<hr/>
+<div class="form-group-fluent">
+
 <h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
 {%- if field.extra_label is not none -%}
     <p style="margin-left: -15px;">
@@ -24,4 +27,4 @@
       </div>
   {%- endfor -%}
   </div>
-<hr/>
+</div>

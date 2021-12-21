@@ -7,19 +7,15 @@
     {
       "field_name": "title_translated",
       "label": "Title",
+      "additional_description": "Service name will be filled automatically and should not be edited",
       "preset": "fluent_core_title_translated",
-      "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
+      "input_title": ["Service Name"],
       "only_default_lang_required": true,
-      "form_placeholder": "eg. A descriptive title",
-      "form_languages": ["fi", "sv", "en"],
+      "form_placeholder": "ServiceName",
+      "placeholder_autofill": true,
+      "form_languages": ["en"],
+      "show_url": false,
       "display_snippet": null
-    },
-    {
-      "field_name": "name",
-      "label": "URL",
-      "preset": "dataset_slug_ex",
-      "form_placeholder": "eg. my-dataset",
-      "final": true
     },
     {
       "field_name": "owner_org",
@@ -29,10 +25,12 @@
     },
     {
       "field_name": "notes_translated",
-      "label": "Description",
+      "label": "Service Description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization.",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
-      "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "eg. A detailed description",
+      "required": true,
+      "only_default_lang_required": true,
+      "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
       "form_snippet": "fluent_markdown.html"
     },
@@ -51,22 +49,106 @@
       "description": ""
     },
     {
+      "field_name": "private",
+      "label": "Visibility",
+      "extra_label": "Service visibility",
+      "additional_description": "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "radio.html",
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public",
+          "checked": true
+        },
+        {
+          "value": "private",
+          "label": "Private",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "form_placeholder": "Allowed organisations",
+      "validators": "ignore_missing"
+    },
+    {
+      "field_name": "chargeability",
+      "label": "Chargeability",
+      "extra_label": "Other information and settings",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "radio.html",
+      "choices": [
+        {
+          "value": "chargeable",
+          "label": "Chargeable",
+          "checked": true
+        },
+        {
+          "value": "free_of_charge",
+          "label": "Free of charge",
+          "checked": false
+        },
+        {
+          "value": "mentioned_in_service_description",
+          "label": "Mentioned in service description",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "classes": ["control-full"],
+      "form_snippet": "select.html",
+      "choices": [
+        {
+          "label": "WSDL",
+          "value": "wsdl"
+        },
+        {
+          "label": "OpenAPI JSON",
+          "value": "openapi-json"
+        }
+      ]
+    },
+    {
+      "field_name": "license",
+      "label": "License",
+      "classes": ["control-full"],
+      "form_snippet": "select.html",
+      "choices": [
+        {
+          "label": "No license specified",
+          "value": "no_license_specified"
+        },
+        {
+          "label": "Open Database License",
+          "value": "open_database_license"
+        }
+      ]
+    },
+    {
       "field_name": "validSince",
       "label": "Valid since",
-      "preset": "date",
-      "classes": ["control-full"]
+      "classes": ["control-full"],
+      "preset": "date"
     },
     {
       "field_name": "validUntil",
       "label": "Valid until",
-      "preset": "date",
-      "classes": ["control-full"]
+      "classes": ["control-full"],
+      "preset": "date"
     },
     {
-      "field_name": "private",
-      "validators": "boolean_validator valid_resources",
-      "form_snippet": null,
-      "display_snippet": null
+      "field_name": "web_address",
+      "label": "Web address",
+      "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
+      "form_snippet": "fluent_text.html"
     },
     {
       "field_name": "maintainer",
@@ -120,29 +202,6 @@
       "display_snippet": null,
       "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
       "output_validators": "scheming_load_json ignore_not_package_maintainer"
-    },
-    {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "public",
-          "label": "Public"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
-        }
-      ]
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete",
-      "validators": "ignore_missing"
     }
   ],
   "resource_fields": [
