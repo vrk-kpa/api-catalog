@@ -152,46 +152,46 @@ msgstr ""
 msgid "Write subsystem description"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:10
+#: ckanext/apicatalog_scheming/schemas/dataset.json:10
 msgid "Service name will be filled automatically and should not be edited"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:54
+#: ckanext/apicatalog_scheming/schemas/dataset.json:54
 msgid "Service visibility"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:55
+#: ckanext/apicatalog_scheming/schemas/dataset.json:55
 msgid "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:73
+#: ckanext/apicatalog_scheming/schemas/dataset.json:73
 msgid "Allowed Organizations"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:88
+#: ckanext/apicatalog_scheming/schemas/dataset.json:88
 msgid "Chargeable"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:93
+#: ckanext/apicatalog_scheming/schemas/dataset.json:93
 msgid "Free of charge"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:98
+#: ckanext/apicatalog_scheming/schemas/dataset.json:98
 msgid "Mentioned in service description"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:126
+#: ckanext/apicatalog_scheming/schemas/dataset.json:126
 msgid "No license specified"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:130
+#: ckanext/apicatalog_scheming/schemas/dataset.json:130
 msgid "Open Database license"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:149
+#: ckanext/apicatalog_scheming/schemas/dataset.json:149
 msgid "Web address"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:150
+#: ckanext/apicatalog_scheming/schemas/dataset.json:150
 msgid "URL will be formed automatically from the name of the application and should in general not be edited."
 msgstr ""
