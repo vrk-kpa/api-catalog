@@ -39,7 +39,7 @@
   {% endcall %}
 {% endmacro %}
 
-  <div data-module="dataset-visibility">
+  <div data-module="dataset-visibility" class="organization-and-visibility-block">
   {% if 'final' in field and field.final and field.field_name in data and data[field.field_name] != "" %}
   {% set organization = h.get_organization(data[field.field_name]) %}
   <div class="control-group control-full control-full control-maybe-final">
