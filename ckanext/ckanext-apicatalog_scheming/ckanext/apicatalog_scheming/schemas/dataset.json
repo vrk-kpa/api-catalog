@@ -312,6 +312,7 @@
       "field_name": "access_restriction_level",
       "label": "Access Restriction Level",
       "preset": "select",
+      "form_snippet": "radio.html",
       "classes": ["control-full"],
       "choices": [
         {
