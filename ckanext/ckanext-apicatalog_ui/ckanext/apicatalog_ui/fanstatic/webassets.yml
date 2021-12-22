@@ -13,8 +13,8 @@ main_js:
     - javascript/submit-on-change.js
     - javascript/form-change-listener.js
     - javascript/collapsible.js
-    - javascript/api_catalog_select2.js
-    - javascript/title_to_del_title_and_url_slug.js
+    - javascript/api-catalog-select2.js
+    - javascript/title-to-del-title-and-url-slug.js
     - javascript/custom-dataset-visibility.js
 
 main_css:

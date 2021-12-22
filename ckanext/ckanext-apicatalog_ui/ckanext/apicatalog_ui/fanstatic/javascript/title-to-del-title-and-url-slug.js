@@ -7,7 +7,7 @@
   with their non-accented versions and remove non-alphanumerical characters.
 */
 
-this.ckan.module('title_to_del_title_and_url_slug', function($) {
+this.ckan.module('title-to-del-title-and-url-slug', function($) {
   return {
 
     initialize: function () {
