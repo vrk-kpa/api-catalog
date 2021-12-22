@@ -75,23 +75,22 @@
       "end_of_section": true
     },
     {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
+      "field_name": "visibility",
+      "label": "Visibility",
       "preset": "select",
       "classes": ["control-full"],
-      "form_snippet": "radio.html",
+      "form_snippet": "visibility.html",
       "group_title": "Service visibility",
       "choices": [
         {
-          "value": "public",
+          "value": "true",
           "label": "Public"
         },
         {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
+          "value": "false",
+          "label": "Limited"
         }
-      ],
-      "default_value": "only_allowed_organizations"
+      ]
     },
     {
       "field_name": "allowed_organizations",
@@ -309,23 +308,20 @@
       "display_snippet": null
     },
     {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
+      "field_name": "visibility",
+      "label": "Visibility",
       "preset": "select",
-      "form_snippet": "radio.html",
       "classes": ["control-full"],
+      "form_snippet": "visibility.html",
+      "group_title": "Service visibility",
       "choices": [
         {
-          "value": "public",
+          "value": "true",
           "label": "Public"
         },
         {
-          "value": "same_organization",
-          "label": "Same Organization Members"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
+          "value": "false",
+          "label": "Limited"
         }
       ]
     },

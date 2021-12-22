@@ -105,8 +105,8 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
 
-        if pkg_dict.get('access_restriction_level') and \
-                pkg_dict.get('access_restriction_level') == 'only_allowed_organizations':
+        if pkg_dict.get('visibility') and \
+                pkg_dict.get('visibility') == False:
             allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
                                      if pkg_dict.get('allowed_organizations', "")]
             for org_name in allowed_organizations:
@@ -141,20 +141,20 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         for result in search_results['results']:
             # Accessible resources are:
-            # 1) access_restriction_level is public
+            # 1) Visibility is public (True)
             # OR
-            # 2) access_restriction_level is only_allowed_users AND the logged in user is on the allowed users list
+            # 2) Visibility is limited (False) AND the logged in user is on the allowed users list
             # OR
-            # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
+            # 3) Visibility is limited (False) AND the logged in user's list of organizations contains
             #    the organization of the package
             user_orgs = toolkit.get_action('organization_list_for_user')(
                     {'ignore_auth': True},
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
-                                 if resource.get('access_restriction_level', '') in ('', 'public') or
-                                 (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
+                                 if resource.get('visibility', '') in ('', True) or
+                                 (resource.get('visibility', '') == False
                                   and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
-                                 (resource.get('access_restriction_level', '') == 'same_organization' and
+                                 (resource.get('visibility', '') == False and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
             result['num_resources'] = len(allowed_resources)
@@ -180,19 +180,19 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             user_orgs = []
 
         # Allowed resources are the ones where:
-        # 1) access_restriction_level is public
+        # 1) Visibility is public (True)
         # OR
-        # 2) access_restriction_level is only_allowed_users AND the logged in user is on the allowed users list
+        # 2) Visibility is limited (False) AND the logged in user is on the allowed users list
         # OR
-        # 3) access_restriction_level is same_organization AND the logged in user's list of organizations contains
+        # 3) Visibility is limited (False) AND the logged in user's list of organizations contains
         #    the organization of the package
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if 'access_restriction_level' not in resource or
-                             resource.get('access_restriction_level', '') in ('', 'public') or
-                             (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
+                             if 'visibility' not in resource or
+                             resource.get('visibility', '') in ('', True) or
+                             (resource.get('visibility', '') == False
                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
-                             (resource.get('access_restriction_level', '') == 'same_organization' and
+                             (resource.get('visibility', '') == False and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
         data_dict['num_resources'] = len(allowed_resources)
