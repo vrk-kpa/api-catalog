@@ -5,23 +5,24 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
-# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
-# Zharktas <jari-pekka.voutilainen@gofore.com>, 2021
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
+# Zharktas <jari-pekka.voutilainen@gofore.com>, 2021
+# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
+# Bert Viikmäe, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-08-05 05:17+0000\n"
+"POT-Creation-Date: 2021-09-09 13:00+0000\n"
 "PO-Revision-Date: 2020-12-04 08:49+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2021\n"
+"Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.7.0\n"
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -230,123 +231,95 @@ msgstr ""
 #: ckanext/apicatalog_ui/templates/admin/dashboard.html:8
 #, python-format
 msgid ""
-" <p>As a sysadmin user you have full control over this CKAN instance. "
-"Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
-"CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+"<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
+" with care!</p> <p>For guidance on using sysadmin features, see the CKAN  <a"
+" href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p>"
 msgstr ""
-" <p>Som systemadministratör har du fullständiga rättigheter till denna "
-"installation av API-katalogen. Fortsätt med aktsamhet!</p> <p>För "
-"anvisningar om egenskaperna i systemhanteringen ber vi dig läsa API-"
-"katalogens <a href=\"%(docs_url)s\" target=\"_blank\"anvisningar för "
-"systemhanteraren</a></p> "
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:16
-msgid ""
-"Package changes highlighted with pink color signify changes to public "
-"visibility."
-msgstr ""
-"De ändringar i subsystemen som betonas med rosa ord innehåller ändringar i "
-"subsystemets offentliga synlighet."
-
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:21
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:23
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:23
 msgid "Dashboard"
 msgstr "Sammanfattning"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:30
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:32
 msgid "Statistics"
 msgstr "Statistik"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:33
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:35
 msgid "New package count"
 msgstr "Nya subsystem"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:37
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:39
 msgid "Last week"
 msgstr "Under den senaste veckan"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:41
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:43
 msgid "Last month"
 msgstr "Under den senaste månaden"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:45
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:47
 msgid "Last year"
 msgstr "Under det senaste året"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:51
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:53
 msgid "Total package count"
 msgstr "Totalt antal subsystem"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:55
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:57
+#: ckanext/apicatalog_ui/templates/package/read.html:8
 #: ckanext/apicatalog_ui/templates/snippets/package_item.html:34
 msgid "Private"
 msgstr "Privat"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:59
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:61
 msgid "Public"
 msgstr "Offentlig"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:72
-msgid "Recently made private"
-msgstr "Omvandlade till privata"
-
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:84
-msgid "Recent package activity"
-msgstr "Uppföljning av subsystem"
-
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:98
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:102
 msgid "Resources with invalid content"
 msgstr "Felaktiga bilagor"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:104
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:108
 msgid "Resource"
 msgstr "Filbilaga"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:105
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:109
 #: ckanext/apicatalog_ui/templates/package/read_base.html:15
 msgid "Dataset"
 msgstr "Subsystem"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:133
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:137
 msgid "Organizations without active subsystems"
 msgstr "Organisationer som inte har aktiva subsystem"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:139
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:171
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:143
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:175
 msgid "Organization"
 msgstr "Organisation"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:140
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:144
 msgid "Since"
 msgstr "Från"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:162
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:166
 msgid "Show/hide change log"
 msgstr "Visa/dölj ändringslogg"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:172
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:176
 msgid "Timestamp"
 msgstr "Tidsstämpling"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:173
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:177
 msgid "Has active subsystems"
 msgstr "Aktiva subsystem"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:187
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:191
 msgid "Yes"
 msgstr "Ja"
 
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:187
+#: ckanext/apicatalog_ui/templates/admin/dashboard.html:191
 msgid "No"
 msgstr "Nej"
-
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:205
-msgid "Recent activity for packages with resources"
-msgstr "Övervakning av subsystem med tjänster"
-
-#: ckanext/apicatalog_ui/templates/admin/dashboard.html:217
-msgid "Harvester activity"
-msgstr "Harvesters verksamhet"
 
 #: ckanext/apicatalog_ui/templates/admin/useradd.html:9
 #, python-format
@@ -367,7 +340,7 @@ msgid "Username"
 msgstr "Användarnamn"
 
 #: ckanext/apicatalog_ui/templates/admin/useradd.html:16
-#: ckanext/apicatalog_ui/templates/contact/snippets/form.html:14
+#: ckanext/apicatalog_ui/templates/contact/snippets/form_simple.html:14
 #: ckanext/apicatalog_ui/templates/user/edit_user_form.html:14
 msgid "Email"
 msgstr "E-post"
@@ -378,19 +351,19 @@ msgid "eg. joe@example.com"
 msgstr "joe@example.com"
 
 #: ckanext/apicatalog_ui/templates/admin/useradd.html:18
-#: ckanext/apicatalog_ui/templates/contact/snippets/form.html:24
+#: ckanext/apicatalog_ui/templates/contact/snippets/form_simple.html:24
 msgid "Submit"
 msgstr "Sänd"
 
-#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:12
+#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:13
 msgid "X-Road Graphs"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:18
+#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:19
 msgid "FI"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:19
+#: ckanext/apicatalog_ui/templates/admin/xroad_statistics.html:20
 msgid "FI-TEST"
 msgstr ""
 
@@ -466,13 +439,12 @@ msgstr "Lägg till sida"
 msgid "Pages"
 msgstr "Sidor"
 
-#: ckanext/apicatalog_ui/templates/contact/form.html:5
-#: ckanext/apicatalog_ui/templates/contact/form.html:12
+#: ckanext/apicatalog_ui/templates/contact/form.html:7
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_navmenu.html:8
 msgid "Feedback"
 msgstr "Respons"
 
-#: ckanext/apicatalog_ui/templates/contact/form.html:15
+#: ckanext/apicatalog_ui/templates/contact/form.html:10
 msgid ""
 "We would like to receive feedback and development ideas regarding the API "
 "Catalogue. You cannot submit feedback on individual APIs at this time. More "
@@ -483,7 +455,7 @@ msgstr ""
 " man inte ge respons på enskilda subsystem. Tilläggsuppgifter om subsystemet"
 " fås via de registrerade kontaktuppgifterna."
 
-#: ckanext/apicatalog_ui/templates/contact/form.html:16
+#: ckanext/apicatalog_ui/templates/contact/form.html:11
 msgid ""
 "Please send your feedback or development ideas regarding the API Catalogue "
 "using the feedback form. The feedback will be directed to Customer Services "
@@ -497,11 +469,11 @@ msgstr ""
 " du vill ha svar på din respons ska du bifoga dina kontaktuppgifter. Fält "
 "som markerats med en asterisk (*) är obligatoriska."
 
-#: ckanext/apicatalog_ui/templates/contact/snippets/form.html:12
+#: ckanext/apicatalog_ui/templates/contact/snippets/form_simple.html:12
 msgid "Name"
 msgstr "Namn"
 
-#: ckanext/apicatalog_ui/templates/contact/snippets/form.html:16
+#: ckanext/apicatalog_ui/templates/contact/snippets/form_simple.html:16
 msgid "Feedback message"
 msgstr "Responsmeddelande"
 
@@ -766,19 +738,8 @@ msgstr "Välkommen till API-katalogen"
 #: ckanext/apicatalog_ui/templates/home/snippets/promoted.html:5
 msgid ""
 "This is a nice introductory paragraph about CKAN or the site in general. We "
-"don't have any copy to go here yet but soon we will "
+"don't have any copy to go here yet but soon we will"
 msgstr ""
-"<p>API-katalogen är ett uppdaterat register över Suomi.fi-informationsledens"
-" subsystem och tjänster. Syftet med API-katalogen är att hjälpa den som "
-"producerar och genomför tjänster att utveckla effektivare elektroniska "
-"tjänster och stödja återanvändning av uppgifterna. I API-katalogen beskrivs "
-"de elektroniska tjänster där de uppgifter som behandlas är tillgängliga för "
-"andra informationssystem.</p><p>Registreringen i API-katalogen sker i "
-"samband med att Suomi.fi-informationsleden tas i bruk. Organisationen "
-"meddelar om komplettering av uppgifter i API-katalogen för en eller flera "
-"huvudanvändare.</p><p>API-katalogen produceras av Myndigheten för "
-"digitalisering och befolkningsdata. Mer information om Suomi.fi-tjänsterna: "
-"esuomi.fi.</p>"
 
 #: ckanext/apicatalog_ui/templates/home/snippets/search.html:2
 msgid "E.g. environment"
@@ -853,14 +814,14 @@ msgid "Service providers first"
 msgstr "Tjänsteleverantörerna först"
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
-#: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:58
+#: ckanext/apicatalog_ui/templates/organization/read.html:47
+#: ckanext/apicatalog_ui/templates/package/search.html:70
 msgid "Name Ascending"
 msgstr "Stigande enligt namn"
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:11
-#: ckanext/apicatalog_ui/templates/organization/read.html:41
-#: ckanext/apicatalog_ui/templates/package/search.html:59
+#: ckanext/apicatalog_ui/templates/organization/read.html:47
+#: ckanext/apicatalog_ui/templates/package/search.html:71
 msgid "Name Descending"
 msgstr "Sjunkande enligt namn"
 
@@ -869,13 +830,12 @@ msgid "There are currently no organizations for this site"
 msgstr "Sidor"
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:27
-#: ckanext/apicatalog_ui/templates/organization/read.html:19
 msgid "How about creating one?"
 msgstr "Vad sägs om att göra en?"
 
 #: ckanext/apicatalog_ui/templates/organization/index.html:35
-#: ckanext/apicatalog_ui/templates/organization/read.html:38
-#: ckanext/apicatalog_ui/templates/package/search.html:52
+#: ckanext/apicatalog_ui/templates/organization/read.html:44
+#: ckanext/apicatalog_ui/templates/package/search.html:64
 msgid "Filter list"
 msgstr "Avgränsa listan"
 
@@ -883,17 +843,17 @@ msgstr "Avgränsa listan"
 msgid "Type in name of organization"
 msgstr "Skriv organisationens namn"
 
-#: ckanext/apicatalog_ui/templates/organization/index.html:46
-#: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:22
-msgid "Previous"
-msgstr "Föregående"
-
-#: ckanext/apicatalog_ui/templates/organization/index.html:46
-#: ckanext/apicatalog_ui/templates/organization/read.html:25
-#: ckanext/apicatalog_ui/templates/package/search.html:22
+#: ckanext/apicatalog_ui/templates/organization/index.html:47
+#: ckanext/apicatalog_ui/templates/organization/read.html:26
+#: ckanext/apicatalog_ui/templates/package/search.html:29
 msgid "Next"
 msgstr "Nästa"
+
+#: ckanext/apicatalog_ui/templates/organization/index.html:50
+#: ckanext/apicatalog_ui/templates/organization/read.html:29
+#: ckanext/apicatalog_ui/templates/package/search.html:32
+msgid "Previous"
+msgstr "Föregående"
 
 #: ckanext/apicatalog_ui/templates/organization/members.html:8
 msgid "Add Member"
@@ -926,7 +886,7 @@ msgstr "Radera"
 msgid "There are currently no APIs for this organization"
 msgstr "Organisationen har inga aktiva subsystem"
 
-#: ckanext/apicatalog_ui/templates/organization/read.html:31
+#: ckanext/apicatalog_ui/templates/organization/read.html:37
 msgid "Active APIs"
 msgstr "Aktiva subsystem"
 
@@ -977,7 +937,7 @@ msgstr ""
 
 #: ckanext/apicatalog_ui/templates/package/edit.html:12
 msgid ""
-" <h2>Subsystem description</h2> <p> Use <strong>simple language</strong> in "
+"<h2>Subsystem description</h2> <p> Use <strong>simple language</strong> in "
 "the description and disclose: </p> <dl> <dt>What does the service "
 "offer?</dt> <dd>Explain how other organizations can benefit from your "
 "service. An overview of the service allows others to assess whether their "
@@ -993,37 +953,71 @@ msgid ""
 "<p> <i class=\"fas fa-arrow-right\"></i> More detailed instructions in the "
 "<a target=\"_blank\" "
 "href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">Palveluhallinta.fi"
-" support article.</a> </p> "
+" support article.</a> </p>"
 msgstr ""
-"<h2>Beskrivning av subsystem</h2><p>Använd <strong>allmänna uttryck</strong>"
-" i beskrivningen och berätta:</p><dl><dt>Vad erbjuder "
-"tjänsten?</dt><dd>Förklara hur andra organisationer kan utnyttja din tjänst."
-" En översikt över tjänsten gör det möjligt för andra att bedöma om deras "
-"organisation ska ta den i bruk.</dd><dt>Vilka villkor gäller för "
-"användningen av tjänsten?</dt><dd>Beskriv vem som kan använda tjänsten och "
-"andra begränsningar för användningen.</dd><dt>Hur tar man tjänsten i "
-"bruk?</dt><dd>Avisera hur andra organisationer ska gå vidare när de vill ta "
-"i bruk din tjänst. Beskriv kort ibruktagningsprocessen och ge en "
-"kontaktperson för mer information.</dd></dl><p>Med hjälp av "
-"<strong>ämnesord</strong> och <strong>Markdown-formatering</strong> blir det"
-" lättare att hitta och läsa innehållet.</p><p>Ge också versioner av "
-"beskrivningen på <strong>finska</strong> och "
-"<strong>engelska.</strong></p><p><i class=\"fas fa-arrow-right\"></i>Vidare "
-"instruktioner i <a target=\"_blank\" "
-"href=\"https://palveluhallinta.suomi.fi/sv/tuki/artikkelit/5ef313c79a155e0139629cb5\">Palveluhallinta.fi"
-" stödartikeln.</a></p>"
 
-#: ckanext/apicatalog_ui/templates/package/read.html:5
+#: ckanext/apicatalog_ui/templates/package/read.html:18
+msgid "Request permission to use this subsystem"
+msgstr "Be om tillstånd att använda detta subsystem"
+
+#: ckanext/apicatalog_ui/templates/package/read.html:19
+msgid ""
+"Request permission if you want to have access on some of this subsystems "
+"services. Please note that some subsystems might require information permit "
+"before you can request permission in API-Catalog"
+msgstr ""
+"Ansök om användningstillstånd om du vill få tillgång till något av subsystemets tjänster i Suomi.fi-informationsleden. \n"
+"Observera att vissa subsystem kan kräva till exempel en ansökan om datatillstånd innan du kan ansöka om användningstillstånd i API-katalogen."
+
+#: ckanext/apicatalog_ui/templates/package/read.html:26
+msgid ""
+"Request permission to use this subsystem in the Suomi.fi Data Exchange Layer"
+" if you want to have access to one or several of its services. Download and "
+"complete the form below and submit it to the email address provided by the "
+"owner of the subsystem. See the form and the subsystem description for more "
+"detailed instructions. Note that some subsystems may require that you apply "
+"for data access authorisation before you can request permission in the API "
+"Catalogue."
+msgstr ""
+"Ansök om användningstillstånd om du vill få tillgång till något av "
+"subsystemets tjänster i Suomi.fi-informationsleden. Ladda ner och fyll i "
+"blanketten och skicka den till den e-postadress som administratören för "
+"subsystemet har uppgett. Närmare anvisningar finns på blanketten eller i "
+"beskrivningen av subsystemet. Observera att vissa subsystem kan kräva till "
+"exempel en ansökan om datatillstånd innan du kan ansöka om "
+"användningstillstånd i API-katalogen."
+
+#: ckanext/apicatalog_ui/templates/package/read.html:22
+msgid "Request permission"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/read.html:24
+msgid "Download file"
+msgstr "Ladda ner ansökan"
+
+#: ckanext/apicatalog_ui/templates/package/read.html:26
+msgid "Request permission in organizations website"
+msgstr "Ansök om tillstånd på organisationens webbplats"
+
+#: ckanext/apicatalog_ui/templates/package/read.html:30
+msgid "Subsystem information"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/read.html:31
 msgid "Service bus identifier"
 msgstr "Kod i Informationsleden"
 
-#: ckanext/apicatalog_ui/templates/package/read.html:22
-msgid "Interfaces"
+#: ckanext/apicatalog_ui/templates/package/read.html:41
+msgid "Description"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/read.html:61
+msgid "Services"
 msgstr "Tjänster"
 
-#: ckanext/apicatalog_ui/templates/package/read.html:25
+#: ckanext/apicatalog_ui/templates/package/read.html:64
 msgid "Attachments"
-msgstr "Tilläggsuppgifter om subsystemet"
+msgstr "Bilagor"
 
 #: ckanext/apicatalog_ui/templates/package/read_base.html:16
 msgid "Groups"
@@ -1061,37 +1055,37 @@ msgstr ""
 msgid "{0} datasets"
 msgstr "{0} subsystem"
 
-#: ckanext/apicatalog_ui/templates/package/search.html:31
+#: ckanext/apicatalog_ui/templates/package/search.html:15
+msgid "<p class=\"extra\">Please try another search.</p>"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/package/search.html:43
 msgid "API"
 msgstr "API"
 
-#: ckanext/apicatalog_ui/templates/package/search.html:32
+#: ckanext/apicatalog_ui/templates/package/search.html:44
 msgid "API Docs"
 msgstr "API-dokumentation"
 
-#: ckanext/apicatalog_ui/templates/package/search.html:34
+#: ckanext/apicatalog_ui/templates/package/search.html:46
 msgid "full {format} dump"
 msgstr "full {format} dump"
 
-#: ckanext/apicatalog_ui/templates/package/search.html:35
+#: ckanext/apicatalog_ui/templates/package/search.html:47
 #, python-format
 msgid ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s) or download a %(dump_link)s. "
+"You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s) or download a %(dump_link)s."
 msgstr ""
-" Du kan även använda registret med  %(api_link)s (se även %(api_doc_link)s) "
-"eller att genom att ladda som filer %(dump_link)s. "
 
-#: ckanext/apicatalog_ui/templates/package/search.html:39
+#: ckanext/apicatalog_ui/templates/package/search.html:51
 #, python-format
 msgid ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s). "
+"You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s)."
 msgstr ""
-" Du kan även använda registret med hjälp av %(api_link)s (se även "
-"%(api_doc_link)s). "
 
-#: ckanext/apicatalog_ui/templates/package/search.html:57
+#: ckanext/apicatalog_ui/templates/package/search.html:69
 msgid "Relevance"
 msgstr "Relevans"
 
@@ -1107,12 +1101,12 @@ msgstr ""
 "href=\"http://opendatacommons.org/licenses/odbl/1-0/\">enlig Open Database "
 "Licensen</a>."
 
-#: ckanext/apicatalog_ui/templates/package/snippets/resource_item.html:24
+#: ckanext/apicatalog_ui/templates/package/snippets/resource_item.html:26
 msgid "Invalid content"
 msgstr "Felaktigt innehåll"
 
-#: ckanext/apicatalog_ui/templates/package/snippets/resource_item.html:34
 #: ckanext/apicatalog_ui/templates/package/snippets/resource_item.html:36
+#: ckanext/apicatalog_ui/templates/package/snippets/resource_item.html:38
 msgid "Download"
 msgstr "Exportera"
 
@@ -1139,15 +1133,17 @@ msgstr "Din webbläsare stöder inte ramarna."
 #: ckanext/apicatalog_ui/templates/package/snippets/resources_list.html:26
 #, python-format
 msgid ""
-" <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
-"add some?</a></p> "
+"<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
+" some?</a></p>"
 msgstr ""
-" <p class=\"empty\">Det här subsystemet saknar data, <a "
-"href=\"%(url)s\">lägg till data?</a> "
 
 #: ckanext/apicatalog_ui/templates/package/snippets/resources_list.html:30
 msgid "This dataset has no data"
 msgstr "Detta subsystem har inga bilagor"
+
+#: ckanext/apicatalog_ui/templates/package/snippets/tags.html:4
+msgid "Keywords"
+msgstr ""
 
 #: ckanext/apicatalog_ui/templates/snippets/apicatalog_offcanvas-close-button.html:2
 #: ckanext/apicatalog_ui/templates/snippets/service_alerts.html:7

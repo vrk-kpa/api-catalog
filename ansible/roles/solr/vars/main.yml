@@ -1,6 +1,6 @@
 ---
 
-solr_version: 6.1.0
+solr_version: 8.11.1
 solr_download_url: http://archive.apache.org/dist/lucene/solr/{{solr_version }}/solr-{{ solr_version }}.zip
 
 solr_user: solr

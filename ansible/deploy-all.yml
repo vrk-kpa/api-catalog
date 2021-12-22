@@ -20,7 +20,7 @@
     - os-base
     - python
     - java8
-    - solr6
+    - solr
     - redis
     - ssl
     - apache

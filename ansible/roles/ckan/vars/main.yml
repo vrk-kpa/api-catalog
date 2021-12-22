@@ -34,6 +34,7 @@ ckan_patches:
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_old_fontawesome" }
   - { file: "remove_stacktraces_from_http_errors" } # https://github.com/ckan/ckan/pull/6345
+  - { file: "add_solr8_support" } # https://github.com/ckan/ckan/pull/6530
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}

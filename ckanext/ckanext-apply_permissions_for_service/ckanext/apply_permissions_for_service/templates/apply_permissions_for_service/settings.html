@@ -58,7 +58,28 @@
         <div class="module__settings-instructions">
           <h3 class="module__settings-instructions__header"><i class="fal fa-info-circle"></i>{{ _('Permission request alternatives:')}}</h3>
           <div class="module__settings-instructions__content">
-            {{ _('Permission request alternatives instructions') | safe }}
+            {% trans %}
+                <p style="font-weight: bold;">Application in API Catalogue</p>
+                <ul>
+                    <li>Request permission to use a subsystem by using the predefined electronic form in the API Catalogue.</li>
+                </ul>
+                <p style="font-weight: bold;">Organisation’s downloadable application (PDF)</p>
+                <ul>
+                    <li>Upload your organisation's own PDF form to the API Catalogue that can be used to request permission to use the subsystem. The applicant must download the form from the API Catalogue and send the completed form to the email address you specified.</li>
+                    <li>In the form, explain to which email address the form should be returned to.</li>
+                    <li>Access requests sent in this way will not appear in the API Catalogue.</li>
+                </ul>
+                <p style="font-weight: bold;">Link to the access licence application on the organisation's website</p>
+                <ul>
+                    <li>Enter the URL for your organisation’s web page where the person requesting access can apply for access to your organisation’s services.</li>
+                    <li>Access requests sent in this way will not appear in the API Catalogue.</li>
+                </ul>
+                <p>For more information on the administration of access rights, see the instructions in the
+                    <a target="_blank" href="https://liityntakatalogi.suomi.fi/">
+                        API Catalogue.
+                    </a>
+                </p>
+            {% endtrans %}
           </div>
         </div>
       </form>

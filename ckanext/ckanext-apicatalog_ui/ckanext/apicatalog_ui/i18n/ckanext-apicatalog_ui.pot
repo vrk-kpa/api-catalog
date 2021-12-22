@@ -916,6 +916,16 @@ msgid ""
 "before you can request permission in API-Catalog"
 msgstr ""
 
+#: ckanext/apicatalog_ui/templates/package/read.html:26
+msgid ""
+"Request permission to use this subsystem in the Suomi.fi Data Exchange Layer "
+"if you want to have access to one or several of its services. Download and "
+"complete the form below and submit it to the email address provided by the "
+"owner of the subsystem. See the form and the subsystem description for more "
+"detailed instructions. Note that some subsystems may require that you apply for "
+"data access authorisation before you can request permission in the API Catalogue."
+msgstr ""
+
 #: ckanext/apicatalog_ui/templates/package/read.html:22
 msgid "Request permission"
 msgstr ""
@@ -940,12 +950,12 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/read.html:53
-msgid "Interfaces"
+#: ckanext/apicatalog_ui/templates/package/read.html:61
+msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/package/read.html:56
-msgid "Services"
+#: ckanext/apicatalog_ui/templates/package/read.html:64
+msgid "Attachments"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/package/read_base.html:16
