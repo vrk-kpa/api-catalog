@@ -311,6 +311,7 @@
       "field_name": "visibility",
       "label": "Visibility",
       "preset": "select",
+      "required": true,
       "classes": ["control-full"],
       "form_snippet": "visibility.html",
       "group_title": "Service visibility",
