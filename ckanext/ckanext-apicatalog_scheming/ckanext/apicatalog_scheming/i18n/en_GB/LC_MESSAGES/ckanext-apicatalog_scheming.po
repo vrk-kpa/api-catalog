@@ -165,6 +165,54 @@ msgstr "Discard changes"
 msgid "Save changes"
 msgstr "Save changes"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:26
+#: ckanext/apicatalog_scheming/schemas/organization.json:33
 msgid "Write subsystem description"
 msgstr "Write subsystem description"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:10
+msgid "Service name will be filled automatically and should not be edited"
+msgstr "Service name will be filled automatically and should not be edited"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:54
+msgid "Service visibility"
+msgstr "Service visibility"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:55
+msgid ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:88
+msgid "Chargeable"
+msgstr "Chargeable"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:93
+msgid "Free of charge"
+msgstr "Free of charge"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:98
+msgid "Mentioned in service description"
+msgstr "Mentioned in service description"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:126
+msgid "No license specified"
+msgstr "No license specified"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:130
+msgid "Open Database license"
+msgstr "Open Database license"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:149
+msgid "Web address"
+msgstr "Web address"
+
+#: ckanext/apicatalog_scheming/schemas/dataset.json:150
+msgid ""
+"URL will be formed automatically from the name of the application and should"
+" in general not be edited."
+msgstr ""
+"URL will be formed automatically from the name of the application and should"
+" in general not be edited."

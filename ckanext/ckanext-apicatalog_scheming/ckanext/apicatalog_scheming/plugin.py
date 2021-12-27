@@ -1,4 +1,8 @@
 from __future__ import absolute_import
+
+import six
+from ckan.lib import i18n
+from ckan.lib.plugins import DefaultTranslation
 from future import standard_library
 
 from builtins import next
@@ -24,14 +28,48 @@ _ = toolkit._
 
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
+def ensure_translated(s):
+    ts = type(s)
+    if ts == six.text_type:
+        return s
+    elif ts == str:
+        return six.text_type(s)
+    elif ts == dict:
+        language = i18n.get_lang()
+        return ensure_translated(s.get(language, u""))
 
-class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
+
+def get_translated(data_dict, field, language=None):
+    translated = data_dict.get('%s_translated' % field) or data_dict.get(field)
+    if isinstance(translated, dict):
+        language = language or i18n.get_lang()
+        if language in translated:
+            return translated[language] or data_dict.get(field)
+        dialects = [tl for tl in translated if tl.startswith(language) or language.startswith(tl)]
+        if dialects:
+            return translated[dialects[0]] or data_dict.get(field)
+    return data_dict.get(field)
+
+
+# Copied from core ckan to call over ridden get_translated
+def dataset_display_name(package_or_package_dict):
+    if isinstance(package_or_package_dict, dict):
+        return get_translated(package_or_package_dict, 'title') or \
+               package_or_package_dict['name']
+    else:
+        # FIXME: we probably shouldn't use the same functions for
+        # package dicts and real package objects
+        return package_or_package_dict.title or package_or_package_dict.name
+
+
+class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IClick)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
@@ -46,6 +84,9 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'only_default_lang_required': validators.only_default_lang_required,
             'keep_old_value_if_missing': validators.keep_old_value_if_missing,
             'default_value': validators.default_value,
+            'ensure_translated': ensure_translated,
+            'get_translated': get_translated,
+            'dataset_display_name': dataset_display_name,
             'business_id_validator': validators.business_id_validator,
             'ignore_not_package_maintainer': validators.ignore_not_package_maintainer,
             'create_fluent_tags': validators.create_fluent_tags,

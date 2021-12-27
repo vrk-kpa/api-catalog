@@ -2,8 +2,7 @@
 
 <h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
 {%- if field.extra_label is not none -%}
-    <p style="margin-left: -15px;">
-        {{ _(field.extra_label) }}
+    <p style="margin-left: -15px;">{{ _(field.extra_label) }}
     {% trans %}You can use <a href="#markdown" title="Markdown quick reference">Markdown formatting</a> here.{% endtrans %}
     </p>
 {%- endif -%}
