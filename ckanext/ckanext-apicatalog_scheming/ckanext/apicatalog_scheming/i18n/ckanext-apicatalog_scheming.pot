@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-27 13:31+0200\n"
+"POT-Creation-Date: 2021-12-28 09:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,13 @@ msgstr ""
 #: ckanext/apicatalog_scheming/translations.py:16
 msgid "A general, concise, and easy-to-understand description of the organization"
 msgstr ""
+
+#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
+msgid ""
+"You can use <a href=\"#markdown\" title=\"Markdown quick "
+"reference\">Markdown formatting</a> here."
+msgstr ""
+""
 
 #: ckanext/apicatalog_scheming/translations.py:17
 msgid "Description in Finnish"
@@ -131,7 +138,9 @@ msgid "Service name"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:32
-msgid "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations"
+msgid ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:33
@@ -159,5 +168,44 @@ msgid "Web address"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:39
-msgid "URL will be formed automatically from the name of the application and should in general not be edited."
+msgid ""
+"URL will be formed automatically from the name of the application and should "
+"in general not be edited."
 msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:82
+#: ckanext/apicatalog_scheming/validators.py:249
+msgid "expecting JSON object"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:86
+#, python-format
+msgid "Required language \"%s\" missing"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:94
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:128
+msgid "Business id is incorrect format."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:146
+msgid "Business id verification number does match business id."
+msgstr ""
+

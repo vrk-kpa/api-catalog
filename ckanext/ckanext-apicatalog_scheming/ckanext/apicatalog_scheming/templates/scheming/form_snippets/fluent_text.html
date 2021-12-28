@@ -7,7 +7,6 @@
 {%- set domain = h.url_for(object_type + read_endpoint, id='', qualified=true) -%}
 {%- set domain = domain|replace("http://", "")|replace("https://", "") -%}
 
-<hr/>
 <div class="form-group control-full">
     <label class="control-label group-label">{{ _(field.label) }}</label>
     <div class="controls">
@@ -19,3 +18,4 @@
             </div>
     </div>
 </div>
+<hr/>

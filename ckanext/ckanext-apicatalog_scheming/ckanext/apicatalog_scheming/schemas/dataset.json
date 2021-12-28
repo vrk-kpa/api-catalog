@@ -15,6 +15,7 @@
       "placeholder_autofill": true,
       "form_languages": ["en"],
       "show_url": false,
+      "display_hr": true,
       "display_snippet": null
     },
     {
@@ -25,11 +26,12 @@
     },
     {
       "field_name": "notes_translated",
-      "label": "Service Description",
+      "label": "Service description",
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "required": true,
       "only_default_lang_required": true,
+      "display_hr": true,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
       "form_snippet": "fluent_markdown.html"
@@ -55,6 +57,7 @@
       "additional_description": "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations",
       "validators": "boolean_validator valid_resources",
       "form_snippet": "radio.html",
+      "display_hr": false,
       "choices": [
         {
           "value": "public",
@@ -73,7 +76,7 @@
       "label": "Allowed Organizations",
       "classes": ["control-full"],
       "preset": "apicatalog_organization_string_autocomplete",
-      "form_placeholder": "Allowed organisations",
+      "form_placeholder": "Allowed Organisations",
       "validators": "ignore_missing"
     },
     {
@@ -82,6 +85,7 @@
       "extra_label": "Other information and settings",
       "validators": "boolean_validator valid_resources",
       "form_snippet": "radio.html",
+      "display_hr": true,
       "choices": [
         {
           "value": "chargeable",

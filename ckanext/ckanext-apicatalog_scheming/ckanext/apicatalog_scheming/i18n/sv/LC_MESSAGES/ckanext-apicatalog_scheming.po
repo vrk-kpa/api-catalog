@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-14 09:07+0000\n"
+"POT-Creation-Date: 2021-12-27 13:31+0200\n"
 "PO-Revision-Date: 2021-09-14 09:09+0000\n"
 "Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
@@ -23,19 +23,19 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/apicatalog_scheming/plugin.py:72
+#: ckanext/apicatalog_scheming/plugin.py:113
 msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:73
+#: ckanext/apicatalog_scheming/plugin.py:114
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:74
+#: ckanext/apicatalog_scheming/plugin.py:115
 msgid "Tags"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:75
+#: ckanext/apicatalog_scheming/plugin.py:116
 msgid "Formats"
 msgstr ""
 
@@ -51,59 +51,23 @@ msgstr ""
 msgid "Allowed Organizations"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/validators.py:54
-msgid "Package contains invalid resources"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:75
-#: ckanext/apicatalog_scheming/validators.py:243
-msgid "Failed to decode JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:78
-#: ckanext/apicatalog_scheming/validators.py:246
-msgid "Invalid encoding for JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:82
-#: ckanext/apicatalog_scheming/validators.py:249
-msgid "expecting JSON object"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:86
-#, python-format
-msgid "Required language \"%s\" missing"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:94
-msgid "Missing value"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:128
-msgid "Business id is incorrect format."
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:146
-msgid "Business id verification number does match business id."
-msgstr ""
-
-#: ckanext/apicatalog_scheming/schemas/organization.json:10
+#: ckanext/apicatalog_scheming/translations.py:12
 msgid "Name in Finnish"
 msgstr "Namn på finska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:10
+#: ckanext/apicatalog_scheming/translations.py:13
 msgid "Name in Swedish"
 msgstr "Namn på svenska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:10
+#: ckanext/apicatalog_scheming/translations.py:14
 msgid "Name in English"
 msgstr "Namn på engelska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:19
+#: ckanext/apicatalog_scheming/translations.py:15
 msgid "Organisation description"
 msgstr "Organisationsbeskrivning"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:20
+#: ckanext/apicatalog_scheming/translations.py:16
 msgid ""
 "A general, concise, and easy-to-understand description of the organization"
 msgstr ""
@@ -121,27 +85,27 @@ msgstr ""
 msgid "Description in Finnish"
 msgstr "Beskrivning på finska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:21
+#: ckanext/apicatalog_scheming/translations.py:18
 msgid "Description in Swedish"
 msgstr "Beskrivning på svenska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:21
+#: ckanext/apicatalog_scheming/translations.py:19
 msgid "Description in English"
 msgstr "Beskrivning på engelska"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:36
+#: ckanext/apicatalog_scheming/translations.py:20
 msgid "Other information and settings"
 msgstr "Övrig information och inställningar"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:35
+#: ckanext/apicatalog_scheming/translations.py:21
 msgid "Organisation logo"
 msgstr "Organisationens logotyp"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:37
+#: ckanext/apicatalog_scheming/translations.py:22
 msgid "The logo is displayed on the organization page in API Catalogue."
 msgstr "Logotypen visas på organisationssidan i API Catalogue."
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:56
+#: ckanext/apicatalog_scheming/translations.py:23
 msgid ""
 "If possible, provide a telephone number for the organization's switchboard "
 "or customer service, not an individual number."
@@ -149,7 +113,7 @@ msgstr ""
 "Ange om möjligt ett telefonnummer till organisationens växel eller "
 "kundtjänst, inte ett individuellt nummer."
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:64
+#: ckanext/apicatalog_scheming/translations.py:24
 msgid ""
 "If possible, enter the email address of the organization or customer "
 "service, not the email address of the individual."
@@ -157,27 +121,35 @@ msgstr ""
 "Om möjligt, ange e-postadressen till organisationen eller kundtjänsten, inte"
 " e-postadressen till individen."
 
-#: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:28
+#: ckanext/apicatalog_scheming/translations.py:25
 msgid "Discard changes"
 msgstr "Ignorera ändringar"
 
-#: ckanext/apicatalog_scheming/templates/scheming/organization/group_form.html:27
+#: ckanext/apicatalog_scheming/translations.py:26
 msgid "Save changes"
 msgstr "Spara ändringar"
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:33
+#: ckanext/apicatalog_scheming/translations.py:27
 msgid "Write subsystem description"
 msgstr "Skriv delsystembeskrivning"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:10
+#: ckanext/apicatalog_scheming/translations.py:28
 msgid "Service name will be filled automatically and should not be edited"
 msgstr "Tjänstens namn kommer att fyllas i automatiskt och bör inte redigeras"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:54
+#: ckanext/apicatalog_scheming/translations.py:29
 msgid "Service visibility"
 msgstr "Tjänstens synlighet"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:55
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Service description"
+msgstr "Service beskrivning"
+
+#: ckanext/apicatalog_scheming/translations.py:31
+msgid "Service name"
+msgstr "Service namn"
+
+#: ckanext/apicatalog_scheming/translations.py:32
 msgid ""
 "When service visibility is private, it is only visible to the owner "
 "organisation or users from allowed organisations"
@@ -185,31 +157,31 @@ msgstr ""
 "När tjänstens synlighet är privat är den endast synlig för "
 "ägarorganisationen eller användare från tillåtna organisationer"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:88
+#: ckanext/apicatalog_scheming/translations.py:33
 msgid "Chargeable"
 msgstr "Debiterbar"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:93
+#: ckanext/apicatalog_scheming/translations.py:34
 msgid "Free of charge"
 msgstr "Gratis"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:98
+#: ckanext/apicatalog_scheming/translations.py:35
 msgid "Mentioned in service description"
 msgstr "Nämnd i tjänstebeskrivningen"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:126
+#: ckanext/apicatalog_scheming/translations.py:36
 msgid "No license specified"
 msgstr "Ingen licens angiven"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:130
+#: ckanext/apicatalog_scheming/translations.py:37
 msgid "Open Database license"
 msgstr "Open Database licens"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:149
+#: ckanext/apicatalog_scheming/translations.py:38
 msgid "Web address"
 msgstr "Webbadress"
 
-#: ckanext/apicatalog_scheming/schemas/dataset.json:150
+#: ckanext/apicatalog_scheming/translations.py:39
 msgid ""
 "URL will be formed automatically from the name of the application and should"
 " in general not be edited."

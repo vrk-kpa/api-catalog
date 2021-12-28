@@ -1,6 +1,8 @@
 {% import 'macros/form.html' as form %}
 
-<hr/>
+{%- if field.display_hr -%}
+    <hr/>
+{%- endif -%}
 <div class="form-group-fluent">
 
     {%- if field.extra_label is not none -%}
@@ -35,3 +37,6 @@
       {%- endif -%}
   </div>
 </div>
+{%- if field.display_hr -%}
+    <hr/>
+{%- endif -%}
