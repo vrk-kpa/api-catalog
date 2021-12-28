@@ -9,7 +9,7 @@
       "label": "Title",
       "additional_description": "Service name will be filled automatically and should not be edited",
       "preset": "fluent_core_title_translated",
-      "input_title": ["Service Name"],
+      "input_title": ["Service name"],
       "only_default_lang_required": true,
       "form_placeholder": "ServiceName",
       "placeholder_autofill": true,
@@ -26,7 +26,7 @@
     {
       "field_name": "notes_translated",
       "label": "Service Description",
-      "extra_label": "A general, concise, and easy-to-understand description of the organization.",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "required": true,
       "only_default_lang_required": true,
@@ -127,7 +127,7 @@
           "value": "no_license_specified"
         },
         {
-          "label": "Open Database License",
+          "label": "Open Database license",
           "value": "open_database_license"
         }
       ]

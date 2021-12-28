@@ -27,6 +27,8 @@ def schema_translatable_strings():
             _('Write subsystem description'),
             _('Service name will be filled automatically and should not be edited'),
             _('Service visibility'),
+            _('Service description'),
+            _('Service name'),
             _('When service visibility is private, it is only visible to the owner organisation or users from allowed organisations'),
             _('Chargeable'),
             _('Free of charge'),

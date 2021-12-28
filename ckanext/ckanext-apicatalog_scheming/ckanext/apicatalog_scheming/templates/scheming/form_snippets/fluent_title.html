@@ -40,7 +40,7 @@
                  placeholder="{{ placeholder_value }}"
                  {{ field.form_attrs if 'form_attrs' in field else {} }} />
 
-          {%- if field.show_url -%}
+          {%- if field.show_url and 'name' in data -%}
             <div class="slug-preview">
                 <span class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
             </div>

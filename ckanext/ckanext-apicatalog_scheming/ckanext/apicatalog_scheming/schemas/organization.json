@@ -18,7 +18,7 @@
     {
       "field_name": "description_translated",
       "label": "Organisation description",
-      "extra_label": "A general, concise, and easy-to-understand description of the organization.",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "required": true,
