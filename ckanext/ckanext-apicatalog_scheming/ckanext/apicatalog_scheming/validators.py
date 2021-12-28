@@ -40,19 +40,19 @@ def get(field, obj):
     return obj[field] if type(obj) is dict else obj.__getattribute__(field)
 
 
-def valid_resources(private, context):
+def valid_resources(visibility, context):
     package = context.get('package')
     if not package:
-        return private
+        return visibility
 
-    change = get('private', package) != private
-    to_public = private is False or private == u'False'
+    change = get('private', package) != visibility
+    to_public = visibility is True or visibility == u'True'
 
     if change and to_public:
         for resource in get('resources', package):
             if get('extras', resource).get('valid_content') == 'no':
                 raise df.Invalid(_("Package contains invalid resources"))
-    return private
+    return visibility
 
 
 @scheming_validator
