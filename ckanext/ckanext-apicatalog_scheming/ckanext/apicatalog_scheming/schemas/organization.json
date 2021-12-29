@@ -16,6 +16,13 @@
       "display_snippet": null
     },
     {
+      "field_name": "name",
+      "label": "URL",
+      "validators": "not_empty unicode name_validator group_name_validator",
+      "form_snippet": null,
+      "form_placeholder": "my-theme"
+    },
+    {
       "field_name": "description_translated",
       "label": "Organisation description",
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
