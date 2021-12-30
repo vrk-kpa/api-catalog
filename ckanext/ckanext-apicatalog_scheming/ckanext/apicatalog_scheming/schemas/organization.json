@@ -19,7 +19,7 @@
       "field_name": "name",
       "label": "URL",
       "validators": "not_empty unicode name_validator group_name_validator",
-      "form_snippet": null,
+      "form_snippet": "hidden.html",
       "form_placeholder": "my-theme"
     },
     {
@@ -28,8 +28,8 @@
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
-      "required": true,
-      "only_default_lang_required": true,
+      "required": false,
+      "only_default_lang_required": false,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
       "form_snippet": "fluent_markdown.html"
@@ -50,14 +50,20 @@
     },
     {
       "field_name": "street_address",
+      "extra_label": null,
       "label": "Street address",
       "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
       "form_placeholder": "Street address"
     },
     {
       "field_name": "postal_address",
+      "extra_label": null,
       "label": "Postal address",
       "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
       "form_placeholder": "Postal address"
     },
     {
@@ -66,6 +72,7 @@
       "label": "Phone number",
       "validators": "ignore_missing",
       "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
       "form_placeholder": "Phone number"
     },
     {
@@ -74,6 +81,7 @@
       "label": "Email address",
       "validators": "ignore_missing",
       "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
       "form_placeholder": "Email address"
     },
     {

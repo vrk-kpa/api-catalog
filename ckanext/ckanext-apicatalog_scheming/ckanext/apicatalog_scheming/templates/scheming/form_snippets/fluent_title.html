@@ -30,6 +30,7 @@
           {%- endif -%}
           <input id="{{ 'field-' + field.field_name + '-' + lang }}"
                  type="text"
+                 style="border-width: 1px"
                  name="{{ field.field_name + '-' + lang }}"
                  value="{{ empty_and_escape }}"
                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
@@ -40,7 +41,7 @@
                 <span class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
             </div>
           {%- endif -%}
-      </div>
+      </div><br/>
 
   {%- for lang in langs -%}
     {% if loop.index != 1 %}
@@ -50,13 +51,15 @@
       <div class="controls">
           <input id="{{ 'field-' + field.field_name + '-' + lang }}"
                  type="text"
+                 style="border-width: 1px"
                  name="{{ field.field_name + '-' + lang }}"
                  value="{{ data[field.field_name + '-' + lang] }}"
                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
-                 {{ field.form_attrs if 'form_attrs' in field else {} }} />
-      </div>
+                  {{ field.form_attrs if 'form_attrs' in field else {} }} />
+      </div><br/>
     {% endif %}
   {%- endfor -%}
+    <hr/>
   </div>
 </div>
-<hr/>
+

@@ -7,7 +7,7 @@
       {%- if field.extra_label is not none -%}
        <p >{{ _(field.extra_label) }}</p>
       {%- endif -%}
-  <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly{% endif %} "{{ form.attributes(attrs) }} />
+  <input id="{{ id or name }}" style="border-width: 1px" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly{% endif %} "{{ form.attributes(attrs) }} />
   {% endcall %}
 {% endmacro %}
 

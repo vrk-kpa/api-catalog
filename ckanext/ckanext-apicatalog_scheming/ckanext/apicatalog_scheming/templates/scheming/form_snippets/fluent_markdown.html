@@ -19,8 +19,8 @@
       </label>
       <div class="controls">
         <textarea id="{{ 'field-' + field.field_name + '-' + lang }}" name="{{ field.field_name + '-' + lang }}"
-                  rows="6" placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
-      </div>
+                  style="border-width: 1px" rows="6" placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
+      </div><br/>
   {%- endfor -%}
+    <hr/>
   </div>
-<hr/>
