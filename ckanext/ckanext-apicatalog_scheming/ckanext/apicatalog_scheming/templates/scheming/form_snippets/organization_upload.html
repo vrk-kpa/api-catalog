@@ -5,7 +5,7 @@
 
 <div class="form-group control-full">
     <h3>{{ _(field.label) }}</h3>
-    <h4>{{_(field.field_name)}}</h4>
+    <p class="with-margin"><b>{{_(field.field_name)}}</b></p>
     {%- if field.extra_label is not none -%}
         <p>{{_(field.extra_label)}}</p>
     {%- endif -%}
