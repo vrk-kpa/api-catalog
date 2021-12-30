@@ -12,17 +12,15 @@
 
 <div class="form-group-fluent">
 
+  <div class="form-group control-full">
     {%- if field.extra_label is not none -%}
-        <h3 style="margin-left: -15px;">{{ _(field.extra_label) }}</h3>
+        <h3>{{ _(field.extra_label) }}</h3>
     {%- else -%}
         <label class="control-label group-label">{{ _(field.label) }}</label>
     {%- endif -%}
-
-  <div class="form-group control-full">
-
        <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
           {{ _(field.input_title[0]) }}
-        <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+        <span title="{{ _('Required field') }}">*</span>
       </label>
       <div class="controls">
           {%- if field.additional_description is not none -%}
@@ -30,7 +28,6 @@
           {%- endif -%}
           <input id="{{ 'field-' + field.field_name + '-' + lang }}"
                  type="text"
-                 style="border-width: 1px"
                  name="{{ field.field_name + '-' + lang }}"
                  value="{{ empty_and_escape }}"
                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
@@ -41,7 +38,7 @@
                 <span class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
             </div>
           {%- endif -%}
-      </div><br/>
+      </div>
 
   {%- for lang in langs -%}
     {% if loop.index != 1 %}
@@ -51,12 +48,11 @@
       <div class="controls">
           <input id="{{ 'field-' + field.field_name + '-' + lang }}"
                  type="text"
-                 style="border-width: 1px"
                  name="{{ field.field_name + '-' + lang }}"
                  value="{{ data[field.field_name + '-' + lang] }}"
                  placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
                   {{ field.form_attrs if 'form_attrs' in field else {} }} />
-      </div><br/>
+      </div>
     {% endif %}
   {%- endfor -%}
     <hr/>

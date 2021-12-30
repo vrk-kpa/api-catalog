@@ -3,24 +3,21 @@
 {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
 {% set is_url = data.image_url and data.image_url.startswith('http') %}
 
-<h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
-<br/><p style="margin-left: -15px;"><b>{{_(field.field_name)}}</b></p>
-{%- if field.extra_label is not none -%}
-    <p style="margin-left: -15px;">{{_(field.extra_label)}}</p>
-{%- endif -%}
-
-<div class="form-group control-full" style="">
+<div class="form-group control-full">
+    <h3>{{ _(field.label) }}</h3>
+    <h4>{{_(field.field_name)}}</h4>
+    {%- if field.extra_label is not none -%}
+        <p>{{_(field.extra_label)}}</p>
+    {%- endif -%}
   <div class="controls ">
       <a href="javascript:;"
-         class="btn btn-default"
-         style="">
+         class="btn btn-default">
           <i class="fa fa-cloud-upload"></i>
           {{ _('Upload') }}
       </a>
       <a href="javascript:;"
          class="btn btn-default"
-         title="{{  _('Link to a URL on the internet (you can also link to an API)') }}"
-         style="">
+         title="{{  _('Link to a URL on the internet (you can also link to an API)') }}">
           <i class="fa fa-globe"></i>
           {{ _('Link') }}
       </a>
