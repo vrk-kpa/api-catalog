@@ -63,7 +63,7 @@
 {% endblock %}
 
 {% block form_actions %}
-    <div class="form-actions" style="margin-left: -15px">
+    <div class="form-group control-full">
         {% block save_text %}
             <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save changes') }}</button>
             <a class="btn pull-left" href="{% url_for controller='dataset', action='read', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Discard changes') }}</a>

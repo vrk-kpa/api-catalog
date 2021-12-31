@@ -19,6 +19,14 @@
       "display_snippet": null
     },
     {
+      "field_name": "name",
+      "label": "URL",
+      "preset": "dataset_slug_ex",
+      "form_placeholder": "eg. my-dataset",
+      "form_snippet": "hidden.html",
+      "final": true
+    },
+    {
       "field_name": "owner_org",
       "label": "Organization",
       "preset": "dataset_organization_ex",
@@ -29,8 +37,8 @@
       "label": "Service description",
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
-      "required": true,
-      "only_default_lang_required": true,
+      "required": false,
+      "only_default_lang_required": false,
       "display_hr": true,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
@@ -152,7 +160,8 @@
       "field_name": "web_address",
       "label": "Web address",
       "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
-      "form_snippet": "fluent_text.html"
+      "form_snippet": "fluent_text.html",
+      "show_url": true
     },
     {
       "field_name": "maintainer",

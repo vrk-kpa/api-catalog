@@ -12,17 +12,15 @@
 
 <div class="form-group-fluent">
 
+  <div class="form-group control-full">
     {%- if field.extra_label is not none -%}
-        <h3 style="margin-left: -15px;">{{ _(field.extra_label) }}</h3>
+        <h3>{{ _(field.extra_label) }}</h3>
     {%- else -%}
         <label class="control-label group-label">{{ _(field.label) }}</label>
     {%- endif -%}
-
-  <div class="form-group control-full">
-
        <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
           {{ _(field.input_title[0]) }}
-        <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+        <span title="{{ _('Required field') }}">*</span>
       </label>
       <div class="controls">
           {%- if field.additional_description is not none -%}
@@ -62,8 +60,7 @@
       </div>
     {% endif %}
   {%- endfor -%}
+    <hr/>
   </div>
 </div>
-{%- if field.display_hr -%}
-    <hr/>
-{%- endif -%}
+

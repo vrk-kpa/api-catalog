@@ -13,9 +13,11 @@
             {%- if field.additional_description is not none -%}
                 <p>{{ _(field.additional_description) }}</p>
             {%- endif -%}
-            <div class="slug-preview">
-                <span style="margin-left: -15px;" class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
-            </div>
+            {%- if field.show_url and 'name' in data -%}
+                <div class="slug-preview">
+                    <span style="margin-left: -15px;" class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
+                </div>
+            {%- endif -%}
     </div>
+    <hr/>
 </div>
-<hr/>

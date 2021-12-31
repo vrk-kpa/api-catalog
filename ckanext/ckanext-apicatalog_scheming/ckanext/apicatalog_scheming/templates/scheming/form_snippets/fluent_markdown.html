@@ -1,20 +1,19 @@
 {% import 'macros/form.html' as form %}
 
-<h3 style="margin-left: -15px;">{{ _(field.label) }}</h3>
-{%- if field.extra_label is not none -%}
-    <p style="margin-left: -15px;">{{ _(field.extra_label) }}
-    {% trans %}You can use <a href="#markdown" title="Markdown quick reference">Markdown formatting</a> here.{% endtrans %}
-    </p>
-{%- endif -%}
-
   <div class="form-group control-full">
+  <h3>{{ _(field.label) }}</h3>
+      {%- if field.extra_label is not none -%}
+          <p>{{ _(field.extra_label) }}
+              {% trans %}You can use <a href="#markdown" title="Markdown quick reference">Markdown formatting</a> here.{% endtrans %}
+          </p>
+      {%- endif -%}
   {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
       <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
           {{ _(field.input_title[loop.index - 1]) }}
           {%- if field.required and not field.only_default_lang_required -%}
-            <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+            <span title="{{ _('Required field') }}">*</span>
           {%- elif field.only_default_lang_required and loop.index == 1 -%}
-            <span title="{{ _('Required field') }}" class="control-required" style="color:black">*</span>
+            <span title="{{ _('Required field') }}">*</span>
           {%- endif -%}
       </label>
       <div class="controls">
@@ -22,7 +21,5 @@
                   rows="6" placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"></textarea>
       </div>
   {%- endfor -%}
-  </div>
-{%- if field.display_hr -%}
     <hr/>
-{%- endif -%}
+  </div>

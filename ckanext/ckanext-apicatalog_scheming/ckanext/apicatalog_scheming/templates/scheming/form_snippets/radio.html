@@ -1,10 +1,12 @@
 {% import 'macros/form.html' as form %}
 
-{%- if field.display_hr -%}
-    <hr/>
-{%- endif -%}
-<div class="form-group-fluent">
 
+<div class="form-group-fluent">
+{%- if field.display_hr -%}
+    <div class="form-group control-full">
+        <hr/>
+    </div>
+{%- endif -%}
     {%- if field.extra_label is not none -%}
         <h3 style="margin-left: -15px;">{{ _(field.extra_label) }}</h3>
     {%- else -%}
@@ -36,7 +38,9 @@
           <br/><p>{{ _(field.additional_description) }}</p>
       {%- endif -%}
   </div>
-</div>
 {%- if field.display_hr -%}
-    <hr/>
+    <div class="form-group control-full">
+        <hr/>
+    </div>
 {%- endif -%}
+</div>
