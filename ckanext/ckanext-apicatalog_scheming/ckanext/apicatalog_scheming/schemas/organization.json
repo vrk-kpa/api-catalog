@@ -41,7 +41,8 @@
       "form_snippet": "hidden.html"
     },
     {
-      "field_name": "Organisation logo",
+      "field_name": "url",
+      "name": "Organisation logo",
       "label": "Other information and settings",
       "extra_label": "The logo is displayed on the organization page in API Catalogue.",
       "form_snippet": "organization_upload.html",
@@ -50,7 +51,6 @@
     },
     {
       "field_name": "street_address",
-      "extra_label": null,
       "label": "Street address",
       "validators": "ignore_missing",
       "form_snippet": "extra_label.html",
@@ -59,7 +59,6 @@
     },
     {
       "field_name": "postal_address",
-      "extra_label": null,
       "label": "Postal address",
       "validators": "ignore_missing",
       "form_snippet": "extra_label.html",

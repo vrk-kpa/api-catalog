@@ -21,12 +21,13 @@
         {%- endif -%}
     {%- endfor -%}
     {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
-
+    {% block form_actions %}
     <div class="form-group control-full">
         {% block save_text %}
             <button class="btn btn-primary pull-left" name="save" type="submit">{{ _('Save changes') }}</button>
             <a class="btn pull-left" href="{% url_for controller='organization', action='read', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('Discard changes') }}</a>
         {% endblock %}
     </div>
+    {% endblock %}
 </form>
 </div>

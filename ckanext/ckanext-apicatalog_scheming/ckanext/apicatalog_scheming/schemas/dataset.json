@@ -160,7 +160,7 @@
       "field_name": "web_address",
       "label": "Web address",
       "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
-      "form_snippet": "fluent_text.html",
+      "form_snippet": "url.html",
       "show_url": true
     },
     {
