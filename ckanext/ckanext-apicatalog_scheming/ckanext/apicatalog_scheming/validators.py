@@ -13,7 +13,7 @@ from . import plugin
 
 missing = toolkit.missing
 get_action = toolkit.get_action
-
+ObjectNotFound = toolkit.ObjectNotFound
 
 try:
     from ckanext.scheming.validation import (
@@ -309,3 +309,23 @@ def fluent_list_output(value):
     except ValueError:
         # plain string in the db, return as is so it can be migrated
         return value
+
+def ignore_non_existent_organizations(value):
+
+    existing_organizations = []
+
+    if isinstance(value, str):
+        orgs = [tag.strip()
+                for tag in value.split(',')
+                if tag.strip()]
+    else:
+        orgs = value
+
+    for org in orgs:
+        try:
+            get_action('organization_show')({}, {'id': org})
+            existing_organizations.append(org)
+        except ObjectNotFound:
+            pass
+
+    return ','.join(existing_organizations)

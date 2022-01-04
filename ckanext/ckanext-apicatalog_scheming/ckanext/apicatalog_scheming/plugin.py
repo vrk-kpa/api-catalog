@@ -54,6 +54,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
             'override_field_with_default_translation': validators.override_field_with_default_translation,
             'fluent_list': validators.fluent_list,
             'fluent_list_output': validators.fluent_list_output,
+            'ignore_non_existent_organizations': validators.ignore_non_existent_organizations,
             }
 
     def get_helpers(self):

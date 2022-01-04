@@ -18,12 +18,13 @@
     {
       "preset_name": "apicatalog_organization_string_autocomplete",
       "values": {
-        "validators": "ignore_missing lower_if_exists tag_string_convert",
+        "validators": "ignore_missing lower_if_exists ignore_non_existent_organizations",
         "classes": ["control-full"],
         "form_attrs": {
           "data-module": "autocomplete",
           "data-module-tags": "",
-          "data-module-source": "/api/2/util/organization/autocomplete?q=?"
+          "data-module-source": "/api/2/util/organization/autocomplete?q=?",
+          "data-module-createtags": "false"
         }
       }
     },
