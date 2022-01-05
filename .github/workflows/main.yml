@@ -60,7 +60,7 @@ jobs:
           pip install -e .
 
           cd ../ckanext-apicatalog_scheming
-          pip install -e
+          pip install -e .
 
       - name: Setup extension
         run: |
