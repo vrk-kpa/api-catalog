@@ -83,7 +83,10 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                 'organization_member_delete': auth.organization_member_delete,
                 'group_show': auth.group_show,
                 'user_invite': auth.user_invite,
-                'package_create': admin_only
+                'package_create': admin_only,
+                'organization_delete': admin_only,
+                'package_delete': admin_only,
+                'resource_delete': admin_only
                 }
 
     # IPermissionLabels
