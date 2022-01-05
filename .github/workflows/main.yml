@@ -43,9 +43,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Install requirements
         run: |
-          git submodule update --init --recursive
           cd ckanext/ckanext-apicatalog_routes
           pip install -r dev-requirements.txt
           pip install -e .
