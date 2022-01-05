@@ -22,4 +22,33 @@ class TestApicatalogRoutes(object):
         context = {'ignore_auth': False, 'user': user['name']}
 
         with pytest.raises(NotAuthorized):
-            helpers.call_action('package_delete', context, id=subsystem['name'])
+            helpers.call_action('package_delete', context, id=subsystem['id'])
+
+    def test_non_sysadmins_should_not_be_be_able_to_delete_services(self):
+        user = factories.User()
+        org_users = [{"name": user["name"], "capacity": "admin"}]
+        org = factories.Organization(users=org_users)
+
+        subsystem = factories.Dataset(
+            owner_org=org["id"]
+        )
+
+        service = factories.Resource(
+            package_id=subsystem['id']
+        )
+
+        context = {'ignore_auth': False, 'user': user['name']}
+
+        with pytest.raises(NotAuthorized):
+            helpers.call_action('resource_delete', context, id=service['id'])
+
+
+    def test_non_sysadmins_should_not_be_be_able_to_delete_organizations(self):
+        user = factories.User()
+        org_users = [{"name": user["name"], "capacity": "admin"}]
+        org = factories.Organization(users=org_users)
+
+        context = {'ignore_auth': False, 'user': user['name']}
+
+        with pytest.raises(NotAuthorized):
+            helpers.call_action('organization_delete', context, id=org['id'])
