@@ -7,7 +7,8 @@ from ckan.plugins.toolkit import NotAuthorized
 
 @pytest.mark.ckan_config('ckan.plugins', 'apicatalog_routes')
 @pytest.mark.usefixtures('clean_db', 'with_plugins', 'with_request_context')
-class Apicatalog_Routes_Tests():
+class ApicatalogRoutesTests(object):
+
     def non_sysadmins_should_not_be_able_to_delete_subsystems(self):
         user = factories.User()
         org_users = [{"name": user["name"], "capacity": "admin"}]
