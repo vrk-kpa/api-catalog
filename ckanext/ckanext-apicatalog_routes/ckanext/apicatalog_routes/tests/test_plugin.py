@@ -42,7 +42,6 @@ class TestApicatalogRoutes(object):
         with pytest.raises(NotAuthorized):
             helpers.call_action('resource_delete', context, id=service['id'])
 
-
     def test_non_sysadmins_should_not_be_be_able_to_delete_organizations(self):
         user = factories.User()
         org_users = [{"name": user["name"], "capacity": "admin"}]
