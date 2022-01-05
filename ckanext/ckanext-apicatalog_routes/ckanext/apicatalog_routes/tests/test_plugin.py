@@ -5,6 +5,7 @@ from ckan.tests import factories
 import ckan.tests.helpers as helpers
 from ckan.plugins.toolkit import NotAuthorized
 
+
 @pytest.mark.ckan_config('ckan.plugins', 'apicatalog_routes')
 @pytest.mark.usefixtures('clean_db', 'with_plugins', 'with_request_context')
 class TestApicatalogRoutes(object):
@@ -21,5 +22,4 @@ class TestApicatalogRoutes(object):
         context = {'ignore_auth': False, 'user': user['name']}
 
         with pytest.raises(NotAuthorized):
-            helpers.call_action('package_delete', context, name=subsystem['name'])
-
+            helpers.call_action('package_delete', context, id=subsystem['name'])
