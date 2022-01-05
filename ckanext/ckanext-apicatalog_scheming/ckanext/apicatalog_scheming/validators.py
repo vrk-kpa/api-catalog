@@ -310,6 +310,7 @@ def fluent_list_output(value):
         # plain string in the db, return as is so it can be migrated
         return value
 
+
 def ignore_non_existent_organizations(value):
 
     existing_organizations = []
