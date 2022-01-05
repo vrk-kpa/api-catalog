@@ -58,6 +58,9 @@ jobs:
           cd ../ckanext-scheming
           pip install -e .
 
+          cd ../ckanext-apicatalog_scheming
+          pip install -e
+
       - name: Setup extension
         run: |
           ckan -c ckanext/ckanext-apicatalog_routes/test.ini db init
