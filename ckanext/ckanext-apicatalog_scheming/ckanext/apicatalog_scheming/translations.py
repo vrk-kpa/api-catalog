@@ -20,8 +20,10 @@ def schema_translatable_strings():
             _('Other information and settings'),
             _('Organisation logo'),
             _('The logo is displayed on the organization page in API Catalogue.'),
-            _('If possible, provide a telephone number for the organization\'s switchboard or customer service, not an individual number.'),
-            _('If possible, enter the email address of the organization or customer service, not the email address of the individual.'),
+            _('If possible, provide a telephone number for the organization\'s switchboard or'
+              ' customer service, not an individual number.'),
+            _('If possible, enter the email address of the organization or customer service, '
+              'not the email address of the individual.'),
             _('Discard changes'),
             _('Save changes'),
             _('Write subsystem description'),
@@ -29,12 +31,14 @@ def schema_translatable_strings():
             _('Service visibility'),
             _('Service description'),
             _('Service name'),
-            _('When service visibility is private, it is only visible to the owner organisation or users from allowed organisations'),
+            _('When service visibility is private, it is only visible to the owner organisation or'
+              ' users from allowed organisations'),
             _('Chargeable'),
             _('Free of charge'),
             _('Mentioned in service description'),
             _('No license specified'),
             _('Open Database license'),
             _('Web address'),
-            _('URL will be formed automatically from the name of the application and should in general not be edited.'),
+            _('URL will be formed automatically from the name of the application and should'
+              ' in general not be edited.'),
             ]
