@@ -12,14 +12,14 @@
       "only_default_lang_required": true,
       "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
-      "show_url": true,
       "display_snippet": null
     },
     {
       "field_name": "name",
-      "label": "URL",
+      "label": "TEST",
       "validators": "not_empty unicode name_validator group_name_validator",
-      "form_snippet": "hidden.html",
+      "form_snippet": "slug_ex.html",
+      "required": false,
       "form_placeholder": "my-theme"
     },
     {
@@ -29,10 +29,9 @@
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "required": false,
-      "only_default_lang_required": false,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
-      "form_snippet": "fluent_markdown.html"
+      "form_snippet": "fluent_textarea.html"
     },
     {
       "field_name": "description_translated_modified_in_catalog",
@@ -41,11 +40,11 @@
       "form_snippet": "hidden.html"
     },
     {
-      "field_name": "Organisation logo",
+      "field_name": "logo",
       "label": "Other information and settings",
       "extra_label": "The logo is displayed on the organization page in API Catalogue.",
       "form_snippet": "organization_upload.html",
-      "upload_label": "",
+      "upload_label": "Organisation logo",
       "form_placeholder": "http://example.com/my-image.jpg"
     },
     {
