@@ -27,7 +27,6 @@ _ = toolkit._
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
 
-
 class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
