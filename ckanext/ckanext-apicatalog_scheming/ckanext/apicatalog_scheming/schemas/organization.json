@@ -16,9 +16,9 @@
     },
     {
       "field_name": "name",
-      "label": "TEST",
+      "label": "URL",
       "validators": "not_empty unicode name_validator group_name_validator",
-      "form_snippet": "slug_ex.html",
+      "form_snippet": "url_slug.html",
       "required": false,
       "form_placeholder": "my-theme"
     },
