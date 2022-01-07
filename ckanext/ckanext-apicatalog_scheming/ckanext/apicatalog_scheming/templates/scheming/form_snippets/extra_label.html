@@ -1,11 +1,11 @@
 {% import 'macros/form.html' as form %}
 
-{% macro input(name, id='', label='', extra_label=false, value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=false) %}
+{% macro input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={}, is_required=false, final=false) %}
   {%- set extra_html = caller() if caller -%}
 
   {% call form.input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required) %}
-      {%- if extra_label -%}
-       <p>{{ _(extra_label) }}</p>
+      {%- if field.extra_label is not none -%}
+       <p >{{ _(field.extra_label) }}</p>
       {%- endif -%}
   <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly{% endif %} "{{ form.attributes(attrs) }} />
   {% endcall %}
@@ -15,7 +15,6 @@
     field.field_name,
     id='field-' + field.field_name,
     label=h.scheming_language_text(field.label),
-    extra_label=field.extra_label if 'extra_label' in field else False,
     placeholder=h.scheming_language_text(field.form_placeholder),
     final=field.final if 'final' in field else False,
     error=errors[field.field_name],

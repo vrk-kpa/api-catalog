@@ -3,64 +3,44 @@
 {% set langs = h.fluent_form_languages(field, entity_type, object_type, schema) %}
 {% set lang = langs[0] %}
 
-{% set read_endpoint = '.read' if h.ckan_version() > '2.9' else '_read' %}
-{%- set controller = 'organization' -%}
-{%- set module_placeholder = '<organization>' -%}
-{%- set prefix = h.url_for(object_type + read_endpoint, id='') -%}
-{%- set domain = h.url_for(object_type + read_endpoint, id='', qualified=true) -%}
-{%- set domain = domain|replace("http://", "")|replace("https://", "") -%}
-
 <div class="form-group-fluent">
-
-  <div class="form-group control-full">
-    {%- if field.extra_label is not none -%}
-        <h3>{{ _(field.extra_label) }}</h3>
-    {%- else -%}
-        <label class="control-label group-label">{{ _(field.label) }}</label>
-    {%- endif -%}
-       <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
-          {{ _(field.input_title[0]) }}
-        <span title="{{ _('Required field') }}">*</span>
-      </label>
-      <div class="controls">
-          {%- if field.additional_description is not none -%}
-              <p>{{ _(field.additional_description) }}</p>
-          {%- endif -%}
-          {%- if field.placeholder_autofill -%}
-              {%- set placeholder_value = data['name'] -%}
-          {%- else -%}
-              {%- set placeholder_value = h.scheming_language_text(field.form_placeholder, lang) -%}
-          {%- endif -%}
-          <input id="{{ 'field-' + field.field_name + '-' + lang }}"
-                 type="text"
-                 name="{{ field.field_name + '-' + lang }}"
-                 value="{{ empty_and_escape }}"
-                 placeholder="{{ placeholder_value }}"
-                 {{ field.form_attrs if 'form_attrs' in field else {} }} />
-
-          {%- if field.show_url and 'name' in data -%}
-            <div class="slug-preview">
-                <span class="slug-preview-prefix">{{ domain + '' + data['name']}}</span>
-            </div>
-          {%- endif -%}
-      </div>
+  {% call form.input(
+    field.field_name + '-' + lang,
+    id='field-' + field.field_name + '-' + lang,
+    label=h.scheming_language_text(field.input_title[0], lang),
+    placeholder=h.scheming_language_text(field.form_placeholder, lang),
+    value=data[field.field_name + '-' + lang]
+    or data.get(field.field_name, {})[lang],
+    error=errors[field.field_name + '-' + lang],
+    classes=field.classes or ['control-medium'],
+    attrs=field.form_attrs if 'form_attrs' in field else {},
+    is_required=h.scheming_field_only_default_required(field, lang)
+    ) %}
+    {%- snippet 'scheming/form_snippets/fluent_help_text.html',
+    field=field,
+    lang=lang -%}
+  {% endcall %}
 
   {%- for lang in langs -%}
     {% if loop.index != 1 %}
-      <label class="control-label" for="{{ 'field-' + field.field_name + '-' + lang }}">
-          {{ _(field.input_title[loop.index - 1]) }}
-      </label>
-      <div class="controls">
-          <input id="{{ 'field-' + field.field_name + '-' + lang }}"
-                 type="text"
-                 name="{{ field.field_name + '-' + lang }}"
-                 value="{{ data[field.field_name + '-' + lang] }}"
-                 placeholder="{{ h.scheming_language_text(field.form_placeholder, lang) }}"
-                 {{ field.form_attrs if 'form_attrs' in field else {} }} />
-      </div>
+        {% call form.input(
+        field.field_name + '-' + lang,
+        id='field-' + field.field_name + '-' + lang,
+        label=h.scheming_language_text(field.input_title[loop.index - 1], lang),
+        placeholder=h.scheming_language_text(field.form_placeholder, lang),
+        value=data[field.field_name + '-' + lang]
+        or data.get(field.field_name, {})[lang],
+        error=errors[field.field_name + '-' + lang],
+        classes=field.classes or ['control-medium'],
+        is_required=h.scheming_field_only_default_required(field, lang)
+        ) %}
+        {%- snippet 'scheming/form_snippets/fluent_help_text.html',
+        field=field,
+        lang=lang -%}
+        {% endcall %}
     {% endif %}
   {%- endfor -%}
-    <hr/>
+  <div class="field-assistive-text">
+    {{ _(field.description) }}
   </div>
 </div>
-

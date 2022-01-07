@@ -23,7 +23,7 @@
       "label": "URL",
       "preset": "dataset_slug_ex",
       "form_placeholder": "eg. my-dataset",
-      "form_snippet": "hidden.html",
+      "form_snippet": "url_slug.html",
       "final": true
     },
     {
