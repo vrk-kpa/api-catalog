@@ -25,6 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
        ansible.inventory_path = "ansible/inventories/vagrant"
        ansible.config_file = "ansible/ansible.cfg"
        ansible.limit = "all"
+       ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
+       ansible.install_mode = "pip"
     end
     server.vm.provider "virtualbox" do |vbox|
       vbox.gui = false
