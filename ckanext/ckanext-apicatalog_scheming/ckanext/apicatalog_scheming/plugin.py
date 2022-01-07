@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import six
-from ckan.lib import i18n
 from ckan.lib.plugins import DefaultTranslation
 from future import standard_library
 
