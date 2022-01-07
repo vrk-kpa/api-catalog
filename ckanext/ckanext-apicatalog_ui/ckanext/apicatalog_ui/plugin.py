@@ -4,7 +4,6 @@ from builtins import str
 from builtins import range
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from paste.deploy.converters import asbool
 from ckan import model
 
 import ckan.logic as logic
@@ -209,7 +208,7 @@ def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
     if NEWS_CACHE is None or datetime.now() - NEWS_CACHE[0] > cache_duration:
         log.debug('Updating news cache')
         news_endpoint_url = config.get('ckanext.apicatalog_ui.news.endpoint_url')
-        news_ssl_verify = asbool(config.get('ckanext.apicatalog_ui.news.ssl_verify', True))
+        news_ssl_verify = toolkit.asbool(config.get('ckanext.apicatalog_ui.news.ssl_verify', True))
         news_tags = config.get('ckanext.apicatalog_ui.news.tags')
         news_url_template = config.get('ckanext.apicatalog_ui.news.url_template')
 
@@ -423,7 +422,7 @@ def fetch_visitor_count(cache_duration=timedelta(days=1)):
 
 
 def is_test_environment():
-    return asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
+    return toolkit.asbool(config.get('ckanext.apicatalog_ui.test_environment', False))
 
 
 def is_extension_loaded(extension_name):

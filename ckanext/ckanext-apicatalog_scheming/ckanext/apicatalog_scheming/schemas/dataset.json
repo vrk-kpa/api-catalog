@@ -380,8 +380,7 @@
       "field_name": "allowed_organizations",
       "label": "Allowed Organizations",
       "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete",
-      "validators": "ignore_missing"
+      "preset": "apicatalog_organization_string_autocomplete"
     }
   ]
 }
