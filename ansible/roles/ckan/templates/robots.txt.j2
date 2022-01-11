@@ -1,0 +1,15 @@
+User-agent: *
+{% if not robots_allowed %}
+Disallow: /
+{% else %}
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /api/
+Crawl-Delay: 10
+{% endif %}
+
+{% for bot in blocked_bots %}
+User-agent: {{ bot }}
+Disallow: /
+{% endfor %}

@@ -42,7 +42,6 @@ files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/vendor/highlight.js'}
   - { file: '/usr/lib/ckan/default/src/ckan/changes/6340.bugfix' }
 
-search_engine_robots_filename: robots_disallowed.txt
 
 ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"
 ckan_fault_recipients: "{{ secret.ckan_fault_recipients }}"
@@ -54,3 +53,8 @@ xroad_securityserver_private_cert_filename: "{{ xroad.securityserver.alias }}.p1
 
 ckan_wsgi_script: /etc/ckan/default/wsgi.py
 ckan_uwsgi_conf: /etc/ckan/default/ckan-uwsgi.ini 
+
+blocked_bots:
+  - PetalBot
+  - AhrefsBot
+  - SemrushBot
