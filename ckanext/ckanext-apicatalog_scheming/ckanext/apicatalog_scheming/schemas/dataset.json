@@ -168,22 +168,6 @@
       "output_validators": "scheming_load_json ignore_not_package_maintainer"
     },
     {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "public",
-          "label": "Public"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
-        }
-      ]
-    },
-    {
       "field_name": "allowed_organizations",
       "label": "Allowed Organizations",
       "classes": ["control-full"],
