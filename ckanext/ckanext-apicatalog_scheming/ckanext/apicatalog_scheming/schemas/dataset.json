@@ -166,12 +166,6 @@
       "display_snippet": null,
       "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
       "output_validators": "scheming_load_json ignore_not_package_maintainer"
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete"
     }
   ],
   "resource_fields": [
