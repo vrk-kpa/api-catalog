@@ -28,10 +28,13 @@
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
+      "preset": "fluent_core_title_translated",
       "required": false,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
-      "form_snippet": "fluent_textarea.html"
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
     },
     {
       "field_name": "description_translated_modified_in_catalog",

@@ -10,15 +10,17 @@
   </div>
   {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
       {% call form.textarea(
-      field.field_name,
-      id='field-' + field.field_name,
+      field.field_name + '-' + lang,
+      id='field-' + field.field_name + '-' + lang,
       label=h.scheming_language_text(field.input_title[loop.index - 1], lang),
       placeholder=h.scheming_language_text(field.form_placeholder, lang),
-      value=none,
+      value=data[field.field_name + '-' + lang] or data.get(field.field_name, {})[lang],
       error=errors[field.field_name],
       attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
       is_required=h.scheming_field_required(field)) %}
-          {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+    {%- snippet 'scheming/form_snippets/fluent_help_text.html',
+      field=field,
+      lang=lang -%}
     {% endcall %}
   {%- endfor -%}
 <div class="form-group control-full">
