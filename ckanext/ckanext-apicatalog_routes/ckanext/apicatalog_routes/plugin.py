@@ -156,9 +156,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('visibility', '') in ('', 'true') or
                                  not (resource.get('visibility', '')
-                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
+                                    and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                                  not (resource.get('visibility', '') and
-                                  any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
+                                    any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
             result['num_resources'] = len(allowed_resources)
         return search_results
@@ -194,9 +194,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                              if 'visibility' not in resource or
                              resource.get('visibility', '') in ('', 'true') or
                              not (resource.get('visibility', '')
-                                 and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
+                                and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                              not (resource.get('visibility', '') and
-                              any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
+                                any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
         data_dict['num_resources'] = len(allowed_resources)
 
