@@ -8,8 +8,8 @@
 {% set is_url = data.image_url and data.image_url.startswith('http') %}
 {% set is_upload_enabled = h.uploads_enabled() %}
 {% set placeholder = field.placeholder if field.placeholder else _('http://example.com/my-image.jpg') %}
-{% set url_label = field.url_label  %}
-{% set upload_label = field.upload_label  %}
+{% set url_label = field.url_label or _('Image URL')  %}
+{% set upload_label = field.upload_label or _('Image')  %}
 {% set previous_upload = data['previous_upload'] %}
 
 {% macro input(name, id='', label='', value='', placeholder='', type='file', error="", classes=[], attrs={}, is_required=false, final=false) %}

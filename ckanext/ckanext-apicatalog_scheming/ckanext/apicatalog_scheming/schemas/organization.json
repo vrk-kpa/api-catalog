@@ -48,6 +48,7 @@
       "extra_label": "The logo is displayed on the organization page in API Catalogue.",
       "form_snippet": "organization_upload.html",
       "upload_label": "Organisation logo",
+      "url_label": "Organisation logo",
       "form_placeholder": "http://example.com/my-image.jpg"
     },
     {
