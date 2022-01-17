@@ -35,10 +35,10 @@
       "field_name": "keywords",
       "label": "Keywords",
       "form_languages": ["fi", "en", "sv"],
-      "only_default_lang_required": true,
       "form_placeholder": "Write a keyword",
       "preset": "fluent_vocabulary_with_autocomplete",
-      "validators": "fluent_tags create_fluent_tags(keywords)",
+      "only_default_lang_required": true,
+      "validators": "only_default_lang_required fluent_tags create_fluent_tags(keywords)",
       "form_attrs": {
         "data-module": "autocomplete",
         "data-module-tags": "",
