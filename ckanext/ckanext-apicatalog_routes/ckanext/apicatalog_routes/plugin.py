@@ -154,7 +154,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                     {'ignore_auth': True},
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
-                                 if resource.get('visibility', '') in ('', True) or
+                                 if resource.get('visibility', '') in ('', 'true') or
                                  (resource.get('visibility', '') == False
                                   and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                                  (resource.get('visibility', '') == False and
@@ -192,7 +192,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
                              if 'visibility' not in resource or
-                             resource.get('visibility', '') in ('', True) or
+                             resource.get('visibility', '') in ('', 'true') or
                              (resource.get('visibility', '') == False
                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
                              (resource.get('visibility', '') == False and
