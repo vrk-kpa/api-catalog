@@ -109,7 +109,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
 
         if pkg_dict.get('visibility') and \
-                pkg_dict.get('visibility') == False:
+                not pkg_dict.get('visibility'):
             allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
                                      if pkg_dict.get('allowed_organizations', "")]
             for org_name in allowed_organizations:
@@ -155,9 +155,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('visibility', '') in ('', 'true') or
-                                 (resource.get('visibility', '') == False
+                                 not (resource.get('visibility', '')
                                   and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
-                                 (resource.get('visibility', '') == False and
+                                 not (resource.get('visibility', '') and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
             result['num_resources'] = len(allowed_resources)
@@ -193,9 +193,9 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         allowed_resources = [resource for resource in data_dict.get('resources', [])
                              if 'visibility' not in resource or
                              resource.get('visibility', '') in ('', 'true') or
-                             (resource.get('visibility', '') == False
+                             not (resource.get('visibility', '')
                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
-                             (resource.get('visibility', '') == False and
+                             not (resource.get('visibility', '') and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
         data_dict['num_resources'] = len(allowed_resources)
