@@ -5,10 +5,12 @@
   "fields": [
     {
       "field_name": "title_translated",
-      "label": "Title",
+      "label": "Organization name",
+      "extra_label": "Organization name",
+      "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
-      "form_placeholder": "My Organization",
+      "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null
     },
@@ -16,16 +18,23 @@
       "field_name": "name",
       "label": "URL",
       "validators": "not_empty unicode name_validator group_name_validator",
-      "form_snippet": "slug.html",
+      "form_snippet": "url_slug.html",
+      "required": false,
       "form_placeholder": "my-theme"
     },
     {
       "field_name": "description_translated",
-      "label": "Description",
-      "preset": "fluent_core_markdown_translated",
+      "label": "Organisation description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
-      "form_placeholder": "A little information about my organization...",
-      "form_languages": ["fi", "sv", "en"]
+      "preset": "fluent_core_title_translated",
+      "required": false,
+      "form_placeholder": "Write subsystem description",
+      "form_languages": ["fi", "sv", "en"],
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
     },
     {
       "field_name": "description_translated_modified_in_catalog",
@@ -34,32 +43,49 @@
       "form_snippet": "hidden.html"
     },
     {
-      "field_name": "url",
-      "preset": "organization_url_upload",
-      "upload_label": "Image URL",
+      "field_name": "logo",
+      "label": "Other information and settings",
+      "extra_label": "The logo is displayed on the organization page in API Catalogue.",
+      "form_snippet": "organization_upload.html",
+      "upload_label": "Organisation logo",
+      "url_label": "Organisation logo",
       "form_placeholder": "http://example.com/my-image.jpg"
     },
     {
       "field_name": "street_address",
+      "extra_label": null,
       "label": "Street address",
-      "validators": "ignore_missing"
+      "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
+      "form_placeholder": "Street address"
     },
     {
       "field_name": "postal_address",
+      "extra_label": null,
       "label": "Postal address",
-      "validators": "ignore_missing"
+      "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
+      "form_placeholder": "Postal address"
     },
     {
       "field_name": "phone_number",
+      "extra_label": "If possible, provide a telephone number for the organization's switchboard or customer service, not an individual number.",
       "label": "Phone number",
-      "validators": "ignore_missing"
+      "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
+      "form_placeholder": "Phone number"
     },
     {
       "field_name": "email_address",
+      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
       "label": "Email address",
-      "preset": "fluent_list",
-      "validators": "fluent_list ignore_missing",
-      "display_snippet": "fluent_email_list.html"
+      "validators": "ignore_missing",
+      "form_snippet": "extra_label.html",
+      "classes": ["control-full"],
+      "form_placeholder": "Email address"
     },
     {
       "field_name": "webpage_address",

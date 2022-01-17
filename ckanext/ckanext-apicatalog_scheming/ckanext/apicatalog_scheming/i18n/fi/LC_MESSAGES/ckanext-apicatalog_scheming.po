@@ -6,15 +6,16 @@
 # 
 # Translators:
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
+# Bert Viikmäe, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-14 09:07+0000\n"
+"POT-Creation-Date: 2021-12-28 09:12+0200\n"
 "PO-Revision-Date: 2021-09-14 09:09+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2021\n"
+"Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,19 +24,19 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/apicatalog_scheming/plugin.py:72
+#: ckanext/apicatalog_scheming/plugin.py:113
 msgid "Services"
 msgstr "Palvelut"
 
-#: ckanext/apicatalog_scheming/plugin.py:73
+#: ckanext/apicatalog_scheming/plugin.py:114
 msgid "Organization"
 msgstr "Organisaatio"
 
-#: ckanext/apicatalog_scheming/plugin.py:74
+#: ckanext/apicatalog_scheming/plugin.py:115
 msgid "Tags"
 msgstr "Asiasanat"
 
-#: ckanext/apicatalog_scheming/plugin.py:75
+#: ckanext/apicatalog_scheming/plugin.py:116
 msgid "Formats"
 msgstr "Tiedostomuodot"
 
@@ -51,38 +52,175 @@ msgstr "Vain sallittujen organisaatioiden jäsenet"
 msgid "Allowed Organizations"
 msgstr "Sallitut organisaatiot"
 
+#: ckanext/apicatalog_scheming/translations.py:12
+msgid "Name in Finnish"
+msgstr "Nimi suomeksi"
+
+#: ckanext/apicatalog_scheming/translations.py:13
+msgid "Name in Swedish"
+msgstr "Nimi ruotsiksi"
+
+#: ckanext/apicatalog_scheming/translations.py:14
+msgid "Name in English"
+msgstr "Nimi englanniksi"
+
+#: ckanext/apicatalog_scheming/translations.py:15
+msgid "Organisation description"
+msgstr "Organisaation kuvaus"
+
+#: ckanext/apicatalog_scheming/translations.py:16
+msgid ""
+"A general, concise, and easy-to-understand description of the organization"
+msgstr "Yleinen, tiivis ja helppotajuinen kuvaus organisaatiosta."
+
+#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
+msgid ""
+"You can use <a href=\"#markdown\" title=\"Markdown quick "
+"reference\">Markdown formatting</a> here."
+msgstr ""
+"Voit hyödyntää kuvauksessa <a href=\"#markdown\" title=\"Markdown quick "
+"reference\">Markdown muotoilua</a>"
+
+#: ckanext/apicatalog_scheming/translations.py:17
+msgid "Description in Finnish"
+msgstr "Kuvaus suomeksi"
+
+#: ckanext/apicatalog_scheming/translations.py:18
+msgid "Description in Swedish"
+msgstr "Kuvaus ruotsiksi"
+
+#: ckanext/apicatalog_scheming/translations.py:19
+msgid "Description in English"
+msgstr "Kuvaus englanniksi"
+
+#: ckanext/apicatalog_scheming/translations.py:20
+msgid "Other information and settings"
+msgstr "Muut tiedot ja asetukset"
+
+#: ckanext/apicatalog_scheming/translations.py:21
+msgid "Organisation logo"
+msgstr "Organisaation logo"
+
+#: ckanext/apicatalog_scheming/translations.py:22
+msgid "The logo is displayed on the organization page in API Catalogue."
+msgstr "Logo näytetään organisaation sivulla Liityntäkatalogissa."
+
+#: ckanext/apicatalog_scheming/translations.py:23
+msgid ""
+"If possible, provide a telephone number for the organization's switchboard "
+"or customer service, not an individual number."
+msgstr ""
+"Jos mahdollista, anna organisaation tai asiakaspalvelun puhelinnumero, ei "
+"yksittäisen henkilön numeroa."
+
+#: ckanext/apicatalog_scheming/translations.py:24
+msgid ""
+"If possible, enter the email address of the organization or customer "
+"service, not the email address of the individual."
+msgstr ""
+"Jos mahdollista, anna organisaation tai asiakaspalvelun sähköpostiosoite, ei"
+" yksittäisen henkilön sähköpostiosoistetta."
+
+#: ckanext/apicatalog_scheming/translations.py:25
+msgid "Discard changes"
+msgstr "Hylkää muutokset"
+
+#: ckanext/apicatalog_scheming/translations.py:26
+msgid "Save changes"
+msgstr "Päivitä tiedot"
+
+#: ckanext/apicatalog_scheming/translations.py:27
+msgid "Write subsystem description"
+msgstr "Kirjoita alijärjestelmän kuvaus"
+
+#: ckanext/apicatalog_scheming/translations.py:28
+msgid "Service name will be filled automatically and should not be edited"
+msgstr "Palvelun nimi täydennetään automaattisesti, eikä sitä voi muokata"
+
+#: ckanext/apicatalog_scheming/translations.py:29
+msgid "Service visibility"
+msgstr "Palvelun näkyvyys"
+
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Service description"
+msgstr "Palvelun kuvaus"
+
+#: ckanext/apicatalog_scheming/translations.py:31
+msgid "Service name"
+msgstr "Palvelun nimi"
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+"Kun palvelun näkyvyys on rajoitettu, se näkyy vain oman organisaation ja "
+"sallittujen organisaatioiden käyttäjille."
+
+#: ckanext/apicatalog_scheming/translations.py:33
+msgid "Chargeable"
+msgstr "Maksullinen"
+
+#: ckanext/apicatalog_scheming/translations.py:34
+msgid "Free of charge"
+msgstr "Maksuton"
+
+#: ckanext/apicatalog_scheming/translations.py:35
+msgid "Mentioned in service description"
+msgstr "Kerrotaan palvelun kuvauksessa"
+
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "No license specified"
+msgstr "Lisenssiä ei määritelty"
+
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Open Database license"
+msgstr "Open Database lisenssi"
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Web address"
+msgstr "Verkko-osoite"
+
+#: ckanext/apicatalog_scheming/translations.py:39
+msgid ""
+"URL will be formed automatically from the name of the application and should"
+" in general not be edited."
+msgstr ""
+"URL muodostetaan sovelluksen nimestä automaattisesti, eikä osoitetta yleensä"
+" tarvitse muokata."
+
 #: ckanext/apicatalog_scheming/validators.py:54
 msgid "Package contains invalid resources"
-msgstr "Alijärjestelmällä on virheellisiä liitetiedostoja"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:75
 #: ckanext/apicatalog_scheming/validators.py:243
 msgid "Failed to decode JSON string"
-msgstr "JSON-merkkijonon jäsennys epäonnistui"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:78
 #: ckanext/apicatalog_scheming/validators.py:246
 msgid "Invalid encoding for JSON string"
-msgstr "JSON-merkkijonon merkistökoodaus on virheellinen"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:82
 #: ckanext/apicatalog_scheming/validators.py:249
 msgid "expecting JSON object"
-msgstr "odotettiin JSON-objektia"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:86
 #, python-format
 msgid "Required language \"%s\" missing"
-msgstr "Vaadittu kieli \"%s\" puuttuu"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:94
 msgid "Missing value"
-msgstr "Puuttuva arvo"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:128
 msgid "Business id is incorrect format."
-msgstr "Y-tunnuksen muoto on virheellinen."
+msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:146
 msgid "Business id verification number does match business id."
-msgstr "Y-tunnuksen tarkistusnumero ei vastaa tunnusta."
+msgstr ""
