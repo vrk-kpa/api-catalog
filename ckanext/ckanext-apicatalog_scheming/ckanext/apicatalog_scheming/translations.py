@@ -8,7 +8,7 @@ def facet_translations():
 def schema_translatable_strings():
     return [_('Same Organization Members'),
             _('Allowed Organizations Only'),
-            _('Allowed organizations'),
+            _('Allowed Organizations'),
             _('Name in Finnish'),
             _('Name in Swedish'),
             _('Name in English'),

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-27 13:31+0200\n"
+"POT-Creation-Date: 2021-12-28 09:12+0200\n"
 "PO-Revision-Date: 2021-09-14 09:09+0000\n"
 "Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
@@ -79,9 +79,9 @@ msgid ""
 "reference\">Markdown formatting</a> here."
 msgstr ""
 "You can use <a href=\"#markdown\" title=\"Markdown quick "
-"reference\">Markdown formatting</a> here."
+"reference\">Markdown formatting</a>here."
 
-#: ckanext/apicatalog_scheming/schemas/organization.json:21
+#: ckanext/apicatalog_scheming/translations.py:17
 msgid "Description in Finnish"
 msgstr "Description in Finnish"
 
@@ -188,3 +188,39 @@ msgid ""
 msgstr ""
 "URL will be formed automatically from the name of the application and should"
 " in general not be edited."
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:82
+#: ckanext/apicatalog_scheming/validators.py:249
+msgid "expecting JSON object"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:86
+#, python-format
+msgid "Required language \"%s\" missing"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:94
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:128
+msgid "Business id is incorrect format."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:146
+msgid "Business id verification number does match business id."
+msgstr ""

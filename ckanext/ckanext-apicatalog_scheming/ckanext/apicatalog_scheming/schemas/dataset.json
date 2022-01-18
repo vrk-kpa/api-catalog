@@ -21,10 +21,10 @@
     {
       "field_name": "name",
       "label": "URL",
-      "preset": "dataset_slug_ex",
-      "form_placeholder": "eg. my-dataset",
+      "validators": "not_empty unicode name_validator group_name_validator",
       "form_snippet": "url_slug.html",
-      "final": true
+      "required": false,
+      "form_placeholder": "my-theme"
     },
     {
       "field_name": "owner_org",
