@@ -66,13 +66,6 @@ msgstr ""
 msgid "A general, concise, and easy-to-understand description of the organization"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick "
-"reference\">Markdown formatting</a> here."
-msgstr ""
-""
-
 #: ckanext/apicatalog_scheming/translations.py:17
 msgid "Description in Finnish"
 msgstr ""
@@ -112,6 +105,7 @@ msgstr ""
 #: ckanext/apicatalog_scheming/translations.py:25
 msgid "Discard changes"
 msgstr ""
+""
 
 #: ckanext/apicatalog_scheming/translations.py:26
 msgid "Save changes"
@@ -209,3 +203,38 @@ msgstr ""
 msgid "Business id verification number does match business id."
 msgstr ""
 
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:82
+#: ckanext/apicatalog_scheming/validators.py:249
+msgid "expecting JSON object"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:86
+#, python-format
+msgid "Required language \"%s\" missing"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:94
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:128
+msgid "Business id is incorrect format."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:146
+msgid "Business id verification number does match business id."
+msgstr ""
