@@ -8,6 +8,7 @@
       "field_name": "title_translated",
       "label": "Title",
       "preset": "fluent_core_title_translated",
+      "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "only_default_lang_required": true,
       "form_placeholder": "The subsystem's name",
       "form_languages": ["fi", "sv", "en"],
@@ -24,6 +25,7 @@
     {
       "field_name": "notes_translated",
       "label": "Description",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "preset": "fluent_core_markdown_translated",
       "form_placeholder": "Write the subsystem's description",
       "form_languages": ["fi", "sv", "en"],

@@ -4,11 +4,10 @@
 {% set lang = langs[0] %}
 
 <div class="form-group-fluent">
-  <label class="control-label group-label">{{_(field.label)}}</label>
   {% call form.input(
     field.field_name + '-' + lang,
     id='field-' + field.field_name + '-' + lang,
-    label=lang,
+    label=h.scheming_language_text(field.input_title[0], lang),
     placeholder=h.scheming_language_text(field.form_placeholder, lang),
     value=data[field.field_name + '-' + lang]
     or data.get(field.field_name, {})[lang],
@@ -27,7 +26,7 @@
         {% call form.input(
         field.field_name + '-' + lang,
         id='field-' + field.field_name + '-' + lang,
-        label=lang,
+        label=h.scheming_language_text(field.input_title[loop.index - 1], lang),
         placeholder=h.scheming_language_text(field.form_placeholder, lang),
         value=data[field.field_name + '-' + lang]
         or data.get(field.field_name, {})[lang],

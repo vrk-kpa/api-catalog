@@ -1,4 +1,6 @@
 from __future__ import absolute_import
+
+from ckan.lib.plugins import DefaultTranslation
 from future import standard_library
 
 from builtins import next
@@ -25,13 +27,14 @@ _ = toolkit._
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
 
-class Apicatalog_SchemingPlugin(plugins.SingletonPlugin):
+class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets, inherit=True)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IClick)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
