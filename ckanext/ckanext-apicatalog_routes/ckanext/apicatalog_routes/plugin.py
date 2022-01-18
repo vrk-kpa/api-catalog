@@ -137,10 +137,12 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         if not has_request_context():
             return search_results
 
-        if toolkit.g.get('user', None):
-            user_orgs = get_action('organization_list_for_user')({}, {'id': toolkit.g.user})
-        else:
-            user_orgs = []
+        try:
+            user = toolkit.get_action('user_show')({'ignore_auth': True}, {'id': toolkit.g.user})
+            if user and user.get('sysadmin'):
+                return search_results
+        except ObjectNotFound:
+            pass
 
         for result in search_results['results']:
             # Accessible resources are:
@@ -156,7 +158,8 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('access_restriction_level', '') in ('', 'public') or
                                  (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
-                                  and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
+                                  and any(o.get('name') in orgs for orgs in
+                                          resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
                                  (resource.get('access_restriction_level', '') == 'same_organization' and
                                   any(o.get('id', None) == result.get('organization', {}).get('id', '') for o in user_orgs))]
             result['resources'] = allowed_resources
@@ -170,13 +173,13 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             return data_dict
 
         # Skip access check if sysadmin or auth is ignored
-        if context.get('ignore_auth') or (context.get('auth_user_obj') and context.get('auth_user_obj').get('sysadmin')):
+        if context.get('ignore_auth') or (context.get('auth_user_obj') and context.get('auth_user_obj').sysadmin):
             return data_dict
 
         user_name = context.get('user')
 
         if user_name:
-            user_orgs = [o['name'] for o in toolkit.get_action('organization_list_for_user')(
+            user_orgs = [{'name': o['name'], 'id': o['id']} for o in toolkit.get_action('organization_list_for_user')(
                 {'ignore_auth': True},
                 {'id': user_name, 'permission': 'read'})]
         else:
@@ -194,7 +197,8 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                              if 'access_restriction_level' not in resource or
                              resource.get('access_restriction_level', '') in ('', 'public') or
                              (resource.get('access_restriction_level', '') == 'only_allowed_organizations'
-                                 and any(o in user_orgs for o in resource.get('allowed_organizations', '').split(','))) or
+                                 and any(o.get('name') in orgs for orgs in
+                                         resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
                              (resource.get('access_restriction_level', '') == 'same_organization' and
                               any(o.get('id', None) == data_dict.get('organization', {}).get('id', '') for o in user_orgs))]
         data_dict['resources'] = allowed_resources
