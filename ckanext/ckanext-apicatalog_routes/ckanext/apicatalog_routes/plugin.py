@@ -138,9 +138,10 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             return search_results
 
         try:
-            user = toolkit.get_action('user_show')({'ignore_auth': True}, {'id': toolkit.g.user})
-            if user and user.get('sysadmin'):
-                return search_results
+            if 'user' in toolkit.g:
+                user = toolkit.get_action('user_show')({'ignore_auth': True}, {'id': toolkit.g.user})
+                if user and user.get('sysadmin'):
+                    return search_results
         except ObjectNotFound:
             pass
 
