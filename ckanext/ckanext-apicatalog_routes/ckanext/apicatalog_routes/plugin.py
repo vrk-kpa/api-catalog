@@ -167,7 +167,6 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
             result['resources'] = allowed_resources
             result['num_resources'] = len(allowed_resources)
-            
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
