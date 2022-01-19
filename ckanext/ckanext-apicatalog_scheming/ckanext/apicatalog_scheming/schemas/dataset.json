@@ -12,10 +12,7 @@
       "input_title": ["Service name"],
       "only_default_lang_required": true,
       "form_placeholder": "ServiceName",
-      "placeholder_autofill": true,
       "form_languages": ["en"],
-      "show_url": false,
-      "display_hr": true,
       "display_snippet": null
     },
     {
@@ -24,6 +21,7 @@
       "validators": "not_empty unicode name_validator group_name_validator",
       "form_snippet": "url_slug.html",
       "required": false,
+      "display_prepend": false,
       "form_placeholder": "my-theme"
     },
     {
@@ -40,8 +38,7 @@
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "preset": "fluent_core_title_translated",
       "required": false,
-      "only_default_lang_required": false,
-      "display_hr": true,
+      "only_default_lang_required": true,
       "form_placeholder": "Write subsystem description",
       "form_languages": ["fi", "sv", "en"],
       "form_snippet": "fluent_textarea.html",
@@ -64,7 +61,7 @@
     },
     {
       "field_name": "private",
-      "label": "Visibility",
+      "label": "Service visibility",
       "extra_label": "Service visibility",
       "additional_description": "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations",
       "validators": "boolean_validator valid_resources",

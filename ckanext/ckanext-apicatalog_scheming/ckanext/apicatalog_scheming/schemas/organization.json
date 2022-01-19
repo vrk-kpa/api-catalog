@@ -20,6 +20,7 @@
       "validators": "not_empty unicode name_validator group_name_validator",
       "form_snippet": "url_slug.html",
       "required": false,
+      "display_prepend": true,
       "form_placeholder": "my-theme"
     },
     {

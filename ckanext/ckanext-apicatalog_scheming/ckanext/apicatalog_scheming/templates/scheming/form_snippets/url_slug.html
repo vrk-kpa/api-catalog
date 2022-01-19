@@ -20,6 +20,7 @@
     'data-module-prefix': domain,
     'data-module-placeholder': module_placeholder } -%}
 
+{%- if field.display_prepend -%}
 {{ form.prepend(
     field.field_name,
     id='field-' + field.field_name,
@@ -31,5 +32,5 @@
     attrs=attrs,
     is_required=h.scheming_field_required(field)
     ) }}
-
+{%- endif -%}
 {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
