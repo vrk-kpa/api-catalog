@@ -16,8 +16,8 @@
   <div class="form-group">
 
        <label class="control-label" for="{{ 'field-' + field.field_name }}">
+           <span title="{{ _('Required field') }}" class="control-required">*</span>
           {{ _(field.label) }}
-        <span title="{{ _('Required field') }}" class="control-required">*</span>
       </label>
             {%- set choices = [] -%}
             {%- for c in h.scheming_field_choices(field) -%}
@@ -35,7 +35,7 @@
             </table>
       </div>
       {%- if field.additional_description is not none -%}
-          <br/><p>{{ _(field.additional_description) }}</p>
+          <p>{{ _(field.additional_description) }}</p>
       {%- endif -%}
   </div>
 </div>

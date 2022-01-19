@@ -10,6 +10,7 @@
       "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
+      "display_hr": false,
       "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null

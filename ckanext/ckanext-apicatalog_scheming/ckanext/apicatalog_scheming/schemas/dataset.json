@@ -11,18 +11,10 @@
       "preset": "fluent_core_title_translated",
       "input_title": ["Service name"],
       "only_default_lang_required": true,
+      "display_hr": true,
       "form_placeholder": "ServiceName",
       "form_languages": ["en"],
       "display_snippet": null
-    },
-    {
-      "field_name": "name",
-      "label": "URL",
-      "validators": "not_empty unicode name_validator group_name_validator",
-      "form_snippet": "url_slug.html",
-      "required": false,
-      "display_prepend": false,
-      "form_placeholder": "my-theme"
     },
     {
       "field_name": "owner_org",
@@ -60,7 +52,7 @@
       "description": ""
     },
     {
-      "field_name": "private",
+      "field_name": "access_restriction_level",
       "label": "Service visibility",
       "extra_label": "Service visibility",
       "additional_description": "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations",
@@ -158,7 +150,7 @@
       "preset": "date"
     },
     {
-      "field_name": "web_address",
+      "field_name": "name",
       "label": "Web address",
       "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
       "form_snippet": "url.html",
