@@ -158,10 +158,10 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('visibility', '') in ('', 'true') or
-                                 (not (resource.get('visibility', ''))
+                                 ((resource.get('visibility', '') == 'false')
                                   and any(o.get('name') in orgs for orgs in
                                           resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                                 (not (resource.get('visibility', '')) and
+                                 ((resource.get('visibility', '') == 'false') and
                                   any(o.get('id', None) == result.get('organization',
                                                                       {}).get('id', '') for o in user_orgs))]
 
@@ -197,11 +197,12 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         #    the organization of the package
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if resource.get('visibility', '') in ('', 'true') or
-                             (not (resource.get('visibility', ''))
+                             if 'visibility' not in resource or
+                             resource.get('visibility', '') in ('', 'true') or
+                             ((resource.get('visibility', '') == 'false')
                               and any(o.get('name') in orgs for orgs in
                                       resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                             (not (resource.get('visibility', '')) and
+                             ((resource.get('visibility', '') == 'false') and
                               any(o.get('id', None) == data_dict.get('organization',
                                                                      {}).get('id', '') for o in user_orgs))]
 
