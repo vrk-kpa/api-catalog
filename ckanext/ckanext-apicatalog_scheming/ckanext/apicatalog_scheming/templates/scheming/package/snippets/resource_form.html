@@ -1,0 +1,75 @@
+{% extends 'package/snippets/resource_form.html' %}
+
+{%- set exclude_fields = [
+  'connection_information',
+  'availability',
+  'sla',
+  'valid_content',
+  ] -%}
+
+{% block errors %}
+  {%- if errors -%}
+    {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+    {%- snippet 'scheming/snippets/errors.html',
+      errors=errors, fields=schema.resource_fields,
+      entity_type='dataset', object_type=dataset_type -%}
+  {%- endif -%}
+{% endblock %}
+
+{% block basic_fields %}
+  {%- if not dataset_type -%}
+    <p>
+    dataset_type not passed to template. your version of CKAN
+    might not be compatible with ckanext-scheming
+    </p>
+  {%- endif -%}
+
+  {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+  {%- for field in schema.resource_fields -%}
+    {%- if field.field_name not in exclude_fields -%}
+    {%- if field.form_snippet is not none -%}
+      {%- if field.field_name not in data %}
+        {# Set the field default value before rendering but only if
+        it doesn't already exist in data which would mean the form
+        has been submitted. #}
+        {% if field.default_jinja2 %}
+          {% do data.__setitem__(
+            field.field_name,
+            h.scheming_render_from_string(field.default_jinja2)) %}
+        {% elif field.default %}
+          {% do data.__setitem__(field.field_name, field.default) %}
+        {% endif %}
+      {% endif -%}
+      {%- snippet 'scheming/snippets/form_field.html',
+        field=field,
+        data=data,
+        errors=errors,
+        licenses=c.licenses,
+        entity_type='dataset',
+        object_type=dataset_type
+      -%}
+    {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+{% endblock %}
+
+
+{% block metadata_fields %}
+{% endblock %}
+
+  <div class="form-actions">
+    {% block delete_button %}
+      {% if data.id %}
+        {% if h.check_access('resource_delete', {'id': data.id})  %}
+          <a class="btn btn-danger" href="{% url_for dataset_type ~ '_resource.delete', resource_id=data.id, id=pkg_name %}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this resource?') }}">{% block delete_button_text %}{{ _('Delete') }}{% endblock %}</a>
+        {% endif %}
+      {% endif %}
+    {% endblock %}
+      {% block save_button %}
+        <button class="btn btn-primary pull-left" name="save" value="go-metadata" type="submit">{% block save_button_text %}{{ _('Finish') }}{% endblock %}</button>
+         <a class="btn pull-left" href="{% url_for dataset_type ~ '_resource.read', resource_id=data.id, id=pkg_name %}">{{ _('Discard changes') }}</a>
+      {% endblock %}
+  </div>
+
+</div>

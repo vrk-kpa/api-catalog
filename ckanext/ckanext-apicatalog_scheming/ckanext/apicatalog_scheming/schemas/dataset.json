@@ -7,14 +7,19 @@
     {
       "field_name": "title_translated",
       "label": "Title",
-      "additional_description": "Service name will be filled automatically and should not be edited",
       "preset": "fluent_core_title_translated",
-      "input_title": ["Service name"],
+      "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "only_default_lang_required": true,
-      "display_hr": true,
-      "form_placeholder": "ServiceName",
-      "form_languages": ["en"],
+      "form_placeholder": "eg. A descriptive title",
+      "form_languages": ["fi", "sv", "en"],
       "display_snippet": null
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "preset": "dataset_slug_ex",
+      "form_placeholder": "eg. my-dataset",
+      "final": true
     },
     {
       "field_name": "owner_org",
@@ -24,18 +29,12 @@
     },
     {
       "field_name": "notes_translated",
-      "label": "Service description",
-      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "label": "Description",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
-      "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
-      "preset": "fluent_core_title_translated",
-      "required": false,
-      "only_default_lang_required": true,
-      "form_placeholder": "Write subsystem description",
+      "preset": "fluent_core_markdown_translated",
+      "form_placeholder": "eg. A detailed description",
       "form_languages": ["fi", "sv", "en"],
-      "form_snippet": "fluent_textarea.html",
-      "display_snippet": null,
-      "form_attrs": {}
+      "form_snippet": "fluent_markdown.html"
     },
     {
       "field_name": "keywords",
@@ -50,6 +49,128 @@
         "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
       },
       "description": ""
+    },
+    {
+      "field_name": "validSince",
+      "label": "Valid since",
+      "preset": "date",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "validUntil",
+      "label": "Valid until",
+      "preset": "date",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "private",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": null,
+      "display_snippet": null
+    },
+    {
+      "field_name": "maintainer",
+      "label": "Maintainer",
+      "form_placeholder": "Joe Bloggs",
+      "display_property": "dc:contributor",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "maintainer_email",
+      "label": "Maintainer Email",
+      "form_placeholder": "joe@example.com",
+      "display_property": "dc:contributor",
+      "display_snippet": "email.html",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "maintainer_phone",
+      "label": "Maintainer phone number",
+      "form_placeholder": "+358123456789",
+      "display_property": "dc:contributor",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "xroad_instance",
+      "label": "X-Road instance",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_memberclass",
+      "label": "X-Road member class",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_membercode",
+      "label": "X-Road member code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_subsystemcode",
+      "label": "X-Road subsystem code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "service_permission_settings",
+      "form_snippet": null,
+      "display_snippet": null,
+      "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
+      "output_validators": "scheming_load_json ignore_not_package_maintainer"
+    },
+    {
+      "field_name": "access_restriction_level",
+      "label": "Access Restriction Level",
+      "preset": "select",
+      "classes": ["control-full"],
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public"
+        },
+        {
+          "value": "only_allowed_organizations",
+          "label": "Allowed Organizations Only"
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete"
+    }
+  ],
+"resource_fields": [
+    {
+      "field_name": "title_translated",
+      "label": "Title",
+      "additional_description": "Service name will be filled automatically and should not be edited",
+      "preset": "fluent_core_title_translated",
+      "input_title": ["Service name"],
+      "only_default_lang_required": true,
+      "display_hr": true,
+      "form_placeholder": "ServiceName",
+      "form_languages": ["en"],
+      "display_snippet": null
+    },
+    {
+      "field_name": "description_translated",
+      "label": "Service description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
+      "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
+      "preset": "fluent_core_title_translated",
+      "required": false,
+      "only_default_lang_required": true,
+      "form_placeholder": "Write subsystem description",
+      "form_languages": ["fi", "sv", "en"],
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
     },
     {
       "field_name": "access_restriction_level",
@@ -122,32 +243,26 @@
       ]
     },
     {
-      "field_name": "license",
+      "field_name": "license_id",
       "label": "License",
+      "form_snippet": "license.html",
       "classes": ["control-full"],
-      "form_snippet": "select.html",
-      "choices": [
-        {
-          "label": "No license specified",
-          "value": "no_license_specified"
-        },
-        {
-          "label": "Open Database license",
-          "value": "open_database_license"
-        }
-      ]
+      "display_snippet": "license.html",
+      "form_attrs": {
+        "class": "form-control"
+      }
     },
     {
       "field_name": "validSince",
       "label": "Valid since",
-      "classes": ["control-full"],
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "validUntil",
       "label": "Valid until",
-      "classes": ["control-full"],
-      "preset": "date"
+      "preset": "date",
+      "classes": ["control-full"]
     },
     {
       "field_name": "name",
@@ -155,119 +270,6 @@
       "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
       "form_snippet": "url.html",
       "show_url": true
-    },
-    {
-      "field_name": "maintainer",
-      "label": "Maintainer",
-      "form_placeholder": "Joe Bloggs",
-      "display_property": "dc:contributor",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "maintainer_email",
-      "label": "Maintainer Email",
-      "form_placeholder": "joe@example.com",
-      "display_property": "dc:contributor",
-      "display_snippet": "email.html",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "maintainer_phone",
-      "label": "Maintainer phone number",
-      "form_placeholder": "+358123456789",
-      "display_property": "dc:contributor",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "xroad_instance",
-      "label": "X-Road instance",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-    },
-    {
-      "field_name": "xroad_memberclass",
-      "label": "X-Road member class",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-    },
-    {
-      "field_name": "xroad_membercode",
-      "label": "X-Road member code",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-    },
-    {
-      "field_name": "xroad_subsystemcode",
-      "label": "X-Road subsystem code",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
-    },
-    {
-      "field_name": "service_permission_settings",
-      "form_snippet": null,
-      "display_snippet": null,
-      "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
-      "output_validators": "scheming_load_json ignore_not_package_maintainer"
-    }
-  ],
-  "resource_fields": [
-    {
-      "field_name": "url",
-      "label": "URL",
-      "preset": "resource_url_upload_ex",
-      "final": true
-    },
-    {
-      "field_name": "name",
-      "label": "Name",
-      "required": true,
-      "form_snippet": "text_ex.html",
-      "final": true
-    },
-    {
-      "field_name": "description_translated",
-      "label": "Description",
-      "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "eg. A detailed description",
-      "form_languages": ["fi", "sv", "en"]
-    },
-    {
-      "field_name": "chargeability",
-      "label": "Chargeability",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "yes",
-          "label": "Yes"
-        },
-        {
-          "value": "no",
-          "label": "No"
-        },
-        {
-          "value": "maybe",
-          "label": "See description"
-        }
-      ]
-    },
-    {
-      "field_name": "format",
-      "label": "Format",
-      "classes": ["control-full"],
-      "preset": "apicatalog_resource_format_autocomplete"
-    },
-    {
-      "field_name": "validSince",
-      "label": "Valid since",
-      "preset": "date",
-      "classes": ["control-full"]
-    },
-    {
-      "field_name": "validUntil",
-      "label": "Valid until",
-      "preset": "date",
-      "classes": ["control-full"]
     },
     {
       "field_name": "connection_information",
@@ -294,16 +296,6 @@
       "form_languages": ["fi", "sv", "en"],
       "help_text": "Additional information on the SLA of the API, e.g. response time or speed"
 
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "classes": ["control-full"],
-      "display_snippet": "license.html",
-      "form_attrs": {
-        "class": "form-control"
-      }
     },
     {
       "field_name": "valid_content",
@@ -348,32 +340,6 @@
       "preset": "datetime",
       "form_snippet": false,
       "display_snippet": null
-    },
-    {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "public",
-          "label": "Public"
-        },
-        {
-          "value": "same_organization",
-          "label": "Same Organization Members"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
-        }
-      ]
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete"
     }
   ]
 }

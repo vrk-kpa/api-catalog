@@ -19,7 +19,7 @@
     id='field-' + field.field_name + '-' + lang,
     label=h.scheming_language_text(field.input_title[0], lang),
     placeholder=h.scheming_language_text(field.form_placeholder, lang),
-    value=data[field.field_name + '-' + lang] or data.get(field.field_name, {})[lang],
+    value=data[field.field_name + '-' + lang] or data.get(field.field_name, {})[lang] or data['name'],
     error=errors[field.field_name + '-' + lang],
     classes=field.classes or ['control-medium'],
     attrs=field.form_attrs if 'form_attrs' in field else {},
