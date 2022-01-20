@@ -83,6 +83,7 @@
       "required": true,
       "classes": ["control-full"],
       "form_snippet": "visibility.html",
+      "validators": "boolean_validator",
       "group_title": "Service visibility",
       "choices": [
         {
@@ -318,6 +319,7 @@
       "classes": ["control-full"],
       "form_snippet": "visibility.html",
       "group_title": "Service visibility",
+      "validators": "boolean_validator",
       "choices": [
         {
           "value": "true",
