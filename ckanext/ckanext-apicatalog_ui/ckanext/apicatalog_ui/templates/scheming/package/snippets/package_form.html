@@ -1,0 +1,53 @@
+{% ckan_extends %}
+
+{% block errors %}
+    {%- if errors -%}
+        {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+        {%- snippet 'scheming/snippets/errors.html',
+      errors=errors, fields=schema.dataset_fields,
+      entity_type='dataset', object_type=dataset_type -%}
+    {%- endif -%}
+{% endblock %}
+
+{% block basic_fields %}
+    {%- if not dataset_type -%}
+        <p>
+            dataset_type not passed to template. your version of CKAN
+            might not be compatible with ckanext-scheming
+        </p>
+    {%- endif -%}
+
+    <h2>{{ _('Subsystem information') }}</h2>
+    <p class="api-catalog-required-field">* {{ _('Required field') }}</p>
+
+    {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
+    {%- for field in schema.dataset_fields -%}
+        {% if field.group_title %}
+            {% if loop.index > 1 %}
+                <div class="api-catalog-group-divider"></div>
+            {% endif %}
+            <h3 class="api-catalog-group-title">{{ _(field.group_title) }}</h3>
+        {% endif %}
+        {% if field.group_description %}
+            <h5 class="api-catalog-group-description">{{ _(field.group_description) }}</h5>
+        {% endif %}
+        {%- if field.form_snippet is not none -%}
+            {%- snippet 'scheming/snippets/form_field.html',
+        field=field, data=data, errors=errors, licenses=c.licenses,
+        entity_type='dataset', object_type=dataset_type -%}
+            {% if field.divider %}
+                <div class="ytp-group-divider"></div>
+            {% endif %}
+
+        {%- endif -%}
+        {% if field.end_of_section %}
+            <hr>
+        {% endif %}
+    {%- endfor -%}
+    <div class="api-catalog-group-divider"></div>
+    {%- if 'resource_fields' not in schema -%}
+        <!-- force controller to skip resource-editing step for this type -->
+        <input type="hidden" name="_ckan_phase" value=""/>
+    {%- endif -%}
+{% endblock %}
+
