@@ -146,15 +146,15 @@
   ],
 "resource_fields": [
     {
-      "field_name": "title_translated",
+      "field_name": "name",
       "label": "Title",
       "additional_description": "Service name will be filled automatically and should not be edited",
-      "preset": "fluent_core_title_translated",
       "input_title": ["Service name"],
       "only_default_lang_required": true,
       "display_hr": true,
       "form_placeholder": "ServiceName",
       "form_languages": ["en"],
+      "form_snippet": "fluent_title.html",
       "display_snippet": null
     },
     {
@@ -265,7 +265,7 @@
       "classes": ["control-full"]
     },
     {
-      "field_name": "name",
+      "field_name": "url",
       "label": "Web address",
       "additional_description": "URL will be formed automatically from the name of the application and should in general not be edited.",
       "form_snippet": "url.html",
