@@ -15,7 +15,6 @@ main_js:
     - javascript/collapsible.js
     - javascript/api-catalog-select2.js
     - javascript/title-to-del-title-and-url-slug.js
-    - javascript/custom-dataset-visibility.js
 
 main_css:
   output: ckanext-apicatalog_ui/%(version)s_main.css
