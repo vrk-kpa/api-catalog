@@ -77,7 +77,7 @@
       "end_of_section": true
     },
     {
-      "field_name": "visibility",
+      "field_name": "private",
       "label": "Visibility",
       "preset": "select",
       "required": true,
@@ -87,11 +87,11 @@
       "group_title": "Service visibility",
       "choices": [
         {
-          "value": "true",
+          "value": "false",
           "label": "Public"
         },
         {
-          "value": "false",
+          "value": "true",
           "label": "Limited"
         }
       ]
@@ -133,12 +133,6 @@
       "label": "Organization",
       "preset": "dataset_organization_ex",
       "final": true
-    },
-    {
-      "field_name": "private",
-      "validators": "boolean_validator valid_resources",
-      "form_snippet": null,
-      "display_snippet": null
     },
     {
       "field_name": "xroad_instance",
@@ -312,21 +306,21 @@
       "display_snippet": null
     },
     {
-      "field_name": "visibility",
+      "field_name": "private",
       "label": "Visibility",
       "preset": "select",
       "required": true,
       "classes": ["control-full"],
       "form_snippet": "visibility.html",
-      "group_title": "Service visibility",
       "validators": "boolean_validator",
+      "group_title": "Service visibility",
       "choices": [
         {
-          "value": "true",
+          "value": "false",
           "label": "Public"
         },
         {
-          "value": "false",
+          "value": "true",
           "label": "Limited"
         }
       ]

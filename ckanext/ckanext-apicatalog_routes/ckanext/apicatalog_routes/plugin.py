@@ -108,8 +108,8 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
 
-        if pkg_dict.get('visibility') and \
-                not pkg_dict.get('visibility'):
+        if pkg_dict.get('private') and \
+                not pkg_dict.get('private'):
             allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
                                      if pkg_dict.get('allowed_organizations', "")]
             for org_name in allowed_organizations:
@@ -147,21 +147,21 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
 
         for result in search_results['results']:
             # Accessible resources are:
-            # 1) Visibility is public (True)
+            # 1) Visibility/private is public (False)
             # OR
-            # 2) Visibility is limited (False) AND the logged in user is on the allowed users list
+            # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
             # OR
-            # 3) Visibility is limited (False) AND the logged in user's list of organizations contains
+            # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
             #    the organization of the package
             user_orgs = toolkit.get_action('organization_list_for_user')(
                     {'ignore_auth': True},
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
-                                 if resource.get('visibility', '') in ('', 'true') or
-                                 ((resource.get('visibility', '') == 'false')
+                                 if resource.get('private', '') in ('', 'false') or
+                                 ((resource.get('private', '') == 'true')
                                   and any(o.get('name') in orgs for orgs in
                                           resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                                 ((resource.get('visibility', '') == 'false') and
+                                 ((resource.get('private', '') == 'true') and
                                   any(o.get('id', None) == result.get('organization',
                                                                       {}).get('id', '') for o in user_orgs))]
 
@@ -189,20 +189,20 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             user_orgs = []
 
         # Allowed resources are the ones where:
-        # 1) Visibility is public (True)
+        # 1) Visibility/private is public (False)
         # OR
-        # 2) Visibility is limited (False) AND the logged in user is on the allowed users list
+        # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
         # OR
-        # 3) Visibility is limited (False) AND the logged in user's list of organizations contains
+        # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
         #    the organization of the package
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if 'visibility' not in resource or
-                             resource.get('visibility', '') in ('', 'true') or
-                             ((resource.get('visibility', '') == 'false')
+                             if 'private' not in resource or
+                             resource.get('private', '') in ('', 'false') or
+                             ((resource.get('private', '') == 'true')
                               and any(o.get('name') in orgs for orgs in
                                       resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                             ((resource.get('visibility', '') == 'false') and
+                             ((resource.get('private', '') == 'true') and
                               any(o.get('id', None) == data_dict.get('organization',
                                                                      {}).get('id', '') for o in user_orgs))]
 

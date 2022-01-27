@@ -28,7 +28,7 @@ def get_announcements(count=3, offset=0):
             elif activity_type in ('new package', 'changed package', 'deleted package'):
                 package_data = activity_show({'ignore_auth': True}, {'id': activity.get('id'), 'include_data': True})\
                     .get('data', {}).get('package', {})
-                if package_data.get('visibility', True):
+                if package_data.get('private', False):
                     return None
                 organization_id = package_data.get('owner_org')
                 data['package'] = package_data
