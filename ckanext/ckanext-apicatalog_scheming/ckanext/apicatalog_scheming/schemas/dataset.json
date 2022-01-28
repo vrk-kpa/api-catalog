@@ -94,7 +94,8 @@
           "value": "true",
           "label": "Limited"
         }
-      ]
+      ],
+      "default_value": "true"
     },
     {
       "field_name": "allowed_organizations",
@@ -324,7 +325,8 @@
           "value": "true",
           "label": "Limited"
         }
-      ]
+      ],
+      "default_value": "true"
     },
     {
       "field_name": "allowed_organizations",
