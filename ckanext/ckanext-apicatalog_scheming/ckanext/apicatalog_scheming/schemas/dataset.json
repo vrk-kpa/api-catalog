@@ -126,6 +126,7 @@
       "form_placeholder": "my-applications-title",
       "final": true,
       "form_snippet": "url.html",
+      "validators": "not_empty unicode name_validator package_name_validator",
       "end_of_section": true
     },
     {
