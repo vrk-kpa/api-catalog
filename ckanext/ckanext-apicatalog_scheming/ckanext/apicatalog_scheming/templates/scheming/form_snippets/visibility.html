@@ -6,7 +6,7 @@
   classes=['control-medium'],
   error=errors[field.field_name],
   is_required=h.scheming_field_required(field)) -%}
-    {% set selected = data['private'] %}
+    {% set selected = data['private'] if data['private'] else field.default_value %}
     {# selected is either True or False but c.value below will be either 'true' or 'false' so let's do a conversion #}
     {% set selected_str = 'true' if selected else 'false' %}
     <fieldset class="radios">
