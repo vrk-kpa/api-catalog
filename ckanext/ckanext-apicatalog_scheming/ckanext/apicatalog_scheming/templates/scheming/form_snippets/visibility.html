@@ -6,7 +6,7 @@
   classes=['control-medium'],
   error=errors[field.field_name],
   is_required=h.scheming_field_required(field)) -%}
-    {% set selected = data[field.field_name] if data[field.field_name] is defined else field.default_value %}
+    {% set selected = data[field.private] if data[field.private] is defined else field.default_value %}
     <fieldset class="radios">
         {%- for c in field.choices -%}
             <label for="field-{{ field.field_name }}-{{ c.value }}">
