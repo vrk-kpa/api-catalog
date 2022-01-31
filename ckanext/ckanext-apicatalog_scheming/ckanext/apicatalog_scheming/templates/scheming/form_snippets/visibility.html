@@ -6,7 +6,9 @@
   classes=['control-medium'],
   error=errors[field.field_name],
   is_required=h.scheming_field_required(field)) -%}
-    {% set selected = data[field.private] if data[field.private] is defined else field.default_value %}
+    {% set selected = data['private'] %}
+    {# selected is either True or False but c.value below will be either 'true' or 'false' so let's do a conversion #}
+    {% set selected_str = 'true' if selected else 'false' %}
     <fieldset class="radios">
         {%- for c in field.choices -%}
             <label for="field-{{ field.field_name }}-{{ c.value }}">
@@ -14,7 +16,7 @@
                        type="radio"
                        name="{{ field.field_name }}"
                        value="{{ c.value }}"
-                        {{ "checked " if c.value == selected }} />
+                        {{ "checked " if c.value == selected_str }} />
 
                 <div class="check"></div>
                 {{ h.scheming_language_text(c.label) }}
