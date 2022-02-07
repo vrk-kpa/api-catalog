@@ -73,8 +73,6 @@ class TestApicatalogRoutes(object):
     @mock.patch("ckan.lib.mailer.send_invite")
     def test_organization_admin_should_not_be_able_to_invite_user_to_other_organization(self):
         user = factories.User()
-        org_users = [{"name": user["name"], "capacity": "admin"}]
-        org = factories.Organization(users=org_users)
 
         other_organization = factories.Organization()
 
