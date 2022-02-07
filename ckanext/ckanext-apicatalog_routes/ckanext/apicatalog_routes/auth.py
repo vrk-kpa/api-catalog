@@ -4,7 +4,7 @@ from ckan import authz
 from ckan.plugins.toolkit import aslist
 
 from ckan.logic.auth import get, update
-from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function
+from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function, check_access, NotAuthorized
 
 from ckan.lib.base import config
 from ckan.common import c
@@ -54,7 +54,13 @@ def user_create(next_auth, context, data_dict=None):
     if context.get('user') and context.get('user') in users_allowed_to_create_users:
         return {"success": True}
 
-    return next_auth(context, data_dict)
+    try:
+        dict_for_member_create = data_dict.copy()
+        dict_for_member_create['id'] = dict_for_member_create['group_id']
+        check_access('organization_member_create', context, dict_for_member_create)
+        return {"success": True}
+    except NotAuthorized:
+        return next_auth(context, data_dict)
 
 
 @chained_auth_function

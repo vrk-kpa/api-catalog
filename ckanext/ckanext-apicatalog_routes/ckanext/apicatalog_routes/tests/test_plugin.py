@@ -1,5 +1,7 @@
 """Tests for plugin.py."""
 import pytest
+import unittest.mock as mock
+from ckan import model
 
 from ckan.tests import factories
 import ckan.tests.helpers as helpers
@@ -24,7 +26,7 @@ class TestApicatalogRoutes(object):
         with pytest.raises(NotAuthorized):
             helpers.call_action('package_delete', context, id=subsystem['id'])
 
-    def test_non_sysadmins_should_not_be_be_able_to_delete_services(self):
+    def test_non_sysadmins_should_not_be_able_to_delete_services(self):
         user = factories.User()
         org_users = [{"name": user["name"], "capacity": "admin"}]
         org = factories.Organization(users=org_users)
@@ -42,7 +44,7 @@ class TestApicatalogRoutes(object):
         with pytest.raises(NotAuthorized):
             helpers.call_action('resource_delete', context, id=service['id'])
 
-    def test_non_sysadmins_should_not_be_be_able_to_delete_organizations(self):
+    def test_non_sysadmins_should_not_be_able_to_delete_organizations(self):
         user = factories.User()
         org_users = [{"name": user["name"], "capacity": "admin"}]
         org = factories.Organization(users=org_users)
@@ -51,3 +53,31 @@ class TestApicatalogRoutes(object):
 
         with pytest.raises(NotAuthorized):
             helpers.call_action('organization_delete', context, id=org['id'])
+
+    @mock.patch("ckan.lib.mailer.send_invite")
+    def test_organization_admin_should_be_able_to_invite_user(self, _):
+        user = factories.User()
+        org_users = [{"name": user["name"], "capacity": "admin"}]
+        org = factories.Organization(users=org_users)
+
+        context = {"user": user["name"]}
+        params = {"email": "foo@example.com", "group_id": org["id"], "role": "member"}
+
+        result = helpers.call_action('user_invite', context, **params)
+
+        assert model.User.get(result['id'])
+        assert model.User.get(result['id']).is_pending()
+
+        assert len(org['users']) == 2
+
+    @mock.patch("ckan.lib.mailer.send_invite")
+    def test_organization_admin_should_not_be_able_to_invite_user_to_other_organization(self, _):
+        user = factories.User()
+
+        other_organization = factories.Organization()
+
+        context = {"user": user["name"], "ignore_auth": False}
+        params = {"email": "foo@example.com", "group_id": other_organization["id"], "role": "member"}
+
+        with pytest.raises(NotAuthorized):
+            helpers.call_action('user_invite', context, **params)
