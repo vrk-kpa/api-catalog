@@ -55,7 +55,7 @@ class TestApicatalogRoutes(object):
             helpers.call_action('organization_delete', context, id=org['id'])
 
     @mock.patch("ckan.lib.mailer.send_invite")
-    def test_organization_admin_should_be_able_to_invite_user(self):
+    def test_organization_admin_should_be_able_to_invite_user(self, _):
         user = factories.User()
         org_users = [{"name": user["name"], "capacity": "admin"}]
         org = factories.Organization(users=org_users)
@@ -71,7 +71,7 @@ class TestApicatalogRoutes(object):
         assert len(org['users']) == 2
 
     @mock.patch("ckan.lib.mailer.send_invite")
-    def test_organization_admin_should_not_be_able_to_invite_user_to_other_organization(self):
+    def test_organization_admin_should_not_be_able_to_invite_user_to_other_organization(self, _):
         user = factories.User()
 
         other_organization = factories.Organization()
