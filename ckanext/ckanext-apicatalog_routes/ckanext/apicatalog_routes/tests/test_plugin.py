@@ -76,7 +76,7 @@ class TestApicatalogRoutes(object):
 
         other_organization = factories.Organization()
 
-        context = {"user": user["name"]}
+        context = {"user": user["name"], "ignore_auth": False}
         params = {"email": "foo@example.com", "group_id": other_organization["id"], "role": "member"}
 
         with pytest.raises(NotAuthorized):
