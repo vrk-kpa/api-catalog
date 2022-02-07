@@ -80,4 +80,4 @@ class TestApicatalogRoutes(object):
         params = {"email": "foo@example.com", "group_id": other_organization["id"], "role": "member"}
 
         with pytest.raises(NotAuthorized):
-            result = helpers.call_action('user_invite', context, **params)
+            helpers.call_action('user_invite', context, **params)
