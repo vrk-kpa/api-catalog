@@ -206,24 +206,22 @@
       "field_name": "chargeability",
       "label": "Chargeability",
       "extra_label": "Other information and settings",
-      "validators": "boolean_validator valid_resources",
-      "form_snippet": "radio.html",
       "display_hr": true,
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "select.html",
+      "classes": ["control-full"],
       "choices": [
         {
           "value": "chargeable",
-          "label": "Chargeable",
-          "checked": true
+          "label": "Chargeable"
         },
         {
           "value": "free_of_charge",
-          "label": "Free of charge",
-          "checked": false
+          "label": "Free of charge"
         },
         {
           "value": "mentioned_in_service_description",
-          "label": "Mentioned in service description",
-          "checked": false
+          "label": "Mentioned in service description"
         }
       ]
     },
