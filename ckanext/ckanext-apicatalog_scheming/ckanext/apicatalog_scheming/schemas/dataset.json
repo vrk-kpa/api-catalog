@@ -229,27 +229,7 @@
       "field_name": "format",
       "label": "Format",
       "classes": ["control-full"],
-      "form_snippet": "select.html",
-      "choices": [
-        {
-          "label": "WSDL",
-          "value": "wsdl"
-        },
-        {
-          "label": "OpenAPI JSON",
-          "value": "openapi-json"
-        }
-      ]
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "classes": ["control-full"],
-      "display_snippet": "license.html",
-      "form_attrs": {
-        "class": "form-control"
-      }
+      "preset": "apicatalog_resource_format_autocomplete"
     },
     {
       "field_name": "validSince",
