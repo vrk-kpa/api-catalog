@@ -105,6 +105,7 @@ msgstr ""
 #: ckanext/apicatalog_scheming/translations.py:25
 msgid "Discard changes"
 msgstr ""
+""
 
 #: ckanext/apicatalog_scheming/translations.py:26
 msgid "Save changes"
@@ -112,6 +113,58 @@ msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:27
 msgid "Write subsystem description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:28
+msgid "Service name will be filled automatically and should not be edited"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:29
+msgid "Service visibility"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Service description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:31
+msgid "Service name"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:33
+msgid "Chargeable"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:34
+msgid "Free of charge"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:35
+msgid "Mentioned in service description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "No license specified"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Open Database license"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Web address"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:39
+msgid ""
+"URL will be formed automatically from the name of the application and should "
+"in general not be edited."
 msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:54
@@ -150,3 +203,38 @@ msgstr ""
 msgid "Business id verification number does match business id."
 msgstr ""
 
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:82
+#: ckanext/apicatalog_scheming/validators.py:249
+msgid "expecting JSON object"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:86
+#, python-format
+msgid "Required language \"%s\" missing"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:94
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:128
+msgid "Business id is incorrect format."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:146
+msgid "Business id verification number does match business id."
+msgstr ""

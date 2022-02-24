@@ -9,6 +9,10 @@
       {%- endif -%}
   </div>
   {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
+      {%- set required = field.required -%}
+      {% if loop.index == 1 %}
+        {%- set required = field.only_default_lang_required -%}
+      {% endif %}
       {% call form.textarea(
       field.field_name + '-' + lang,
       id='field-' + field.field_name + '-' + lang,
@@ -17,7 +21,7 @@
       value=data[field.field_name + '-' + lang] or data.get(field.field_name, {})[lang],
       error=errors[field.field_name],
       attrs=dict({"class": "form-control"}, **(field.get('form_attrs', {}))),
-      is_required=h.scheming_field_required(field)) %}
+      is_required=required) %}
     {%- snippet 'scheming/form_snippets/fluent_help_text.html',
       field=field,
       lang=lang -%}

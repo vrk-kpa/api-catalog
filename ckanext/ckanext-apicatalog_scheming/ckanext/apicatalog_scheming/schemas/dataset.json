@@ -144,44 +144,84 @@
       "preset": "apicatalog_organization_string_autocomplete"
     }
   ],
-  "resource_fields": [
-    {
-      "field_name": "url",
-      "label": "URL",
-      "preset": "resource_url_upload_ex",
-      "final": true
-    },
+"resource_fields": [
     {
       "field_name": "name",
-      "label": "Name",
-      "required": true,
-      "form_snippet": "text_ex.html",
-      "final": true
+      "label": "Title",
+      "additional_description": "Service name will be filled automatically and should not be edited",
+      "input_title": ["Service name"],
+      "only_default_lang_required": true,
+      "display_hr": true,
+      "final": true,
+      "form_placeholder": "ServiceName",
+      "form_languages": ["en"],
+      "form_snippet": "fluent_title.html",
+      "display_snippet": null
     },
     {
       "field_name": "description_translated",
-      "label": "Description",
-      "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "eg. A detailed description",
-      "form_languages": ["fi", "sv", "en"]
+      "label": "Service description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
+      "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
+      "preset": "fluent_core_title_translated",
+      "required": false,
+      "only_default_lang_required": true,
+      "form_placeholder": "Write subsystem description",
+      "form_languages": ["fi", "sv", "en"],
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
+    },
+    {
+      "field_name": "access_restriction_level",
+      "label": "Service visibility",
+      "extra_label": "Service visibility",
+      "additional_description": "When service visibility is private, it is only visible to the owner organisation or users from allowed organisations",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "radio.html",
+      "display_hr": false,
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public",
+          "checked": true
+        },
+        {
+          "value": "private",
+          "label": "Private",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "form_placeholder": "Allowed Organisations",
+      "validators": "ignore_missing"
     },
     {
       "field_name": "chargeability",
       "label": "Chargeability",
-      "preset": "select",
+      "extra_label": "Other information and settings",
+      "display_hr": true,
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "select.html",
       "classes": ["control-full"],
       "choices": [
         {
-          "value": "yes",
-          "label": "Yes"
+          "value": "chargeable",
+          "label": "Chargeable"
         },
         {
-          "value": "no",
-          "label": "No"
+          "value": "free_of_charge",
+          "label": "Free of charge"
         },
         {
-          "value": "maybe",
-          "label": "See description"
+          "value": "mentioned_in_service_description",
+          "label": "Mentioned in service description"
         }
       ]
     },
@@ -230,16 +270,6 @@
 
     },
     {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "classes": ["control-full"],
-      "display_snippet": "license.html",
-      "form_attrs": {
-        "class": "form-control"
-      }
-    },
-    {
       "field_name": "valid_content",
       "form_snippet": false,
       "display_snippet": null
@@ -282,32 +312,6 @@
       "preset": "datetime",
       "form_snippet": false,
       "display_snippet": null
-    },
-    {
-      "field_name": "access_restriction_level",
-      "label": "Access Restriction Level",
-      "preset": "select",
-      "classes": ["control-full"],
-      "choices": [
-        {
-          "value": "public",
-          "label": "Public"
-        },
-        {
-          "value": "same_organization",
-          "label": "Same Organization Members"
-        },
-        {
-          "value": "only_allowed_organizations",
-          "label": "Allowed Organizations Only"
-        }
-      ]
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete"
     }
   ]
 }
