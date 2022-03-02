@@ -81,13 +81,19 @@
       "form_placeholder": "Phone number"
     },
     {
-      "field_name": "email_address",
-      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
+      "field_name": "email_address_translated",
       "label": "Email address",
+      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
+      "input_title": ["E-mail address in Finnish", "E-mail address in Swedish", "E-mail address in English"],
       "validators": "ignore_missing",
-      "form_snippet": "extra_label.html",
+      "preset": "fluent_core_markdown_translated",
       "classes": ["control-full"],
-      "form_placeholder": "Email address"
+      "form_placeholder": "Email address",
+      "form_snippet": "email_address.html",
+      "error_snippet": null,
+      "display_snippet": null,
+      "form_languages": ["fi", "sv", "en"],
+      "form_attrs": {}
     },
     {
       "field_name": "webpage_address",
