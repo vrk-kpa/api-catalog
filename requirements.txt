@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
--e git+https://github.com/ckan/ckan.git@ckan-2.9.3#egg=ckan # [requirements] removed manually to stop resolving
+-e git+https://github.com/ckan/ckan.git@ckan-2.9.5#egg=ckan # [requirements] removed manually to stop resolving
     # via -r requirements.in
 alembic==1.0.0 # ; extra == "requirements"
     # via ckan
@@ -18,11 +18,11 @@ beaker==1.11.0 # ; extra == "requirements"
     # via ckan
 bleach==3.1.4 #; extra == "requirements"
     # via ckan
-certifi==2019.11.28
+certifi==2021.5.30
     # via
     #   ckan
     #   requests
-chardet==3.0.4
+chardet==4.0.0
     # via
     #   ckan
     #   requests
@@ -31,10 +31,6 @@ click==7.1.2
     #   ckan
     #   flask
     #   rq
-decorator==4.4.1
-    # via
-    #   ckan
-    #   sqlalchemy-migrate
 dominate==2.4.0 #; extra == "requirements"
     # via ckan
 extras==1.0.0
@@ -58,7 +54,9 @@ flask-babel==1.0.0 #; extra == "requirements"
     # via ckan
 flask-multistatic==1.0 #; extra == "requirements"
     # via ckan
-idna==2.8
+funcsigs==1.0.2 #; extra == "requirements"
+    # via ckan
+idna==2.10
     # via
     #   ckan
     #   requests
@@ -73,11 +71,11 @@ jinja2==2.10.1
     #   flask-babel
 linecache2==1.0.0
     # via traceback2
-lxml==4.6.3 # upgraded from ckan core
+lxml==4.6.3 #; extra == "requirements"
     # via
     #   ckan
     #   feedgen
-mako==1.1.0
+mako==1.1.5 #; extra == "requirements"
     # via
     #   alembic
     #   ckan
@@ -94,17 +92,9 @@ nose==1.3.7 #; extra == "requirements"
     #   pyutilib
 passlib==1.6.5 #; extra == "requirements"
     # via ckan
-pastedeploy==2.0.1 #; extra == "requirements"
-    # via ckan
-pathtools==0.1.2
-    # via
-    #   ckan
-    #   watchdog
 pbr==5.4.4
     # via
-    #   ckan
     #   fixtures
-    #   sqlalchemy-migrate
     #   testtools
 polib==1.0.7 #; extra == "requirements"
     # via ckan
@@ -114,7 +104,7 @@ pyjwt==1.7.1 #; extra == "requirements"
     # via ckan
 pysolr==3.6.0 #; extra == "requirements"
     # via ckan
-python-dateutil==2.8.1
+python-dateutil==2.8.2 #; extra == "requirements"
     # via
     #   alembic
     #   ckan
@@ -137,9 +127,9 @@ pytz==2016.7
     #   tzlocal
 pyutilib==5.7.1 #; extra == "requirements"
     # via ckan
-pyyaml==5.3.1 #; extra == "requirements"
+pyyaml==5.4.1 #; extra == "requirements"
     # via ckan
-redis==3.3.11
+redis==3.5.3
     # via
     #   ckan
     #   rq
@@ -149,7 +139,7 @@ repoze.lru==0.7
     #   routes
 repoze.who==2.3 #; extra == "requirements"
     # via ckan
-requests==2.22.0
+requests==2.25.1
     # via
     #   ckan
     #   pysolr
@@ -157,13 +147,13 @@ routes==1.13 #; extra == "requirements"
     # via ckan
 rq==1.0 #; extra == "requirements"
     # via ckan
-shutilwhich==1.1.0
+shutilwhich==1.1.0 #; extra == "requirements"
     # via
     #   ckan
     #   fanstatic
 simplejson==3.10.0 #; extra == "requirements"
     # via ckan
-six==1.13.0
+six==1.16.0
     # via
     #   -r requirements.in
     #   bleach
@@ -171,24 +161,14 @@ six==1.13.0
     #   fixtures
     #   python-dateutil
     #   pyutilib
-    #   sqlalchemy-migrate
     #   testtools
     #   unittest2
 sqlalchemy==1.3.5
     # via
     #   alembic
     #   ckan
-    #   sqlalchemy-migrate
-sqlalchemy-migrate==0.12.0 #; extra == "requirements"
+sqlparse==0.2.2 #; extra == "requirements"
     # via ckan
-sqlparse==0.2.2
-    # via
-    #   ckan
-    #   sqlalchemy-migrate
-tempita==0.5.2
-    # via
-    #   ckan
-    #   sqlalchemy-migrate
 testrepository==0.0.20
     # via -r requirements.in
 testtools==2.4.0
@@ -208,13 +188,13 @@ unicodecsv==0.14.1 #; extra == "requirements"
     # via ckan
 unittest2==1.1.0
     # via testtools
-urllib3==1.25.8
+urllib3==1.26.6
     # via
     #   ckan
     #   requests
 uwsgi==2.0.19.1
     # via -r requirements.in
-watchdog==0.10.2
+watchdog==2.1.5 #; extra == "requirements"
     # via
     #   ckan
     #   werkzeug
@@ -224,7 +204,7 @@ webencodings==0.5.1 #; extra == "requirements"
     # via
     #   bleach
     #   ckan
-webob==1.8.5
+webob==1.8.7
     # via
     #   ckan
     #   fanstatic

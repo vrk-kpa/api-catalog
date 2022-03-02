@@ -136,6 +136,7 @@ ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | def
 ckanext.apicatalog_routes.allowed_user_editors = {{ allowed_user_editors | default([]) | join(" ")  }}
 ckanext.apicatalog_routes.allowed_member_editors = {{ allowed_member_editors | default([]) | join(" ") }}
 
+ckanext.xroad_integration.xroad_gateway_address = http://localhost:9090/rest-adapter-service
 ckanext.xroad_integration.xroad_catalog_address = https://{{ xroad.securityserver.host }}:{{ xroad.securityserver.port }}/r1/{{ xroad.service_id | replace('.', '/') }}{% if xroad.service_name is defined %}/{{ xroad.service_name }}{% endif %}
 
 ckanext.xroad_integration.xroad_catalog_certificate = {{ server_path }}/{{ xroad_securityserver_public_cert_filename }}
