@@ -27,18 +27,11 @@ def schema_translatable_strings():
             _('Discard changes'),
             _('Save changes'),
             _('Write subsystem description'),
-            _('Write attachment description'),
             _('Service name will be filled automatically and should not be edited'),
-            _('Attachment name will be filled automatically and should not be edited'),
             _('Service visibility'),
             _('Service description'),
             _('Service name'),
-            _('Attachment visibility'),
-            _('Attachment description'),
-            _('Attachment name'),
             _('When service visibility is private, it is only visible to the owner organisation or'
-              ' users from allowed organisations'),
-            _('When attachment visibility is private, it is only visible to the owner organisation or'
               ' users from allowed organisations'),
             _('Chargeable'),
             _('Free of charge'),
