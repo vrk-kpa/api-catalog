@@ -106,30 +106,6 @@ msgstr ""
 msgid "Discard changes"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/translations.py:28
-msgid "Save changes"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:29
-msgid "Write subsystem description"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:30
-msgid "Service name will be filled automatically and should not be edited"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:31
-msgid "Service visibility"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:32
-msgid "Service description"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:33
-msgid "Service name"
-msgstr ""
-
 #: ckanext/apicatalog_scheming/translations.py:34
 msgid ""
 "When service visibility is private, it is only visible to the owner "
@@ -160,10 +136,48 @@ msgstr ""
 msgid "Web address"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/translations.py:42
-msgid ""
-"URL will be formed automatically from the name of the application and should "
-"in general not be edited."
+#: ckanext/apicatalog_scheming/translations.py:28
+msgid "Save changes"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:29
+msgid "Write subsystem description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Write attachment description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:31
+msgid "Service name will be filled automatically and should not be edited"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid "Attachment name will be filled automatically and should not be edited"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:33
+msgid "Service visibility"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:34
+msgid "Service description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:35
+msgid "Service name"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "Attachment visibility"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Attachment description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Attachment name"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:44
@@ -176,6 +190,18 @@ msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:46
 msgid "E-mail address in English"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:41
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:49
+msgid ""
+"URL will be formed automatically from the name of the application and should "
+"in general not be edited."
 msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:54

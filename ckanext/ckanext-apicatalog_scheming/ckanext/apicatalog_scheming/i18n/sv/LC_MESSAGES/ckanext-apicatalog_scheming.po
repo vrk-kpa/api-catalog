@@ -125,21 +125,41 @@ msgstr "Spara ändringar"
 msgid "Write subsystem description"
 msgstr "Skriv delsystembeskrivning"
 
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Write attachment description"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:28
 msgid "Service name will be filled automatically and should not be edited"
 msgstr "Tjänstens namn kommer att fyllas i automatiskt och bör inte redigeras"
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid "Attachment name will be filled automatically and should not be edited"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:29
 msgid "Service visibility"
 msgstr "Tjänstens synlighet"
 
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "Attachment visibility"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:30
 msgid "Service description"
 msgstr "Service beskrivning"
 
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Attachment description"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:31
 msgid "Service name"
 msgstr "Service namn"
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Attachment name"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:32
 msgid ""
@@ -148,6 +168,12 @@ msgid ""
 msgstr ""
 "När tjänstens synlighet är privat är den endast synlig för "
 "ägarorganisationen eller användare från tillåtna organisationer"
+
+#: ckanext/apicatalog_scheming/translations.py:41
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:33
 msgid "Chargeable"
@@ -180,20 +206,6 @@ msgid ""
 msgstr ""
 "URL kommer att bildas automatiskt från namnet på applikationen och bör i "
 "allmänhet inte redigeras."
-
-#: ckanext/apicatalog_scheming/validators.py:54
-msgid "Package contains invalid resources"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:75
-#: ckanext/apicatalog_scheming/validators.py:243
-msgid "Failed to decode JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:78
-#: ckanext/apicatalog_scheming/validators.py:246
-msgid "Invalid encoding for JSON string"
-msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:82
 #: ckanext/apicatalog_scheming/validators.py:249
@@ -228,3 +240,17 @@ msgstr "E-postadress på svenska"
 #: ckanext/apicatalog_scheming/translations.py:45
 msgid "E-mail address in English"
 msgstr "E-postadress på engelska"
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""

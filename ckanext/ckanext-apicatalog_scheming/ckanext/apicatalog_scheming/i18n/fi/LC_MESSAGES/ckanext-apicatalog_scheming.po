@@ -125,21 +125,42 @@ msgstr "Päivitä tiedot"
 msgid "Write subsystem description"
 msgstr "Kirjoita alijärjestelmän kuvaus"
 
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Write attachment description"
+msgstr "Kirjoita liitetiedoston kuvaus"
+
 #: ckanext/apicatalog_scheming/translations.py:28
 msgid "Service name will be filled automatically and should not be edited"
 msgstr "Palvelun nimi täydennetään automaattisesti, eikä sitä voi muokata"
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid "Attachment name will be filled automatically and should not be edited"
+msgstr ""
+"Liitetiedoston nimi täydennetään automaattisesti, eikä sitä voi muokata"
 
 #: ckanext/apicatalog_scheming/translations.py:29
 msgid "Service visibility"
 msgstr "Palvelun näkyvyys"
 
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "Attachment visibility"
+msgstr "Liitetiedoston näkyvyys"
+
 #: ckanext/apicatalog_scheming/translations.py:30
 msgid "Service description"
 msgstr "Palvelun kuvaus"
 
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Attachment description"
+msgstr "Liitetiedoston kuvaus"
+
 #: ckanext/apicatalog_scheming/translations.py:31
 msgid "Service name"
 msgstr "Palvelun nimi"
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Attachment name"
+msgstr "Liitetiedoston nimi"
 
 #: ckanext/apicatalog_scheming/translations.py:32
 msgid ""
@@ -148,6 +169,14 @@ msgid ""
 msgstr ""
 "Kun palvelun näkyvyys on rajoitettu, se näkyy vain oman organisaation ja "
 "sallittujen organisaatioiden käyttäjille."
+
+#: ckanext/apicatalog_scheming/translations.py:41
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+"Kun liitetiedoston näkyvyys on rajoitettu, se näkyy vain oman organisaation "
+"ja sallittujen organisaatioiden käyttäjille."
 
 #: ckanext/apicatalog_scheming/translations.py:33
 msgid "Chargeable"
@@ -180,20 +209,6 @@ msgid ""
 msgstr ""
 "URL muodostetaan sovelluksen nimestä automaattisesti, eikä osoitetta yleensä"
 " tarvitse muokata."
-
-#: ckanext/apicatalog_scheming/validators.py:54
-msgid "Package contains invalid resources"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:75
-#: ckanext/apicatalog_scheming/validators.py:243
-msgid "Failed to decode JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:78
-#: ckanext/apicatalog_scheming/validators.py:246
-msgid "Invalid encoding for JSON string"
-msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:82
 #: ckanext/apicatalog_scheming/validators.py:249
@@ -228,3 +243,18 @@ msgstr "Sähköpostiosoite ruotsiksi"
 #: ckanext/apicatalog_scheming/translations.py:45
 msgid "E-mail address in English"
 msgstr "Sähköpostiosoite englanniksi"
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
+msgstr ""
+
