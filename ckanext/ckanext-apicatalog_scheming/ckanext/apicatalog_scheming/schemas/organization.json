@@ -85,15 +85,11 @@
       "label": "Email address",
       "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
       "input_title": ["E-mail address in Finnish", "E-mail address in Swedish", "E-mail address in English"],
-      "validators": "ignore_missing",
-      "preset": "fluent_core_markdown_translated",
-      "classes": ["control-full"],
+      "preset": "fluent_list",
       "form_placeholder": "Email address",
-      "form_snippet": "email_address.html",
-      "error_snippet": null,
-      "display_snippet": null,
-      "form_languages": ["fi", "sv", "en"],
-      "form_attrs": {}
+      "validators": "fluent_list ignore_missing",
+      "display_snippet": "fluent_email_list.html",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "webpage_address",
