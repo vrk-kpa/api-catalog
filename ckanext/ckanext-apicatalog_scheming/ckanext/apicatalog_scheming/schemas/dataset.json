@@ -207,20 +207,19 @@
       "label": "Chargeability",
       "extra_label": "Other information and settings",
       "display_hr": true,
-      "validators": "boolean_validator valid_resources",
       "form_snippet": "select.html",
       "classes": ["control-full"],
       "choices": [
         {
-          "value": "chargeable",
+          "value": "yes",
           "label": "Chargeable"
         },
         {
-          "value": "free_of_charge",
+          "value": "no",
           "label": "Free of charge"
         },
         {
-          "value": "mentioned_in_service_description",
+          "value": "maybe",
           "label": "Mentioned in service description"
         }
       ]
