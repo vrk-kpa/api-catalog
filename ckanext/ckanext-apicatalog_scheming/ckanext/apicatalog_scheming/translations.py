@@ -48,4 +48,7 @@ def schema_translatable_strings():
             _('Web address'),
             _('URL will be formed automatically from the name of the application and should'
               ' in general not be edited.'),
+            _('E-mail address in Finnish'),
+            _('E-mail address in Swedish'),
+            _('E-mail address in English'),
             ]

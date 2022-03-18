@@ -232,6 +232,18 @@ msgstr ""
 msgid "Business id verification number does match business id."
 msgstr ""
 
+#: ckanext/apicatalog_scheming/translations.py:44
+msgid "E-mail address in Finnish"
+msgstr "Sähköpostiosoite suomeksi"
+
+#: ckanext/apicatalog_scheming/translations.py:45
+msgid "E-mail address in Swedish"
+msgstr "Sähköpostiosoite ruotsiksi"
+
+#: ckanext/apicatalog_scheming/translations.py:45
+msgid "E-mail address in English"
+msgstr "Sähköpostiosoite englanniksi"
+
 #: ckanext/apicatalog_scheming/validators.py:54
 msgid "Package contains invalid resources"
 msgstr ""
@@ -245,3 +257,4 @@ msgstr ""
 #: ckanext/apicatalog_scheming/validators.py:246
 msgid "Invalid encoding for JSON string"
 msgstr ""
+
