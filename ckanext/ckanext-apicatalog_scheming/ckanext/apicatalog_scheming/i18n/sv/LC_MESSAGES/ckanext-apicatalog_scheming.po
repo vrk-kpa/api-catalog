@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-28 09:12+0200\n"
+"POT-Creation-Date: 2021-12-27 13:31+0200\n"
 "PO-Revision-Date: 2021-09-14 09:09+0000\n"
 "Last-Translator: Bert Viikmäe, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
@@ -73,14 +73,6 @@ msgid ""
 msgstr ""
 "En allmän, kortfattad och lättförståelig beskrivning av organisationen"
 
-#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick "
-"reference\">Markdown formatting</a> here."
-msgstr ""
-"Du kan använda <a href=\"#markdown\" title=\"Markdown quick reference\"> "
-"Markdown-formatering</a> här."
-
 #: ckanext/apicatalog_scheming/translations.py:17
 msgid "Description in Finnish"
 msgstr "Beskrivning på finska"
@@ -133,21 +125,41 @@ msgstr "Spara ändringar"
 msgid "Write subsystem description"
 msgstr "Skriv delsystembeskrivning"
 
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Write attachment description"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:28
 msgid "Service name will be filled automatically and should not be edited"
 msgstr "Tjänstens namn kommer att fyllas i automatiskt och bör inte redigeras"
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid "Attachment name will be filled automatically and should not be edited"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:29
 msgid "Service visibility"
 msgstr "Tjänstens synlighet"
 
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "Attachment visibility"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:30
 msgid "Service description"
 msgstr "Service beskrivning"
 
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Attachment description"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:31
 msgid "Service name"
 msgstr "Service namn"
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Attachment name"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:32
 msgid ""
@@ -156,6 +168,12 @@ msgid ""
 msgstr ""
 "När tjänstens synlighet är privat är den endast synlig för "
 "ägarorganisationen eller användare från tillåtna organisationer"
+
+#: ckanext/apicatalog_scheming/translations.py:41
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:33
 msgid "Chargeable"
@@ -189,20 +207,6 @@ msgstr ""
 "URL kommer att bildas automatiskt från namnet på applikationen och bör i "
 "allmänhet inte redigeras."
 
-#: ckanext/apicatalog_scheming/validators.py:54
-msgid "Package contains invalid resources"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:75
-#: ckanext/apicatalog_scheming/validators.py:243
-msgid "Failed to decode JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:78
-#: ckanext/apicatalog_scheming/validators.py:246
-msgid "Invalid encoding for JSON string"
-msgstr ""
-
 #: ckanext/apicatalog_scheming/validators.py:82
 #: ckanext/apicatalog_scheming/validators.py:249
 msgid "expecting JSON object"
@@ -223,4 +227,18 @@ msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:146
 msgid "Business id verification number does match business id."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
 msgstr ""
