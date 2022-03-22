@@ -32,7 +32,7 @@
             <div data-mutex-value="file">
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
-              {{ form.image_upload(
+              {{ form.image_upload_dragndrop(
                   settings,
                   errors,
                   upload_label=_('Add your file'),
@@ -41,7 +41,9 @@
                   is_upload=is_upload,
                   field_url='file_url',
                   field_upload='file',
-                  field_clear='clear_upload'
+                  field_clear='clear_upload',
+                  max_filesize=h.max_resource_size,
+                  max_total_size=h.max_resource_size
                   )
               }}
             </div>

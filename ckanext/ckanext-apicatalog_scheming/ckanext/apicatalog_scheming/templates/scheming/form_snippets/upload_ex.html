@@ -8,7 +8,7 @@
   </div>
 {% else %}
 {%- set is_upload = (data.url_type == 'upload') -%}
-{{ form.image_upload(
+{{ form.image_upload_dragndrop(
     data,
     errors,
     field_url=field.field_name,
@@ -19,7 +19,9 @@
     is_upload=is_upload,
     upload_label=h.scheming_language_text(field.upload_label),
     url_label=h.scheming_language_text(field.label),
-    placeholder=field.form_placeholder
+    placeholder=field.form_placeholder,
+    max_filesize=h.max_resource_size,
+    max_total_size=h.max_resource_size
     )
 }}
 {# image_upload macro doesn't support call #}

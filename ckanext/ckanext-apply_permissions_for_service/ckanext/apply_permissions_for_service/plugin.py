@@ -50,7 +50,9 @@ class ApplyPermissionsForServicePlugin(plugins.SingletonPlugin, DefaultTranslati
 
     def get_helpers(self):
         return {'service_permission_application_url': helpers.service_permission_application_url,
-                'service_permission_applications_enabled': helpers.service_permission_applications_enabled}
+                'service_permission_applications_enabled': helpers.service_permission_applications_enabled,
+                'max_resource_size': toolkit.config.get('ckan.max_resource_size')
+                }
 
     # IClick
 
