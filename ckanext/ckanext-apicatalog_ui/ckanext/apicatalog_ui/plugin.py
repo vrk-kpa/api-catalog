@@ -74,6 +74,7 @@ def get_matomo_config():
         "site_id": config.get('matomo.site_id', 0)
     }
 
+
 def service_alerts():
     locale = i18n.get_lang()
     message = config.get('ckanext.apicatalog_ui.service_alert.' + locale + '.message')
