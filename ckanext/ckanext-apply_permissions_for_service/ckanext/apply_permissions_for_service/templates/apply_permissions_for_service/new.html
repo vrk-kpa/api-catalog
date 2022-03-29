@@ -86,6 +86,11 @@
 
   <hr>
 
+  {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'file' %}
+    {% snippet "apply_permissions_for_service/snippets/additional_application_info.html", pkg=pkg, errors=errors %}
+
+    <hr>
+  {% endif %}
   <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
   <a class="btn btn-secondary">{{ _('Cancel') }}</a>
 </form>
