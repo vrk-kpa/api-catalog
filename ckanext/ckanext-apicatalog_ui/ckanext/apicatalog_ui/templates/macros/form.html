@@ -88,13 +88,13 @@
    {{ input(field_url, label=url_label, id='field-image-url', type='url', placeholder=placeholder, value=data.get(field_url), error=errors.get(field_url), classes=['control-full']) }}
 
 
-    {% if is_upload_enabled %}
+  {% if is_upload_enabled %}
     {{ input_dragndrop(field_upload, label=upload_label, id='field-image-upload', type='file', placeholder='', value='', error='', classes=['control-full'], max_filesize=max_filesize, max_total_size=max_total_size) }}
     {% if is_upload %}
-    {{ checkbox(field_clear, label=_('Clear Upload'), id='field-clear-upload', value='true', error='', classes=['control-full']) }}
+      {{ checkbox(field_clear, label=_('Clear Upload'), id='field-clear-upload', value='true', error='', classes=['control-full']) }}
     {% endif %}
-    {% endif %}
+  {% endif %}
 
-    {% if is_upload_enabled %}</div>{% endif %}
+  {% if is_upload_enabled %}</div>{% endif %}
 
-  {% endmacro %}
+{% endmacro %}
