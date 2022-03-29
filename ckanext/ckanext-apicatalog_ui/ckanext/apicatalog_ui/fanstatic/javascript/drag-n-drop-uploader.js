@@ -8,8 +8,6 @@ this.ckan.module('drag-n-drop-uploader', function($) {
       if (dropzones.length > 0) {
         dropzones.forEach(this.initializeDropzone);
       }
-
-      this.listenChanges();
     },
 
     initializeDropzone(dropzone) {

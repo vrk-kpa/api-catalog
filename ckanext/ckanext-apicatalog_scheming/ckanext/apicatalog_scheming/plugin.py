@@ -27,6 +27,9 @@ _ = toolkit._
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
 
+def get_max_resource_size():
+    return toolkit.config.get('ckan.max_resource_size')
+
 class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
@@ -67,7 +70,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'call_toolkit_function': call_toolkit_function,
                 'add_locale_to_source': add_locale_to_source,
                 'get_field_from_schema': get_field_from_schema,
-                'max_resource_size': toolkit.config.get('ckan.max_resource_size'),
+                'max_resource_size': get_max_resource_size,
                 }
 
     # IFacets

@@ -20,8 +20,8 @@
     upload_label=h.scheming_language_text(field.upload_label),
     url_label=h.scheming_language_text(field.label),
     placeholder=field.form_placeholder,
-    max_filesize=h.max_resource_size,
-    max_total_size=h.max_resource_size
+    max_filesize=h.max_resource_size(),
+    max_total_size=h.max_resource_size()
     )
 }}
 {# image_upload macro doesn't support call #}

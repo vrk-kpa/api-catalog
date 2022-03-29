@@ -597,7 +597,6 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'is_extension_loaded': is_extension_loaded,
                 'fetch_xroad_statistics': fetch_xroad_statistics,
                 'get_matomo_config': get_matomo_config,
-                'max_resource_size': config.get('ckan.max_resource_size'),
                 }
 
     def get_actions(self):

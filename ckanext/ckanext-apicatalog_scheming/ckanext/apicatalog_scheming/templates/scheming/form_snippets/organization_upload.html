@@ -21,7 +21,7 @@
     {% if type == 'file' %}
       <div class="dropzone" data-module="drag-n-drop-uploader">
         <h4>{{ _('Paste or drag file in here')}}</h4>
-        <p>{{ _('Maximum filesize of single file is {max_filesize}Mb. Total maximum size of all files is {max_total_size}Mb.').format(max_filesize=h.max_resource_size, max_total_size=h.max_resource_size) }}</p>
+        <p>{{ _('Maximum filesize of single file is {max_filesize}Mb. Total maximum size of all files is {max_total_size}Mb.').format(max_filesize=h.max_resource_size(), max_total_size=h.max_resource_size()) }}</p>
         <p>{{ _('Allowed filetypes are: pdf, jpg, jpeg, png, doc, docx, xls, xlsx, ppt, pptx, odt, ods, txt.') }}</p>
       {% endif %}
 
