@@ -30,6 +30,7 @@ _LOCALE_ALIASES = {'en_GB': 'en'}
 def get_max_resource_size():
     return toolkit.config.get('ckan.max_resource_size')
 
+
 class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
