@@ -54,7 +54,7 @@ def service_permission_application_create(context, data_dict):
 
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
-    application_file = data_dict.get('application_file') or None
+    application_file_url = data_dict.get('application_file_url') or None
 
     # Need sysadmin privileges to see permission_application_settings
     sysadmin_context = {'ignore_auth': True, 'use_cache': False}
@@ -72,7 +72,7 @@ def service_permission_application_create(context, data_dict):
                                                   service_code_list=service_code_list,
                                                   usage_description=usage_description,
                                                   request_date=request_date,
-                                                  application_file=application_file)
+                                                  application_file_url=application_file_url)
 
     log.info(package.get('service_permission_settings', '{}'))
     service_permission_settings = package.get('service_permission_settings', {})
