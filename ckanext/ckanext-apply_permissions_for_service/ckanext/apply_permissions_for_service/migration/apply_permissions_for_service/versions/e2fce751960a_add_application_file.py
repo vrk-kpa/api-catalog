@@ -1,7 +1,7 @@
 """Add application file
 
 Revision ID: e2fce751960a
-Revises: 
+Revises:
 Create Date: 2022-03-30 09:36:38.997096
 
 """
