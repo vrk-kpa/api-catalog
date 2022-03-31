@@ -60,14 +60,8 @@ def new_post(context, subsystem_id):
         upload.upload(max_size=uploader.get_max_resource_size())
 
         file_url = data_dict.get('file_url', '')
-        if re.match('https?:', file_url) is None:
-            file_url = h.url_for_static(
-                'uploads/apply_permission/%s' % file_url,
-                qualified=True
-            )
-            data_dict['file_url'] = file_url
+        data_dict['application_filename'] = file_url
 
-        data_dict['application_file_url'] = file_url
         toolkit.get_action('service_permission_application_create')(context, data_dict)
     except (toolkit.ValidationError, KeyError) as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)

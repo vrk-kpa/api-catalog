@@ -17,10 +17,10 @@ depends_on = None
 
 
 def upgrade():
-    op.add_column('apply_permission', sa.Column('application_file_url', sa.String(255), nullable=True))
+    op.add_column('apply_permission', sa.Column('application_filename', sa.String(255), nullable=True))
     pass
 
 
 def downgrade():
-    op.drop_column('apply_permission', 'application_file_url')
+    op.drop_column('apply_permission', 'application_filename')
     pass
