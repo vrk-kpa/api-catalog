@@ -6,6 +6,7 @@ from ckan.plugins import toolkit as tk
 from ckan import model as ckan_model
 from ckan.logic import NotFound
 from ckan.lib.mailer import mail_recipient
+import ckan.lib.helpers as h
 from .. import model
 import logging
 
@@ -136,6 +137,11 @@ def service_permission_application_show(context, data_dict):
         raise NotFound
 
     application = model.ApplyPermission.get(application_id).as_dict()
+    if application.get('application_filename'):
+        application['application_fileurl'] = h.url_for_static(
+            'uploads/apply_permission/%s' % application.get('application_filename'),
+            qualified=True
+        )
     return application
 
 
