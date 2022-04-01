@@ -40,6 +40,13 @@
     <span class="text">{{ _('Blog') }}</span>
   </a>
 </li>
+
+<li class="{{ class }}">
+  <a href="{{ h.url_for('apply_permissions.list_permission_applications') }}" title="{{ _('Blog') }}">
+    <i class="fa fa-file-text-o"></i>
+    <span class="text">{{ _('Service access applications') }}</span>
+  </a>
+</li>
 <!-- /ckanext_pages -->
 
 {% block header_account_logged %}
