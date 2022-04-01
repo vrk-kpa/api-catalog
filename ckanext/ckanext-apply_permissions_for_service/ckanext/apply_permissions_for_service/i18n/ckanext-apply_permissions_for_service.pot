@@ -1,15 +1,15 @@
 # Translations template for ckanext-apply_permissions_for_service.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the
 # ckanext-apply_permissions_for_service project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-09 13:01+0000\n"
+"POT-Creation-Date: 2022-04-01 07:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: ckanext/apply_permissions_for_service/views.py:27
-#: ckanext/apply_permissions_for_service/views.py:96
-#: ckanext/apply_permissions_for_service/views.py:107
-#: ckanext/apply_permissions_for_service/views.py:191
+#: ckanext/apply_permissions_for_service/views.py:26
+#: ckanext/apply_permissions_for_service/views.py:115
+#: ckanext/apply_permissions_for_service/views.py:126
+#: ckanext/apply_permissions_for_service/views.py:211
 msgid "Not authorized to see this page"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:59
+#: ckanext/apply_permissions_for_service/views.py:78
 msgid "This API is not accepting access applications."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:179
+#: ckanext/apply_permissions_for_service/views.py:199
 msgid "Changes saved successfully"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/logic/action.py:26
-#: ckanext/apply_permissions_for_service/logic/action.py:29
-#: ckanext/apply_permissions_for_service/logic/action.py:32
-#: ckanext/apply_permissions_for_service/logic/action.py:35
-#: ckanext/apply_permissions_for_service/logic/action.py:38
-#: ckanext/apply_permissions_for_service/logic/action.py:41
-#: ckanext/apply_permissions_for_service/logic/action.py:44
-#: ckanext/apply_permissions_for_service/logic/action.py:47
+#: ckanext/apply_permissions_for_service/logic/action.py:27
+#: ckanext/apply_permissions_for_service/logic/action.py:30
+#: ckanext/apply_permissions_for_service/logic/action.py:33
+#: ckanext/apply_permissions_for_service/logic/action.py:36
+#: ckanext/apply_permissions_for_service/logic/action.py:39
+#: ckanext/apply_permissions_for_service/logic/action.py:42
+#: ckanext/apply_permissions_for_service/logic/action.py:45
+#: ckanext/apply_permissions_for_service/logic/action.py:48
+#: ckanext/apply_permissions_for_service/logic/action.py:51
 msgid "Missing value"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/logic/auth.py:20
+msgid "User not authorized to view permission application."
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/base.html:4
@@ -180,35 +185,35 @@ msgstr ""
 msgid "Subsystem"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Service code"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
 msgid "Select one or several APIs you are applying to access"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:82
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:84
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
 msgid "Explain how the service will be used"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:82
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:84
 msgid "Reason for requesting access"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:85
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
 msgid "Date when access is needed"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:87
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:94
 msgid "Send access application"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:88
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:95
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:57
 msgid "Cancel"
 msgstr ""
 
@@ -244,7 +249,7 @@ msgid "Disable access requests for this API"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:23
-msgid "Ticketing service API call"
+msgid "E-mail"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:24
@@ -256,49 +261,69 @@ msgid "Access is requested on a web page managed by my organization"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:30
-msgid "Endpoint URL"
+msgid "Email address"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:38
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:21
 msgid "Add your file"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:49
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:51
 msgid "Webpage URL"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:54
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:56
 msgid "Save"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:59
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
 msgid "Permission request alternatives:"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
-msgid "Permission request alternatives instructions"
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:63
+msgid ""
+"<p style=\"font-weight: bold;\">Application in API Catalogue</p> <ul> "
+"<li>Request permission to use a subsystem by using the predefined electronic "
+"form in the API Catalogue.</li> </ul> <p style=\"font-weight: "
+"bold;\">Organisation’s downloadable application (PDF)</p> <ul> <li>Upload "
+"your organisation's own PDF form to the API Catalogue that can be used to "
+"request permission to use the subsystem. The applicant must download the form"
+" from the API Catalogue and send the completed form to the email address you "
+"specified.</li> <li>In the form, explain to which email address the form "
+"should be returned to.</li> <li>Access requests sent in this way will not "
+"appear in the API Catalogue.</li> </ul> <p style=\"font-weight: bold;\">Link "
+"to the access licence application on the organisation's website</p> <ul> "
+"<li>Enter the URL for your organisation’s web page where the person "
+"requesting access can apply for access to your organisation’s services.</li> "
+"<li>Access requests sent in this way will not appear in the API "
+"Catalogue.</li> </ul> <p>For more information on the administration of access"
+" rights, see the instructions in the <a target=\"_blank\" "
+"href=\"https://liityntakatalogi.suomi.fi/\"> API Catalogue. </a> </p>"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
-msgid ""
-"<p style=\"font-weight: bold;\">Application in API Catalogue</p>"
-"<ul>"
-"<li>Request permission to use a subsystem by using the predefined electronic form in the API Catalogue.</li>"
-"</ul>"
-"<p style=\"font-weight: bold;\">Organisation’s downloadable application (PDF)</p>"
-"<ul>"
-"<li>Upload your organisation's own PDF form to the API Catalogue that can be used to request permission to use the subsystem. The applicant must download the form from the API Catalogue and send the completed form to the email address you specified.</li>"
-"<li>In the form, explain to which email address the form should be returned to.</li>"
-"<li>Access requests sent in this way will not appear in the API Catalogue.</li>"
-"</ul>"
-"<p style=\"font-weight: bold;\">Link to the access licence application on the organisation's website</p>"
-"<ul>"
-"<li>Enter the URL for your organisation’s web page where the person requesting access can apply for access to your organisation’s services.</li>"
-"<li>Access requests sent in this way will not appear in the API Catalogue.</li>"
-"</ul>"
-"<p>For more information on the administration of access rights, see the instructions in the"
-"<a target=\"_blank\" href=\"https://liityntakatalogi.suomi.fi/\">API Catalogue.</a>"
-"</p>"
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
+msgid "Additional info"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:4
+msgid "Sending additional info"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:5
+msgid "Requested subsystem is managed by a company that requires additional info"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:6
+msgid "1. Download file and fill required information"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:14
+msgid "Download"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:17
+msgid "2. Add completed file into the application"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
