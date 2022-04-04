@@ -128,12 +128,16 @@ def settings_get(context, subsystem_id, errors={}, values=None):
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
     toolkit.c.pkg_dict = package
     settings = values or toolkit.get_action('service_permission_settings_show')(context, {'subsystem_id': subsystem_id})
+    user_managed_organizations = toolkit.get_action('organization_list_for_user')(context, {
+        'permission': 'manage_group'
+    })
 
     extra_vars = {
             'subsystem_id': subsystem_id,
             'pkg_dict': package,
             'errors': errors,
             'settings': settings,
+            'user_managed_organizations': user_managed_organizations
             }
 
     return toolkit.render('apply_permissions_for_service/settings.html', extra_vars=extra_vars)
@@ -152,6 +156,8 @@ def settings_post(context, subsystem_id):
         'file_url': form.get('file_url'),
         'clear_upload': form.get('clear_upload'),
         'web': form.get('web'),
+        'organization_id': form.get('organization_name'),
+        'business_code': form.get('business_code')
     }
 
     if toolkit.check_ckan_version(min_version='2.5'):

@@ -158,11 +158,13 @@ def service_permission_settings_update(context, data_dict):
         raise NotFound
 
     settings = {field: data_dict[field]
-                for field in ('delivery_method', 'api', 'web', 'email', 'file_url')
+                for field in ('delivery_method', 'api', 'web', 'email', 'file_url', 'organization_id')
                 if field in data_dict}
 
     tk.get_action('package_patch')(context, {
         'id': data_dict['subsystem_id'],
+        'organization_id': data_dict['organization_id'],
+        'business_code': data_dict['business_code'],
         'service_permission_settings': json.dumps(settings)
     })
 
