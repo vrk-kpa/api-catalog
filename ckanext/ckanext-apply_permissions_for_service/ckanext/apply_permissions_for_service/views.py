@@ -155,9 +155,7 @@ def settings_post(context, subsystem_id):
         'file': files.get('file'),
         'file_url': form.get('file_url'),
         'clear_upload': form.get('clear_upload'),
-        'web': form.get('web'),
-        'organization_id': form.get('organization_name'),
-        'business_code': form.get('business_code')
+        'web': form.get('web')
     }
 
     if toolkit.check_ckan_version(min_version='2.5'):
