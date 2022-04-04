@@ -368,3 +368,7 @@ msgstr "Palveluita käyttävän organisaation tiedot"
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:64
 msgid "Y-number"
 msgstr "Y-tunnus"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
+msgid "Organization using the services"
+msgstr "Palveluita käyttävä organisaatio"
