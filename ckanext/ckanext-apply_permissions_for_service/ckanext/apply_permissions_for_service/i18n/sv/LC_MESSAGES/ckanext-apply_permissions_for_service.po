@@ -355,3 +355,17 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
 msgid "Manage access requests"
 msgstr "Administrerar tillståndsbegäran"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:41
+msgid ""
+"Applying organization acts as an intermediary on behalf of the organizations"
+" using the services"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:51
+msgid "Information about the organization consuming the services"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:64
+msgid "Y-number"
+msgstr ""
