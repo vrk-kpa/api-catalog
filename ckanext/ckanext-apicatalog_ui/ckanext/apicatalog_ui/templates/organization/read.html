@@ -28,7 +28,7 @@
     {% set symbol_previous %}
       <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
     {% endset %}
-    {{ page.pager(q=q) }}
+    {{ h.custom_pager(page, q=q) }}
   {% endblock %}
 {% endblock %}
 

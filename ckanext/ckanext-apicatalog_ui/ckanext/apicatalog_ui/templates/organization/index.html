@@ -49,5 +49,5 @@
   {% set symbol_previous %}
     <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
   {% endset %}
-  {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', provider_orgs=org_list.provider_orgs or '') }}
+  {{ h.custom_pager(org_list.page, q=q or '', sort=c.sort_by_selected or '', provider_orgs=org_list.provider_orgs or '') }}
 {% endblock %}

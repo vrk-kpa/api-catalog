@@ -27,7 +27,27 @@ ckan.module('cookie_consent', function (jQuery){
                         window.location.reload();
                     }
                 }
-            })
+            }, this.initPopupExtra)
+        },
+        // When popup is initialized, init yet extra listeners for keyboard
+        initPopupExtra: function(popup) {
+            // Check that element actually exists to avoid errors about undefined variable
+            if (popup.element) {
+                const allowBtn = popup.element.querySelector('.cc-allow');
+                const denyBtn = popup.element.querySelector('.cc-deny');
+
+                $(allowBtn).keydown(function(e) {
+                    if (e.which === 13) {
+                        popup.setStatus('allow');
+                    }
+                });
+                $(denyBtn).keydown(function(e) {
+                    if (e.which === 13) {
+                        popup.setStatus('deny');
+                    }
+                });
+                console.log(allowBtn, denyBtn)
+            }
         }
     }
 })
