@@ -46,7 +46,6 @@ ckan.module('cookie_consent', function (jQuery){
                         popup.setStatus('deny');
                     }
                 });
-                console.log(allowBtn, denyBtn)
             }
         }
     }
