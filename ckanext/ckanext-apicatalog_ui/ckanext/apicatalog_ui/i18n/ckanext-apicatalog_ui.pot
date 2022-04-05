@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-05 07:07+0000\n"
+"POT-Creation-Date: 2022-04-05 10:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
-
-#: ckanext/apicatalog_ui/custom_pagination.py:10
-msgid "Go to page"
-msgstr ""
 
 #: ckanext/apicatalog_ui/fanstatic/cookieconsent/ckan-cookieconsent.js:11
 msgid "Cookie Policy"
@@ -830,6 +826,12 @@ msgstr ""
 #: ckanext/apicatalog_ui/templates/organization/read.html:29
 #: ckanext/apicatalog_ui/templates/package/search.html:32
 msgid "Previous"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/organization/index.html:52
+#: ckanext/apicatalog_ui/templates/organization/read.html:31
+#: ckanext/apicatalog_ui/templates/package/search.html:34
+msgid "Go to page"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/members.html:8

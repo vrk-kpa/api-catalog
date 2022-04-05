@@ -25,7 +25,6 @@ from ckan.lib.plugins import DefaultTranslation
 
 from .utils import package_generator, organization_generator
 import ckanext.apicatalog_ui.admindashboard as admindashboard
-from ckanext.apicatalog_ui.custom_pagination import custom_pager
 
 standard_library.install_aliases()
 
@@ -588,7 +587,6 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'get_xroad_organizations': get_xroad_organizations,
                 'is_service_bus_id': is_service_bus_id,
                 'custom_organization_list': custom_organization_list,
-                'custom_pager': custom_pager,
                 'get_statistics': get_statistics,
                 'get_last_12_months_statistics': get_last_12_months_statistics,
                 'is_test_environment': is_test_environment,
