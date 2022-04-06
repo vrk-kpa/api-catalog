@@ -24,8 +24,16 @@
 {% block primary_content_inner %}
     <script>
     function selectOrganization() {
-        var organizationName = document.getElementById("organization").value;
-        document.getElementById("businessCode").value = organizationName.split('.')[2];
+        var organizationName = document.getElementById("intermediate_organization").value;
+        document.getElementById("intermediate_business_code").value = organizationName.split('.')[2];
+    }
+    function showOrganization() {
+        var intermediateOrganizationDiv = document.getElementById("intermediate_organization_div");
+        if (intermediateOrganizationDiv.style.display === "none") {
+            intermediateOrganizationDiv.style.display = "block";
+        } else {
+            intermediateOrganizationDiv.style.display = "none";
+        }
     }
     </script>
 {% block errors %}{{ form.errors(errors) }}{% endblock %}
@@ -39,11 +47,19 @@
 
   <p>* Required field</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
+  {# TODO: Should probably be organization select component ? #}
+  {{ form.input('organization', label=_('Organization'), is_required=True, value=values.organization or user_org.name or '') }}
+  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code or user_org.xroad_member_code or '') }}
+
+  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
+  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
+
+  <hr>
   <div class="control-group">
       <table>
           <tr>
               <td style="padding-left: 5px; padding-right: 5px;">
-                  <input type="checkbox" id="another_organization" name="another_organization" value="another_organization">
+                  <input type="checkbox" id="show_intermediate_organization" name="show_intermediate_organization" onclick="showOrganization()">
               </td>
               <td style="padding-left: 5px; padding-right: 5px;">
                   {{ _('Applying organization acts as an intermediary on behalf of the organizations using the services') }}
@@ -51,24 +67,24 @@
           </tr>
       </table>
   </div>
+
   {%- set organization_options=[] -%}
   {% do organization_options.append({'value': '', 'text': ''}) %}
   {% for organization in user_managed_organizations %}
       {% do organization_options.append({'value': organization.id, 'text': organization.name}) %}
   {% endfor %}
-  <h3>{{ _('Information about the organization consuming the services') }}</h3>
-  <div class="select-wrapper">
-      {{ form.select('organization', id='organization', label=_('Organization using the services'), options=organization_options,
-      selected=None, error=None, classes=['control-full'], attrs={'class': 'form-control', 'onchange': 'selectOrganization()'}, is_required=True) }}
-  </div>
-  <div class="form-group control-full">
-      <label class="control-label" for="business_code">{{ _('Y-number') }}</label>
-      <input id="businessCode" type="text" name="businessCode" value="" placeholder="" readonly />
-      <hr/>
-  </div>
 
-  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
-  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
+  <div id="intermediate_organization_div" style="display:none">
+    <h3>{{ _('Information about the organization consuming the services') }}</h3>
+    <div class="select-wrapper">
+        {{ form.select('intermediate_organization', id='intermediate_organization', label=_('Organization using the services'), options=organization_options,
+        selected=None, error=None, classes=['control-full'], attrs={'class': 'form-control', 'onchange': 'selectOrganization()'}, is_required=True) }}
+    </div>
+    <div class="form-group control-full">
+        <label class="control-label" for="intermediate_business_code">{{ _('Y-number') }}</label>
+        <input id="intermediate_business_code" type="text" name="intermediate_business_code" value="" placeholder="" readonly />
+    </div>
+  </div>
 
   <hr>
   <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
