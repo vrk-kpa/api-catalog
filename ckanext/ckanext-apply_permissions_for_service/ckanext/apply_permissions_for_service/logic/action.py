@@ -6,6 +6,7 @@ from ckan.plugins import toolkit as tk
 from ckan import model as ckan_model
 from ckan.logic import NotFound
 from ckan.lib.mailer import mail_recipient
+import ckan.lib.helpers as h
 from .. import model
 import logging
 
@@ -57,6 +58,7 @@ def service_permission_application_create(context, data_dict):
 
     usage_description = data_dict.get('usage_description')
     request_date = data_dict.get('request_date') or None
+    application_filename = data_dict.get('application_filename') or None
 
     # Need sysadmin privileges to see permission_application_settings
     sysadmin_context = {'ignore_auth': True, 'use_cache': False}
@@ -75,7 +77,8 @@ def service_permission_application_create(context, data_dict):
                                                   subsystem_code=subsystem_code,
                                                   service_code_list=service_code_list,
                                                   usage_description=usage_description,
-                                                  request_date=request_date)
+                                                  request_date=request_date,
+                                                  application_filename=application_filename)
 
     log.info(package.get('service_permission_settings', '{}'))
     service_permission_settings = package.get('service_permission_settings', {})
@@ -139,6 +142,11 @@ def service_permission_application_show(context, data_dict):
         raise NotFound
 
     application = model.ApplyPermission.get(application_id).as_dict()
+    if application.get('application_filename'):
+        application['application_fileurl'] = h.url_for_static(
+            'uploads/apply_permission/%s' % application.get('application_filename'),
+            qualified=True
+        )
     return application
 
 
@@ -163,7 +171,7 @@ def service_permission_settings_update(context, data_dict):
         raise NotFound
 
     settings = {field: data_dict[field]
-                for field in ('delivery_method', 'api', 'web', 'email', 'file_url')
+                for field in ('delivery_method', 'api', 'web', 'email', 'file_url', 'original_filename')
                 if field in data_dict}
 
     tk.get_action('package_patch')(context, {
