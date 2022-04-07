@@ -596,7 +596,7 @@ class Apicatalog_UiPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'get_welcome_text': get_welcome_text,
                 'is_extension_loaded': is_extension_loaded,
                 'fetch_xroad_statistics': fetch_xroad_statistics,
-                'get_matomo_config': get_matomo_config
+                'get_matomo_config': get_matomo_config,
                 }
 
     def get_actions(self):

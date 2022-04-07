@@ -12,6 +12,7 @@ main_js:
     - javascript/bootstrap.offcanvas.js
     - javascript/submit-on-change.js
     - javascript/form-change-listener.js
+    - javascript/drag-n-drop-uploader.js
 
 main_css:
   output: ckanext-apicatalog_ui/%(version)s_main.css
