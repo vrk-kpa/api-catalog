@@ -38,8 +38,8 @@ class ApplyPermission(Base):
     request_date = Column(types.Date)
 
     @classmethod
-    def create(cls, organization_id, target_organization_id, intermediate_organization_id, business_code, intermediate_business_code, contact_name, contact_email,
-               ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date):
+    def create(cls, organization_id, target_organization_id, intermediate_organization_id, business_code, intermediate_business_code, contact_name,
+               contact_email, ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date):
 
         apply_permission = ApplyPermission(organization_id=organization_id,
                                            target_organization_id=target_organization_id,
