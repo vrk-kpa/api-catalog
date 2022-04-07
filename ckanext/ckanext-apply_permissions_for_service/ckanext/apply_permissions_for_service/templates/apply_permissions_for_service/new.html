@@ -25,6 +25,7 @@
     <script>
     function selectOrganization() {
         var organizationName = document.getElementById("intermediate_organization").value;
+        document.getElementById("intermediate_organization_id").value = organizationName;
         document.getElementById("intermediate_business_code").value = organizationName.split('.')[2];
     }
     function showOrganization() {
@@ -83,6 +84,7 @@
     <div class="form-group control-full">
         <label class="control-label" for="intermediate_business_code">{{ _('Y-number') }}</label>
         <input id="intermediate_business_code" type="text" name="intermediate_business_code" value="" placeholder="" readonly />
+        <input id="intermediate_organization_id" type="hidden" name="intermediate_organization_id" />
     </div>
   </div>
 

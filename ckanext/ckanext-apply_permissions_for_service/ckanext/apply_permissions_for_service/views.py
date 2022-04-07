@@ -30,7 +30,9 @@ def new_post(context, subsystem_id):
     form = toolkit.request.form
     data_dict = {
             'target_organization_id': form.get('target_organization_id'),
+            'intermediate_organization_id': form.get('intermediate_organization_id'),
             'business_code': form.get('businessCode'),
+            'intermediate_business_code': form.get('intermediate_business_code'),
             'contact_name': form.get('contactName'),
             'contact_email': form.get('contactEmail'),
             'subsystem_id': form.get('subsystemId'),
