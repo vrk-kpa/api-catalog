@@ -28,6 +28,8 @@ def index():
 
 def new_post(context, subsystem_id):
     form = toolkit.request.form
+    files = toolkit.request.files
+
     data_dict = {
             'target_organization_id': form.get('target_organization_id'),
             'business_code': form.get('businessCode'),
@@ -39,11 +41,27 @@ def new_post(context, subsystem_id):
             'ip_address_list': [ip for ip in form.getlist('ipAddress') if ip],
             'request_date': form.get('requestDate'),
             'usage_description': form.get('usageDescription'),
+            'file': files.get('file'),
+            'file_url': form.get('file_url'),
+            'clear_upload': form.get('clear_upload'),
             }
 
     try:
         organization = toolkit.get_action('organization_show')(context, {'id': form['organization']})
         data_dict['organization_id'] = organization['id']
+
+        if toolkit.check_ckan_version(min_version='2.5'):
+            upload = uploader.get_uploader('apply_permission')
+        else:
+            upload = uploader.Upload('apply_permission')
+
+        upload.update_data_dict(data_dict, 'file_url',
+                                'file', 'clear_upload')
+        upload.upload(max_size=uploader.get_max_resource_size())
+
+        file_url = data_dict.get('file_url', '')
+        data_dict['application_filename'] = file_url
+
         toolkit.get_action('service_permission_application_create')(context, data_dict)
     except (toolkit.ValidationError, KeyError) as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)
@@ -150,6 +168,7 @@ def settings_post(context, subsystem_id):
         'api': form.get('api'),
         'file': files.get('file'),
         'file_url': form.get('file_url'),
+        'original_filename': form.get('file_url'),
         'clear_upload': form.get('clear_upload'),
         'web': form.get('web'),
     }

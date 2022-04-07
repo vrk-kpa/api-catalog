@@ -34,10 +34,12 @@ class ApplyPermission(Base):
 
     usage_description = Column(types.UnicodeText)
     request_date = Column(types.Date)
+    application_filename = Column(types.UnicodeText)
 
     @classmethod
     def create(cls, organization_id, target_organization_id, business_code, contact_name, contact_email,
-               ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date):
+               ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date,
+               application_filename=None):
 
         apply_permission = ApplyPermission(organization_id=organization_id,
                                            target_organization_id=target_organization_id,
@@ -49,7 +51,8 @@ class ApplyPermission(Base):
                                            subsystem_id=subsystem_id,
                                            service_code_list=service_code_list,
                                            usage_description=usage_description,
-                                           request_date=request_date)
+                                           request_date=request_date,
+                                           application_filename=application_filename)
         model.Session.add(apply_permission)
         model.repo.commit()
         return apply_permission.id

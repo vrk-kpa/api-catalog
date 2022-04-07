@@ -50,3 +50,6 @@
 
 - name: Initialize pages database
   shell: ./bin/ckan --config {{ ckan_ini }} pages initdb  chdir={{ virtualenv }}
+
+- name: Migrate apply-permissions database
+  shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p apply_permissions_for_service chdir={{ virtualenv }}
