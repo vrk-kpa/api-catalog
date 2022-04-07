@@ -14,12 +14,22 @@
 
 {% macro input(name, id='', label='', value='', placeholder='', type='file', error="", classes=[], attrs={}, is_required=false, final=false) %}
   {%- set extra_html = caller() if caller -%}
-
   {% call form.input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required) %}
-        {%- if field.extra_label is not none -%}
-            <p>{{_(field.extra_label)}}</p>
-        {%- endif -%}
+    {%- if field.extra_label is not none -%}
+        <p>{{_(field.extra_label)}}</p>
+    {%- endif -%}
+    {% if type == 'file' %}
+      <div class="dropzone" data-module="drag-n-drop-uploader">
+        <h4>{{ _('Paste or drag file in here')}}</h4>
+        <p>{{ _('Maximum filesize of single file is {max_filesize}Mb. Total maximum size of all files is {max_total_size}Mb.').format(max_filesize=h.max_resource_size(), max_total_size=h.max_resource_size()) }}</p>
+        <p>{{ _('Allowed filetypes are: pdf, jpg, jpeg, png, doc, docx, xls, xlsx, ppt, pptx, odt, ods, txt.') }}</p>
+      {% endif %}
+
     <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly{% endif %} "{{ form.attributes(attrs) }} />
+
+    {% if type == 'file' %}
+      </div>
+    {% endif %}
   {% endcall %}
 {% endmacro %}
 
