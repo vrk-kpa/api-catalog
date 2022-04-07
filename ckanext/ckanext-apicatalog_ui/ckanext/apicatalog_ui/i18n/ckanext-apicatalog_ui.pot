@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_ui 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-01 11:55+0000\n"
+"POT-Creation-Date: 2022-04-07 06:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -675,19 +675,24 @@ msgstr[1] ""
 
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:38
 #: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:40
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:45
 msgid "Blog"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:50
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:47
+msgid "Service access applications"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:57
 msgid "Edit settings"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:52
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:59
 msgid "Settings"
 msgstr ""
 
-#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:59
-#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:61
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:66
+#: ckanext/apicatalog_ui/templates/home/snippets/apicatalog_profile_items.html:68
 msgid "Log out"
 msgstr ""
 
@@ -858,6 +863,12 @@ msgstr ""
 #: ckanext/apicatalog_ui/templates/organization/read.html:29
 #: ckanext/apicatalog_ui/templates/package/search.html:32
 msgid "Previous"
+msgstr ""
+
+#: ckanext/apicatalog_ui/templates/organization/index.html:52
+#: ckanext/apicatalog_ui/templates/organization/read.html:31
+#: ckanext/apicatalog_ui/templates/package/search.html:34
+msgid "Go to page"
 msgstr ""
 
 #: ckanext/apicatalog_ui/templates/organization/members.html:8
