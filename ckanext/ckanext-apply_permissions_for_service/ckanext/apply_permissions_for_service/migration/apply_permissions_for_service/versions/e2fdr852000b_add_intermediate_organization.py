@@ -26,4 +26,3 @@ def downgrade():
     op.drop_column('apply_permission', 'intermediate_organization_id')
     op.drop_column('apply_permission', 'intermediate_business_code')
     pass
-
