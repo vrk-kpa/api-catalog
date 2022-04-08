@@ -159,6 +159,12 @@
       "display_snippet": null
     },
     {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "resource_url_upload_ex",
+      "final": true
+    },
+    {
       "field_name": "description_translated",
       "label": "Attachment description",
       "extra_label": "A general, concise, and easy-to-understand description of the organization",
