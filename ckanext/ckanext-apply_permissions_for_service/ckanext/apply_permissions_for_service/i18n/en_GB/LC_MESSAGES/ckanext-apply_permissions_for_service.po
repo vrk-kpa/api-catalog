@@ -7,7 +7,7 @@
 # Translators:
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2021
-# Bert Viikmäe, 2021
+# Bert Viikmäe, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-09-09 13:01+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
-"Last-Translator: Bert Viikmäe, 2021\n"
+"Last-Translator: Bert Viikmäe, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -325,3 +325,23 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
 msgid "Manage access requests"
 msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:41
+msgid ""
+"Applying organization acts as an intermediary on behalf of the organizations"
+" using the services"
+msgstr ""
+"Applying organization acts as an intermediary on behalf of the organizations"
+" using the services"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:51
+msgid "Information about the organization consuming the services"
+msgstr "Information about the organization consuming the services"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:64
+msgid "Y-number"
+msgstr "Y-number"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
+msgid "Organization using the services"
+msgstr "Organization using the services"

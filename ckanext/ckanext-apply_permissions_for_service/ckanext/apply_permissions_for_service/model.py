@@ -23,8 +23,10 @@ class ApplyPermission(Base):
 
     id = Column(types.UnicodeText, primary_key=True, default=make_uuid)
     organization_id = Column(types.UnicodeText, nullable=False)
+    intermediate_organization_id = Column(types.UnicodeText, nullable=True)
     target_organization_id = Column(types.UnicodeText, nullable=False)
     business_code = Column(types.UnicodeText, nullable=False)
+    intermediate_business_code = Column(types.UnicodeText, nullable=True)
     contact_name = Column(types.UnicodeText, nullable=False)
     contact_email = Column(types.UnicodeText, nullable=False)
     ip_address_list = Column(types.JSON, nullable=False)
@@ -37,13 +39,15 @@ class ApplyPermission(Base):
     application_filename = Column(types.UnicodeText)
 
     @classmethod
-    def create(cls, organization_id, target_organization_id, business_code, contact_name, contact_email,
-               ip_address_list, subsystem_code, subsystem_id, service_code_list, usage_description, request_date,
-               application_filename=None):
+    def create(cls, organization_id, target_organization_id, intermediate_organization_id, business_code,
+               intermediate_business_code, contact_name, contact_email, ip_address_list, subsystem_code,
+               subsystem_id, service_code_list, usage_description, request_date, application_filename=None):
 
         apply_permission = ApplyPermission(organization_id=organization_id,
                                            target_organization_id=target_organization_id,
+                                           intermediate_organization_id=intermediate_organization_id,
                                            business_code=business_code,
+                                           intermediate_business_code=intermediate_business_code,
                                            contact_name=contact_name,
                                            contact_email=contact_email,
                                            ip_address_list=ip_address_list,
@@ -80,6 +84,9 @@ class ApplyPermission(Base):
 
         application_dict['target_organization'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['target_organization_id']})
+
+        application_dict['intermediate_organization'] = toolkit.get_action('organization_show')(
+            {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
 
         return application_dict
 
