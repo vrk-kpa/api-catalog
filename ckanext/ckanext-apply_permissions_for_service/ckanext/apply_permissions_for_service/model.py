@@ -23,10 +23,10 @@ class ApplyPermission(Base):
 
     id = Column(types.UnicodeText, primary_key=True, default=make_uuid)
     organization_id = Column(types.UnicodeText, nullable=False)
-    intermediate_organization_id = Column(types.UnicodeText, nullable=False)
+    intermediate_organization_id = Column(types.UnicodeText, nullable=True)
     target_organization_id = Column(types.UnicodeText, nullable=False)
     business_code = Column(types.UnicodeText, nullable=False)
-    intermediate_business_code = Column(types.UnicodeText, nullable=False)
+    intermediate_business_code = Column(types.UnicodeText, nullable=True)
     contact_name = Column(types.UnicodeText, nullable=False)
     contact_email = Column(types.UnicodeText, nullable=False)
     ip_address_list = Column(types.JSON, nullable=False)
