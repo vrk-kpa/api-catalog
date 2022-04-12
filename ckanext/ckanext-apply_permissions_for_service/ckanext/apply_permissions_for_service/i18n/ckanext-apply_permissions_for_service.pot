@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-01 07:44+0000\n"
+"POT-Creation-Date: 2022-04-12 07:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,18 @@ msgstr ""
 "Generated-By: Babel 2.7.0\n"
 
 #: ckanext/apply_permissions_for_service/views.py:26
-#: ckanext/apply_permissions_for_service/views.py:115
-#: ckanext/apply_permissions_for_service/views.py:126
-#: ckanext/apply_permissions_for_service/views.py:211
+#: ckanext/apply_permissions_for_service/views.py:121
+#: ckanext/apply_permissions_for_service/views.py:132
+#: ckanext/apply_permissions_for_service/views.py:141
+#: ckanext/apply_permissions_for_service/views.py:230
 msgid "Not authorized to see this page"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:78
+#: ckanext/apply_permissions_for_service/views.py:80
 msgid "This API is not accepting access applications."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:199
+#: ckanext/apply_permissions_for_service/views.py:218
 msgid "Changes saved successfully"
 msgstr ""
 
@@ -92,12 +93,12 @@ msgstr ""
 msgid "Apply for permission to use API {}"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:28
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:43
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:9
 msgid "API access application"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:29
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:44
 msgid ""
 "Use this form to apply for a permission to use a service that is available in"
 " the National Data Exchange Layer. Your application will be submitted to the "
@@ -105,116 +106,147 @@ msgid ""
 "Valtori is automatically notified of the needed firewall configurations."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:31
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:46
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:15
 msgid "Applicant information"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:32
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:47
 msgid ""
 "Your contact infomation and organization details are prefilled based on "
 "information provided when your organization joined the National Data Exchange"
 " layer. Modify the prefilled information if necessary."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:37
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:52
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:38
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
 msgid "Business code"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:40
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:55
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:20
 msgid "Contact name"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:41
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:56
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:21
 msgid "Contact email"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:44
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:66
+msgid ""
+"Applying organization acts as an intermediary on behalf of the organizations "
+"using the services"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:79
+msgid "Information about the organization consuming the services"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
+msgid "Organization using the services"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:85
+msgid "Y-number"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:92
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Details of your Security Server and Subsystem"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:45
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:93
 msgid ""
 "Fill in the details of the Security Server and subsystem that you are "
 "applying permission for, and need the firewall opened to."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:30
 msgid "IP address"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
 msgid "Write the IP address"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
 msgid "Select one or several IP addresses of your organization's security servers"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:54
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:102
 msgid "Add an IP address"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:58
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:106
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Subsystem code"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:63
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:111
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:37
 msgid "Details of the service and API you are applying to access"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:68
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
 msgid "Organization name"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:68
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41
 msgid "Subsystem"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:131
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Service code"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:131
 msgid "Select one or several APIs you are applying to access"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:84
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:132
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
 msgid "Explain how the service will be used"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:84
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:132
 msgid "Reason for requesting access"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:85
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:133
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
 msgid "Date when access is needed"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:94
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:143
 msgid "Send access application"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:95
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:144
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:57
 msgid "Cancel"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:4
+msgid "Preview permission application"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:6
+msgid "You are previewing permission from applicants point of view"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:7
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:13
+msgid "Exit from preview"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/sent.html:4
@@ -277,11 +309,15 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:58
+msgid "Preview application"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:62
 msgid "Permission request alternatives:"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:63
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:64
 msgid ""
 "<p style=\"font-weight: bold;\">Application in API Catalogue</p> <ul> "
 "<li>Request permission to use a subsystem by using the predefined electronic "
@@ -332,21 +368,5 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:6
 msgid "Manage access requests"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:41
-msgid "Applying organization acts as an intermediary on behalf of the organizations using the services"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:51
-msgid "Information about the organization consuming the services"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:64
-msgid "Y-number"
-msgstr ""
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
-msgid "Organization using the services"
 msgstr ""
 
