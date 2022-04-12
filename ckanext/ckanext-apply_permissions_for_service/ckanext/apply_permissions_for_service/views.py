@@ -71,7 +71,7 @@ def new_post(context, subsystem_id):
     return toolkit.render('apply_permissions_for_service/sent.html')
 
 
-def new_get(context, subsystem_id, errors={}, values={}):
+def new_get(context, subsystem_id, errors={}, values={}, preview=False):
     service_id = toolkit.request.args.get('service_id')
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
 
@@ -101,6 +101,10 @@ def new_get(context, subsystem_id, errors={}, values={}):
             'values': values,
             'errors': errors
             }
+
+    if preview:
+        return toolkit.render('apply_permissions_for_service/preview.html', extra_vars=extra_vars)
+
     return toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)
 
 
@@ -124,6 +128,15 @@ def view(application_id):
         application = toolkit.get_action('service_permission_application_show')(context, data_dict)
         extra_vars = {'application': application}
         return toolkit.render('apply_permissions_for_service/view.html', extra_vars=extra_vars)
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
+
+
+def preview(subsystem_id):
+    try:
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
+        toolkit.check_access('service_permission_application_create', context, {})
+        return new_get(context, subsystem_id, preview=True)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
@@ -220,6 +233,7 @@ def settings(subsystem_id):
 apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
 apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
+apply_permissions.add_url_rule('/preview/<subsystem_id>', 'preview_permission_application', view_func=preview)
 apply_permissions.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', view_func=manage)
 apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings',
                                view_func=settings, methods=['GET', 'POST'])

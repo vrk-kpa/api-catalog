@@ -54,7 +54,8 @@
         </div>
         <div class="module__actions">
           <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
-          <a class="btn btn-default">{{ _('Cancel') }}</a>
+          <a class="btn btn-default" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Cancel') }}</a>
+          <a class="btn btn-default btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', subsystem_id=pkg.name) }}">{{ _('Preview application') }}</a>
         </div>
 
         <div class="module__settings-instructions">

@@ -139,7 +139,9 @@
 
     <hr>
   {% endif %}
-  <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
-  <a class="btn btn-secondary">{{ _('Cancel') }}</a>
+  {% block application_form_actions %}
+    <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
+    <a class="btn btn-secondary">{{ _('Cancel') }}</a>
+  {% endblock %}
 </form>
 {% endblock %}

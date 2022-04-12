@@ -1,0 +1,14 @@
+{% extends 'apply_permissions_for_service/new.html' %}
+
+{% block prelude %}
+<h1>{{ _('Preview permission application') }}</h1>
+<div class="banner-status banner-status--info">
+    <span>{{ _('You are previewing permission from applicants point of view') }}</span>
+    <a class="btn btn-outline-white" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Exit from preview') }}</a>
+</div>
+
+{% endblock %}
+
+{% block application_form_actions %}
+    <a class="btn btn-primary" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Exit from preview') }}</a>
+{% endblock %}
