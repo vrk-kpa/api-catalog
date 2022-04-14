@@ -2,7 +2,6 @@
 from __future__ import division
 from __future__ import absolute_import
 from past.utils import old_div
-import six
 import ckan.plugins.toolkit as t
 import ckan.lib.mailer as mailer
 from datetime import datetime
