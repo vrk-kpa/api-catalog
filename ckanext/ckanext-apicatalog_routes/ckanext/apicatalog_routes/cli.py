@@ -64,8 +64,8 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
     status = t.get_action('harvester_status')({}, status_opts)
 
-    errored_runs = any(item.get('errors') != 0 for title, item in status.items())
-    running = [item.get('started') for title, item in status.items() if item.get('status') == 'running']
+    errored_runs = any(item.get('errors') != 0 for item in status.values())
+    running = [item.get('started') for item in status.values() if item.get('status') == 'running']
     stuck_runs = any(_elapsed_since(started).days >= 1 for started in running)
 
     if not (errored_runs or stuck_runs) and not force:
