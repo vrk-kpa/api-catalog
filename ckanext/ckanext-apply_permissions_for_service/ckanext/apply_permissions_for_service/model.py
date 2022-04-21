@@ -91,6 +91,4 @@ class ApplyPermission(Base):
         return application_dict
 
 
-def init_table(engine):
-    Base.metadata.create_all(engine)
-    log.info("Table for applying permissions is set-up")
+
