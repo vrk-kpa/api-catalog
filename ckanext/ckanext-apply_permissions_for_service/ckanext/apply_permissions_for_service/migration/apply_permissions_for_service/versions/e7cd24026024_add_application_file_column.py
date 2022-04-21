@@ -20,6 +20,5 @@ def upgrade():
     op.add_column('apply_permission', sa.Column('application_filename', sa.String(255), nullable=True))
 
 
-
 def downgrade():
     op.drop_column('apply_permission', 'application_filename')

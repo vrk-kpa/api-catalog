@@ -89,6 +89,3 @@ class ApplyPermission(Base):
             {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
 
         return application_dict
-
-
-

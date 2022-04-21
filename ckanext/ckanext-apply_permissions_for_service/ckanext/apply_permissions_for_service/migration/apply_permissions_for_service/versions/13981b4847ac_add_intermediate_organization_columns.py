@@ -21,8 +21,6 @@ def upgrade():
     op.add_column('apply_permission', sa.Column('intermediate_business_code', sa.String(255), nullable=True))
 
 
-
 def downgrade():
     op.drop_column('apply_permission', 'intermediate_organization_id')
     op.drop_column('apply_permission', 'intermediate_business_code')
-

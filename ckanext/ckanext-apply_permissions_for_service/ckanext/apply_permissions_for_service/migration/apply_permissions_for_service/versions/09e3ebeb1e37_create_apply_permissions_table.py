@@ -17,8 +17,10 @@ down_revision = None
 branch_labels = None
 depends_on = None
 
+
 def make_uuid():
     return str(uuid.uuid4())
+
 
 def upgrade():
     op.create_table('apply_permission',
@@ -38,7 +40,5 @@ def upgrade():
                     )
 
 
-
 def downgrade():
     op.drop_table('apply_permission')
-
