@@ -168,7 +168,20 @@
       "output_validators": "scheming_load_json ignore_not_package_maintainer"
     }
   ],
-  "resource_fields": [
+"resource_fields": [
+    {
+      "field_name": "name",
+      "label": "Title",
+      "additional_description": "Attachment name will be filled automatically and should not be edited",
+      "input_title": ["Attachment name"],
+      "only_default_lang_required": true,
+      "display_hr": true,
+      "final": true,
+      "form_placeholder": "AttachmentName",
+      "form_languages": ["en"],
+      "form_snippet": "fluent_title.html",
+      "display_snippet": null
+    },
     {
       "field_name": "url",
       "label": "URL",
@@ -176,36 +189,68 @@
       "final": true
     },
     {
-      "field_name": "name",
-      "label": "Name",
-      "required": true,
-      "form_snippet": "text_ex.html",
-      "final": true
+      "field_name": "description_translated",
+      "label": "Attachment description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
+      "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
+      "preset": "fluent_core_title_translated",
+      "required": false,
+      "only_default_lang_required": true,
+      "form_placeholder": "Write attachment description",
+      "form_languages": ["fi", "sv", "en"],
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
     },
     {
-      "field_name": "description_translated",
-      "label": "Description",
-      "preset": "fluent_core_markdown_translated",
-      "form_placeholder": "eg. A detailed description",
-      "form_languages": ["fi", "sv", "en"]
+      "field_name": "access_restriction_level",
+      "label": "Attachment visibility",
+      "extra_label": "Attachment visibility",
+      "additional_description": "When attachment visibility is private, it is only visible to the owner organisation or users from allowed organisations",
+      "validators": "boolean_validator valid_resources",
+      "form_snippet": "radio.html",
+      "display_hr": false,
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public",
+          "checked": true
+        },
+        {
+          "value": "private",
+          "label": "Private",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "form_placeholder": "Allowed Organisations",
+      "validators": "ignore_missing"
     },
     {
       "field_name": "chargeability",
       "label": "Chargeability",
-      "preset": "select",
+      "extra_label": "Other information and settings",
+      "display_hr": true,
+      "form_snippet": "select.html",
       "classes": ["control-full"],
       "choices": [
         {
           "value": "yes",
-          "label": "Yes"
+          "label": "Chargeable"
         },
         {
           "value": "no",
-          "label": "No"
+          "label": "Free of charge"
         },
         {
           "value": "maybe",
-          "label": "See description"
+          "label": "Mentioned in service description"
         }
       ]
     },
@@ -252,16 +297,6 @@
       "form_languages": ["fi", "sv", "en"],
       "help_text": "Additional information on the SLA of the API, e.g. response time or speed"
 
-    },
-    {
-      "field_name": "license_id",
-      "label": "License",
-      "form_snippet": "license.html",
-      "classes": ["control-full"],
-      "display_snippet": "license.html",
-      "form_attrs": {
-        "class": "form-control"
-      }
     },
     {
       "field_name": "valid_content",

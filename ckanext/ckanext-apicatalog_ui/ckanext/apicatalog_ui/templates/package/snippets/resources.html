@@ -1,7 +1,7 @@
 {% ckan_extends %}
 
 {% block resources_list %}
-  <ul class="list-unstyled nav nav-simple">
+  <ul class="list-unstyled nav nav-simple attachments-list">
     {% for resource in resources %}
       <li class="nav-item{{ ' active' if active == resource.id }}">
         {% set service_type = ' (' + resource.xroad_service_type|upper + ')' if resource.xroad_service_type and resource.xroad_service_type else '' %}

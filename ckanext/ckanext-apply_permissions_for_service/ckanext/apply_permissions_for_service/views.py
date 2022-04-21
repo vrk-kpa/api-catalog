@@ -28,9 +28,13 @@ def index():
 
 def new_post(context, subsystem_id):
     form = toolkit.request.form
+    files = toolkit.request.files
+
     data_dict = {
             'target_organization_id': form.get('target_organization_id'),
+            'intermediate_organization_id': form.get('intermediate_organization_id'),
             'business_code': form.get('businessCode'),
+            'intermediate_business_code': form.get('intermediate_business_code'),
             'contact_name': form.get('contactName'),
             'contact_email': form.get('contactEmail'),
             'subsystem_id': form.get('subsystemId'),
@@ -39,11 +43,27 @@ def new_post(context, subsystem_id):
             'ip_address_list': [ip for ip in form.getlist('ipAddress') if ip],
             'request_date': form.get('requestDate'),
             'usage_description': form.get('usageDescription'),
+            'file': files.get('file'),
+            'file_url': form.get('file_url'),
+            'clear_upload': form.get('clear_upload'),
             }
 
     try:
         organization = toolkit.get_action('organization_show')(context, {'id': form['organization']})
         data_dict['organization_id'] = organization['id']
+
+        if toolkit.check_ckan_version(min_version='2.5'):
+            upload = uploader.get_uploader('apply_permission')
+        else:
+            upload = uploader.Upload('apply_permission')
+
+        upload.update_data_dict(data_dict, 'file_url',
+                                'file', 'clear_upload')
+        upload.upload(max_size=uploader.get_max_resource_size())
+
+        file_url = data_dict.get('file_url', '')
+        data_dict['application_filename'] = file_url
+
         toolkit.get_action('service_permission_application_create')(context, data_dict)
     except (toolkit.ValidationError, KeyError) as e:
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)
@@ -128,12 +148,16 @@ def settings_get(context, subsystem_id, errors={}, values=None):
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
     toolkit.c.pkg_dict = package
     settings = values or toolkit.get_action('service_permission_settings_show')(context, {'subsystem_id': subsystem_id})
+    user_managed_organizations = toolkit.get_action('organization_list_for_user')(context, {
+        'permission': 'manage_group'
+    })
 
     extra_vars = {
             'subsystem_id': subsystem_id,
             'pkg_dict': package,
             'errors': errors,
             'settings': settings,
+            'user_managed_organizations': user_managed_organizations
             }
 
     return toolkit.render('apply_permissions_for_service/settings.html', extra_vars=extra_vars)
@@ -150,8 +174,9 @@ def settings_post(context, subsystem_id):
         'api': form.get('api'),
         'file': files.get('file'),
         'file_url': form.get('file_url'),
+        'original_filename': form.get('file_url'),
         'clear_upload': form.get('clear_upload'),
-        'web': form.get('web'),
+        'web': form.get('web')
     }
 
     if toolkit.check_ckan_version(min_version='2.5'):

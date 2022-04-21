@@ -1,0 +1,31 @@
+{% import 'macros/form.html' as form %}
+
+
+<h3>{{ _('Sending additional info') }}</h3>
+<p>{{ _('Requested subsystem is managed by a company that requires additional info') }}</p>
+<h4>{{ _('1. Download file and fill required information') }}</h4>
+<div class="additional_application_info--download">
+    <div class="application-file">
+        <i class="fal fa-file-alt"></i>
+        {{ pkg.get('service_permission_settings', {}).get('original_filename') }}
+    </div>
+    <a class="btn btn-outline-primary" href="{{ pkg.get('service_permission_settings', {}).get('file_url') }}">
+        <i class="far fa-arrow-to-bottom"></i>
+        {{ _('Download') }}
+    </a>
+</div>
+<h4>{{ _('2. Add completed file into the application') }}</h4>
+{{ form.image_upload_dragndrop(
+    {},
+    errors,
+    upload_label=_('Add your file'),
+    is_upload_enabled=h.uploads_enabled(),
+    is_url=is_url,
+    is_upload=is_upload,
+    field_url='file_url',
+    field_upload='file',
+    field_clear='clear_upload',
+    max_filesize=h.max_resource_size(),
+    max_total_size=h.max_resource_size()
+    )
+}}

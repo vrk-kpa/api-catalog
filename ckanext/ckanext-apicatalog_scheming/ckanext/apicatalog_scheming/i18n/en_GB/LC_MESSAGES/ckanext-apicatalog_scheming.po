@@ -5,16 +5,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 # 
 # Translators:
-# Bert Viikmäe, 2021
+# Bert Viikmäe, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-28 09:12+0200\n"
+"POT-Creation-Date: 2021-12-27 13:31+0200\n"
 "PO-Revision-Date: 2021-09-14 09:09+0000\n"
-"Last-Translator: Bert Viikmäe, 2021\n"
+"Last-Translator: Bert Viikmäe, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,14 +73,6 @@ msgid ""
 msgstr ""
 "A general, concise, and easy-to-understand description of the organization"
 
-#: ckanext/apicatalog_scheming/templates/scheming/form_snippets/fluent_markdown.html:7
-msgid ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick "
-"reference\">Markdown formatting</a> here."
-msgstr ""
-"You can use <a href=\"#markdown\" title=\"Markdown quick "
-"reference\">Markdown formatting</a>here."
-
 #: ckanext/apicatalog_scheming/translations.py:17
 msgid "Description in Finnish"
 msgstr "Description in Finnish"
@@ -133,21 +125,41 @@ msgstr "Save changes"
 msgid "Write subsystem description"
 msgstr "Write subsystem description"
 
+#: ckanext/apicatalog_scheming/translations.py:30
+msgid "Write attachment description"
+msgstr "Write attachment description"
+
 #: ckanext/apicatalog_scheming/translations.py:28
 msgid "Service name will be filled automatically and should not be edited"
 msgstr "Service name will be filled automatically and should not be edited"
+
+#: ckanext/apicatalog_scheming/translations.py:32
+msgid "Attachment name will be filled automatically and should not be edited"
+msgstr "Attachment name will be filled automatically and should not be edited"
 
 #: ckanext/apicatalog_scheming/translations.py:29
 msgid "Service visibility"
 msgstr "Service visibility"
 
+#: ckanext/apicatalog_scheming/translations.py:36
+msgid "Attachment visibility"
+msgstr "Attachment visibility"
+
 #: ckanext/apicatalog_scheming/translations.py:30
 msgid "Service description"
 msgstr "Service description"
 
+#: ckanext/apicatalog_scheming/translations.py:37
+msgid "Attachment description"
+msgstr "Attachment description"
+
 #: ckanext/apicatalog_scheming/translations.py:31
 msgid "Service name"
 msgstr "Service name"
+
+#: ckanext/apicatalog_scheming/translations.py:38
+msgid "Attachment name"
+msgstr "Attachment name"
 
 #: ckanext/apicatalog_scheming/translations.py:32
 msgid ""
@@ -155,6 +167,14 @@ msgid ""
 "organisation or users from allowed organisations"
 msgstr ""
 "When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+
+#: ckanext/apicatalog_scheming/translations.py:41
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
+msgstr ""
+"When attachment visibility is private, it is only visible to the owner "
 "organisation or users from allowed organisations"
 
 #: ckanext/apicatalog_scheming/translations.py:33
@@ -189,20 +209,6 @@ msgstr ""
 "URL will be formed automatically from the name of the application and should"
 " in general not be edited."
 
-#: ckanext/apicatalog_scheming/validators.py:54
-msgid "Package contains invalid resources"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:75
-#: ckanext/apicatalog_scheming/validators.py:243
-msgid "Failed to decode JSON string"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/validators.py:78
-#: ckanext/apicatalog_scheming/validators.py:246
-msgid "Invalid encoding for JSON string"
-msgstr ""
-
 #: ckanext/apicatalog_scheming/validators.py:82
 #: ckanext/apicatalog_scheming/validators.py:249
 msgid "expecting JSON object"
@@ -223,4 +229,30 @@ msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:146
 msgid "Business id verification number does match business id."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:44
+msgid "E-mail address in Finnish"
+msgstr "E-mail address in Finnish"
+
+#: ckanext/apicatalog_scheming/translations.py:45
+msgid "E-mail address in Swedish"
+msgstr "E-mail address in Swedish"
+
+#: ckanext/apicatalog_scheming/translations.py:45
+msgid "E-mail address in English"
+msgstr "E-mail address in English"
+
+#: ckanext/apicatalog_scheming/validators.py:54
+msgid "Package contains invalid resources"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:75
+#: ckanext/apicatalog_scheming/validators.py:243
+msgid "Failed to decode JSON string"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/validators.py:78
+#: ckanext/apicatalog_scheming/validators.py:246
+msgid "Invalid encoding for JSON string"
 msgstr ""

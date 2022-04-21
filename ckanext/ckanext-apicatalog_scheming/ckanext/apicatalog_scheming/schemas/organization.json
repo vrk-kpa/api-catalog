@@ -10,6 +10,7 @@
       "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
+      "display_hr": false,
       "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null
@@ -20,6 +21,7 @@
       "validators": "not_empty unicode name_validator group_name_validator",
       "form_snippet": "url_slug.html",
       "required": false,
+      "display_prepend": true,
       "form_placeholder": "my-theme"
     },
     {
@@ -79,13 +81,15 @@
       "form_placeholder": "Phone number"
     },
     {
-      "field_name": "email_address",
-      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
+      "field_name": "email_address_translated",
       "label": "Email address",
-      "validators": "ignore_missing",
-      "form_snippet": "extra_label.html",
-      "classes": ["control-full"],
-      "form_placeholder": "Email address"
+      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
+      "input_title": ["E-mail address in Finnish", "E-mail address in Swedish", "E-mail address in English"],
+      "preset": "fluent_list",
+      "form_placeholder": "Email address",
+      "validators": "fluent_list ignore_missing",
+      "display_snippet": "fluent_email_list.html",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "webpage_address",

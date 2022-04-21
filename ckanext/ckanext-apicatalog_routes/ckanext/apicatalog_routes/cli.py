@@ -2,7 +2,6 @@
 from __future__ import division
 from __future__ import absolute_import
 from past.utils import old_div
-import six
 import ckan.plugins.toolkit as t
 import ckan.lib.mailer as mailer
 from datetime import datetime
@@ -65,9 +64,9 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
     status = t.get_action('harvester_status')({}, status_opts)
 
-    errored_runs = any(item.get('errors') != 0 for item in list(status.values()))
-    running = (item.get('started') for item in list(status.values()) if item.get('status') == 'running')
-    stuck_runs = any(_elapsed_since(started).days > 1 for started in running)
+    errored_runs = any(item.get('errors') != 0 for item in status.values())
+    running = [item.get('started') for item in status.values() if item.get('status') == 'running']
+    stuck_runs = any(_elapsed_since(started).days >= 1 for started in running)
 
     if not (errored_runs or stuck_runs) and not force:
         click.echo('Nothing to report')
@@ -129,8 +128,8 @@ def send_stuck_runs_report(ctx, dryrun, force, all_harvesters):
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
     status = t.get_action('harvester_status')({}, status_opts)
 
-    stuck_runs = [(title, job_status) for title, job_status in six.iteritems(status)
-                  if job_status.get('status') == 'running' and _elapsed_since(job_status.get('started')).days > 1]
+    stuck_runs = [(title, job_status) for title, job_status in status.items()
+                  if job_status.get('status') == 'running' and _elapsed_since(job_status.get('started')).days >= 1]
 
     if stuck_runs:
         site_title = t.config.get('ckan.site_title', '')
