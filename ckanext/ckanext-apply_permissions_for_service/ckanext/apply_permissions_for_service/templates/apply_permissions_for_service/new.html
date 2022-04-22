@@ -133,8 +133,7 @@
   {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date) }}
 
   <hr>
-
-  {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'file' %}
+  {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'email' and pkg.get('service_permission_settings', {}).get('require_additional_application_file') == True %}
     {% snippet "apply_permissions_for_service/snippets/additional_application_info.html", pkg=pkg, errors=errors %}
 
     <hr>

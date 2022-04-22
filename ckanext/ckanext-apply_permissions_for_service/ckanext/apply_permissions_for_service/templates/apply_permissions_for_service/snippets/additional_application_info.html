@@ -7,9 +7,9 @@
 <div class="additional_application_info--download">
     <div class="application-file">
         <i class="fal fa-file-alt"></i>
-        {{ pkg.get('service_permission_settings', {}).get('original_filename') }}
+        {{ pkg.get('service_permission_settings', {}).get('original_additional_filename') }}
     </div>
-    <a class="btn btn-outline-primary" href="{{ pkg.get('service_permission_settings', {}).get('file_url') }}">
+    <a class="btn btn-outline-primary" href="{{ pkg.get('service_permission_settings', {}).get('additional_file_url') }}">
         <i class="far fa-arrow-to-bottom"></i>
         {{ _('Download') }}
     </a>
