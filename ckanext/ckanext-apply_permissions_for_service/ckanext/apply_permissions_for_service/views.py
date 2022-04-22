@@ -187,12 +187,12 @@ def settings_post(context, subsystem_id):
         'api': form.get('api'),
         'file': files.get('file'),
         'file_url': form.get('file_url'),
-        'original_filename': form.get('file_url'),
+        'original_filename': form.get('original_filename'),
         'clear_upload': form.get('clear_upload'),
         'web': form.get('web'),
         'require_additional_application_file': toolkit.asbool(form.get('require_additional_application_file')),
         'additional_file_url': form.get('additional_file_url'),
-        'original_additional_filename': form.get('additional_file_url'),
+        'original_additional_filename': form.get('original_additional_filename'),
         'additional_file_clear_upload': form.get('additional_file_clear_upload'),
     }
 
@@ -208,6 +208,8 @@ def settings_post(context, subsystem_id):
 
         file_url = data_dict.get('file_url', '')
         if re.match('https?:', file_url) is None:
+            # File has been updated, so update filename too
+            data_dict['original_filename'] = file_url
             file_url = h.url_for_static(
                 'uploads/apply_permission/%s' % file_url,
                 qualified=True
@@ -221,6 +223,8 @@ def settings_post(context, subsystem_id):
 
         additional_file_url = data_dict.get('additional_file_url', '')
         if re.match('https?:', additional_file_url) is None:
+            # File has been updated, so update filename too
+            data_dict['original_additional_filename'] = additional_file_url
             additional_file_url = h.url_for_static(
                 'uploads/apply_permission/%s' % additional_file_url,
                 qualified=True

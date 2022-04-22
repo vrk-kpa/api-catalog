@@ -49,6 +49,10 @@
                     {{ form.checkbox('require_additional_application_file', label=_('Request additional info with an attachment'), id='additional_application_file', value='True', checked=settings.require_additional_application_file) }}
 
                     <div id="additional_application_file_field">
+                      {% if settings.get('original_additional_filename', False) %}
+                        {{ form.hidden('original_additional_filename', value=settings.original_additional_filename) }}
+                      {% endif %}
+                      
                       {% set is_upload_additional_file = settings.additional_file_url and not settings.additional_file_url.startswith('http') %}
                       {% set is_url_additional_file = settings.additional_file_url and settings.additional_file_url.startswith('http') %}
                       {{ form.image_upload_dragndrop(
@@ -69,6 +73,10 @@
                   </div>
              </div>
             <div data-mutex-value="file">
+              {% if settings.get('original_filename', False) %}
+                {{ form.hidden('original_filename', value=settings.original_filename) }}
+              {% endif %}
+              
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
               {{ form.image_upload_dragndrop(
