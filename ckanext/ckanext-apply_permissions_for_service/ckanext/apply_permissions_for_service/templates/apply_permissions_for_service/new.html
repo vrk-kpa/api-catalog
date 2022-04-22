@@ -103,7 +103,7 @@
   {% endcall %}
 
   <div class="select-wrapper">
-    {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
+    {{ form.select_with_description('subsystemCode', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
   </div>
 
   <hr>
