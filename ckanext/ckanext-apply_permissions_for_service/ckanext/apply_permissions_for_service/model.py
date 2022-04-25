@@ -89,8 +89,3 @@ class ApplyPermission(Base):
             {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
 
         return application_dict
-
-
-def init_table(engine):
-    Base.metadata.create_all(engine)
-    log.info("Table for applying permissions is set-up")

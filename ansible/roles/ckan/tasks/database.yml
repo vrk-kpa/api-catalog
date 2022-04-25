@@ -38,10 +38,6 @@
 - name: Migrate Link Validation database
   shell: ./bin/ckan --config {{ ckan_ini }} links migrate chdir={{ virtualenv }}
 
-- name: Initialize service permission application database
-  shell: ./bin/ckan --config "{{ ckan_ini }}" apply-permissions init chdir={{ virtualenv }}
-  when: "'apply_permissions_for_service' in ckan_plugins"
-
 - name: Initialize users for organization database
   shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-database init chdir={{ virtualenv }}
 
@@ -53,3 +49,4 @@
 
 - name: Migrate apply-permissions database
   shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p apply_permissions_for_service chdir={{ virtualenv }}
+  when: "'apply_permissions_for_service' in ckan_plugins"
