@@ -30,6 +30,7 @@ ckan_patches:
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_old_fontawesome" }
+  - { file: "fix_autocomplete_server_error" }
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
