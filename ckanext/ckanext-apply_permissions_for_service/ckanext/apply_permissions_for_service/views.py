@@ -71,7 +71,7 @@ def new_post(context, subsystem_id):
     return toolkit.render('apply_permissions_for_service/sent.html')
 
 
-def new_get(context, subsystem_id, errors={}, values={}):
+def new_get(context, subsystem_id, errors={}, values={}, preview=False):
     service_id = toolkit.request.args.get('service_id')
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
 
@@ -101,6 +101,10 @@ def new_get(context, subsystem_id, errors={}, values={}):
             'values': values,
             'errors': errors
             }
+
+    if preview:
+        return toolkit.render('apply_permissions_for_service/preview.html', extra_vars=extra_vars)
+
     return toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)
 
 
@@ -124,6 +128,15 @@ def view(application_id):
         application = toolkit.get_action('service_permission_application_show')(context, data_dict)
         extra_vars = {'application': application}
         return toolkit.render('apply_permissions_for_service/view.html', extra_vars=extra_vars)
+    except toolkit.NotAuthorized:
+        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
+
+
+def preview(subsystem_id):
+    try:
+        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
+        toolkit.check_access('service_permission_settings', context, {})
+        return new_get(context, subsystem_id, preview=True)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
@@ -174,9 +187,13 @@ def settings_post(context, subsystem_id):
         'api': form.get('api'),
         'file': files.get('file'),
         'file_url': form.get('file_url'),
-        'original_filename': form.get('file_url'),
+        'original_filename': form.get('original_filename'),
         'clear_upload': form.get('clear_upload'),
-        'web': form.get('web')
+        'web': form.get('web'),
+        'require_additional_application_file': toolkit.asbool(form.get('require_additional_application_file')),
+        'additional_file_url': form.get('additional_file_url'),
+        'original_additional_filename': form.get('original_additional_filename'),
+        'additional_file_clear_upload': form.get('additional_file_clear_upload'),
     }
 
     if toolkit.check_ckan_version(min_version='2.5'):
@@ -184,17 +201,35 @@ def settings_post(context, subsystem_id):
     else:
         upload = uploader.Upload('apply_permission')
 
-    upload.update_data_dict(data_dict, 'file_url',
-                            'file', 'clear_upload')
-    upload.upload(max_size=uploader.get_max_resource_size())
+    if (data_dict.get('delivery_method') == 'file'):
+        upload.update_data_dict(data_dict, 'file_url',
+                                'file', 'clear_upload')
+        upload.upload(max_size=uploader.get_max_resource_size())
 
-    file_url = data_dict.get('file_url', '')
-    if re.match('https?:', file_url) is None:
-        file_url = h.url_for_static(
-            'uploads/apply_permission/%s' % file_url,
-            qualified=True
-        )
-        data_dict['file_url'] = file_url
+        file_url = data_dict.get('file_url', '')
+        if re.match('https?:', file_url) is None:
+            # File has been updated, so update filename too
+            data_dict['original_filename'] = file_url
+            file_url = h.url_for_static(
+                'uploads/apply_permission/%s' % file_url,
+                qualified=True
+            )
+            data_dict['file_url'] = file_url
+
+    if (data_dict.get('delivery_method') == 'email' and data_dict.get('require_additional_application_file')):
+        upload.update_data_dict(data_dict, 'additional_file_url',
+                                'file', 'additional_file_clear_upload')
+        upload.upload(max_size=uploader.get_max_resource_size())
+
+        additional_file_url = data_dict.get('additional_file_url', '')
+        if re.match('https?:', additional_file_url) is None:
+            # File has been updated, so update filename too
+            data_dict['original_additional_filename'] = additional_file_url
+            additional_file_url = h.url_for_static(
+                'uploads/apply_permission/%s' % additional_file_url,
+                qualified=True
+            )
+            data_dict['additional_file_url'] = additional_file_url
 
     try:
         toolkit.get_action('service_permission_settings_update')(context, data_dict)
@@ -220,6 +255,7 @@ def settings(subsystem_id):
 apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
 apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
+apply_permissions.add_url_rule('/preview/<subsystem_id>', 'preview_permission_application', view_func=preview)
 apply_permissions.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', view_func=manage)
 apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings',
                                view_func=settings, methods=['GET', 'POST'])

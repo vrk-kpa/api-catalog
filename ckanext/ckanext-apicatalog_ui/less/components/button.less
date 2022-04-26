@@ -2,7 +2,7 @@
     border-radius: @border-radius__button;
     font-weight: normal;
 
-    &&-primary {
+    &.btn-primary {
         background: linear-gradient(0deg, @suomifi-highlight-dark, @suomifi-highlight-base);
         border-color: @suomifi-highlight-base;
 
@@ -11,13 +11,19 @@
         }
     }
 
-    &-icon--right {
+    .btn-icon--right {
         margin-left: @grid-gutter-width / 4;
     }
 
-    &&-outline-primary {
+    &.btn-outline-primary {
         background: none;
         border-color: @suomifi-highlight-base;
         color: @suomifi-highlight-base;
+    }
+
+    &.btn-outline-white {
+        color: @white;
+        background-color: transparent;
+        border-color: @white
     }
 }
