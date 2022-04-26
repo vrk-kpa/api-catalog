@@ -101,7 +101,7 @@ class Apicatalog_SchemingPlugin(plugins.SingletonPlugin, DefaultTranslation):
             # Add for each language
             for language in languages:
                 if prop_value.get(language):
-                    pkg_dict['vocab_%s_%s' % (prop_key, language)] = [tag for tag in prop_value[language]]
+                    pkg_dict['vocab_%s_%s' % (prop_key, language)] = [tag.lower() for tag in prop_value[language]]
 
         if pkg_dict.get('num_resources', 0) > 0:
             pkg_dict['services'] = "Subsystems with services"
