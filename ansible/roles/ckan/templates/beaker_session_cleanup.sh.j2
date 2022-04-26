@@ -1,0 +1,12 @@
+#!/bin/bash
+psql --quiet postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }} << EOF
+DO \$\$
+    BEGIN
+        IF EXISTS
+            (select 1 from pg_tables where tablename = 'beaker_cache')
+        THEN
+            delete from beaker_cache where accessed < NOW()-'7  day'::interval;
+        END IF;
+    END
+\$\$ ;
+EOF
