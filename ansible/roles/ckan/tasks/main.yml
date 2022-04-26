@@ -107,6 +107,14 @@
     - { src: wsgi.py, dest: "{{ ckan_wsgi_script }}", mode: "0640", owner: root, group: "{{ www_group }}" }
     - { src: ckan-uwsgi.ini.j2, dest: "{{ ckan_uwsgi_conf }}", mode: "0640", owner: root, group: "{{ www_group }}" }
 
+- name: Setup beaker session cleanup script
+  template:
+    src: "beaker_session_cleanup.sh.j2"
+    dest: "/usr/local/sbin/beaker_session_cleanup.sh"
+    mode: "0500"
+    owner: root
+    group: "root"
+
 - name: Install CKAN frontend requirements
   shell: npm install --only=prod chdir={{ virtualenv }}/src/ckan
 
@@ -166,6 +174,13 @@
     minute: "0"
     hour: "0"
     job: "find /tmp/default/sessions -type f -mtime +3 -print -exec rm {} ';'"
+
+- name: Remove old beaker sessions from beaker_cache table
+  cron:
+    name: "Remove old beaker sessions"
+    minute: "0"
+    hour: "3"
+    job: "/usr/local/sbin/beaker_session_cleanup.sh > /dev/null 2>&1"
 
 - name: Modify allowed robots
   template:
