@@ -103,7 +103,7 @@
   {% endcall %}
 
   <div class="select-wrapper">
-    {{ form.select('subsystemCode', label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
+    {{ form.select_with_description('subsystemCode', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
   </div>
 
   <hr>
@@ -133,13 +133,14 @@
   {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date) }}
 
   <hr>
-
-  {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'file' %}
+  {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'email' and pkg.get('service_permission_settings', {}).get('require_additional_application_file') == True %}
     {% snippet "apply_permissions_for_service/snippets/additional_application_info.html", pkg=pkg, errors=errors %}
 
     <hr>
   {% endif %}
-  <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
-  <a class="btn btn-secondary">{{ _('Cancel') }}</a>
+  {% block application_form_actions %}
+    <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
+    <a class="btn btn-secondary">{{ _('Cancel') }}</a>
+  {% endblock %}
 </form>
 {% endblock %}
