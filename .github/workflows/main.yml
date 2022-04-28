@@ -64,6 +64,9 @@ jobs:
           # Replace default path to CKAN core config file with the one on the container
           sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
 
+          cd ../ckanext-fluent
+          pip install -e .
+
       - name: Setup extension
         run: |
           ckan -c ckanext/ckanext-apicatalog_routes/test.ini db init
