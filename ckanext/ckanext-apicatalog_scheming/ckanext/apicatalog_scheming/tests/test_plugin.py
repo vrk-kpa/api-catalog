@@ -3,7 +3,7 @@ from ckan.tests.factories import User, Dataset, Organization
 from ckan.plugins.toolkit import get_action
 
 
-@pytest.mark.usefixtures('with_plugins', 'clean_db')
+@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index')
 def test_allowed_organization_user_should_see_subsystem():
     organization1 = Organization()
 
