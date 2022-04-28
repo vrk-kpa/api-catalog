@@ -61,6 +61,8 @@ jobs:
 
           cd ../ckanext-apicatalog_scheming
           pip install -e .
+          # Replace default path to CKAN core config file with the one on the container
+          sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
 
       - name: Setup extension
         run: |
