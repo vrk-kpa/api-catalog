@@ -14,7 +14,6 @@ main_js:
     - javascript/form-change-listener.js
     - javascript/collapsible.js
     - javascript/api-catalog-select2.js
-    - javascript/title-to-del-title-and-url-slug.js
     - javascript/drag-n-drop-uploader.js
 
 main_css:

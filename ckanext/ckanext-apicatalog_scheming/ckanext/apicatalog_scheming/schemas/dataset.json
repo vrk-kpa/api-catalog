@@ -17,9 +17,12 @@
       "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose."
     },
     {
-      "field_name": "title_in_data_exchange_layer",
+      "field_name": "title",
       "label": "Title in Data Exchange Layer",
-      "form_snippet": "data_exchange_layer_title.html",
+      "form_attrs": {
+        "readonly": true,
+        "class": "readonly"
+      },
       "end_of_section": true
     },
     {
@@ -126,7 +129,7 @@
       "label": "URL",
       "form_placeholder": "my-applications-title",
       "final": true,
-      "form_snippet": "url.html",
+      "preset": "dataset_slug_ex",
       "validators": "not_empty unicode name_validator package_name_validator",
       "end_of_section": true
     },
