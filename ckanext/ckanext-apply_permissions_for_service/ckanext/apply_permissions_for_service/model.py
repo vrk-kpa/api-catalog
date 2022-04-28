@@ -86,8 +86,7 @@ class ApplyPermission(Base):
         application_dict['target_organization'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['target_organization_id']})
 
-        if "intermediate_organization_id" in application_dict \
-                and application_dict['intermediate_organization_id'] is not None:
+        if application_dict.get('intermediate_organization_id'):
             try:
                 application_dict['intermediate_organization'] = toolkit.get_action('organization_show')(
                     {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
