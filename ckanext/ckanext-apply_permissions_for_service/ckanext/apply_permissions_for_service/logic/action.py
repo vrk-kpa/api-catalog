@@ -50,8 +50,8 @@ def service_permission_application_create(context, data_dict):
     if service_code_list is None or service_code_list == "":
         errors['service_code_list'] = _('Missing value')
 
-    intermediate_organization_id = data_dict.get('intermediate_organization_id')
-    intermediate_business_code = data_dict.get('intermediate_business_code')
+    intermediate_organization_id = data_dict.get('intermediate_organization_id') or None
+    intermediate_business_code = data_dict.get('intermediate_business_code') or None
 
     if errors:
         raise tk.ValidationError(errors)
