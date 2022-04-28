@@ -66,4 +66,6 @@ jobs:
         run: |
           ckan -c ckanext/ckanext-apicatalog_routes/test.ini db init
       - name: Run tests
-        run: pytest --ckan-ini=ckanext/ckanext-apicatalog_routes/test.ini --cov=ckanext.apicatalog_routes --disable-warnings ckanext/ckanext-apicatalog_routes/ckanext/apicatalog_routes/tests
+        run: |
+          pytest --ckan-ini=ckanext/ckanext-apicatalog_routes/test.ini --cov=ckanext.apicatalog_routes --disable-warnings ckanext/ckanext-apicatalog_routes/ckanext/apicatalog_routes/tests
+          pytest --ckan-ini=ckanext/ckanext-apicatalog_scheming/test.ini --cov=ckanext.apicatalog_scheming --disable-warnings ckanext/ckanext-apicatalog_scheming/ckanext/apicatalog_scheming/tests
