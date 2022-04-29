@@ -109,7 +109,7 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
 
         if pkg_dict.get('private') and \
-                not pkg_dict.get('private'):
+                pkg_dict.get('private') is True:
             allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
                                      if pkg_dict.get('allowed_organizations', "")]
             for org_name in allowed_organizations:
