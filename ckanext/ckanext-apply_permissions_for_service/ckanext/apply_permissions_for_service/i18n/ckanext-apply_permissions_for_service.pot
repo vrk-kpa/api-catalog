@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-22 12:20+0000\n"
+"POT-Creation-Date: 2022-05-01 16:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,11 +120,13 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:52
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Organization"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:35
 msgid "Business code"
 msgstr ""
 
@@ -145,6 +147,7 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:79
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Information about the organization consuming the services"
 msgstr ""
 
@@ -157,7 +160,7 @@ msgid "Y-number"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:92
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Details of your Security Server and Subsystem"
 msgstr ""
 
@@ -168,7 +171,7 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:30
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:46
 msgid "IP address"
 msgstr ""
 
@@ -191,27 +194,27 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:106
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:47
 msgid "Subsystem code"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:111
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:37
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:53
 msgid "Details of the service and API you are applying to access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:56
 msgid "Organization name"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:57
 msgid "Subsystem"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:131
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
 msgid "Service code"
 msgstr ""
 
@@ -220,7 +223,7 @@ msgid "Select one or several APIs you are applying to access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:132
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:67
 msgid "Explain how the service will be used"
 msgstr ""
 
@@ -229,7 +232,7 @@ msgid "Reason for requesting access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:133
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:68
 msgid "Date when access is needed"
 msgstr ""
 
@@ -349,7 +352,7 @@ msgid ""
 "href=\"https://liityntakatalogi.suomi.fi/\"> API Catalogue. </a> </p>"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:75
 msgid "Additional info"
 msgstr ""
 

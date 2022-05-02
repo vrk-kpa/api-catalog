@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog_scheming 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-02 17:56+0200\n"
+"POT-Creation-Date: 2022-05-01 16:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: ckanext/apicatalog_scheming/plugin.py:76
+#: ckanext/apicatalog_scheming/plugin.py:82
 msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:77
+#: ckanext/apicatalog_scheming/plugin.py:83
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:78
+#: ckanext/apicatalog_scheming/plugin.py:84
 msgid "Tags"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/plugin.py:79
+#: ckanext/apicatalog_scheming/plugin.py:85
 msgid "Formats"
 msgstr ""
 
@@ -106,36 +106,6 @@ msgstr ""
 msgid "Discard changes"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/translations.py:34
-msgid ""
-"When service visibility is private, it is only visible to the owner "
-"organisation or users from allowed organisations"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:36
-msgid "Chargeable"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:37
-msgid "Free of charge"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:38
-msgid "Mentioned in service description"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:39
-msgid "No license specified"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:40
-msgid "Open Database license"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:41
-msgid "Web address"
-msgstr ""
-
 #: ckanext/apicatalog_scheming/translations.py:28
 msgid "Save changes"
 msgstr ""
@@ -180,16 +150,10 @@ msgstr ""
 msgid "Attachment name"
 msgstr ""
 
-#: ckanext/apicatalog_scheming/translations.py:44
-msgid "E-mail address in Finnish"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:45
-msgid "E-mail address in Swedish"
-msgstr ""
-
-#: ckanext/apicatalog_scheming/translations.py:46
-msgid "E-mail address in English"
+#: ckanext/apicatalog_scheming/translations.py:39
+msgid ""
+"When service visibility is private, it is only visible to the owner "
+"organisation or users from allowed organisations"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/translations.py:41
@@ -198,10 +162,46 @@ msgid ""
 "organisation or users from allowed organisations"
 msgstr ""
 
+#: ckanext/apicatalog_scheming/translations.py:43
+msgid "Chargeable"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:44
+msgid "Free of charge"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:45
+msgid "Mentioned in service description"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:46
+msgid "No license specified"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:47
+msgid "Open Database license"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:48
+msgid "Web address"
+msgstr ""
+
 #: ckanext/apicatalog_scheming/translations.py:49
 msgid ""
 "URL will be formed automatically from the name of the application and should "
 "in general not be edited."
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:51
+msgid "E-mail address in Finnish"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:52
+msgid "E-mail address in Swedish"
+msgstr ""
+
+#: ckanext/apicatalog_scheming/translations.py:53
+msgid "E-mail address in English"
 msgstr ""
 
 #: ckanext/apicatalog_scheming/validators.py:54
