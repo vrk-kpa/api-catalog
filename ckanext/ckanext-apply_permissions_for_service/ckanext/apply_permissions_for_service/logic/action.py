@@ -112,10 +112,10 @@ def service_permission_application_create(context, data_dict):
                 if application_filename:
                     with get_application_attachment(application_filename) as file:
                         mail_recipient(owner_org['title'], email_address, email_subject, email_content,
-                                    headers={'Content-Type': 'text/html'}, attachments=[(application_filename, file)])
+                                       headers={'Content-Type': 'text/html'}, attachments=[(application_filename, file)])
                 else:
                     mail_recipient(owner_org['title'], email_address, email_subject, email_content,
-                                    headers={'Content-Type': 'text/html'})
+                                   headers={'Content-Type': 'text/html'})
             except Exception as e:
                 # Email exceptions are not user relevant nor action critical, but should be logged
                 log.warning(e)
