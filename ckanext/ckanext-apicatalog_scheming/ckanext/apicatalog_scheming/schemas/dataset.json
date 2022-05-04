@@ -211,7 +211,6 @@
       "label": "Attachment visibility",
       "extra_label": "Attachment visibility",
       "additional_description": "When attachment visibility is private, it is only visible to the owner organisation or users from allowed organisations",
-      "validators": "boolean_validator valid_resources",
       "form_snippet": "radio.html",
       "display_hr": false,
       "choices": [
@@ -232,8 +231,7 @@
       "label": "Allowed Organizations",
       "classes": ["control-full"],
       "preset": "apicatalog_organization_string_autocomplete",
-      "form_placeholder": "Allowed Organisations",
-      "validators": "ignore_missing"
+      "form_placeholder": "Allowed Organisations"
     },
     {
       "field_name": "chargeability",
@@ -344,32 +342,6 @@
       "preset": "datetime",
       "form_snippet": false,
       "display_snippet": null
-    },
-    {
-      "field_name": "private",
-      "label": "Visibility",
-      "preset": "select",
-      "required": true,
-      "classes": ["control-full"],
-      "form_snippet": "visibility.html",
-      "validators": "boolean_validator",
-      "group_title": "Service visibility",
-      "choices": [
-        {
-          "value": "false",
-          "label": "Public"
-        },
-        {
-          "value": "true",
-          "label": "Limited"
-        }
-      ]
-    },
-    {
-      "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
-      "classes": ["control-full"],
-      "preset": "apicatalog_organization_string_autocomplete"
     }
   ]
 }

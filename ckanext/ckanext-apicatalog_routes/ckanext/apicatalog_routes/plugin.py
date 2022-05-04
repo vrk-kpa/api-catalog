@@ -153,15 +153,16 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
             # OR
             # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
             #    the organization of the package
+            log.warn("results")
             user_orgs = toolkit.get_action('organization_list_for_user')(
                     {'ignore_auth': True},
                     {'id': toolkit.g.user, 'permission': 'read'})
             allowed_resources = [resource for resource in result.get('resources', [])
-                                 if resource.get('private', '') in ('', 'false') or
-                                 ((resource.get('private', '') == 'true')
+                                 if resource.get('access_restriction_level', '') in ('', 'public') or
+                                 ((resource.get('access_restriction_level', '') == 'private')
                                   and any(o.get('name') in orgs for orgs in
                                           resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                                 ((resource.get('private', '') == 'true') and
+                                 ((resource.get('access_restriction_level', '') == 'true') and
                                   any(o.get('id', None) == result.get('organization',
                                                                       {}).get('id', '') for o in user_orgs))]
 
@@ -197,12 +198,11 @@ class Apicatalog_RoutesPlugin(plugins.SingletonPlugin, DefaultPermissionLabels):
         #    the organization of the package
 
         allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if 'private' not in resource or
-                             resource.get('private', '') in ('', 'false') or
-                             ((resource.get('private', '') == 'true')
+                             if resource.get('access_restriction_level', '') in ('', 'public') or
+                             ((resource.get('access_restriction_level', '') == 'private')
                               and any(o.get('name') in orgs for orgs in
                                       resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                             ((resource.get('private', '') == 'true') and
+                             ((resource.get('access_restriction_level', '') == 'private') and
                               any(o.get('id', None) == data_dict.get('organization',
                                                                      {}).get('id', '') for o in user_orgs))]
 
