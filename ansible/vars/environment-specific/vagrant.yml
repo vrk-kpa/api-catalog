@@ -104,7 +104,7 @@ robots_allowed: true
 
 ckan_plugins:
   - apicatalog_scheming
-  - apicatalog_ui
+  - apicatalog
   - scheming_datasets
   - scheming_organizations
   - fluent

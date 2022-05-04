@@ -2,11 +2,11 @@
 
 - name: Check existance of node_modules
   stat:
-    path: "{{ apicatalog_ui_path }}/node_modules"
+    path: "{{ apicatalog_path }}/node_modules"
   register: node_modules
 
 - fail:
-    msg: Please run npm install in ckanext_apicatalog_ui on host machine
+    msg: Please run npm install in ckanext_apicatalog on host machine
   when: not node_modules.stat.exists
 
 - name: Copy project setuptools requirements

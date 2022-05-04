@@ -1,13 +1,13 @@
-- name: re-minify ckanext-apicatalog_ui module javascript files
-  shell: ./bin/ckan --config "{{ ckan_ini }}" minify "{{ apicatalog_ui_ckanext_path }}/fanstatic/javascript/modules" chdir="{{ virtualenv }}"
+- name: re-minify ckanext-apicatalog module javascript files
+  shell: ./bin/ckan --config "{{ ckan_ini }}" minify "{{ apicatalog_ckanext_path }}/fanstatic/javascript/modules" chdir="{{ virtualenv }}"
   tags:
     - frontend-build
 
-- name: rebuild ckanext-apicatalog_ui less
-  shell: lessc "{{ apicatalog_ui_path }}/less/main.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/apicatalog_ui/main.css"
+- name: rebuild ckanext-apicatalog less
+  shell: lessc "{{ apicatalog_path }}/less/main.less" "{{ apicatalog_ckanext_path }}/fanstatic/apicatalog/main.css"
 
 - name: rebuild ckanext-openapi_view less
-  shell: lessc "{{ apicatalog_ui_path }}/less/openapi_view.less" "{{ apicatalog_ui_ckanext_path }}/fanstatic/openapi_view.css"
+  shell: lessc "{{ apicatalog_path }}/less/openapi_view.less" "{{ apicatalog_ckanext_path }}/fanstatic/openapi_view.css"
 
 - name: Restart CKAN
   shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"
