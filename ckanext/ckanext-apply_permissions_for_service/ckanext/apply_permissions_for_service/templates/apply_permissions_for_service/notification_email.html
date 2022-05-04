@@ -28,6 +28,14 @@
       <li>Yhteyshenkilön sähköposti: {{ application.contact_email }}</li>
     </ul>
   </p>
+    {% if "intermediate_organization" in application %}
+    <p><strong>Palveluita käyttävän organisaatioin tiedot:</strong>
+        <ul>
+        <li>Organisaatio: {{ application.intermediate_organization['title'] }}</li>
+        <li>Yritystunnus: {{ application.intermediate_business_code }}</li>
+        </ul>
+    </p>
+  {% endif %}
   <p><strong>Luvan pyytäjän alijärjestelmän tiedot:</strong>
     <ul>
       <li>Alijärjestelmän tunnus: {{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</li>

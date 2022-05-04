@@ -3,6 +3,7 @@ import uuid
 
 from ckan import model
 from ckan.lib import dictization
+from ckan.logic import NotFound
 from ckan.plugins import toolkit
 from sqlalchemy import Column, types
 from sqlalchemy.ext.declarative import declarative_base
@@ -85,7 +86,11 @@ class ApplyPermission(Base):
         application_dict['target_organization'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['target_organization_id']})
 
-        application_dict['intermediate_organization'] = toolkit.get_action('organization_show')(
-            {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
+        if application_dict.get('intermediate_organization_id'):
+            try:
+                application_dict['intermediate_organization'] = toolkit.get_action('organization_show')(
+                    {'ignore_auth': True}, {'id': application_dict['intermediate_organization_id']})
+            except NotFound:
+                pass
 
         return application_dict

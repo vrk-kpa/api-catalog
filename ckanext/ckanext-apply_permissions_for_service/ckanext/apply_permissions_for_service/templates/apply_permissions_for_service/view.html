@@ -22,6 +22,22 @@
     </tbody>
   </table>
 
+  {% if "intermediate_organization" in application %}
+    <hr>
+    <h3>{{ _('Information about the organization consuming the services') }}</h3>
+    <table class="table">
+      <tbody>
+        <tr>
+            <th>{{ _('Organization') }}</th>
+            <td>{{ h.get_translated(application.intermediate_organization, 'title') }}</td>
+        </tr>
+        <tr>
+            <th>{{ _('Business code') }}</th>
+            <td>{{ application.intermediate_business_code }}</td>
+        </tr>
+    </tbody>
+    </table>
+  {% endif %}
   <hr>
 
   <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
