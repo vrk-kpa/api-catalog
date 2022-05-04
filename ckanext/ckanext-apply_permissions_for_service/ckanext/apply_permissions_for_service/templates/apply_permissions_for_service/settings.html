@@ -20,16 +20,64 @@
           <div class="select-wrapper">
             {{ form.select('deliveryMethod', label=_('Delivery method for access requests'), options=[
             {'value': 'none', 'text': _('Disable access requests for this API')},
-            {'value': 'email', 'text': _('E-mail')},
-            {'value': 'file', 'text': _('Upload your access request file')},
-            {'value': 'web', 'text': _('Access is requested on a web page managed by my organization')},
+            {'value': 'email', 'text': _('Application in API Catalogue')},
+            {'value': 'file', 'text': _('Organisation’s downloadable application (PDF)')},
+            {'value': 'web', 'text': _('Link to the access licence application on the organisation\'s website')},
             ], is_required=True, selected=(settings.delivery_method or 'none')) }}
           </div>
           <div data-mutex-field="deliveryMethod">
              <div data-mutex-value="email">
-                  {{ form.input('email', label=_('Email address'), value=settings.email) }}
+                  {{ form.input('email', label=_('Email'), value=settings.email) }}
+                  <div class="additional_application_file_container">
+                    <script>
+                      function listenAdditionalFileCheckbox(event) {
+                        var fileField = document.querySelector('#additional_application_file_field');
+
+                        fileField.style.display = event.target.checked ? 'block' : 'none';
+                      }
+
+                      window.addEventListener('DOMContentLoaded', function(event) {
+                        var checkboxAdditionalFile = document.querySelector('#additional_application_file');
+                        checkboxAdditionalFile.addEventListener('change', listenAdditionalFileCheckbox);
+
+                        if (!checkboxAdditionalFile.checked) {
+                          var fileField = document.querySelector('#additional_application_file_field');
+                          fileField.style.display = 'none';
+                        }
+                      })
+                    </script>
+                    {{ form.checkbox('require_additional_application_file', label=_('Request additional info with an attachment'), id='additional_application_file', value='True', checked=settings.require_additional_application_file) }}
+
+                    <div id="additional_application_file_field">
+                      {% if settings.get('original_additional_filename', False) %}
+                        {{ form.hidden('original_additional_filename', value=settings.original_additional_filename) }}
+                      {% endif %}
+                      
+                      {% set is_upload_additional_file = settings.additional_file_url and not settings.additional_file_url.startswith('http') %}
+                      {% set is_url_additional_file = settings.additional_file_url and settings.additional_file_url.startswith('http') %}
+                      {{ form.image_upload_dragndrop(
+                          settings,
+                          errors,
+                          upload_label=_('Add your file'),
+                          is_upload_enabled=h.uploads_enabled(),
+                          is_url=is_url_additional_file,
+                          is_upload=is_upload_additional_file,
+                          field_url='additional_file_url',
+                          field_upload='additional_file',
+                          field_clear='additional_file_clear_upload',
+                          max_filesize=h.max_resource_size(),
+                          max_total_size=h.max_resource_size()
+                          )
+                      }}
+                    </div>
+                  </div>
              </div>
             <div data-mutex-value="file">
+              {% if settings.get('original_filename', False) %}
+                {{ form.hidden('original_filename', value=settings.original_filename) }}
+              {% endif %}
+              
+              {{ form.input('email', label=_('Email'), value=settings.email) }}
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
               {{ form.image_upload_dragndrop(
@@ -50,11 +98,12 @@
             <div data-mutex-value="web">
               {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
             </div>
+            <div class="module__actions">
+              <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
+              <a class="btn btn-default" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Cancel') }}</a>
+              <a data-mutex-value="email" class="btn btn-default btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', subsystem_id=pkg.name) }}" target="_blank">{{ _('Preview application') }}</a>
+            </div>
           </div>
-        </div>
-        <div class="module__actions">
-          <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
-          <a class="btn btn-default">{{ _('Cancel') }}</a>
         </div>
 
         <div class="module__settings-instructions">
