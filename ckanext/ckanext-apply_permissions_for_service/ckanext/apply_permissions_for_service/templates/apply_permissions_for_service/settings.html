@@ -63,7 +63,7 @@
                           is_url=is_url_additional_file,
                           is_upload=is_upload_additional_file,
                           field_url='additional_file_url',
-                          field_upload='file',
+                          field_upload='additional_file',
                           field_clear='additional_file_clear_upload',
                           max_filesize=h.max_resource_size(),
                           max_total_size=h.max_resource_size()
@@ -77,6 +77,7 @@
                 {{ form.hidden('original_filename', value=settings.original_filename) }}
               {% endif %}
               
+              {{ form.input('email', label=_('Email'), value=settings.email) }}
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
               {{ form.image_upload_dragndrop(
