@@ -1,9 +1,9 @@
 .wrapper {
   .clearfix();
+  .box();
   position: relative;
   margin-bottom: 20px;
-  background: initial;
-  border: none;
+  background: @white;
   box-shadow: initial;
   border-radius: 0;
 
@@ -261,9 +261,31 @@
   }
 
   .prelude-dataset {
-    .box();
-    background-color: @white;
+    background-color: initial;
     padding: @spacing-y @spacing-x 0;
+  }
+
+  .prelude-dataset-edit {
+    border: none;
+    background-color: transparent;
+  }
+
+  .dataset-edit-cancel {
+    font-family: @headings-font-family;
+    font-weight: @headings-font-weight;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    line-height: 20px;
+
+    i {
+      padding: 5px;
+    }
+
+    a {
+      &:visited {
+        color: @suomifi-highlight-base;
+      }
+    }
   }
 }
 
@@ -354,4 +376,21 @@
 
 .lika-logo {
   height: 54px;
+}
+
+.collapsible-container {
+  box-shadow: 0px 2px 4px 1px rgba(41, 41, 41, 0.2);
+}
+
+.collapsible {
+  background: transparent;
+  border: none;
+  margin: 10px;
+  margin-left: 0;
+
+  .collapsible-icon {
+    float: right;
+    margin-right: 15px;
+    padding-top: 6.25px;
+  }
 }

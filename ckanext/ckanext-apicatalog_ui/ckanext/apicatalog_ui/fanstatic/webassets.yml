@@ -12,6 +12,8 @@ main_js:
     - javascript/bootstrap.offcanvas.js
     - javascript/submit-on-change.js
     - javascript/form-change-listener.js
+    - javascript/collapsible.js
+    - javascript/api-catalog-select2.js
     - javascript/drag-n-drop-uploader.js
 
 main_css:

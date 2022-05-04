@@ -1,5 +1,7 @@
 {% import 'macros/form.html' as form %}
 
+{% asset 'apicatalog_ui/javascript/api-catalog-select2' %}
+
 {% set languages = h.fluent_form_languages(field, entity_type, object_type, schema) %}
 
 {% set attrs = field.form_attrs if 'form_attrs' in field else {} %}
@@ -22,7 +24,7 @@
     value=data[field.field_name + '-' + lang]
     or ','.join(data.get(field.field_name, {}).get(lang, [])),
     error=errors[field.field_name + '-' + lang],
-    classes=['control-full', 'label-on-top', 'ytp-select2'],
+    classes=['control-full', 'label-on-top', 'api-catalog-select2'],
     attrs=attrs_with_locale,
     is_required=h.scheming_field_only_default_required(field, lang)
     ) %}

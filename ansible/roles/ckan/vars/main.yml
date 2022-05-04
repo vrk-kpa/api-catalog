@@ -30,6 +30,7 @@ ckan_patches:
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_old_fontawesome" }
+  - { file: "fix_autocomplete_server_error" }
   - { file: "email_attachment" }
 
 files_created_by_patches:

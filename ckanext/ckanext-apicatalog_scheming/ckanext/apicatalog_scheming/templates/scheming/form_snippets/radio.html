@@ -1,41 +1,24 @@
 {% import 'macros/form.html' as form %}
 
+{%- call form.input_block(
+  label=h.scheming_language_text(field.label),
+  classes=['control-medium'],
+  error=errors[field.field_name],
+  is_required=h.scheming_field_required(field)) -%}
+  {% set selected = data[field.field_name] if data[field.field_name] is defined else field.default_value %}
+  <fieldset class="radios">
+      {%- for c in field.choices -%}
+          <label for="field-{{ field.field_name }}-{{ c.value }}">
+            <input id="field-{{ field.field_name }}-{{ c.value }}"
+                type="radio"
+                name="{{ field.field_name }}"
+                value="{{ c.value }}"
+                {{"checked " if c.value == selected}} />
 
-<div class="form-group-fluent">
-{%- if field.display_hr -%}
-    <div class="form-group control-full">
-        <hr/>
-    </div>
-{%- endif -%}
-    {%- if field.extra_label is not none -%}
-        <h3 style="margin-left: -15px;">{{ _(field.extra_label) }}</h3>
-    {%- else -%}
-        <label class="control-label group-label">{{ _(field.label) }}</label>
-    {%- endif -%}
-
-  <div class="form-group">
-
-       <label class="control-label" for="{{ 'field-' + field.field_name }}">
-           <span title="{{ _('Required field') }}" class="control-required">*</span>
-          {{ _(field.label) }}
-      </label>
-            {%- set choices = [] -%}
-            {%- for c in h.scheming_field_choices(field) -%}
-                {%- do choices.append(
-                    (c.value, h.scheming_language_text(c.label), c.checked)) -%}
-            {%- endfor -%}
-      <div class="control-group">
-            <table>
-            <tr>
-            {%- for val, label, checked in choices -%}
-                   <td style="padding-left: 5px; padding-right: 5px;"><input type="radio" id="{{ field.field_name }}" name="{{ field.field_name }}" value="{{ val }}" {{"checked " if checked}}/></td>
-                   <td style="padding-left: 5px; padding-right: 5px;">{{ label }}</td>
-            {% endfor %}
-            </tr>
-            </table>
-      </div>
-      {%- if field.additional_description is not none -%}
-          <p>{{ _(field.additional_description) }}</p>
-      {%- endif -%}
-  </div>
-</div>
+            <div class="check"></div>
+            {{ h.scheming_language_text(c.label) }}
+          </label>
+      {%- endfor -%}
+  </fieldset>
+  {%- snippet 'scheming/form_snippets/help_text.html', field=field -%}
+{%- endcall -%}

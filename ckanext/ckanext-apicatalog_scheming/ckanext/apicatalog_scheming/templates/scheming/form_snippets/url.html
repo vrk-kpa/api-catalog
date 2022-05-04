@@ -5,14 +5,14 @@
 <div class="form-group control-full">
     <label class="control-label group-label">{{ _(field.label) }}</label>
     <div class="controls">
-            {%- if field.additional_description is not none -%}
-                <p>{{ _(field.additional_description) }}</p>
-            {%- endif -%}
-            {%- if field.show_url and 'name' in data -%}
-                <div class="slug-preview">
-                    <span class="slug-preview-prefix">{{ url }}</span>
-                </div>
-            {%- endif -%}
+        {%- if field.additional_description is not none -%}
+            <p>{{ _(field.additional_description) }}</p>
+        {%- endif -%}
+        {%- if field.show_url and 'name' in data -%}
+            <div class="slug-preview">
+                <span class="slug-preview-prefix">{{ url }}</span>
+            </div>
+        {%- endif -%}
     </div>
     <hr/>
 </div>
