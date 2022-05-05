@@ -70,4 +70,4 @@ jobs:
 
   Test-xroad_integration:
     name: Test Xroad integration
-    uses: vrk-kpa/ckanext-xroad_integration/.github/workflows/test.yml@${{git rev-parse HEAD:ckanext/ckanext-xroad_integration}}
+    uses: vrk-kpa/ckanext-xroad_integration/.github/workflows/test.yml@master
