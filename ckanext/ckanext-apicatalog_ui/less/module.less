@@ -48,6 +48,42 @@
   }
 }
 
+.dataset-sidebar {
+  color: @suomifi-highlight-base;
+  font-family: @headings-font-family;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #f0f6ff;
+  padding-left: 10px;
+  margin: 0;
+  height: 54px;
+  padding-top: 13.5px;
+  padding-bottom: 13.5px;
+
+  &:hover {
+    background-color: #d5e4f6;
+  }
+
+  &:visited {
+    color: @suomifi-highlight-base;
+  }
+}
+
+.dataset-sidebar-selected {
+  background-color: #d5e4f6;
+  border: 5px solid;
+  border-color: @suomifi-highlight-base;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  margin: 0;
+  padding-right: 5px;
+}
+
 .module-content-medium {
   padding: 0 @gutterX;
   margin: 20px auto;
@@ -67,12 +103,16 @@
 
 .module-content > :first-child:not(.fill-module) {
   margin-top: 0;
-  padding-top: @gutterY;
+  padding-top: 0;
+}
+
+.module-content > :first-child:is(.dataset-sidebar) {
+  padding-top: 13.5px;
 }
 
 .module-content > :last-child:not(.fill-module) {
   margin-bottom: 0;
-  padding-bottom: @gutterY;
+  padding-bottom: 0;
 }
 
 .module-content > :last-child {
@@ -123,9 +163,12 @@
   background-color: @moduleBackgroundColor;
 
   .module {
-    margin-left: 20px;
-    margin-right: 20px;
+    padding-right: 10px;
   }
+}
+
+.dataset-secondary {
+  border: none;
 }
 
 .module-image {

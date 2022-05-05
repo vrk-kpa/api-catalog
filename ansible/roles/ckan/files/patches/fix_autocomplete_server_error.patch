@@ -1,0 +1,23 @@
+From 0556a5e0e35f747a3bcc5058819a796b6d1491af Mon Sep 17 00:00:00 2001
+From: Jari Voutilainen <jari.voutilainen@iki.fi>
+Date: Mon, 25 Apr 2022 14:05:08 +0300
+Subject: [PATCH] Return zero results instead of raising NotFound when
+ vocabulary does not exist
+
+---
+ ckan/logic/action/get.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ckan/logic/action/get.py b/ckan/logic/action/get.py
+index 86cc140985..cc52b33a8f 100644
+--- a/ckan/logic/action/get.py
++++ b/ckan/logic/action/get.py
+@@ -2203,7 +2203,7 @@ def _tag_search(
+         # Filter by vocabulary.
+         vocab = model.Vocabulary.get(_get_or_bust(data_dict, 'vocabulary_id'))
+         if not vocab:
+-            raise NotFound
++            return [], 0
+         q = q.filter(model.Tag.vocabulary_id == vocab.id)
+     else:
+         # If no vocabulary_name in data dict then show free tags only.

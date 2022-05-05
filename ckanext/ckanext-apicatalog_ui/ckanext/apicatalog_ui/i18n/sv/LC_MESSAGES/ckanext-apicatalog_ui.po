@@ -834,6 +834,10 @@ msgstr "Bild"
 msgid "Clear Upload"
 msgstr "Rensa uppladdning"
 
+#: ckanext/apicatalog_ui/templates/macros/form.html:68
+msgid "http://example.com/my-image.jpg"
+msgstr ""
+
 #: ckanext/apicatalog_ui/templates/organization/about.html:16
 msgid "Contact Information"
 msgstr "Kontaktuppgifter"

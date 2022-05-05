@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-01 16:53+0300\n"
+"POT-Creation-Date: 2022-04-27 07:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/views.py:121
 #: ckanext/apply_permissions_for_service/views.py:132
 #: ckanext/apply_permissions_for_service/views.py:141
-#: ckanext/apply_permissions_for_service/views.py:252
+#: ckanext/apply_permissions_for_service/views.py:253
 msgid "Not authorized to see this page"
 msgstr ""
 
@@ -30,7 +30,7 @@ msgstr ""
 msgid "This API is not accepting access applications."
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/views.py:240
+#: ckanext/apply_permissions_for_service/views.py:241
 msgid "Changes saved successfully"
 msgstr ""
 
@@ -120,13 +120,11 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:52
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Organization"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:35
 msgid "Business code"
 msgstr ""
 
@@ -147,7 +145,6 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:79
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Information about the organization consuming the services"
 msgstr ""
 
@@ -160,7 +157,7 @@ msgid "Y-number"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:92
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Details of your Security Server and Subsystem"
 msgstr ""
 
@@ -171,7 +168,7 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:46
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:30
 msgid "IP address"
 msgstr ""
 
@@ -194,27 +191,27 @@ msgid ""
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:106
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:47
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Subsystem code"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:111
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:53
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:37
 msgid "Details of the service and API you are applying to access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:56
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
 msgid "Organization name"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:57
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41
 msgid "Subsystem"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:131
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Service code"
 msgstr ""
 
@@ -223,7 +220,7 @@ msgid "Select one or several APIs you are applying to access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:132
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:67
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
 msgid "Explain how the service will be used"
 msgstr ""
 
@@ -232,7 +229,7 @@ msgid "Reason for requesting access"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:133
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:68
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
 msgid "Date when access is needed"
 msgstr ""
 
@@ -241,7 +238,7 @@ msgid "Send access application"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:143
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:102
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:103
 msgid "Cancel"
 msgstr ""
 
@@ -302,6 +299,7 @@ msgid "Link to the access licence application on the organisation's website"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:30
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:80
 msgid "Email"
 msgstr ""
 
@@ -310,28 +308,28 @@ msgid "Request additional info with an attachment"
 msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:85
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:86
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:25
 msgid "Add your file"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:98
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:99
 msgid "Webpage URL"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:101
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:102
 msgid "Save"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:103
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:104
 msgid "Preview application"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:109
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:110
 msgid "Permission request alternatives:"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:111
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:112
 msgid ""
 "<p style=\"font-weight: bold;\">Application in API Catalogue</p> <ul> "
 "<li>Request permission to use a subsystem by using the predefined electronic "
@@ -352,7 +350,7 @@ msgid ""
 "href=\"https://liityntakatalogi.suomi.fi/\"> API Catalogue. </a> </p>"
 msgstr ""
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:75
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
 msgid "Additional info"
 msgstr ""
 

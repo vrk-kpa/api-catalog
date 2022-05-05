@@ -190,6 +190,7 @@ def settings_post(context, subsystem_id):
         'original_filename': form.get('original_filename'),
         'clear_upload': form.get('clear_upload'),
         'web': form.get('web'),
+        'additional_file': files.get('additional_file'),
         'require_additional_application_file': toolkit.asbool(form.get('require_additional_application_file')),
         'additional_file_url': form.get('additional_file_url'),
         'original_additional_filename': form.get('original_additional_filename'),
@@ -218,7 +219,7 @@ def settings_post(context, subsystem_id):
 
     if (data_dict.get('delivery_method') == 'email' and data_dict.get('require_additional_application_file')):
         upload.update_data_dict(data_dict, 'additional_file_url',
-                                'file', 'additional_file_clear_upload')
+                                'additional_file', 'additional_file_clear_upload')
         upload.upload(max_size=uploader.get_max_resource_size())
 
         additional_file_url = data_dict.get('additional_file_url', '')
