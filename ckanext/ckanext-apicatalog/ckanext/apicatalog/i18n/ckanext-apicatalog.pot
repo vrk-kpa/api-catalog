@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 05:41+0000\n"
+"POT-Creation-Date: 2022-05-05 07:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: ckanext/apicatalog/plugin.py:771
+#: ckanext/apicatalog/auth.py:47
+msgid "User {user} not authorized to create users via the API"
+msgstr ""
+
+#: ckanext/apicatalog/plugin.py:674
+msgid "User {name} stored in database."
+msgstr ""
+
+#: ckanext/apicatalog/plugin.py:869
 #: ckanext/apicatalog/templates/package/read.html:61
 msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:772
+#: ckanext/apicatalog/plugin.py:870
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:773
+#: ckanext/apicatalog/plugin.py:871
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:774
+#: ckanext/apicatalog/plugin.py:872
 msgid "Formats"
 msgstr ""
 

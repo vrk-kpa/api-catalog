@@ -47,13 +47,8 @@ jobs:
           submodules: true
       - name: Install requirements
         run: |
-          cd ckanext/ckanext-apicatalog_routes
+          cd ckanext-apicatalog
           pip install -r dev-requirements.txt
-          pip install -e .
-          # Replace default path to CKAN core config file with the one on the container
-          sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
-
-          cd ../ckanext-apicatalog
           pip install -e .
 
           # Replace default path to CKAN core config file with the one on the container
@@ -68,8 +63,7 @@ jobs:
 
       - name: Setup extension
         run: |
-          ckan -c ckanext/ckanext-apicatalog_routes/test.ini db init
+          ckan -c ckanext/ckanext-apicatalog/test.ini db init
       - name: Run tests
         run: |
-          pytest --ckan-ini=ckanext/ckanext-apicatalog_routes/test.ini --cov=ckanext.apicatalog_routes --disable-warnings ckanext/ckanext-apicatalog_routes/ckanext/apicatalog_routes/tests
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests

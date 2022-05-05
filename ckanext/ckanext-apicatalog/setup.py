@@ -81,6 +81,7 @@ setup(
         apicatalog=ckanext.apicatalog.plugin:ApicatalogPlugin
         apicatalog_admin_dashboard=ckanext.apicatalog.plugin:Apicatalog_AdminDashboardPlugin
         apicatalog_pages=ckanext.apicatalog.pages:Apicatalog_PagesPlugin
+        apicatalog_harvesterstatus=ckanext.apicatalog.harvesterstatusplugin:HarvesterStatusPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

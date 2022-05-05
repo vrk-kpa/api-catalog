@@ -1,9 +1,9 @@
 import itertools
+from datetime import datetime
 
 from ckan.plugins.toolkit import get_action, request
 
 from ckan.logic import NotFound
-from ckanext.apicatalog.plugin import parse_datetime
 
 import logging
 log = logging.getLogger(__name__)
@@ -101,3 +101,13 @@ def lang():
     if current_lang == "en_GB":
         return "en"
     return current_lang
+
+def parse_datetime(t):
+    try:
+        return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
+    except Exception:
+        try:
+            return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
+        except Exception as e:
+            log.warn(e)
+            return None

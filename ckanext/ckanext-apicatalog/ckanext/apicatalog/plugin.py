@@ -21,23 +21,32 @@ import six
 from datetime import datetime, timedelta
 from ckanext.scheming.helpers import lang
 import ckan.lib.helpers as h
-from ckan.lib.plugins import DefaultTranslation
+from ckan.lib.plugins import DefaultTranslation, DefaultPermissionLabels
+import ckan.lib.mailer as mailer
+from flask import has_request_context
+from ckan.lib.navl.dictization_functions import validate as _validate
 
 from .utils import package_generator, organization_generator
 import ckanext.apicatalog.admindashboard as admindashboard
+from ckanext.apicatalog.schema import create_user_to_organization_schema
 
 from . import validators
 from ckanext.apicatalog import cli
+from ckanext.apicatalog import views, auth, db
+from ckanext.apicatalog.helpers import lang as apicatalog_lang, parse_datetime
 
 from collections import OrderedDict
 
 standard_library.install_aliases()
 
 NotFound = logic.NotFound
+ObjectNotFound = toolkit.ObjectNotFound
 config = toolkit.config
 log = logging.getLogger(__name__)
 get_action = toolkit.get_action
 _ = toolkit._
+
+ValidationError = toolkit.ValidationError
 
 _LOCALE_ALIASES = {'en_GB': 'en'}
 
@@ -195,16 +204,6 @@ def get_homepage_datasets(count=1):
     return datasets
 
 
-def parse_datetime(t):
-    try:
-        return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')
-    except Exception:
-        try:
-            return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%f')
-        except Exception as e:
-            log.warn(e)
-            return None
-
 
 NEWS_CACHE = None
 
@@ -268,7 +267,7 @@ ANNOUNCEMENT_CACHE = None
 
 def get_homepage_announcements(count=3, cache_duration=timedelta(days=1)):
     global ANNOUNCEMENT_CACHE
-    from ckanext.apicatalog_routes.helpers import get_announcements
+    from ckanext.apicatalog.helpers import get_announcements
     if ANNOUNCEMENT_CACHE is None or datetime.now() - ANNOUNCEMENT_CACHE[0] > cache_duration:
 
         announcements = get_announcements(count)
@@ -647,8 +646,99 @@ def get_field_from_schema(schema, field_name):
 def get_max_resource_size():
     return toolkit.config.get('ckan.max_resource_size')
 
+def send_reset_link(context, data_dict):
+    toolkit.check_access('send_reset_link', context)
 
-class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation):
+    user_obj = model.User.get(data_dict['user_id'])
+    mailer.send_reset_link(user_obj)
+
+
+def create_user_to_organization(context, data_dict):
+
+    toolkit.check_access('create_user_to_organization', context)
+    schema = context.get('schema') or create_user_to_organization_schema()
+    session = context['session']
+
+    data, errors = _validate(data_dict, schema, context)
+
+    if errors:
+        session.rollback()
+        raise ValidationError(errors)
+
+    created_user = db.UserForOrganization.create(data['fullname'],
+                                                 data['email'],
+                                                 data['business_id'],
+                                                 data['organization_name'])
+
+    return {
+        "msg": _("User {name} stored in database.").format(name=created_user.fullname)
+    }
+
+
+def create_organization_users(context, data_dict):
+    toolkit.check_access('create_organization_users', context)
+    retry = data_dict.get('retry', False)
+    pending_user_applications = db.UserForOrganization.get_pending(include_failed=retry)
+
+    organizations = toolkit.get_action('organization_list')(context, {'all_fields': True, 'include_extras': True})
+    organizations_by_membercode = {}
+    for organization in organizations:
+        xroad_member_code = organization.get('xroad_membercode')
+
+        if not xroad_member_code:
+            continue
+
+        organizations_by_membercode.setdefault(xroad_member_code, []).append(organization)
+
+    user_list = toolkit.get_action('user_list')
+    user_invite = toolkit.get_action('user_invite')
+    created = []
+    invalid = []
+    ambiguous = []
+    duplicate = []
+
+    for application in pending_user_applications:
+        matching_organizations = organizations_by_membercode.get(application.business_id, [])
+
+        if len(matching_organizations) == 0:
+            log.warn('No organization found for business id %s, skipping invalid user application', application.business_id)
+            application.mark_invalid()
+            invalid.append(application.business_id)
+            continue
+        elif len(matching_organizations) > 1:
+            log.warn('Multiple organizations found with business id %s, skipping ambiguous user application',
+                     application.business_id)
+            application.mark_ambiguous()
+            ambiguous.append(application.business_id)
+            continue
+
+        organization = next(iter(matching_organizations))
+
+        matching_users = user_list(context, {'email': application.email, 'all_fields': False})
+        if matching_users:
+            log.warn('Existing user found for email address %s, skipping duplicate user', application.email)
+            application.mark_duplicate()
+            duplicate.append(application.email)
+            continue
+
+        log.info('Inviting user %s to organization %s (%s)', application.email, organization['title'], organization['id'])
+        try:
+            user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'admin'})
+        except ValidationError as e:
+            log.warn(e)
+            continue
+        except ObjectNotFound as e:
+            log.warn(e)
+            continue
+
+        application.mark_done()
+        created.append(user.get('name'))
+
+    context.get('session', model.Session).commit()
+    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
+                                        'duplicate': duplicate}}
+
+class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermissionLabels):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IActions)
@@ -658,6 +748,8 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IClick)
+    plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IPermissionLabels)
 
     # IConfigurer
 
@@ -682,7 +774,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation):
             'ckanext.apicatalog.right_column.fi': [ignore_missing, six.text_type],
             'ckanext.apicatalog.right_column.sv': [ignore_missing, six.text_type],
             'ckanext.apicatalog.right_column.en_GB': [ignore_missing, six.text_type],
-            'ckanext.apicatalog_routes.readonly_users': [ignore_missing, six.text_type],
+            'ckanext.apicatalog.readonly_users': [ignore_missing, six.text_type],
             'ckanext.apicatalog.site_intro_text.sv': [ignore_missing, six.text_type],
             'ckanext.apicatalog.site_intro_text.en_GB': [ignore_missing, six.text_type],
             'ckanext.apicatalog.site_description.sv': [ignore_missing, six.text_type],
@@ -723,17 +815,23 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation):
                 'add_locale_to_source': add_locale_to_source,
                 'get_field_from_schema': get_field_from_schema,
                 'max_resource_size': get_max_resource_size,
+                "lang": apicatalog_lang
                 }
 
     def get_actions(self):
-        return {'get_last_12_months_statistics': get_last_12_months_statistics}
+        return {
+            'get_last_12_months_statistics': get_last_12_months_statistics,
+            "send_reset_link": send_reset_link,
+            "create_user_to_organization": create_user_to_organization,
+            "create_organization_users": create_organization_users,}
 
     # IBlueprint
 
     def get_blueprint(self):
         from .views.useradd import useradd
         from .views import xroad_statistics
-        return xroad_statistics.get_blueprints() + [useradd]
+        from.views import get_blueprints
+        return xroad_statistics.get_blueprints() + get_blueprints() + [useradd]
 
     # IFacets
 
@@ -799,10 +897,160 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
         return pkg_dict
 
+    # After package_search, filter out the resources which the user doesn't have access to
+    def after_search(self, search_results, search_params):
+        # Only filter results if processing a request
+        if not has_request_context():
+            return search_results
+
+        try:
+            if 'user' in toolkit.g:
+                user = toolkit.get_action('user_show')({'ignore_auth': True}, {'id': toolkit.g.user})
+                if user and user.get('sysadmin'):
+                    return search_results
+        except ObjectNotFound:
+            pass
+
+        for result in search_results['results']:
+            # Accessible resources are:
+            # 1) Visibility/private is public (False)
+            # OR
+            # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
+            # OR
+            # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
+            #    the organization of the package
+            log.warn("results")
+            user_orgs = toolkit.get_action('organization_list_for_user')(
+                {'ignore_auth': True},
+                {'id': toolkit.g.user, 'permission': 'read'})
+            allowed_resources = [resource for resource in result.get('resources', [])
+                                 if resource.get('access_restriction_level', '') in ('', 'public') or
+                                 ((resource.get('access_restriction_level', '') == 'private')
+                                  and any(o.get('name') in orgs for orgs in
+                                          resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
+                                 ((resource.get('access_restriction_level', '') == 'true') and
+                                  any(o.get('id', None) == result.get('organization',
+                                                                      {}).get('id', '') for o in user_orgs))]
+
+            result['resources'] = allowed_resources
+            result['num_resources'] = len(allowed_resources)
+        return search_results
+
+    # After package_show, filter out the resources which the user doesn't have access to
+    def after_show(self, context, data_dict):
+        # Only filter results if processing a request
+        if not has_request_context():
+            return data_dict
+
+        # Skip access check if sysadmin or auth is ignored
+        if context.get('ignore_auth') or (context.get('auth_user_obj') and context.get('auth_user_obj').sysadmin):
+            return data_dict
+
+        user_name = context.get('user')
+
+        if user_name:
+            user_orgs = [{'name': o['name'], 'id': o['id']} for o in toolkit.get_action('organization_list_for_user')(
+                {'ignore_auth': True},
+                {'id': user_name, 'permission': 'read'})]
+        else:
+            user_orgs = []
+
+        # Allowed resources are the ones where:
+        # 1) Visibility/private is public (False)
+        # OR
+        # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
+        # OR
+        # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
+        #    the organization of the package
+
+        allowed_resources = [resource for resource in data_dict.get('resources', [])
+                             if resource.get('access_restriction_level', '') in ('', 'public') or
+                             ((resource.get('access_restriction_level', '') == 'private')
+                              and any(o.get('name') in orgs for orgs in
+                                      resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
+                             ((resource.get('access_restriction_level', '') == 'private') and
+                              any(o.get('id', None) == data_dict.get('organization',
+                                                                     {}).get('id', '') for o in user_orgs))]
+
+        data_dict['resources'] = allowed_resources
+        data_dict['num_resources'] = len(allowed_resources)
+
+        return data_dict
+
     # IClick
 
     def get_commands(self):
         return cli.get_commands()
+
+    # IAuthFunctions
+
+    def get_auth_functions(self):
+        return {'revision_index': admin_only,
+                'revision_list': admin_only,
+                'revision_diff': admin_only,
+                'package_revision_list': admin_only,
+                'package_show': auth.package_show,
+                'read_members': auth.read_members,
+                'group_edit_permissions': auth.read_members,
+                'send_reset_link': admin_only,
+                'create_user_to_organization': auth.create_user_to_organization,
+                'create_organization_users': admin_only,
+                'user_create': auth.user_create,
+                'user_update': auth.user_update,
+                'user_show': auth.user_show,
+                'member_create': auth.member_create,
+                'member_delete': auth.member_delete,
+                'organization_member_create': auth.organization_member_create,
+                'organization_member_delete': auth.organization_member_delete,
+                'group_show': auth.group_show,
+                'user_invite': auth.user_invite,
+                'package_create': admin_only,
+                'organization_delete': admin_only,
+                'package_delete': admin_only,
+                'resource_delete': admin_only
+                }
+
+    # IPermissionLabels
+
+    def get_dataset_labels(self, dataset_obj):
+
+        labels = super(ApicatalogPlugin, self).get_dataset_labels(dataset_obj)
+
+        context = {
+            'ignore_auth': True
+        }
+
+        for user_name in toolkit.config.get('ckanext.apicatalog.readonly_users', '').split():
+            try:
+                user_obj = get_action('user_show')(context, {'id': user_name})
+                labels.append(u'read_only_admin-%s' % user_obj['id'])
+            except ObjectNotFound:
+                continue
+
+        pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
+
+        if pkg_dict.get('private') and \
+                pkg_dict.get('private') is True:
+            allowed_organizations = [o.strip() for o in pkg_dict.get('allowed_organizations', "").split(',')
+                                     if pkg_dict.get('allowed_organizations', "")]
+            for org_name in allowed_organizations:
+                organization_dict = get_action('organization_show')(context, {'id': org_name})
+                labels.append(u'allowed_organization_members-%s' % organization_dict['id'])
+
+        return labels
+
+    def get_user_dataset_labels(self, user_obj):
+
+        labels = super(ApicatalogPlugin, self).get_user_dataset_labels(user_obj)
+        readonly_users = toolkit.aslist(toolkit.config.get('ckanext.apicatalog.readonly_users', ''))
+
+        if user_obj and user_obj.name in readonly_users:
+            labels.append(u'read_only_admin-%s' % user_obj.id)
+
+        if user_obj:
+            orgs = get_action(u'organization_list_for_user')({u'user': user_obj.id}, {})
+            labels.extend(u'allowed_organization_members-%s' % o['id'] for o in orgs)
+        return labels
 
 
 
