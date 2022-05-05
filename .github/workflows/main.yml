@@ -69,11 +69,49 @@ jobs:
         run: |
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
 
+  text-xroad:
+    name: Test xroad integration
+    runs-on: ubuntu-latest
+    container:
+      image: openknowledge/ckan-dev:2.9
+    services:
+      solr:
+        image: ckan/ckan-solr-dev:2.9
+      postgres:
+        image: ckan/ckan-postgres-dev:2.9
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      redis:
+        image: redis:3
+    env:
+      CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@postgres/ckan_test
+      CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@postgres/datastore_test
+      CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@postgres/datastore_test
+      CKAN_SOLR_URL: http://solr:8983/solr/ckan
+      CKAN_REDIS_URL: redis://redis:6379/1
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
       - name: Install xroad integration requirements
         run: |
 
-          cd ckanext/ckanext-harvest
+          cd ckanext/ckanext-apicatalog
+          pip install -r dev-requirements.txt
+          pip install -e .
+
+          cd ../ckanext-harvest
           pip install -r pip-requirements.txt
+          pip install -e .
+
+          cd ../ckanext-scheming
+          pip install -e .
+
+          cd ../ckanext-fluent
           pip install -e .
 
           cd ../ckanext-xroad_integration
