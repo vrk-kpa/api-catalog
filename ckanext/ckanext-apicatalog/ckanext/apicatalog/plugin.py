@@ -32,7 +32,7 @@ from ckanext.apicatalog.schema import create_user_to_organization_schema
 
 from . import validators
 from ckanext.apicatalog import cli
-from ckanext.apicatalog import views, auth, db
+from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import lang as apicatalog_lang, parse_datetime
 
 from collections import OrderedDict
@@ -49,6 +49,7 @@ _ = toolkit._
 ValidationError = toolkit.ValidationError
 
 _LOCALE_ALIASES = {'en_GB': 'en'}
+
 
 def ensure_translated(s):
     ts = type(s)
@@ -202,7 +203,6 @@ def get_homepage_organizations(count=1):
 def get_homepage_datasets(count=1):
     datasets = get_action('package_search')({}, {'q': 'type:dataset', 'rows': count}).get('results', [])
     return datasets
-
 
 
 NEWS_CACHE = None
@@ -537,6 +537,7 @@ def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
 
     return json.dumps(stats_collection)
 
+
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
 
@@ -547,6 +548,7 @@ def scheming_field_only_default_required(field, lang):
             and lang == toolkit.config.get('ckan.locale_default', 'en')):
         return True
     return False
+
 
 def add_locale_to_source(kwargs, locale):
     copy = kwargs.copy()
@@ -643,8 +645,10 @@ def get_field_from_schema(schema, field_name):
     field = next(field for field in schema.get('dataset_fields', []) if field.get('field_name') == field_name)
     return field
 
+
 def get_max_resource_size():
     return toolkit.config.get('ckan.max_resource_size')
+
 
 def send_reset_link(context, data_dict):
     toolkit.check_access('send_reset_link', context)
@@ -738,6 +742,7 @@ def create_organization_users(context, data_dict):
     return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
                                         'duplicate': duplicate}}
 
+
 class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermissionLabels):
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
@@ -823,7 +828,8 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'get_last_12_months_statistics': get_last_12_months_statistics,
             "send_reset_link": send_reset_link,
             "create_user_to_organization": create_user_to_organization,
-            "create_organization_users": create_organization_users,}
+            "create_organization_users": create_organization_users
+        }
 
     # IBlueprint
 
@@ -1051,7 +1057,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             orgs = get_action(u'organization_list_for_user')({u'user': user_obj.id}, {})
             labels.extend(u'allowed_organization_members-%s' % o['id'] for o in orgs)
         return labels
-
 
 
 class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):

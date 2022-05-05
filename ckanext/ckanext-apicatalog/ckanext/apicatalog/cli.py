@@ -122,6 +122,7 @@ def migrate(ctx, current_version, target_version, dryrun, path_index):
 
     click.echo('Finished migration successfully')
 
+
 @click.group()
 def apicatalog_admin():
     '''Creates users based on records uploaded to create_user_to_organization endpoint'''
@@ -319,4 +320,3 @@ def init(ctx):
     import ckan.model as model
     from .db import init_table
     init_table(model.meta.engine)
-

@@ -102,6 +102,7 @@ def lang():
         return "en"
     return current_lang
 
+
 def parse_datetime(t):
     try:
         return datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ')

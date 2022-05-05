@@ -10,7 +10,6 @@ from ckan.tests import factories
 import ckan.tests.helpers as helpers
 
 
-
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index')
 def test_allowed_organization_user_should_see_subsystem():
     organization1 = Organization()
@@ -102,6 +101,7 @@ def test_non_allowed_organization_user_should_not_see_service(app):
         with pytest.raises(ObjectNotFound):
             call_action('resource_show', {u"user": user2["name"], "ignore_auth": False}, id=resource['id'])
 
+
 def test_non_sysadmins_should_not_be_able_to_delete_subsystems():
     user = factories.User()
     org_users = [{"name": user["name"], "capacity": "admin"}]
@@ -115,6 +115,7 @@ def test_non_sysadmins_should_not_be_able_to_delete_subsystems():
 
     with pytest.raises(NotAuthorized):
         helpers.call_action('package_delete', context, id=subsystem['id'])
+
 
 def test_non_sysadmins_should_not_be_able_to_delete_services():
     user = factories.User()
@@ -134,6 +135,7 @@ def test_non_sysadmins_should_not_be_able_to_delete_services():
     with pytest.raises(NotAuthorized):
         helpers.call_action('resource_delete', context, id=service['id'])
 
+
 def test_non_sysadmins_should_not_be_able_to_delete_organizations():
     user = factories.User()
     org_users = [{"name": user["name"], "capacity": "admin"}]
@@ -143,6 +145,7 @@ def test_non_sysadmins_should_not_be_able_to_delete_organizations():
 
     with pytest.raises(NotAuthorized):
         helpers.call_action('organization_delete', context, id=org['id'])
+
 
 @mock.patch("ckan.lib.mailer.send_invite")
 def test_organization_admin_should_be_able_to_invite_user(_):
@@ -159,6 +162,7 @@ def test_organization_admin_should_be_able_to_invite_user(_):
     assert model.User.get(result['id']).is_pending()
 
     assert len(org['users']) == 2
+
 
 @mock.patch("ckan.lib.mailer.send_invite")
 def test_organization_admin_should_not_be_able_to_invite_user_to_other_organization(_):
