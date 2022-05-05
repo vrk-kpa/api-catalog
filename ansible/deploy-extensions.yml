@@ -12,7 +12,6 @@
     - "{{ secrets_file_path }}"
   roles:
     - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
-    - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
     - { role: ckan-extension, ckanext: ckanext-apicatalog }
     - { role: ckan-extension, ckanext: ckanext-scheming }
     - { role: ckan-extension, ckanext: ckanext-fluent }

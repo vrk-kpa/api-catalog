@@ -4,7 +4,7 @@ from ckanext.apicatalog_routes import views, cli, auth, helpers, db
 
 from flask import has_request_context
 
-from ckanext.apicatalog_scheming.schema import create_user_to_organization_schema
+from ckanext.apicatalog.schema import create_user_to_organization_schema
 
 from ckan import plugins, model
 from ckan.plugins import toolkit

@@ -103,7 +103,6 @@ debug_enabled: true
 robots_allowed: true
 
 ckan_plugins:
-  - apicatalog_scheming
   - apicatalog
   - scheming_datasets
   - scheming_organizations

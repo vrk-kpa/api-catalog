@@ -8,7 +8,7 @@ import sys
 import click
 import polib
 import re
-from ckanext.apicatalog_scheming.translations import facet_translations
+from ckanext.apicatalog.translations import facet_translations
 
 from ckan.plugins.toolkit import get_action, config
 from .migrate import Migrate, plan_to_path

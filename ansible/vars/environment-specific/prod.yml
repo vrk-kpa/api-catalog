@@ -96,7 +96,6 @@ robots_allowed: true
 apicatalog_path: "{{ server_path }}/ckanext/ckanext-apicatalog/"
 
 ckan_plugins:
-  - apicatalog_scheming
   - apicatalog
   - scheming_datasets
   - scheming_organizations
