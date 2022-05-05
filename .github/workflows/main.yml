@@ -57,17 +57,37 @@ jobs:
           cd ../ckanext-scheming
           pip install -e .
 
-
           cd ../ckanext-fluent
           pip install -e .
+
 
       - name: Setup extension
         run: |
           ckan -c ckanext/ckanext-apicatalog/test.ini db init
+
       - name: Run tests
         run: |
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
 
-  Test-xroad_integration:
-    name: Test Xroad integration
-    uses: vrk-kpa/ckanext-xroad_integration/.github/workflows/test.yml@master
+      - name: Install xroad integration requirements
+        run: |
+
+          cd ckanext/ckanext-harvest
+          pip install -r pip-requirements.txt
+          pip install -e .
+
+          cd ../ckanext-xroad_integration
+          pip install -r pip-requirements.txt
+          pip install -r dev-requirements.txt
+          pip install -e
+
+          # Replace default path to CKAN core config file with the one on the container
+          sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
+
+      - name: setup xroad integration extension
+        run: |
+          ckan -c test.ini harvester initdb
+          ckan -c test.ini xroad init-db
+
+      - name: Run xroad integration tests
+        run: pytest --ckan-ini=test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/xroad_integration/tests
