@@ -29,7 +29,6 @@ class TestApicatalogPlugin():
         names = [r["name"] for r in results]
         assert names == [dataset['name']]
 
-
     def test_not_allowed_organization_user_should_not_see_subsystem(self):
         organization1 = Organization()
 
@@ -46,7 +45,6 @@ class TestApicatalogPlugin():
 
         names = [r["name"] for r in results]
         assert names == []
-
 
     def test_allowed_organization_user_should_see_service(self):
         organization1 = Organization()
@@ -73,7 +71,6 @@ class TestApicatalogPlugin():
 
         assert resource_show_results['id'] == resource['id']
 
-
     def test_non_allowed_organization_user_should_not_see_service(self, app):
         organization1 = Organization()
 
@@ -99,7 +96,6 @@ class TestApicatalogPlugin():
             with pytest.raises(ObjectNotFound):
                 call_action('resource_show', {u"user": user2["name"], "ignore_auth": False}, id=resource['id'])
 
-
     @pytest.mark.usefixtures('with_request_context')
     def test_non_sysadmins_should_not_be_able_to_delete_subsystems(self):
         user = factories.User()
@@ -115,7 +111,6 @@ class TestApicatalogPlugin():
         with pytest.raises(NotAuthorized):
             helpers.call_action('package_delete', context, id=subsystem['id'])
 
-
     @pytest.mark.usefixtures('with_request_context')
     def test_non_sysadmins_should_not_be_able_to_delete_services(self):
         user = factories.User()
@@ -124,7 +119,7 @@ class TestApicatalogPlugin():
 
         subsystem = factories.Dataset(
             owner_org=org["id"],
-            title_translated = {
+            title_translated={
                 "fi": "some finnish name",
             },
             keywords={"fi": ["some keyword"]}
@@ -139,7 +134,6 @@ class TestApicatalogPlugin():
         with pytest.raises(NotAuthorized):
             helpers.call_action('resource_delete', context, id=service['id'])
 
-
     @pytest.mark.usefixtures('with_request_context')
     def test_non_sysadmins_should_not_be_able_to_delete_organizations(self):
         user = factories.User()
@@ -150,7 +144,6 @@ class TestApicatalogPlugin():
 
         with pytest.raises(NotAuthorized):
             helpers.call_action('organization_delete', context, id=org['id'])
-
 
     @pytest.mark.usefixtures('with_request_context')
     @mock.patch("ckan.lib.mailer.send_invite")
@@ -168,7 +161,6 @@ class TestApicatalogPlugin():
         assert model.User.get(result['id']).is_pending()
 
         assert len(org['users']) == 2
-
 
     @pytest.mark.usefixtures('with_request_context')
     @mock.patch("ckan.lib.mailer.send_invite")
