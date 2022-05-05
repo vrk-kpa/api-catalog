@@ -68,5 +68,11 @@ jobs:
         run: |
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
 
-      - name: Test xroad integration
-        uses: ./ckanext/ckanext-xroad_integration/.github/workflows/test.yml
+  Test-xroad_integration:
+    name: Test Xroad integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: ./ckanext/ckanext-xroad_integration/.github/workflows/test.yml
