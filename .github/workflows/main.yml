@@ -129,4 +129,4 @@ jobs:
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
       - name: Run xroad integration tests
-        run: pytest --ckan-ini=test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/xroad_integration/tests
+        run: pytest --ckan-ini=ckanext/ckanext-xroad_integration/test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/ckanext-xroad_integration/ckanext/xroad_integration/tests
