@@ -70,9 +70,4 @@ jobs:
 
   Test-xroad_integration:
     name: Test Xroad integration
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - uses: ./ckanext/ckanext-xroad_integration/.github/workflows/test.yml
+    uses: ./ckanext/ckanext-xroad_integration/.github/workflows/test.yml
