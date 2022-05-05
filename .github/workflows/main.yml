@@ -124,8 +124,9 @@ jobs:
 
       - name: setup xroad integration extension
         run: |
-          ckan -c test.ini harvester initdb
-          ckan -c test.ini xroad init-db
+          ckan -c ckanext/ckanext-xroad_integration/test.ini db init
+          ckan -c ckanext/ckanext-xroad_integration/test.ini harvester initdb
+          ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
       - name: Run xroad integration tests
         run: pytest --ckan-ini=test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/xroad_integration/tests
