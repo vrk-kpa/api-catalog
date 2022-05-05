@@ -17,10 +17,7 @@ def index():
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
         data_dict = {'subsystem_id': subsystem_id}
         applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
-        extra_vars = {
-                'sent_applications': applications,
-                'received_applications': applications
-                }
+        extra_vars = {'applications': applications}
         return toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))

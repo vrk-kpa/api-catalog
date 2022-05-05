@@ -6,30 +6,46 @@
 
 {% block primary_content_inner %}
 
-<h2>{{ _('Sent applications') }}</h2>
-{% if sent_applications %}
-  <ul>
-  {% for application in sent_applications %}
-      {% for service in application.services %}
-        <li>{% link_for ((h.xroad_subsystem_path(application.subsystem) or application.subsystem.name) + ' → ' + (h.xroad_subsystem_path(service) or service.name)), named_route='apply_permissions.view_permission_application', application_id=application.id %}</li>
-    {% endfor %}
-  {% endfor %}
-  </ul>
+{% if applications %}
+    <table class="table table-bordered" style="table-layout:fixed;">
+        <thead>
+            <tr>
+                <th style="width: 28%">{{ _('Applicant information') }}</th>
+                <th style="width: 20%">{{ _('Information about the organization consuming the services') }}</th>
+                <th style="width: 36%">{{ _('Service and API you are applying to access') }}</th>
+                <th style="width: 16%">{{ _('API access application') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for application in applications %}
+            {% set subsystem_code = application.subsystem_code.split('.') %}
+            {% for service in application.services %}
+            <tr>
+                <td>
+                    {{ _('Organization') }} : <b>{{ application.organization["title"] }}</b><br>
+                    {{ _('Subsystem') }} : <b>{{ application.requester_subsystem.name }}</b><br>
+                </td>
+                {% if "intermediate_organization" in application %}
+                <td>
+                    {{ _('Organization') }} : <b>{{ h.get_translated(application.intermediate_organization, 'title') }}</b><br>
+                    {{ _('Business code') }} : <b>{{ application.intermediate_business_code }}</b><br>
+                </td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>
+                    {{ _('Organization') }} : <b>{{ h.get_translated(application.target_organization, 'title') }}</b><br>
+                    {{ _('Subsystem') }} : <b>{{ subsystem_code[3] }}</b><br>
+                    {{ _('Service code') }} : <b>{{ service.name }}</b><br>
+                </td>
+                <td>{% link_for _('Preview application'), named_route='apply_permissions.view_permission_application', application_id=application.id %}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
 {% else %}
 <p>{{ _('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.') }}</p>
-{% endif %}
-
-<h2>{{ _('Received applications') }}</h2>
-{% if received_applications %}
-  <ul>
-  {% for application in received_applications %}
-      {% for service in application.services %}
-        <li>{% link_for ((h.xroad_subsystem_path(application.subsystem) or application.subsystem.name) + ' → ' + (h.xroad_subsystem_path(service) or service.name)), named_route='apply_permissions.view_permission_application', application_id=application.id %}</li>
-    {% endfor %}
-  {% endfor %}
-  </ul>
-{% else %}
-<p>{{ _('You have not received any service access applications.') }}</p>
 {% endif %}
 
 {% endblock %}
