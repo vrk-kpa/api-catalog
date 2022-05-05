@@ -47,7 +47,7 @@ jobs:
           submodules: true
       - name: Install requirements
         run: |
-          cd ckanext-apicatalog
+          cd ckanext/ckanext-apicatalog
           pip install -r dev-requirements.txt
           pip install -e .
 
