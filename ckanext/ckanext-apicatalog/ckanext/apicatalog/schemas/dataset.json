@@ -9,7 +9,6 @@
       "label": "Title",
       "preset": "fluent_core_title_translated",
       "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
-      "only_default_lang_required": true,
       "form_placeholder": "The subsystem's name",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
@@ -42,7 +41,6 @@
       "form_languages": ["fi", "en", "sv"],
       "form_placeholder": "Write a keyword",
       "preset": "fluent_vocabulary_with_autocomplete",
-      "only_default_lang_required": true,
       "validators": "only_default_lang_required fluent_tags create_fluent_tags(keywords)",
       "form_attrs": {
         "data-module": "autocomplete",

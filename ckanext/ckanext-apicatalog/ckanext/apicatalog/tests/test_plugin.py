@@ -54,8 +54,7 @@ class TestApicatalogPlugin():
 
         organization2 = Organization(users=org2_users)
 
-        dataset = Dataset(title_translated={"fi": "finnish title"}, keywords={"fi": ["some keyword"]},
-                          private=False, owner_org=organization1['id'])
+        dataset = Dataset(private=False, owner_org=organization1['id'])
 
         resource = Resource(package_id=dataset['id'], access_restriction_level="private",
                             allowed_organizations=organization2['name'])
@@ -79,8 +78,7 @@ class TestApicatalogPlugin():
 
         Organization(users=org2_users)
 
-        dataset = Dataset(title_translated={"fi": "finnish title"}, keywords={"fi": ["some keyword"]},
-                          private=False, owner_org=organization1['id'])
+        dataset = Dataset(private=False, owner_org=organization1['id'])
 
         resource = Resource(package_id=dataset['id'], access_restriction_level="private", allowed_organizations="")
 
@@ -118,11 +116,7 @@ class TestApicatalogPlugin():
         org = factories.Organization(users=org_users)
 
         subsystem = factories.Dataset(
-            owner_org=org["id"],
-            title_translated={
-                "fi": "some finnish name",
-            },
-            keywords={"fi": ["some keyword"]}
+            owner_org=org["id"]
         )
 
         service = factories.Resource(

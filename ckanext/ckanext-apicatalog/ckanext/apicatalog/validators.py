@@ -65,6 +65,9 @@ def only_default_lang_required(field, schema):
         if errors[key]:
             return
 
+        if default_lang == "":
+            return
+
         value = data[key]
 
         if value is not missing:
