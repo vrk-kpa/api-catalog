@@ -93,11 +93,10 @@ debug_enabled: false
 
 robots_allowed: false
 
-apicatalog_ui_path: "{{ server_path }}/ckanext/ckanext-apicatalog_ui/"
+apicatalog_path: "{{ server_path }}/ckanext/ckanext-apicatalog/"
 
 ckan_plugins:
-  - apicatalog_scheming
-  - apicatalog_ui
+  - apicatalog
   - scheming_datasets
   - scheming_organizations
   - fluent
@@ -105,7 +104,6 @@ ckan_plugins:
   - apicatalog_pages
   - pages
   - apicatalog_admin_dashboard
-  - apicatalog_routes
   - contact
   - apicatalog_harvesterstatus
   - harvest

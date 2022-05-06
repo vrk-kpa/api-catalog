@@ -5,8 +5,8 @@
 # beforehand.
 
 # To run:
-# ansible-playbook -v -i inventories/vagrant -e ckanext=ckanext-apicatalog_ui update-extension.yml
-# ansible-playbook --ask-vault-pass -v -i inventories/qa -e ckanext=ckanext-apicatalog_ui update-extension.yml
+# ansible-playbook -v -i inventories/vagrant -e ckanext=ckanext-apicatalog update-extension.yml
+# ansible-playbook --ask-vault-pass -v -i inventories/qa -e ckanext=ckanext-apicatalog update-extension.yml
 
 - hosts: mainserver
   become: true

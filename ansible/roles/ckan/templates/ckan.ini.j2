@@ -87,10 +87,10 @@ ckan.hide_activity_from_users = non-existing
 
 scheming.presets = ckanext.scheming:presets.json
                    ckanext.fluent:presets.json
-                   ckanext.apicatalog_scheming:presets.json
+                   ckanext.apicatalog:presets.json
 
-scheming.dataset_schemas = ckanext.apicatalog_scheming.schemas:dataset.json
-scheming.organization_schemas = ckanext.apicatalog_scheming.schemas:organization.json
+scheming.dataset_schemas = ckanext.apicatalog.schemas:dataset.json
+scheming.organization_schemas = ckanext.apicatalog.schemas:organization.json
 
 # Disable sending error emails. Commented out because the default is None, and "None" is interpreted here as a string.
 # email_to =
@@ -114,12 +114,12 @@ ckanext.apicatalog.harvester_status_recipients = {{ ckan_harvester_status_email_
 ckanext.apicatalog.fault_recipients = {{ ckan_fault_recipients|join(' ') }}
 ckanext.apicatelog.harvester_instruction_url = {{ ckan_harvester_instruction_url }}
 
-ckanext.apicatalog_ui.test_environment = {{ ckan_test_environment | default(False) }}
+ckanext.apicatalog.test_environment = {{ ckan_test_environment | default(False) }}
 
-ckanext.apicatalog_ui.news.endpoint_url = {{ content.news.endpoint_url }}
-ckanext.apicatalog_ui.news.ssl_verify = {{ content.news.ssl_verify | default(True) }}
-ckanext.apicatalog_ui.news.tags = palveluvaeylae
-ckanext.apicatalog_ui.news.url_template = {{ content.news.url_template }}
+ckanext.apicatalog.news.endpoint_url = {{ content.news.endpoint_url }}
+ckanext.apicatalog.news.ssl_verify = {{ content.news.ssl_verify | default(True) }}
+ckanext.apicatalog.news.tags = palveluvaeylae
+ckanext.apicatalog.news.url_template = {{ content.news.url_template }}
 
 ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000
@@ -134,9 +134,9 @@ ckanext.forcetranslation.path = i18n
 ckanext.forcetranslation.domain = ckan
 
 
-ckanext.apicatalog_routes.allowed_user_creators = {{ allowed_user_creators | default([]) | join(" ")  }}
-ckanext.apicatalog_routes.allowed_user_editors = {{ allowed_user_editors | default([]) | join(" ")  }}
-ckanext.apicatalog_routes.allowed_member_editors = {{ allowed_member_editors | default([]) | join(" ") }}
+ckanext.apicatalog.allowed_user_creators = {{ allowed_user_creators | default([]) | join(" ")  }}
+ckanext.apicatalog.allowed_user_editors = {{ allowed_user_editors | default([]) | join(" ")  }}
+ckanext.apicatalog.allowed_member_editors = {{ allowed_member_editors | default([]) | join(" ") }}
 
 ckanext.xroad_integration.xroad_gateway_address = http://localhost:9090/rest-adapter-service
 ckanext.xroad_integration.xroad_catalog_address = https://{{ xroad.securityserver.host }}:{{ xroad.securityserver.port }}/r1/{{ xroad.service_id | replace('.', '/') }}{% if xroad.service_name is defined %}/{{ xroad.service_name }}{% endif %}

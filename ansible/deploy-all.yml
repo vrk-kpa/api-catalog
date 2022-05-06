@@ -28,9 +28,8 @@
     - postgres
     - postgres-backup
     - { role: ckan-extension, ckanext: ckanext-sentry }
-    - { role: ckan-extension, ckanext: ckanext-apicatalog_routes }
-    - { role: ckan-extension, ckanext: ckanext-apicatalog_scheming }
-    - { role: ckan-extension, ckanext: ckanext-apicatalog_ui }
+
+    - { role: ckan-extension, ckanext: ckanext-apicatalog }
     - { role: ckan-extension, ckanext: ckanext-scheming }
     - { role: ckan-extension, ckanext: ckanext-fluent }
     - { role: ckan-extension, ckanext: ckanext-pages }
