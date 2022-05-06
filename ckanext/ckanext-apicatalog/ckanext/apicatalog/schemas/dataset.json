@@ -1,0 +1,345 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "dataset",
+  "about": "API catalog service/interface schema",
+  "about_url": "http://github.com/vrk-kpa/api-catalog",
+  "dataset_fields": [
+    {
+      "field_name": "title_translated",
+      "label": "Title",
+      "preset": "fluent_core_title_translated",
+      "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
+      "form_placeholder": "The subsystem's name",
+      "form_languages": ["fi", "sv", "en"],
+      "display_snippet": null,
+      "group_title": "Subsystem's title",
+      "group_description": "We recommend that the subsystem is given a clear name that describes its real name or purpose."
+    },
+    {
+      "field_name": "title",
+      "label": "Title in Data Exchange Layer",
+      "form_attrs": {
+        "readonly": true,
+        "class": "readonly"
+      },
+      "end_of_section": true
+    },
+    {
+      "field_name": "notes_translated",
+      "label": "Description",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
+      "preset": "fluent_core_markdown_translated",
+      "form_placeholder": "Write the subsystem's description",
+      "form_languages": ["fi", "sv", "en"],
+      "group_title": "Subsystem description",
+      "group_description": "General, compact and easy to understand description of the subsystem. You can use markdown formatting in the description.<br><br><div class=\"collapsible-container\"><button type=\"button\" class=\"collapsible dataset-collapsible\" data-module=\"collapsible\">Instructions for writing the description <i class=\"collapsible-icon fa fa-chevron-down\"></i></button><div class=\"collapsible-content dataset-collapsible-content\"><p>The description should contain at least the following things:</p><ul><li>What services does the subsystem provide?<ul><li>What interfaces does the subsystem have?</li><li>What kind of information can other organizations get through the services?</li></ul><li>What kind of conditions and limitations have to be considered in the use of the subsystem's services?<ul><li>Is the use of the services, for example, limited to certain kinds of organizations?</li><li>What's the cost of using the services?</li></ul></li><li>How can you get access to the service?<ul><li>What is the process like for the introduction of the service to use?</li><li>Does the use of the service require, for example, acquiring an information permission?</li></ul></li></ul><p>More detailed instructions for writing the description of the service can be found in <a href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">API catalog instructions</a>.</div></div>",
+      "end_of_section": true
+    },
+    {
+      "field_name": "keywords",
+      "label": "Keywords",
+      "form_languages": ["fi", "en", "sv"],
+      "form_placeholder": "Write a keyword",
+      "preset": "fluent_vocabulary_with_autocomplete",
+      "validators": "only_default_lang_required fluent_tags create_fluent_tags(keywords)",
+      "form_attrs": {
+        "data-module": "autocomplete",
+        "data-module-tags": "",
+        "data-module-source": "/api/2/util/tag/autocomplete?incomplete=?&vocabulary_id=keywords"
+      },
+      "description": "",
+      "group_title": "Keywords",
+      "group_description": "Using keywords the user can easily find this application or similar applications through the search function. Choose at least one Finnish keyword.",
+      "end_of_section": true
+    },
+    {
+      "field_name": "maintainer",
+      "label": "Maintainer",
+      "form_placeholder": "The name of the maintainer",
+      "display_property": "dc:contributor",
+      "classes": ["control-full"],
+      "group_title": "Maintainer's information",
+      "group_description": "Use the maintainer's common contact information."
+    },
+    {
+      "field_name": "maintainer_email",
+      "label": "Maintainer Email",
+      "form_placeholder": "The email of the maintainer",
+      "display_property": "dc:contributor",
+      "display_snippet": "email.html",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "maintainer_phone",
+      "label": "Maintainer phone number",
+      "form_placeholder": "+358123456789",
+      "display_property": "dc:contributor",
+      "classes": ["control-full"],
+      "end_of_section": true
+    },
+    {
+      "field_name": "private",
+      "label": "Visibility",
+      "preset": "select",
+      "required": true,
+      "classes": ["control-full"],
+      "form_snippet": "visibility.html",
+      "validators": "boolean_validator",
+      "group_title": "Service visibility",
+      "choices": [
+        {
+          "value": "false",
+          "label": "Public"
+        },
+        {
+          "value": "true",
+          "label": "Limited"
+        }
+      ],
+      "default_value": "true"
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "validators": "ignore_missing",
+      "form_placeholder": "Allowed organizations",
+      "end_of_section": true
+    },
+    {
+      "field_name": "validSince",
+      "label": "Valid since",
+      "preset": "date",
+      "classes": ["control-full"],
+      "form_placeholder": "dd.mm.yyyy",
+      "group_title": "Other information"
+    },
+    {
+      "field_name": "validUntil",
+      "label": "Valid until",
+      "preset": "date",
+      "classes": ["control-full"],
+      "form_placeholder": "dd.mm.yyyy"
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "form_placeholder": "my-applications-title",
+      "final": true,
+      "preset": "dataset_slug_ex",
+      "validators": "not_empty unicode name_validator package_name_validator",
+      "end_of_section": true
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization_ex",
+      "final": true
+    },
+    {
+      "field_name": "xroad_instance",
+      "label": "X-Road instance",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_memberclass",
+      "label": "X-Road member class",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_membercode",
+      "label": "X-Road member code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_subsystemcode",
+      "label": "X-Road subsystem code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "service_permission_settings",
+      "form_snippet": null,
+      "display_snippet": null,
+      "validators": "keep_old_value_if_missing scheming_valid_json_object ignore_missing",
+      "output_validators": "scheming_load_json ignore_not_package_maintainer"
+    }
+  ],
+"resource_fields": [
+    {
+      "field_name": "name",
+      "label": "Title",
+      "additional_description": "Attachment name will be filled automatically and should not be edited",
+      "input_title": ["Attachment name"],
+      "only_default_lang_required": true,
+      "display_hr": true,
+      "final": true,
+      "form_placeholder": "AttachmentName",
+      "form_languages": ["en"],
+      "form_snippet": "fluent_title.html",
+      "display_snippet": null
+    },
+    {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "resource_url_upload_ex",
+      "final": true
+    },
+    {
+      "field_name": "description_translated",
+      "label": "Attachment description",
+      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
+      "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
+      "preset": "fluent_core_title_translated",
+      "required": false,
+      "only_default_lang_required": true,
+      "form_placeholder": "Write attachment description",
+      "form_languages": ["fi", "sv", "en"],
+      "form_snippet": "fluent_textarea.html",
+      "display_snippet": null,
+      "form_attrs": {}
+    },
+    {
+      "field_name": "access_restriction_level",
+      "label": "Attachment visibility",
+      "extra_label": "Attachment visibility",
+      "additional_description": "When attachment visibility is private, it is only visible to the owner organisation or users from allowed organisations",
+      "form_snippet": "radio.html",
+      "display_hr": false,
+      "choices": [
+        {
+          "value": "public",
+          "label": "Public",
+          "checked": true
+        },
+        {
+          "value": "private",
+          "label": "Private",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "field_name": "allowed_organizations",
+      "label": "Allowed Organizations",
+      "classes": ["control-full"],
+      "preset": "apicatalog_organization_string_autocomplete",
+      "form_placeholder": "Allowed Organisations"
+    },
+    {
+      "field_name": "chargeability",
+      "label": "Chargeability",
+      "extra_label": "Other information and settings",
+      "display_hr": true,
+      "form_snippet": "select.html",
+      "classes": ["control-full"],
+      "choices": [
+        {
+          "value": "yes",
+          "label": "Chargeable"
+        },
+        {
+          "value": "no",
+          "label": "Free of charge"
+        },
+        {
+          "value": "maybe",
+          "label": "Mentioned in service description"
+        }
+      ]
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "classes": ["control-full"],
+      "preset": "apicatalog_resource_format_autocomplete"
+    },
+    {
+      "field_name": "validSince",
+      "label": "Valid since",
+      "preset": "date",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "validUntil",
+      "label": "Valid until",
+      "preset": "date",
+      "classes": ["control-full"]
+    },
+    {
+      "field_name": "connection_information",
+      "label": "Information about the interface",
+      "preset": "fluent_text",
+      "classes": ["control-full"],
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Other information about the API, e.g. how to take into use, parameters, terms of use (unless available in a separate document)"
+    },
+    {
+      "field_name": "availability",
+      "label": "Availability",
+      "preset": "fluent_text",
+      "classes": ["control-full"],
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Information on the availability of the API, e.g. available 24/7, or available only during business hours"
+
+    },
+    {
+      "field_name": "sla",
+      "label": "SLA",
+      "preset": "fluent_text",
+      "classes": ["control-full"],
+      "form_languages": ["fi", "sv", "en"],
+      "help_text": "Additional information on the SLA of the API, e.g. response time or speed"
+
+    },
+    {
+      "field_name": "valid_content",
+      "form_snippet": false,
+      "display_snippet": null
+    },
+    {
+      "field_name": "harvested_from_xroad",
+      "label": "Harvested from X-Road",
+      "form_snippet": false,
+      "display_snippet": null,
+      "validators": "keep_old_value_if_missing default_value(false) boolean_validator ignore_not_sysadmin"
+    },
+    {
+      "field_name": "xroad_servicecode",
+      "label": "X-Road service code",
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_serviceversion",
+      "label": "X-Road service version",
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_service_type",
+      "label": "X-Road service type",
+      "form_snippet": false,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "wsdl_timestamp",
+      "label": "WSDL timestamp",
+      "preset": "datetime",
+      "form_snippet": false,
+      "display_snippet": null
+    },
+    {
+      "field_name": "rest_timestamp",
+      "label": "Rest timestamp",
+      "preset": "datetime",
+      "form_snippet": false,
+      "display_snippet": null
+    }
+  ]
+}

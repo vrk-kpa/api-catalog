@@ -1,0 +1,24 @@
+{% ckan_extends %}
+
+{% import 'macros/form.html' as form %}
+
+{% block admin_form %}
+    {{ super() }}
+    {{ form.input('ckanext.apicatalog.site_description.sv', id='field-ckanext.apicatalog.site_description.sv', label=_('Site Tag Line in swedish'), value=data['ckanext.apicatalog.site_description.sv'], error=errors['ckanext.apicatalog.site_description.sv']) }}
+    {{ form.input('ckanext.apicatalog.site_description.en_GB', id='field-ckanext.apicatalog.site_description.en_GB', label=_('Site Tag Line in english'), value=data['ckanext.apicatalog.site_description.en_GB'], error=errors['ckanext.apicatalog.site_description.en_GB']) }}
+    {{ form.input('ckanext.apicatalog.site_intro_text.sv', id='field-ckanext.apicatalog.site_intro_text.sv', label=_('Intro text in swedish'), value=data['ckanext.apicatalog.site_intro_text.sv'], error=errors['ckanext.apicatalog.site_intro_text.sv']) }}
+    {{ form.input('ckanext.apicatalog.site_intro_text.en_GB', id='field-ckanext.apicatalog.site_intro_text.en_GB', label=_('Intro text in english'), value=data['ckanext.apicatalog.site_intro_text.en_GB'], error=errors['ckanext.apicatalog.site_intro_text.en_GB']) }}
+    {{ form.input('ckanext.apicatalog.service_alert.fi.message', id='field-ckanext.apicatalog.service_alert.fi.message', label=_('Service message in finnish'), value=data['ckanext.apicatalog.service_alert.fi.message'], error=errors['ckanext.apicatalog.service_alert.fi.message']) }}
+    {{ form.input('ckanext.apicatalog.service_alert.sv.message', id='field-ckanext.apicatalog.service_alert.sv.message', label=_('Service message in swedish'), value=data['ckanext.apicatalog.service_alert.sv.message'], error=errors['ckanext.apicatalog.service_alert.sv.message']) }}
+    {{ form.input('ckanext.apicatalog.service_alert.en_GB.message', id='field-ckanext.apicatalog.service_alert.en_GB.message', label=_('Service message in english'), value=data['ckanext.apicatalog.service_alert.en_GB.message'], error=errors['ckanext.apicatalog.service_alert.en_GB.message']) }}
+    {{ form.markdown('ckanext.apicatalog.info_message.fi', id='field-ckanext.apicatalog.info_message.fi', label=_('Info message in finnish'), value=data['ckanext.apicatalog.info_message.fi'], error=errors['ckanext.apicatalog.info_message.fi']) }}
+    {{ form.markdown('ckanext.apicatalog.info_message.sv', id='field-ckanext.apicatalog.info_message.sv', label=_('Info message in swedish'), value=data['ckanext.apicatalog.info_message.sv'], error=errors['ckanext.apicatalog.info_message.sv']) }}
+    {{ form.markdown('ckanext.apicatalog.info_message.en_GB', id='field-ckanext.apicatalog.info_message.en_GB', label=_('Info message in english'), value=data['ckanext.apicatalog.info_message.en_GB'], error=errors['ckanext.apicatalog.info_message.en_GB']) }}
+    {{ form.markdown('ckanext.apicatalog.left_column.fi', id='field-ckanext.apicatalog.left_column.fi', label=_('Left column in finnish'), value=data['ckanext.apicatalog.left_column.fi'], error=errors['ckanext.apicatalog.left_column.fi']) }}
+    {{ form.markdown('ckanext.apicatalog.left_column.sv', id='field-ckanext.apicatalog.left_column.sv', label=_('Left column in swedish'), value=data['ckanext.apicatalog.left_column.sv'], error=errors['ckanext.apicatalog.left_column.sv']) }}
+    {{ form.markdown('ckanext.apicatalog.left_column.en_GB', id='field-ckanext.apicatalog.left_column.en_GB', label=_('Left column in english'), value=data['ckanext.apicatalog.left_column.en_GB'], error=errors['ckanext.apicatalog.left_column.en_GB']) }}
+    {{ form.markdown('ckanext.apicatalog.right_column.fi', id='field-ckanext.apicatalog.right_column.fi', label=_('Right column in finnish'), value=data['ckanext.apicatalog.right_column.fi'], error=errors['ckanext.apicatalog.right_column.fi']) }}
+    {{ form.markdown('ckanext.apicatalog.right_column.sv', id='field-ckanext.apicatalog.right_column.sv', label=_('Right column in swedish'), value=data['ckanext.apicatalog.right_column.sv'], error=errors['ckanext.apicatalog.right_column.sv']) }}
+    {{ form.markdown('ckanext.apicatalog.right_column.en_GB', id='field-ckanext.apicatalog.right_column.en_GB', label=_('Right column in english'), value=data['ckanext.apicatalog.right_column.en_GB'], error=errors['ckanext.apicatalog.right_column.en_GB']) }}
+    {{ form.input('ckanext.apicatalog.readonly_users', id='field-ckanext.apicatalog.readonly_users', label=_('Readonly admins'), value=data['ckanext.apicatalog.readonly_users'], error=errors['ckanext.apicatalog.readonly_users']) }}
+{% endblock %}

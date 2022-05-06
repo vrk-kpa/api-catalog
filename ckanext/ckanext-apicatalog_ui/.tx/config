@@ -1,9 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[liityntakatalogi.ckanext-apicatalog_ui]
-file_filter = ckanext/apicatalog_ui/i18n/<lang>/LC_MESSAGES/ckanext-apicatalog_ui.po
-source_file = ckanext/apicatalog_ui/i18n/ckanext-apicatalog_ui.pot
-source_lang = en
-type = PO
-

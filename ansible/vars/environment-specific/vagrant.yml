@@ -103,8 +103,7 @@ debug_enabled: true
 robots_allowed: true
 
 ckan_plugins:
-  - apicatalog_scheming
-  - apicatalog_ui
+  - apicatalog
   - scheming_datasets
   - scheming_organizations
   - fluent
@@ -112,7 +111,6 @@ ckan_plugins:
   - apicatalog_pages
   - pages
   - apicatalog_admin_dashboard
-  - apicatalog_routes
   - contact
   - apicatalog_harvesterstatus
   - harvest
