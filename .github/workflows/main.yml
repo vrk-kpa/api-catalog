@@ -99,15 +99,15 @@ jobs:
         run: |
           apk add --update --no-progress \
           tar
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
       - name: Install xroad integration requirements
         run: |
 
