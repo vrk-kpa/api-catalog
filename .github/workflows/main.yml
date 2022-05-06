@@ -112,23 +112,23 @@ jobs:
         run: |
 
           cd ckanext/ckanext-apicatalog
-          pip install -r dev-requirements.txt
-          pip install -e .
+          pip install --user -r dev-requirements.txt
+          pip install --user -e .
 
           cd ../ckanext-harvest
-          pip install -r pip-requirements.txt
-          pip install -e .
+          pip install --user -r pip-requirements.txt
+          pip install --user -e .
 
           cd ../ckanext-scheming
-          pip install -e .
+          pip install --user -e .
 
           cd ../ckanext-fluent
-          pip install -e .
+          pip install --user -e .
 
           cd ../ckanext-xroad_integration
-          pip install -r requirements.txt
-          pip install -r dev-requirements.txt
-          pip install -e .
+          pip install --user -r requirements.txt
+          pip install --user -r dev-requirements.txt
+          pip install --user -e .
 
           # Replace default path to CKAN core config file with the one on the container
           sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
