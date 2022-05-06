@@ -96,7 +96,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: true
+          submodules: recursive
       - name: Install xroad integration requirements
         run: |
 
