@@ -48,7 +48,6 @@ jobs:
           submodules: true
       - uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
           cache: 'pip'
       - name: Install requirements
         run: |
@@ -104,7 +103,6 @@ jobs:
           submodules: recursive
       - uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
           cache: 'pip'
       - name: Install xroad integration requirements
         run: |
