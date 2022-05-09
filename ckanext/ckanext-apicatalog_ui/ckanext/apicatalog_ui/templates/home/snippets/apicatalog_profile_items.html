@@ -41,12 +41,14 @@
   </a>
 </li>
 
-<li class="{{ class }}">
-  <a href="{{ h.url_for('apply_permissions.list_permission_applications') }}" title="{{ _('Blog') }}">
-    <i class="fa fa-file-text-o"></i>
-    <span class="text">{{ _('Service access applications') }}</span>
-  </a>
-</li>
+{% if h.is_extension_loaded('apply_permissions_for_service') %}
+    <li class="{{ class }}">
+      <a href="{{ h.url_for('apply_permissions.list_permission_applications') }}" title="{{ _('Blog') }}">
+        <i class="fa fa-file-text-o"></i>
+        <span class="text">{{ _('Service access applications') }}</span>
+      </a>
+    </li>
+{% endif %}
 <!-- /ckanext_pages -->
 
 {% block header_account_logged %}
