@@ -100,7 +100,7 @@ polib==1.0.7 #; extra == "requirements"
     # via ckan
 psycopg2==2.8.2 #; extra == "requirements"
     # via ckan
-pyjwt==1.7.1 #; extra == "requirements"
+pyjwt==2.4.0 #; extra == "requirements"
     # via ckan
 pysolr==3.6.0 #; extra == "requirements"
     # via ckan
