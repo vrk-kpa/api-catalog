@@ -1,5 +1,3 @@
-'use strict';
-
 this.ckan.module('collapsible', function($) {
   return {
 
