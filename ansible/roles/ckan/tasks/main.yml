@@ -144,6 +144,9 @@
 - name: Ensure fetch xroad stats cronjob
   cron: name="Fetch X-Road Stats" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-stats"
 
+- name: Ensure fetch xroad distinct service stats cronjob
+  cron: name="Fetch X-Road Distinct Service Stats" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-distinct-service-stats"
+
 - name: Ensure fetch xroad services cronjob
   cron: name="Fetch X-Road Services" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad fetch-service-list"
 
