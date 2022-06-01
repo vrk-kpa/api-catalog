@@ -36,7 +36,11 @@
                     <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
                     <i class="fa fa-key"></i> {{ _('API Endpoint') }}
                   {% else %}
-                    <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}" download>
+                      {% if 'unknown-service' in res.url %}
+                          <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+                      {% else %}
+                          <a class="btn btn-primary resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}" download>
+                      {% endif %}
                     <i class="fa fa-arrow-circle-o-down"></i> {{ _('Download') }}
                   {% endif %}
                 </a>
