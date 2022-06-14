@@ -1,8 +1,8 @@
 
-data_directory = '/var/lib/postgresql/10/main'
-hba_file = '/etc/postgresql/10/main/pg_hba.conf'
-ident_file = '/etc/postgresql/10/main/pg_ident.conf'
-external_pid_file = '/var/run/postgresql/10-main.pid'
+data_directory = '/var/lib/postgresql/{{ system.postgresql.version }}/main'
+hba_file = '/etc/postgresql/{{ system.postgresql.version }}/main/pg_hba.conf'
+ident_file = '/etc/postgresql/{{ system.postgresql.version }}/main/pg_ident.conf'
+external_pid_file = '/var/run/postgresql/{{ system.postgresql.version }}-main.pid'
 
 listen_addresses = '*'
 port = 5432
