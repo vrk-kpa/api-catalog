@@ -31,14 +31,21 @@
       <div class="col-xs-3 hidden-xs">
       <div class="container-fluid resource-download">
         {% block resource_item_explore %}
-        {% if not url_is_edit %}
-            {% if res.url and h.is_url(res.url) %}
-              <a href="{{ res.url }}" class="resource-url-analytics" target="_blank" aria-label="{{ _('Download') + ' ' + h.resource_display_name(res) + ' ' + res.format  }}">
-                  <i class="fal fa-download" aria-hidden="true"></i>
-                  <span aria-hidden="true">{{ _('Download') }}</span>
-              </a>
+            {% if not url_is_edit %}
+                {% if res.url and h.is_url(res.url) %}
+                    {% if res.has_views or res.url_type == 'upload' %}
+                        <a href="{{ res.url }}" class="resource-url-analytics" target="_blank" aria-label="{{ _('Download') + ' ' + h.resource_display_name(res) + ' ' + res.format  }}">
+                            <i class="fal fa-download" aria-hidden="true"></i>
+                            <span aria-hidden="true">{{ _('Download') }}</span>
+                        </a>
+                    {% else %}
+                        <a href="{{ res.url }}" class="resource-url-analytics" target="_blank" aria-label="{{ _('Go to resource') + ' ' + h.resource_display_name(res) + ' ' + res.format  }}">
+                            <i class="fa fa-external-link" aria-hidden="true"></i>
+                            <span aria-hidden="true">{{ _('Go to resource') }}</span>
+                        </a>
+                    {% endif %}
+                {% endif %}
             {% endif %}
-        {% endif %}
         {% endblock %}
       </div>
       </div>
