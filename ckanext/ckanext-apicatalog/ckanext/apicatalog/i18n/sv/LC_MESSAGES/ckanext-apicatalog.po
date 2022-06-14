@@ -6,6 +6,7 @@
 # 
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
+# Teemu Erkkola <teemu.erkkola@iki.fi>, 2022
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-05 07:11+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
-"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2022\n"
+"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -944,7 +945,7 @@ msgstr "Visa profil"
 msgid "Dashboard (%(num)d new item)"
 msgid_plural "Dashboard (%(num)d new items)"
 msgstr[0] "På skrivbordet (%(num)d nytt objekt)"
-msgstr[1] "På skrivbordet (% (num)d nya objekt)"
+msgstr[1] "På skrivbordet (%(num)d nya objekt)"
 
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile_items.html:38
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile_items.html:40
