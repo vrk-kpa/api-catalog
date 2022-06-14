@@ -20,6 +20,10 @@ matomo:
 sentry:
   dsn: ""
 
+system:
+  ubuntu_codename: focal
+  postgresql:
+    version: 12
 
 database_ckan:
   host: 127.0.0.1

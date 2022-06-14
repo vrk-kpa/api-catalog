@@ -30,6 +30,12 @@
     owner: root
     group: root
 
+- name: "Workaround: remove `typing` before installing CKAN to fix reprovisioning"
+  pip:
+    name: typing
+    state: absent
+    virtualenv: "{{ virtualenv }}"
+
 - name: Install project requirements
   pip:
    requirements: "{{ cache_path }}/requirements.txt"

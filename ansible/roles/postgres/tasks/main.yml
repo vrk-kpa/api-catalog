@@ -8,14 +8,14 @@
 - name: Copy postgres configurations
   template: src={{ item.file }} dest={{ item.dest }} owner=postgres group=postgres mode="0640"
   with_items:
-  - { file: pg_hba.conf.j2, dest: /etc/postgresql/10/main/pg_hba.conf }
-  - { file: postgresql.conf.j2, dest: /etc/postgresql/10/main/postgresql.conf }
+  - { file: pg_hba.conf.j2, dest: "/etc/postgresql/{{ system.postgresql.version }}/main/pg_hba.conf" }
+  - { file: postgresql.conf.j2, dest: "/etc/postgresql/{{ system.postgresql.version }}/main/postgresql.conf" }
 
 - name: Generate self-signed SSL certificate
-  command: openssl req -new -nodes -x509 -subj "/C=FI/ST=Helsinki/L=Helsinki/O=IT/CN={{ public_facing_hostname }}" -days 3650 -keyout "/var/lib/postgresql/10/main/server.key" -out "/var/lib/postgresql/10/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/10/main/server.crt"
+  command: openssl req -new -nodes -x509 -subj "/C=FI/ST=Helsinki/L=Helsinki/O=IT/CN={{ public_facing_hostname }}" -days 3650 -keyout "/var/lib/postgresql/{{ system.postgresql.version }}/main/server.key" -out "/var/lib/postgresql/{{ system.postgresql.version }}/main/server.crt" -extensions v3_ca creates="/var/lib/postgresql/{{ system.postgresql.version }}/main/server.crt"
 
 - name: Set certificate file ownership and mode
-  shell: chmod 600 /var/lib/postgresql/10/main/server.* && chown "postgres:postgres" /var/lib/postgresql/10/main/server.*
+  shell: chmod 600 /var/lib/postgresql/{{ system.postgresql.version }}/main/server.* && chown "postgres:postgres" /var/lib/postgresql/{{ system.postgresql.version }}/main/server.*
 
 - name: Ensure CKAN is not running before making changes to the database
   supervisorctl: name="{{ ckan_supervisor_name }}:" state=stopped
