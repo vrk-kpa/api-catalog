@@ -103,7 +103,7 @@
 
 .module-content > :first-child:not(.fill-module) {
   margin-top: 0;
-  padding-top: 0;
+  padding-top: @gutterY;
 }
 
 .module-content > :first-child:is(.dataset-sidebar) {
@@ -112,7 +112,7 @@
 
 .module-content > :last-child:not(.fill-module) {
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: @gutterY;
 }
 
 .module-content > :last-child {
@@ -163,12 +163,9 @@
   background-color: @moduleBackgroundColor;
 
   .module {
-    padding-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
-}
-
-.dataset-secondary {
-  border: none;
 }
 
 .module-image {
