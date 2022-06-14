@@ -1259,7 +1259,7 @@ msgstr "Näytä vain palveluntarjoajat"
 
 #: ckanext/apicatalog/templates/package/edit.html:10
 msgid "Subsystem's information"
-msgstr "Alijärjelmän tiedot"
+msgstr "Alijärjestelmän tiedot"
 
 #: ckanext/apicatalog/templates/package/edit.html:11
 msgid "Access request settings"
@@ -1323,7 +1323,7 @@ msgstr "Hae käyttölupaa organisaation sivuilla"
 #: ckanext/apicatalog/templates/package/read.html:38
 #: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:20
 msgid "Subsystem information"
-msgstr "Alijärjelmän tiedot"
+msgstr "Alijärjestelmän tiedot"
 
 #: ckanext/apicatalog/templates/package/read.html:39
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:59
