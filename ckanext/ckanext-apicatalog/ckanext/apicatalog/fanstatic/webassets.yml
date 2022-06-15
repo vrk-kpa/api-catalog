@@ -75,7 +75,7 @@ datetimepicker_js:
       - base/main
   contents:
     - datetimepicker/bootstrap-datetimepicker.js
-    - datetimepicker/datepicker.js
+    - javascript/datepicker.js
 
 datetimepicker_css:
   output: ckanext-apicatalog/%(version)s_datetimepicker.css
