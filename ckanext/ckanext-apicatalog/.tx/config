@@ -1,9 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[liityntakatalogi.ckanext-apicatalog]
+[o:avoindata:p:liityntakatalogi:r:ckanext-apicatalog]
 file_filter = ckanext/apicatalog/i18n/<lang>/LC_MESSAGES/ckanext-apicatalog.po
 source_file = ckanext/apicatalog/i18n/ckanext-apicatalog.pot
 source_lang = en
-type = PO
+type        = PO
 
