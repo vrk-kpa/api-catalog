@@ -100,7 +100,7 @@
     },
     {
       "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
+      "label": "Allowed organizations",
       "classes": ["control-full"],
       "preset": "apicatalog_organization_string_autocomplete",
       "validators": "ignore_missing",
@@ -208,7 +208,7 @@
       "field_name": "access_restriction_level",
       "label": "Attachment visibility",
       "extra_label": "Attachment visibility",
-      "additional_description": "When attachment visibility is private, it is only visible to the owner organisation or users from allowed organisations",
+      "additional_description": "When attachment visibility is private, it is only visible to the owner organization or users from allowed organizations",
       "form_snippet": "radio.html",
       "display_hr": false,
       "choices": [
@@ -226,10 +226,10 @@
     },
     {
       "field_name": "allowed_organizations",
-      "label": "Allowed Organizations",
+      "label": "Allowed organizations",
       "classes": ["control-full"],
       "preset": "apicatalog_organization_string_autocomplete",
-      "form_placeholder": "Allowed Organisations"
+      "form_placeholder": "Allowed organizations"
     },
     {
       "field_name": "chargeability",

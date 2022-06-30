@@ -103,7 +103,7 @@
     {
       "preset_name": "fluent_core_markdown_translated",
       "values": {
-        "form_snippet": "fluent_markdown.html",
+        "form_snippet": "fluent_markdown_ex.html",
         "display_snippet": "fluent_markdown.html",
         "error_snippet": "fluent_text.html",
         "validators": "fluent_text",
