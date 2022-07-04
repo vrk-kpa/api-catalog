@@ -22,6 +22,7 @@
         "readonly": true,
         "class": "readonly"
       },
+      "classes": ["control-full"],
       "end_of_section": true
     },
     {
@@ -82,7 +83,6 @@
       "label": "Visibility",
       "preset": "select",
       "required": true,
-      "classes": ["control-full"],
       "form_snippet": "visibility.html",
       "validators": "boolean_validator",
       "group_title": "Service visibility",
