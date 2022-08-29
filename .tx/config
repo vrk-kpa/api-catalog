@@ -1,10 +1,10 @@
 [main]
 host = https://www.transifex.com
 
-[liityntakatalogi.ckan-pot]
-file_filter = ansible/roles/ckan-translations/files/<lang>/LC_MESSAGES/<lang>.po
+[o:avoindata:p:liityntakatalogi:r:ckan-pot]
+file_filter  = ansible/roles/ckan-translations/files/<lang>/LC_MESSAGES/ckan.po
+source_file  = ansible/roles/ckan-translations/files/ckan.pot
+source_lang  = en
+type         = PO
 minimum_perc = 0
-source_file = ansible/roles/ckan-translations/files/ckan.pot
-source_lang = en
-type = PO
 

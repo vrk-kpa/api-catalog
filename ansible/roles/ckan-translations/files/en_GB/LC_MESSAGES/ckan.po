@@ -4,9 +4,9 @@
 # 
 # Translators:
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
-# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2020
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2021
+# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -25,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2021\n"
+"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2359,7 +2359,7 @@ msgstr "API catalog config options"
 #: ckan/templates/admin/config.html:34
 #, python-format
 msgid ""
-" <p><strong>Site Title:</strong> This is the title of this CKAN instance It "
+"<p><strong>Site Title:</strong> This is the title of this CKAN instance It "
 "appears in various places throughout CKAN.</p> <p><strong>Style:</strong> "
 "Choose from a list of simple variations of the main colour scheme to get a "
 "very quick custom theme working.</p> <p><strong>Site Tag Logo:</strong> This"
@@ -2373,24 +2373,8 @@ msgid ""
 "templates more fully we recommend <a href=\"%(docs_url)s\" "
 "target=\"_blank\">reading the documentation</a>.</p> "
 "<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
-"the modules that appear on your homepage.</p> "
+"the modules that appear on your homepage.</p>"
 msgstr ""
-" <p><strong>Site Title:</strong> This is the title of this API catalog "
-"instance It appears in various places throughout API catalog.</p> "
-"<p><strong>Style:</strong> Choose from a list of simple variations of the "
-"main colour scheme to get a very quick custom theme working.</p> "
-"<p><strong>Site Tag Logo:</strong> This is the logo that appears in the "
-"header of all the API catalog instance templates.</p> "
-"<p><strong>About:</strong> This text will appear on this API catalog "
-"instances <a href=\"%(about_url)s\">about page</a>.</p> <p><strong>Intro "
-"Text:</strong> This text will appear on this API catalog instances <a "
-"href=\"%(home_url)s\">home page</a> as a welcome to visitors.</p> "
-"<p><strong>Custom CSS:</strong> This is a block of CSS that appears in "
-"<code>&lt;head&gt;</code> tag of every page. If you wish to customize the "
-"templates more fully we recommend <a href=\"%(docs_url)s\" "
-"target=\"_blank\">reading the documentation</a>.</p> "
-"<p><strong>Homepage:</strong> This is for choosing a predefined layout for "
-"the modules that appear on your homepage.</p> "
 
 #: ckan/templates/admin/confirm_reset.html:3
 #: ckan/templates/admin/confirm_reset.html:10
@@ -2404,22 +2388,18 @@ msgstr "Administer API catalog"
 #: ckan/templates/admin/index.html:20
 #, python-format
 msgid ""
-" <p>As a sysadmin user you have full control over this CKAN instance. "
-"Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
-"CKAN <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p> "
+"<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
+" with care!</p> <p>For guidance on using sysadmin features, see the CKAN <a "
+"href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p>"
 msgstr ""
-" <p>As a sysadmin user you have full control over this API catalog instance."
-" Proceed with care!</p> <p>For guidance on using sysadmin features, see the "
-"API catalog <a href=\"%(docs_url)s\" target=\"_blank\">sysadmin "
-"guide</a></p> "
 
 #: ckan/templates/admin/trash.html:20
 msgid "Purge"
 msgstr "Purge"
 
 #: ckan/templates/admin/trash.html:32
-msgid " <p>Purge deleted datasets forever and irreversibly.</p> "
-msgstr " <p>Purge deleted subsystems forever and irreversibly.</p> "
+msgid "<p>Purge deleted datasets forever and irreversibly.</p>"
+msgstr "<p>Purge deleted subsystems forever and irreversibly.</p>"
 
 #: ckan/templates/ajax_snippets/api_info.html:19
 msgid "CKAN Data API"
@@ -2431,13 +2411,10 @@ msgstr "Access attachment data via a web API with powerful query support"
 
 #: ckan/templates/ajax_snippets/api_info.html:24
 msgid ""
-" Further information in the <a       "
+"Further information in the <a       "
 "href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
-"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
+"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p>"
 msgstr ""
-" Further information in the <a       "
-"href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
-"target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
 
 #: ckan/templates/ajax_snippets/api_info.html:33
 msgid "Endpoints"
@@ -2819,13 +2796,13 @@ msgstr "What are roles?"
 
 #: ckan/templates/group/member_new.html:81
 msgid ""
-" <p><strong>Admin:</strong> Can edit group information, as well as manage "
+"<p><strong>Admin:</strong> Can edit group information, as well as manage "
 "organization members.</p> <p><strong>Member:</strong> Can add/remove "
-"datasets from groups</p> "
+"datasets from groups</p>"
 msgstr ""
-" <p><strong>Admin:</strong> Can edit group information, as well as manage "
+"<p><strong>Admin:</strong> Can edit group information, as well as manage "
 "organization members.</p> <p><strong>Member:</strong> Can add/remove "
-"subsystems from groups</p> "
+"subsystems from groups</p>"
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
 #: ckan/templates/group/new.html:7
@@ -2946,15 +2923,15 @@ msgstr "What are Groups?"
 
 #: ckan/templates/group/snippets/helper.html:8
 msgid ""
-" You can use CKAN Groups to create and manage collections of datasets. This "
+"You can use CKAN Groups to create and manage collections of datasets. This "
 "could be to catalogue datasets for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
-"your own published datasets. "
+"your own published datasets."
 msgstr ""
-" You can use Groups to create and manage collections of subsystems. This "
+"You can use Groups to create and manage collections of subsystems. This "
 "could be to catalog subsystems for a particular project or team, or on a "
 "particular theme, or as a very simple way to help people find and search "
-"your own published subsystems. "
+"your own published subsystems."
 
 #: ckan/templates/group/snippets/history_revisions.html:10
 #: ckan/templates/package/snippets/history_revisions.html:10
@@ -3014,16 +2991,16 @@ msgstr "Welcome"
 
 #: ckan/templates/home/snippets/about_text.html:1
 msgid ""
-" <p>CKAN is the world’s leading open-source data portal platform.</p> "
-"<p>CKAN is a complete out-of-the-box software solution that makes data "
-"accessible and usable – by providing tools to streamline publishing, "
-"sharing, finding and using data (including storage of data and provision of "
-"robust data APIs). CKAN is aimed at data publishers (national and regional "
-"governments, companies and organizations) wanting to make their data open "
-"and available.</p> <p>CKAN is used by governments and user groups worldwide "
-"and powers a variety of official and community data portals including "
-"portals for local, national and international government, such as the UK’s "
-"<a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
+"<p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN"
+" is a complete out-of-the-box software solution that makes data accessible "
+"and usable – by providing tools to streamline publishing, sharing, finding "
+"and using data (including storage of data and provision of robust data "
+"APIs). CKAN is aimed at data publishers (national and regional governments, "
+"companies and organizations) wanting to make their data open and "
+"available.</p> <p>CKAN is used by governments and user groups worldwide and "
+"powers a variety of official and community data portals including portals "
+"for local, national and international government, such as the UK’s <a "
+"href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
 "href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a "
 "href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
 "government portals, as well as city and municipal sites in the US, UK, "
@@ -3031,26 +3008,8 @@ msgid ""
 "href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a "
 "href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features "
 "overview: <a "
-"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
+"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p>"
 msgstr ""
-" <p>CKAN is the world’s leading open-source data portal platform.</p> "
-"<p>CKAN is a complete out-of-the-box software solution that makes data "
-"accessible and usable – by providing tools to streamline publishing, "
-"sharing, finding and using data (including storage of data and provision of "
-"robust data APIs). CKAN is aimed at data publishers (national and regional "
-"governments, companies and organizations) wanting to make their data open "
-"and available.</p> <p>CKAN is used by governments and user groups worldwide "
-"and powers a variety of official and community data portals including "
-"portals for local, national and international government, such as the UK’s "
-"<a href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
-"href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a "
-"href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
-"government portals, as well as city and municipal sites in the US, UK, "
-"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
-"href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a "
-"href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br /> Features "
-"overview: <a "
-"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
 
 #: ckan/templates/home/snippets/promoted.html:8
 msgid "Welcome to CKAN"
@@ -3178,8 +3137,8 @@ msgid "Add dataset"
 msgstr "Add a subsystem"
 
 #: ckan/templates/organization/bulk_process.html:16
-msgid " found for \"{query}\""
-msgstr " found for \"{query}\""
+msgid "found for \"{query}\""
+msgstr ""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
@@ -3255,17 +3214,17 @@ msgstr "Update Member"
 
 #: ckan/templates/organization/member_new.html:82
 msgid ""
-" <p><strong>Admin:</strong> Can add/edit and delete datasets, as well as "
+"<p><strong>Admin:</strong> Can add/edit and delete datasets, as well as "
 "manage organization members.</p> <p><strong>Editor:</strong> Can add and "
 "edit datasets, but not manage organization members.</p> "
 "<p><strong>Member:</strong> Can view the organization's private datasets, "
-"but not add new datasets.</p> "
+"but not add new datasets.</p>"
 msgstr ""
-" <p><strong>Admin:</strong> Can add/edit and delete subsystems, as well as "
+"<p><strong>Admin:</strong> Can add/edit and delete subsystems, as well as "
 "manage organization members.</p> <p><strong>Editor:</strong> Can add and "
 "edit subsystems, but not manage organization members.</p> "
 "<p><strong>Member:</strong> Can view the organization's private subsystems, "
-"but not add new subsystems.</p> "
+"but not add new subsystems.</p>"
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -3299,29 +3258,29 @@ msgstr "What are Organizations?"
 
 #: ckan/templates/organization/snippets/help.html:7
 msgid ""
-" <p>Organizations act like publishing departments for datasets (for example,"
-" the Department of Health). This means that datasets can be published by and"
-" belong to a department instead of an individual user.</p> <p>Within "
+"<p>Organizations act like publishing departments for datasets (for example, "
+"the Department of Health). This means that datasets can be published by and "
+"belong to a department instead of an individual user.</p> <p>Within "
 "organizations, admins can assign roles and authorise its members, giving "
 "individual users the right to publish datasets from that particular "
-"organisation (e.g. Office of National Statistics).</p> "
+"organisation (e.g. Office of National Statistics).</p>"
 msgstr ""
-" <p>Organizations act like publishing departments for subsystems (for "
+"<p>Organizations act like publishing departments for subsystems (for "
 "example, the Department of Health). This means that subsystems can be "
 "published by and belong to a department instead of an individual user.</p> "
 "<p>Within organizations, admins can assign roles and authorise its members, "
 "giving individual users the right to publish subsystems from that particular"
-" organisation (e.g. Office of National Statistics).</p> "
+" organisation (e.g. Office of National Statistics).</p>"
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
-" CKAN Organizations are used to create, manage and publish collections of "
+"CKAN Organizations are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Organization, depending "
-"on their level of authorisation to create, edit and publish. "
+"on their level of authorisation to create, edit and publish."
 msgstr ""
-" Organizations are used to create, manage and publish collections of "
+"Organizations are used to create, manage and publish collections of "
 "subsystems. Users can have different roles within an organization, depending"
-" on their level of authorisation to create, edit and publish. "
+" on their level of authorisation to create, edit and publish."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
@@ -3363,13 +3322,13 @@ msgstr "What are subsystems?"
 
 #: ckan/templates/package/base_form_page.html:25
 msgid ""
-" A CKAN Dataset is a collection of data resources (such as files), together "
+"A CKAN Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
-"users see when searching for data. "
+"users see when searching for data."
 msgstr ""
-" A subsystem is a collection of attachments (such as WSDL files), together "
+"A subsystem is a collection of attachments (such as WSDL files), together "
 "with a description and other information, at a fixed URL. Subsystems are "
-"what users see when searching for data. "
+"what users see when searching for data."
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
@@ -3449,17 +3408,12 @@ msgstr "Add view"
 
 #: ckan/templates/package/new_view.html:19
 msgid ""
-" Data Explorer views may be slow and unreliable unless the DataStore "
+"Data Explorer views may be slow and unreliable unless the DataStore "
 "extension is enabled. For more information, please see the <a "
 "href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-"
 "structured-data-the-data-explorer' target='_blank'>Data Explorer "
-"documentation</a>. "
+"documentation</a>."
 msgstr ""
-" Data Explorer views may be slow and unreliable unless the DataStore "
-"extension is enabled. For more information, please see the <a "
-"href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-"
-"structured-data-the-data-explorer' target='_blank'>Data Explorer "
-"documentation</a>. "
 
 #: ckan/templates/package/new_view.html:29
 #: ckan/templates/package/snippets/resource_form.html:82
@@ -3661,11 +3615,11 @@ msgstr "Add new attachment"
 #: ckan/templates/package/snippets/resources_list.html:25
 #, python-format
 msgid ""
-" <p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not "
-"add some?</a></p> "
+"<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
+" some?</a></p>"
 msgstr ""
-" <p class=\"empty\">This subsystem has no data, <a href=\"%(url)s\">why not "
-"add some?</a></p> "
+"<p class=\"empty\">This subsystem has no data, <a href=\"%(url)s\">why not "
+"add some?</a></p>"
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3678,20 +3632,16 @@ msgstr "full {format} dump"
 #: ckan/templates/package/search.html:56
 #, python-format
 msgid ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s) or download a %(dump_link)s. "
+"You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s) or download a %(dump_link)s."
 msgstr ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s) or download a %(dump_link)s. "
 
 #: ckan/templates/package/search.html:60
 #, python-format
 msgid ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s). "
+"You can also access this registry using the %(api_link)s (see "
+"%(api_doc_link)s)."
 msgstr ""
-" You can also access this registry using the %(api_link)s (see "
-"%(api_doc_link)s). "
 
 #: ckan/templates/package/view_edit_base.html:9
 msgid "All views"
@@ -3764,11 +3714,9 @@ msgstr "eg. economy, mental health, government"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:40
 msgid ""
-" License definitions and additional information can be found at <a "
-"href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
+"License definitions and additional information can be found at <a "
+"href=\"http://opendefinition.org/licenses/\">opendefinition.org</a>"
 msgstr ""
-" License definitions and additional information can be found at <a "
-"href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
 
 #: ckan/templates/package/snippets/package_basic_fields.html:69
 #: ckan/templates/snippets/organization.html:23
@@ -4016,15 +3964,15 @@ msgstr "What are related items?"
 
 #: ckan/templates/related/base_form_page.html:22
 msgid ""
-" <p>Related Media is any app, article, visualisation or idea related to this"
-" dataset.</p> <p>For example, it could be a custom visualisation, pictograph"
-" or bar chart, an app using all or part of the data or even a news story "
-"that references this dataset.</p> "
+"<p>Related Media is any app, article, visualisation or idea related to this "
+"dataset.</p> <p>For example, it could be a custom visualisation, pictograph "
+"or bar chart, an app using all or part of the data or even a news story that"
+" references this dataset.</p>"
 msgstr ""
-" <p>Related Media is any app, article, visualisation or idea related to this"
-" subsystem.</p> <p>For example, it could be a custom visualisation, "
+"<p>Related Media is any app, article, visualisation or idea related to this "
+"subsystem.</p> <p>For example, it could be a custom visualisation, "
 "pictograph or bar chart, an app using all or part of the data or even a news"
-" story that references this subsystem.</p> "
+" story that references this subsystem.</p>"
 
 #: ckan/templates/related/confirm_delete.html:11
 msgid "Are you sure you want to delete related item - {name}?"
@@ -4039,16 +3987,14 @@ msgstr "Apps & Ideas"
 #: ckan/templates/related/dashboard.html:21
 #, python-format
 msgid ""
-" <p>Showing items <strong>%(first)s - %(last)s</strong> of "
-"<strong>%(item_count)s</strong> related items found</p> "
+"<p>Showing items <strong>%(first)s - %(last)s</strong> of "
+"<strong>%(item_count)s</strong> related items found</p>"
 msgstr ""
-" <p>Showing items <strong>%(first)s - %(last)s</strong> of "
-"<strong>%(item_count)s</strong> related items found</p> "
 
 #: ckan/templates/related/dashboard.html:25
 #, python-format
-msgid " <p><strong>%(item_count)s</strong> related items found</p> "
-msgstr " <p><strong>%(item_count)s</strong> related items found</p> "
+msgid "<p><strong>%(item_count)s</strong> related items found</p>"
+msgstr ""
 
 #: ckan/templates/related/dashboard.html:29
 msgid "There have been no apps submitted yet."
@@ -4060,11 +4006,11 @@ msgstr "What are applications?"
 
 #: ckan/templates/related/dashboard.html:50
 msgid ""
-" These are applications built with the datasets as well as ideas for things "
-"that could be done with them. "
+"These are applications built with the datasets as well as ideas for things "
+"that could be done with them."
 msgstr ""
-" These are applications built with the subsystems as well as ideas for "
-"things that could be done with them. "
+"These are applications built with the subsystems as well as ideas for things"
+" that could be done with them. "
 
 #: ckan/templates/related/dashboard.html:58
 #: ckan/templates/snippets/search_form.html:71
@@ -4288,16 +4234,14 @@ msgid "Order by"
 msgstr "Order by"
 
 #: ckan/templates/snippets/search_form.html:78
-msgid " <p class=\"extra\">Please try another search.</p> "
-msgstr " <p class=\"extra\">Please try another search.</p> "
+msgid "<p class=\"extra\">Please try another search.</p>"
+msgstr ""
 
 #: ckan/templates/snippets/search_form.html:84
 msgid ""
-" <p><strong>There was an error while searching.</strong> Please try "
-"again.</p> "
+"<p><strong>There was an error while searching.</strong> Please try "
+"again.</p>"
 msgstr ""
-" <p><strong>There was an error while searching.</strong> Please try "
-"again.</p> "
 
 #: ckan/templates/snippets/search_result_text.html:15
 msgid "{number} dataset found for \"{query}\""
@@ -4443,10 +4387,8 @@ msgstr "Account Info"
 
 #: ckan/templates/user/edit.html:19
 msgid ""
-" Your profile lets other CKAN users know about who you are and what you do. "
+"Your profile lets other CKAN users know about who you are and what you do."
 msgstr ""
-" Your profile lets other API catalog users know about who you are and what "
-"you do. "
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -5557,13 +5499,13 @@ msgid "Next"
 msgstr ""
 
 msgid "Show all datasets"
-msgstr ""
+msgstr "Show all subsystems"
 
 msgid "Show all organizations"
 msgstr ""
 
 msgid "Show all organizations with datasets"
-msgstr ""
+msgstr "organizations with subsystems"
 
 msgid "link opens in new tab or window"
 msgstr ""

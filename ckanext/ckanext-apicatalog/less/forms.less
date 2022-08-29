@@ -1,21 +1,23 @@
 .input {
   border: 2px solid @kapa-input-border;
   .border-radius(2px);
-  padding-left:5px;
+  padding-left: 5px;
   min-height: 40px;
 }
+
 input {
   .input;
 }
 
+
 .input-focus {
-  border-color:#66afe9;
+  border-color: #66afe9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-input:focus{
+input:focus {
   .input-focus
 }
 
@@ -47,7 +49,9 @@ select:focus {
     color: @btn-primary-color;
   }
 }
-.btn-default, .btn-danger {
+
+.btn-default,
+.btn-danger {
   font-weight: bold;
 
   &:visited {
@@ -58,6 +62,7 @@ select:focus {
 form .control-group {
   margin-top: 10px;
 }
+
 form .control-group:first-child {
   margin-top: 0px;
 }
@@ -67,9 +72,10 @@ form {
     .border-radius(0);
   }
 }
+
 label {
   cursor: pointer;
-  font-weight:normal;
+  font-weight: normal;
   font-size: 14px;
 
   &.control-label {
@@ -83,7 +89,7 @@ label {
 label.checkbox {
   display: flex;
   align-items: center;
-  padding-left:20px;
+  padding-left: 20px;
 
   input[type=checkbox] {
     top: 0;
@@ -94,6 +100,7 @@ label.checkbox {
 input[type=radio],
 input[type=checkbox] {
   margin-top: 5px;
+
   &.checkbox-onown {
     top: 0;
   }
@@ -101,6 +108,7 @@ input[type=checkbox] {
 
 .select-wrapper {
   position: relative;
+
   select {
     color: @suomifi-text-base;
     height: 40px;
@@ -131,7 +139,7 @@ textarea {
 }
 
 form .control-order-by {
-  float:right;
+  float: right;
   margin-top: 4px;
 }
 
@@ -184,13 +192,14 @@ form .control-order-by {
   border: none;
   color: #999;
   .transition(color 0.2s ease-in);
+
   &:hover {
     color: #000;
   }
 }
 
 textarea {
-  padding-left:5px;
+  padding-left: 5px;
   border: 2px solid @kapa-input-border;
   border-radius: 4px;
 }
@@ -230,9 +239,9 @@ textarea {
   .clearfix;
   color: @stagesTextColor;
   counter-reset: stage;
-  margin: -@gutterY -(@gutterX + 15px) @gutterY -(@gutterX + 15px);
+  margin: -@gutterY -(@gutterX + 15px + 10px) @gutterY -(@gutterX + 15px);
   overflow: hidden;
-  padding:0px;
+  padding: 0px;
 }
 
 // Errors
@@ -241,15 +250,18 @@ textarea {
   //margin-top:20px;
   border: none;
 
-  &.alert-danger{
+  &.alert-danger {
     background-color: #faebeb;
     margin-bottom: 0;
-    i.far, i.fas, i.fal {
+
+    i.far,
+    i.fas,
+    i.fal {
       color: #c33932;
     }
   }
 
-  &.alert-info{
+  &.alert-info {
     display: flex;
     align-items: start;
     border: 1px solid @suomifi-highlight-base;
@@ -258,16 +270,19 @@ textarea {
     color: @suomifi-text-base;
     margin-top: 25px;
 
-    .info-message, .far{
+    .info-message,
+    .far {
       padding-left: 20px;
       line-height: 24px;
-      a{
+
+      a {
         color: @suomifi-text-base;
         text-decoration: underline;
       }
     }
 
-    i.far, i.fal{
+    i.far,
+    i.fal {
       color: @suomifi-highlight-base;
       line-height: 24px;
     }
@@ -284,7 +299,10 @@ textarea {
     opacity: 1;
     line-height: 30px;
     margin-right: 20px;
-    i.far, i.fas, i.fal{
+
+    i.far,
+    i.fas,
+    i.fal {
       padding-left: 10px;
       color: @suomifi-text-base
     }
@@ -296,11 +314,11 @@ textarea {
 
 .select2-container-multi .select2-choices li.select2-search-choice {
   color: @kapa-black;
-  background-color:@white;
-  margin-top:5px;
+  background-color: @white;
+  margin-top: 5px;
   padding: 5px 8px 5px 22px;
   box-shadow: none;
-  border:1px solid @kapa-black;
+  border: 1px solid @kapa-black;
   line-height: @line-height-computed;
   background-image: none;
 }
@@ -323,28 +341,58 @@ textarea {
   //border-color: rgba(82,168,236,.8);
 }
 
+
 .select2-search-choice {
   display: none;
 }
 
+.select2-tags-container .api-catalog-pill {
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+
+
+.select2-container-multi.select2-container .select2-choices,
+.select2-container .select2-choices,
+.select2-choices,
+.select2-container-multi .select2-choices {
+  padding: 0;
+  border: 2px solid @kapa-input-border;
+  border-width: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-image: none;
+}
+
+.api-catalog-pill i {
+  margin-top: 1px;
+  margin-left: 5px;
+  font-size: 12px;
+}
 
 .js .image-upload {
   #field-image-url {
     padding-right: 29px;
   }
+
   #field-image-upload {
     cursor: pointer;
     position: absolute;
     z-index: 1;
     .opacity(0);
   }
+
   .controls {
     position: relative;
   }
+
   .btn {
     position: relative;
     top: 0;
     margin-right: 10px;
+
     &.hover {
       color: @gray-dark;
       text-decoration: none;
@@ -352,6 +400,7 @@ textarea {
       .transition(background-position .1s linear);
     }
   }
+
   .btn-remove-url {
     position: absolute;
     margin-right: 0;
@@ -371,9 +420,11 @@ textarea {
 
 .multiple-value-group {
   margin-bottom: 8px;
+
   .multiple-value {
     display: inline-block;
   }
+
   .multiple-values-remove-input {
     margin-left: 8px;
   }
@@ -382,10 +433,19 @@ textarea {
 .input-block-description {
   font-size: 16px;
 }
+
 .input-group-description {
   font-size: 16px;
   margin-top: 10px;
   margin-bottom: 30px;
+}
+
+.hide-label label{
+  display: none
+}
+
+.mb-0 {
+  margin-bottom: 0;
 }
 
 
@@ -394,21 +454,26 @@ textarea {
 .btn-default {
   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
 }
+
 .btn-primary {
   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
 }
+
 // Success appears as green
 .btn-success {
   .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
 }
+
 // Info appears as blue-green
 .btn-info {
   .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
 }
+
 // Warning appears as orange
 .btn-warning {
   .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
 }
+
 // Danger and error appear as red
 .btn-danger {
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);

@@ -5,7 +5,7 @@
   with_items: "{{ ckan_languages }}"
 
 - name: Copy CKAN translations
-  copy: src="{{ item }}/LC_MESSAGES/{{ item }}.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po"
+  copy: src="{{ item }}/LC_MESSAGES/ckan.po" dest="/usr/lib/ckan/default/src/ckan/ckan/i18n/{{ item }}/LC_MESSAGES/ckan.po"
   with_items: "{{ ckan_languages }}"
 
 - name: Compile translation files
