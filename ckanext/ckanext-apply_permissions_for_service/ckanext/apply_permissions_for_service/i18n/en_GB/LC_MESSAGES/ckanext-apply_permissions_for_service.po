@@ -8,6 +8,7 @@
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # Bert Viikmäe, 2022
+# Suvi Nuttunen, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-27 07:00+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
-"Last-Translator: Bert Viikmäe, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/views.py:141
 #: ckanext/apply_permissions_for_service/views.py:253
 msgid "Not authorized to see this page"
-msgstr "Not authorized to see this page"
+msgstr "Not authorised to see this page"
 
 #: ckanext/apply_permissions_for_service/views.py:80
 msgid "This API is not accepting access applications."
@@ -55,7 +56,7 @@ msgstr "Missing value"
 
 #: ckanext/apply_permissions_for_service/logic/auth.py:20
 msgid "User not authorized to view permission application."
-msgstr "User not authorized to view permission application."
+msgstr "User not authorised to view permission application."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/base.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:4
@@ -86,7 +87,7 @@ msgstr "You have not received any service access applications."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:8
 msgid "Organizations"
-msgstr "Organizations"
+msgstr "Organisations"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:11
 msgid "Datasets"
@@ -132,14 +133,14 @@ msgid ""
 "information provided when your organization joined the National Data "
 "Exchange layer. Modify the prefilled information if necessary."
 msgstr ""
-"Your contact infomation and organization details are prefilled based on "
-"information provided when your organization joined the National Data "
+"Your contact infomation and organisation details are prefilled based on "
+"information provided when your organisation joined the Suomi.fi Data "
 "Exchange layer. Modify the prefilled information if necessary."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:52
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
 msgid "Organization"
-msgstr "Organization"
+msgstr "Organisation"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
@@ -161,16 +162,16 @@ msgid ""
 "Applying organization acts as an intermediary on behalf of the organizations"
 " using the services"
 msgstr ""
-"Applying organization acts as an intermediary on behalf of the organizations"
+"Applying organisation acts as an intermediary on behalf of the organisations"
 " using the services"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:79
 msgid "Information about the organization consuming the services"
-msgstr "Information about the organization consuming the services"
+msgstr "Information about the organisation consuming the services"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:81
 msgid "Organization using the services"
-msgstr "Organization using the services"
+msgstr "Organisation using the services"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:85
 msgid "Y-number"
@@ -202,7 +203,7 @@ msgstr "Write the IP address"
 msgid ""
 "Select one or several IP addresses of your organization's security servers"
 msgstr ""
-"Select one or several IP addresses of your organization's security servers"
+"Select one or several IP addresses of your organisation's security servers"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:102
 msgid "Add an IP address"
@@ -213,7 +214,7 @@ msgid ""
 "Select the subsystem of your organization for which you want to apply "
 "permission"
 msgstr ""
-"Select the subsystem of your organization for which you want to apply "
+"Select the subsystem of your organisation for which you want to apply "
 "permission"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:106
@@ -229,7 +230,7 @@ msgstr "Details of the service and API you are applying to access"
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
 msgid "Organization name"
-msgstr "Organization name"
+msgstr "Organisation name"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41

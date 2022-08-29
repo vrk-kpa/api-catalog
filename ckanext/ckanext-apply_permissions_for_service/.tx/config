@@ -1,9 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[liityntakatalogi.ckanext-apply_permissions_for_service]
+[o:avoindata:p:liityntakatalogi:r:ckanext-apply_permissions_for_service]
 file_filter = ckanext/apply_permissions_for_service/i18n/<lang>/LC_MESSAGES/ckanext-apply_permissions_for_service.po
 source_file = ckanext/apply_permissions_for_service/i18n/ckanext-apply_permissions_for_service.pot
 source_lang = en
-type = PO
+type        = PO
 

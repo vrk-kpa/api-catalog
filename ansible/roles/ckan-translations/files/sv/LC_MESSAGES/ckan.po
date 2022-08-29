@@ -8,6 +8,7 @@
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
 # 198cee3c937d25cf4eaee0f13459edb0_2f26fb8, 2022
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
+# Suvi Nuttunen, 2022
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -26,7 +27,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2935,7 +2936,7 @@ msgstr "Spara gruppen"
 msgid "{num} Dataset"
 msgid_plural "{num} Datasets"
 msgstr[0] "{num} API"
-msgstr[1] "{num} API:er"
+msgstr[1] "{num} Subsystem"
 
 #: ckan/templates/group/snippets/group_item.html:34
 #: ckan/templates/organization/snippets/organization_item.html:33
@@ -3080,11 +3081,11 @@ msgstr ""
 "och bidra till återanvändning av data. API-katalogen innehåller "
 "beskrivningar av elektroniska tjänster vars data också finns tillgängliga "
 "för användning i andra datasystem.</p><p>Registrering till API-katalogen "
-"sker i samband med införandet av Suomi.fi-informationsleden. Organisationen "
-"anmäler en eller flera huvudanvändare för komplettering av uppgifterna i "
-"API-katalogen.</p><p>API-katalogen produceras av Myndigheten för "
-"digitalisering och befolkningsdata. Mer information om Suomi.fi-tjänsterna: "
-"esuomi.fi.</p>"
+"sker i samband med ibruktagandet av Suomi.fi-informationsleden. "
+"Organisationen anmäler en eller flera huvudanvändare för komplettering av "
+"uppgifterna i API-katalogen.</p><p>API-katalogen produceras av Myndigheten "
+"för digitalisering och befolkningsdata. Mer information om Suomi.fi-"
+"tjänsterna: esuomi.fi.</p>"
 
 #: ckan/templates/home/snippets/promoted.html:19
 msgid "This is a featured section"
@@ -3190,7 +3191,7 @@ msgstr "Redigera API:er"
 
 #: ckan/templates/organization/bulk_process.html:6
 msgid "Add dataset"
-msgstr "Lägg till API"
+msgstr "Lägg till subsystem"
 
 #: ckan/templates/organization/bulk_process.html:16
 msgid "found for \"{query}\""
@@ -3369,7 +3370,7 @@ msgstr "Visa {organization_name}"
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
 msgid "Create Dataset"
-msgstr "Skapa API"
+msgstr "Skapa subsystem"
 
 #: ckan/templates/package/base_form_page.html:22
 msgid "What are datasets?"
@@ -3387,7 +3388,7 @@ msgstr ""
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
-msgstr "Vill du verkligen radera detta API – {name}?"
+msgstr "Vill du verkligen radera detta subsystem – {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
@@ -3678,8 +3679,8 @@ msgid ""
 "<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
 " some?</a></p>"
 msgstr ""
-"<p class=\"empty\">Denna datauppsättning har inga data, <a "
-"href=\"%(url)s\">varför inte lägga till några?</a></p>"
+"<p class=\"empty\">Detta subsystem har inga bilagor. <a "
+"href=\"%(url)s\">Lägg till en bilaga.</a></p>"
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3986,7 +3987,7 @@ msgstr "Läs API fr.o.m. %s"
 #: ckan/templates/package/snippets/stages.html:23
 #: ckan/templates/package/snippets/stages.html:25
 msgid "Create dataset"
-msgstr "Skapa API"
+msgstr "Skapa subsystem"
 
 #: ckan/templates/package/snippets/stages.html:30
 #: ckan/templates/package/snippets/stages.html:34
@@ -4598,7 +4599,7 @@ msgstr "Varför registrera sig?"
 
 #: ckan/templates/user/new.html:28
 msgid "Create datasets, groups and other exciting things"
-msgstr "Skapa API:er, grupper och annat spännande"
+msgstr "Skapa subsystem, grupper och annat spännande"
 
 #: ckan/templates/user/new_user_form.html:5
 msgid "username"
@@ -5353,7 +5354,7 @@ msgid "Published"
 msgstr "Publicerad"
 
 msgid "Announcements"
-msgstr "Pressmeddelanden"
+msgstr "Meddelanden"
 
 msgid "API catalog statistics for the last 12 months"
 msgstr "API-katalogens statistik för de senaste 12 månaderna"
