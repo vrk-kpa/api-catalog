@@ -836,7 +836,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
     def get_blueprint(self):
         from .views.useradd import useradd
         from .views import xroad_statistics
-        from.views import get_blueprints
+        from .views import get_blueprints
         return xroad_statistics.get_blueprints() + get_blueprints() + [useradd]
 
     # IFacets
