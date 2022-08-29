@@ -8,6 +8,7 @@
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2021
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # Bert Viikmäe, 2022
+# Suvi Nuttunen, 2022
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-27 07:00+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
-"Last-Translator: Bert Viikmäe, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -384,11 +385,11 @@ msgid ""
 "href=\"https://liityntakatalogi.suomi.fi/\"> API Catalogue. </a> </p>"
 msgstr ""
 "<p style=\"font-weight: bold;\">Applikation i API-katalogen</p><ul><li>Begär"
-" tillstånd att använda ett delsystem genom att använda det fördefinierade "
+" tillstånd att använda ett subsystem genom att använda det fördefinierade "
 "elektroniska formuläret i API-katalogen.</li></ul><p style=\"font-weight: "
 "bold;\">Organisationens nedladdningsbara applikation (PDF)</p><ul><li>Ladda "
 "upp din organisations eget PDF-formulär till API-katalogen som kan användas "
-"för att begära tillstånd att använda undersystemet. Den sökande måste ladda "
+"för att begära tillstånd att använda subsystemet. Den sökande måste ladda "
 "ner formuläret från API-katalogen och skicka det ifyllda formuläret till den"
 " e-postadress du angett.</li><li>Förklara i formuläret till vilken "
 "e-postadress formuläret ska skickas tillbaka "
@@ -415,7 +416,7 @@ msgstr "Skickar ytterligare information"
 msgid ""
 "Requested subsystem is managed by a company that requires additional info"
 msgstr ""
-"Begärt delsystem hanteras av ett företag som kräver ytterligare information"
+"Begärt subsystem hanteras av ett företag som kräver ytterligare information"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:7
 msgid "1. Download file and fill required information"
@@ -439,4 +440,4 @@ msgstr "Administrerar tillståndsbegäran"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:15
 msgid "Service and API you are applying to access"
-msgstr "Tjänst och API som du ansöker om att få tillgång till"
+msgstr "Tjänst och subsystem som du ansöker om att få tillgång till"

@@ -4,9 +4,10 @@
 # 
 # Translators:
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
-# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2021
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
+# Meeri Hakala <meeri.hakala@dvv.fi>, 2022
+# Suvi Nuttunen, 2022
 # apoikola <antti.poikola@gmail.com>, 2013,2015
 # floapps <jaakko.louhio@floapps.com>, 2012
 # Hami Kekkonen <hami.kekkonen@hel.fi>, 2013,2015
@@ -25,7 +26,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-06-23 20:40+0000\n"
 "PO-Revision-Date: 2020-01-17 07:06+0000\n"
-"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -256,7 +257,7 @@ msgstr "Group not found"
 
 #: ckan/controllers/feed.py:234
 msgid "Organization not found"
-msgstr "Organization not found"
+msgstr "Organisation not found"
 
 #: ckan/controllers/group.py:140 ckan/controllers/group.py:589
 msgid "Incorrect group type"
@@ -280,7 +281,7 @@ msgstr "Unauthorized to read group %s"
 #: ckan/templates/organization/read_base.html:6
 #: ckan/templates/package/base.html:14
 msgid "Organizations"
-msgstr "Organizations"
+msgstr "Organisations"
 
 #: ckan/controllers/group.py:292 ckan/controllers/home.py:71
 #: ckan/controllers/package.py:242 ckan/lib/helpers.py:698
@@ -351,7 +352,7 @@ msgstr "Unauthorized to delete group %s"
 
 #: ckan/controllers/group.py:629
 msgid "Organization has been deleted."
-msgstr "Organization has been deleted."
+msgstr "Organisation has been deleted."
 
 #: ckan/controllers/group.py:631
 msgid "Group has been deleted."
@@ -399,7 +400,7 @@ msgstr "Log message: "
 
 #: ckan/controllers/group.py:834
 msgid "Unauthorized to read group {group_id}"
-msgstr "Unauthorized to read group {group_id}"
+msgstr "Unauthorised to read group {group_id}"
 
 #: ckan/controllers/group.py:855 ckan/controllers/package.py:1217
 #: ckan/controllers/user.py:683
@@ -839,7 +840,7 @@ msgstr "Could not send reset link: %s"
 
 #: ckan/controllers/user.py:485
 msgid "Unauthorized to reset password."
-msgstr "Unauthorized to reset password."
+msgstr "Unauthorised to reset password."
 
 #: ckan/controllers/user.py:497
 msgid "Invalid reset key. Please try again."
@@ -895,7 +896,7 @@ msgstr "{actor} updated the group {group}"
 
 #: ckan/lib/activity_streams.py:70
 msgid "{actor} updated the organization {organization}"
-msgstr "{actor} updated the organization {organization}"
+msgstr "{actor} updated the organisation {organisation}"
 
 #: ckan/lib/activity_streams.py:73
 msgid "{actor} updated the dataset {dataset}"
@@ -929,7 +930,7 @@ msgstr "{actor} deleted the group {group}"
 
 #: ckan/lib/activity_streams.py:95
 msgid "{actor} deleted the organization {organization}"
-msgstr "{actor} deleted the organization {organization}"
+msgstr "{actor} deleted the organisation {organisation}"
 
 #: ckan/lib/activity_streams.py:98
 msgid "{actor} deleted the dataset {dataset}"
@@ -950,7 +951,7 @@ msgstr "{actor} created the group {group}"
 
 #: ckan/lib/activity_streams.py:111
 msgid "{actor} created the organization {organization}"
-msgstr "{actor} created the organization {organization}"
+msgstr "{actor} created the organisation {organisation}"
 
 #: ckan/lib/activity_streams.py:114
 msgid "{actor} created the dataset {dataset}"
@@ -1318,15 +1319,15 @@ msgstr "Could not parse as valid JSON"
 
 #: ckan/logic/validators.py:30 ckan/logic/validators.py:39
 msgid "A organization must be supplied"
-msgstr "A organization must be supplied"
+msgstr "A organisation must be supplied"
 
 #: ckan/logic/validators.py:44
 msgid "Organization does not exist"
-msgstr "Organization does not exist"
+msgstr "Organisation does not exist"
 
 #: ckan/logic/validators.py:49
 msgid "You cannot add a dataset to this organization"
-msgstr "You cannot add a subsystem to this organization"
+msgstr "You cannot add a subsystem to this organisation"
 
 #: ckan/logic/validators.py:89
 msgid "Invalid integer"
@@ -1518,7 +1519,7 @@ msgstr "role does not exist."
 
 #: ckan/logic/validators.py:759
 msgid "Datasets with no organization can't be private."
-msgstr "Subsystems with no organization can't be private."
+msgstr "Subsystems with no organisation can't be private."
 
 #: ckan/logic/validators.py:765
 msgid "Not a list"
@@ -1565,7 +1566,7 @@ msgstr "REST API: Create member object %s"
 
 #: ckan/logic/action/create.py:865
 msgid "Trying to create an organization as a group"
-msgstr "Trying to create an organization as a group"
+msgstr "Trying to create an organisation as a group"
 
 #: ckan/logic/action/create.py:954
 msgid "You must supply a package id or name (parameter \"package\")."
@@ -1693,7 +1694,7 @@ msgstr "TaskStatus was not found."
 
 #: ckan/logic/action/update.py:1183
 msgid "Organization was not found."
-msgstr "Organization was not found."
+msgstr "Organisation was not found."
 
 #: ckan/logic/auth/create.py:25 ckan/logic/auth/create.py:43
 #, python-format
@@ -1708,7 +1709,7 @@ msgstr "User %s not authorized to edit these groups"
 #: ckan/logic/auth/create.py:36
 #, python-format
 msgid "User %s not authorized to add dataset to this organization"
-msgstr "User %s not authorized to add subsystem to this organization"
+msgstr "User %s not authorized to add subsystem to this organisation"
 
 #: ckan/logic/auth/create.py:58
 msgid "You must be a sysadmin to create a featured related item"
@@ -1745,7 +1746,7 @@ msgstr "User %s not authorized to create groups"
 #: ckan/logic/auth/create.py:145
 #, python-format
 msgid "User %s not authorized to create organizations"
-msgstr "User %s not authorized to create organizations"
+msgstr "User %s not authorized to create organisations"
 
 #: ckan/logic/auth/create.py:161
 msgid "User {user} not authorized to create users via the API"
@@ -1808,12 +1809,12 @@ msgstr "User %s not authorized to delete group %s"
 #: ckan/logic/auth/delete.py:121
 #, python-format
 msgid "User %s not authorized to delete organizations"
-msgstr "User %s not authorized to delete organizations"
+msgstr "User %s not authorized to delete organisations"
 
 #: ckan/logic/auth/delete.py:125
 #, python-format
 msgid "User %s not authorized to delete organization %s"
-msgstr "User %s not authorized to delete organization %s"
+msgstr "User %s not authorized to delete organisation %s"
 
 #: ckan/logic/auth/delete.py:138
 #, python-format
@@ -1828,7 +1829,7 @@ msgstr "User %s not authorized to read these packages"
 #: ckan/logic/auth/get.py:119
 #, python-format
 msgid "User %s not authorized to read package %s"
-msgstr "User %s not authorized to read package %s"
+msgstr "User %s not authorised to read package %s"
 
 #: ckan/logic/auth/get.py:141
 #, python-format
@@ -1862,7 +1863,7 @@ msgstr "User %s not authorized to change state of package %s"
 #: ckan/logic/auth/update.py:126
 #, python-format
 msgid "User %s not authorized to edit organization %s"
-msgstr "User %s not authorized to edit organization %s"
+msgstr "User %s not authorized to edit organisation %s"
 
 #: ckan/logic/auth/update.py:137 ckan/logic/auth/update.py:143
 msgid "Only the owner can update a related item"
@@ -1898,7 +1899,7 @@ msgstr "User {0} not authorized to update user {1}"
 #: ckan/logic/auth/update.py:236
 #, python-format
 msgid "User %s not authorized to change state of revision"
-msgstr "User %s not authorized to change state of revision"
+msgstr "User %s not authorised to change state of revision"
 
 #: ckan/logic/auth/update.py:245
 #, python-format
@@ -2801,7 +2802,7 @@ msgid ""
 "datasets from groups</p>"
 msgstr ""
 "<p><strong>Admin:</strong> Can edit group information, as well as manage "
-"organization members.</p> <p><strong>Member:</strong> Can add/remove "
+"organisation members.</p> <p><strong>Member:</strong> Can add/remove "
 "subsystems from groups</p>"
 
 #: ckan/templates/group/new.html:3 ckan/templates/group/new.html:5
@@ -3010,6 +3011,24 @@ msgid ""
 "overview: <a "
 "href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p>"
 msgstr ""
+"<p>CKAN is the world’s leading open-source data portal platform.</p> <p>CKAN"
+" is a complete out-of-the-box software solution that makes data accessible "
+"and usable – by providing tools to streamline publishing, sharing, finding "
+"and using data (including storage of data and provision of robust data "
+"APIs). CKAN is aimed at data publishers (national and regional governments, "
+"companies and organisations) wanting to make their data open and "
+"available.</p> <p>CKAN is used by governments and user groups worldwide and "
+"powers a variety of official and community data portals including portals "
+"for local, national and international government, such as the UK’s <a "
+"href=\"http://data.gov.uk\">data.gov.uk</a> and the European Union’s <a "
+"href=\"http://publicdata.eu/\">publicdata.eu</a>, the Brazilian <a "
+"href=\"http://dados.gov.br/\">dados.gov.br</a>, Dutch and Netherland "
+"government portals, as well as city and municipal sites in the US, UK, "
+"Argentina, Finland and elsewhere.</p> <p>CKAN: <a "
+"href=\"http://ckan.org/\">http://ckan.org/</a><br /> CKAN Tour: <a "
+"href=\"http://ckan.org/tour/\">http://ckan.org/tour/</a><br />Features "
+"overview: <a "
+"href=\"http://ckan.org/features/\">http://ckan.org/features/</a></p> "
 
 #: ckan/templates/home/snippets/promoted.html:8
 msgid "Welcome to CKAN"
@@ -3060,11 +3079,11 @@ msgstr "subsystems"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organization"
-msgstr "organization"
+msgstr "organisation"
 
 #: ckan/templates/home/snippets/stats.html:17
 msgid "organizations"
-msgstr "organizations"
+msgstr "organisations"
 
 #: ckan/templates/home/snippets/stats.html:23
 msgid "group"
@@ -3125,7 +3144,7 @@ msgstr "Clear Upload"
 
 #: ckan/templates/organization/base_form_page.html:5
 msgid "Organization Form"
-msgstr "Organization Form"
+msgstr "Organisation Form"
 
 #: ckan/templates/organization/bulk_process.html:3
 #: ckan/templates/organization/bulk_process.html:11
@@ -3169,30 +3188,30 @@ msgstr "Private"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr "This organization has no subsystems associated to it"
+msgstr "This organisation has no subsystems associated to it"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
-msgstr "Are you sure you want to delete organization - {name}?"
+msgstr "Are you sure you want to delete organisation - {name}?"
 
 #: ckan/templates/organization/edit.html:6
 #: ckan/templates/organization/snippets/info.html:13
 #: ckan/templates/organization/snippets/info.html:16
 msgid "Edit Organization"
-msgstr "Edit Organization"
+msgstr "Edit Organisation"
 
 #: ckan/templates/organization/index.html:13
 #: ckan/templates/user/dashboard_organizations.html:7
 msgid "Add Organization"
-msgstr "Add Organization"
+msgstr "Add organisation"
 
 #: ckan/templates/organization/index.html:20
 msgid "Search organizations..."
-msgstr "Search organizations..."
+msgstr "Search organisations..."
 
 #: ckan/templates/organization/index.html:29
 msgid "There are currently no organizations for this site"
-msgstr "There are currently no organizations for this site"
+msgstr "There are currently no organisations for this site"
 
 #: ckan/templates/organization/member_new.html:32
 #: ckan/templates/user/edit_user_form.html:8
@@ -3221,9 +3240,9 @@ msgid ""
 "but not add new datasets.</p>"
 msgstr ""
 "<p><strong>Admin:</strong> Can add/edit and delete subsystems, as well as "
-"manage organization members.</p> <p><strong>Editor:</strong> Can add and "
-"edit subsystems, but not manage organization members.</p> "
-"<p><strong>Member:</strong> Can view the organization's private subsystems, "
+"manage organisation members.</p> <p><strong>Editor:</strong> Can add and "
+"edit subsystems, but not manage organisation members.</p> "
+"<p><strong>Member:</strong> Can view the organisation's private subsystems, "
 "but not add new subsystems.</p>"
 
 #: ckan/templates/organization/new.html:3
@@ -3231,15 +3250,15 @@ msgstr ""
 #: ckan/templates/organization/new.html:7
 #: ckan/templates/organization/new.html:12
 msgid "Create an Organization"
-msgstr "Create an Organization"
+msgstr "Create an Organisation"
 
 #: ckan/templates/organization/new_organization_form.html:17
 msgid "Update Organization"
-msgstr "Update Organization"
+msgstr "Update Organisation"
 
 #: ckan/templates/organization/new_organization_form.html:19
 msgid "Create Organization"
-msgstr "Create Organization"
+msgstr "Create Organisation"
 
 #: ckan/templates/organization/read.html:5
 #: ckan/templates/package/search.html:16
@@ -3249,12 +3268,12 @@ msgstr "Add Subsystem"
 
 #: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
-msgstr "Subsystems in organization: {group}"
+msgstr "Subsystems in organisation: {group}"
 
 #: ckan/templates/organization/snippets/help.html:4
 #: ckan/templates/organization/snippets/helper.html:4
 msgid "What are Organizations?"
-msgstr "What are Organizations?"
+msgstr "What are Organisations?"
 
 #: ckan/templates/organization/snippets/help.html:7
 msgid ""
@@ -3265,10 +3284,10 @@ msgid ""
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p>"
 msgstr ""
-"<p>Organizations act like publishing departments for subsystems (for "
+"<p>Organisations act like publishing departments for subsystems (for "
 "example, the Department of Health). This means that subsystems can be "
 "published by and belong to a department instead of an individual user.</p> "
-"<p>Within organizations, admins can assign roles and authorise its members, "
+"<p>Within organisations, admins can assign roles and authorise its members, "
 "giving individual users the right to publish subsystems from that particular"
 " organisation (e.g. Office of National Statistics).</p>"
 
@@ -3278,38 +3297,38 @@ msgid ""
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish."
 msgstr ""
-"Organizations are used to create, manage and publish collections of "
-"subsystems. Users can have different roles within an organization, depending"
+"Organisations are used to create, manage and publish collections of "
+"subsystems. Users can have different roles within an organisation, depending"
 " on their level of authorisation to create, edit and publish."
 
 #: ckan/templates/organization/snippets/organization_form.html:10
 msgid "My Organization"
-msgstr "My Organization"
+msgstr "My Organisation"
 
 #: ckan/templates/organization/snippets/organization_form.html:18
 msgid "my-organization"
-msgstr "my-organization"
+msgstr "my-organisation"
 
 #: ckan/templates/organization/snippets/organization_form.html:20
 msgid "A little information about my organization..."
-msgstr "A little information about my organization..."
+msgstr "A little information about my organisation..."
 
 #: ckan/templates/organization/snippets/organization_form.html:60
 msgid ""
 "Are you sure you want to delete this Organization? This will delete all the "
 "public and private datasets belonging to this organization."
 msgstr ""
-"Are you sure you want to delete this organization? This will delete all the "
-"public and private subsystems belonging to this organization."
+"Are you sure you want to delete this organisation? This will delete all the "
+"public and private subsystems belonging to this organisation."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
-msgstr "Save Organization"
+msgstr "Save Organisation"
 
 #: ckan/templates/organization/snippets/organization_item.html:37
 #: ckan/templates/organization/snippets/organization_item.html:38
 msgid "View {organization_name}"
-msgstr "View {organization_name}"
+msgstr "View {organisation_name}"
 
 #: ckan/templates/package/base.html:22 ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/new_package_breadcrumb.html:2
@@ -3618,8 +3637,8 @@ msgid ""
 "<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
 " some?</a></p>"
 msgstr ""
-"<p class=\"empty\">This subsystem has no data, <a href=\"%(url)s\">why not "
-"add some?</a></p>"
+"<p class=\"empty\">This subsystem has no attachments. <a "
+"href=\"%(url)s\">Add an attachment.</a></p>"
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
@@ -3721,11 +3740,11 @@ msgstr ""
 #: ckan/templates/package/snippets/package_basic_fields.html:69
 #: ckan/templates/snippets/organization.html:23
 msgid "Organization"
-msgstr "Organization"
+msgstr "Organisation"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:73
 msgid "No organization"
-msgstr "No organization"
+msgstr "No organisation"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:88
 msgid "Visibility"
@@ -4205,7 +4224,7 @@ msgstr "This subsystem satisfies the Open Definition."
 
 #: ckan/templates/snippets/organization.html:48
 msgid "There is no description for this organization"
-msgstr "There is no description for this organization"
+msgstr "There is no description for this organisation"
 
 #: ckan/templates/snippets/package_item.html:57
 msgid "This dataset has no description"
@@ -4287,21 +4306,21 @@ msgstr "No groups found"
 msgid "{number} organization found for \"{query}\""
 msgid_plural "{number} organizations found for \"{query}\""
 msgstr[0] "{number} organization found for \"{query}\""
-msgstr[1] "{number} organizations found for \"{query}\""
+msgstr[1] "{number} organisations found for \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:28
 msgid "No organizations found for \"{query}\""
-msgstr "No organizations found for \"{query}\""
+msgstr "No organisations found for \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:29
 msgid "{number} organization found"
 msgid_plural "{number} organizations found"
 msgstr[0] "{number} organization found"
-msgstr[1] "{number} organizations found"
+msgstr[1] "{number} organisations found"
 
 #: ckan/templates/snippets/search_result_text.html:30
 msgid "No organizations found"
-msgstr "No organizations found"
+msgstr "No organisations found"
 
 #: ckan/templates/snippets/social.html:5
 msgid "Social"
@@ -4343,7 +4362,7 @@ msgstr "My Subsystems"
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
 msgid "My Organizations"
-msgstr "My Organizations"
+msgstr "My Organisations"
 
 #: ckan/templates/user/dashboard.html:22
 #: ckan/templates/user/dashboard_groups.html:12
@@ -4372,7 +4391,7 @@ msgstr "You are not a member of any groups."
 
 #: ckan/templates/user/dashboard_organizations.html:20
 msgid "You are not a member of any organizations."
-msgstr "You are not a member of any organizations."
+msgstr "You are not a member of any organisations."
 
 #: ckan/templates/user/edit.html:6 ckan/templates/user/edit_base.html:3
 #: ckan/templates/user/list.html:6 ckan/templates/user/list.html:13
@@ -5016,7 +5035,7 @@ msgstr "An index of APIs within the National Data Exchange Layer"
 msgid ""
 "eSuomi.fi, a channel of communication for the National Data Exchange Layer"
 msgstr ""
-"eSuomi.fi, a channel of communication for the National Data Exchange Layer"
+"eSuomi.fi, a channel of communication for the Suomi.fi Data Exchange Layer"
 
 msgid "API Catalog source code on GitHub"
 msgstr "API Catalog source code on GitHub"
@@ -5149,7 +5168,7 @@ msgid "Sample APIs"
 msgstr "Examples of subsystems"
 
 msgid "Organization that have joined the Data Exchange Layer"
-msgstr "Organization that have joined the Data Exchange Layer"
+msgstr "Organisations that have joined the Data Exchange Layer"
 
 msgid "Package contains invalid resources"
 msgstr "API contains invalid attachments"
@@ -5180,10 +5199,10 @@ msgid "Service Management"
 msgstr ""
 
 msgid "total organizations"
-msgstr "organizations"
+msgstr "organisations"
 
 msgid "organizations with datasets"
-msgstr "organizations with subsystems"
+msgstr "organisations with subsystems"
 
 msgid "Show all"
 msgstr "Show all"
@@ -5205,12 +5224,12 @@ msgid ""
 "Users may have various roles and privileges to create, modify and publish "
 "APIs within an organization."
 msgstr ""
-"Organizations are used to create, manage and publish subsystems and "
+"Organisations are used to create, manage and publish subsystems and "
 "services. Users may have various roles and privileges to create, modify and "
-"publish subsystems within an organization."
+"publish subsystems within an organisation."
 
 msgid "{0} organizations"
-msgstr ""
+msgstr "{0} organisations"
 
 msgid ""
 "The service is being developed by the Digital and Population Data Services "
@@ -5236,10 +5255,10 @@ msgid "Give feedback"
 msgstr ""
 
 msgid "Information about National Data Exchange Layer"
-msgstr ""
+msgstr "Information about Suomi.fi Data Exchange Layer"
 
 msgid "Type in name of organization"
-msgstr ""
+msgstr "Type in name of organisation"
 
 msgid "User name is required."
 msgstr ""
@@ -5379,11 +5398,15 @@ msgid ""
 "Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
 "Exchange Layer to utilise services"
 msgstr ""
+"Organisation <a href=\"{org_url}\">{org_title}</a> joined the Suomi.fi Data "
+"Exchange Layer to utilise services"
 
 msgid ""
 "Organization <a href=\"{org_url}\">{org_title}</a> joined the National Data "
 "Exchange Layer as a service provider"
 msgstr ""
+"Organisation <a href=\"{org_url}\">{org_title}</a> joined the Suomi.fi Data "
+"Exchange Layer as a service provider"
 
 msgid ""
 "<a href=\"{org_url}\">{org_title}</a> added a new subsystem <a "
@@ -5502,16 +5525,16 @@ msgid "Show all datasets"
 msgstr "Show all subsystems"
 
 msgid "Show all organizations"
-msgstr ""
+msgstr "Show all organisations"
 
 msgid "Show all organizations with datasets"
-msgstr "organizations with subsystems"
+msgstr "organisations with subsystems"
 
 msgid "link opens in new tab or window"
 msgstr ""
 
 msgid "Logo of organization {org}"
-msgstr ""
+msgstr "Logo of organisation {org}"
 
 msgid "Webpage address"
 msgstr ""
@@ -5539,7 +5562,7 @@ msgid "Filter by role"
 msgstr "Filter list of organizations"
 
 msgid "Organizations without active subsystems"
-msgstr ""
+msgstr "Organisations without active subsystems"
 
 msgid "Since"
 msgstr ""
