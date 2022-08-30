@@ -65,3 +65,5 @@
   locale_gen:
     name: fi_FI.UTF-8
     state: present
+
+- include: developer-users.yml

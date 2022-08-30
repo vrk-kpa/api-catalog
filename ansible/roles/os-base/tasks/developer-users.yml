@@ -1,0 +1,32 @@
+---
+
+- name: Ensure developer user accounts
+  loop: "{{ secret.developers }}"
+  when: not item.remove|default(false)
+  user:
+    name: "{{ item.user }}"
+    state: "present"
+    groups: "sudo"
+    password: "*" # disable password
+
+- name: Remove old developer user accounts
+  loop: "{{ secret.developers }}"
+  when: item.remove|default(false)
+  user:
+    name: "{{ item.user }}"
+    state: "absent"
+
+- name: Ensure developer .ssh directories
+  loop: "{{ secret.developers }}"
+  when: not item.remove|default(false)
+  file: path=/home/{{ item.user }}/.ssh state=directory mode="0700" owner={{ item.user }} group={{ item.user }}
+
+- name: Deploy developer SSH keys
+  loop: "{{ secret.developers }}"
+  when: not item.remove|default(false)
+  uri:
+    url: "https://github.com/{{ item.user }}.keys"
+    dest: "/home/{{ item.user }}/.ssh/authorized_keys"
+    mode: "0600"
+    owner: "{{ item.user }}"
+    force: true
