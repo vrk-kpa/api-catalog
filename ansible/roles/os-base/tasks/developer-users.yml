@@ -37,9 +37,9 @@
     force: true
 
 - name: Developer sudo configuration
-  template:
-    src: sudoers.d.developers.j2
-    dest: /etc/sudoers.d/developers
-    mode: "0440"
-    owner: root
-    group: root
+  community.general.sudoers:
+    name: developers
+    state: present
+    group: developers
+    commands: ALL
+    nopassword: true
