@@ -126,3 +126,8 @@ allowed_user_editors:
 
 allowed_member_editors:
   - csc_admin
+
+developers:
+  - user: bzar
+  - user: zharktas
+  - user: eetumans
