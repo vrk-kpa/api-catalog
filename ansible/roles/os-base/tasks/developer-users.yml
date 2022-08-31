@@ -1,12 +1,17 @@
 ---
 
+- name: Ensure developer user group
+  group:
+    name: developers
+    state: present
+
 - name: Ensure developer user accounts
   loop: "{{ developers }}"
   when: not item.remove|default(false)
   user:
     name: "{{ item.user }}"
     state: "present"
-    groups: "sudo"
+    groups: "developers"
     password: "*" # disable password
 
 - name: Remove old developer user accounts
@@ -30,3 +35,11 @@
     mode: "0600"
     owner: "{{ item.user }}"
     force: true
+
+- name: Developer sudo configuration
+  community.general.sudoers:
+    name: developers
+    state: present
+    group: developers
+    commands: ALL
+    nopassword: true
