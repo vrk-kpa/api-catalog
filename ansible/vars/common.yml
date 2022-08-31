@@ -22,3 +22,5 @@ system:
   ubuntu_codename: bionic
   postgresql:
     version: 10
+
+developers: [] # [{user: github user name, remove: bool (optional)}]
