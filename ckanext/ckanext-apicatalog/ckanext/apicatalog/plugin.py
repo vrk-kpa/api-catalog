@@ -7,7 +7,7 @@ import ckan.plugins.toolkit as toolkit
 from ckan import model
 
 import ckan.logic as logic
-import cgi
+import html
 import random
 import urllib.request
 import urllib.parse
@@ -479,9 +479,9 @@ def build_pages_nav_main(*args):
         type_ = 'blog' if page['page_type'] == 'blog' else 'pages'
         name = urllib.parse.quote(page['name'])
         if page.get('title_' + language):
-            title = cgi.escape(page['title' + '_' + language])
+            title = html.escape(page['title' + '_' + language])
         else:
-            title = cgi.escape(page['title'])
+            title = html.escape(page['title'])
         link = h.literal(u'<a href="/{}/{}/{}">{}</a>'.format(language, type_, name, title))
         if page['name'] == page_name:
             li = h.literal('<li class="active">') + link + h.literal('</li>')
