@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from typing import Union
 from future import standard_library
 from builtins import str
 from builtins import range
