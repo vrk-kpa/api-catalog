@@ -1,0 +1,132 @@
+{% extends "admin/base.html" %}
+
+{% block primary_content %}
+{% set xroad_env = h.get_xroad_environment() %}
+{% set xroad_stats = h.fetch_xroad_statistics(history=False, env=xroad_env) %}
+{% set xroad_stats = xroad_stats.get(xroad_env, {}).get('stats', {}) %}
+{% set xroad_services = h.get_xroad_stats() %}
+{% set xroad_services = xroad_services[0] or {} %}
+{% set xroad_distinct_services = h.get_xroad_distinct_services() %}
+{% set xroad_distinct_services = xroad_distinct_services[0] or {} %}
+{% set ckan_stats = h.get_statistics() %}
+<div class="container" style="max-width: 100%; padding-top: 30px; padding-bottom: 30px;">
+    <table class="table table-condensed table-hover">
+        <tr class="active">
+            <td class="col-sm-3">
+                <b>{% trans %}X-ROAD Graphs{% endtrans %}</b>&nbsp;&nbsp;{{xroad_stats.get('date', '')}}
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}X-Road Environment:{% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_stats.get('instanceIdentifier', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Subsystems: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_stats.get('subsystems', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Members: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_stats.get('members', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}SecurityServers: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_stats.get('securityServers', '')}}
+            </td>
+        </tr>
+        <tr class="active">
+            <td class="col-sm-3">
+                <b>{% trans %}X-ROAD Catalog - Services{% endtrans %}</b>&nbsp;&nbsp;{{xroad_services.get('date', '')}}
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}SOAP services: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_services.get('soapServiceCount', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}REST services: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_services.get('restServiceCount', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}OpenAPI services: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_services.get('openapiServiceCount', '')}}
+            </td>
+        </tr>
+        <tr class="active">
+            <td class="col-sm-3">
+                <b>{% trans %}X-ROAD Catalog - Distinct Services{% endtrans %}</b>&nbsp;&nbsp;{{xroad_distinct_services.get('date', '')}}
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Distinct services: {% endtrans %}</b>
+            </td>
+            <td>
+                {{xroad_distinct_services.get('distinctServiceCount', '')}}
+            </td>
+        </tr>
+        <tr class="active">
+            <td>
+                <b>{% trans %}CKAN{% endtrans %}</b>&nbsp;&nbsp;Current
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Public subsystems: {% endtrans %}</b>
+            </td>
+            <td>
+                {{ckan_stats.get('package_count', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Total organizations: {% endtrans %}</b>
+            </td>
+            <td>
+                {{ckan_stats.get('organization_count', '')}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans %}Provider organizations: {% endtrans %}</b>
+            </td>
+            <td>
+                {{ckan_stats.get('provider_organizations', '')}}
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

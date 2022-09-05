@@ -5,7 +5,7 @@
 {% asset "apicatalog/xroad_statistics_js" %}
 {% asset "apicatalog/xroad_statistics_css" %}
 
-{% set xroad_stats = h.fetch_xroad_statistics() %}
+{% set xroad_stats = h.fetch_xroad_statistics(return_json=True) %}
 <div class="container" style="max-width: 100%;">
 
   <div class="row" id="titleRow">

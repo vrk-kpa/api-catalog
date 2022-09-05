@@ -1,4 +1,5 @@
 from __future__ import absolute_import
+from typing import Union
 from future import standard_library
 from builtins import str
 from builtins import range
@@ -493,49 +494,57 @@ def build_pages_nav_main(*args):
 
 
 XROAD_STATS_CACHE = None
+XROAD_HISTORY_CACHE = None
 
 
-def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
+def fetch_xroad_statistics(env: str = 'all', history: bool = True, return_json: bool = False,
+                           cache_duration: timedelta = timedelta(hours=1)) -> Union[dict, str]:
+
     global XROAD_STATS_CACHE
-    if XROAD_STATS_CACHE is None or datetime.now() - XROAD_STATS_CACHE[0] > cache_duration:
+    global XROAD_HISTORY_CACHE
+    if history:
+        xroad_cache = XROAD_HISTORY_CACHE
+    else:
+        xroad_cache = XROAD_STATS_CACHE
+
+    if xroad_cache is None or datetime.now() - xroad_cache[0] > cache_duration:
         try:
             xroad_stats_api_base_url = 'https://api.stats.x-road.global/v1'
             fi_test_instance = 'FI-TEST'
             fi_prod_instance = 'FI'
 
-            stats_test = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
-                                                               fi_test_instance)).json()
-            history_test = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
-                                                                         fi_test_instance)).json()
-            stats_prod = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
-                                                               fi_prod_instance)).json()
-            history_prod = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
-                                                                         fi_prod_instance)).json()
-
-            stats_collection = {
-                fi_test_instance: {
-                    'stats': stats_test,
-                    'history': history_test
-                },
-                fi_prod_instance: {
-                    'stats': stats_prod,
-                    'history': history_prod
-                }
-            }
+            stats_collection = {}
+            if env == fi_test_instance or env == 'all':
+                stats_collection[fi_test_instance] = {}
+                stats_collection[fi_test_instance]['stats'] = \
+                    requests.get('{}/instances/{}'.format(xroad_stats_api_base_url, fi_test_instance)).json()
+                if history:
+                    stats_collection[fi_test_instance]['history'] = \
+                        requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url, fi_test_instance)).json()
+            if env == fi_prod_instance or env == 'all':
+                stats_collection[fi_prod_instance] = {}
+                stats_collection[fi_prod_instance]['stats'] = \
+                    requests.get('{}/instances/{}'.format(xroad_stats_api_base_url, fi_prod_instance)).json()
+                if history:
+                    stats_collection[fi_prod_instance]['history'] = \
+                        requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url, fi_prod_instance)).json()
 
         except Exception:
             # Fetch failed for some reason, keep old value until cache invalidates
-            if XROAD_STATS_CACHE is None:
+            if xroad_cache is None:
                 stats_collection = {}
             else:
-                stats_collection = XROAD_STATS_CACHE[1]
+                stats_collection = xroad_cache[1]
 
         xroad_stats_cache_timestamp = datetime.now()
-        XROAD_STATS_CACHE = (xroad_stats_cache_timestamp, stats_collection)
+        xroad_cache = (xroad_stats_cache_timestamp, stats_collection)
     else:
-        xroad_stats_cache_timestamp, stats_collection = XROAD_STATS_CACHE
+        xroad_stats_cache_timestamp, stats_collection = xroad_cache
 
-    return json.dumps(stats_collection)
+    if return_json:
+        return json.dumps(stats_collection)
+    else:
+        return stats_collection
 
 
 def admin_only(context, data_dict=None):
@@ -835,9 +844,10 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
     def get_blueprint(self):
         from .views.useradd import useradd
-        from .views import xroad_statistics
-        from .views import get_blueprints
-        return xroad_statistics.get_blueprints() + get_blueprints() + [useradd]
+        from .views.xroad_statistics import xroad_statistics
+        from .views.statistics import statistics
+        from .views import announcements_bp, health_bp
+        return [useradd, xroad_statistics, statistics, announcements_bp, health_bp]
 
     # IFacets
 
@@ -1069,6 +1079,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
     def update_config(self, config):
         toolkit.add_ckan_admin_tab(config, 'admin_dashboard.read', 'Dashboard')
         toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
+        toolkit.add_ckan_admin_tab(config, 'admin_stats.read', 'Statistics')
         toolkit.add_ckan_admin_tab(config, 'admin_xroadstats.read', 'X-Road graphs')
         toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
         toolkit.add_ckan_admin_tab(config, 'xroad.services', 'X-Road services')
@@ -1079,7 +1090,8 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
     def get_auth_functions(self):
         return {'admin_dashboard': admin_only,
                 'admin_useradd': admin_only,
-                'admin_xroadstats': admin_only}
+                'admin_xroadstats': admin_only,
+                'admin_stats': admin_only}
 
     # IBlueprint
 
