@@ -75,7 +75,7 @@ lxml==4.6.3 #; extra == "requirements"
     # via
     #   ckan
     #   feedgen
-mako==1.1.5 #; extra == "requirements"
+mako==1.2.2 #; extra == "requirements"
     # via
     #   alembic
     #   ckan
