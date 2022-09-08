@@ -492,52 +492,6 @@ def build_pages_nav_main(*args):
     return output
 
 
-XROAD_STATS_CACHE = None
-
-
-def fetch_xroad_statistics(cache_duration=timedelta(hours=1)):
-    global XROAD_STATS_CACHE
-    if XROAD_STATS_CACHE is None or datetime.now() - XROAD_STATS_CACHE[0] > cache_duration:
-        try:
-            xroad_stats_api_base_url = 'https://api.stats.x-road.global/v1'
-            fi_test_instance = 'FI-TEST'
-            fi_prod_instance = 'FI'
-
-            stats_test = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
-                                                               fi_test_instance)).json()
-            history_test = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
-                                                                         fi_test_instance)).json()
-            stats_prod = requests.get('{}/instances/{}'.format(xroad_stats_api_base_url,
-                                                               fi_prod_instance)).json()
-            history_prod = requests.get('{}/instances/{}/history'.format(xroad_stats_api_base_url,
-                                                                         fi_prod_instance)).json()
-
-            stats_collection = {
-                fi_test_instance: {
-                    'stats': stats_test,
-                    'history': history_test
-                },
-                fi_prod_instance: {
-                    'stats': stats_prod,
-                    'history': history_prod
-                }
-            }
-
-        except Exception:
-            # Fetch failed for some reason, keep old value until cache invalidates
-            if XROAD_STATS_CACHE is None:
-                stats_collection = {}
-            else:
-                stats_collection = XROAD_STATS_CACHE[1]
-
-        xroad_stats_cache_timestamp = datetime.now()
-        XROAD_STATS_CACHE = (xroad_stats_cache_timestamp, stats_collection)
-    else:
-        xroad_stats_cache_timestamp, stats_collection = XROAD_STATS_CACHE
-
-    return json.dumps(stats_collection)
-
-
 def admin_only(context, data_dict=None):
     return {'success': False, 'msg': 'Access restricted to system administrators'}
 
@@ -811,7 +765,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'get_slogan': get_slogan,
                 'get_welcome_text': get_welcome_text,
                 'is_extension_loaded': is_extension_loaded,
-                'fetch_xroad_statistics': fetch_xroad_statistics,
                 'get_matomo_config': get_matomo_config,
                 'scheming_field_only_default_required': scheming_field_only_default_required,
                 'scheming_language_text_or_empty': scheming_language_text_or_empty,
@@ -835,9 +788,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
     def get_blueprint(self):
         from .views.useradd import useradd
-        from .views import xroad_statistics
-        from .views import get_blueprints
-        return xroad_statistics.get_blueprints() + get_blueprints() + [useradd]
+        from .views.statistics import statistics
+        from .views import announcements_bp, health_bp
+        return [useradd, statistics, announcements_bp, health_bp]
 
     # IFacets
 
@@ -1069,7 +1022,8 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
     def update_config(self, config):
         toolkit.add_ckan_admin_tab(config, 'admin_dashboard.read', 'Dashboard')
         toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
-        toolkit.add_ckan_admin_tab(config, 'admin_xroadstats.read', 'X-Road graphs')
+        toolkit.add_ckan_admin_tab(config, 'admin_stats.read', 'Statistics')
+        toolkit.add_ckan_admin_tab(config, 'xroad.graphs', 'X-Road graphs')
         toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
         toolkit.add_ckan_admin_tab(config, 'xroad.services', 'X-Road services')
         toolkit.add_ckan_admin_tab(config, 'xroad.stats', 'X-Road statistics')
@@ -1079,7 +1033,7 @@ class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
     def get_auth_functions(self):
         return {'admin_dashboard': admin_only,
                 'admin_useradd': admin_only,
-                'admin_xroadstats': admin_only}
+                'admin_stats': admin_only}
 
     # IBlueprint
 

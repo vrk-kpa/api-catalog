@@ -75,6 +75,7 @@ xroad:
   client_id: FI-TEST.GOV.0245437-2.APICatalogClient
   service_id: FI-TEST.GOV.0920632-0.ServiceList
   service_name: api-docs/api
+  environment: 'FI-TEST'
 
 elk:
   logstash:

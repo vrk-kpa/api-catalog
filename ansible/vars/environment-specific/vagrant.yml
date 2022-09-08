@@ -91,6 +91,7 @@ xroad:
   client_id: ICE.COM.222.XROAD-CATALOG
   service_id: ICE.COM.222.XROAD-CATALOG
   service_name: REST
+  environment: 'FI-TEST'
 
 elk:
   logstash:

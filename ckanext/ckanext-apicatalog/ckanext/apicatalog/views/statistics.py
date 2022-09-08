@@ -6,21 +6,21 @@ from ckan import logic
 from ckan.common import g, _
 
 
-xroad_statistics = Blueprint(u'admin_xroadstats', __name__, url_prefix=u'/ckan-admin')
+statistics = Blueprint(u'admin_stats', __name__, url_prefix=u'/ckan-admin')
 
 
-@xroad_statistics.route('/xroad_statistics', endpoint='read', methods=['GET'])
+@statistics.route('/statistics', endpoint='read', methods=['GET'])
 def read():
     context = {u'user': g.user, u'auth_user_obj': g.userobj}
 
     try:
-        p.toolkit.check_access('admin_xroadstats', context, {})
+        p.toolkit.check_access('admin_stats', context, {})
     except logic.NotAuthorized:
         p.toolkit.abort(403, _(u'Not authorized to see this page'))
         return
 
-    return p.toolkit.render('admin/xroad_statistics.html')
+    return p.toolkit.render('admin/statistics.html')
 
 
 def get_blueprints():
-    return [xroad_statistics]
+    return [statistics]
