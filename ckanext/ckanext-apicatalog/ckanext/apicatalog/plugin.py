@@ -878,7 +878,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             # OR
             # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
             #    the organization of the package
-            log.warn("results")
             user_orgs = toolkit.get_action('organization_list_for_user')(
                 {'ignore_auth': True},
                 {'id': toolkit.g.user, 'permission': 'read'})
