@@ -878,9 +878,13 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             # OR
             # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
             #    the organization of the package
-            user_orgs = toolkit.get_action('organization_list_for_user')(
-                {'ignore_auth': True},
-                {'id': toolkit.g.user, 'permission': 'read'})
+            if 'user' in toolkit.g:
+                user_orgs = toolkit.get_action('organization_list_for_user')(
+                    {'ignore_auth': True},
+                    {'id': toolkit.g.user, 'permission': 'read'})
+            else:
+                user_orgs = []
+
             allowed_resources = [resource for resource in result.get('resources', [])
                                  if resource.get('access_restriction_level', '') in ('', 'public') or
                                  ((resource.get('access_restriction_level', '') == 'private')
