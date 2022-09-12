@@ -276,32 +276,6 @@
       "classes": ["control-full"]
     },
     {
-      "field_name": "connection_information",
-      "label": "Information about the interface",
-      "preset": "fluent_text",
-      "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"],
-      "help_text": "Other information about the API, e.g. how to take into use, parameters, terms of use (unless available in a separate document)"
-    },
-    {
-      "field_name": "availability",
-      "label": "Availability",
-      "preset": "fluent_text",
-      "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"],
-      "help_text": "Information on the availability of the API, e.g. available 24/7, or available only during business hours"
-
-    },
-    {
-      "field_name": "sla",
-      "label": "SLA",
-      "preset": "fluent_text",
-      "classes": ["control-full"],
-      "form_languages": ["fi", "sv", "en"],
-      "help_text": "Additional information on the SLA of the API, e.g. response time or speed"
-
-    },
-    {
       "field_name": "valid_content",
       "form_snippet": false,
       "display_snippet": null
