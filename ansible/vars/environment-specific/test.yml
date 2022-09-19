@@ -111,6 +111,7 @@ ckan_plugins:
   - xroad_integration
   - sentry
   - forcetranslation
+  - markdown_editor
 
 
 allowed_user_creators:
