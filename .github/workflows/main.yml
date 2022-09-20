@@ -61,6 +61,8 @@ jobs:
           cd ../ckanext-fluent
           pip install -e .
 
+          cd ../ckanext-markdown_editor
+          pip install -e .
 
       - name: Setup extension
         run: |
@@ -123,6 +125,9 @@ jobs:
           sudo -H pip install -e .
 
           cd ../ckanext-fluent
+          sudo -H pip install -e .
+
+          cd ../ckanext-markdown_editor
           sudo -H pip install -e .
 
           cd ../ckanext-xroad_integration

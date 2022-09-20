@@ -1,6 +1,12 @@
 {% ckan_extends %}
 
 <div class="row">
+    {% if resource.get('harvested_from_xroad') %}
+      {% set title = 'Edit service' %}
+    {% else %}
+      {% set title = 'Edit attachment' %}
+    {% endif %}
+
     <div class="col-xs-12 prelude">
         <div class="pull-right page-actions">
             {% block content_action %}
@@ -13,7 +19,7 @@
             {% endif %}
         </div>
         {% block prelude %}
-            <h1>{{ _('Edit resource') }}</h1>
+            <h1>{{ _(title) }}</h1>
         {% endblock %}
     </div>
 </div>

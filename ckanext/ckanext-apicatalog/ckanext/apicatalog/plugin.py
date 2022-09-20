@@ -33,7 +33,7 @@ from ckanext.apicatalog.schema import create_user_to_organization_schema
 from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
-from ckanext.apicatalog.helpers import lang as apicatalog_lang, parse_datetime
+from ckanext.apicatalog.helpers import with_field_string_replacements, lang as apicatalog_lang, parse_datetime
 
 from collections import OrderedDict
 
@@ -773,6 +773,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'add_locale_to_source': add_locale_to_source,
                 'get_field_from_schema': get_field_from_schema,
                 'max_resource_size': get_max_resource_size,
+                'with_field_string_replacements': with_field_string_replacements,
                 "lang": apicatalog_lang
                 }
 

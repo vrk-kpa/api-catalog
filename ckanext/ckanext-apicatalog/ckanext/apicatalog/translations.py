@@ -75,6 +75,11 @@ def schema_translatable_strings():
               '<a href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">'
               'API catalog instructions</a>.</div></div>'),
             _('Write the subsystem\'s description'),
+            _('Write the service\'s description'),
+            _('Write the attachment\'s description'),
+            _('Update Service'),
+            _('Edit service'),
+            _('Edit attachment'),
             _('Using keywords the user can easily find this application or similar applications through the search function. '
               'Choose at least one Finnish keyword.'),
             _('Write a keyword'),

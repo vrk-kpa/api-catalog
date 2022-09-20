@@ -18,7 +18,21 @@
   {%- endif -%}
 
   {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
-  {%- for field in schema.resource_fields -%}
+
+  {% if data.get('harvested_from_xroad') %}
+  {#{% set resource_fields = h.with_service_field_labels(schema.resource_fields) %}#}
+    {% set resource_fields = h.with_field_string_replacements(schema.resource_fields, 'attachment', 'service',
+                                                              ['label',
+                                                               'extra_label',
+                                                               'additional_description',
+                                                               'input_title',
+                                                               'form_placeholder',
+                                                               ]) %}
+  {% else %}
+    {% set resource_fields = schema.resource_fields %}
+  {% endif %}
+
+  {%- for field in resource_fields -%}
     {%- if field.form_snippet is not none -%}
       {%- if field.field_name not in data %}
         {# Set the field default value before rendering but only if
