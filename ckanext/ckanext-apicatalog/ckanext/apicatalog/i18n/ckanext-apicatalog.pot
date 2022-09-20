@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-06-27 10:25+0000\n"
+"POT-Creation-Date: 2022-09-20 11:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,27 +22,27 @@ msgstr ""
 msgid "User {user} not authorized to create users via the API"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:678
+#: ckanext/apicatalog/plugin.py:632
 msgid "User {name} stored in database."
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:875
+#: ckanext/apicatalog/plugin.py:829
 #: ckanext/apicatalog/templates/package/read.html:61
 msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:876
+#: ckanext/apicatalog/plugin.py:830
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:877
+#: ckanext/apicatalog/plugin.py:831
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:878
+#: ckanext/apicatalog/plugin.py:832
 msgid "Formats"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:10
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:40
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:71
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:85
 #: ckanext/apicatalog/translations.py:27
 msgid "Discard changes"
 msgstr ""
@@ -267,62 +267,83 @@ msgid ""
 " catalog instructions</a>.</div></div>"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:60
+#: ckanext/apicatalog/translations.py:77
 msgid "Write the subsystem's description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:61
+#: ckanext/apicatalog/translations.py:78
+msgid "Write the service's description"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:79
+msgid "Write the attachment's description"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
+#: ckanext/apicatalog/translations.py:80
+msgid "Update Service"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:81
+msgid "Edit service"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:82
+msgid "Edit attachment"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:83
 msgid ""
 "Using keywords the user can easily find this application or similar "
 "applications through the search function. Choose at least one Finnish "
 "keyword."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:62
+#: ckanext/apicatalog/translations.py:85
 msgid "Write a keyword"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:63
+#: ckanext/apicatalog/translations.py:86
 msgid "Maintainer's information"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:64
+#: ckanext/apicatalog/translations.py:87
 msgid "Use the maintainer's common contact information."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:65
+#: ckanext/apicatalog/translations.py:88
 msgid "The name of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:66
+#: ckanext/apicatalog/translations.py:89
 msgid "The email of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:67
+#: ckanext/apicatalog/translations.py:90
 msgid "Limited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:68
+#: ckanext/apicatalog/translations.py:91
 msgid "Allowed organizations"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:69
+#: ckanext/apicatalog/translations.py:92
 msgid "Other information"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:70
+#: ckanext/apicatalog/translations.py:93
 msgid "dd/mm/yyyy"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:71
+#: ckanext/apicatalog/translations.py:94
 msgid "fi"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:72
+#: ckanext/apicatalog/translations.py:95
 msgid "en"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:73
+#: ckanext/apicatalog/translations.py:96
 msgid "sv"
 msgstr ""
 
@@ -665,6 +686,66 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: ckanext/apicatalog/templates/admin/statistics.html:16
+msgid "X-ROAD Graphs"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:23
+msgid "X-Road Environment:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:31
+msgid "Subsystems:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:39
+msgid "Members:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:47
+msgid "SecurityServers:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:55
+msgid "X-ROAD Catalog - Services"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:62
+msgid "SOAP services:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:70
+msgid "REST services:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:78
+msgid "OpenAPI services:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:86
+msgid "X-ROAD Catalog - Distinct Services"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:93
+msgid "Distinct services:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:101
+msgid "CKAN"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:108
+msgid "Public subsystems:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:116
+msgid "Total organizations:"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/statistics.html:124
+msgid "Provider organizations:"
+msgstr ""
+
 #: ckanext/apicatalog/templates/admin/useradd.html:9
 #, python-format
 msgid ""
@@ -695,18 +776,6 @@ msgstr ""
 #: ckanext/apicatalog/templates/admin/useradd.html:18
 #: ckanext/apicatalog/templates/contact/snippets/form_simple.html:24
 msgid "Submit"
-msgstr ""
-
-#: ckanext/apicatalog/templates/admin/xroad_statistics.html:13
-msgid "X-Road Graphs"
-msgstr ""
-
-#: ckanext/apicatalog/templates/admin/xroad_statistics.html:19
-msgid "FI"
-msgstr ""
-
-#: ckanext/apicatalog/templates/admin/xroad_statistics.html:20
-msgid "FI-TEST"
 msgstr ""
 
 #: ckanext/apicatalog/templates/announcements/index.html:4
@@ -1239,7 +1308,7 @@ msgstr ""
 #: ckanext/apicatalog/templates/organization/members.html:38
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:25
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:29
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:65
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:79
 #: ckanext/apicatalog/templates/user/edit_user_form.html:53
 msgid "Delete"
 msgstr ""
@@ -1357,7 +1426,7 @@ msgid "Subsystem information"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/read.html:39
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:62
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:59
 msgid "Service bus identifier"
 msgstr ""
 
@@ -1369,15 +1438,11 @@ msgstr ""
 msgid "Groups"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/resource_edit.html:7
+#: ckanext/apicatalog/templates/package/resource_edit.html:13
 msgid "Cancel edit"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/resource_edit.html:16
-msgid "Edit resource"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/resource_edit.html:25
+#: ckanext/apicatalog/templates/package/resource_edit.html:31
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:11
 #: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:21
 msgid "Required field"
@@ -1453,6 +1518,10 @@ msgstr ""
 msgid "Are you sure you want to delete this dataset?"
 msgstr ""
 
+#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:7
+msgid "Update Resource"
+msgstr ""
+
 #: ckanext/apicatalog/templates/package/snippets/resource_item.html:26
 msgid "Invalid content"
 msgstr ""
@@ -1474,7 +1543,7 @@ msgid "This resource view is not available at the moment."
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/snippets/resource_view.html:20
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:125
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:122
 msgid "Click here for more information."
 msgstr ""
 
@@ -1533,81 +1602,81 @@ msgstr ""
 msgid "API Endpoint"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:77
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:74
 msgid "From the dataset abstract"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:79
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:76
 #, python-format
 msgid "Source: <a href=\"%(url)s\">%(dataset)s</a>"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:119
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:116
 msgid "There are no views created for this resource yet."
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:123
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:120
 msgid "Not seeing the views you were expecting?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:128
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:125
 msgid "Here are some reasons you may not be seeing expected views:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:130
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:127
 msgid "No view has been created that is suitable for this resource"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:131
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:128
 msgid "The site administrators may not have enabled the relevant view plugins"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:132
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:129
 msgid ""
 "If a view requires the DataStore, the DataStore plugin may not be enabled, or"
 " the data may not have been pushed to the DataStore, or the DataStore hasn't "
 "finished processing the data yet"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:151
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:148
 msgid "Additional Information"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:155
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:152
 msgid "Field"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:156
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:153
 msgid "Value"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:162
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:159
 msgid "Last updated"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:163
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:169
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:175
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:160
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:166
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:172
 msgid "unknown"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:168
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:165
 msgid "Created"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:174
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:171
 msgid "Format"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:180
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:177
 msgid "License"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:65
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:79
 msgid "Are you sure you want to delete this resource?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:84
 msgid "Finish"
 msgstr ""
 
@@ -1777,8 +1846,7 @@ msgid ""
 "href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>."
 msgstr ""
 
-#: ckanext/apicatalog/views/useradd.py:41
-#: ckanext/apicatalog/views/xroad_statistics.py:19
+#: ckanext/apicatalog/views/statistics.py:19 ckanext/apicatalog/views/useradd.py:41
 msgid "Not authorized to see this page"
 msgstr ""
 

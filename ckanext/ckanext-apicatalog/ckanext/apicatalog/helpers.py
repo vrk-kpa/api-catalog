@@ -1,4 +1,5 @@
 import itertools
+import copy
 from datetime import datetime
 
 from ckan.plugins.toolkit import get_action, request
@@ -112,3 +113,23 @@ def parse_datetime(t):
         except Exception as e:
             log.warn(e)
             return None
+
+
+def with_field_string_replacements(fields, replaced, replacement, affected_values):
+    fields = copy.deepcopy(fields)
+
+    def process(value):
+        if isinstance(value, list):
+            return [process(v) for v in value]
+        else:
+            return (value
+                    .replace(replaced, replacement)
+                    .replace(replaced.capitalize(), replacement.capitalize()))
+
+    for field in fields:
+        for value_name in affected_values:
+            value = field.get(value_name)
+            if value is not None:
+                field[value_name] = process(value)
+
+    return fields

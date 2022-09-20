@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block save_button_text %}
+{%- if data.get('harvested_from_xroad') -%}
+  {{ _('Update Service') }}
+{%- else -%}
+  {{ _('Update Resource') }}
+{%- endif -%}
+{% endblock %}

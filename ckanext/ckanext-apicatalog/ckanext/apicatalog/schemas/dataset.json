@@ -202,7 +202,7 @@
       "preset": "fluent_markdown_editor",
       "required": false,
       "only_default_lang_required": true,
-      "form_placeholder": "Write attachment description",
+      "form_placeholder": "Write the attachment's description",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
       "form_attrs": {}
