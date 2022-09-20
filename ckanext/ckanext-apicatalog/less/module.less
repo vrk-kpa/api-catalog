@@ -48,13 +48,7 @@
   }
 }
 
-.dataset-sidebar {
-  color: @suomifi-highlight-base;
-  font-family: @headings-font-family;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 27px;
-  text-transform: uppercase;
+.dataset-sidebar li {
   width: 100%;
   display: block;
   border-bottom: 2px solid #f0f6ff;
@@ -68,8 +62,28 @@
     background-color: #d5e4f6;
   }
 
-  &:visited {
+  &.active {
+    background-color: #d5e4f6;
+    border: 5px solid;
+    border-color: @suomifi-highlight-base;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    margin: 0;
+    padding-right: 5px;
+  }
+
+  & a {
     color: @suomifi-highlight-base;
+    font-family: @headings-font-family;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    &:visited {
+      color: @suomifi-highlight-base;
+    }
   }
 }
 

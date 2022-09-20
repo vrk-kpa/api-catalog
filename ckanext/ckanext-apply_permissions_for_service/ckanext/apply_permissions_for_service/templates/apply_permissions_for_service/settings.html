@@ -52,7 +52,7 @@
                       {% if settings.get('original_additional_filename', False) %}
                         {{ form.hidden('original_additional_filename', value=settings.original_additional_filename) }}
                       {% endif %}
-                      
+
                       {% set is_upload_additional_file = settings.additional_file_url and not settings.additional_file_url.startswith('http') %}
                       {% set is_url_additional_file = settings.additional_file_url and settings.additional_file_url.startswith('http') %}
                       {{ form.image_upload_dragndrop(
@@ -76,7 +76,7 @@
               {% if settings.get('original_filename', False) %}
                 {{ form.hidden('original_filename', value=settings.original_filename) }}
               {% endif %}
-              
+
               {{ form.input('email', label=_('Email'), value=settings.email) }}
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
@@ -138,8 +138,5 @@
     {% endblock %}
   </div>
 </section>
-{% endblock %}
-
-{% block secondary_content %}
 {% endblock %}
 

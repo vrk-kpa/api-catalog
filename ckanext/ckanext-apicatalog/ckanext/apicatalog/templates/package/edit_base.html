@@ -16,3 +16,16 @@
 {% endblock %}
 
 {% block wrapper_class %}dataset-edit{% endblock %}
+
+{% block secondary_content %}
+    <section class="module module-narrow">
+    <div class="module context-info">
+        <div class="module-content dataset-sidebar">
+            {{ h.build_nav_icon(pkg.type + '.edit', _("Subsystem's information"), id=pkg.name) }}
+            {{ h.build_nav_icon(pkg.type ~ '.resources', _('Attachments'), id=pkg.name) }}
+            {{ h.build_nav_icon('apply_permissions.permission_application_settings', _('Access request settings'), subsystem_id=pkg.name) }}
+            {{ h.build_nav_icon('apply_permissions.manage_permission_applications', _('Received access requests'), subsystem_id=pkg.name) }}
+        </div>
+    </div>
+    </section>
+{% endblock %}
