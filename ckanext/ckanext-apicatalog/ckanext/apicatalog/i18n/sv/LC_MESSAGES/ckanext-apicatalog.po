@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-20 09:59+0000\n"
+"POT-Creation-Date: 2022-09-20 11:06+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
 "Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
@@ -314,12 +314,24 @@ msgstr "Skriv subsystemets beskrivning"
 msgid "Write the service's description"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
 #: ckanext/apicatalog/translations.py:79
+msgid "Write the attachment's description"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
+#: ckanext/apicatalog/translations.py:80
 msgid "Update Service"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:80
+#: ckanext/apicatalog/translations.py:81
+msgid "Edit service"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:82
+msgid "Edit attachment"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:83
 msgid ""
 "Using keywords the user can easily find this application or similar "
 "applications through the search function. Choose at least one Finnish "
@@ -328,51 +340,51 @@ msgstr ""
 "Med hjälp av nyckelord kan användaren enkelt hitta detta subsystem eller "
 "liknande subsystem genom sök funktionen. Välj minst ett finskt nyckelord."
 
-#: ckanext/apicatalog/translations.py:82
+#: ckanext/apicatalog/translations.py:85
 msgid "Write a keyword"
 msgstr "Skriv ett nyckelord"
 
-#: ckanext/apicatalog/translations.py:83
+#: ckanext/apicatalog/translations.py:86
 msgid "Maintainer's information"
 msgstr "Administratörens kontaktuppgifter"
 
-#: ckanext/apicatalog/translations.py:84
+#: ckanext/apicatalog/translations.py:87
 msgid "Use the maintainer's common contact information."
 msgstr "Använda administratörens allmänna kontaktuppgifter."
 
-#: ckanext/apicatalog/translations.py:85
+#: ckanext/apicatalog/translations.py:88
 msgid "The name of the maintainer"
 msgstr "Namnet av administratören"
 
-#: ckanext/apicatalog/translations.py:86
+#: ckanext/apicatalog/translations.py:89
 msgid "The email of the maintainer"
 msgstr "E-post av administratören"
 
-#: ckanext/apicatalog/translations.py:87
+#: ckanext/apicatalog/translations.py:90
 msgid "Limited"
 msgstr "Begränsad"
 
-#: ckanext/apicatalog/translations.py:88
+#: ckanext/apicatalog/translations.py:91
 msgid "Allowed organizations"
 msgstr "Tillåtna organisationer"
 
-#: ckanext/apicatalog/translations.py:89
+#: ckanext/apicatalog/translations.py:92
 msgid "Other information"
 msgstr "Giltighetstid"
 
-#: ckanext/apicatalog/translations.py:90
+#: ckanext/apicatalog/translations.py:93
 msgid "dd/mm/yyyy"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:91
+#: ckanext/apicatalog/translations.py:94
 msgid "fi"
 msgstr "på finska"
 
-#: ckanext/apicatalog/translations.py:92
+#: ckanext/apicatalog/translations.py:95
 msgid "en"
 msgstr "på engelska"
 
-#: ckanext/apicatalog/translations.py:93
+#: ckanext/apicatalog/translations.py:96
 msgid "sv"
 msgstr "på svenska"
 
@@ -1913,9 +1925,9 @@ msgid ""
 " and request a user account."
 msgstr ""
 "Om du inte har ett användarkonto ska du kontakta administratören för din "
-"organisation och be honom eller henne bjuda in dig som medlem i "
-"organisationen. Om du inte vet vem som är administratör för din organisation"
-" eller om din organisation inte har någon administratör, kontakta <a "
+"organisation och be hen bjuda in dig som medlem i organisationen. Om du inte"
+" vet vem som är administratör för din organisation eller om din organisation"
+" inte har någon administratör, kontakta <a "
 "href=\"mailto:palveluvayla@palveluvayla.fi\">palveluvayla@palveluvayla.fi</a>"
 " och be om ett användarkonto"
 
@@ -1925,11 +1937,12 @@ msgstr "Glömde du ditt lösenord?"
 
 #: ckanext/apicatalog/templates/user/login.html:13
 msgid "No problem, use our password recovery form to reset it."
-msgstr "Inga problem, använd formuläret för ominställning av lösenord."
+msgstr ""
+"Du kan byta ditt lösenord med våra formulär för återställning av lösenord."
 
 #: ckanext/apicatalog/templates/user/login.html:16
 msgid "Forgot your password?"
-msgstr "Glömde du ditt lösenord?"
+msgstr "Byt lösenordet"
 
 #: ckanext/apicatalog/templates/user/request_reset.html:4
 msgid "How does this work?"

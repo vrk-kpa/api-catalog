@@ -7,17 +7,17 @@
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
-# Suvi Nuttunen, 2022
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2022
+# Suvi Nuttunen, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-20 09:59+0000\n"
+"POT-Creation-Date: 2022-09-20 11:06+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -309,12 +309,24 @@ msgstr ""
 msgid "Write the service's description"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
 #: ckanext/apicatalog/translations.py:79
+msgid "Write the attachment's description"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
+#: ckanext/apicatalog/translations.py:80
 msgid "Update Service"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:80
+#: ckanext/apicatalog/translations.py:81
+msgid "Edit service"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:82
+msgid "Edit attachment"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:83
 msgid ""
 "Using keywords the user can easily find this application or similar "
 "applications through the search function. Choose at least one Finnish "
@@ -323,51 +335,51 @@ msgstr ""
 "Using keywords the user can easily find this subsystem or similar subsystems"
 " through the search function. Choose at least one Finnish keyword."
 
-#: ckanext/apicatalog/translations.py:82
+#: ckanext/apicatalog/translations.py:85
 msgid "Write a keyword"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:83
+#: ckanext/apicatalog/translations.py:86
 msgid "Maintainer's information"
 msgstr "Administrator's contact information"
 
-#: ckanext/apicatalog/translations.py:84
+#: ckanext/apicatalog/translations.py:87
 msgid "Use the maintainer's common contact information."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:85
+#: ckanext/apicatalog/translations.py:88
 msgid "The name of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:86
+#: ckanext/apicatalog/translations.py:89
 msgid "The email of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:87
+#: ckanext/apicatalog/translations.py:90
 msgid "Limited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:88
+#: ckanext/apicatalog/translations.py:91
 msgid "Allowed organizations"
 msgstr "Allowed organisations"
 
-#: ckanext/apicatalog/translations.py:89
+#: ckanext/apicatalog/translations.py:92
 msgid "Other information"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:90
+#: ckanext/apicatalog/translations.py:93
 msgid "dd/mm/yyyy"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:91
+#: ckanext/apicatalog/translations.py:94
 msgid "fi"
 msgstr "in Finnish"
 
-#: ckanext/apicatalog/translations.py:92
+#: ckanext/apicatalog/translations.py:95
 msgid "en"
 msgstr "in English"
 
-#: ckanext/apicatalog/translations.py:93
+#: ckanext/apicatalog/translations.py:96
 msgid "sv"
 msgstr "in Swedish"
 
@@ -1870,15 +1882,17 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/user/login.html:11
 msgid "Forgotten your password?"
-msgstr ""
+msgstr "Forgot your password?"
 
 #: ckanext/apicatalog/templates/user/login.html:13
 msgid "No problem, use our password recovery form to reset it."
 msgstr ""
+"You can change your password by using our password recovery form to reset "
+"it."
 
 #: ckanext/apicatalog/templates/user/login.html:16
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Change the password"
 
 #: ckanext/apicatalog/templates/user/request_reset.html:4
 msgid "How does this work?"
