@@ -1,0 +1,13 @@
+diff --git a/ckan/logic/action/update.py b/ckan/logic/action/update.py
+index 0fbb183a2..74b50d888 100644
+--- a/ckan/logic/action/update.py
++++ b/ckan/logic/action/update.py
+@@ -292,7 +292,7 @@ def package_update(context, data_dict):
+             if hasattr(upload, 'mimetype'):
+                 resource['mimetype'] = upload.mimetype
+ 
+-        if 'size' not in resource and 'url_type' in resource:
++        if 'url_type' in resource:
+             if hasattr(upload, 'filesize'):
+                 resource['size'] = upload.filesize
+ 
