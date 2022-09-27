@@ -31,6 +31,7 @@ ckan_patches:
   - { file: "remove_old_fontawesome" }
   - { file: "fix_autocomplete_server_error" }
   - { file: "email_attachment" }
+  - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
