@@ -29,15 +29,30 @@ def service_permission_application_create(context, data_dict):
     target_organization_id = data_dict.get('target_organization_id')
     if target_organization_id is None or target_organization_id == "":
         errors['target_organization_id'] = _('Missing value')
+
     business_code = data_dict.get('business_code')
     if business_code is None or business_code == "":
         errors['business_code'] = _('Missing value')
+    else:
+        try:
+            # From ckanext-apicatalog
+            tk.get_validator('business_id_validator')(business_code)
+        except tk.Invalid as e:
+            errors['business_code'] = e.error
+
     contact_name = data_dict.get('contact_name')
     if contact_name is None or contact_name == "":
         errors['contact_name'] = _('Missing value')
+
     contact_email = data_dict.get('contact_email')
     if contact_email is None or contact_email == "":
         errors['contact_email'] = _('Missing value')
+    else:
+        try:
+            tk.get_validator('email_validator')(contact_email, context)
+        except tk.Invalid as e:
+            errors['contact_email'] = e.error
+
     ip_address_list = data_dict.get('ip_address_list')
     if ip_address_list is None or ip_address_list == "":
         errors['ip_address_list'] = _('Missing value')

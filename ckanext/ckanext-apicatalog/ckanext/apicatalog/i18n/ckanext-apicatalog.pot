@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-20 11:06+0000\n"
+"POT-Creation-Date: 2022-09-27 11:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,136 +114,140 @@ msgid ""
 " not the email address of the individual."
 msgstr ""
 
+#: ckanext/apicatalog/translations.py:27
+msgid "Email {email} is not a valid format"
+msgstr ""
+
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:10
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:40
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:85
-#: ckanext/apicatalog/translations.py:27
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:76
+#: ckanext/apicatalog/translations.py:28
 msgid "Discard changes"
 msgstr ""
 
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:36
 #: ckanext/apicatalog/templates/scheming/package/snippets/resource_edit_form.html:3
-#: ckanext/apicatalog/translations.py:28
+#: ckanext/apicatalog/translations.py:29
 msgid "Save changes"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:29
+#: ckanext/apicatalog/translations.py:30
 msgid "Write subsystem description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:30
+#: ckanext/apicatalog/translations.py:31
 msgid "Write attachment description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:31
+#: ckanext/apicatalog/translations.py:32
 msgid "Service name will be filled automatically and should not be edited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:32
+#: ckanext/apicatalog/translations.py:33
 msgid "Attachment name will be filled automatically and should not be edited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:33
+#: ckanext/apicatalog/translations.py:34
 msgid "Service visibility"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:34
+#: ckanext/apicatalog/translations.py:35
 msgid "Service description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:35
+#: ckanext/apicatalog/translations.py:36
 msgid "Service name"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:36
+#: ckanext/apicatalog/translations.py:37
 msgid "Attachment visibility"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:37
+#: ckanext/apicatalog/translations.py:38
 msgid "Attachment description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:38
+#: ckanext/apicatalog/translations.py:39
 msgid "Attachment name"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:39
+#: ckanext/apicatalog/translations.py:40
 msgid ""
 "When service visibility is private, it is only visible to the owner "
 "organisation or users from allowed organisations"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:41
+#: ckanext/apicatalog/translations.py:42
 msgid ""
 "When attachment visibility is private, it is only visible to the owner "
 "organisation or users from allowed organisations"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:43
+#: ckanext/apicatalog/translations.py:44
 msgid "Chargeable"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:44
+#: ckanext/apicatalog/translations.py:45
 msgid "Free of charge"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:45
+#: ckanext/apicatalog/translations.py:46
 msgid "Mentioned in service description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:46
+#: ckanext/apicatalog/translations.py:47
 msgid "No license specified"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:47
+#: ckanext/apicatalog/translations.py:48
 msgid "Open Database license"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:48
+#: ckanext/apicatalog/translations.py:49
 msgid "Web address"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:49
+#: ckanext/apicatalog/translations.py:50
 msgid ""
 "URL will be formed automatically from the name of the application and should "
 "in general not be edited."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:51
+#: ckanext/apicatalog/translations.py:52
 msgid "E-mail address in Finnish"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:52
+#: ckanext/apicatalog/translations.py:53
 msgid "E-mail address in Swedish"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:53
+#: ckanext/apicatalog/translations.py:54
 msgid "E-mail address in English"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:54
+#: ckanext/apicatalog/translations.py:55
 msgid "Subsystem's title"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:55
+#: ckanext/apicatalog/translations.py:56
 msgid ""
 "We recommend that the subsystem is given a clear name that describes its real"
 " name or purpose."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:56
+#: ckanext/apicatalog/translations.py:57
 msgid "The subsystem's name"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:57
+#: ckanext/apicatalog/translations.py:58
 msgid "Title in Data Exchange Layer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:58
+#: ckanext/apicatalog/translations.py:59
 msgid "Subsystem description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:59
+#: ckanext/apicatalog/translations.py:60
 msgid ""
 "General, compact and easy to understand description of the subsystem. You can"
 " use markdown formatting in the description.<br><br><div class=\"collapsible-"
@@ -267,83 +271,83 @@ msgid ""
 " catalog instructions</a>.</div></div>"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:77
+#: ckanext/apicatalog/translations.py:78
 msgid "Write the subsystem's description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:78
+#: ckanext/apicatalog/translations.py:79
 msgid "Write the service's description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:79
+#: ckanext/apicatalog/translations.py:80
 msgid "Write the attachment's description"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
-#: ckanext/apicatalog/translations.py:80
+#: ckanext/apicatalog/translations.py:81
 msgid "Update Service"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:81
+#: ckanext/apicatalog/translations.py:82
 msgid "Edit service"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:82
+#: ckanext/apicatalog/translations.py:83
 msgid "Edit attachment"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:83
+#: ckanext/apicatalog/translations.py:84
 msgid ""
 "Using keywords the user can easily find this application or similar "
 "applications through the search function. Choose at least one Finnish "
 "keyword."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:85
+#: ckanext/apicatalog/translations.py:86
 msgid "Write a keyword"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:86
+#: ckanext/apicatalog/translations.py:87
 msgid "Maintainer's information"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:87
+#: ckanext/apicatalog/translations.py:88
 msgid "Use the maintainer's common contact information."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:88
+#: ckanext/apicatalog/translations.py:89
 msgid "The name of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:89
+#: ckanext/apicatalog/translations.py:90
 msgid "The email of the maintainer"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:90
+#: ckanext/apicatalog/translations.py:91
 msgid "Limited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:91
+#: ckanext/apicatalog/translations.py:92
 msgid "Allowed organizations"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:92
+#: ckanext/apicatalog/translations.py:93
 msgid "Other information"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:93
+#: ckanext/apicatalog/translations.py:94
 msgid "dd/mm/yyyy"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:94
+#: ckanext/apicatalog/translations.py:95
 msgid "fi"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:95
+#: ckanext/apicatalog/translations.py:96
 msgid "en"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:96
+#: ckanext/apicatalog/translations.py:97
 msgid "sv"
 msgstr ""
 
@@ -690,59 +694,59 @@ msgstr ""
 msgid "X-ROAD Graphs"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:23
+#: ckanext/apicatalog/templates/admin/statistics.html:22
 msgid "X-Road Environment:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:31
+#: ckanext/apicatalog/templates/admin/statistics.html:30
 msgid "Subsystems:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:39
+#: ckanext/apicatalog/templates/admin/statistics.html:38
 msgid "Members:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:47
+#: ckanext/apicatalog/templates/admin/statistics.html:46
 msgid "SecurityServers:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:55
+#: ckanext/apicatalog/templates/admin/statistics.html:54
 msgid "X-ROAD Catalog - Services"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:62
+#: ckanext/apicatalog/templates/admin/statistics.html:59
 msgid "SOAP services:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:70
+#: ckanext/apicatalog/templates/admin/statistics.html:67
 msgid "REST services:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:78
+#: ckanext/apicatalog/templates/admin/statistics.html:75
 msgid "OpenAPI services:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:86
+#: ckanext/apicatalog/templates/admin/statistics.html:83
 msgid "X-ROAD Catalog - Distinct Services"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:93
+#: ckanext/apicatalog/templates/admin/statistics.html:88
 msgid "Distinct services:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:101
+#: ckanext/apicatalog/templates/admin/statistics.html:96
 msgid "CKAN"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:108
+#: ckanext/apicatalog/templates/admin/statistics.html:101
 msgid "Public subsystems:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:116
+#: ckanext/apicatalog/templates/admin/statistics.html:109
 msgid "Total organizations:"
 msgstr ""
 
-#: ckanext/apicatalog/templates/admin/statistics.html:124
+#: ckanext/apicatalog/templates/admin/statistics.html:117
 msgid "Provider organizations:"
 msgstr ""
 
@@ -1308,7 +1312,7 @@ msgstr ""
 #: ckanext/apicatalog/templates/organization/members.html:38
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:25
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:29
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:79
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
 #: ckanext/apicatalog/templates/user/edit_user_form.html:53
 msgid "Delete"
 msgstr ""
@@ -1356,33 +1360,29 @@ msgstr ""
 msgid "Show only service providers"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/edit.html:10
-msgid "Subsystem's information"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/edit.html:11
-msgid "Resources"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/edit.html:11
-#: ckanext/apicatalog/templates/package/read.html:64
-msgid "Attachments"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/edit.html:13
-msgid "Access request settings"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/edit.html:14
-msgid "Received access requests"
-msgstr ""
-
 #: ckanext/apicatalog/templates/package/edit_base.html:7
 msgid "Edit subsystem"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/edit_base.html:14
 msgid "Cancel editing"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/edit_base.html:24
+msgid "Subsystem's information"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/edit_base.html:25
+#: ckanext/apicatalog/templates/package/read.html:64
+msgid "Attachments"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/edit_base.html:27
+msgid "Access request settings"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/edit_base.html:28
+msgid "Received access requests"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/read.html:18
@@ -1672,11 +1672,11 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:79
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
 msgid "Are you sure you want to delete this resource?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:84
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:75
 msgid "Finish"
 msgstr ""
 

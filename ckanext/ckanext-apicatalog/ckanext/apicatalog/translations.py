@@ -24,6 +24,7 @@ def schema_translatable_strings():
               ' customer service, not an individual number.'),
             _('If possible, enter the email address of the organization or customer service, '
               'not the email address of the individual.'),
+            _('Email {email} is not a valid format'),
             _('Discard changes'),
             _('Save changes'),
             _('Write subsystem description'),
