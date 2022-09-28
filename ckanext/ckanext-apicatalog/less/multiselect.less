@@ -83,13 +83,15 @@
     }
 
     [type="checkbox"] {
+      display: none;
+
       & + .custom-checkbox {
-      display: inline-flex;
+        display: inline-flex;
         border: 1px solid @kapa-input-border;
         border-radius: 2px;
         width: 16px;
         height: 16px;
-        margin-right: 0;
+        margin-right: 1ch;
         font-size: 15px;
         color: @suomifi-highlight-base;
         min-width: 16px;
