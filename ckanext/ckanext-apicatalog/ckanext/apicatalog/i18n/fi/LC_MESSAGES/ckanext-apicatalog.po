@@ -6,9 +6,9 @@
 # 
 # Translators:
 # Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
-# Suvi Nuttunen, 2022
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2022
+# Suvi Nuttunen, 2022
 # 
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-09-27 11:17+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
-"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2022\n"
+"Last-Translator: Suvi Nuttunen, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1135,7 +1135,7 @@ msgstr "Uutta alijärjestelmää"
 
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_12mo_stats.html:6
 msgid "New attachments"
-msgstr "Uudet palvelut"
+msgstr "Uutta palvelua"
 
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_huge-search.html:2
 #: ckanext/apicatalog/templates/home/snippets/search.html:8
@@ -1616,7 +1616,7 @@ msgid ""
 "You can also access this registry using the %(api_link)s (see "
 "%(api_doc_link)s)."
 msgstr ""
-"Voit myös käyttää tätä rekisteriä %(api_link)savulla (katso "
+"Voit myös käyttää tätä rekisteriä %(api_link)s avulla (katso "
 "%(api_doc_link)s)."
 
 #: ckanext/apicatalog/templates/package/search.html:69

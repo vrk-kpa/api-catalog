@@ -46,7 +46,7 @@
   <h3>{{ _('Applicant information') }}</h3>
   <p class="input-group-description">{{ _('Your contact infomation and organization details are prefilled based on information provided when your organization joined the National Data Exchange layer. Modify the prefilled information if necessary.') }}</p>
 
-  <p>* Required field</p>
+  <p>* {{ _('Required field') }}</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
   {# TODO: Should probably be organization select component ? #}
   {{ form.input('organization', label=_('Organization'), is_required=True, value=values.organization or user_org.name or '') }}
