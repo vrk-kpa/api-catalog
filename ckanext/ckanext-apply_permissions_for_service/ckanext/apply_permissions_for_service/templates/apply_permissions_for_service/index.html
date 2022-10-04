@@ -22,21 +22,28 @@
             {% for service in application.services %}
             <tr>
                 <td>
-                    {{ _('Organization') }} : <b>{{ application.organization["title"] }}</b><br>
-                    {{ _('Subsystem') }} : <b>{{ application.requester_subsystem.name }}</b><br>
+                    {{ _('Organization') }} : <b>{% link_for application.organization["title"], named_route='organization.read', id=application.organization_id %}</b><br>
+                    {{ _('Subsystem') }} : <b>{% link_for application.requester_subsystem.name, named_route='dataset.read', id=application.requester_subsystem.id %}</b><br>
                 </td>
                 {% if "intermediate_organization" in application %}
                 <td>
-                    {{ _('Organization') }} : <b>{{ h.get_translated(application.intermediate_organization, 'title') }}</b><br>
+                    {{ _('Organization') }} : <b>{% link_for h.get_translated(application.intermediate_organization, 'title'),
+                                                             named_route='organization.read',
+                                                             id=application.intermediate_organization_id %}</b><br>
                     {{ _('Business code') }} : <b>{{ application.intermediate_business_code }}</b><br>
                 </td>
                 {% else %}
                 <td></td>
                 {% endif %}
                 <td>
-                    {{ _('Organization') }} : <b>{{ h.get_translated(application.target_organization, 'title') }}</b><br>
-                    {{ _('Subsystem') }} : <b>{{ subsystem_code[3] }}</b><br>
-                    {{ _('Service code') }} : <b>{{ service.name }}</b><br>
+                    {{ _('Organization') }} : <b>{% link_for h.get_translated(application.target_organization, 'title'),
+                                                             named_route='organization.read',
+                                                             id=application.target_organization_id %}</b><br>
+                    {{ _('Subsystem') }} : <b>{% link_for subsystem_code[3], named_route='dataset.read', id=application.subsystem.id %}</b><br>
+                    {{ _('Service code') }} : <b>{% link_for service.name,
+                                                             named_route='dataset_resource.read',
+                                                             id=application.requester_subsystem.id,
+                                                             resource_id=service.id %}</b><br>
                 </td>
                 <td>{% link_for _('Preview application'), named_route='apply_permissions.view_permission_application', application_id=application.id %}</td>
             </tr>
