@@ -1,0 +1,16 @@
+{% extends "user/dashboard.html" %}
+
+{% block dashboard_activity_stream_context %}{% endblock %}
+
+{% block page_primary_action %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h2 class="hide-heading">{{ _('Service access applications') }}</h2>
+  {% if applications %}
+    {% snippet 'apply_permissions_for_service/snippets/application_table.html', applications=applications %}
+  {% else %}
+  <p>{{ _('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.') }}</p>
+  {% endif %}
+{% endblock %}
+
