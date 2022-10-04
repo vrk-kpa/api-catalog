@@ -2,6 +2,7 @@ from builtins import next
 import ckan.lib.uploader as uploader
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.helpers as h
+from ckan.views.user import _extra_template_variables as ckan_user_extra_template_variables
 from flask import Blueprint
 from logging import getLogger
 import re
@@ -21,6 +22,19 @@ def index():
         return toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
+
+
+def dashboard():
+    context = {
+        u'user': toolkit.g.user,
+        u'auth_user_obj': toolkit.g.userobj,
+        u'for_view': True
+    }
+    data_dict = {u'user_obj': toolkit.g.userobj}
+    extra_vars = ckan_user_extra_template_variables(context, data_dict)
+    applications = toolkit.get_action('service_permission_application_list')(context, {})
+    extra_vars['applications'] = applications
+    return toolkit.render('apply_permissions_for_service/dashboard.html', extra_vars=extra_vars)
 
 
 def new_post(context, subsystem_id):
@@ -251,6 +265,7 @@ def settings(subsystem_id):
 
 
 apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
+apply_permissions.add_url_rule('/dashboard', 'dashboard', view_func=dashboard)
 apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
 apply_permissions.add_url_rule('/preview/<subsystem_id>', 'preview_permission_application', view_func=preview)
