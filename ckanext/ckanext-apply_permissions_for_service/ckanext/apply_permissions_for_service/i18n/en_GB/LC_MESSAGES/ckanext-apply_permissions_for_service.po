@@ -434,4 +434,4 @@ msgstr "Manage access requests"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:15
 msgid "Service and API you are applying to access"
-msgstr "Service and API you are applying to access"
+msgstr "Subsystem and service you are applying to access"

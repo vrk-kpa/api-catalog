@@ -440,4 +440,4 @@ msgstr "Administrerar tillståndsbegäran"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:15
 msgid "Service and API you are applying to access"
-msgstr "Tjänst och subsystem som du ansöker om att få tillgång till"
+msgstr "Subsytem och tjänster som du ansöker om att få tillgång till"
