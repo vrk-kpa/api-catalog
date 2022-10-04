@@ -58,6 +58,7 @@
                       {{ form.image_upload_dragndrop(
                           settings,
                           errors,
+                          url_label=_('File'),
                           upload_label=_('Add your file'),
                           is_upload_enabled=h.uploads_enabled(),
                           is_url=is_url_additional_file,
@@ -83,6 +84,7 @@
               {{ form.image_upload_dragndrop(
                   settings,
                   errors,
+                  url_label=_('File'),
                   upload_label=_('Add your file'),
                   is_upload_enabled=h.uploads_enabled(),
                   is_url=is_url,
