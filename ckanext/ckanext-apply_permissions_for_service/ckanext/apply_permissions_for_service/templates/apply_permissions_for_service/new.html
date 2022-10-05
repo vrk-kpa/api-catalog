@@ -24,13 +24,17 @@
 {% block primary_content_inner %}
     <script>
     function selectOrganization() {
-        var organizationName = document.getElementById("intermediate_organization").value;
-        document.getElementById("intermediate_organization_id").value = organizationName;
-        document.getElementById("intermediate_business_code").value = organizationName.split('.')[2];
+        var organizationName = document.querySelector('[name=organization]').value;
+        document.querySelector('[name=businessCode]').value = organizationName.split('.')[2];
     }
-    function showOrganization() {
-        var intermediateOrganizationDiv = document.getElementById("intermediate_organization_div");
-        if (intermediateOrganizationDiv.style.display === "none") {
+    function selectIntermediateOrganization() {
+        var organizationName = document.querySelector('[name=intermediateOrganization]').value;
+        document.querySelector('[name=intermediateBusinessCode]').value = organizationName.split('.')[2];
+    }
+    function showIntermediateOrganization() {
+        var show = document.querySelector('[name=enableIntermediateOrganization]').checked;
+        var intermediateOrganizationDiv = document.getElementById("intermediateOrganizationDiv");
+        if (show) {
             intermediateOrganizationDiv.style.display = "block";
         } else {
             intermediateOrganizationDiv.style.display = "none";
@@ -48,9 +52,20 @@
 
   <p>* {{ _('Required field') }}</p>
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
-  {# TODO: Should probably be organization select component ? #}
-  {{ form.input('organization', label=_('Organization'), is_required=True, value=values.organization or user_org.name or '') }}
-  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code or user_org.xroad_member_code or '') }}
+
+  {% snippet 'apply_permissions_for_service/snippets/organization_select.html',
+             name='organization',
+             value=values.organization or user_org.name or '',
+             select_attrs={'onchange': 'selectOrganization()'},
+             label=_('Organization'),
+             is_required=True,
+             organizations=user_managed_organizations %}
+
+  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code) }}
+  {% if not values.business_code %}
+    {# populate value from selected organization #}
+    <script>selectOrganization()</script>
+  {% endif %}
 
   {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
   {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
@@ -60,7 +75,11 @@
       <table>
           <tr>
               <td style="padding-left: 5px; padding-right: 5px;">
-                  <input type="checkbox" id="show_intermediate_organization" name="show_intermediate_organization" onclick="showOrganization()">
+                  <input type="checkbox"
+                         id="enableIntermediateOrganization"
+                         name="enableIntermediateOrganization"
+                         {% if values.intermediate_organization %}checked{% endif %} 
+                         onchange="showIntermediateOrganization()">
               </td>
               <td style="padding-left: 5px; padding-right: 5px;">
                   {{ _('Applying organization acts as an intermediary on behalf of the organizations using the services') }}
@@ -69,24 +88,27 @@
       </table>
   </div>
 
-  {%- set organization_options=[] -%}
-  {% do organization_options.append({'value': '', 'text': ''}) %}
-  {% for organization in user_managed_organizations %}
-      {% do organization_options.append({'value': organization.id, 'text': organization.name}) %}
-  {% endfor %}
 
-  <div id="intermediate_organization_div" style="display:none">
+  <div id="intermediateOrganizationDiv">
     <h3>{{ _('Information about the organization consuming the services') }}</h3>
-    <div class="select-wrapper">
-        {{ form.select('intermediate_organization', id='intermediate_organization', label=_('Organization using the services'), options=organization_options,
-        selected=None, error=None, classes=['control-full'], attrs={'class': 'form-control', 'onchange': 'selectOrganization()'}, is_required=True) }}
-    </div>
-    <div class="form-group control-full">
-        <label class="control-label" for="intermediate_business_code">{{ _('Y-number') }}</label>
-        <input id="intermediate_business_code" type="text" name="intermediate_business_code" value="" placeholder="" readonly />
-        <input id="intermediate_organization_id" type="hidden" name="intermediate_organization_id" />
-    </div>
+    {% snippet 'apply_permissions_for_service/snippets/organization_select.html',
+               name='intermediateOrganization',
+               select_attrs={'onchange': 'selectIntermediateOrganization()'},
+               label=_('Organization using the services'),
+               is_required=True,
+               value=values.intermediate_organization,
+               organizations=user_managed_organizations %}
+
+    {{ form.input('intermediateBusinessCode', label=_('Y-number'),
+                  is_required=True, value=values.intermediate_business_code) }}
+    {% if not values.intermediate_business_code %}
+      {# populate value from selected organization #}
+      <script>selectIntermediateOrganization()</script>
+    {% endif %}
+
   </div>
+  {# Set visibility based on checkbox #}
+  <script>showIntermediateOrganization()</script>
 
   <hr>
   <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>

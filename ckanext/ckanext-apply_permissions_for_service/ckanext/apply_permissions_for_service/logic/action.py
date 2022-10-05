@@ -26,6 +26,9 @@ def service_permission_application_create(context, data_dict):
     organization_id = data_dict.get('organization_id')
     if organization_id is None or organization_id == "":
         errors['organization_id'] = _('Missing value')
+
+    intermediate_organization_id = data_dict.get('intermediate_organization')
+
     target_organization_id = data_dict.get('target_organization_id')
     if target_organization_id is None or target_organization_id == "":
         errors['target_organization_id'] = _('Missing value')
@@ -39,6 +42,13 @@ def service_permission_application_create(context, data_dict):
             tk.get_validator('business_id_validator')(business_code)
         except tk.Invalid as e:
             errors['business_code'] = e.error
+
+    intermediate_business_code = data_dict.get('intermediate_business_code')
+    if intermediate_business_code:
+        try:
+            tk.get_validator('business_id_validator')(intermediate_business_code)
+        except tk.Invalid as e:
+            errors['intermediate_business_code'] = e.error
 
     contact_name = data_dict.get('contact_name')
     if contact_name is None or contact_name == "":
@@ -65,9 +75,6 @@ def service_permission_application_create(context, data_dict):
     service_code_list = data_dict.get('service_code_list')
     if service_code_list is None or service_code_list == "":
         errors['service_code_list'] = _('Missing value')
-
-    intermediate_organization_id = data_dict.get('intermediate_organization_id')
-    intermediate_business_code = data_dict.get('intermediate_business_code')
 
     if errors:
         raise tk.ValidationError(errors)

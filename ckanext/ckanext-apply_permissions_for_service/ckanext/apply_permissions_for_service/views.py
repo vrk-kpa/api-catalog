@@ -43,9 +43,9 @@ def new_post(context, subsystem_id):
 
     data_dict = {
             'target_organization_id': form.get('target_organization_id'),
-            'intermediate_organization_id': form.get('intermediate_organization_id'),
+            'intermediate_organization': None,
             'business_code': form.get('businessCode'),
-            'intermediate_business_code': form.get('intermediate_business_code'),
+            'intermediate_business_code': None,
             'contact_name': form.get('contactName'),
             'contact_email': form.get('contactEmail'),
             'subsystem_id': form.get('subsystemId'),
@@ -58,6 +58,10 @@ def new_post(context, subsystem_id):
             'file_url': form.get('file_url'),
             'clear_upload': form.get('clear_upload'),
             }
+
+    if form.get('enableIntermediateOrganization'):
+        data_dict['intermediate_organization'] = form.get('intermediateOrganization')
+        data_dict['intermediate_business_code'] = form.get('intermediateBusinessCode')
 
     try:
         organization = toolkit.get_action('organization_show')(context, {'id': form['organization']})
