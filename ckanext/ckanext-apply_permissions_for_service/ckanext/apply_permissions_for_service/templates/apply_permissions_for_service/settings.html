@@ -49,6 +49,17 @@
                     {{ form.checkbox('require_additional_application_file', label=_('Request additional info with an attachment'), id='additional_application_file', value='True', checked=settings.require_additional_application_file) }}
 
                     <div id="additional_application_file_field">
+                      <div class="module__settings-instructions">
+                        <div class="module__settings-instructions__content">
+                          {%- trans -%}
+                          Please note that <b>you should not request to provide personal information</b>
+                          in the attached files, because the submitted attached files remain available to
+                          the administrators of the API Catalogue and can thus form a personal register.
+                          Any personal information should be requested to be submitted in other way than
+                          via the API Catalogue.
+                          {%- endtrans -%}
+                        </div>
+                      </div>
                       {% if settings.get('original_additional_filename', False) %}
                         {{ form.hidden('original_additional_filename', value=settings.original_additional_filename) }}
                       {% endif %}

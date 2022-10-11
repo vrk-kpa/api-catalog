@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-27 07:00+0000\n"
+"POT-Creation-Date: 2022-10-10 10:36+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
 "Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
@@ -29,31 +29,31 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ckanext/apply_permissions_for_service/views.py:26
-#: ckanext/apply_permissions_for_service/views.py:121
+#: ckanext/apply_permissions_for_service/views.py:24
 #: ckanext/apply_permissions_for_service/views.py:132
-#: ckanext/apply_permissions_for_service/views.py:141
-#: ckanext/apply_permissions_for_service/views.py:253
+#: ckanext/apply_permissions_for_service/views.py:143
+#: ckanext/apply_permissions_for_service/views.py:152
+#: ckanext/apply_permissions_for_service/views.py:264
 msgid "Not authorized to see this page"
 msgstr "Tämän sivun näyttäminen ei ole sallittu"
 
-#: ckanext/apply_permissions_for_service/views.py:80
+#: ckanext/apply_permissions_for_service/views.py:91
 msgid "This API is not accepting access applications."
 msgstr "Tämä alijärjestelmä ei ota vastaan käyttölupahakemuksia."
 
-#: ckanext/apply_permissions_for_service/views.py:241
+#: ckanext/apply_permissions_for_service/views.py:252
 msgid "Changes saved successfully"
 msgstr "Muutokset tallennettu onnistuneesti"
 
-#: ckanext/apply_permissions_for_service/logic/action.py:27
-#: ckanext/apply_permissions_for_service/logic/action.py:30
-#: ckanext/apply_permissions_for_service/logic/action.py:33
-#: ckanext/apply_permissions_for_service/logic/action.py:36
-#: ckanext/apply_permissions_for_service/logic/action.py:39
-#: ckanext/apply_permissions_for_service/logic/action.py:42
+#: ckanext/apply_permissions_for_service/logic/action.py:28
+#: ckanext/apply_permissions_for_service/logic/action.py:31
+#: ckanext/apply_permissions_for_service/logic/action.py:35
 #: ckanext/apply_permissions_for_service/logic/action.py:45
-#: ckanext/apply_permissions_for_service/logic/action.py:48
-#: ckanext/apply_permissions_for_service/logic/action.py:51
+#: ckanext/apply_permissions_for_service/logic/action.py:49
+#: ckanext/apply_permissions_for_service/logic/action.py:58
+#: ckanext/apply_permissions_for_service/logic/action.py:61
+#: ckanext/apply_permissions_for_service/logic/action.py:64
+#: ckanext/apply_permissions_for_service/logic/action.py:67
 msgid "Missing value"
 msgstr "Puuttuva arvo"
 
@@ -62,15 +62,13 @@ msgid "User not authorized to view permission application."
 msgstr "Käyttäjällä ei ole oikeutta tarkastella lupahakemusta."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/base.html:4
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:9
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:4
 msgid "Service access applications"
 msgstr "Palveluiden käyttölupahakemukset"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:9
-msgid "Sent applications"
-msgstr "Lähetetyt hakemukset"
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:19
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:13
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:12
 msgid ""
 "You have not sent any service access applications. You can apply for access "
 "to services by clicking the \"Request access\" button on the service page."
@@ -78,12 +76,10 @@ msgstr ""
 "Et ole lähettänyt yhtään käyttölupahakemusta. Voit hakea käyttölupaa "
 "palvelun sivulta valitsemalla \"Pyydä käyttölupaa\"."
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:22
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:4
 msgid "Received applications"
 msgstr "Vastaanotetut hakemukset"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:32
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:12
 msgid "You have not received any service access applications."
 msgstr "Ei vastaanotettuja käyttölupahakemuksia."
@@ -97,8 +93,6 @@ msgid "Datasets"
 msgstr "Alijärjestelmät"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:17
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/request_access_button.html:3
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/request_access_button.html:5
 msgid "Request access"
 msgstr "Pyydä käyttölupaa"
 
@@ -107,6 +101,7 @@ msgid "Apply for permission to use API {}"
 msgstr "Pyydä lupaa käyttää alijärjestelmää {}"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:43
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:7
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:9
 msgid "API access application"
 msgstr "Alijärjestelmän käyttölupahakemus"
@@ -127,6 +122,7 @@ msgstr ""
 "palomuuriavauksia varten."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:46
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:15
 msgid "Applicant information"
 msgstr "Hakijan tiedot"
@@ -141,13 +137,23 @@ msgstr ""
 "täytettyjen tietojen perusteella. Voit muokata esitäytettyjä tietoja "
 "tarvittaessa."
 
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:49
+msgid "Required field"
+msgstr ""
+
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:52
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:16
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:21
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:30
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:18
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
 msgid "Organization"
 msgstr "Organisaatio"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:53
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:24
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:19
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:35
 msgid "Business code"
 msgstr "Y-tunnus"
 
@@ -170,6 +176,8 @@ msgstr ""
 "puolesta"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:79
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:5
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
 msgid "Information about the organization consuming the services"
 msgstr "Palveluita käyttävän organisaation tiedot"
 
@@ -182,7 +190,7 @@ msgid "Y-number"
 msgstr "Y-tunnus"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:92
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:27
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
 msgid "Details of your Security Server and Subsystem"
 msgstr "Organisaatiosi liityntäpalvelimen ja alijärjestelmän tiedot"
 
@@ -195,7 +203,7 @@ msgstr ""
 "joille haet käyttölupaa ja palomuuriavausta. "
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:101
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:30
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:46
 msgid "IP address"
 msgstr "IP-osoite"
 
@@ -219,28 +227,31 @@ msgid ""
 msgstr "Valitse organisaatiosi alijärjestelmä, jolle käyttölupa halutaan"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:106
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:31
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:47
 msgid "Subsystem code"
 msgstr "Alijärjestelmän tunnus"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:111
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:37
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:53
 msgid "Details of the service and API you are applying to access"
 msgstr ""
 "Valitse yksi tai useampi alijärjestelmän palvelu, jolle pyydät käyttölupaa"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:40
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:56
 msgid "Organization name"
 msgstr "Organisaation nimi"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:116
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:41
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:17
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:33
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:57
 msgid "Subsystem"
 msgstr "Alijärjestelmä"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:131
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:43
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:34
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
 msgid "Service code"
 msgstr "Palvelun tunnus"
 
@@ -250,7 +261,7 @@ msgstr ""
 "Valitse yksi tai useampi alijärjestelmän rajapinta, jolle pyydät käyttölupaa"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:132
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:51
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:67
 msgid "Explain how the service will be used"
 msgstr "Kerro, mihin tarkoitukseen lupaa pyydetään"
 
@@ -259,7 +270,7 @@ msgid "Reason for requesting access"
 msgstr "Kirjoita perustelu"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:133
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:52
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:68
 msgid "Date when access is needed"
 msgstr "Mistä alkaen alijärjestelmää tarvitaan"
 
@@ -268,7 +279,7 @@ msgid "Send access application"
 msgstr "Lähetä käyttölupahakemus"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:143
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:103
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:116
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -329,10 +340,10 @@ msgstr "Oma lupahakemus"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:25
 msgid "Link to the access licence application on the organisation's website"
-msgstr "Linkki lupahakemukseen organisaation sivulla"
+msgstr "Linkki lupahakemukseen organisaation omilla sivulla"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:30
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:80
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:92
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -340,29 +351,49 @@ msgstr "Sähköposti"
 msgid "Request additional info with an attachment"
 msgstr "Pyydä lisätietoja liitetiedostona"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:61
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:86
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:54
+msgid ""
+"Please note that <b>you should not request to provide personal "
+"information</b> in the attached files, because the submitted attached files "
+"remain available to the administrators of the API Catalogue and can thus "
+"form a personal register. Any personal information should be requested to be"
+" submitted in other way than via the API Catalogue."
+msgstr ""
+"Huomaa, että liitetiedostoissa <b>ei tule pyytää toimittamaan "
+"henkilötietoja</b>, koska toimitetut liitetiedostot jäävät Liityntäkatalogin"
+" ylläpitäjien saataville ja voivat näin muodostaa henkilörekisterin. "
+"Mahdolliset henkilötiedot tulee pyytää toimittamaan muuten, kuin "
+"Liityntäkatalogin kautta."
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:72
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:98
+msgid "File"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:73
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:99
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:25
 msgid "Add your file"
 msgstr "Lisää tiedosto"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:99
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:112
 msgid "Webpage URL"
 msgstr "Verkkosivuston URL"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:102
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:115
 msgid "Save"
 msgstr "Tallenna"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:104
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:117
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:39
 msgid "Preview application"
 msgstr "Esikatsele hakemusta"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:110
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:123
 msgid "Permission request alternatives:"
 msgstr "Lupapyyntövaihtoehdot:"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:112
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:125
 msgid ""
 "<p style=\"font-weight: bold;\">Application in API Catalogue</p> <ul> "
 "<li>Request permission to use a subsystem by using the predefined electronic"
@@ -399,7 +430,7 @@ msgstr ""
 "href=\"https://liityntakatalogi.suomi.fi/\">Liityntäkatalogin "
 "ohjeista.</a></p>"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:59
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:75
 msgid "Additional info"
 msgstr "Lisätiedot"
 
@@ -426,6 +457,10 @@ msgstr "Lataa"
 msgid "2. Add completed file into the application"
 msgstr "2. Lisää täytetty tiedosto osaksi hakemusta"
 
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:6
+msgid "Service and API you are applying to access"
+msgstr "Alijärjestelmä ja palvelut, joille haet käyttöoikeutta"
+
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
 msgid "Permission management"
 msgstr "Lupapyyntöjen asetukset"
@@ -434,6 +469,18 @@ msgstr "Lupapyyntöjen asetukset"
 msgid "Manage access requests"
 msgstr "Hallinnoi lupapyyntöjä"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:15
-msgid "Service and API you are applying to access"
-msgstr "Alijärjestelmä ja palvelut, joille haet käyttöoikeutta"
+#: ckanext/apply_permissions_for_service/templates/package/edit_base.html:13
+msgid "Subsystem's information"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/package/edit_base.html:14
+msgid "Attachments"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/package/edit_base.html:15
+msgid "Access request settings"
+msgstr ""
+
+#: ckanext/apply_permissions_for_service/templates/package/edit_base.html:16
+msgid "Received access requests"
+msgstr ""
