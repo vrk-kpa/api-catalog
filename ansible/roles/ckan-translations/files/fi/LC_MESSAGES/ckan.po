@@ -4534,7 +4534,7 @@ msgstr "Kaikki käyttäjät"
 #: ckan/templates/user/login.html:12
 #: ckan/templates/user/snippets/login_form.html:28
 msgid "Login"
-msgstr "Kirjaudu"
+msgstr "Kirjaudu sisään"
 
 #: ckan/templates/user/login.html:25
 msgid "Need an Account?"
@@ -5381,7 +5381,7 @@ msgid "New APIs"
 msgstr "Uutta alijärjestelmää"
 
 msgid "New attachments"
-msgstr "Uudet palvelut"
+msgstr "Uutta palvelua"
 
 msgid "Browse news"
 msgstr "Lue kaikki uutiset"
