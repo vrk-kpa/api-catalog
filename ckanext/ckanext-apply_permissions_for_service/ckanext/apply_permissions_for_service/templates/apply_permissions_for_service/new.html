@@ -38,7 +38,7 @@
     }
     </script>
 {% block errors %}{{ form.errors(errors) }}{% endblock %}
-<form class="col-sm-8" method="POST" enctype="multipart/form-data">
+<form class="col-sm-8" method="POST" enctype="multipart/form-data" data-module="form-change-listener" data-module-confirm-modal-selector>
   {{ form.hidden('subsystemId', value=subsystem_id) }}
   <h3>{{ _('API access application') }}</h3>
   <p class="input-group-description">{{ _('Use this form to apply for a permission to use a service that is available in the National Data Exchange Layer. Your application will be submitted to the organization providing the service. When your application has been approved, Valtori is automatically notified of the needed firewall configurations.') }}</p>
