@@ -321,6 +321,7 @@
     {
       "field_name": "url_type",
       "form_snippet": "hidden.html",
+      "display_snippet": null,
       "validators": "ignore_missing"
     }
   ]
