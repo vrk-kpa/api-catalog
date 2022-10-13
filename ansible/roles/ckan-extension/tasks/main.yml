@@ -59,6 +59,9 @@
   when: deployment_environment_id == "vagrant"
 
 - name: Link extension sources
-  command: "{{ virtualenv }}/bin/python setup.py develop chdir={{ ckanext_sync_path }}/{{ ckanext }}"
+  pip:
+    virtualenv: "{{ virtualenv }}"
+    name: "{{ ckanext_sync_path }}/{{ ckanext }}"
+    editable: yes
   notify: Restart CKAN
 
