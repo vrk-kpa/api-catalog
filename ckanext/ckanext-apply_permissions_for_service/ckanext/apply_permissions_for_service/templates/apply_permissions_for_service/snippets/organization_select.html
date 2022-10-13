@@ -1,0 +1,35 @@
+{% import 'macros/form.html' as form %}
+
+{# name: input name
+   label: input label
+   is_required: is a value is_required
+   errors: error list
+   organizations: list of organization options
+   value: ID of selected organization
+   select_attrs: input element attributes
+   #}
+
+{% call form.input_block(name,
+  label=label,
+  error=errors,
+  is_required=is_required,
+  classes=['form-group', 'control-medium'],
+  ) %}
+  <select name={{ name }} data-module="autocomplete"
+          {{ form.attributes(select_attrs) if select_attrs else '' }}>
+    {% if not is_required %}
+      <option value="">
+      {%- if not is_required -%}
+        {{ _('No organization') }}
+      {%- endif -%}
+      </option>
+    {% endif %}
+    {% for organization in organizations %}
+      {% set selected_org = value == organization.id %}
+      <option value="{{ organization.id }}"
+              {%- if selected_org %} selected="selected"{% endif %}>
+        {{ organization.display_name }}
+      </option>
+    {% endfor %}
+  </select>
+{% endcall %}
