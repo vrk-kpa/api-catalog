@@ -1,4 +1,4 @@
--e git+https://github.com/ckan/ckan.git@ckan-2.9.5#egg=ckan[requirements]
+-e git+https://github.com/ckan/ckan.git@ckan-2.9.6#egg=ckan[requirements]
 
 # requirements of apicatalog
 testrepository==0.0.20
