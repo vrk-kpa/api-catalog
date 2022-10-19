@@ -3,7 +3,7 @@ import logging
 from ckan import authz
 from ckan.plugins.toolkit import aslist
 
-from ckan.logic.auth import get, update
+from ckan.logic.auth import get, update, get_resource_object
 from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function, check_access, NotAuthorized
 
 from ckan.lib.base import config
@@ -130,3 +130,19 @@ def organization_member_delete(next_auth, context, data_dict=None):
 @chained_auth_function
 def user_invite(next_auth, context, data_dict=None):
     return {"success": True} if _is_member_editor(context) else next_auth(context, data_dict)
+
+
+def resource_delete(context, data_dict=None):
+    resource = get_resource_object(context, data_dict)
+
+    # Only administrators can delete services
+    if resource.extras.get('harvested_from_xroad'):
+        return {'success': False}
+
+    # Attachment update authorization implies delete authorization
+    authorized = authz.is_authorized('resource_update', context, data_dict).get('success')
+
+    if authorized:
+        return {'success': True}
+    else:
+        return {'success': False}

@@ -970,7 +970,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'package_create': admin_only,
                 'organization_delete': admin_only,
                 'package_delete': admin_only,
-                'resource_delete': admin_only
+                'resource_delete': auth.resource_delete
                 }
 
     # IPermissionLabels
