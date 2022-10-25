@@ -85,13 +85,13 @@ email:
 
 xroad:
   securityserver:
-    host: "ice-ss2publicloadb-1wmooxkuo5dlm-1580149286.eu-west-1.elb.amazonaws.com"
-    alias: "ice-ss2"
+    host: "catalog-ss1.palveluvayla.com"
+    alias: "catalog-ss1"
     port: 443
-  client_id: ICE.COM.222.XROAD-CATALOG
-  service_id: ICE.COM.222.XROAD-CATALOG
+  client_id: CATALOG.COM.111.XROAD-CATALOG
+  service_id: CATALOG.COM.222.XROAD-CATALOG
   service_name: REST
-  environment: 'FI-TEST'
+  environment: 'CATALOG'
 
 elk:
   logstash:
