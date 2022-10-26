@@ -1,5 +1,5 @@
 diff --git a/ckan/controllers/admin.py b/ckan/controllers/admin.py
-index bed19630c..e435a3a3c 100644
+index 8f79ac490..e680b1201 100644
 --- a/ckan/controllers/admin.py
 +++ b/ckan/controllers/admin.py
 @@ -6,6 +6,7 @@ import ckan.lib.base as base
@@ -420,10 +420,10 @@ index 000000000..e884650a2
 +    if not _compare_tokens(token, existing_token):
 +        raise CsrfTokenValidationError()
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index 0d9a2ed8c..ad0d2ea30 100644
+index f564c9054..b3135ab5c 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
-@@ -46,6 +46,7 @@ import ckan.lib.uploader as uploader
+@@ -44,6 +44,7 @@ import ckan.lib.uploader as uploader
  import ckan.authz as authz
  import ckan.plugins as p
  import ckan
@@ -431,7 +431,7 @@ index 0d9a2ed8c..ad0d2ea30 100644
  
  from ckan.lib.pagination import Page
  from ckan.common import _, ungettext, c, g, request, session, json
-@@ -2825,6 +2826,11 @@ def clean_html(html):
+@@ -2846,6 +2847,11 @@ def clean_html(html):
      return bleach_clean(text_type(html))
  
  
@@ -462,7 +462,7 @@ index e55380926..68a5a64bb 100644
      },
  
 diff --git a/ckan/templates/admin/config.html b/ckan/templates/admin/config.html
-index 2fb72909f..80b142e49 100644
+index 48f929cc1..aeb0b243a 100644
 --- a/ckan/templates/admin/config.html
 +++ b/ckan/templates/admin/config.html
 @@ -9,6 +9,7 @@
@@ -590,7 +590,7 @@ index 7d00cf101..139de324f 100644
                <col width="8">
                <col width="120">
 diff --git a/ckan/templates/organization/confirm_delete.html b/ckan/templates/organization/confirm_delete.html
-index 2966b3d7e..347066247 100644
+index ab4533d0e..a8b40223c 100644
 --- a/ckan/templates/organization/confirm_delete.html
 +++ b/ckan/templates/organization/confirm_delete.html
 @@ -1,4 +1,5 @@
@@ -602,13 +602,13 @@ index 2966b3d7e..347066247 100644
 @@ -11,6 +12,7 @@
          <p>{{ _('Are you sure you want to delete organization - {name}?').format(name=group_dict.name) }}</p>
          <p class="form-actions">
-           <form id="organization-confirm-delete-form" action="{% url_for group_type+'.delete', id=group_dict.name %}" method="post">
+           <form id="organization-confirm-delete-form" action="{{ h.url_for(group_type + '.member_delete', id=group_id, user=user_id) }}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
            </form>
 diff --git a/ckan/templates/organization/confirm_delete_member.html b/ckan/templates/organization/confirm_delete_member.html
-index 2a52064ef..8ec770a10 100644
+index 06da80f2a..67bd89ed8 100644
 --- a/ckan/templates/organization/confirm_delete_member.html
 +++ b/ckan/templates/organization/confirm_delete_member.html
 @@ -1,4 +1,5 @@
@@ -620,7 +620,7 @@ index 2a52064ef..8ec770a10 100644
 @@ -11,6 +12,7 @@
          <p>{{ _('Are you sure you want to delete member - {name}?').format(name=user_dict.name) }}</p>
          <p class="form-actions">
-           <form action="{% url_for group_type+'.member_delete', id=group_id %}" method="post">
+           <form action="{{ h.url_for(group_type + '.member_delete', id=group_id, user=user_id) }}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <input type="hidden" name="user" value="{{ user_id }}" />
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
@@ -784,7 +784,7 @@ index f63298b2a..40365a221 100644
      <legend>{{ _('Change details') }}</legend>
      {{ form.input('name', label=_('Username'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], attrs={'readonly': '', 'class': 'form-control'}) }}
 diff --git a/ckan/views/admin.py b/ckan/views/admin.py
-index 1b58adbb9..80eb109f3 100644
+index 88f11ea73..2fa06e862 100644
 --- a/ckan/views/admin.py
 +++ b/ckan/views/admin.py
 @@ -8,6 +8,7 @@ from flask.views import MethodView
@@ -815,7 +815,7 @@ index 1b58adbb9..80eb109f3 100644
              items = _get_config_options()
              data = request.form
 diff --git a/ckan/views/user.py b/ckan/views/user.py
-index b94324232..df412106f 100644
+index b09b2faff..8e8a66c02 100644
 --- a/ckan/views/user.py
 +++ b/ckan/views/user.py
 @@ -13,6 +13,7 @@ import ckan.lib.captcha as captcha
