@@ -58,7 +58,7 @@ idna==2.10
     # via
     #   ckan
     #   requests
-importlib-metadata==5.0.0
+importlib-metadata==4.8.3 # Changed manually to work with Python 3.6.9
     # via markdown
 itsdangerous==1.1.0
     # via
@@ -77,7 +77,7 @@ mako==1.1.5
     # via
     #   alembic
     #   ckan
-markdown==3.4.1
+markdown==3.3.7 # Changed manually to work with Python 3.6.9
     # via ckan
 markupsafe==1.1.1
     # via
@@ -199,7 +199,7 @@ werkzeug[watchdog]==1.0.0
     # via
     #   ckan
     #   flask
-zipp==3.10.0
+zipp==3.6.0 # Changed manually to work with Python 3.6.9
     # via importlib-metadata
 zope-interface==4.3.2
     # via
