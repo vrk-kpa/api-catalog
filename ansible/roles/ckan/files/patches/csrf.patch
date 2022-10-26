@@ -420,7 +420,7 @@ index 000000000..e884650a2
 +    if not _compare_tokens(token, existing_token):
 +        raise CsrfTokenValidationError()
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index f564c9054..b3135ab5c 100644
+index 851ffaa60..3c3ddfd3d 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
 @@ -44,6 +44,7 @@ import ckan.lib.uploader as uploader
@@ -431,7 +431,7 @@ index f564c9054..b3135ab5c 100644
  
  from ckan.lib.pagination import Page
  from ckan.common import _, ungettext, c, g, request, session, json
-@@ -2846,6 +2847,11 @@ def clean_html(html):
+@@ -2851,6 +2852,11 @@ def clean_html(html):
      return bleach_clean(text_type(html))
  
  
@@ -590,7 +590,7 @@ index 7d00cf101..139de324f 100644
                <col width="8">
                <col width="120">
 diff --git a/ckan/templates/organization/confirm_delete.html b/ckan/templates/organization/confirm_delete.html
-index ab4533d0e..a8b40223c 100644
+index 0bace3061..2fea18d1c 100644
 --- a/ckan/templates/organization/confirm_delete.html
 +++ b/ckan/templates/organization/confirm_delete.html
 @@ -1,4 +1,5 @@
@@ -602,7 +602,7 @@ index ab4533d0e..a8b40223c 100644
 @@ -11,6 +12,7 @@
          <p>{{ _('Are you sure you want to delete organization - {name}?').format(name=group_dict.name) }}</p>
          <p class="form-actions">
-           <form id="organization-confirm-delete-form" action="{{ h.url_for(group_type + '.member_delete', id=group_id, user=user_id) }}" method="post">
+           <form id="organization-confirm-delete-form" action="{{ h.url_for(group_type + '.delete', id=group_dict.id) }}" method="post">
 +            {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
              <button class="btn btn-danger" type="submit" name="cancel" >{{ _('Cancel') }}</button>
              <button class="btn btn-primary" type="submit" name="delete" >{{ _('Confirm Delete') }}</button>
