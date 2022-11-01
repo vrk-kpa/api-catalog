@@ -59,10 +59,6 @@
                   {{ h.build_nav('home.index', _('Home')) }}
                   {{ h.build_nav('dataset.search', _('Datasets'), highlight_controllers=['package', 'resource']) }}
                   {{ h.build_nav('organization.index', _('Organizations'), highlight_controllers=['organization']) }}
-                <li><a class="nav-external-link" href="https://palveluhallinta.suomi.fi/{{ lang_code }}/sivut/palveluvayla/esittely" target="_blank">{{ _('Information about National Data Exchange Layer') }} <span class="sr-only">{{ _('link opens in new tab or window') }}</span>
-                  <svg viewbox="0 0 24 24" aria-hidden="true">
-                    <use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
-                  </svg></a></li>
 
                   {% set lang = h.lang().split('_')[0] %}
                   {% set submenu_content = h.get_submenu_content() %}
