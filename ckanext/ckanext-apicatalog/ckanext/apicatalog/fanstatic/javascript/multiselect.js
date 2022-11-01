@@ -106,8 +106,10 @@ ckan.module("multiselect", function($) {
       if (selectedItems.length === 1) {
         return selectedItems[0].dataset.optionLabel;
       }
-
-      return `${selectedItems.length} ${this.options.selectTranslation}`;
+      
+      // Use string concatenation instead of a template string because of a bug in rjsmin
+      // https://github.com/miracle2k/webassets/issues/511
+      return selectedItems.length + ' ' + this.options.selectTranslation;
     },
 
     // Returns array of checkboxes with specific name value combo
