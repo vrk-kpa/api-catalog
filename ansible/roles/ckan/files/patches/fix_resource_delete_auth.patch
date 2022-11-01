@@ -1,0 +1,45 @@
+diff --git a/ckan/views/resource.py b/ckan/views/resource.py
+index 1c33333bb..7a2aaeb47 100644
+--- a/ckan/views/resource.py
++++ b/ckan/views/resource.py
+@@ -439,7 +439,7 @@ class EditView(MethodView):
+ 
+ 
+ class DeleteView(MethodView):
+-    def _prepare(self, id):
++    def _prepare(self, resource_id):
+         context = {
+             u'model': model,
+             u'session': model.Session,
+@@ -447,11 +447,11 @@ class DeleteView(MethodView):
+             u'auth_user_obj': g.userobj
+         }
+         try:
+-            check_access(u'package_delete', context, {u'id': id})
++            check_access(u'resource_delete', context, {u'id': resource_id})
+         except NotAuthorized:
+             return base.abort(
+                 403,
+-                _(u'Unauthorized to delete package %s') % u''
++                _(u'Unauthorized to delete resource %s') % u''
+             )
+         return context
+ 
+@@ -461,7 +461,7 @@ class DeleteView(MethodView):
+                 u'{}_resource.edit'.format(package_type),
+                 resource_id=resource_id, id=id
+             )
+-        context = self._prepare(id)
++        context = self._prepare(resource_id)
+ 
+         try:
+             get_action(u'resource_delete')(context, {u'id': resource_id})
+@@ -483,7 +483,7 @@ class DeleteView(MethodView):
+             return base.abort(404, _(u'Resource not found'))
+ 
+     def get(self, package_type, id, resource_id):
+-        context = self._prepare(id)
++        context = self._prepare(resource_id)
+         try:
+             resource_dict = get_action(u'resource_show')(
+                 context, {
