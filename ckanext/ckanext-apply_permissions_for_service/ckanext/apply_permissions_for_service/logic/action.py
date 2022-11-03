@@ -69,9 +69,16 @@ def service_permission_application_create(context, data_dict):
     subsystem_id = data_dict.get('subsystem_id')
     if subsystem_id is None or subsystem_id == "":
         errors['subsystem_id'] = _('Missing value')
+
+    # Subsystem code must exist and match a subsystem belonging to the selected utilizing organization
     subsystem_code = data_dict.get('subsystem_code')
     if subsystem_code is None or subsystem_code == "":
         errors['subsystem_code'] = _('Missing value')
+    utilizing_organization_business_code = intermediate_business_code or business_code
+    subsystem = tk.get_action('package_show')(context, {'id': subsystem_code})
+    if not subsystem.get('owner_org', '').endswith(utilizing_organization_business_code):
+        errors['subsystem_code'] = _('Selected subsystem does not belong to the utilizing organization')
+
     service_code_list = data_dict.get('service_code_list')
     if service_code_list is None or service_code_list == "":
         errors['service_code_list'] = _('Missing value')
