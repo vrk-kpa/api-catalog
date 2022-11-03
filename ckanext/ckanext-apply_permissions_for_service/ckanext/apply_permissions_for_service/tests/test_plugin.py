@@ -2,7 +2,7 @@ import pytest
 from ckan.plugins.toolkit import ValidationError
 from ckan.tests.factories import User, Dataset, Organization, Resource
 from ckan.tests.helpers import call_action
-from .fixtures import *
+from .fixtures import apply_permissions_for_service_setup  # noqa
 
 # import unittest.mock as mock
 # from ckan import model
