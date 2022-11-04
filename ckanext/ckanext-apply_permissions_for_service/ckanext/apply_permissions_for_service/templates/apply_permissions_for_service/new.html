@@ -24,12 +24,22 @@
 {% block primary_content_inner %}
     <script>
     function selectOrganization() {
-        var organizationName = document.querySelector('[name=organization]').value;
-        document.querySelector('[name=businessCode]').value = organizationName.split('.')[2];
+        let element = document.querySelector('[name=businessCode]');
+        let organizationName = document.querySelector('[name=organization]').value;
+        let newValue = organizationName.split('.')[2];
+        if(element.value !== newValue) {
+          element.value = newValue;
+          updateSubsystemSelect();
+        }
     }
     function selectIntermediateOrganization() {
-        var organizationName = document.querySelector('[name=intermediateOrganization]').value;
-        document.querySelector('[name=intermediateBusinessCode]').value = organizationName.split('.')[2];
+        let element = document.querySelector('[name=intermediateBusinessCode]')
+        let organizationName = document.querySelector('[name=intermediateOrganization]').value;
+        let newValue = organizationName.split('.')[2];
+        if(element.value !== newValue) {
+          element.value = newValue;
+          updateSubsystemSelect();
+        }
     }
     function showIntermediateOrganization() {
         var show = document.querySelector('[name=enableIntermediateOrganization]').checked;
@@ -39,6 +49,31 @@
         } else {
             intermediateOrganizationDiv.style.display = "none";
         }
+        updateSubsystemSelect();
+    }
+    function updateSubsystemSelect() {
+      let owner_org = null;
+      if(document.querySelector('[name=enableIntermediateOrganization]').checked) {
+        owner_org = document.querySelector('[name=intermediateOrganization]').value;
+      } else {
+        owner_org = document.querySelector('[name=organization]').value;
+      }
+
+      let selected = null;
+      document.querySelectorAll('[name=subsystemCode] option').forEach(o => {
+        if(o.value.startsWith(owner_org)) {
+          o.removeAttribute('hidden')
+          if(o.selected || !selected) {
+            selected = o
+          }
+        } else {
+          o.setAttribute('hidden', true)
+          o.selected = false
+        }
+      })
+      if(selected) {
+        selected.selected = true
+      }
     }
     </script>
 {% block errors %}{{ form.errors(errors) }}{% endblock %}
@@ -62,10 +97,6 @@
              organizations=user_managed_organizations %}
 
   {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code) }}
-  {% if not values.business_code %}
-    {# populate value from selected organization #}
-    <script>selectOrganization()</script>
-  {% endif %}
 
   {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
   {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
@@ -101,20 +132,13 @@
 
     {{ form.input('intermediateBusinessCode', label=_('Y-number'),
                   is_required=True, value=values.intermediate_business_code) }}
-    {% if not values.intermediate_business_code %}
-      {# populate value from selected organization #}
-      <script>selectIntermediateOrganization()</script>
-    {% endif %}
-
   </div>
-  {# Set visibility based on checkbox #}
-  <script>showIntermediateOrganization()</script>
 
   <hr>
   <h3>{{ _('Details of your Security Server and Subsystem') }}</h3>
   <p class="input-group-description">{{ _('Fill in the details of the Security Server and subsystem that you are applying permission for, and need the firewall opened to.') }}</p>
 
-  {% set subsystem_options = [] %}
+  {% set subsystem_options = [{'value': '', 'text': ''}] %}
   {% for d in user_managed_datasets %}
     {% set dataset_title = h.xroad_subsystem_path(d) or h.get_translated(d, 'title') %}
     {% do subsystem_options.append({'value': d.id, 'text': dataset_title}) %}
@@ -163,5 +187,18 @@
   {% block application_form_actions %}
     <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
   {% endblock %}
+
+  {% if not values.business_code %}
+    {# populate business code from selected organization #}
+    <script>selectOrganization()</script>
+  {% endif %}
+    {% if not values.intermediate_business_code %}
+      {# populate intermediate organization business code from selected organization #}
+      <script>selectIntermediateOrganization()</script>
+    {% endif %}
+
+  {# Set intermediate organization visibility based on checkbox #}
+  <script>showIntermediateOrganization()</script>
+  <script>updateSubsystemSelect()</script>
 </form>
 {% endblock %}

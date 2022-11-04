@@ -94,3 +94,7 @@ class ApplyPermission(Base):
                 pass
 
         return application_dict
+
+
+def init_table(engine):
+    Base.metadata.create_all(engine)
