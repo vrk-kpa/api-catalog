@@ -52,9 +52,9 @@ class TestApplyPermissionsForServicePlugin():
 
         applications = call_action('service_permission_application_list', {'ignore_auth': True})
 
-        assert(len(applications) == 1)
+        assert len(applications) == 1
         for key, value in application.items():
-            assert(applications[0][key] == value)
+            assert applications[0][key] == value
 
     def test_user_creates_application_with_inconsistent_subsystem(self):
         organization1 = Organization()
@@ -94,4 +94,4 @@ class TestApplyPermissionsForServicePlugin():
         applications = call_action('service_permission_application_list',
                                    {'ignore_auth': True},
                                    subsystem_id=dataset1['id'])
-        assert(len(applications) == 0)
+        assert len(applications) == 0
