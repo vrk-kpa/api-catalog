@@ -43,13 +43,18 @@ class TestApplyPermissionsForServicePlugin():
                     ip_address_list=['1.2.3.4'],
                     subsystem_id=dataset1['id'],
                     subsystem_code=dataset2['xroad_subsystemcode'],
-                    service_code_list='.'.join([resource1['xroad_servicecode'],
-                                                resource1['xroad_serviceversion']])
+                    service_code_list=[resource1['id']]
                     )
         call_action('service_permission_application_create',
                     {u"user": user2["name"], "ignore_auth": False},
                     **application
                     )
+
+        applications = call_action('service_permission_application_list', {'ignore_auth': True})
+
+        assert(len(applications) == 1)
+        for key, value in application.items():
+            assert(applications[0][key] == value)
 
     def test_user_creates_application_with_inconsistent_subsystem(self):
         organization1 = Organization()
@@ -85,3 +90,8 @@ class TestApplyPermissionsForServicePlugin():
                         service_code_list='.'.join([resource1['xroad_servicecode'],
                                                     resource1['xroad_serviceversion']])
                         )
+
+        applications = call_action('service_permission_application_list',
+                                   {'ignore_auth': True},
+                                   subsystem_id=dataset1['id'])
+        assert(len(applications) == 0)
