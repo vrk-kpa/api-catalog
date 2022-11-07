@@ -49,8 +49,11 @@
                     {{ form.checkbox('require_additional_application_file', label=_('Request additional info with an attachment'), id='additional_application_file', value='True', checked=settings.require_additional_application_file) }}
 
                     <div id="additional_application_file_field">
-                      <div class="module__settings-instructions">
-                        <div class="module__settings-instructions__content">
+                      <div class="warning-container">
+                        <div class="warning-container__icon">
+                          <i class="far fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="warning-container__content">
                           {%- trans -%}
                           Please note that <b>you should not request to provide personal information</b>
                           in the attached files, because the submitted attached files remain available to
