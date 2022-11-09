@@ -16,6 +16,11 @@ matomo:
 sentry:
   dsn: "https://dc3f89506d5f43baae74108b0219fc37@o277154.ingest.sentry.io/5908510"
 
+system:
+  ubuntu_codename: focal
+  postgresql:
+    version: 12
+
 database_ckan:
   host: 127.0.0.1
   port: 5432
