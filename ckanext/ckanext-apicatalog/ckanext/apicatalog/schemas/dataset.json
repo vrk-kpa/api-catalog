@@ -212,6 +212,7 @@
       "additional_description": "When attachment visibility is private, it is only visible to the owner organization or users from allowed organizations",
       "form_snippet": "radio.html",
       "display_hr": false,
+      "display_snippet": null,
       "choices": [
         {
           "value": "public",
