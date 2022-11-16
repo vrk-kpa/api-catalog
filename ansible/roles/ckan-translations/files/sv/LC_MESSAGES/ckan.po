@@ -3302,7 +3302,7 @@ msgstr "Skapa organisation"
 #: ckan/templates/package/search.html:16
 #: ckan/templates/user/dashboard_datasets.html:7
 msgid "Add Dataset"
-msgstr "Lägg till API"
+msgstr "Lägg till subsystem"
 
 #: ckan/templates/organization/snippets/feeds.html:3
 msgid "Datasets in organization: {group}"
@@ -4409,7 +4409,7 @@ msgstr "Nyhetsflöde"
 #: ckan/templates/user/dashboard.html:20
 #: ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
-msgstr "Mina API:er"
+msgstr "Mina subsystem"
 
 #: ckan/templates/user/dashboard.html:21
 #: ckan/templates/user/dashboard_organizations.html:12
