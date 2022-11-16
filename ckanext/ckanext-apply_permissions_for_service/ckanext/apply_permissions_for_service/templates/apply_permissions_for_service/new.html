@@ -96,10 +96,10 @@
              is_required=True,
              organizations=user_managed_organizations %}
 
-  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code) }}
+  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code, error=[errors.business_code]) }}
 
-  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname) }}
-  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email) }}
+  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname, error=[errors.contact_name]) }}
+  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email, error=[errors.contact_email]) }}
 
   <hr>
   <div class="control-group">
@@ -131,7 +131,8 @@
                organizations=user_managed_organizations %}
 
     {{ form.input('intermediateBusinessCode', label=_('Y-number'),
-                  is_required=True, value=values.intermediate_business_code) }}
+                  is_required=True, value=values.intermediate_business_code,
+                  error=[errors.intermediate_business_code]) }}
   </div>
 
   <hr>
@@ -144,12 +145,12 @@
     {% do subsystem_options.append({'value': d.id, 'text': dataset_title}) %}
   {% endfor %}
 
-  {% call form.input_multiple('ipAddress', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address') %}
+  {% call form.input_multiple('ipAddress', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address', error=[errors.ip_address_list]) %}
     <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
   {% endcall %}
 
   <div class="select-wrapper">
-    {{ form.select_with_description('subsystemCode', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code) }}
+    {{ form.select_with_description('subsystemCode', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code, error=[errors.subsystem_code]) }}
   </div>
 
   <hr>
@@ -174,9 +175,9 @@
     {% do service_options.append({'value': res.id, 'text': res.xroad_service_code or res.name}) %}
   {% endfor %}
 
-  {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access')) }}
+  {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access'), error=[errors.service_code_list]) }}
   {{ form.textarea('usageDescription', label=_('Explain how the service will be used'), value=values.usage_description, placeholder=_('Reason for requesting access')) }}
-  {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date) }}
+  {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date, error=[errors.request_date]) }}
 
   <hr>
   {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'email' and pkg.get('service_permission_settings', {}).get('require_additional_application_file') == True %}

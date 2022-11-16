@@ -80,7 +80,7 @@ def service_permission_application_create(context, data_dict):
         errors['subsystem_code'] = _('Selected subsystem does not belong to the utilizing organization')
 
     service_code_list = data_dict.get('service_code_list')
-    if service_code_list is None or service_code_list == "":
+    if not service_code_list:
         errors['service_code_list'] = _('Missing value')
 
     if errors:
