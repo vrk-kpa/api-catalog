@@ -1,6 +1,6 @@
 import pytest
 from ckan.tests.factories import User, Dataset, Organization, Resource
-from ckan.plugins.toolkit import get_action, ObjectNotFound, NotAuthorized
+from ckan.plugins.toolkit import get_action, ObjectNotFound, NotAuthorized, ValidationError
 from ckan.tests.helpers import call_action
 
 import unittest.mock as mock
@@ -187,3 +187,10 @@ class TestApicatalogPlugin():
 
         with pytest.raises(NotAuthorized):
             helpers.call_action('user_invite', context, **params)
+
+    @pytest.mark.usefixtures('with_request_context')
+    def test_inserting_resource_with_no_name_should_fail(self):
+        subsystem = factories.Dataset()
+
+        with pytest.raises(ValidationError):
+            factories.Resource(package_id=subsystem['id'], name='')

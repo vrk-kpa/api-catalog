@@ -179,12 +179,10 @@
       "label": "Title",
       "additional_description": "Attachment name will be filled automatically and should not be edited",
       "input_title": ["Attachment name"],
-      "only_default_lang_required": true,
       "display_hr": true,
       "final": true,
+      "required": true,
       "form_placeholder": "AttachmentName",
-      "form_languages": ["en"],
-      "form_snippet": "fluent_title.html",
       "display_snippet": null
     },
     {
