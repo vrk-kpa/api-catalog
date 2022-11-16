@@ -194,4 +194,3 @@ class TestApicatalogPlugin():
 
         with pytest.raises(ValidationError):
             factories.Resource(package_id=subsystem['id'], name='')
-
