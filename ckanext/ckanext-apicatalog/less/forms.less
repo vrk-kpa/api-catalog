@@ -323,12 +323,51 @@ textarea {
   background-image: none;
 }
 
+.select2-container .select2-choice {
+  font-size: 14px;
+  color: @suomifi-text-base;
+  height: 40px;
+  background-color: white;
+  border: 1px solid @kapa-input-border;
+  border-radius: 2px;
+  appearance: none;
+  padding: 6px 16px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: none;
+  
+  .select2-arrow {
+    display: none;
+    pointer-events: none;
+  }
 
+  &:after {
+    pointer-events: none;
+    font-family: "Font Awesome 5 Pro";
+    content: "\f0d7";
+    font-size: 18px;
+    font-weight: 900;
+    color: @suomifi-text-highlight;
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+  }
+}
+
+.select2-results {
+  font-size: 14px;
+}
 
 .select2-search-choice-close,
 .select2-container-multi .select2-search-choice-close {
   top: 14px;
   left: 5px;
+}
+
+.select2-search .select2-input:focus {
+  box-shadow: none;
+  font-size: 14px;
+  color: @kapa-black;
 }
 
 .select2-container-multi .select2-choices {

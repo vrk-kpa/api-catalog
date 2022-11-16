@@ -16,6 +16,7 @@
   classes=['form-group', 'control-medium'],
   ) %}
   <select name={{ name }} data-module="autocomplete"
+          style="width: 100%"
           {{ form.attributes(select_attrs) if select_attrs else '' }}>
     {% if not is_required %}
       <option value="">
