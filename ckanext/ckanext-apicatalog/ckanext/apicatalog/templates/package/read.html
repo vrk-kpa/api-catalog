@@ -19,7 +19,7 @@
     {% endif %}
     {% if delivery_method == 'email' %}
         <p>{{ _('Request permission if you want to have access on some of this subsystems services. Please note that some subsystems might require information permit before you can request permission in API-Catalog') }}</p>
-        <a class="btn btn-primary" href="{{  url_for('apply_permissions.new_permission_application', subsystem_id=pkg.id) }}" target="_blank">{{ _('Request permission') }}
+        <a class="btn btn-primary" href="{{ h.url_for('apply_permissions.new_permission_application', subsystem_id=pkg.id) }}" target="_blank">{{ _('Request permission') }}
           <i class="fal fa-external-link-alt btn-icon--right"></i>
         </a>
     {% elif delivery_method == 'file' %}
