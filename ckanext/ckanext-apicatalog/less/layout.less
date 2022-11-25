@@ -263,7 +263,7 @@
   .prelude-dataset {
     .box();
     background-color: @white;
-    padding: @spacing-y @spacing-x 0;
+    padding: 15px 15px 0;
   }
 
   .prelude-dataset-edit {
@@ -393,5 +393,19 @@
     float: right;
     margin-right: 15px;
     padding-top: 6.25px;
+  }
+}
+
+.flex-container {
+  display: flex;
+
+  .flex {
+    flex-grow: 2;
+  }
+
+  .flex-right {
+    order: 2;
+    justify-self: flex-end;
+    align-self: center;
   }
 }

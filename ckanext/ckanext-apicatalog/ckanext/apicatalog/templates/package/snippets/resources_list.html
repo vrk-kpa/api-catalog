@@ -6,29 +6,34 @@ pkg - A package object that the resources belong to.
 
 Example:
 
-  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, title=_('Data and Resources') %}
+  {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=pkg.resources, resource_type="attachment", title=_('Data and Resources') %}
 
 #}
 <section id="dataset-resources" class="resources">
-  <h2 class="visual-h3">{{ title }}</h2>
+  <div class="flex-container">
+    <h2 class="visual-h3 flex">{{ title }}</h2>
+    {% if h.check_access('resource_create', {'package_id': pkg['id']}) and resource_type == "attachment" %}
+      <div class="flex-right">
+        {% link_for _('Add new resource'), named_route=pkg.type ~ '_resource.new', id=pkg.name, class_='btn btn-default' %}
+      </div>
+    {% endif %}
+    {% if h.check_access('package_update', {'id': pkg['id']}) and resource_type == "service" %}
+      <div class="flex-right">
+        {% link_for _('Reorder services'), named_route=pkg.type ~ '.resources', id=pkg.name, icon="fal fa-list" %}
+      </div>
+    {% endif %}
+  </div>
+
   {% block resource_list %}
+  <ul class="{% block resource_list_class %}resource-list{% endblock %}">
     {% if resources %}
-      <ul class="{% block resource_list_class %}resource-list{% endblock %}">
         {% block resource_list_inner %}
           {% set can_edit = h.check_access('package_update', {'id':pkg.id }) %}
           {% for resource in resources %}
             {% snippet 'package/snippets/resource_item.html', pkg=pkg, res=resource, can_edit=can_edit %}
           {% endfor %}
         {% endblock %}
-      </ul>
-    {% else %}
-      {% if h.check_access('resource_create', {'package_id': pkg['id']}) %}
-          {% trans url=h.url_for(controller='package', action='new_resource', id=pkg.name) %}
-            <p class="empty">This dataset has no data, <a href="{{ url }}">why not add some?</a></p>
-          {% endtrans %}
-      {% else %}
-          <p class="empty">{{ _('This dataset has no data') }}</p>
-      {% endif %}
     {% endif %}
+  </ul>
   {% endblock %}
 </section>

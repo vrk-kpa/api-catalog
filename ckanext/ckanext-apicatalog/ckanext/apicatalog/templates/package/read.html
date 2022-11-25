@@ -35,9 +35,12 @@
     {% endif %}
 
     <div class="dataset__subsystem-information">
-      <h2>{{_('Subsystem information')}}</h2>
-      <h2 class="visual-h3">{{ _('Service bus identifier') }}</h2>
+      <h2 class="visual-h3">{{_('Description')}}</h2>
+      {% block package_notes %}
+        {{ super() }}
+      {% endblock %}
 
+      <h2 class="visual-h3">{{ _('Service bus identifier') }}</h2>
       <span class="nowrap">
         {% if h.is_service_bus_id(pkg.id) %}
         {{ pkg.id }}
@@ -45,11 +48,6 @@
         -
         {% endif %}
       </span>
-
-      <h2 class="visual-h3">{{_('Description')}}</h2>
-      {% block package_notes %}
-       {{ super() }}
-      {% endblock %}
     </div>
   {% endblock %}
 {% endblock %}
@@ -57,12 +55,8 @@
 {% block package_resources %}
   {% set services = pkg.resources|selectattr('harvested_from_xroad')|list %}
   {% set attachments = pkg.resources|rejectattr('harvested_from_xroad')|list %}
-  {% if services %}
-    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=services, title=_('Services') %}
-  {% endif %}
-  {% if attachments %}
-    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, title=_('Attachments') %}
-  {% endif %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=services, resource_type="service", title=_('Services') %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=attachments, resource_type="attachment", title=_('Attachments') %}
 {% endblock %}
 
 {% block package_tags %}
