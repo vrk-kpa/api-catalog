@@ -161,9 +161,8 @@ def manage(subsystem_id):
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
     toolkit.c.pkg_dict = package
 
-    data_dict = {'subsystem_id': subsystem_id}
+    data_dict = {'subsystem_id': package.get('id')}
     applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
-
     extra_vars = {
             'subsystem_id': subsystem_id,
             'pkg_dict': package,
