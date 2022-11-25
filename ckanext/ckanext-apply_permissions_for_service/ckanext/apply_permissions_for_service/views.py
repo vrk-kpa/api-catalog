@@ -90,8 +90,8 @@ def new_get(context, subsystem_id, errors={}, values={}, preview=False):
     service_id = toolkit.request.args.get('service_id')
     package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
 
-    if package.get('service_permission_settings', {}).get('delivery_method') == "none" \
-            or package.get('service_permission_settings', {}).get('delivery_method') is None:
+    if (package.get('service_permission_settings', {}).get('delivery_method') == "none"
+            or package.get('service_permission_settings', {}).get('delivery_method') is None) and preview is False:
         toolkit.abort(403, toolkit._("This API is not accepting access applications."))
     organization = toolkit.get_action('organization_show')(context, {'id': package['owner_org']})
     user_managed_organizations = toolkit.get_action('organization_list_for_user')(context, {
@@ -150,7 +150,7 @@ def view(application_id):
 def preview(subsystem_id):
     try:
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
-        toolkit.check_access('service_permission_settings', context, {})
+        toolkit.check_access('service_permission_settings', context, {"subsystem_id": subsystem_id})
         return new_get(context, subsystem_id, preview=True)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
