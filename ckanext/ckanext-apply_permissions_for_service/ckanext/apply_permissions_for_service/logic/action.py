@@ -74,10 +74,11 @@ def service_permission_application_create(context, data_dict):
     subsystem_code = data_dict.get('subsystem_code')
     if subsystem_code is None or subsystem_code == "":
         errors['subsystem_code'] = _('Missing value')
-    utilizing_organization_business_code = intermediate_business_code or business_code
-    subsystem = tk.get_action('package_show')(context, {'id': subsystem_code})
-    if not subsystem.get('owner_org', '').endswith(utilizing_organization_business_code):
-        errors['subsystem_code'] = _('Selected subsystem does not belong to the utilizing organization')
+    else:
+        utilizing_organization_business_code = intermediate_business_code or business_code
+        subsystem = tk.get_action('package_show')(context, {'id': subsystem_code})
+        if not subsystem.get('owner_org', '').endswith(utilizing_organization_business_code):
+            errors['subsystem_code'] = _('Selected subsystem does not belong to the utilizing organization')
 
     service_code_list = data_dict.get('service_code_list')
     if not service_code_list:
