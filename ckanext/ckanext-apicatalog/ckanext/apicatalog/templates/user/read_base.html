@@ -1,3 +1,9 @@
 {% ckan_extends %}
 
+{% block content_action %}
+  {% if h.check_access('user_update', user) %}
+    {% link_for _('Edit'), named_route='user.edit', id=user.name, class_='btn btn-default', icon='far fa-edit' %}
+  {% endif %}
+{% endblock %}
+
 {% block user_about %}{% endblock %}

@@ -25,7 +25,7 @@
           <ul>
             {% block resource_actions_inner %}
             {% if h.check_access('package_update', {'id':pkg.id }) %}
-              <li>{% link_for _('Manage'), named_route=pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id, class_='btn', icon='wrench' %}</li>
+              <li>{% link_for _('Edit'), named_route=pkg.type ~ '_resource.edit', id=pkg.name, resource_id=res.id, class_='btn', icon='far fa-edit' %}</li>
             {% endif %}
             {% if res.url and h.is_url(res.url) %}
               <li>

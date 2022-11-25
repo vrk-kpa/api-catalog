@@ -1,5 +1,11 @@
 {% ckan_extends %}
 
+{% block content_action %}
+  {% if h.check_access('organization_update', {'id': group_dict.id}) %}
+    {% link_for _('Edit'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-default', icon='far fa-edit' %}
+  {% endif %}
+{% endblock %}
+
 {% block prelude %}
 	<div id="main_content" class="prelude-dataset">
 		<h1>{{ h.get_translated( c.group_dict, 'title')  }}</h1>
