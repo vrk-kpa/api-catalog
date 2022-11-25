@@ -283,7 +283,7 @@
       "label": "Harvested from X-Road",
       "form_snippet": false,
       "display_snippet": null,
-      "validators": "keep_old_value_if_missing default_value(false) boolean_validator ignore_not_sysadmin"
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value(false) boolean_validator"
     },
     {
       "field_name": "xroad_servicecode",
