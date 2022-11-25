@@ -62,21 +62,23 @@
 
                   {% set lang = h.lang().split('_')[0] %}
                   {% set submenu_content = h.get_submenu_content() %}
-                  {% if submenu_content | length > 1 %}
+                  {% set page_name = request.path.split('/')[-1] %}
+                  {% for item in submenu_content[:2] %}
+                    {% set page = item %}
+                    {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
+                    {% set page_title = page.get('title_' + lang) or page.title %}
+                    <li {% if page_name == page.name %}class="active"{% endif %}>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
+                  {% endfor %}
+                  {% if submenu_content | length > 2 %}
                   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('More options') }}<span class="caret"></span></a>
                        <ul class="dropdown-menu">
-                           {% for page in submenu_content %}
+                           {% for page in submenu_content[2:] %}
                                {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
                                {% set page_title = page.get('title_' + lang) or page.title %}
-                               <li>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
+                               <li {% if page_name == page.name %}class="active"{% endif %}>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
                            {% endfor %}
                        </ul>
                   </li>
-                  {% elif submenu_content | length == 1 %}
-                      {% set page = submenu_content[0] %}
-                      {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
-                      {% set page_title = page.get('title_' + lang) or page.title %}
-                      <li>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
                   {% endif %}
 
                 {% if c.userobj %}
