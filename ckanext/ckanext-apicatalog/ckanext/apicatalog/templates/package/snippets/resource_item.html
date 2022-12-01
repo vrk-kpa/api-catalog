@@ -19,7 +19,7 @@
             {% endblock %}
             {% block resource_item_description %}
               <p class="description">
-                {% if res.description %}
+                {% if res.description_translated %}
                   {{ h.markdown_extract(h.ensure_translated(res.description_translated), extract_length=80) }}
                 {% endif %}
               </p>
