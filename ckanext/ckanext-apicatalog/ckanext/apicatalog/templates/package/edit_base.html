@@ -23,7 +23,6 @@
         <div class="module-content dataset-sidebar">
             {% block side_navigation %}
                 {{ h.build_nav_icon(pkg.type + '.edit', _("Subsystem's information"), id=pkg.name) }}
-                {{ h.build_nav_icon(pkg.type ~ '.resources', _('Attachments'), id=pkg.name) }}
             {% endblock %}
         </div>
     </div>
