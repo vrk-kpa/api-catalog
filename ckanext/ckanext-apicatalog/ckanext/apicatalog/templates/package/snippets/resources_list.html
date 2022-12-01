@@ -19,7 +19,7 @@ Example:
     {% endif %}
     {% if h.check_access('package_update', {'id': pkg['id']}) and resource_type == "service" %}
       <div class="flex-right">
-        {% link_for _('Reorder services'), named_route=pkg.type ~ '.resources', id=pkg.name, icon="fal fa-list" %}
+        {% link_for _('Reorder resources'), named_route=pkg.type ~ '.resources', id=pkg.name, icon="fal fa-list" %}
       </div>
     {% endif %}
   </div>
