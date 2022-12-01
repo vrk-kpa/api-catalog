@@ -20,7 +20,7 @@
             {% block resource_item_description %}
               <p class="description">
                 {% if res.description %}
-                  {{ h.markdown_extract(h.ensure_translated(res.description), extract_length=80) }}
+                  {{ h.markdown_extract(h.ensure_translated(res.description_translated), extract_length=80) }}
                 {% endif %}
               </p>
               {% if res.valid_content == 'no' %}<span class="label label-danger">{{ _("Invalid content") }}</span>{% endif %}
