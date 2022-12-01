@@ -10,7 +10,6 @@
   <tbody>
   {% for application in applications %}
       {% set subsystem_code = application.subsystem_code.split('.') %}
-      {% for service in application.services %}
       <tr>
           <td>
               {{ _('Organization') }} : <b>{% link_for application.organization["title"], named_route='organization.read', id=application.organization_id %}</b><br>
@@ -31,14 +30,18 @@
                                                        named_route='organization.read',
                                                        id=application.target_organization_id %}</b><br>
               {{ _('Subsystem') }} : <b>{% link_for subsystem_code[3], named_route='dataset.read', id=application.subsystem.id %}</b><br>
-              {{ _('Service code') }} : <b>{% link_for service.name,
-                                                       named_route='dataset_resource.read',
-                                                       id=application.requester_subsystem.id,
-                                                       resource_id=service.id %}</b><br>
+              {{ _('Service code') }} :
+              {% for service in application.services %}
+                <b>{% link_for service.name,
+                      named_route='dataset_resource.read',
+                      id=application.requester_subsystem.id,
+                      resource_id=service.id %}
+                </b>
+                <br>
+            {% endfor %}
           </td>
           <td>{% link_for _('Preview application'), named_route='apply_permissions.view_permission_application', application_id=application.id %}</td>
       </tr>
-      {% endfor %}
   {% endfor %}
   </tbody>
 </table>

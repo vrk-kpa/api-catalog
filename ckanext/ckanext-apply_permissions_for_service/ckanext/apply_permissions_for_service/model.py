@@ -77,8 +77,14 @@ class ApplyPermission(Base):
             {'ignore_auth': True}, {'id': application_dict['subsystem_code']})
         application_dict['member'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['subsystem']['owner_org']})
-        application_dict['services'] = [toolkit.get_action('resource_show')(
-            {'ignore_auth': True}, {'id': service}) for service in application_dict['service_code_list']]
+
+        application_dict['services'] = []
+        for service in application_dict['service_code_list']:
+            try:
+                resource = toolkit.get_action('resource_show')({'ignore_auth': True}, {'id': service})
+                application_dict['services'].append(resource)
+            except NotFound:
+                pass
 
         application_dict['organization'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['organization_id']})
