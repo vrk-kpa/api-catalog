@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block page_primary_action %}
-    <a href="{{ h.url_for('dataset.read', id=pkg.name) }}" class="btn btn-default dataset-edit-cancel">
+    <a href="{{ h.url_for(pkg.type ~ '.read', id=pkg.name) }}" class="btn btn-default dataset-edit-cancel">
         <i class="far fa-long-arrow-left"></i>
         {{ _('Cancel editing') }}
     </a>

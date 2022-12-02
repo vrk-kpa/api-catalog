@@ -27,9 +27,9 @@
         <div class="module context-info">
             <div class="module-content dataset-sidebar">
                 {% block side_navigation %}
-                    {{ h.build_nav_icon('dataset.read', _("Subsystem's information"), id=pkg.name) }}
-                    {% if h.check_access('organization_update', {'id': pkg.organization.id}) %}
-                        {{ h.build_nav_icon('dataset.activity', _('Activity Stream'), id=pkg.name, icon=None) }}
+                    {{ h.build_nav_icon(pkg.type ~ '.read', _("Subsystem's information"), id=pkg.name) }}
+                    {% if h.check_access('organization_update', {'id': pkg.owner_org}) %}
+                        {{ h.build_nav_icon(pkg.type ~ '.activity', _('Activity Stream'), id=pkg.name, icon=None) }}
                     {% endif %}
                 {% endblock %}
             </div>
