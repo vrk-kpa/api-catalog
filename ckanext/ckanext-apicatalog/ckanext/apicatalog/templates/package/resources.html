@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{#
+    Moved cancel edit button from content_action to page_primary_action as simply emptying page_primary_action breaks javascript adding reorder resources button.
+    it's appended to .page_primary_action https://github.com/ckan/ckan/blob/0d714b258668ee78a0b19182c53b34689629df37/ckan/public/base/javascript/modules/resource-reorder.js#L58
+    which doesn't exist if page_primary_action is empty https://github.com/ckan/ckan/blob/2.9/ckan/templates/page.html#L102
+#}
+{% block content_action %}
+{% endblock %}
+
+{% block page_primary_action %}
+    <a href="{{ h.url_for(pkg.type ~ '.read', id=pkg.name) }}" class="btn btn-default dataset-edit-cancel">
+        <i class="far fa-long-arrow-left"></i>
+        {{ _('Cancel editing') }}
+    </a>
+{% endblock %}
