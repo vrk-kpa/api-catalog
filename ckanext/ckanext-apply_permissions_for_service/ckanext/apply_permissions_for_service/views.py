@@ -24,7 +24,7 @@ def index():
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
-def dashboard():
+def dashboard(app_type='sent'):
     context = {
         u'user': toolkit.g.user,
         u'auth_user_obj': toolkit.g.userobj,
@@ -33,7 +33,11 @@ def dashboard():
     data_dict = {u'user_obj': toolkit.g.userobj}
     extra_vars = ckan_user_extra_template_variables(context, data_dict)
     applications = toolkit.get_action('service_permission_application_list')(context, {})
-    extra_vars['applications'] = applications
+    if app_type == 'received':
+        extra_vars['applications'] = applications.get('received')
+    else:
+        extra_vars['applications'] = applications.get('sent')
+
     return toolkit.render('apply_permissions_for_service/dashboard.html', extra_vars=extra_vars)
 
 
@@ -268,6 +272,7 @@ def settings(subsystem_id):
 
 
 apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
+apply_permissions.add_url_rule('/dashboard/<app_type>', 'dashboard', view_func=dashboard)
 apply_permissions.add_url_rule('/dashboard', 'dashboard', view_func=dashboard)
 apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)

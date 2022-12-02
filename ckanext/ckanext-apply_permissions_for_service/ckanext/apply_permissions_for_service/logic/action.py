@@ -165,7 +165,21 @@ def service_permission_application_list(context, data_dict):
 
     applications = applications.all()
 
-    return [application.as_dict() for application in applications]
+    if not subsystem_id:
+        membership_organizations = tk.get_action('organization_list_for_user')(context, {'permission': 'read'})
+        organization_id_list = [org['id'] for org in membership_organizations]
+        response = {'received': [], 'sent': []}
+        for application in applications:
+            application_dict = application.as_dict()
+            if len(application_dict.get('services')) > 0:
+                if application_dict.get('organization_id') in organization_id_list:
+                    response['sent'].append(application_dict)
+                if application_dict.get('target_organization_id') in organization_id_list:
+                    response['received'].append(application_dict)
+    else:
+        response = [application.as_dict() for application in applications]
+
+    return response
 
 
 @side_effect_free

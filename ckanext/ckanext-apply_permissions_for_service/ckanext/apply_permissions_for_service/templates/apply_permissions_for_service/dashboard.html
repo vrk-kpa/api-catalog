@@ -5,12 +5,39 @@
 {% block page_primary_action %}
 {% endblock %}
 
+
+{% set page_name = request.path.split('/')[-1] %}
+{% block container %}
+  <section class="pull-left col-sm-3 no-padding">
+    <section class="module module-narrow">
+      <div class="module">
+        <div class="module-content dataset-sidebar">
+          <li {% if page_name=="sent" %}class="active"{% endif %}>
+            {% link_for _('Sent access requests'), named_route='apply_permissions.dashboard', app_type='sent'%}
+          </li>
+          <li {% if page_name=="received" %}class="active"{% endif %}>
+            {% link_for _('Received access requests'), named_route='apply_permissions.dashboard', app_type='received'%}
+          </li>
+        </div>
+      </div>
+    </section>
+  </section>
+  <section class="pull-right col-sm-9 no-padding">
+    {{ super() }}
+  </section>
+{% endblock %}
+
 {% block primary_content_inner %}
   <h2 class="hide-heading">{{ _('Service access applications') }}</h2>
   {% if applications %}
     {% snippet 'apply_permissions_for_service/snippets/application_table.html', applications=applications %}
   {% else %}
-  <p>{{ _('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.') }}</p>
+    {% if page_name=="sent" %}
+      <p>{{ _('You have not sent any service access applications. You can apply for access to services by clicking the "Request access" button on the service page.') }}</p>
+    {% endif %}
+    {% if page_name=="received" %}
+      <p>{{ _('Your organizations have not received any service access applications.') }}</p>
+    {% endif %}
   {% endif %}
 {% endblock %}
 
