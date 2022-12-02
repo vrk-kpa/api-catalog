@@ -7,9 +7,10 @@
     might not be compatible with ckanext-scheming
     </p>
   {%- endif -%}
-  {% if h.get_translated(pkg, 'notes') %}
+  {% set notes = h.get_translated(pkg, 'notes') %}
+  {% if notes %}
     <div class="notes embedded-content">
-      {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+      {{ h.render_markdown(notes) }}
     </div>
   {% else %}
     <div style="font-style: italic;">{{ _('No description') }}</div>
