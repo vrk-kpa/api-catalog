@@ -59,7 +59,7 @@ def ensure_translated(s):
     elif ts == str:
         return six.text_type(s)
     elif ts == dict:
-        language = get_lang_prefix()
+        language = i18n.get_lang()
         return ensure_translated(s.get(language, u""))
 
 
