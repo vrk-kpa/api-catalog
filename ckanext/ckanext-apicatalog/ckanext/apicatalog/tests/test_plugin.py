@@ -9,7 +9,7 @@ from ckan import model
 from ckan.tests import factories
 import ckan.tests.helpers as helpers
 
-from .fixtures import apicatalog_setup
+from .fixtures import apicatalog_setup  # noqa
 
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apicatalog_setup')
