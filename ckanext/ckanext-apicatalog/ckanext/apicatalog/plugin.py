@@ -651,7 +651,10 @@ def create_organization_users(context, data_dict):
 
     user_list = toolkit.get_action('user_list')
     user_invite = toolkit.get_action('user_invite')
+    organization_list_for_user = toolkit.get_action('organization_list_for_user')
+    organization_member_create = toolkit.get_action('organization_member_create')
     created = []
+    added = []
     invalid = []
     ambiguous = []
     duplicate = []
@@ -674,15 +677,30 @@ def create_organization_users(context, data_dict):
         organization = next(iter(matching_organizations))
 
         matching_users = user_list(context, {'email': application.email, 'all_fields': False})
-        if matching_users:
-            log.warn('Existing user found for email address %s, skipping duplicate user', application.email)
-            application.mark_duplicate()
-            duplicate.append(application.email)
-            continue
-
-        log.info('Inviting user %s to organization %s (%s)', application.email, organization['title'], organization['id'])
+        matching_user = next(iter(matching_users), None)
         try:
-            user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'admin'})
+            if matching_user:
+                user_organizations = organization_list_for_user(context, {'id': matching_user})
+                if organization['id'] in (uo['id'] for uo in user_organizations):
+                    log.warn('Existing member in %s found for email address %s, skipping duplicate user',
+                             organization['name'], application.email)
+                    application.mark_duplicate()
+                    duplicate.append(application.email)
+                    continue
+                log.info('Adding user %s to organization %s (%s)',
+                         matching_user, organization['title'], organization['id'])
+                organization_member_create(context, {'id': organization['id'],
+                                                     'username': matching_user,
+                                                     'role': 'admin'})
+
+                added.append(matching_user)
+            else:
+                log.info('Inviting user %s to organization %s (%s)',
+                         application.email, organization['title'], organization['id'])
+                user = user_invite(context, {'email': application.email,
+                                             'group_id': organization['id'],
+                                             'role': 'admin'})
+                created.append(user.get('name'))
         except ValidationError as e:
             log.warn(e)
             continue
@@ -691,10 +709,10 @@ def create_organization_users(context, data_dict):
             continue
 
         application.mark_done()
-        created.append(user.get('name'))
 
     context.get('session', model.Session).commit()
-    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
+    return {'success': True, 'result': {'created': created, 'added': added,
+                                        'invalid': invalid, 'ambiguous': ambiguous,
                                         'duplicate': duplicate}}
 
 
