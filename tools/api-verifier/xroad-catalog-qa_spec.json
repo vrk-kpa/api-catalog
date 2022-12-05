@@ -1,0 +1,163 @@
+{
+  "profiles": {
+    "xroad-gateway": {
+      "format": "json",
+      "base_url": "http://localhost:9090/rest-adapter-service/Consumer",
+      "headers": {
+        "Accept": "application/json"
+      }
+    },
+    "xroad-catalog-rest": {
+      "format": "json",
+      "base_url": "https://vrkkapalpt05.csc.fi/r1/FI-TEST/GOV/0920632-0/ServiceList/api-docs/api",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Road-Client": "FI-TEST/GOV/0245437-2/APICatalogClient"
+      },
+      "cert": "/opt/apicatalog/vrkkapalpt05.p12",
+      "cacert": "/opt/apicatalog/vrkkapalpt05.crt"
+    },
+    "xroad-catalog-rest-csv": {
+      "format": "csv",
+      "base_url": "https://vrkkapalpt05.csc.fi/r1/FI-TEST/GOV/0920632-0/ServiceList/api-docs/api",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "text/csv",
+        "X-Road-Client": "FI-TEST/GOV/0245437-2/APICatalogClient"
+      },
+      "cert": "/opt/apicatalog/vrkkapalpt05.p12",
+      "cacert": "/opt/apicatalog/vrkkapalpt05.crt"
+    }
+  },
+  "variables": {
+    "businessId": "0245437-2",
+    "companyBusinessId": "0920632-0",
+    "instance": "FI-TEST",
+    "memberClass": "GOV",
+    "memberCode": "0245437-2",
+    "subsystemCode": "VTJkysely",
+    "serviceCode": "HenkilonTunnusKysely",
+    "serviceVersion": "v1",
+    "soapExternalId": "1598873326071_b756fe09-bd20-4761-b15b-04e2acf1cb32",
+    "openApiExternalId": "1613988073851_acd13d50-4ea1-477a-8c18-1815bc365716",
+    "organizationGuid": "d06969b2-342b-4063-bfc8-6372e2545d81"
+  },
+  "items": [
+    {
+      "name": "ListMembers",
+      "profile": "xroad-gateway",
+      "url": "/ListMembers"
+    },
+    {
+      "name": "GetWsdl",
+      "profile": "xroad-gateway",
+      "url": "/GetWsdl?externalId={soapExternalId}"
+    },
+    {
+      "name": "GetOpenAPI",
+      "profile": "xroad-gateway",
+      "url": "/GetOpenAPI?externalId={openApiExternalId}"
+    },
+    {
+      "name": "GetServiceType",
+      "profile": "xroad-gateway",
+      "url": "/GetServiceType?xRoadInstance={instance}&memberClass={memberClass}&memberCode={memberCode}&subsystemCode={subsystemCode}&serviceCode={serviceCode}&serviceVersion={serviceVersion}"
+    },
+    {
+      "name": "IsProvider",
+      "profile": "xroad-gateway",
+      "url": "/IsProvider?xRoadInstance={instance}&memberClass={memberClass}&memberCode={memberCode}"
+    },
+    {
+      "name": "GetOrganizations",
+      "profile": "xroad-gateway",
+      "url": "/GetOrganizations?businessCode={businessId}"
+    },
+    {
+      "name": "HasOrganizationChanged",
+      "profile": "xroad-gateway",
+      "url": "/HasOrganizationChanged?Guid={organizationGuid}"
+    },
+    {
+      "name": "GetCompanies",
+      "profile": "xroad-gateway",
+      "url": "/GetCompanies?businessId={companyBusinessId}"
+    },
+    {
+      "name": "HasCompanyChanged",
+      "profile": "xroad-gateway",
+      "url": "/HasCompanyChanged?businessId={companyBusinessId}"
+    },
+    {
+      "name": "GetErrors",
+      "profile": "xroad-gateway",
+      "url": "/GetErrors?startDateTime=2020-01-01&endDateTime=2022-10-10"
+    },
+    {
+      "name": "getServiceStatistics",
+      "profile": "xroad-catalog-rest",
+      "url": "/getServiceStatistics"
+    },
+    {
+      "name": "getServiceStatisticsCSV",
+      "profile": "xroad-catalog-rest-csv",
+      "url": "/getServiceStatisticsCSV"
+    },
+    {
+      "name": "getListOfServices",
+      "profile": "xroad-catalog-rest",
+      "url": "/getListOfServices"
+    },
+    {
+      "name": "getListOfServicesCSV",
+      "profile": "xroad-catalog-rest-csv",
+      "url": "/getListOfServicesCSV"
+    },
+    {
+      "name": "heartbeat",
+      "profile": "xroad-catalog-rest",
+      "url": "/heartbeat"
+    },
+    {
+      "name": "getDistinctServiceStatistics",
+      "profile": "xroad-catalog-rest",
+      "url": "/getDistinctServiceStatistics"
+    },
+    {
+      "name": "listErrors",
+      "profile": "xroad-catalog-rest",
+      "url": "/listErrors"
+    },
+    {
+      "name": "listSecurityServers",
+      "profile": "xroad-catalog-rest",
+      "url": "/listSecurityServers"
+    },
+    {
+      "name": "listDescriptors",
+      "profile": "xroad-catalog-rest",
+      "url": "/listDescriptors"
+    },
+    {
+      "name": "getOrganization",
+      "profile": "xroad-catalog-rest",
+      "url": "/getOrganization/{businessId}"
+    },
+    {
+      "name": "getOrganizationChanges",
+      "profile": "xroad-catalog-rest",
+      "url": "/getOrganizationChanges/{businessId}"
+    },
+    {
+      "name": "getEndpoints",
+      "profile": "xroad-catalog-rest",
+      "url": "/getEndpoints/{instance}/{memberClass}/{memberCode}/{subsystemCode}/{serviceCode}"
+    },
+    {
+      "name": "getRest",
+      "profile": "xroad-catalog-rest",
+      "url": "/getRest/{instance}/{memberClass}/{memberCode}/{subsystemCode}/{serviceCode}"
+    }
+  ]
+}
