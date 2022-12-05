@@ -9,8 +9,10 @@ from ckan import model
 from ckan.tests import factories
 import ckan.tests.helpers as helpers
 
+from .fixtures import apicatalog_setup
 
-@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index')
+
+@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apicatalog_setup')
 class TestApicatalogPlugin():
     def test_allowed_organization_user_should_see_subsystem(self):
         organization1 = Organization()
@@ -194,3 +196,36 @@ class TestApicatalogPlugin():
 
         with pytest.raises(ValidationError):
             factories.Resource(package_id=subsystem['id'], name='')
+
+    @mock.patch("ckan.lib.mailer.send_invite")
+    @pytest.mark.usefixtures('with_request_context')
+    def test_create_new_organization_user(self, _):
+        org = factories.Organization(xroad_instance='TEST',
+                                     xroad_memberclass='ORG',
+                                     xroad_membercode='1234567-1')
+
+        context = {"ignore_auth": True}
+        helpers.call_action('create_user_to_organization', context,
+                            fullname='New User',
+                            email='test@example.com',
+                            business_id=org['xroad_membercode'],
+                            organization_name=org['name'])
+        results = helpers.call_action('create_organization_users', context)['result']
+        assert len(results['created']) == 1
+
+    @mock.patch("ckan.lib.mailer.send_invite")
+    @pytest.mark.usefixtures('with_request_context')
+    def test_create_existing_organization_user(self, _):
+        user = factories.User(email='existing@example.com')
+        org = factories.Organization(xroad_instance='TEST',
+                                     xroad_memberclass='ORG',
+                                     xroad_membercode='1234567-1')
+
+        context = {"ignore_auth": True}
+        helpers.call_action('create_user_to_organization', context,
+                            fullname=user['fullname'],
+                            email=user['email'],
+                            business_id=org['xroad_membercode'],
+                            organization_name=org['name'])
+        results = helpers.call_action('create_organization_users', context)['result']
+        assert results['added'] == [user['name']]
