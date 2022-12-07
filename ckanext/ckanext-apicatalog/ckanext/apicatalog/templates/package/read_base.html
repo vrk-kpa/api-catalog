@@ -23,16 +23,16 @@
 {% block wrapper_class %}dataset-edit{% endblock %}
 
 {% block secondary_content %}
-    <section class="module module-narrow">
-        <div class="module context-info">
-            <div class="module-content dataset-sidebar">
-                {% block side_navigation %}
-                    {{ h.build_nav_icon(pkg.type ~ '.read', _("Subsystem's information"), id=pkg.name) }}
-                    {% if h.check_access('organization_update', {'id': pkg.owner_org}) %}
+    {% if h.check_access('organization_update', {'id': pkg.organization.id}) %}
+        <section class="module module-narrow">
+            <div class="module context-info">
+                <div class="module-content dataset-sidebar">
+                    {% block side_navigation %}
+                        {{ h.build_nav_icon(pkg.type ~ '.read', _("Subsystem's information"), id=pkg.name) }}
                         {{ h.build_nav_icon(pkg.type ~ '.activity', _('Activity Stream'), id=pkg.name, icon=None) }}
-                    {% endif %}
-                {% endblock %}
+                    {% endblock %}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 {% endblock %}
