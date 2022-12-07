@@ -335,7 +335,7 @@ textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
   background-image: none;
-  
+
   .select2-arrow {
     display: none;
     pointer-events: none;
@@ -516,4 +516,18 @@ textarea {
 // Danger and error appear as red
 .btn-danger {
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+
+fieldset.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+
+  input {
+    min-height: 20px;
+    width: 20px;
+    margin: -2px 5px 0 0;
+  }
+  label::after {
+    content: ""
+  }
 }

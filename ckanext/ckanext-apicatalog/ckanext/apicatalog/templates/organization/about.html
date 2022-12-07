@@ -80,7 +80,7 @@
                     </dl>
                 {% endif %}
                 {% if c.group_dict['company_type'] or c.group_dict['company_language']
-                        or c.group_dict['company_registeration_date'] %}
+                        or c.group_dict['company_registeration_date'] or c.group_dict['data_processing_outside_eu'] %}
                 <h2>{{ _('Additional information') }}</h2>
                 <dl>
 
@@ -103,6 +103,13 @@
                         {% set field = h.scheming_field_by_name(c.scheming_fields, 'company_registeration_date') %}
                         <dt>{{ h.scheming_language_text(field.label) }}:</dt>
                         <dd>{%- snippet 'scheming/snippets/display_field.html',
+          field=field, data=c.group_dict, schema=schema -%}</dd>
+                    {% endif %}
+
+                    {% if c.group_dict['data_processing_outside_eu'] %}
+                        {% set field = h.scheming_field_by_name(c.scheming_fields, 'data_processing_outside_eu') %}
+                        <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                        <dd>{%- snippet 'scheming/display_snippets/multiple_choice.html',
           field=field, data=c.group_dict, schema=schema -%}</dd>
                     {% endif %}
 
