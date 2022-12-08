@@ -18,11 +18,12 @@
               {% endif %}
             {% endblock %}
             {% block resource_item_description %}
+            {% set description = h.markdown_extract(h.get_translated(res, 'description'), extract_length=80) %}
+            {% if description %}
               <p class="description">
-                {% if res.description %}
-                  {{ h.markdown_extract(h.ensure_translated(res.description), extract_length=80) }}
-                {% endif %}
+                  {{ description }}
               </p>
+              {% endif %}
               {% if res.valid_content == 'no' %}<span class="label label-danger">{{ _("Invalid content") }}</span>{% endif %}
             {% endblock %}
           </div>
