@@ -64,7 +64,7 @@ def service_permission_application_create(context, data_dict):
             errors['contact_email'] = e.error
 
     ip_address_list = data_dict.get('ip_address_list')
-    if ip_address_list is None or ip_address_list == "":
+    if not (isinstance(ip_address_list, list) and any(ip_address_list)):
         errors['ip_address_list'] = _('Missing value')
     subsystem_id = data_dict.get('subsystem_id')
     if subsystem_id is None or subsystem_id == "":
