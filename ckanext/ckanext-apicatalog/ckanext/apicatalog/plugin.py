@@ -317,8 +317,8 @@ def custom_organization_list(params):
 
     results = list(organization_generator(context, organization_list_options))
 
-    provider_orgs = params.get('provider_orgs', '').lower() in ('true', '1', 'yes')
-    if provider_orgs:
+    all_orgs = params.get('all_orgs', '').lower() in ('true', '1', 'yes')
+    if not all_orgs:
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
     def sort_by_providers_first(g):
@@ -341,7 +341,7 @@ def custom_organization_list(params):
         'organizations': results[page_start:page_end],
         'count': len(results),
         'page': custom_page,
-        "provider_orgs": provider_orgs
+        "all_orgs": all_orgs
     }
 
 

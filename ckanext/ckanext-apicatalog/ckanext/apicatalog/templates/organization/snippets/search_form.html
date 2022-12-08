@@ -4,14 +4,14 @@
   {{ super() }}
   <label for="apis-selection">{{ _('Filter by role') }}</label>
   <div>
-  {% if request.args.provider_orgs %}
+  {% if request.args.all_orgs %}
       <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected) }}">
-          {{ _('Show organizations without APIs') }}
-      </a>
-      <input type="hidden" name="provider_orgs" value="True"></input>
-  {% else %}
-      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, provider_orgs=True) }}">
           {{ _('Show only service providers') }}
+      </a>
+      <input type="hidden" name="all_orgs" value="True"></input>
+  {% else %}
+      <a name="apis-selection" href="{{ h.url_for(controller='organization', action='index', q=c.q, sort=sorting_selected, all_orgs=True) }}">
+          {{ _('Show organizations without APIs') }}
       </a>
   {% endif %}
   </div>
