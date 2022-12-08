@@ -91,6 +91,17 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
+      "field_name": "data_processing_outside_eu",
+      "form_snippet": "multiple_checkbox.html",
+      "choices": [
+        {
+          "value": "true",
+          "label": "Organization processes data outside the EU/EAA countries."
+        }
+      ],
+      "label": "Data processing"
+    },
+    {
       "field_name": "webpage_address",
       "label": "Webpage address",
       "preset": "fluent_text",
