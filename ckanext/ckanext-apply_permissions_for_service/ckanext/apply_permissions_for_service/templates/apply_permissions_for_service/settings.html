@@ -117,9 +117,11 @@
               {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
             </div>
             <div>
+              <h3 class="api-catalog-group-title">{{ _('Description of the user permit application process') }}</h3>
+              <h5 class="api-catalog-group-description">{{ _('Describe the user permit application process of your subsystem here. Describe also other possible permits required for the implementation of your services.') }}</h5>
               {% set field_name = 'guide_text_translated' %}
-              {% set field_placeholder = _('Write a helpful guide text describing the request process') %}
-              {% set field_label = _('Guide text') %}
+              {% set field_placeholder = _('Describe the user permit application process') %}
+              {% set field_label = _('Description') %}
               {%- for lang in h.fluent_form_languages() -%}
                 {% set form_attrs = {'data-module': 'ckeditor5-markdown', 'data-module-language': h.get_lang_prefix()} %}
                 {% call form.textarea(
