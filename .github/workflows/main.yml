@@ -64,6 +64,9 @@ jobs:
           cd ../ckanext-markdown_editor
           pip install -e .
 
+          cd ../ckanext-apply_permissions_for_service
+          pip install -e
+
       - name: Setup extension
         run: |
           ckan -c ckanext/ckanext-apicatalog/test.ini db init
@@ -71,6 +74,7 @@ jobs:
       - name: Run tests
         run: |
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
+          pytest --ckan-ini=ckanext/ckanext-apply_permissions_for_service/test.ini --cov=ckanext.apply_permissions_for_service --disable-warnings ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/tests
 
   text-xroad:
     name: Test xroad integration
