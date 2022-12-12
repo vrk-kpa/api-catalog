@@ -95,4 +95,8 @@ def schema_translatable_strings():
             _('fi'),
             _('en'),
             _('sv'),
+            _('Organization acts as an intermediary for other organizations.'),
+            _('Organization processes data outside the EU/EAA countries.'),
+            _('Intermediary organization'),
+            _('Data processing'),
             ]
