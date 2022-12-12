@@ -91,6 +91,17 @@
       "form_languages": ["fi", "sv", "en"]
     },
     {
+      "field_name": "is_intermediary",
+      "form_snippet": "multiple_checkbox.html",
+      "choices": [
+        {
+          "value": "false",
+          "label": "Organization acts as an intermediary for other organizations."
+        }
+      ],
+      "label": "Intermediary organization"
+    },
+    {
       "field_name": "data_processing_outside_eu",
       "form_snippet": "multiple_checkbox.html",
       "choices": [
