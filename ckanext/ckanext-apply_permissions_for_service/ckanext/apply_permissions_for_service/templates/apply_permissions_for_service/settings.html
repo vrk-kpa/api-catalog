@@ -1,12 +1,14 @@
 {% extends 'package/edit_base.html' %}
 {% import 'macros/form.html' as form %}
-{% resource 'apicatalog_ui/javascript/mutexfield.js' %}
+
 
 {% block content_action %}
 {% link_for _('Exit the settings'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default' %}
 {% endblock %}
 
 {% block primary_content %}
+{% asset 'markdown_editor/markdown_editor-js' %}
+
 <section id="main_content" class="module">
   <div class="module-content">
     {% block primary_content_inner %}
@@ -113,6 +115,26 @@
             </div>
             <div data-mutex-value="web">
               {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
+            </div>
+            <div>
+              <h3 class="api-catalog-group-title">{{ _('Description of the user permit application process') }}</h3>
+              <h5 class="api-catalog-group-description">{{ _('Describe the user permit application process of your subsystem here. Describe also other possible permits required for the implementation of your services.') }}</h5>
+              {% set field_name = 'guide_text_translated' %}
+              {% set field_placeholder = _('Describe the user permit application process') %}
+              {% set field_label = _('Description') %}
+              {%- for lang in h.fluent_form_languages() -%}
+                {% set form_attrs = {'data-module': 'ckeditor5-markdown', 'data-module-language': h.get_lang_prefix()} %}
+                {% call form.textarea(
+                  field_name + '-' + lang,
+                  id='field-' + field_name + '-' + lang,
+                  label=_(field_label) + ' ' + _(lang),
+                  placeholder=h.scheming_language_text(field_placeholder, lang),
+                  value=settings.get(field_name, {})[lang],
+                  error=errors[field_name + '-' + lang],
+                  attrs=form_attrs
+                  ) %}
+                {% endcall %}
+              {%- endfor -%}
             </div>
             <div class="module__actions">
               <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>

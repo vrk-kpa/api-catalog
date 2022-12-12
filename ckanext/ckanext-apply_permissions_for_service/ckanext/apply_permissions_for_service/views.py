@@ -213,6 +213,11 @@ def settings_post(context, subsystem_id):
         'additional_file_url': form.get('additional_file_url'),
         'original_additional_filename': form.get('original_additional_filename'),
         'additional_file_clear_upload': form.get('additional_file_clear_upload'),
+        'guide_text_translated': {
+            'fi': form.get('guide_text_translated-fi', ''),
+            'en': form.get('guide_text_translated-en', ''),
+            'sv': form.get('guide_text_translated-sv', '')
+        }
     }
 
     if toolkit.check_ckan_version(min_version='2.5'):
