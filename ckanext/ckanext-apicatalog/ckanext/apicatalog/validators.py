@@ -292,9 +292,9 @@ def override_translation_with_default_language(field, schema):
             for subKey in value.keys():
                 if value[subKey] in (None, missing, ''):
                     value[subKey] = override_value
-        
+
         data[key] = json.dumps(value)
-    
+
     return validator
 
 
