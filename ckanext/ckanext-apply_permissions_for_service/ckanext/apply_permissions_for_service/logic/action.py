@@ -225,6 +225,15 @@ def service_permission_settings_update(context, data_dict):
                               'guide_text_translated')
                 if field in data_dict}
 
+    if settings.get('delivery_method') == 'file' and not settings.get('file_url', None):
+        raise tk.ValidationError({'file_url': _("You must provide application file when \
+                                                 'Organisation’s downloadable application (PDF)' is selected")})
+
+    if (settings.get('delivery_method') == 'email' and settings.get('require_additional_application_file') and
+            not settings.get('additional_file_url', None)):
+        raise tk.ValidationError({'additional_file_url': _("You must provide additional file when \
+                                                            'Request additional info with an attachment' is selected")})
+
     tk.get_action('package_patch')(context, {
         'id': data_dict['subsystem_id'],
         'service_permission_settings': json.dumps(settings)
