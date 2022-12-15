@@ -31,7 +31,7 @@ who.log_file = %(cache_dir)s/who_log.ini
 # Secure cookie & 4h timeout
 who.secure = True
 who.timeout = 14400
-who.samesite = Strict
+who.samesite = {{ ckan_who_samesite  | default('Strict') }}
 
 sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
 

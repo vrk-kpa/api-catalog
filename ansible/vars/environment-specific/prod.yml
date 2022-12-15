@@ -103,6 +103,7 @@ apicatalog_path: "{{ server_path }}/ckanext/ckanext-apicatalog/"
 
 ckan_plugins:
   - apicatalog
+  - sitesearch
   - scheming_datasets
   - scheming_organizations
   - fluent
