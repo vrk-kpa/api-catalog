@@ -3,3 +3,6 @@
 # For now (as there is very little data), let's always reindex to catch Solr problems.
 - name: Force Solr reindex
   shell: ./bin/ckan --config "{{ ckan_ini }}" search-index rebuild chdir={{ virtualenv }}
+
+- name: Force Solr reindex for organizations
+  shell: ./bin/ckan --config "{{ ckan_ini }}" sitesearch rebuild organizations chdir={{ virtualenv }}

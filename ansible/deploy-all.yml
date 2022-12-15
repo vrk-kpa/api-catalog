@@ -41,6 +41,7 @@
     - { role: ckan-extension, ckanext: ckanext-apply_permissions_for_service }
     - { role: ckan-extension, ckanext: ckanext-forcetranslation }
     - { role: ckan-extension, ckanext: ckanext-markdown_editor }
+    - { role: ckan-extension, ckanext: ckanext-sitesearch }
     - ckan
     - { role: ckan-ui }
     - nginx
