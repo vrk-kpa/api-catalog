@@ -5,21 +5,21 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 # 
 # Translators:
-# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
 # Roosa Lampinen, 2022
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2022
-# Suvi Nuttunen, 2022
 # Meeri Hakala <meeri.hakala@dvv.fi>, 2022
+# Suvi Nuttunen, 2022
+# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-16 11:16+0000\n"
+"POT-Creation-Date: 2022-12-12 08:44+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
-"Last-Translator: Meeri Hakala <meeri.hakala@dvv.fi>, 2022\n"
+"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022\n"
 "Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,23 +37,23 @@ msgstr ""
 msgid "User {name} stored in database."
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:830
-#: ckanext/apicatalog/templates/package/read.html:61
+#: ckanext/apicatalog/plugin.py:848
+#: ckanext/apicatalog/templates/package/read.html:58
 msgid "Services"
 msgstr "Palvelut"
 
-#: ckanext/apicatalog/plugin.py:831
+#: ckanext/apicatalog/plugin.py:849
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr "Organisaatio"
 
-#: ckanext/apicatalog/plugin.py:832
+#: ckanext/apicatalog/plugin.py:850
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr "Asiasanat"
 
-#: ckanext/apicatalog/plugin.py:833
+#: ckanext/apicatalog/plugin.py:851
 msgid "Formats"
 msgstr "Tiedostomuodot"
 
@@ -397,6 +397,22 @@ msgstr "englanniksi"
 msgid "sv"
 msgstr "ruotsiksi"
 
+#: ckanext/apicatalog/translations.py:98
+msgid "Organization acts as an intermediary for other organizations."
+msgstr "Organisaatio toimii välitoimijana muiden organisaatioiden puolesta."
+
+#: ckanext/apicatalog/translations.py:99
+msgid "Organization processes data outside the EU/EAA countries."
+msgstr "Organisaatio käsittelee tietoja EU-/ETA-maiden ulkopuolella."
+
+#: ckanext/apicatalog/translations.py:100
+msgid "Intermediary organization"
+msgstr "Välitoimijaorganisaatio"
+
+#: ckanext/apicatalog/translations.py:101
+msgid "Data processing"
+msgstr "Tietojen käsittely"
+
 #: ckanext/apicatalog/validators.py:54
 msgid "Package contains invalid resources"
 msgstr "Alijärjestelmä sisältää virheellisiä resursseja"
@@ -479,7 +495,7 @@ msgstr "Etusivu"
 #: ckanext/apicatalog/templates/apicatalog_header.html:60
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_navmenu.html:5
 #: ckanext/apicatalog/templates/organization/edit_base.html:11
-#: ckanext/apicatalog/templates/organization/read_base.html:8
+#: ckanext/apicatalog/templates/organization/read_base.html:14
 #: ckanext/apicatalog/templates/package/search.html:4
 msgid "Datasets"
 msgstr "Alijärjestelmät"
@@ -490,16 +506,16 @@ msgstr "Alijärjestelmät"
 msgid "Organizations"
 msgstr "Organisaatiot"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:66
+#: ckanext/apicatalog/templates/apicatalog_header.html:73
 msgid "More options"
 msgstr "Lisää"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:85
+#: ckanext/apicatalog/templates/apicatalog_header.html:87
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile.html:20
 msgid "Log in"
 msgstr "Kirjaudu sisään"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:87
+#: ckanext/apicatalog/templates/apicatalog_header.html:89
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile.html:22
 msgid "Register"
 msgstr "Rekisteröidy"
@@ -514,27 +530,11 @@ msgstr "Verkkopalvelun kehittämisestä vastaa Digi- ja väestötietovirasto."
 msgid "Give feedback"
 msgstr "Anna palautetta"
 
-#: ckanext/apicatalog/templates/footer.html:14
-msgid "API Catalog source code"
-msgstr "Liityntäkatalogin lähdekoodi"
-
-#: ckanext/apicatalog/templates/footer.html:14
-msgid "(Skip twitter feed)"
-msgstr "Hyppää twitter syötteen yli"
-
-#: ckanext/apicatalog/templates/footer.html:27
-msgid "Twitter"
-msgstr "Twitter"
-
-#: ckanext/apicatalog/templates/footer.html:29
+#: ckanext/apicatalog/templates/footer.html:22
 msgid "@Suomifiyritys"
 msgstr "@Suomifiyritys"
 
-#: ckanext/apicatalog/templates/footer.html:32
-msgid "Facebook"
-msgstr "Facebook"
-
-#: ckanext/apicatalog/templates/footer.html:34
+#: ckanext/apicatalog/templates/footer.html:27
 msgid "@Suomifiyritykselle"
 msgstr "@Suomifiyritykselle"
 
@@ -710,7 +710,6 @@ msgid "Resource"
 msgstr "Liitetiedosto"
 
 #: ckanext/apicatalog/templates/admin/dashboard.html:171
-#: ckanext/apicatalog/templates/package/read_base.html:15
 msgid "Dataset"
 msgstr "Alijärjestelmä"
 
@@ -883,6 +882,10 @@ msgstr "Ei valikossa"
 #: ckanext/apicatalog/templates/ckanext_pages/page.html:15
 #: ckanext/apicatalog/templates/organization/edit_base.html:10
 #: ckanext/apicatalog/templates/organization/members.html:35
+#: ckanext/apicatalog/templates/organization/read_base.html:5
+#: ckanext/apicatalog/templates/package/read_base.html:10
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:28
+#: ckanext/apicatalog/templates/user/read_base.html:5
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -1286,7 +1289,7 @@ msgstr "X-Roadiin liittyvät tiedot"
 msgid "Additional information"
 msgstr "Lisätiedot"
 
-#: ckanext/apicatalog/templates/organization/about.html:115
+#: ckanext/apicatalog/templates/organization/about.html:122
 msgid "Logo of organization {org}"
 msgstr "Organisaation {org} logo"
 
@@ -1295,7 +1298,7 @@ msgid "X-Road Errors"
 msgstr "X-Roadin virheet"
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:15
-#: ckanext/apicatalog/templates/organization/read_base.html:12
+#: ckanext/apicatalog/templates/organization/read_base.html:18
 msgid "Members"
 msgstr "Jäsenet"
 
@@ -1414,13 +1417,13 @@ msgstr "Organisaatiolla ei ole aktiivisia alijärjestelmiä"
 msgid "Active APIs"
 msgstr "Aktiiviset alijärjestelmät"
 
-#: ckanext/apicatalog/templates/organization/read_base.html:9
+#: ckanext/apicatalog/templates/organization/read_base.html:15
 #: ckanext/apicatalog/templates/snippets/apicatalog_offcanvas-info-button.html:2
 msgid "About"
 msgstr "Tietoja"
 
-#: ckanext/apicatalog/templates/organization/read_base.html:10
-#: ckanext/apicatalog/templates/package/read_base.html:18
+#: ckanext/apicatalog/templates/organization/read_base.html:16
+#: ckanext/apicatalog/templates/package/read_base.html:32
 msgid "Activity Stream"
 msgstr "Päivityshistoria"
 
@@ -1437,37 +1440,27 @@ msgid "Filter by role"
 msgstr "Rajaa organisaatiolistaa"
 
 #: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
-msgid "Show organizations without APIs"
-msgstr "Näytä kaikki organisaatiot"
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
 msgid "Show only service providers"
 msgstr "Näytä vain palveluntarjoajat"
+
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
+msgid "Show organizations without APIs"
+msgstr "Näytä kaikki organisaatiot"
 
 #: ckanext/apicatalog/templates/package/edit_base.html:7
 msgid "Edit subsystem"
 msgstr "Muokkaa alijärjestelmää"
 
 #: ckanext/apicatalog/templates/package/edit_base.html:14
+#: ckanext/apicatalog/templates/package/resource_edit_base.html:4
+#: ckanext/apicatalog/templates/package/resources.html:18
 msgid "Cancel editing"
 msgstr "Peruuta muokkaus"
 
-#: ckanext/apicatalog/templates/package/edit_base.html:24
+#: ckanext/apicatalog/templates/package/edit_base.html:25
+#: ckanext/apicatalog/templates/package/read_base.html:31
 msgid "Subsystem's information"
 msgstr "Alijärjestelmän tiedot"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:25
-#: ckanext/apicatalog/templates/package/read.html:64
-msgid "Attachments"
-msgstr "Liitteet"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:27
-msgid "Access request settings"
-msgstr "Lupapyyntöjen asetukset"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:28
-msgid "Received access requests"
-msgstr "Saapuneet lupapyynnöt"
 
 #: ckanext/apicatalog/templates/package/read.html:18
 msgid "Request permission to use this subsystem"
@@ -1513,22 +1506,17 @@ msgid "Request permission in organizations website"
 msgstr "Hae käyttölupaa organisaation sivuilla"
 
 #: ckanext/apicatalog/templates/package/read.html:38
-#: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:20
-msgid "Subsystem information"
-msgstr "Alijärjestelmän tiedot"
+msgid "Description"
+msgstr "Kuvaus"
 
-#: ckanext/apicatalog/templates/package/read.html:39
+#: ckanext/apicatalog/templates/package/read.html:43
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:59
 msgid "Service bus identifier"
 msgstr "Tunniste Palveluväylässä"
 
-#: ckanext/apicatalog/templates/package/read.html:49
-msgid "Description"
-msgstr "Kuvaus"
-
-#: ckanext/apicatalog/templates/package/read_base.html:16
-msgid "Groups"
-msgstr "Ryhmät"
+#: ckanext/apicatalog/templates/package/read.html:59
+msgid "Attachments"
+msgstr "Liitteet"
 
 #: ckanext/apicatalog/templates/package/resource_edit.html:13
 msgid "Cancel edit"
@@ -1539,6 +1527,15 @@ msgstr "Peruuta muokkaus"
 #: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:21
 msgid "Required field"
 msgstr "Vaadittu kenttä"
+
+#: ckanext/apicatalog/templates/package/resource_edit_base.html:6
+msgid "View resource"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/resources.html:4
+#: ckanext/apicatalog/templates/package/snippets/resources_list.html:22
+msgid "Reorder resources"
+msgstr "Uudelleenjärjestä palvelut"
 
 #: ckanext/apicatalog/templates/package/search.html:5
 msgid ""
@@ -1629,18 +1626,18 @@ msgstr "Haluatko varmasti poistaa alijärjestelmän?"
 msgid "Update Resource"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:26
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:27
 msgid "Invalid content"
 msgstr "Virheellistä sisältöä"
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:37
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:39
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:38
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:40
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:43
 msgid "Download"
 msgstr "Lataa"
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:42
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:44
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:43
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:45
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:40
 msgid "Go to resource"
 msgstr ""
@@ -1666,18 +1663,9 @@ msgstr "Esikatselu"
 msgid "Your browser does not support iframes."
 msgstr "Selaimesi ei tue kehyksiä."
 
-#: ckanext/apicatalog/templates/package/snippets/resources_list.html:26
-#, python-format
-msgid ""
-"<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
-" some?</a></p>"
+#: ckanext/apicatalog/templates/package/snippets/resources_list.html:17
+msgid "Add new resource"
 msgstr ""
-" <p class=\"empty\">Tässä alijärjestelmässä ei ole liitteitä. <a "
-"href=\"%(url)s\">Lisää liite tästä.</a> "
-
-#: ckanext/apicatalog/templates/package/snippets/resources_list.html:30
-msgid "This dataset has no data"
-msgstr "Tällä alijärjestelmällä ei ole liitetiedostoja"
 
 #: ckanext/apicatalog/templates/package/snippets/tags.html:4
 msgid "Keywords"
@@ -1707,9 +1695,9 @@ msgstr ""
 msgid "Are you sure you want to delete this Organization?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:28
-msgid "Manage"
-msgstr "Hallinnoi"
+#: ckanext/apicatalog/templates/scheming/package/read.html:16
+msgid "No description"
+msgstr "Ei kuvausta"
 
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:37
 msgid "API Endpoint"
@@ -1785,6 +1773,10 @@ msgstr "Luotu"
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:171
 msgid "Format"
 msgstr "Tiedostomuoto"
+
+#: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:20
+msgid "Subsystem information"
+msgstr "Alijärjestelmän tiedot"
 
 #: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
 msgid "Are you sure you want to delete this resource?"
@@ -1867,21 +1859,30 @@ msgstr "Lajittelu"
 msgid "Go"
 msgstr "Siirry"
 
-#: ckanext/apicatalog/templates/user/dashboard.html:5
+#: ckanext/apicatalog/templates/user/dashboard.html:8
+msgid "Profile settings"
+msgstr ""
+
+#: ckanext/apicatalog/templates/user/dashboard.html:12
+#: ckanext/apicatalog/templates/user/dashboard.html:34
 msgid "News feed"
 msgstr ""
 
-#: ckanext/apicatalog/templates/user/dashboard.html:6
+#: ckanext/apicatalog/templates/user/dashboard.html:13
 msgid "My Datasets"
 msgstr ""
 
-#: ckanext/apicatalog/templates/user/dashboard.html:7
+#: ckanext/apicatalog/templates/user/dashboard.html:14
 msgid "My Organizations"
 msgstr "Minun organisaationi"
 
-#: ckanext/apicatalog/templates/user/dashboard.html:9
+#: ckanext/apicatalog/templates/user/dashboard.html:16
 msgid "Service access applications"
 msgstr "Palvelun käyttöoikeudet"
+
+#: ckanext/apicatalog/templates/user/dashboard.html:36
+msgid "Activity from items that I'm following"
+msgstr ""
 
 #: ckanext/apicatalog/templates/user/edit_user_form.html:9
 msgid "Change details"
