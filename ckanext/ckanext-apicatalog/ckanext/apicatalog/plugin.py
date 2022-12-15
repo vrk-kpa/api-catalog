@@ -835,6 +835,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'convert_to_json_compatible_str_if_str': validators.convert_to_json_compatible_str_if_str,
             'mark_as_modified_in_catalog_if_changed': validators.mark_as_modified_in_catalog_if_changed,
             'override_field_with_default_translation': validators.override_field_with_default_translation,
+            'override_translation_with_default_language': validators.override_translation_with_default_language,
             'fluent_list': validators.fluent_list,
             'fluent_list_output': validators.fluent_list_output,
             'ignore_non_existent_organizations': validators.ignore_non_existent_organizations,
