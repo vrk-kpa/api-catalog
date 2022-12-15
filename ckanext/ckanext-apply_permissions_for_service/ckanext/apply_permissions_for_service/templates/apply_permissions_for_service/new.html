@@ -109,7 +109,7 @@
                   <input type="checkbox"
                          id="enableIntermediateOrganization"
                          name="enableIntermediateOrganization"
-                         {% if values.intermediate_organization %}checked{% endif %} 
+                         {% if values.intermediate_organization %}checked{% endif %}
                          onchange="showIntermediateOrganization()">
               </td>
               <td style="padding-left: 5px; padding-right: 5px;">
@@ -122,6 +122,7 @@
 
   <div id="intermediateOrganizationDiv">
     <h3>{{ _('Information about the organization consuming the services') }}</h3>
+    <p class="input-group-description">{{ _('Fill in the information on behalf of the organisation that you apply user permit for.') }}</p>
     {% snippet 'apply_permissions_for_service/snippets/organization_select.html',
                name='intermediateOrganization',
                select_attrs={'onchange': 'selectIntermediateOrganization()'},
