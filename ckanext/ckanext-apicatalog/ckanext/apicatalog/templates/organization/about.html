@@ -9,15 +9,14 @@
 				{% endif %}
 			{% endblock %}
 			{% block organization_extras %}
-
-                {% if c.group_dict['email_address'] or c.group_dict['webpage_address']
+                {% if c.group_dict['email_address_translated'] or c.group_dict['webpage_address']
                         or c.group_dict['street_address'] or c.group_dict['postal_address']
                         or c.group_dict['phone_number'] %}
                     <h2>{{ _('Contact Information') }}</h2>
                     <dl>
 
-                        {% if c.group_dict['email_address'] %}
-                            {% set field = h.scheming_field_by_name(c.scheming_fields, 'email_address') %}
+                        {% if c.group_dict['email_address_translated'] %}
+                            {% set field = h.scheming_field_by_name(c.scheming_fields, 'email_address_translated') %}
                             <dt>{{ h.scheming_language_text(field.label) }}:</dt>
                             <dd>{%- snippet 'scheming/snippets/display_field.html',
               field=field, data=c.group_dict, schema=schema -%}</dd>
