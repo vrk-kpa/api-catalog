@@ -36,7 +36,7 @@ def organization_generator(context, options={}, page_size=None):
     for index in itertools.count(start=0, step=page_size):
         data_dict.update({'rows': page_size, 'start': index})
         organizations = organization_list(context, data_dict)
-        
+
         # Empty page, previous must have been the last one
         if not organizations.get('results', None):
             return
