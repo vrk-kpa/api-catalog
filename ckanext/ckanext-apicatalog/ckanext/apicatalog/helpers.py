@@ -134,3 +134,7 @@ def with_field_string_replacements(fields, replaced, replacement, affected_value
                 field[value_name] = process(value)
 
     return fields
+
+
+def username_from_id(uid):
+    return get_action('user_show')({'ignore_auth': True}, {'id': uid}).get('name')

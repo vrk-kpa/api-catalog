@@ -15,6 +15,7 @@ main_js:
     - javascript/collapsible.js
     - javascript/api-catalog-select2.js
     - javascript/drag-n-drop-uploader.js
+    - javascript/modal-dialog.js
 
 main_css:
   output: ckanext-apicatalog/%(version)s_main.css
