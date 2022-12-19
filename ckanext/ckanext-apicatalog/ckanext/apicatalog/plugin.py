@@ -34,7 +34,7 @@ from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import with_field_string_replacements, \
-    apicatalog_scheming_language_text, parse_datetime
+    apicatalog_scheming_language_text, parse_datetime, username_from_id
 
 from collections import OrderedDict
 
@@ -793,7 +793,8 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'get_field_from_schema': get_field_from_schema,
                 'max_resource_size': get_max_resource_size,
                 'with_field_string_replacements': with_field_string_replacements,
-                'scheming_language_text': apicatalog_scheming_language_text
+                'scheming_language_text': apicatalog_scheming_language_text,
+                'username_from_id': username_from_id,
                 }
 
     def get_actions(self):
