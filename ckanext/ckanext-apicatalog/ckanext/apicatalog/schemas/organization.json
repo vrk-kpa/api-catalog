@@ -5,15 +5,16 @@
   "fields": [
     {
       "field_name": "title_translated",
-      "label": "Organization name",
-      "extra_label": "Organization name",
+      "label": "Name",
+      "group_title": "Organization name",
       "input_title": ["Name in Finnish", "Name in Swedish", "Name in English"],
       "preset": "fluent_core_title_translated",
       "only_default_lang_required": true,
       "display_hr": false,
       "form_placeholder": "Organization name",
       "form_languages": ["fi", "sv", "en"],
-      "display_snippet": null
+      "display_snippet": null,
+      "group_divider": true
     },
     {
       "field_name": "name",
@@ -26,16 +27,18 @@
     },
     {
       "field_name": "description_translated",
-      "label": "Organisation description",
-      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "label": "Description",
+      "group_title": "Organisation description",
+      "group_description": "A general, concise, and easy-to-understand description of the organization. You can use <a href='#markdown' title='Markdown quick reference'>Markdown formatting</a> here.",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "preset": "fluent_markdown_editor",
       "required": false,
-      "form_placeholder": "Write subsystem description",
+      "form_placeholder": "Write organization description",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
-      "form_attrs": {}
+      "form_attrs": {},
+      "group_divider": true
     },
     {
       "field_name": "description_translated_modified_in_catalog",
@@ -45,8 +48,8 @@
     },
     {
       "field_name": "logo",
-      "label": "Other information and settings",
-      "extra_label": "The logo is displayed on the organization page in API Catalogue.",
+      "group_title": "Other information and settings",
+      "description": "The logo is displayed on the organization page in API Catalogue.",
       "form_snippet": "organization_upload.html",
       "upload_label": "Organisation logo",
       "url_label": "Organisation logo",
@@ -54,41 +57,36 @@
     },
     {
       "field_name": "street_address",
-      "extra_label": null,
       "label": "Street address",
       "validators": "ignore_missing",
-      "form_snippet": "extra_label.html",
       "classes": ["control-full"],
       "form_placeholder": "Street address"
     },
     {
       "field_name": "postal_address",
-      "extra_label": null,
       "label": "Postal address",
       "validators": "ignore_missing",
-      "form_snippet": "extra_label.html",
       "classes": ["control-full"],
       "form_placeholder": "Postal address"
     },
     {
       "field_name": "phone_number",
-      "extra_label": "If possible, provide a telephone number for the organization's switchboard or customer service, not an individual number.",
       "label": "Phone number",
+      "description": "If possible, provide a telephone number for the organization's switchboard or customer service, not an individual number.",
       "validators": "ignore_missing",
-      "form_snippet": "extra_label.html",
       "classes": ["control-full"],
       "form_placeholder": "Phone number"
     },
     {
       "field_name": "email_address_translated",
       "label": "Email address",
-      "extra_label": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
+      "description": "If possible, enter the email address of the organization or customer service, not the email address of the individual.",
       "input_title": ["E-mail address in Finnish", "E-mail address in Swedish", "E-mail address in English"],
       "form_placeholder": "Email address",
       "validators": "fluent_text override_translation_with_default_language",
       "output_validators": "fluent_core_translated_output",
       "display_snippet": "fluent_text.html",
-      "form_snippet": "fluent_text.html",
+      "form_snippet": "fluent_text_ex.html",
       "form_languages": ["fi", "sv", "en"]
     },
     {

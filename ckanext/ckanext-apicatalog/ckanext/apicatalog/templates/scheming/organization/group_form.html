@@ -7,7 +7,7 @@
     </p>
 {%- endif -%}
 <div class="module-content">
-<form class="dataset-form form-horizontal" method="post" data-module="basic-form" enctype="multipart/form-data">
+<form class="dataset-form" method="post" data-module="basic-form" enctype="multipart/form-data">
     <p class="control-required-message"><span>*&nbsp;</span>{{ _('Required field') }}</p>
   {% block error_summary %}
     {{ form.errors(error_summary) }}
@@ -15,11 +15,22 @@
 
   {%- set schema = h.scheming_get_organization_schema(c.group_type) -%}
     {%- for field in schema['fields'] -%}
+        {% if field.group_title %}
+            <h3 class="api-catalog-group-title">{{_(field.group_title)}}</h3>
+        {% endif %}
+
+        {% if field.group_description %}
+            <h5 class="api-catalog-group-description">{{_(field.group_description)}}</h5>
+        {% endif %}
         {%- if field.form_snippet is not none -%}
           {%- snippet 'scheming/snippets/form_field.html',
           field=field, data=data, errors=errors, licenses=licenses,
           entity_type='organization', object_type=c.group_type -%}
         {%- endif -%}
+
+        {% if field.group_divider %}
+          <hr/>
+        {% endif %}
     {%- endfor -%}
     {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
 
