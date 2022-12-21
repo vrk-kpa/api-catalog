@@ -1,29 +1,23 @@
 {% import 'macros/form.html' as form %}
 {% import 'scheming/macros/form.html' as form_custom %}
-<div class="form-group-fluent control-group">
-  {#
-    {% if field.description and field.description.strip() %}
-    <div class="field-assistive-text">
-      {{ _(field.description) }}
-    </div>
-    {% endif %}
-  #}
+
+<div class="form-group-fluent">
   {%- for lang in h.fluent_form_languages(field, entity_type, object_type, schema) -%}
     {% if loop.first and field.description and field.description.strip() %}
       {% set description = field.description %}
     {% endif %}
-    {% call form_custom.markdown(
+    {% call form_custom.input(
       field.field_name + '-' + lang,
       id='field-' + field.field_name + '-' + lang,
       label=_(field.label) + ' ' + _(lang),
       placeholder=h.scheming_language_text(field.form_placeholder, lang),
       value=data[field.field_name + '-' + lang]
-      or data.get(field.field_name, {})[lang],
+          or data.get(field.field_name, {})[lang],
       error=errors[field.field_name + '-' + lang]
-      or errors.get(field.field_name, {})[lang]
-      or errors[field.field_name],
-      attrs=field.form_attrs or {},
-      classes=['no-editor-info', 'label-on-top'],
+          or errors.get(field.field_name, {})[lang]
+          or errors[field.field_name],
+      classes=['control-full label-on-top'],
+      attrs=field.form_attrs if 'form_attrs' in field else {},
       is_required=h.scheming_field_only_default_required(field, lang),
       description=description
       ) %}

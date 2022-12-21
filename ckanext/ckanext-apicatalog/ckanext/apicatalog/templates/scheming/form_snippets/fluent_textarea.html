@@ -2,8 +2,8 @@
 
   <div class="form-group control-full">
     <h3>{{ _(field.label) }}</h3>
-      {%- if field.extra_label is not none -%}
-          <p>{{ _(field.extra_label) }}
+      {%- if field.description -%}
+          <p>{{ _(field.description) }}
               {% trans %}You can use <a href="#markdown" title="Markdown quick reference">Markdown formatting</a> here.{% endtrans %}
           </p>
       {%- endif -%}
@@ -27,6 +27,3 @@
       lang=lang -%}
     {% endcall %}
   {%- endfor -%}
-<div class="form-group control-full">
-    <hr/>
-</div>

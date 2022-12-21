@@ -22,15 +22,8 @@
   {%- set option_selected = None -%}
 {%- endif -%}
 
-{%- if field.display_hr -%}
-    <div class="form-group control-full">
-        <hr/>
-    </div>
-{%- endif -%}
-    {%- if field.extra_label is not none -%}
-        <h3 style="margin-left: -15px;">{{ _(field.extra_label) }}</h3>
-    {%- else -%}
-        <label class="control-label group-label">{{ _(field.label) }}</label>
+    {%- if field.description -%}
+        <h3 style="margin-left: -15px;">{{ _(field.description) }}</h3>
     {%- endif -%}
 
 {% call form.select(
