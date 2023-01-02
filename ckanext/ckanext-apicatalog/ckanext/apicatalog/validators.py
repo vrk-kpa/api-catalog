@@ -10,6 +10,8 @@ import ckan.logic.validators as validators
 import json
 from . import plugin
 
+import logging
+log = logging.getLogger(__name__)
 
 missing = toolkit.missing
 get_action = toolkit.get_action
@@ -368,3 +370,20 @@ def ignore_non_existent_organizations(value):
             pass
 
     return ','.join(existing_organizations)
+
+
+def list_to_json_string(value):
+    if isinstance(value, list):
+        return value
+    try:
+        str = json.dumps(value)
+        return str
+    except json.JSONDecodeError:
+        return value
+
+
+def json_string_to_list(value):
+    try:
+        return json.loads(value)
+    except json.JSONDecodeError:
+        return value
