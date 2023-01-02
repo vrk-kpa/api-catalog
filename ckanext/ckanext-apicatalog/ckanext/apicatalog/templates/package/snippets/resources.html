@@ -1,12 +1,30 @@
 {% ckan_extends %}
 
-{% block resources_list %}
-  <ul class="list-unstyled nav nav-simple attachments-list">
-    {% for resource in resources %}
-      <li class="nav-item{{ ' active' if active == resource.id }}">
-        {% set service_type = ' (' + resource.xroad_service_type|upper + ')' if resource.xroad_service_type and resource.xroad_service_type else '' %}
-        {% link_for h.resource_display_name(resource) + service_type, 'resource_read', id=pkg.name, resource_id=resource.id, inner_span=true %}
-      </li>
-    {% endfor %}
-  </ul>
+{% block resources_inner %}
+  {% set services = resources|selectattr('harvested_from_xroad')|list %}
+  {% set attachments = resources|rejectattr('harvested_from_xroad')|list %}
+
+  {% if services %}
+    <h2>{{ _("Services") }}</h2>
+    <ul class="list-unstyled nav nav-simple attachments-list">
+      {% for resource in services %}
+        <li class="nav-item{{ ' active' if active == resource.id }}">
+          {% set service_type = ' (' + resource.xroad_service_type|upper + ')' if resource.xroad_service_type and resource.xroad_service_type else '' %}
+          {% link_for h.resource_display_name(resource) + service_type, 'resource_read', id=pkg.name, resource_id=resource.id, inner_span=true %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if attachments %}
+    <h2>{{ _("Attachments") }}</h2>
+    <ul class="list-unstyled nav nav-simple attachments-list">
+      {% for resource in attachments %}
+        <li class="nav-item{{ ' active' if active == resource.id }}">
+          {% set service_type = ' (' + resource.xroad_service_type|upper + ')' if resource.xroad_service_type and resource.xroad_service_type else '' %}
+          {% link_for h.resource_display_name(resource) + service_type, 'resource_read', id=pkg.name, resource_id=resource.id, inner_span=true %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}
