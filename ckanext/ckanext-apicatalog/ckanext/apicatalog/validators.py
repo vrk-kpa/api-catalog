@@ -373,17 +373,20 @@ def ignore_non_existent_organizations(value):
 
 
 def list_to_json_string(value):
-    if isinstance(value, list):
-        return value
-    try:
-        str = json.dumps(value)
-        return str
-    except json.JSONDecodeError:
-        return value
+    if value is not missing:
+        if isinstance(value, str):
+            try:
+                value = json.loads(value)
+            except json.JSONDecodeError as e:
+                raise toolkit.Invalid('Failed to decode JSON string')
+        str_value = json.dumps(value)
+        return str_value
 
 
 def json_string_to_list(value):
-    try:
-        return json.loads(value)
-    except json.JSONDecodeError:
-        return value
+    if isinstance(value, str):
+        try:
+            return json.loads(value)
+        except json.JSONDecodeError:
+            return value
+    return value
