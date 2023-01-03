@@ -377,7 +377,7 @@ def list_to_json_string(value):
         if isinstance(value, str):
             try:
                 value = json.loads(value)
-            except json.JSONDecodeError as e:
+            except json.JSONDecodeError:
                 raise toolkit.Invalid('Failed to decode JSON string')
         str_value = json.dumps(value)
         return str_value
