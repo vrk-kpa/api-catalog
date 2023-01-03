@@ -230,9 +230,15 @@ class TestApicatalogPlugin():
         results = helpers.call_action('create_organization_users', context)['result']
         assert results['added'] == [user['name']]
 
-    def test_old_business_ids_output(self):
-        organization_with_json_string = Organization(old_business_ids="[1,2]")
-        organization_with_python_list = Organization(old_business_ids=[1, 2])
+    def test_old_business_ids_output_with_json(self):
+        organization_with_json_string = Organization(old_business_ids="[\"1\",\"2\"]")
+        assert organization_with_json_string['old_business_ids'] == ['1', '2']
 
-        assert organization_with_json_string['old_business_ids'] == [1, 2]
-        assert organization_with_python_list['old_business_ids'] == [1, 2]
+    def test_old_business_ids_output_with_list(self):
+        organization_with_python_list = Organization(old_business_ids=['1', '2'])
+
+        assert organization_with_python_list['old_business_ids'] == ['1', '2']
+
+    def test_old_business_ids_output_with_invalid_json(self):
+        with pytest.raises(ValidationError):
+            Organization(old_business_ids="foobar")
