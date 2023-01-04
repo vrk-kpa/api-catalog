@@ -231,7 +231,7 @@ class TestApicatalogPlugin():
         assert results['added'] == [user['name']]
 
     def test_old_business_ids_output_with_json(self):
-        organization_with_json_string = Organization(old_business_ids="[\"1\",\"2\"]")
+        organization_with_json_string = Organization(old_business_ids='["1","2"]')
         assert organization_with_json_string['old_business_ids'] == ['1', '2']
 
     def test_old_business_ids_output_with_list(self):
