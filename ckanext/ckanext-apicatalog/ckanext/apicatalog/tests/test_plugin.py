@@ -229,3 +229,12 @@ class TestApicatalogPlugin():
                             organization_name=org['name'])
         results = helpers.call_action('create_organization_users', context)['result']
         assert results['added'] == [user['name']]
+
+    def test_old_business_ids_output_with_string(self):
+        with pytest.raises(ValidationError):
+            Organization(old_business_ids='["1","2"]')
+
+    def test_old_business_ids_output_with_list(self):
+        organization_with_python_list = Organization(old_business_ids=['1', '2'])
+
+        assert organization_with_python_list['old_business_ids'] == ['1', '2']

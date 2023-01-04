@@ -840,6 +840,8 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'fluent_list': validators.fluent_list,
             'fluent_list_output': validators.fluent_list_output,
             'ignore_non_existent_organizations': validators.ignore_non_existent_organizations,
+            'list_to_json_string': validators.list_to_json_string,
+            'json_string_to_list': validators.json_string_to_list
         }
 
     # IFacets

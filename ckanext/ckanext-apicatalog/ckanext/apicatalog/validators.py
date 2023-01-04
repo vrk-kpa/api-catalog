@@ -10,6 +10,8 @@ import ckan.logic.validators as validators
 import json
 from . import plugin
 
+import logging
+log = logging.getLogger(__name__)
 
 missing = toolkit.missing
 get_action = toolkit.get_action
@@ -105,10 +107,14 @@ def keep_old_value_if_missing(field, schema):
 
     def validator(key, data, errors, context):
 
-        if 'package' not in context:
-            return
+        if 'package' in context:
+            data_dict = flatten_dict(get_action('package_show')(context, {'id': context['package'].id}))
 
-        data_dict = flatten_dict(get_action('package_show')(context, {'id': context['package'].id}))
+        elif 'group' in context and context['group'] is not None:
+            data_dict = flatten_dict(get_action('organization_show')(context, {'id': context['group'].id}))
+
+        else:
+            return
 
         if key not in data or data[key] is missing:
             if key in data_dict:
@@ -368,3 +374,24 @@ def ignore_non_existent_organizations(value):
             pass
 
     return ','.join(existing_organizations)
+
+
+def list_to_json_string(value):
+    if value is not missing:
+        if not isinstance(value, list):
+            raise toolkit.Invalid('Provided value is not a list')
+        str_value = json.dumps(value)
+        return str_value
+
+
+def json_string_to_list(value):
+    if isinstance(value, str):
+        try:
+            return json.loads(value)
+        except json.JSONDecodeError:
+            log.warning("Stored value in database was not a json string")
+            return value
+
+    if not isinstance(value, list):
+        log.warning("Stored value in database was not a list")
+    return value
