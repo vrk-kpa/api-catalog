@@ -36,17 +36,9 @@
   stat: path="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt"
   register: requirements
 
-- name: Register extension pip-requirements.txt
-  stat: path="{{ ckanext_sync_path }}/{{ ckanext }}/pip-requirements.txt"
-  register: piprequirements
-
 - name: Install extension requirements
   pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/requirements.txt" virtualenv={{ virtualenv}} chdir="{{ ckanext_sync_path }}/{{ ckanext }}"
   when: requirements.stat.exists
-
-- name: Install extension piprequirements
-  pip: requirements="{{ ckanext_sync_path }}/{{ ckanext }}/pip-requirements.txt" virtualenv={{ virtualenv}}
-  when: piprequirements.stat.exists
 
 - block:
     - name: Register extension dev-requirements.txt
