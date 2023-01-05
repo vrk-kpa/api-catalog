@@ -68,6 +68,7 @@ def define_tables():
         Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
         Column('result_id', types.UnicodeText, ForeignKey('link_validation_result.id')),
         Column('url', types.UnicodeText, nullable=False),
+        Column('organization', types.UnicodeText, nullable=True),
     )
     link_validation_referrer_table = Table('link_validation_referrer', metadata,
                                            *link_validation_referrer_columns)
@@ -93,9 +94,20 @@ def clear_tables():
 
 
 def migrate():
-    q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
-    current_cols = list([m[0] for m in Session.execute(q)])
-    if "reason" not in current_cols:
-        Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason "
-                        "character varying NOT NULL default 'Reason was not stored in database.'")
-        Session.commit()
+    def add_link_validation_result_reason():
+        q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
+        current_cols = list([m[0] for m in Session.execute(q)])
+        if "reason" not in current_cols:
+            Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason "
+                            "character varying NOT NULL default 'Reason was not stored in database.'")
+            Session.commit()
+
+    def add_link_validation_referrer_organization():
+        q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_referrer';"
+        current_cols = list([m[0] for m in Session.execute(q)])
+        if "organization" not in current_cols:
+            Session.execute("ALTER TABLE link_validation_referrer ADD COLUMN organization character varying")
+            Session.commit()
+
+    add_link_validation_result_reason()
+    add_link_validation_referrer_organization()

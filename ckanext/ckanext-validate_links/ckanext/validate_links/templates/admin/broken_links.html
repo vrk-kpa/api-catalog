@@ -1,5 +1,5 @@
 {% extends "admin/base.html" %}
-{% block primary_content_inner %}
+{% block primary %}
 <h1>{{ _('Broken links') }}</h1>
 <table class="table">
   <thead>
@@ -7,6 +7,7 @@
       <th>{{_('URL') }}</th>
       <th>{{ _('Referrers') }}</th>
       <th>{{ _('Reason') }}</th>
+      <th>{{ _('Organizations') }}</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,13 @@
         </ul>
       </td>
       <td>{{ r.reason }}</td>
+      <td>
+        <ul class="list-unstyled">
+        {% for o in r.organizations %}
+        <li>{{ h.link_to(o.display_name, h.url_for('organization_read', id=o.id)) }}</a></li>
+        {% endfor %}
+        </ul>
+      </td>
     </tr>
     {% endfor %}
   </tbody>

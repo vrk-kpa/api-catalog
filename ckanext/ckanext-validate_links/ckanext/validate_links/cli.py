@@ -8,11 +8,13 @@ from urllib.request import urlopen, build_opener
 from urllib.error import URLError, HTTPError
 import urllib.parse as parse
 import re
+from typing import Optional
 
 from ckanext.validate_links.model import define_tables, clear_tables, LinkValidationResult, LinkValidationReferrer
 import ckan.model as model
 import ckan.lib.mailer as mailer
 from ckan.common import config
+from ckan.plugins import toolkit
 import click
 
 import ssl
@@ -97,6 +99,7 @@ def crawl():
             referrer = LinkValidationReferrer()
             referrer.result_id = result.id
             referrer.url = referrer_url
+            referrer.organization = determine_relevant_organization(referrer_url)
             result.referrers.append(referrer)
 
         model.Session.add(result)
@@ -132,6 +135,39 @@ def get_external_children(site_url, site_map, url_blacklist):
                 external.add(child)
 
     return external
+
+
+# Cache regex patterns to avoid compiling them for every referrer url
+DATASET_PATTERN = None
+ORGANIZATION_PATTERN = None
+
+
+def determine_relevant_organization(url: str) -> Optional[str]:
+    global DATASET_PATTERN, ORGANIZATION_PATTERN
+    if DATASET_PATTERN is None or ORGANIZATION_PATTERN is None:
+        site_url = toolkit.config.get('ckan.site_url')
+        locales = toolkit.aslist(toolkit.config.get('ckan.locales_offered', ['en']))
+        optional_locale = '(?:/(?:{}))?'.format('|'.join(locales))
+        dataset_index = toolkit.url_for('dataset_search')
+        organization_index = toolkit.url_for('organization_index')
+        DATASET_PATTERN = re.compile(f'{site_url}{optional_locale}{dataset_index}([^/]+)(?:/([^/]+))?')
+        ORGANIZATION_PATTERN = re.compile(f'{site_url}{optional_locale}{organization_index}([^/]+)(?:/([^/]+))?')
+
+    dataset_match = DATASET_PATTERN.match(url)
+
+    if dataset_match:
+        if dataset_match[2] not in ('resource', None, ''):
+            dataset_name = dataset_match[2]
+        else:
+            dataset_name = dataset_match[1]
+        dataset = toolkit.get_action('package_show')({'ignore_auth': True}, {'name_or_id': dataset_name})
+        return (dataset or {}).get('owner_org')
+
+    organization_match = ORGANIZATION_PATTERN.match(url)
+
+    if organization_match:
+        organization_name = organization_match[2] or organization_match[1]
+        return organization_name
 
 
 class MapItem(object):
