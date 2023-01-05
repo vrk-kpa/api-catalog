@@ -30,4 +30,4 @@
 	url = https://github.com/vrk-kpa/ckanext-markdown_editor
 [submodule "ckanext/ckanext-sitesearch"]
 	path = ckanext/ckanext-sitesearch
-	url = git@github.com:vrk-kpa/ckanext-sitesearch.git
+	url = https://github.com/vrk-kpa/ckanext-sitesearch
