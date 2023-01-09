@@ -23,8 +23,9 @@
   {#{% set resource_fields = h.with_service_field_labels(schema.resource_fields) %}#}
     {% set resource_fields = h.with_field_string_replacements(schema.resource_fields, 'attachment', 'service',
                                                               ['label',
-                                                               'extra_label',
-                                                               'additional_description',
+                                                               'description',
+                                                               'group_title',
+                                                               'group_description',
                                                                'input_title',
                                                                'form_placeholder',
                                                                ]) %}
@@ -33,6 +34,13 @@
   {% endif %}
 
   {%- for field in resource_fields -%}
+    {% if field.group_title %}
+      <h3 class="api-catalog-group-title">{{_(field.group_title)}}</h3>
+    {% endif %}
+
+    {% if field.group_description %}
+      <h5 class="api-catalog-group-description">{{_(field.group_description)}}</h5>
+    {% endif %}
     {%- if field.form_snippet is not none -%}
       {%- if field.field_name not in data %}
         {# Set the field default value before rendering but only if
@@ -55,6 +63,9 @@
         object_type=dataset_type
       -%}
     {%- endif -%}
+    {% if field.group_divider %}
+      <hr>
+    {% endif %}
   {%- endfor -%}
 
 {% endblock %}

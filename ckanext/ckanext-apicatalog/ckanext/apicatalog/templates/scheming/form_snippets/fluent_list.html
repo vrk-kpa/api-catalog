@@ -4,8 +4,8 @@
   {%- set extra_html = caller() if caller -%}
 
   {% call form.input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required) %}
-      {%- if field.extra_label is not none -%}
-       <p >{{ _(field.extra_label) }}</p>
+      {%- if field.description is not none -%}
+       <p >{{ _(field.description) }}</p>
       {%- endif -%}
   <input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {% if final and value and value != "" %}readonly{% endif %} "{{ form.attributes(attrs) }} {% if final and value and value != "" %}readonly{% endif %}/>
   {% endcall %}

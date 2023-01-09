@@ -34,7 +34,8 @@ from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import with_field_string_replacements, \
-    apicatalog_scheming_language_text, parse_datetime, username_from_id
+    apicatalog_scheming_language_text, parse_datetime, username_from_id, \
+    is_boolean_selected
 
 from collections import OrderedDict
 
@@ -795,6 +796,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'with_field_string_replacements': with_field_string_replacements,
                 'scheming_language_text': apicatalog_scheming_language_text,
                 'username_from_id': username_from_id,
+                'is_boolean_selected': is_boolean_selected
                 }
 
     def get_actions(self):

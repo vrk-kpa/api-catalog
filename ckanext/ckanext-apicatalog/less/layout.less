@@ -315,7 +315,7 @@
 
 .org-page-tweaks {
   margin-right: -15px;
-  padding: 40px;
+  padding: 0;
   padding-right: 0;
 
   .primary {
@@ -323,6 +323,16 @@
     .module-content {
       padding-left: 20px;
       margin-top: 0;
+    }
+
+    .module-content {
+      dd {
+        margin-left: 0;
+      }
+
+      dt {
+        font-weight: inherit;
+      }
     }
   }
 
@@ -340,8 +350,7 @@
 }
 
 .org-page-heading {
-  margin-top: -22px;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
 .sorter-wrapper {
@@ -363,6 +372,14 @@
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
     border-bottom: none !important;
+  }
+
+  & .search-form {
+    margin-bottom: 30px !important;
+
+    .search-result-text {
+      margin-bottom: -15px;
+    }
   }
 
   select {

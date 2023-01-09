@@ -2,7 +2,7 @@ import itertools
 import copy
 from datetime import datetime
 
-from ckan.plugins.toolkit import get_action, request
+from ckan.plugins.toolkit import get_action, request, asbool
 from ckanext.scheming.helpers import scheming_language_text
 
 from ckan.logic import NotFound
@@ -138,3 +138,10 @@ def with_field_string_replacements(fields, replaced, replacement, affected_value
 
 def username_from_id(uid):
     return get_action('user_show')({'ignore_auth': True}, {'id': uid}).get('name')
+
+
+def is_boolean_selected(value, selected):
+    try:
+        return asbool(value) is asbool(selected)
+    except ValueError:
+        return

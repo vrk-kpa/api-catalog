@@ -2,29 +2,37 @@
 
 
 {% block prelude %}
-    <div class="prelude-dataset">
+    <div class="prelude-dataset prelude-dataset-edit">
         <h1>{{ h.get_translated(c.group_dict, 'title')  }}</h1>
-        <ul class="nav nav-tabs">
-            {% block content_primary_nav %}
-                {% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
-                    {{ h.build_nav_icon('organization.edit', _('Edit'), id=c.group_dict.name) }}
-                    {{ h.build_nav_icon('organization.bulk_process', _('Datasets'), id=c.group_dict.name) }}
-                    {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road Errors'), organization=c.group_dict.id) }}
-                {% endif %}
-                {% if h.check_access('read_members') %}
-                    {{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name) }}
-                {% endif %}
-            {% endblock %}
-        </ul>
     </div>
-
 {% endblock %}
 
 
 {% block content_action %}
     {% if organization and h.check_access('organization_show', {'id': organization.id}) %}
-        {% link_for _('View'), controller='organization', action='read', id=organization.name, class_='btn btn-default', icon='eye' %}
+        <a href="{{ h.url_for('organization.read', id=organization.id) }}" class="btn btn-default dataset-edit-cancel">
+            <i class="far fa-long-arrow-left"></i>
+            {{ _('Cancel editing') }}
+        </a>
     {% endif %}
 {% endblock %}
+{% block wrapper_class %}dataset-edit{% endblock %}
 
-{% block secondary_content %}{% endblock %}
+{% block secondary_content %}
+    <section class="module module-narrow">
+    <div class="module context-info">
+        <div class="module-content dataset-sidebar">
+            {% block side_navigation %}
+                {% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
+                    {{ h.build_nav_icon('organization.edit', _('About the organization'), id=c.group_dict.name) }}
+                    {{ h.build_nav_icon('organization.bulk_process', _('Dataset visibility'), id=c.group_dict.name) }}
+                    {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=c.group_dict.id) }}
+                {% endif %}
+                {% if h.check_access('read_members') %}
+                    {{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name) }}
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+    </section>
+{% endblock %}
