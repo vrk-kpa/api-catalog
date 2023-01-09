@@ -6,7 +6,7 @@
 {% endblock %}
 
   {% block search_sortby %}
-    {% if sorting %}
+    {% if sorting and not sorting_disabled %}
       <div class="form-select">
         <label for="field-order-by">{{ _('Order by') }}</label>
         <div class="select-wrapper">

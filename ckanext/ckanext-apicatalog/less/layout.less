@@ -193,21 +193,38 @@
 
 .flash-messages {
   display: flex;
+  flex-direction: column;
   position: absolute;
   left: 0;
   right: 0;
+  padding-left: @gutterX / 2;
+  padding-right: @gutterX / 2;
 
   .alert {
-    box-shadow: 0px 4px 8px 0px fade(@suomifi-text-base, 20%);
+    box-shadow: 0px 4px 8px 0px fade(@suomifi-text-base, 14%);
     color: @suomifi-text-base;
     margin-left: auto;
-    border-top: 4px solid #fff;
-    background: #fff;
-    border-radius: 3px;
+    border-top: 4px solid @white;
+    background: @white;
+    border-radius: 4px;
     z-index: 1000;
+    border: none;
+    border-top-width: 4px;
+    border-top-style: solid;
+    width: auto;
+    margin-top: @gutterY / 2;
 
     &.alert-success {
       border-top-color: @color--success;
+    }
+
+    &.alert-info {
+      border-top-color: @color--info;
+    }
+
+    &.alert-danger,
+    &.alert-error {
+      border-top-color: @color--danger;
     }
 
     button.close {
