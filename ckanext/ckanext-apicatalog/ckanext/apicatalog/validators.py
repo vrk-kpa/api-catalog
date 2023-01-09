@@ -386,6 +386,8 @@ def list_to_json_string(value):
 
 def json_string_to_list(value):
     if isinstance(value, str):
+        if value == "":
+            return []
         try:
             return json.loads(value)
         except json.JSONDecodeError:
