@@ -225,7 +225,7 @@ def settings_post(context, subsystem_id):
     else:
         upload = uploader.Upload('apply_permission')
 
-    if (data_dict.get('delivery_method') == 'file'):
+    if (data_dict.get('delivery_method') == 'file' and data_dict.get('file_url', None)):
         upload.update_data_dict(data_dict, 'file_url',
                                 'file', 'clear_upload')
         upload.upload(max_size=uploader.get_max_resource_size())
@@ -240,7 +240,8 @@ def settings_post(context, subsystem_id):
             )
             data_dict['file_url'] = file_url
 
-    if (data_dict.get('delivery_method') == 'email' and data_dict.get('require_additional_application_file')):
+    if (data_dict.get('delivery_method') == 'email' and data_dict.get('require_additional_application_file') and
+            data_dict.get('additional_file_url', None)):
         upload.update_data_dict(data_dict, 'additional_file_url',
                                 'additional_file', 'additional_file_clear_upload')
         upload.upload(max_size=uploader.get_max_resource_size())
