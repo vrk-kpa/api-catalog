@@ -5,9 +5,10 @@
         <h2>{{ _('About the organization') }}</h2>
     </div>
     {% block organization_description %}
-        {% if c.group_dict.description %}
+    {% set description = h.get_translated(c.group_dict, 'description') %}
+        {% if description %}
         <h3>{{ _('Description') }}</h3>
-            {{ h.render_markdown(h.get_translated(c.group_dict, 'description')) }}
+            {{ h.render_markdown(description) }}
         {% endif %}
     {% endblock %}
     {% block organization_extras %}
