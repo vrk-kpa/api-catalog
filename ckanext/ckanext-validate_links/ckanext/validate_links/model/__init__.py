@@ -38,6 +38,7 @@ class LinkValidationResult(DomainObject):
                 .filter(cls.timestamp > t)
                 .all())
 
+
 class LinkValidationReferrer(DomainObject):
     pass
 
