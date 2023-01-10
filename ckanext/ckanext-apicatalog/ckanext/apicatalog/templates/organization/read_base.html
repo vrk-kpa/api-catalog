@@ -21,6 +21,9 @@
 			{{ h.build_nav_icon(group_type + '_activity', _('Activity Stream'), id=c.group_dict.name, offset=0) }}
 			{% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
 				{{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=c.group_dict.id) }}
+        {% if h.organization_has_broken_links(c.group_dict.id) %}
+          {{ h.build_nav_icon('broken_links.organization_read', _('Broken links'), organization_id=c.group_dict.id) }}
+        {% endif %}
 			{% endif %}
 			{% if h.check_access('read_members') %}
 				{{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name) }}
