@@ -102,4 +102,6 @@ def schema_translatable_strings():
             _('Organization processes data outside the EU/EAA countries.'),
             _('Intermediary organization'),
             _('Data processing'),
+            _('Choose this if your organization acts as an intermediary for other organizations.'),
+            _('Choose this if your organization processes data outside the EU/EAA countries.'),
             ]

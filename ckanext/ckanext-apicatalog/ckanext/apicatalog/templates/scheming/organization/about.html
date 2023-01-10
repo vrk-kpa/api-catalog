@@ -110,18 +110,16 @@
     field=field, data=c.group_dict, schema=schema -%}</dd>
             {% endif %}
 
-            {% if c.group_dict['data_processing_outside_eu'] %}
-                {% set field = h.scheming_field_by_name(c.scheming_fields, 'data_processing_outside_eu') %}
-                <dt>{{ h.scheming_language_text(field.label) }}:</dt>
-                <dd>{%- snippet 'scheming/display_snippets/multiple_choice.html',
-    field=field, data=c.group_dict, schema=schema -%}</dd>
-            {% endif %}
-
             {% if c.group_dict['is_intermediary'] %}
                 {% set field = h.scheming_field_by_name(c.scheming_fields, 'is_intermediary') %}
                 <dt>{{ h.scheming_language_text(field.label) }}:</dt>
-                <dd>{%- snippet 'scheming/display_snippets/multiple_choice.html',
-  field=field, data=c.group_dict, schema=schema -%}</dd>
+                <dd>{{ _(field.display_label) }}</dd>
+            {% endif %}
+
+            {% if c.group_dict['data_processing_outside_eu'] %}
+                {% set field = h.scheming_field_by_name(c.scheming_fields, 'data_processing_outside_eu') %}
+                <dt>{{ h.scheming_language_text(field.label) }}:</dt>
+                <dd>{{ _(field.display_label) }}</dd>
             {% endif %}
         </dl>
         {% endif %}

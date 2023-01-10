@@ -95,10 +95,11 @@
       "choices": [
         {
           "value": "false",
-          "label": "Organization acts as an intermediary for other organizations."
+          "label": "Choose this if your organization acts as an intermediary for other organizations."
         }
       ],
-      "label": "Intermediary organization"
+      "label": "Intermediary organization",
+      "display_label": "Organization acts as an intermediary for other organizations."
     },
     {
       "field_name": "data_processing_outside_eu",
@@ -106,10 +107,11 @@
       "choices": [
         {
           "value": "true",
-          "label": "Organization processes data outside the EU/EAA countries."
+          "label": "Choose this if your organization processes data outside the EU/EAA countries."
         }
       ],
-      "label": "Data processing"
+      "label": "Data processing",
+      "display_label": "Organization processes data outside the EU/EAA countries."
     },
     {
       "field_name": "webpage_address",
