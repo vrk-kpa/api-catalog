@@ -34,8 +34,11 @@
                     <script>
                       function listenAdditionalFileCheckbox(event) {
                         var fileField = document.querySelector('#additional_application_file_field');
-
                         fileField.style.display = event.target.checked ? 'block' : 'none';
+
+                        var uploadInput = document.querySelector('#additional_application_file_field input[name="additional_file"]');
+                        var uploadButton = document.querySelector('input#field-image-upload~a');
+                        uploadInput.style.width = uploadButton.clientWidth + 'px';
                       }
 
                       window.addEventListener('DOMContentLoaded', function(event) {
