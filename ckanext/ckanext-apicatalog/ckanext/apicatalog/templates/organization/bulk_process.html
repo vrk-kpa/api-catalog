@@ -1,4 +1,4 @@
-{% ckan_extends %}
+{% extends "organization/edit_base.html" %}
 
 {% block subtitle %}{{ _('Edit datasets') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
 
@@ -16,7 +16,9 @@
             (_('Name Descending'), 'title_string desc'),
             (_('Last Modified'), 'data_modified desc') ]
                 %}
-        {% snippet 'snippets/search_form.html', form_id='organization-datasets-search-form', type='dataset', query=c.q, count=page.item_count, sorting_disabled=True, sorting=sorting, sorting_selected=sort_by_selected, no_title=true, search_class=' ', no_bottom_border=True %}
+        <div class="sorter-wrapper">
+          {% snippet 'snippets/search_form.html', form_id='organization-datasets-search-form', type='dataset', query=c.q, count=page.item_count, sorting=sorting, sorting_selected=sort_by_selected, no_title=true, search_class=' ', no_bottom_border=True %}
+        </div>
       {% endblock %}
 
       <h3 class="page-heading">
@@ -98,5 +100,3 @@
   {{ page.pager() }}
 {% endblock %}
 
-{% block secondary_content %}
-{% endblock %}
