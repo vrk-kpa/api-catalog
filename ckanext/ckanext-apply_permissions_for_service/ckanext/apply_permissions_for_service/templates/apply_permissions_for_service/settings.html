@@ -30,7 +30,7 @@
           </div>
           <div data-mutex-field="deliveryMethod">
              <div data-mutex-value="email">
-                  {{ form_custom.input('email', label=_('Email'), value=settings.email, description="Fill in the email address to which the application will be sent.") }}
+                  {{ form_custom.input('email', label=_('Email'), value=settings.email, description=_("Fill in the email address to which the application will be sent.")) }}
                   <div class="additional_application_file_container">
                     <script>
                       function listenAdditionalFileCheckbox(event) {
@@ -98,7 +98,7 @@
                 {{ form.hidden('original_filename', value=settings.original_filename) }}
               {% endif %}
 
-              {{ form_custom.input('email', label=_('Email'), value=settings.email, description="Fill in the email address to which the application will be sent.") }}
+              {{ form_custom.input('email', label=_('Email'), value=settings.email, description=_("Fill in the email address to which the application will be sent.")) }}
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
               {{ form.image_upload_dragndrop(

@@ -17,21 +17,9 @@
             (_('Last Modified'), 'data_modified desc') ]
                 %}
         <div class="sorter-wrapper">
-          {% snippet 'snippets/search_form.html', form_id='organization-datasets-search-form', type='dataset', query=c.q, count=page.item_count, sorting=sorting, sorting_selected=sort_by_selected, no_title=true, search_class=' ', no_bottom_border=True %}
+          {% snippet 'snippets/search_form.html', form_id='organization-datasets-search-form', type='dataset', query=c.q, count=page.item_count, sorting=sorting, sorting_selected=sort_by_selected, search_class=' ', no_bottom_border=True %}
         </div>
       {% endblock %}
-
-      <h3 class="page-heading">
-        {% block page_heading %}
-          {%- if page.item_count -%}
-            {{ page.item_count }} datasets{{ _(" found for \"{query}\"").format(query=c.q) if c.q }}
-          {%- elif request.params -%}
-            {{ _('Sorry no datasets found for "{query}"').format(query=c.q) }}
-          {%- else -%}
-            {{ _('Datasets') }}
-          {%- endif -%}
-        {% endblock %}
-      </h3>
 
       {% block form %}
         {% if page.item_count %}
@@ -91,7 +79,7 @@
               </tbody>
             </table>
           </form>
-        {% else %}
+        {% elif not page.item_count and not c.q %}
           <p class="empty">{{ _('This organization has no datasets associated to it') }}</p>
         {% endif %}
       {% endblock %}
