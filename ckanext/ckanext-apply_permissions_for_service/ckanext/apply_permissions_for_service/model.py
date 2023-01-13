@@ -71,10 +71,10 @@ class ApplyPermission(Base):
         application_dict = dictization.table_dictize(self, context)
 
         application_dict['requester_subsystem'] = toolkit.get_action('package_show')(
-            {'ignore_auth': True}, {'id': application_dict['subsystem_id']})
+            {'ignore_auth': True}, {'id': application_dict['subsystem_code']})
 
         application_dict['subsystem'] = toolkit.get_action('package_show')(
-            {'ignore_auth': True}, {'id': application_dict['subsystem_code']})
+            {'ignore_auth': True}, {'id': application_dict['subsystem_id']})
         application_dict['member'] = toolkit.get_action('organization_show')(
             {'ignore_auth': True}, {'id': application_dict['subsystem']['owner_org']})
 
