@@ -102,6 +102,7 @@ robots_allowed: true
 apicatalog_path: "{{ server_path }}/ckanext/ckanext-apicatalog/"
 
 ckan_plugins:
+  - apply_permissions_for_service
   - apicatalog
   - sitesearch
   - scheming_datasets
