@@ -14,7 +14,7 @@
     {% if service %}
     <li>{% link_for h.resource_display_name(service)|truncate(30), controller='package', action='resource_read', id=pkg.name, resource_id=service.id %}</li>
     {% endif %}
-    <li class="active">{% link_for _('Request access'), named_route='apply_permissions.new_permission_application', subsystem_id=subsystem_id, service_id=service_id %}</li>
+    <li class="active">{% link_for _('Request access'), named_route='apply_permissions.new_permission_application', target_subsystem_id=target_subsystem_id, service_id=service_id %}</li>
 {% endblock %}
 
 {% block prelude %}
@@ -23,44 +23,44 @@
 
 {% block primary_content_inner %}
     <script>
-    function selectOrganization() {
-        let element = document.querySelector('[name=businessCode]');
-        let organizationName = document.querySelector('[name=organization]').value;
-        let newValue = organizationName.split('.')[2];
-        if(element.value !== newValue) {
-          element.value = newValue;
-          updateSubsystemSelect();
+    function select_organization() {
+        let element = document.querySelector('[name=member_code]');
+        let organization_name = document.querySelector('[name=organization_id]').value;
+        let new_value = organization_name.split('.')[2];
+        if(element.value !== new_value) {
+          element.value = new_value;
+          update_subsystem_select();
         }
     }
-    function selectIntermediateOrganization() {
-        let element = document.querySelector('[name=intermediateBusinessCode]')
-        let organizationName = document.querySelector('[name=intermediateOrganization]').value;
-        let newValue = organizationName.split('.')[2];
-        if(element.value !== newValue) {
-          element.value = newValue;
-          updateSubsystemSelect();
+    function select_intermediate_organization() {
+        let element = document.querySelector('[name=intermediate_member_code]')
+        let organization_name = document.querySelector('[name=intermediate_organization_id]').value;
+        let new_value = organization_name.split('.')[2];
+        if(element.value !== new_value) {
+          element.value = new_value;
+          update_subsystem_select();
         }
     }
-    function showIntermediateOrganization() {
-        var show = document.querySelector('[name=enableIntermediateOrganization]').checked;
-        var intermediateOrganizationDiv = document.getElementById("intermediateOrganizationDiv");
+    function show_intermediate_organization() {
+        var show = document.querySelector('[name=enable_intermediate_organization]').checked;
+        var intermediate_organization_div = document.getElementById("intermediate_organization_div");
         if (show) {
-            intermediateOrganizationDiv.style.display = "block";
+          intermediate_organization_div.style.display = "block";
         } else {
-            intermediateOrganizationDiv.style.display = "none";
+          intermediate_organization_div.style.display = "none";
         }
-        updateSubsystemSelect();
+        update_subsystem_select();
     }
-    function updateSubsystemSelect() {
+    function update_subsystem_select() {
       let owner_org = null;
-      if(document.querySelector('[name=enableIntermediateOrganization]').checked) {
-        owner_org = document.querySelector('[name=intermediateOrganization]').value;
+      if(document.querySelector('[name=enable_intermediate_organization]').checked) {
+        owner_org = document.querySelector('[name=intermediate_organization_id]').value;
       } else {
-        owner_org = document.querySelector('[name=organization]').value;
+        owner_org = document.querySelector('[name=organization_id]').value;
       }
 
       let selected = null;
-      document.querySelectorAll('[name=subsystemCode] option').forEach(o => {
+      document.querySelectorAll('[name=subsystem_id] option').forEach(o => {
         if(o.value.startsWith(owner_org)) {
           o.removeAttribute('hidden')
           if(o.selected || !selected) {
@@ -78,7 +78,7 @@
     </script>
 {% block errors %}{{ form.errors(errors) }}{% endblock %}
 <form method="POST" enctype="multipart/form-data" data-module="form-change-listener" data-module-confirm-modal-selector>
-  {{ form.hidden('subsystemId', value=subsystem_id) }}
+  {{ form.hidden('target_subsystem_id', value=target_subsystem_id) }}
   <h3>{{ _('API access application') }}</h3>
   <p class="input-group-description">{{ _('Use this form to apply for a permission to use a service that is available in the National Data Exchange Layer. Your application will be submitted to the organization providing the service. When your application has been approved, Valtori is automatically notified of the needed firewall configurations.') }}</p>
   <hr>
@@ -89,17 +89,17 @@
   {% set user_org = user_managed_organizations[0] if user_managed_organizations else {} %}
 
   {% snippet 'apply_permissions_for_service/snippets/organization_select.html',
-             name='organization',
-             value=values.organization or user_org.name or '',
-             select_attrs={'onchange': 'selectOrganization()'},
+             name='organization_id',
+             value=values.organization_id or user_org.name or '',
+             select_attrs={'onchange': 'select_organization()'},
              label=_('Organization'),
              is_required=True,
              organizations=user_managed_organizations %}
 
-  {{ form.input('businessCode', label=_('Business code'), is_required=True, value=values.business_code, error=[errors.business_code]) }}
+  {{ form.input('member_code', label=_('Business code'), is_required=True, value=values.member_code, error=[errors.member_code]) }}
 
-  {{ form.input('contactName', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname, error=[errors.contact_name]) }}
-  {{ form.input('contactEmail', label=_('Contact email'), is_required=True, value=values.contact_email or user.email, error=[errors.contact_email]) }}
+  {{ form.input('contact_name', label=_('Contact name'), is_required=True, value=values.contact_name or user.fullname, error=[errors.contact_name]) }}
+  {{ form.input('contact_email', label=_('Contact email'), is_required=True, value=values.contact_email or user.email, error=[errors.contact_email]) }}
 
   <hr>
   <div class="control-group">
@@ -107,10 +107,10 @@
           <tr>
               <td style="padding-left: 5px; padding-right: 5px;">
                   <input type="checkbox"
-                         id="enableIntermediateOrganization"
-                         name="enableIntermediateOrganization"
+                         id="enable_intermediate_organization"
+                         name="enable_intermediate_organization"
                          {% if values.intermediate_organization %}checked{% endif %}
-                         onchange="showIntermediateOrganization()">
+                         onchange="show_intermediate_organization()">
               </td>
               <td style="padding-left: 5px; padding-right: 5px;">
                   {{ _('Applying organization acts as an intermediary on behalf of the organizations using the services') }}
@@ -120,20 +120,20 @@
   </div>
 
 
-  <div id="intermediateOrganizationDiv">
+  <div id="intermediate_organization_div">
     <h3>{{ _('Information about the organization consuming the services') }}</h3>
     <p class="input-group-description">{{ _('Fill in the information on behalf of the organisation that you apply user permit for.') }}</p>
     {% snippet 'apply_permissions_for_service/snippets/organization_select.html',
-               name='intermediateOrganization',
-               select_attrs={'onchange': 'selectIntermediateOrganization()'},
+               name='intermediate_organization_id',
+               select_attrs={'onchange': 'select_intermediate_organization()'},
                label=_('Organization using the services'),
                is_required=True,
-               value=values.intermediate_organization,
+               value=values.intermediate_organization_id,
                organizations=user_managed_organizations %}
 
-    {{ form.input('intermediateBusinessCode', label=_('Y-number'),
-                  is_required=True, value=values.intermediate_business_code,
-                  error=[errors.intermediate_business_code]) }}
+    {{ form.input('intermediate_member_code', label=_('Business code'),
+                  is_required=True, value=values.intermediate_member_code,
+                  error=[errors.intermediate_member_code]) }}
   </div>
 
   <hr>
@@ -146,12 +146,12 @@
     {% do subsystem_options.append({'value': d.id, 'text': dataset_title}) %}
   {% endfor %}
 
-  {% call form.input_multiple('ipAddress', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address', error=[errors.ip_address_list]) %}
+  {% call form.input_multiple('ip_address_list', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address', error=[errors.ip_address_list]) %}
     <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
   {% endcall %}
 
   <div class="select-wrapper">
-    {{ form.select_with_description('subsystemCode', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_code, error=[errors.subsystem_code]) }}
+    {{ form.select_with_description('subsystem_id', description=_('Select the subsystem of your organization for which you want to apply permission'), label=_('Subsystem code'), options=subsystem_options, is_required=True, selected=values.subsystem_id, error=[errors.subsystem_id]) }}
   </div>
 
   <hr>
@@ -171,14 +171,14 @@
   {{ form.hidden('target_organization_id', org.id) }}
 
   {% set service_options = [] %}
-  {% set service_selected = values.service_code_list or ([service_id] if service_id else []) %}
+  {% set service_selected = values.service_id_list or ([service_id] if service_id else []) %}
   {% for res in pkg.resources %}
     {% do service_options.append({'value': res.id, 'text': res.xroad_service_code or res.name}) %}
   {% endfor %}
 
-  {{ form.select_multiple('serviceCode', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access'), error=[errors.service_code_list]) }}
-  {{ form.textarea('usageDescription', label=_('Explain how the service will be used'), value=values.usage_description, placeholder=_('Reason for requesting access')) }}
-  {{ form.input('requestDate', type='date', label=_('Date when access is needed'), value=values.request_date, error=[errors.request_date]) }}
+  {{ form.select_multiple('service_id_list', label=_('Service code'), options=service_options, is_required=True, selected=service_selected, description=_('Select one or several APIs you are applying to access'), error=[errors.service_id_list]) }}
+  {{ form.textarea('usage_description', label=_('Explain how the service will be used'), value=values.usage_description, placeholder=_('Reason for requesting access')) }}
+  {{ form.input('request_date', type='date', label=_('Date when access is needed'), value=values.request_date, error=[errors.request_date]) }}
 
   <hr>
   {% if pkg.get('service_permission_settings', {}).get('delivery_method') == 'email' and pkg.get('service_permission_settings', {}).get('require_additional_application_file') == True %}
@@ -190,17 +190,17 @@
     <input class="btn btn-primary" type="submit" value="{{ _('Send access application') }}"></input>
   {% endblock %}
 
-  {% if not values.business_code %}
-    {# populate business code from selected organization #}
-    <script>selectOrganization()</script>
+  {% if not values.member_code %}
+    {# populate member code from selected organization #}
+    <script>select_organization()</script>
   {% endif %}
-    {% if not values.intermediate_business_code %}
-      {# populate intermediate organization business code from selected organization #}
-      <script>selectIntermediateOrganization()</script>
+    {% if not values.intermediate_member_code %}
+      {# populate intermediate organization member code from selected organization #}
+      <script>select_intermediate_organization()</script>
     {% endif %}
 
   {# Set intermediate organization visibility based on checkbox #}
-  <script>showIntermediateOrganization()</script>
-  <script>updateSubsystemSelect()</script>
+  <script>show_intermediate_organization()</script>
+  <script>update_subsystem_select()</script>
 </form>
 {% endblock %}
