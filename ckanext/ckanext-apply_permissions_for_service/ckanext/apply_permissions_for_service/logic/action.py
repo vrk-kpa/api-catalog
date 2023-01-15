@@ -175,11 +175,16 @@ def service_permission_application_show(context, data_dict):
         raise NotFound
 
     application = model.ApplyPermission.get(application_id).as_dict()
-    if application.get('application_filename'):
+
+    filename = application.get('application_filename')
+    if filename and not filename.startswith('http'):
         application['application_fileurl'] = h.url_for_static(
-            'uploads/apply_permission/%s' % application.get('application_filename'),
+            'uploads/apply_permission/%s' % filename,
             qualified=True
         )
+    elif filename and filename.startswith('http'):
+        application['application_fileurl'] = filename
+
     return application
 
 
