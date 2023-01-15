@@ -204,7 +204,7 @@ def service_permission_settings_update(context, data_dict):
         raise NotFound
 
     settings = {field: data_dict[field]
-                for field in ('delivery_method', 'api', 'web', 'email', 'file_url', 'original_filename',
+                for field in ('delivery_method', 'web', 'email', 'file_url', 'original_filename',
                               'require_additional_application_file', 'additional_file_url', 'original_additional_filename',
                               'guide_text_translated')
                 if field in data_dict}
