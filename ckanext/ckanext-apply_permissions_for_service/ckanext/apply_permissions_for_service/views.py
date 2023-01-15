@@ -142,7 +142,7 @@ def view(application_id):
 def preview(target_subsystem_id):
     try:
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
-        toolkit.check_access('service_permission_settings', context, {"target_subsystem_id": target_subsystem_id})
+        toolkit.check_access('service_permission_settings', context, {"subsystem_id": target_subsystem_id})
         return new_get(context, target_subsystem_id, preview=True)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
