@@ -205,3 +205,86 @@ class TestApplyPermissionsForServicePlugin():
         assert app['services'][0]['id'] == resource1['id']
         assert app['organization']['id'] == application['organization_id']
         assert app['target_organization']['id'] == application['target_organization_id']
+
+    @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
+    def test_application_with_intermediate_organization(self):
+        orgs = call_action('organization_list', {})
+        print(orgs)
+
+        user1 = User()
+        org1_users = [{"name": user1["name"], "capacity": "admin"}]
+        target_organization = Organization(id='TEST.ORG.1234567-1',
+                                           users=org1_users,
+                                           xroad_instance='TEST',
+                                           xroad_memberclass='ORG',
+                                           xroad_membercode='1234567-1')
+
+        target_subsystem = Dataset(owner_org=target_organization['id'],
+                                   name='target_subsystem_name',
+                                   id='TEST.ORG.1234567-1.target_subsystem_name')
+
+        resource1 = Resource(package_id=target_subsystem['id'],
+                             id='TEST.ORG.1234567-1.target_subsystem_name.service_name',
+                             xroad_servicecode='service_name',
+                             xroad_serviceversion='v1',
+                             harvested_from_xroad=True)
+
+        user2 = User()
+        org2_users = [{"name": user2["name"], "capacity": "admin"}]
+        organization = Organization(id='TEST.ORG.7654321-2',
+                                    users=org2_users,
+                                    xroad_instance='TEST',
+                                    xroad_memberclass='ORG',
+                                    xroad_membercode='7654321-2')
+
+        subsystem = Dataset(owner_org=organization['id'],
+                            name='subsystem_name',
+                            xroad_subsystemcode='subsystem_name',
+                            id='TEST.ORG.7654321-2.subsystem_name')
+
+        user3 = User()
+        org3_users = [{"name": user3["name"], "capacity": "admin"}]
+        intermediate_organization = Organization(id='TEST.ORG.0123456-2',
+                                                 users=org3_users,
+                                                 xroad_instance='TEST',
+                                                 xroad_memberclass='ORG',
+                                                 xroad_membercode='0123456-2')
+
+        application = dict(
+                    organization_id=organization['id'],
+                    member_code=organization['xroad_membercode'],
+                    target_organization_id=target_organization['id'],
+                    intermediate_organization_id=intermediate_organization['id'],
+                    intermediate_member_code=intermediate_organization['xroad_membercode'],
+                    contact_name=user2['name'],
+                    contact_email=user2['email'],
+                    ip_address_list=['1.2.3.4'],
+                    target_subsystem_id=target_subsystem['id'],
+                    subsystem_id=subsystem['id'],
+                    service_id_list=[resource1['id']]
+                    )
+
+        call_action('service_permission_application_create',
+                    {u"user": user3["name"], "ignore_auth": False},
+                    **application)
+
+        print(application)
+
+        applications = call_action('service_permission_application_list',
+                                   {'user': user3['name'], 'ignore_auth': True},
+                                   target_subsystem_id=target_subsystem['id'])
+
+        from pprint import pprint
+        pprint(applications)
+        assert len(applications) == 1
+        app = applications[0]
+        assert app['organization_id'] == application['organization_id']
+        assert app['target_organization_id'] == application['target_organization_id']
+        assert app['intermediate_organization_id'] == application['intermediate_organization_id']
+        assert app['member_code'] == application['member_code']
+        assert app['intermediate_member_code'] == application['intermediate_member_code']
+        assert app['subsystem_id'] == application['subsystem_id']
+        assert app['subsystem']['id'] == application['subsystem_id']
+        assert app['organization']['id'] == application['organization_id']
+        assert app['target_organization']['id'] == application['target_organization_id']
+        assert app['intermediate_organization']['id'] == application['intermediate_organization_id']
