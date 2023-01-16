@@ -206,10 +206,9 @@ class TestApplyPermissionsForServicePlugin():
         assert app['organization']['id'] == application['organization_id']
         assert app['target_organization']['id'] == application['target_organization_id']
 
-    @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
-    def test_application_with_intermediate_organization(self):
-        orgs = call_action('organization_list', {})
-        print(orgs)
+    def test_application_with_intermediate_organization(self, drop_db, migrate_db_for):
+
+        migrate_db_for('apply_permissions_for_service')
 
         user1 = User()
         org1_users = [{"name": user1["name"], "capacity": "admin"}]
@@ -268,14 +267,11 @@ class TestApplyPermissionsForServicePlugin():
                     {u"user": user3["name"], "ignore_auth": False},
                     **application)
 
-        print(application)
 
         applications = call_action('service_permission_application_list',
                                    {'user': user3['name'], 'ignore_auth': True},
                                    target_subsystem_id=target_subsystem['id'])
 
-        from pprint import pprint
-        pprint(applications)
         assert len(applications) == 1
         app = applications[0]
         assert app['organization_id'] == application['organization_id']
