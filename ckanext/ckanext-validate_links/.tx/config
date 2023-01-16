@@ -1,9 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[o:avoindata:p:liityntakatalogi:r:ckanext-validate_links]
-file_filter = ckanext/validate_links/i18n/<lang>/LC_MESSAGES/ckanext-validate_links.po
-source_file = ckanext/validate_links/i18n/ckanext-validate_links.pot
-source_lang = en
-type        = PO
-
