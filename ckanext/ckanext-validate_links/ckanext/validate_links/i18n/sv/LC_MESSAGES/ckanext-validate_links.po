@@ -1,0 +1,48 @@
+# Translations template for ckanext-validate_links.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the ckanext-validate_links
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-validate_links 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-01-10 09:15+0000\n"
+"PO-Revision-Date: 2023-01-10 09:18+0000\n"
+"Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ckanext/validate_links/views.py:24 ckanext/validate_links/views.py:52
+msgid "Not authorized to see this page"
+msgstr ""
+
+#: ckanext/validate_links/templates/admin/broken_links.html:3
+#: ckanext/validate_links/templates/organization/broken_links.html:3
+msgid "Broken links"
+msgstr ""
+
+#: ckanext/validate_links/templates/admin/broken_links.html:7
+#: ckanext/validate_links/templates/organization/broken_links.html:7
+msgid "URL"
+msgstr ""
+
+#: ckanext/validate_links/templates/admin/broken_links.html:8
+#: ckanext/validate_links/templates/organization/broken_links.html:8
+msgid "Referrers"
+msgstr ""
+
+#: ckanext/validate_links/templates/admin/broken_links.html:9
+#: ckanext/validate_links/templates/organization/broken_links.html:9
+msgid "Reason"
+msgstr ""
+
+#: ckanext/validate_links/templates/admin/broken_links.html:10
+msgid "Organizations"
+msgstr ""
