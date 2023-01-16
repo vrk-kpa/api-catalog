@@ -11,7 +11,33 @@
 
 {% block primary_content_inner %}
 {% link_for _('All access applications'), named_route='apply_permissions.dashboard', class_='btn', icon='arrow-left' %}
+{% if "intermediate_organization" in application %}
+  <h3>{{ _('Applicant information') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization') }}</th><td>{{ h.get_translated(application.intermediate_organization, 'title') }}</td></tr>
+      <tr><th>{{ _('Business code') }}</th><td>{{ application.intermediate_member_code }}</td></tr>
+      <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
+      <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
+    </tbody>
+  </table>
 
+
+    <hr>
+    <h3>{{ _('Information about the organization consuming the services') }}</h3>
+    <table class="table">
+      <tbody>
+        <tr>
+            <th>{{ _('Organization') }}</th>
+            <td>{{ h.get_translated(application.organization, 'title') }}</td>
+        </tr>
+        <tr>
+            <th>{{ _('Business code') }}</th>
+            <td>{{ application.member_code }}</td>
+        </tr>
+    </tbody>
+    </table>
+  {% else %}
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">
     <tbody>
@@ -21,22 +47,6 @@
       <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
     </tbody>
   </table>
-
-  {% if "intermediate_organization" in application %}
-    <hr>
-    <h3>{{ _('Information about the organization consuming the services') }}</h3>
-    <table class="table">
-      <tbody>
-        <tr>
-            <th>{{ _('Organization') }}</th>
-            <td>{{ h.get_translated(application.intermediate_organization, 'title') }}</td>
-        </tr>
-        <tr>
-            <th>{{ _('Business code') }}</th>
-            <td>{{ application.intermediate_member_code }}</td>
-        </tr>
-    </tbody>
-    </table>
   {% endif %}
   <hr>
 
