@@ -64,7 +64,6 @@ def new_post(context, subsystem_id):
         data_dict['member_code'] = form.get('intermediate_member_code')
         data_dict['intermediate_organization_id'] = form.get('organization_id')
         data_dict['intermediate_member_code'] = form.get('member_code')
-        print(data_dict['member_code'])
 
     try:
         if toolkit.check_ckan_version(min_version='2.5'):
