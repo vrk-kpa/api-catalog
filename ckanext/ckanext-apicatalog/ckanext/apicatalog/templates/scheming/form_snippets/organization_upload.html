@@ -47,14 +47,14 @@
          data-module-field_url="{{ field_url }}"
          data-module-field_upload="{{ field_upload }}"
          data-module-field_clear="{{ field_clear }}"
-         data-module-upload_label="{{ upload_label }}"
+         data-module-upload_label="{{ _(upload_label) }}"
          data-module-field_name="{{ field_name }}"
          data-module-previous_upload="{{ 'true' if previous_upload else 'false' }}">
   {% endif %}
 
 
    {% call form.input(field_url,
-                 label=url_label,
+                 label=_(url_label),
                  id='field-image-url',
                  type='url',
                  placeholder=placeholder,

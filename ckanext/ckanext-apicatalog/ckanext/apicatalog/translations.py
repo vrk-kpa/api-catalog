@@ -1,4 +1,4 @@
-from ckan.plugins.toolkit import _
+from ckan.plugins.toolkit import _, ungettext
 
 
 def facet_translations():
@@ -104,4 +104,5 @@ def schema_translatable_strings():
             _('Data processing'),
             _('Choose this if your organization acts as an intermediary for other organizations.'),
             _('Choose this if your organization processes data outside the EU/EAA countries.'),
+            ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{query}"')
             ]

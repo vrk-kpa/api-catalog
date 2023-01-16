@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-10 15:53+0000\n"
+"POT-Creation-Date: 2023-01-16 06:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -390,6 +390,12 @@ msgstr ""
 msgid "Choose this if your organization processes data outside the EU/EAA countries."
 msgstr ""
 
+#: ckanext/apicatalog/translations.py:107
+msgid "{number} dataset found for \"{query}\""
+msgid_plural "{number} datasets found for \"{query}\""
+msgstr[0] ""
+msgstr[1] ""
+
 #: ckanext/apicatalog/validators.py:56
 msgid "Package contains invalid resources"
 msgstr ""
@@ -480,7 +486,6 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/apicatalog_header.html:60
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_navmenu.html:5
-#: ckanext/apicatalog/templates/organization/bulk_process.html:29
 #: ckanext/apicatalog/templates/organization/read.html:15
 #: ckanext/apicatalog/templates/organization/read_base.html:19
 #: ckanext/apicatalog/templates/package/search.html:4
@@ -647,7 +652,7 @@ msgid "Total package count"
 msgstr ""
 
 #: ckanext/apicatalog/templates/admin/dashboard.html:58
-#: ckanext/apicatalog/templates/organization/bulk_process.html:81
+#: ckanext/apicatalog/templates/organization/bulk_process.html:71
 #: ckanext/apicatalog/templates/package/read.html:8
 #: ckanext/apicatalog/templates/snippets/package_item.html:34
 msgid "Private"
@@ -862,7 +867,7 @@ msgid "Not in menu"
 msgstr ""
 
 #: ckanext/apicatalog/templates/ckanext_pages/page.html:15
-#: ckanext/apicatalog/templates/organization/bulk_process.html:72
+#: ckanext/apicatalog/templates/organization/bulk_process.html:62
 #: ckanext/apicatalog/templates/organization/read_base.html:5
 #: ckanext/apicatalog/templates/package/read_base.html:10
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:28
@@ -1239,13 +1244,13 @@ msgid "Edit datasets"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/bulk_process.html:15
-#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/index.html:19
 #: ckanext/apicatalog/templates/package/search.html:70
 msgid "Name Ascending"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/bulk_process.html:16
-#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/index.html:19
 #: ckanext/apicatalog/templates/package/search.html:71
 msgid "Name Descending"
 msgstr ""
@@ -1254,23 +1259,15 @@ msgstr ""
 msgid "Last Modified"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:25
-msgid " found for \"{query}\""
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/bulk_process.html:27
-msgid "Sorry no datasets found for \"{query}\""
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/bulk_process.html:39
+#: ckanext/apicatalog/templates/organization/bulk_process.html:29
 msgid "Make public"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:42
+#: ckanext/apicatalog/templates/organization/bulk_process.html:32
 msgid "Make private"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:46
+#: ckanext/apicatalog/templates/organization/bulk_process.html:36
 #: ckanext/apicatalog/templates/organization/members.html:75
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:25
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:40
@@ -1279,21 +1276,21 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:56
+#: ckanext/apicatalog/templates/organization/bulk_process.html:46
 msgid "Select all"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:76
+#: ckanext/apicatalog/templates/organization/bulk_process.html:66
 #: ckanext/apicatalog/templates/snippets/package_item.html:41
 msgid "Draft"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:78
+#: ckanext/apicatalog/templates/organization/bulk_process.html:68
 #: ckanext/apicatalog/templates/snippets/package_item.html:43
 msgid "Deleted"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/bulk_process.html:93
+#: ckanext/apicatalog/templates/organization/bulk_process.html:83
 msgid "This organization has no datasets associated to it"
 msgstr ""
 
@@ -1320,7 +1317,7 @@ msgid "X-Road errors"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:32
-#: ckanext/apicatalog/templates/organization/read_base.html:26
+#: ckanext/apicatalog/templates/organization/read_base.html:29
 msgid "Members"
 msgstr ""
 
@@ -1331,44 +1328,58 @@ msgid ""
 "within an organization."
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:8
+#: ckanext/apicatalog/templates/organization/index.html:9
 msgid "{0} organizations"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/index.html:11
+msgid "with filter"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
+msgid "Show only service providers"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:13
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
+msgid "Show organizations without APIs"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:19
 msgid "Service providers first"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:25
+#: ckanext/apicatalog/templates/organization/index.html:33
 msgid "There are currently no organizations for this site"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:27
+#: ckanext/apicatalog/templates/organization/index.html:35
 msgid "How about creating one?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:35
+#: ckanext/apicatalog/templates/organization/index.html:43
 #: ckanext/apicatalog/templates/package/search.html:64
 msgid "Filter list"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:40
+#: ckanext/apicatalog/templates/organization/index.html:48
 msgid "Type in name of organization"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:47
+#: ckanext/apicatalog/templates/organization/index.html:55
 #: ckanext/apicatalog/templates/organization/read.html:38
 #: ckanext/apicatalog/templates/package/search.html:29
 msgid "Next"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:50
+#: ckanext/apicatalog/templates/organization/index.html:58
 #: ckanext/apicatalog/templates/organization/read.html:41
 #: ckanext/apicatalog/templates/package/search.html:32
 msgid "Previous"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:52
+#: ckanext/apicatalog/templates/organization/index.html:60
 #: ckanext/apicatalog/templates/organization/read.html:43
 #: ckanext/apicatalog/templates/package/search.html:34
 msgid "Go to page"
@@ -1421,6 +1432,10 @@ msgstr ""
 msgid "There are currently no APIs for this organization"
 msgstr ""
 
+#: ckanext/apicatalog/templates/organization/read_base.html:25
+msgid "Broken links"
+msgstr ""
+
 #: ckanext/apicatalog/templates/organization/snippets/organization_item.html:25
 msgid "View {organization_name}"
 msgstr ""
@@ -1431,14 +1446,6 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/organization/snippets/search_form.html:5
 msgid "Filter by role"
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
-msgid "Show only service providers"
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
-msgid "Show organizations without APIs"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/edit_base.html:7
@@ -1486,7 +1493,7 @@ msgid "Request permission in organizations website"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/read.html:47
-#: ckanext/apicatalog/templates/scheming/organization/about.html:9
+#: ckanext/apicatalog/templates/scheming/organization/about.html:13
 msgid "Description"
 msgstr ""
 
@@ -1654,20 +1661,20 @@ msgid ""
 "its own organization and the users of the allowed organizations"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/organization/about.html:17
+#: ckanext/apicatalog/templates/scheming/organization/about.html:8
+msgid "Logo of organization {org}"
+msgstr ""
+
+#: ckanext/apicatalog/templates/scheming/organization/about.html:21
 msgid "Contact Information"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/organization/about.html:59
+#: ckanext/apicatalog/templates/scheming/organization/about.html:63
 msgid "X-Road related information"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/organization/about.html:88
+#: ckanext/apicatalog/templates/scheming/organization/about.html:92
 msgid "Additional information"
-msgstr ""
-
-#: ckanext/apicatalog/templates/scheming/organization/about.html:130
-msgid "Logo of organization {org}"
 msgstr ""
 
 #: ckanext/apicatalog/templates/scheming/organization/group_form.html:39
