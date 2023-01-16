@@ -5,7 +5,15 @@
 {% block prelude %}
 <h1>{{ _('Organizations') }}</h1>
 <p>{% trans %}Organizations are used to create, manage and publish APIs and datasets. Users may have various roles and privileges to create, modify and publish APIs within an organization.{% endtrans %}</p>
-<div class="result-count">{{ _('{0} organizations').format(org_list.count) }}</div>
+
+<div class="result-count">{{ _('{0} organizations').format(org_list.count) }}
+  {% if not request.args.get('all_orgs') %}
+    {{ _('with filter') }}&nbsp;"{{ _('Show only service providers') }}".
+    <a href="{{ h.url_for(group_type~'.index', q=c.q, sort=sorting_selected, all_orgs=True) }}">
+      {{ _('Show organizations without APIs') }}
+    </a>
+  {% endif %}
+</div>
 {% endblock %}
 
 {% set sorting = [(_('Service providers first'), ''), (_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
