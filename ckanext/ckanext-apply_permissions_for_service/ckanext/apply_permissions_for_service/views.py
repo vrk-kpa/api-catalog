@@ -51,14 +51,22 @@ def new_post(context, subsystem_id):
             'clear_upload': form.get('clear_upload'),
             }
 
+    '''
+    The template doesn't switch the inputs if intermediate organization is enabled and selected
+    but in reality when there's an intermediate organization the subsystem belongs to the organization
+    that uses the data and not the intermediate org
+    'Intermediate organization' applies for permission to use 'Target organization's subsystem' in the name of
+    the utilizing 'Organization' and their 'Subsystem'. I.e. The intermediate organization should never be the owner
+    of either subsystem in the application
+    '''
     if form.get('enable_intermediate_organization'):
-        data_dict['intermediate_organization_id'] = form.get('intermediate_organization_id')
-        data_dict['intermediate_member_code'] = form.get('intermediate_member_code')
+        data_dict['organization_id'] = form.get('intermediate_organization_id')
+        data_dict['member_code'] = form.get('intermediate_member_code')
+        data_dict['intermediate_organization_id'] = form.get('organization_id')
+        data_dict['intermediate_member_code'] = form.get('member_code')
+        print(data_dict['member_code'])
 
     try:
-        organization = toolkit.get_action('organization_show')(context, {'id': form['organization_id']})
-        data_dict['organization_id'] = organization['id']
-
         if toolkit.check_ckan_version(min_version='2.5'):
             upload = uploader.get_uploader('apply_permission')
         else:

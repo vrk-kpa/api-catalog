@@ -10,19 +10,23 @@
   <tbody>
   {% for application in applications %}
       <tr>
+        {% if "intermediate_organization" in application %}
+          <td>
+              {{ _('Organization') }} : <b>{% link_for h.get_translated(application.intermediate_organization, 'title'),
+                named_route='organization.read',
+                id=application.intermediate_organization_id %}</b><br>
+          </td>
           <td>
               {{ _('Organization') }} : <b>{% link_for application.organization["title"], named_route='organization.read', id=application.organization_id %}</b><br>
               {{ _('Subsystem') }} : <b>{% link_for application.subsystem.name, named_route='dataset.read', id=application.subsystem.id %}</b><br>
           </td>
-          {% if "intermediate_organization" in application %}
-          <td>
-              {{ _('Organization') }} : <b>{% link_for h.get_translated(application.intermediate_organization, 'title'),
-                                                       named_route='organization.read',
-                                                       id=application.intermediate_organization_id %}</b><br>
-              {{ _('Business code') }} : <b>{{ application.intermediate_member_code }}</b><br>
-          </td>
           {% else %}
-          <td></td>
+          <td>
+              {{ _('Organization') }} : <b>{% link_for application.organization["title"], named_route='organization.read', id=application.organization_id %}</b><br>
+              {{ _('Subsystem') }} : <b>{% link_for application.subsystem.name, named_route='dataset.read', id=application.subsystem.id %}</b><br>
+          </td>
+          <td>
+          </td>
           {% endif %}
           <td>
               {{ _('Organization') }} : <b>{% link_for h.get_translated(application.target_organization, 'title'),
