@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-12 14:25+0000\n"
+"POT-Creation-Date: 2023-01-16 06:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1244,13 +1244,13 @@ msgid "Edit datasets"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/bulk_process.html:15
-#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/index.html:19
 #: ckanext/apicatalog/templates/package/search.html:70
 msgid "Name Ascending"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/bulk_process.html:16
-#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/index.html:19
 #: ckanext/apicatalog/templates/package/search.html:71
 msgid "Name Descending"
 msgstr ""
@@ -1317,7 +1317,7 @@ msgid "X-Road errors"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:32
-#: ckanext/apicatalog/templates/organization/read_base.html:26
+#: ckanext/apicatalog/templates/organization/read_base.html:29
 msgid "Members"
 msgstr ""
 
@@ -1328,44 +1328,58 @@ msgid ""
 "within an organization."
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:8
+#: ckanext/apicatalog/templates/organization/index.html:9
 msgid "{0} organizations"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/index.html:11
+msgid "with filter"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:11
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
+msgid "Show only service providers"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:13
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
+msgid "Show organizations without APIs"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/index.html:19
 msgid "Service providers first"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:25
+#: ckanext/apicatalog/templates/organization/index.html:33
 msgid "There are currently no organizations for this site"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:27
+#: ckanext/apicatalog/templates/organization/index.html:35
 msgid "How about creating one?"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:35
+#: ckanext/apicatalog/templates/organization/index.html:43
 #: ckanext/apicatalog/templates/package/search.html:64
 msgid "Filter list"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:40
+#: ckanext/apicatalog/templates/organization/index.html:48
 msgid "Type in name of organization"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:47
+#: ckanext/apicatalog/templates/organization/index.html:55
 #: ckanext/apicatalog/templates/organization/read.html:38
 #: ckanext/apicatalog/templates/package/search.html:29
 msgid "Next"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:50
+#: ckanext/apicatalog/templates/organization/index.html:58
 #: ckanext/apicatalog/templates/organization/read.html:41
 #: ckanext/apicatalog/templates/package/search.html:32
 msgid "Previous"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/index.html:52
+#: ckanext/apicatalog/templates/organization/index.html:60
 #: ckanext/apicatalog/templates/organization/read.html:43
 #: ckanext/apicatalog/templates/package/search.html:34
 msgid "Go to page"
@@ -1418,6 +1432,10 @@ msgstr ""
 msgid "There are currently no APIs for this organization"
 msgstr ""
 
+#: ckanext/apicatalog/templates/organization/read_base.html:25
+msgid "Broken links"
+msgstr ""
+
 #: ckanext/apicatalog/templates/organization/snippets/organization_item.html:25
 msgid "View {organization_name}"
 msgstr ""
@@ -1428,14 +1446,6 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/organization/snippets/search_form.html:5
 msgid "Filter by role"
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
-msgid "Show only service providers"
-msgstr ""
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
-msgid "Show organizations without APIs"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/edit_base.html:7
