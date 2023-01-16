@@ -34,6 +34,7 @@ def new_post(context, subsystem_id):
     files = toolkit.request.files
 
     data_dict = {
+            'organization_id': form.get('organization_id'),
             'target_organization_id': form.get('target_organization_id'),
             'intermediate_organization_id': None,
             'member_code': form.get('member_code'),
@@ -80,6 +81,16 @@ def new_post(context, subsystem_id):
 
         toolkit.get_action('service_permission_application_create')(context, data_dict)
     except (toolkit.ValidationError, KeyError) as e:
+        if form.get('enable_intermediate_organization'):
+            data_dict['organization_id'] = form.get('organization_id')
+            data_dict['member_code'] = form.get('member_code')
+            data_dict['intermediate_organization_id'] = form.get('intermediate_organization_id')
+            data_dict['intermediate_member_code'] = form.get('intermediate_member_code')
+            e.error_dict['member_code'], e.error_dict['intermediate_member_code'] = \
+                e.error_dict['intermediate_member_code'], e.error_dict['member_code']
+
+            data_dict['enable_intermediate_organization'] = True
+
         return new_get(context, subsystem_id, e.error_dict, values=data_dict)
 
     return toolkit.render('apply_permissions_for_service/sent.html')
