@@ -86,8 +86,18 @@ def new_post(context, subsystem_id):
             data_dict['member_code'] = form.get('member_code')
             data_dict['intermediate_organization_id'] = form.get('intermediate_organization_id')
             data_dict['intermediate_member_code'] = form.get('intermediate_member_code')
-            e.error_dict['member_code'], e.error_dict['intermediate_member_code'] = \
-                e.error_dict['intermediate_member_code'], e.error_dict['member_code']
+
+            if e.error_dict.get('member_code') and e.error_dict.get('intermediate_member_code'):
+                e.error_dict['member_code'], e.error_dict['intermediate_member_code'] = \
+                    e.error_dict['intermediate_member_code'], e.error_dict['member_code']
+
+            elif e.error_dict.get('member_code'):
+                e.error_dict['intermediate_member_code'] = e.error_dict['member_code']
+                del e.error_dict['member_code']
+
+            elif e.error_dict.get('intermediate_member_code'):
+                e.error_dict['member_code'] = e.error_dict['intermediate_member_code']
+                del e.error_dict['intermediate_member_code']
 
             data_dict['enable_intermediate_organization'] = True
 
