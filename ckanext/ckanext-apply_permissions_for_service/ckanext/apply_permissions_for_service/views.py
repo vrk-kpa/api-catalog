@@ -12,18 +12,6 @@ log = getLogger(__name__)
 apply_permissions = Blueprint("apply_permissions", __name__, url_prefix=u'/apply_permissions_for_service')
 
 
-def index():
-    try:
-        subsystem_id = toolkit.request.args.get('id')
-        context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
-        data_dict = {'subsystem_id': subsystem_id}
-        applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
-        extra_vars = {'applications': applications}
-        return toolkit.render('apply_permissions_for_service/index.html', extra_vars=extra_vars)
-    except toolkit.NotAuthorized:
-        toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
-
-
 def dashboard(app_type='sent'):
     context = {
         u'user': toolkit.g.user,
@@ -47,28 +35,28 @@ def new_post(context, subsystem_id):
 
     data_dict = {
             'target_organization_id': form.get('target_organization_id'),
-            'intermediate_organization': None,
-            'business_code': form.get('businessCode'),
-            'intermediate_business_code': None,
-            'contact_name': form.get('contactName'),
-            'contact_email': form.get('contactEmail'),
-            'subsystem_id': form.get('subsystemId'),
-            'subsystem_code': form.get('subsystemCode'),
-            'service_code_list': form.getlist('serviceCode'),
-            'ip_address_list': [ip for ip in form.getlist('ipAddress') if ip],
-            'request_date': form.get('requestDate'),
-            'usage_description': form.get('usageDescription'),
+            'intermediate_organization_id': None,
+            'member_code': form.get('member_code'),
+            'intermediate_member_code': None,
+            'contact_name': form.get('contact_name'),
+            'contact_email': form.get('contact_email'),
+            'target_subsystem_id': form.get('target_subsystem_id'),
+            'subsystem_id': form.get('subsystem_id'),
+            'service_id_list': form.getlist('service_id_list'),
+            'ip_address_list': [ip for ip in form.getlist('ip_address_list') if ip],
+            'request_date': form.get('request_date'),
+            'usage_description': form.get('usage_description'),
             'file': files.get('file'),
             'file_url': form.get('file_url'),
             'clear_upload': form.get('clear_upload'),
             }
 
-    if form.get('enableIntermediateOrganization'):
-        data_dict['intermediate_organization'] = form.get('intermediateOrganization')
-        data_dict['intermediate_business_code'] = form.get('intermediateBusinessCode')
+    if form.get('enable_intermediate_organization'):
+        data_dict['intermediate_organization_id'] = form.get('intermediate_organization_id')
+        data_dict['intermediate_member_code'] = form.get('intermediate_member_code')
 
     try:
-        organization = toolkit.get_action('organization_show')(context, {'id': form['organization']})
+        organization = toolkit.get_action('organization_show')(context, {'id': form['organization_id']})
         data_dict['organization_id'] = organization['id']
 
         if toolkit.check_ckan_version(min_version='2.5'):
@@ -90,9 +78,9 @@ def new_post(context, subsystem_id):
     return toolkit.render('apply_permissions_for_service/sent.html')
 
 
-def new_get(context, subsystem_id, errors={}, values={}, preview=False):
+def new_get(context, target_subsystem_id, errors={}, values={}, preview=False):
     service_id = toolkit.request.args.get('service_id')
-    package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
+    package = toolkit.get_action('package_show')(context, {'id': target_subsystem_id})
 
     if (package.get('service_permission_settings', {}).get('delivery_method') == "none"
             or package.get('service_permission_settings', {}).get('delivery_method') is None) and preview is False:
@@ -109,7 +97,7 @@ def new_get(context, subsystem_id, errors={}, values={}, preview=False):
         }).get('results', []) if user_managed_organizations else []
 
     extra_vars = {
-            'subsystem_id': subsystem_id,
+            'target_subsystem_id': target_subsystem_id,
             'service_id': service_id,
             'pkg': package,
             'service': next((r for r in package.get('resources', []) if r['id'] == service_id), None),
@@ -127,15 +115,15 @@ def new_get(context, subsystem_id, errors={}, values={}, preview=False):
     return toolkit.render('apply_permissions_for_service/new.html', extra_vars=extra_vars)
 
 
-def new(subsystem_id):
+def new(target_subsystem_id):
     try:
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
         toolkit.check_access('service_permission_application_create', context, {})
 
         if toolkit.request.method == u'POST':
-            return new_post(context, subsystem_id)
+            return new_post(context, target_subsystem_id)
         else:
-            return new_get(context, subsystem_id)
+            return new_get(context, target_subsystem_id)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
@@ -151,24 +139,24 @@ def view(application_id):
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
-def preview(subsystem_id):
+def preview(target_subsystem_id):
     try:
         context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
-        toolkit.check_access('service_permission_settings', context, {"subsystem_id": subsystem_id})
-        return new_get(context, subsystem_id, preview=True)
+        toolkit.check_access('service_permission_settings', context, {"subsystem_id": target_subsystem_id})
+        return new_get(context, target_subsystem_id, preview=True)
     except toolkit.NotAuthorized:
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
-def manage(subsystem_id):
+def manage(target_subsystem_id):
     context = {u'user': toolkit.g.user, u'auth_user_obj': toolkit.g.userobj}
-    package = toolkit.get_action('package_show')(context, {'id': subsystem_id})
+    package = toolkit.get_action('package_show')(context, {'id': target_subsystem_id})
     toolkit.c.pkg_dict = package
 
-    data_dict = {'subsystem_id': package.get('id')}
+    data_dict = {'target_subsystem_id': package.get('id')}
     applications = toolkit.get_action('service_permission_application_list')(context, data_dict)
     extra_vars = {
-            'subsystem_id': subsystem_id,
+            'target_subsystem_id': target_subsystem_id,
             'pkg_dict': package,
             'applications': applications
             }
@@ -255,6 +243,15 @@ def settings_post(context, subsystem_id):
                 qualified=True
             )
             data_dict['additional_file_url'] = additional_file_url
+        elif not data_dict['original_additional_filename'] in additional_file_url:
+            ''' If additional_file_url doesn't contain the original filename but it does contain
+                http(s) we can assume it's been updated with an url instead of a file and we need
+                to update the filename as well in order not to show the old filename for the
+                download button '''
+            # full url
+            data_dict['original_additional_filename'] = additional_file_url
+            # vs filename?
+            # data_dict['original_additional_filename'] = additional_file_url.split('/')[-1]
 
     try:
         toolkit.get_action('service_permission_settings_update')(context, data_dict)
@@ -277,13 +274,13 @@ def settings(subsystem_id):
         toolkit.abort(403, toolkit._(u'Not authorized to see this page'))
 
 
-apply_permissions.add_url_rule('/', 'list_permission_applications', view_func=index)
 apply_permissions.add_url_rule('/dashboard/<app_type>', 'dashboard', view_func=dashboard)
 apply_permissions.add_url_rule('/dashboard', 'dashboard', view_func=dashboard)
-apply_permissions.add_url_rule('/new/<subsystem_id>', 'new_permission_application', view_func=new, methods=['GET', 'POST'])
+apply_permissions.add_url_rule('/new/<target_subsystem_id>', 'new_permission_application',
+                               view_func=new, methods=['GET', 'POST'])
 apply_permissions.add_url_rule('/view/<application_id>', 'view_permission_application', view_func=view)
-apply_permissions.add_url_rule('/preview/<subsystem_id>', 'preview_permission_application', view_func=preview)
-apply_permissions.add_url_rule('/manage/<subsystem_id>', 'manage_permission_applications', view_func=manage)
+apply_permissions.add_url_rule('/preview/<target_subsystem_id>', 'preview_permission_application', view_func=preview)
+apply_permissions.add_url_rule('/manage/<target_subsystem_id>', 'manage_permission_applications', view_func=manage)
 apply_permissions.add_url_rule('/settings/<subsystem_id>', 'permission_application_settings',
                                view_func=settings, methods=['GET', 'POST'])
 

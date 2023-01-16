@@ -3,8 +3,8 @@ from ckanext.apply_permissions_for_service import model
 
 
 def service_permission_application_list(context, data_dict):
-    if data_dict.get('subsystem_id'):
-        return {'success': toolkit.check_access('package_update', context, {'id': data_dict['subsystem_id']})}
+    if data_dict.get('target_subsystem_id'):
+        return {'success': toolkit.check_access('package_update', context, {'id': data_dict['target_subsystem_id']})}
     else:
         return {'success': True}
 

@@ -12,7 +12,7 @@
     <section class="module module-narrow">
       <div class="module">
         <div class="module-content dataset-sidebar">
-          <li {% if page_name=="sent" %}class="active"{% endif %}>
+          <li {% if page_name=="sent" or page_name=="dashboard" %}class="active"{% endif %}>
             {% link_for _('Sent access requests'), named_route='apply_permissions.dashboard', app_type='sent'%}
           </li>
           <li {% if page_name=="received" %}class="active"{% endif %}>

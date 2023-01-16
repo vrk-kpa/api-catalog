@@ -9,18 +9,17 @@
   </thead>
   <tbody>
   {% for application in applications %}
-      {% set subsystem_code = application.subsystem_code.split('.') %}
       <tr>
           <td>
               {{ _('Organization') }} : <b>{% link_for application.organization["title"], named_route='organization.read', id=application.organization_id %}</b><br>
-              {{ _('Subsystem') }} : <b>{% link_for application.requester_subsystem.name, named_route='dataset.read', id=application.requester_subsystem.id %}</b><br>
+              {{ _('Subsystem') }} : <b>{% link_for application.subsystem.name, named_route='dataset.read', id=application.subsystem.id %}</b><br>
           </td>
           {% if "intermediate_organization" in application %}
           <td>
               {{ _('Organization') }} : <b>{% link_for h.get_translated(application.intermediate_organization, 'title'),
                                                        named_route='organization.read',
                                                        id=application.intermediate_organization_id %}</b><br>
-              {{ _('Business code') }} : <b>{{ application.intermediate_business_code }}</b><br>
+              {{ _('Business code') }} : <b>{{ application.intermediate_member_code }}</b><br>
           </td>
           {% else %}
           <td></td>
@@ -29,12 +28,12 @@
               {{ _('Organization') }} : <b>{% link_for h.get_translated(application.target_organization, 'title'),
                                                        named_route='organization.read',
                                                        id=application.target_organization_id %}</b><br>
-              {{ _('Subsystem') }} : <b>{% link_for subsystem_code[3], named_route='dataset.read', id=application.subsystem.id %}</b><br>
+              {{ _('Subsystem') }} : <b>{% link_for  h.get_translated(application.target_subsystem, 'title'), named_route='dataset.read', id=application.target_subsystem.id %}</b><br>
               {{ _('Service code') }} :
               {% for service in application.services %}
                 <b>{% link_for service.name,
                       named_route='dataset_resource.read',
-                      id=application.requester_subsystem.id,
+                      id=application.target_subsystem.id,
                       resource_id=service.id %}
                 </b>
                 <br>
