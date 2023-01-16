@@ -243,6 +243,15 @@ def settings_post(context, subsystem_id):
                 qualified=True
             )
             data_dict['additional_file_url'] = additional_file_url
+        elif not data_dict['original_additional_filename'] in additional_file_url:
+            ''' If additional_file_url doesn't contain the original filename but it does contain
+                http(s) we can assume it's been updated with an url instead of a file and we need
+                to update the filename as well in order not to show the old filename for the
+                download button '''
+            # full url
+            data_dict['original_additional_filename'] = additional_file_url
+            # vs filename?
+            # data_dict['original_additional_filename'] = additional_file_url.split('/')[-1]
 
     try:
         toolkit.get_action('service_permission_settings_update')(context, data_dict)
