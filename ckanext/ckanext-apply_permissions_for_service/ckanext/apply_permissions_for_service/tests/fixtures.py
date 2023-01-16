@@ -16,5 +16,3 @@ def drop_db():
 
     model.repo.clean_db()
     model.repo.init_db()
-
-

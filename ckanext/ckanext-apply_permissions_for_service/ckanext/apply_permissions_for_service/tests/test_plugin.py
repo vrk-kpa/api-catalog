@@ -267,7 +267,6 @@ class TestApplyPermissionsForServicePlugin():
                     {u"user": user3["name"], "ignore_auth": False},
                     **application)
 
-
         applications = call_action('service_permission_application_list',
                                    {'user': user3['name'], 'ignore_auth': True},
                                    target_subsystem_id=target_subsystem['id'])
