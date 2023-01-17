@@ -41,8 +41,11 @@
 - name: Initialize users for organization database
   shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-database init chdir={{ virtualenv }}
 
-- name: Initialize xroad errors database
+- name: Initialize xroad database
   shell: ./bin/ckan --config "{{ ckan_ini }}" xroad init-db chdir={{ virtualenv }}
+
+- name: Init and upgrade xroad alembic databases
+  shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p xroad_integration chdir={{ virtualenv }}
 
 - name: Initialize pages database
   shell: ./bin/ckan --config {{ ckan_ini }} pages initdb  chdir={{ virtualenv }}
