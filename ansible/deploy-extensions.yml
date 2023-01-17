@@ -22,6 +22,7 @@
     - { role: ckan-extension, ckanext: ckanext-openapiviewer }
     - { role: ckan-extension, ckanext: ckanext-apply_permissions_for_service }
     - { role: ckan-extension, ckanext: ckanext-markdown_editor }
+    - { role: ckan-extension, ckanext: ckanext-sitesearch }
     - ckan
     - ckan-translations
   handlers:

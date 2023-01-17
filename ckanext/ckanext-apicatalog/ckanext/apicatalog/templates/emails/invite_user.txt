@@ -1,93 +1,40 @@
-Tervetuloa käyttämään Liityntäkatalogia!
+Tervetuloa käyttämään Liityntäkatalogia! (Nedan på svenska/In English below.)
 
-Nedan på svenska
+Hei,
+Sinulle on luotu käyttäjätunnus Palveluväylän Liityntäkatalogiin.
+Käyttäjätunnuksesi on: {{ user_name }}
+Kirjautuaksesi Liityntäkatalogiin, tulee käyttäjätilille luoda salasana.
+Luo uusi salasana resetoimalla se alla olevan linkin kautta:
+{{ site_url }}/user/reset
+--
+Ystävällisin terveisin
+Liityntäkatalogi ( {{ site_url }} )
 
-In English below
 
- 
-
-Organisaatiosi {{ group_title }} on liittynyt Suomi.fi-palveluväylään. Liittymisen yhteydessä sinut on nimetty ylläpitämään organisaatiosi ja sen tarjoamien palveluiden tietoja Liityntäkatalogissa. Ylläpitäjänä voit hallinnoida organisaatiosi sekä palvelujesi tietoja ja kuvauksia. Lisäksi voit kutsua organisaatioosi muita jäseniä ja myöntää heille tarpeellisia oikeuksia tietojen ylläpitoa varten.
-
- 
-
-Käyttäjätunnuksesi: {{ user_name }}
-
-Luo tilillesi salasana: {{ reset_link }}
-
- 
-
-Pääset tutustumaan organisaatiosi tietoihin Liityntäkatalogissa. Tutustu myös muiden organisaatioiden tarjoamiin palveluihin: https://liityntakatalogi.suomi.fi
-
-Löydät ohjeet esimerkiksi organisaatiosi ja palvelujesi tietojen päivittämiseen sekä käyttäjähallintaan Ohjeet ja tuki -sivulta: https://liityntakatalogi.suomi.fi/pages/ohjeet-ja-tuki
-
- 
-
-Jos salasanan luominen ei onnistu tai tarvitset apua Liityntäkatalogin käytössä, ota yhteyttä Palveluväylän asiakastukeen palveluvayla@palveluvayla.fi.
-
- 
-
-Ystävällisin terveisin,
-
-Liityntäkatalogin ylläpito
-
- 
-
- 
 
 Välkommen att använda API-katalogen!
 
- 
+Hej,
+Ett användarnamn har skapats åt dig till Informationsledens API-katalogen.
+Ditt användarnamn är: {{ user_name }}
+För att logga in till API-katalogen måste ett lösenord skapas för användarkontot.
+Skapa ett nytt lösenord genom att återställa det via länken nedan:
+{{ site_url }}/sv/user/reset
+--
+Med vänliga hälsningar
+API-katalogen ( {{ site_url }}/sv )
 
-Din organisation {{ group_title }} har anslutit sig till Suomi.fi-informationsleden. I samband med det har du utsetts att i API-katalogen administrera uppgifter om din organisation och de tjänster den tillhandahåller. Du kan administrera uppgifter och beskrivningar om din organisation och dess tjänster. Dessutom kan du bjuda in andra medlemmar i din organisation och bevilja dem behövliga rättigheter för att underhålla uppgifterna.
 
- 
 
-Ditt användarnamn: {{ user_name }}
+Welcome to use the API Catalogue!
 
-Skapa lösenord för ditt konto: {{ reset_link }}
+Hi,
+A username has been created for you to the Data Exchange Layer’s API Catalogue.
+Your username is: {{ user_name }}
+To log in to API Catalogue, password must be created for the user account.
+Create a new password by resetting it via the link below:
+https://liityntakatalogi.suomi.fi/en_GB/user/reset
+--
+Best regards
+API Catalogue ( {{ site_url }}/en_GB )
 
- 
-
-Läs uppgifterna om din organisation i API-katalogen. Läs också om tjänster som tillhandahålls av andra organisationer: https://liityntakatalogi.suomi.fi
-
-Anvisningar om hur man uppdaterar uppgifter om organisationen och tjänsterna och om hur man hanterar användarrättigheter finns på sidan Anvisningar och stöd: https://liityntakatalogi.suomi.fi/sv/pages/ohjeet-ja-tuki
-
- 
-
-Om det inte går att skapa ett lösenord eller om du behöver hjälp med att använda API-katalogen, kontakta Informationsledens kundstöd palveluvayla@palveluvayla.fi.
-
- 
-
-Med vänlig hälsning
-
-API-katalogen, underhållet
-
- 
-
- 
-
-Welcome to the API Catalogue!
-
-Your organisation {{ group_title }} has joined the Suomi.fi Data Exchange Layer. During the joining process, you were named as the person in charge of maintaining your organisation and its subsystems and services' information on the API Catalogue. As an admin member, you can edit your organisation as well as its subsystems and services' information. Additionally, you can invite others to join your organisation and give them the necessary access to maintain information in the API Catalogue.
-
- 
-
-Your username: {{ user_name }}
-
-Create a password: {{ reset_link }}
-
- 
-
-Start by checking your organisation's information and updating it if necessary. Get to know the services offered by other organisations: https://liityntakatalogi.suomi.fi/en_GB/
-
-You can find instructions on updating your organisation and its services' information as well as a guide to user management on our guide page: https://liityntakatalogi.suomi.fi/en_GB/pages/ohjeet-ja-tuki
-
- 
-
-If you have trouble with the registration or need help using the API Catalogue, contact the Data Exchange Layer's customer support palveluvayla@palveluvayla.fi.
-
- 
-
-Best regards,
-
-API Catalogue administration

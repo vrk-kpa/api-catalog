@@ -1,0 +1,14 @@
+{% ckan_extends %}
+
+{% block subtitle %}{{ _('Activity Stream') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block primary_content_inner %}
+    <div class="org-page-heading">
+        <h2>
+            {% block page_heading -%}
+            {{ _('Activity Stream') }}
+            {%- endblock %}
+        </h2>
+    </div>
+  {% snippet 'snippets/activity_stream.html', activity_stream=activity_stream, id=id, object_type='organization' %}
+{% endblock %}

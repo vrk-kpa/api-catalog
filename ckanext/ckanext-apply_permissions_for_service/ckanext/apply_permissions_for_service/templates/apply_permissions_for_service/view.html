@@ -2,7 +2,7 @@
 
 {% block breadcrumb_content %}
   {{ super() }}
-  <li>{% link_for h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title'), named_route='apply_permissions.view_permission_application', application_id=application.id%}</li>
+  <li>{% link_for h.xroad_subsystem_path(application.target_subsystem) or h.get_translated(application.target_subsystem, 'title'), named_route='apply_permissions.view_permission_application', application_id=application.id%}</li>
 {% endblock %}
 
 {% block prelude %}
@@ -10,33 +10,43 @@
 {% endblock %}
 
 {% block primary_content_inner %}
-{% link_for _('All access applications'), named_route='apply_permissions.manage_permission_applications', class_='btn', icon='arrow-left', subsystem_id=application.subsystem_id %}
-
+{% link_for _('All access applications'), named_route='apply_permissions.dashboard', class_='btn', icon='arrow-left' %}
+{% if "intermediate_organization" in application %}
   <h3>{{ _('Applicant information') }}</h3>
   <table class="table">
     <tbody>
-      <tr><th>{{ _('Organization') }}</th><td>{{ h.get_translated(application.organization, 'title') }}</td></tr>
-      <tr><th>{{ _('Business code') }}</th><td>{{ application.business_code }}</td></tr>
+      <tr><th>{{ _('Organization') }}</th><td>{{ h.get_translated(application.intermediate_organization, 'title') }}</td></tr>
+      <tr><th>{{ _('Business code') }}</th><td>{{ application.intermediate_member_code }}</td></tr>
       <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
       <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
     </tbody>
   </table>
 
-  {% if "intermediate_organization" in application %}
+
     <hr>
     <h3>{{ _('Information about the organization consuming the services') }}</h3>
     <table class="table">
       <tbody>
         <tr>
             <th>{{ _('Organization') }}</th>
-            <td>{{ h.get_translated(application.intermediate_organization, 'title') }}</td>
+            <td>{{ h.get_translated(application.organization, 'title') }}</td>
         </tr>
         <tr>
             <th>{{ _('Business code') }}</th>
-            <td>{{ application.intermediate_business_code }}</td>
+            <td>{{ application.member_code }}</td>
         </tr>
     </tbody>
     </table>
+  {% else %}
+  <h3>{{ _('Applicant information') }}</h3>
+  <table class="table">
+    <tbody>
+      <tr><th>{{ _('Organization') }}</th><td>{{ h.get_translated(application.organization, 'title') }}</td></tr>
+      <tr><th>{{ _('Business code') }}</th><td>{{ application.member_code }}</td></tr>
+      <tr><th>{{ _('Contact name') }}</th><td>{{ application.contact_name }}</td></tr>
+      <tr><th>{{ _('Contact email') }}</th><td>{{ application.contact_email }}</td></tr>
+    </tbody>
+  </table>
   {% endif %}
   <hr>
 
@@ -44,7 +54,7 @@
   <table class="table">
     <tbody>
       <tr><th>{{ _('IP address') }}</th><td>{{ application.ip_address_list|join(', ') }}</td></tr>
-      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.requester_subsystem) or h.get_translated(application.requester_subsystem, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem code') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
     </tbody>
   </table>
 
@@ -54,7 +64,7 @@
   <table class="table">
     <tbody>
       <tr><th>{{ _('Organization name') }}</th><td>{{ h.get_translated(application.target_organization, 'title') }}</td></tr>
-      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.subsystem) or h.get_translated(application.subsystem, 'title') }}</td></tr>
+      <tr><th>{{ _('Subsystem') }}</th><td>{{ h.xroad_subsystem_path(application.target_subsystem) or h.get_translated(application.target_subsystem, 'title') }}</td></tr>
       <tr>
         <th>{{ _('Service code') }}</th>
           <td>
@@ -68,12 +78,12 @@
       <tr><th>{{ _('Date when access is needed') }}</th><td>{{ application.request_date }}</td></tr>
     </tbody>
   </table>
-  
+
   {% if application.get('application_filename') %}
   <hr>
 
   <h3>{{ _('Additional info') }}</h3>
-  <a href="{{ application.get('application_fileurl')}}">{{ application.get('application_filename') }}</a>
+  <a href="{{ application.get('application_fileurl')}}" target="_blank">{{ application.get('application_filename') }}</a>
   {% endif %}
 
 {% endblock %}

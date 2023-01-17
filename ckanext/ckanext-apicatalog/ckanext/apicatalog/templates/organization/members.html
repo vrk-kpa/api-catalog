@@ -23,7 +23,15 @@
     </tr>
     </thead>
     <tbody>
-    {% for user_id, user, role in c.members %}
+    {% set roles = [] %}
+    {% set title_to_role = {} %}
+    {% for role, title in h.roles_translated()|dictsort %}
+      {% do roles.append({"value": role, "text": title}) %}
+      {% do title_to_role.update({title: role}) %}
+    {% endfor %}
+
+    {% for user_id, user_type, role in c.members %}
+    {% set username = h.username_from_id(user_id) %}
     <tr>
         <td class="media">
             {{ h.linked_user(user_id, maxlength=20) }}
@@ -32,10 +40,39 @@
         <td>
             {% if h.check_access('organization_member_create', {'id': c.group_dict.id }) and h.check_access('organization_member_delete', {'id': c.group_dict.id }) %}
             <div class="btn-group pull-right">
-                <a class="btn btn-default btn-sm" href="{% url_for controller='organization', action='member_new', id=c.group_dict.id, user=user_id %}" title="{{ _('Edit') }}">
+              {% set user_edit_url = h.url_for('organization.member_new', group_type=c.group_dict.type, id=c.group_dict.id, is_organization=True, user=username) %}
+              <a class="btn btn-default btn-sm" href="{{ user_edit_url }}"
+                 data-module="modal-dialog"
+                 data-module-content-id="edit-members-dialog"
+                 data-module-title="{{ _('Edit member role') }}"
+                 data-module-ok-button-label="{{ _('Update') }}"
+                 data-module-with-data
+                 title="{{ _('Edit member role') }}">
                     <i class="fa fa-wrench"></i>
-                </a>
-                <a class="btn btn-danger btn-sm" href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user_id %}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
+              </a>
+              <span style="display:none">
+                <form id="edit-members-dialog" action="{{ user_edit_url }}" method="POST">
+                  {{ form.hidden('username', username) }}
+
+                  <div class="form-group">
+                    <label class="control-label">{{ _('User') }}</label>
+                    <div>{{ username }}</div>
+                  </div>
+                  {% set selected_role = title_to_role[role] %}
+                  <div class="select-wrapper">
+                    {% if user and user.name == c.user and user_role == 'admin' %}
+                      {% set format_attrs = {'disabled': 'disabled', 'class': 'form-control'} %}
+                      {{ form.select('role', label=_('Role'), options=roles, selected=selected_role, error='', attrs=format_attrs) }}
+                      {{ form.hidden('role', value=selected_role) }}
+                    {% else %}
+                      {% set format_attrs = {'class': 'form-control'} %}
+                      {{ form.select('role', label=_('Role'), options=roles, selected=selected_role, error='', attrs=format_attrs) }}
+                    {% endif %}
+                  </div>
+                </form>
+              </span>
+
+              <a class="btn btn-danger btn-sm" href="{% url_for controller='organization', action='member_delete', id=c.group_dict.id, user=user_id %}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
             </div>
             {% endif %}
         </td>

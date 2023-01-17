@@ -28,3 +28,6 @@
 [submodule "ckanext/ckanext-markdown_editor"]
 	path = ckanext/ckanext-markdown_editor
 	url = https://github.com/vrk-kpa/ckanext-markdown_editor
+[submodule "ckanext/ckanext-sitesearch"]
+	path = ckanext/ckanext-sitesearch
+	url = https://github.com/vrk-kpa/ckanext-sitesearch

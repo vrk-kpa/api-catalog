@@ -1,0 +1,90 @@
+{% extends "organization/edit_base.html" %}
+
+{% block subtitle %}{{ _('Edit datasets') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
+
+{% block page_primary_action %}
+  {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <div class="row">
+    <h1 class="hide-heading">{{ _('Edit datasets') }}</h1>
+    <div class="primary col-md-12">
+      {% block search_form %}
+        {% set sorting = [
+            (_('Name Ascending'), 'title_string asc'),
+            (_('Name Descending'), 'title_string desc'),
+            (_('Last Modified'), 'data_modified desc') ]
+                %}
+        <div class="sorter-wrapper">
+          {% snippet 'snippets/search_form.html', form_id='organization-datasets-search-form', type='dataset', query=c.q, count=page.item_count, sorting=sorting, sorting_selected=sort_by_selected, search_class=' ', no_bottom_border=True %}
+        </div>
+      {% endblock %}
+
+      {% block form %}
+        {% if page.item_count %}
+          <form method="POST" data-module="basic-form">
+            <div class="bulk_process-actions">
+                <button name="bulk_action.public" value="public" class="btn btn-default" type="submit">
+                    {{ _('Make public') }}
+                </button>
+                <button name="bulk_action.private" value="private" class="btn btn-default" type="submit">
+                    {{ _('Make private') }}
+                </button>
+                <button name="bulk_action.delete" value="delete" class="btn btn-delete" type="submit">
+                    <i class="fal fa-trash"></i>
+                    {{ _('Delete') }}
+                </button>
+            </div>
+            <table class="table table-striped table-header table-hover table-bulk-edit table-edit-hover" data-module="table-selectable-rows">
+              <col width="11">
+              <col width="120">
+              <thead>
+                <tr>
+                  <th class="table-checkbox"></th>
+                  <th>
+                    {{ _('Select all') }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for package in packages %}
+                  {% set truncate = truncate or 180 %}
+                  {% set truncate_title = truncate_title or 80 %}
+                  {% set title = package.title or package.name %}
+                  {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
+                  <tr>
+                    <td class="table-checkbox">
+                      <input type="checkbox" name="dataset_{{ package.id }}">
+                    </td>
+                    <td class="context">
+                        <a href="{% url_for package.type ~ '.edit', id=package.name %}" class="edit pull-right">
+                            {{ _('Edit') }}
+                        </a>
+                        {{ h.link_to(h.truncate(title, truncate_title), h.url_for(package.type ~ '.read', id=package.name)) }}
+                        {% if package.get('state', '').startswith('draft') %}
+                            <span class="label label-info">{{ _('Draft') }}</span>
+                        {% elif package.get('state', '').startswith('deleted') %}
+                            <span class="label label-danger">{{ _('Deleted') }}</span>
+                        {% endif %}
+                        {% if package.private %}
+                            <span class="label label-danger">{{ _('Private') }}</span>
+                        {% endif %}
+                      {% if notes %}
+                        <p>{{ notes|urlize }}</p>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </form>
+        {% elif not page.item_count and not c.q %}
+          <p class="empty">{{ _('This organization has no datasets associated to it') }}</p>
+        {% endif %}
+      {% endblock %}
+    </div>
+  </div>
+  {{ page.pager() }}
+{% endblock %}
+

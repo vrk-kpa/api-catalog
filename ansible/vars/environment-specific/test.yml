@@ -98,6 +98,7 @@ apicatalog_path: "{{ server_path }}/ckanext/ckanext-apicatalog/"
 
 ckan_plugins:
   - apply_permissions_for_service
+  - sitesearch
   - apicatalog
   - scheming_datasets
   - scheming_organizations

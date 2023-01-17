@@ -85,7 +85,7 @@
   {% endif %}
 
 
-   {{ input(field_url, label=url_label, id='field-image-url', type='url', placeholder=placeholder, value=data.get(field_url), error=errors.get(field_url), classes=['control-full']) }}
+   {{ input(field_url, label=url_label, id='field-image-url', type='url', placeholder=placeholder, value=data.get(field_url), error='', classes=['control-full']) }}
 
 
   {% if is_upload_enabled %}

@@ -1,0 +1,70 @@
+#organization-datasets-search-form {
+    [type='submit'] {
+        background-color: @suomifi-highlight-base;
+
+        i {
+            color: @white;
+            font-weight: 300;
+        }
+    }
+
+    label {
+        font-weight: 600;
+    }
+}
+
+.bulk_process-actions {
+    margin: @gutterY -(@gutterX / 4);
+
+    .btn {
+        margin: 0 (@gutterX / 4);
+        font-weight: 600;
+        color: @suomifi-highlight-base;
+        border-color: @suomifi-highlight-base;
+    }
+
+    .btn-delete {
+        i {
+            margin-right: (@gutterX / 4);
+        }
+    }
+}
+
+.table-bulk-edit {
+    border: 1px solid @suomifi-depth-light1;
+    border-top: 2px solid @suomifi-highlight-base;
+    font-size: 18px;
+    font-weight: 600;
+
+    > thead > tr > th,
+    > thead > tr > td {
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    > thead > tr > th,
+    > thead > tr > td,
+    > tbody > tr > th,
+    > tbody > tr > td {
+        border: none;
+        border-bottom: 1px solid @suomifi-depth-light1;
+        vertical-align: middle;
+    }
+
+    > thead > tr > th,
+    > thead > tr > td,
+    > tbody > tr:nth-child(even) > th,
+    > tbody > tr:nth-child(even) > td {
+        background-color: @white;
+
+    }
+    > tbody > tr:nth-child(odd) > th,
+    > tbody > tr:nth-child(odd) > td {
+        background-color: @suomifi-striped-background;
+    }
+
+    .table-checkbox {
+        padding-left: (@gutterX / 2);
+        padding-right: (@gutterX / 2);
+    }
+}

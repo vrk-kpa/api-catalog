@@ -2149,7 +2149,7 @@ msgstr "visa mindre"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:8
 msgid "Reorder resources"
-msgstr "Sortera om resurserna"
+msgstr "Sortera om tjänster"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:9
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:9

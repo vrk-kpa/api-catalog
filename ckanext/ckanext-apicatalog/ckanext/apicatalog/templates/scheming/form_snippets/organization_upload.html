@@ -15,8 +15,8 @@
 {% macro input(name, id='', label='', value='', placeholder='', type='file', error="", classes=[], attrs={}, is_required=false, final=false) %}
   {%- set extra_html = caller() if caller -%}
   {% call form.input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required) %}
-    {%- if field.extra_label is not none -%}
-        <p>{{_(field.extra_label)}}</p>
+    {%- if field.description -%}
+        <p>{{_(field.description)}}</p>
     {%- endif -%}
     {% if type == 'file' %}
       <div class="dropzone" data-module="drag-n-drop-uploader">
@@ -47,14 +47,14 @@
          data-module-field_url="{{ field_url }}"
          data-module-field_upload="{{ field_upload }}"
          data-module-field_clear="{{ field_clear }}"
-         data-module-upload_label="{{ upload_label }}"
+         data-module-upload_label="{{ _(upload_label) }}"
          data-module-field_name="{{ field_name }}"
          data-module-previous_upload="{{ 'true' if previous_upload else 'false' }}">
   {% endif %}
 
 
    {% call form.input(field_url,
-                 label=url_label,
+                 label=_(url_label),
                  id='field-image-url',
                  type='url',
                  placeholder=placeholder,

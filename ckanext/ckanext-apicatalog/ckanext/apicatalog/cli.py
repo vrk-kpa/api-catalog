@@ -145,10 +145,12 @@ def create_organization_users(ctx, retry):
                                                            {'retry': retry}).get('result', {})
 
     created = result.get('created', [])
+    added = result.get('added', [])
     invalid = result.get('invalid', [])
     ambiguous = result.get('ambiguous', [])
     duplicate = result.get('duplicate', [])
     click.echo('Created users: %s' % ', '.join(created))
+    click.echo('Existing users added to organizations: %s' % ', '.join(added))
     click.echo('Duplicate users: %s' % ', '.join(duplicate))
     click.echo('Unknown business ids: %s' % ', '.join(invalid))
     click.echo('Ambiguous business ids: %s' % ', '.join(ambiguous))

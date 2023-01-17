@@ -10,7 +10,7 @@
             <i class="fal fa-file-alt"></i>
             {{ pkg.get('service_permission_settings', {}).get('original_additional_filename') }}
         </div>
-        <a class="btn btn-outline-primary" href="{{ pkg.get('service_permission_settings', {}).get('additional_file_url') }}">
+        <a class="btn btn-outline-primary" href="{{ pkg.get('service_permission_settings', {}).get('additional_file_url') }}" target="_blank">
             <i class="far fa-arrow-to-bottom"></i>
             {{ _('Download') }}
         </a>
@@ -19,8 +19,10 @@
 
 <div class="additional_application_info_step">
     <h4>{{ _('2. Add completed file into the application') }}</h4>
+    {% set is_upload = data.file_url and not data.file_url.startswith('http') %}
+    {% set is_url = data.file_url and data.file_url.startswith('http') %}
     {{ form.image_upload_dragndrop(
-        {},
+        data,
         errors,
         upload_label=_('Add your file'),
         is_upload_enabled=h.uploads_enabled(),

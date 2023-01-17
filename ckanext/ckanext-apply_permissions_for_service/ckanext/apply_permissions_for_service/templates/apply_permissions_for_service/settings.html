@@ -1,12 +1,15 @@
 {% extends 'package/edit_base.html' %}
 {% import 'macros/form.html' as form %}
-{% resource 'apicatalog_ui/javascript/mutexfield.js' %}
+{% import 'scheming/macros/form.html' as form_custom %}
+
 
 {% block content_action %}
 {% link_for _('Exit the settings'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default' %}
 {% endblock %}
 
 {% block primary_content %}
+{% asset 'markdown_editor/markdown_editor-js' %}
+
 <section id="main_content" class="module">
   <div class="module-content">
     {% block primary_content_inner %}
@@ -27,13 +30,16 @@
           </div>
           <div data-mutex-field="deliveryMethod">
              <div data-mutex-value="email">
-                  {{ form.input('email', label=_('Email'), value=settings.email) }}
+                  {{ form_custom.input('email', label=_('Email'), value=settings.email, description=_("Fill in the email address to which the application will be sent.")) }}
                   <div class="additional_application_file_container">
                     <script>
                       function listenAdditionalFileCheckbox(event) {
                         var fileField = document.querySelector('#additional_application_file_field');
-
                         fileField.style.display = event.target.checked ? 'block' : 'none';
+
+                        var uploadInput = document.querySelector('#additional_application_file_field input[name="additional_file"]');
+                        var uploadButton = document.querySelector('input#field-image-upload~a');
+                        uploadInput.style.width = uploadButton.clientWidth + 'px';
                       }
 
                       window.addEventListener('DOMContentLoaded', function(event) {
@@ -92,7 +98,7 @@
                 {{ form.hidden('original_filename', value=settings.original_filename) }}
               {% endif %}
 
-              {{ form.input('email', label=_('Email'), value=settings.email) }}
+              {{ form_custom.input('email', label=_('Email'), value=settings.email, description=_("Fill in the email address to which the application will be sent.")) }}
               {% set is_upload = settings.file_url and not settings.file_url.startswith('http') %}
               {% set is_url = settings.file_url and settings.file_url.startswith('http') %}
               {{ form.image_upload_dragndrop(
@@ -114,10 +120,30 @@
             <div data-mutex-value="web">
               {{ form.input('web', label=_('Webpage URL'), value=settings.web) }}
             </div>
+            <div>
+              <h3 class="api-catalog-group-title">{{ _('Description of the user permit application process') }}</h3>
+              <h5 class="api-catalog-group-description">{{ _('Describe the user permit application process of your subsystem here. Describe also other possible permits required for the implementation of your services.') }}</h5>
+              {% set field_name = 'guide_text_translated' %}
+              {% set field_placeholder = _('Describe the user permit application process') %}
+              {% set field_label = _('Description') %}
+              {%- for lang in h.fluent_form_languages() -%}
+                {% set form_attrs = {'data-module': 'ckeditor5-markdown', 'data-module-language': h.get_lang_prefix()} %}
+                {% call form.textarea(
+                  field_name + '-' + lang,
+                  id='field-' + field_name + '-' + lang,
+                  label=_(field_label) + ' ' + _(lang),
+                  placeholder=h.scheming_language_text(field_placeholder, lang),
+                  value=settings.get(field_name, {})[lang],
+                  error=errors[field_name + '-' + lang],
+                  attrs=form_attrs
+                  ) %}
+                {% endcall %}
+              {%- endfor -%}
+            </div>
             <div class="module__actions">
               <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
               <a class="btn btn-default" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Cancel') }}</a>
-              <a data-mutex-value="email" class="btn btn-default btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', subsystem_id=pkg.name) }}" target="_blank">{{ _('Preview application') }}</a>
+              <a data-mutex-value="email" class="btn btn-default btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', target_subsystem_id=pkg.name) }}" target="_blank">{{ _('Preview application') }}</a>
             </div>
           </div>
         </div>

@@ -2150,12 +2150,12 @@ msgstr "näytä vähemmän"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:8
 msgid "Reorder resources"
-msgstr "Uudelleenjärjestä liitetiedostot"
+msgstr "Uudelleenjärjestä palvelut"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:9
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:9
 msgid "Save order"
-msgstr "Tallenna tilaus"
+msgstr "Tallenna järjestys"
 
 #: ckan/public/base/javascript/modules/resource-reorder.js:10
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:10

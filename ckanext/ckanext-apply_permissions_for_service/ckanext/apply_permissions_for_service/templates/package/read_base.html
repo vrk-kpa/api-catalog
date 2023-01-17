@@ -2,7 +2,5 @@
 
 {% block side_navigation %}
     {{ super() }}
-    {% if h.check_access('organization_update', {'id': pkg.organization.id}) %}
-        {{ h.build_nav_icon('apply_permissions.manage_permission_applications', _('Received access requests'), subsystem_id=pkg.name) }}
-    {% endif %}
+    {{ h.build_nav_icon('apply_permissions.manage_permission_applications', _('Received access requests'), target_subsystem_id=pkg.name) }}
 {% endblock %}

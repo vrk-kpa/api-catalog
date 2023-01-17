@@ -1,4 +1,4 @@
-from ckan.plugins.toolkit import _
+from ckan.plugins.toolkit import _, ungettext
 
 
 def facet_translations():
@@ -12,13 +12,16 @@ def schema_translatable_strings():
             _('Name in Finnish'),
             _('Name in Swedish'),
             _('Name in English'),
-            _('Organisation description'),
-            _('A general, concise, and easy-to-understand description of the organization'),
+            _('Organization description'),
+            _('A general, concise, and easy-to-understand description of the organization.'),
+            _('A general, concise, and easy-to-understand description of the attachment.'),
+            _('A general, concise, and easy-to-understand description of the service.'),
             _('Description in Finnish'),
             _('Description in Swedish'),
             _('Description in English'),
+            _('Write the organization\'s description'),
             _('Other information and settings'),
-            _('Organisation logo'),
+            _('Organization logo'),
             _('The logo is displayed on the organization page in API Catalogue.'),
             _('If possible, provide a telephone number for the organization\'s switchboard or'
               ' customer service, not an individual number.'),
@@ -37,10 +40,10 @@ def schema_translatable_strings():
             _('Attachment visibility'),
             _('Attachment description'),
             _('Attachment name'),
-            _('When service visibility is private, it is only visible to the owner organisation or'
-              ' users from allowed organisations'),
-            _('When attachment visibility is private, it is only visible to the owner organisation or'
-              ' users from allowed organisations'),
+            _('When service visibility is private, it is only visible to the owner organization or'
+              ' users from allowed organizations'),
+            _('When attachment visibility is private, it is only visible to the owner organization or'
+              ' users from allowed organizations'),
             _('Chargeable'),
             _('Free of charge'),
             _('Mentioned in service description'),
@@ -90,9 +93,16 @@ def schema_translatable_strings():
             _('The email of the maintainer'),
             _('Limited'),
             _('Allowed organizations'),
-            _('Other information'),
+            _('Period of validity'),
             _('dd/mm/yyyy'),
             _('fi'),
             _('en'),
             _('sv'),
+            _('Organization acts as an intermediary for other organizations.'),
+            _('Organization processes data outside the EU/EAA countries.'),
+            _('Intermediary organization'),
+            _('Data processing'),
+            _('Choose this if your organization acts as an intermediary for other organizations.'),
+            _('Choose this if your organization processes data outside the EU/EAA countries.'),
+            ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{query}"')
             ]

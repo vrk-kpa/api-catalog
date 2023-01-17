@@ -34,7 +34,8 @@ from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import with_field_string_replacements, \
-    apicatalog_scheming_language_text, parse_datetime
+    apicatalog_scheming_language_text, parse_datetime, username_from_id, \
+    is_boolean_selected
 
 from collections import OrderedDict
 
@@ -317,8 +318,8 @@ def custom_organization_list(params):
 
     results = list(organization_generator(context, organization_list_options))
 
-    provider_orgs = params.get('provider_orgs', '').lower() in ('true', '1', 'yes')
-    if provider_orgs:
+    all_orgs = params.get('all_orgs', '').lower() in ('true', '1', 'yes')
+    if not all_orgs:
         results = [group for group in results if group.get('xroad_member_type') == "provider"]
 
     def sort_by_providers_first(g):
@@ -341,7 +342,7 @@ def custom_organization_list(params):
         'organizations': results[page_start:page_end],
         'count': len(results),
         'page': custom_page,
-        "provider_orgs": provider_orgs
+        "all_orgs": all_orgs
     }
 
 
@@ -651,7 +652,10 @@ def create_organization_users(context, data_dict):
 
     user_list = toolkit.get_action('user_list')
     user_invite = toolkit.get_action('user_invite')
+    organization_list_for_user = toolkit.get_action('organization_list_for_user')
+    organization_member_create = toolkit.get_action('organization_member_create')
     created = []
+    added = []
     invalid = []
     ambiguous = []
     duplicate = []
@@ -674,15 +678,30 @@ def create_organization_users(context, data_dict):
         organization = next(iter(matching_organizations))
 
         matching_users = user_list(context, {'email': application.email, 'all_fields': False})
-        if matching_users:
-            log.warn('Existing user found for email address %s, skipping duplicate user', application.email)
-            application.mark_duplicate()
-            duplicate.append(application.email)
-            continue
-
-        log.info('Inviting user %s to organization %s (%s)', application.email, organization['title'], organization['id'])
+        matching_user = next(iter(matching_users), None)
         try:
-            user = user_invite(context, {'email': application.email, 'group_id': organization['id'], 'role': 'admin'})
+            if matching_user:
+                user_organizations = organization_list_for_user(context, {'id': matching_user})
+                if organization['id'] in (uo['id'] for uo in user_organizations):
+                    log.warn('Existing member in %s found for email address %s, skipping duplicate user',
+                             organization['name'], application.email)
+                    application.mark_duplicate()
+                    duplicate.append(application.email)
+                    continue
+                log.info('Adding user %s to organization %s (%s)',
+                         matching_user, organization['title'], organization['id'])
+                organization_member_create(context, {'id': organization['id'],
+                                                     'username': matching_user,
+                                                     'role': 'admin'})
+
+                added.append(matching_user)
+            else:
+                log.info('Inviting user %s to organization %s (%s)',
+                         application.email, organization['title'], organization['id'])
+                user = user_invite(context, {'email': application.email,
+                                             'group_id': organization['id'],
+                                             'role': 'admin'})
+                created.append(user.get('name'))
         except ValidationError as e:
             log.warn(e)
             continue
@@ -691,10 +710,10 @@ def create_organization_users(context, data_dict):
             continue
 
         application.mark_done()
-        created.append(user.get('name'))
 
     context.get('session', model.Session).commit()
-    return {'success': True, 'result': {'created': created, 'invalid': invalid, 'ambiguous': ambiguous,
+    return {'success': True, 'result': {'created': created, 'added': added,
+                                        'invalid': invalid, 'ambiguous': ambiguous,
                                         'duplicate': duplicate}}
 
 
@@ -775,7 +794,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 'get_field_from_schema': get_field_from_schema,
                 'max_resource_size': get_max_resource_size,
                 'with_field_string_replacements': with_field_string_replacements,
-                'scheming_language_text': apicatalog_scheming_language_text
+                'scheming_language_text': apicatalog_scheming_language_text,
+                'username_from_id': username_from_id,
+                'is_boolean_selected': is_boolean_selected
                 }
 
     def get_actions(self):
@@ -817,9 +838,12 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'convert_to_json_compatible_str_if_str': validators.convert_to_json_compatible_str_if_str,
             'mark_as_modified_in_catalog_if_changed': validators.mark_as_modified_in_catalog_if_changed,
             'override_field_with_default_translation': validators.override_field_with_default_translation,
+            'override_translation_with_default_language': validators.override_translation_with_default_language,
             'fluent_list': validators.fluent_list,
             'fluent_list_output': validators.fluent_list_output,
             'ignore_non_existent_organizations': validators.ignore_non_existent_organizations,
+            'list_to_json_string': validators.list_to_json_string,
+            'json_string_to_list': validators.json_string_to_list
         }
 
     # IFacets

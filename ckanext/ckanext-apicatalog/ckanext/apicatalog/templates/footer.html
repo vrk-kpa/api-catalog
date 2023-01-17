@@ -10,28 +10,26 @@
 					<ul class="nav navbar footer-nav">
 						{{ h.build_nav_main() }}
 						{{ h.build_nav('contact.form', _('Give feedback')) }}
-						<li>
-							<a class="external-link" href="https://github.com/vrk-kpa/api-catalog">{{ _('API Catalog source code')}} <span class="sr-only">{{ _('(Skip twitter feed)') }}</span>
-								<svg viewbox="0 0 24 24" aria-hidden="true">
-									<use xlink:href="/base/images/external-link-icon.svg#path-1"></use>
-								</svg>
-							</a>
-						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="footer-bottom">
 			<div class="container">
-				<div class="footer-bottom-links col-xs-12 col-sm-6 col-sm-offset-6 col-lg-5 col-lg-offset-7">
-					<div class="footer-bottom-link-container"><img src="/base/images/twitter-icon.svg" alt="{{ _('Twitter') }}"/>
+				<div class="footer-bottom-links col-xs-12">
+					<div class="footer-bottom-link-container">
 						<a href="https://twitter.com/suomifiyritys">
-							{{ _('@Suomifiyritys') }}
+							<span class="fab fa-twitter"></span>{{_('@Suomifiyritys')}}
 						</a>
 					</div>
-					<div class="footer-bottom-link-container"><img src="/base/images/facebook-icon.svg" alt="{{ _('Facebook') }}" />
+					<div class="footer-bottom-link-container">
 						<a href="https://www.facebook.com/Suomifiyritykselle">
-							{{ _('@Suomifiyritykselle') }}
+							<span class="fab fa-facebook-square"></span>{{_('@Suomifiyritykselle')}}
+						</a>
+					</div>
+					<div class="footer-bottom-link-container">
+						<a href="https://github.com/vrk-kpa/api-catalog">
+							<span class="fab fa-github"></span>@vrk-kpa/api-catalog
 						</a>
 					</div>
 				</div>

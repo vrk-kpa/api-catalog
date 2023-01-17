@@ -152,6 +152,9 @@
 
     <field name="_version_" type="string" indexed="true" stored="true"/>
 
+
+    <!-- Organization old business ids is a list which needs to be multivalued-->
+    <field name="old_business_ids" type="text" indexed="true" stored="false" multiValued="true"/>
     <dynamicField name="*_date" type="date" indexed="true" stored="true" multiValued="false"/>
 
     <dynamicField name="extras_*" type="text" indexed="true" stored="true" multiValued="false"/>

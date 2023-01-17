@@ -23,7 +23,7 @@
         "class": "readonly"
       },
       "classes": ["control-full"],
-      "end_of_section": true
+      "group_divider": true
     },
     {
       "field_name": "notes_translated",
@@ -34,7 +34,7 @@
       "form_languages": ["fi", "sv", "en"],
       "group_title": "Subsystem description",
       "group_description": "General, compact and easy to understand description of the subsystem. You can use markdown formatting in the description.<br><br><div class=\"collapsible-container\"><button type=\"button\" class=\"collapsible dataset-collapsible\" data-module=\"collapsible\">Instructions for writing the description <i class=\"collapsible-icon fa fa-chevron-down\"></i></button><div class=\"collapsible-content dataset-collapsible-content\"><p>The description should contain at least the following things:</p><ul><li>What services does the subsystem provide?<ul><li>What interfaces does the subsystem have?</li><li>What kind of information can other organizations get through the services?</li></ul><li>What kind of conditions and limitations have to be considered in the use of the subsystem's services?<ul><li>Is the use of the services, for example, limited to certain kinds of organizations?</li><li>What's the cost of using the services?</li></ul></li><li>How can you get access to the service?<ul><li>What is the process like for the introduction of the service to use?</li><li>Does the use of the service require, for example, acquiring an information permission?</li></ul></li></ul><p>More detailed instructions for writing the description of the service can be found in <a href=\"https://palveluhallinta.suomi.fi/en/tuki/artikkelit/5ef313c79a155e0139629cb5\">API catalog instructions</a>.</div></div>",
-      "end_of_section": true,
+      "group_divider": true,
       "display_snippet": null
     },
     {
@@ -52,7 +52,7 @@
       "description": "",
       "group_title": "Keywords",
       "group_description": "Using keywords the user can easily find this application or similar applications through the search function. Choose at least one Finnish keyword.",
-      "end_of_section": true,
+      "group_divider": true,
       "display_snippet": null
     },
     {
@@ -78,7 +78,7 @@
       "form_placeholder": "+358123456789",
       "display_property": "dc:contributor",
       "classes": ["control-full"],
-      "end_of_section": true
+      "group_divider": true
     },
     {
       "field_name": "private",
@@ -108,7 +108,7 @@
       "preset": "apicatalog_organization_string_autocomplete",
       "validators": "ignore_missing",
       "form_placeholder": "Allowed organizations",
-      "end_of_section": true,
+      "group_divider": true,
       "display_snippet": null
     },
     {
@@ -117,7 +117,7 @@
       "preset": "date",
       "classes": ["control-full"],
       "form_placeholder": "dd.mm.yyyy",
-      "group_title": "Other information"
+      "group_title": "Period of validity"
     },
     {
       "field_name": "validUntil",
@@ -133,7 +133,7 @@
       "final": true,
       "preset": "dataset_slug_ex",
       "validators": "not_empty unicode name_validator package_name_validator",
-      "end_of_section": true
+      "group_divider": true
     },
     {
       "field_name": "owner_org",
@@ -176,10 +176,10 @@
 "resource_fields": [
     {
       "field_name": "name",
-      "label": "Title",
-      "additional_description": "Attachment name will be filled automatically and should not be edited",
+      "label": "Attachment name",
+      "description": "Attachment name will be filled automatically and should not be edited",
       "input_title": ["Attachment name"],
-      "display_hr": true,
+      "group_divider": true,
       "final": true,
       "required": true,
       "form_placeholder": "AttachmentName",
@@ -193,8 +193,9 @@
     },
     {
       "field_name": "description_translated",
-      "label": "Attachment description",
-      "extra_label": "A general, concise, and easy-to-understand description of the organization",
+      "label": "Description",
+      "group_title": "Attachment description",
+      "group_description": "A general, concise, and easy-to-understand description of the attachment.",
       "input_title": ["Description in Finnish", "Description in Swedish", "Description in English"],
       "validators": "fluent_text mark_as_modified_in_catalog_if_changed",
       "preset": "fluent_markdown_editor",
@@ -203,15 +204,15 @@
       "form_placeholder": "Write the attachment's description",
       "form_languages": ["fi", "sv", "en"],
       "display_snippet": null,
-      "form_attrs": {}
+      "form_attrs": {},
+      "group_divider": true
     },
     {
       "field_name": "access_restriction_level",
       "label": "Attachment visibility",
-      "extra_label": "Attachment visibility",
-      "additional_description": "When attachment visibility is private, it is only visible to the owner organization or users from allowed organizations",
+      "group_title": "Attachment visibility",
+      "description": "When attachment visibility is private, it is only visible to the owner organization or users from allowed organizations",
       "form_snippet": "radio.html",
-      "display_hr": false,
       "display_snippet": null,
       "choices": [
         {
@@ -231,13 +232,13 @@
       "label": "Allowed organizations",
       "classes": ["control-full"],
       "preset": "apicatalog_organization_string_autocomplete",
-      "form_placeholder": "Allowed organizations"
+      "form_placeholder": "Allowed organizations",
+      "group_divider": true
     },
     {
       "field_name": "chargeability",
       "label": "Chargeability",
-      "extra_label": "Other information and settings",
-      "display_hr": true,
+      "group_title": "Other information and settings",
       "form_snippet": "select.html",
       "classes": ["control-full"],
       "choices": [
@@ -271,7 +272,8 @@
       "field_name": "validUntil",
       "label": "Valid until",
       "preset": "date",
-      "classes": ["control-full"]
+      "classes": ["control-full"],
+      "group_divider": true
     },
     {
       "field_name": "valid_content",

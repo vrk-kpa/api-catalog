@@ -1,66 +1,50 @@
 {% extends "organization/read_base.html" %}
 
 {% block page_primary_action %}
-	{% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
-		{% snippet 'snippets/add_dataset.html', group=group_dict.id %}
-	{% endif %}
+  {{ super() }}
 {% endblock %}
 
 
 {% block primary_content_inner %}
-  {% block groups_search_form %}{% endblock %}
-  {% block packages_list %}
-    {% if page.items %}
-      {{ h.snippet('snippets/package_list.html', packages=page.items) }}
-    {% else %}
-      <p class="empty">
-        {{ _('There are currently no APIs for this organization') }}.
-        {% if h.check_access('package_create') %}
-            {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
-        {% endif %}
-      </p>
+<div class="org-page-heading flex-container">
+  <div class="flex-right">
+    {% if h.check_access('package_create', {'owner_org': group_dict.id}) %}
+      {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
     {% endif %}
-  {% endblock %}
-  {% block page_pagination %}
-    {% set symbol_next %}
-      <span aria-hidden='true'>»</span><span class='sr-only'>{{ _('Next') }}</span>
-    {% endset %}
-    {% set symbol_previous %}
-      <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
-    {% endset %}
-    {{ page.pager(q=q, link_attr={'aria-label': _('Go to page')}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
-  {% endblock %}
+  </div>
+  <h2 class="flex">{{ _('Datasets') }}</h2>
+</div>
+<p class="block">{{_('List of organization\'s subsystems')}}</p>
+<div class="sorter-wrapper">
+  {% set pkg_count = group_dict.package_count %}
+  {% set no_title = True if not q else False %}
+  {% snippet 'snippets/search_form.html', query=q, type='dataset', count=pkg_count, no_title=no_title  %}
+</div>
+{% block groups_search_form %}{% endblock %}
+{% block packages_list %}
+  {% if page.items %}
+    {{ h.snippet('snippets/package_list.html', packages=page.items) }}
+  {% else %}
+    <p class="empty">
+      {{ _('There are currently no APIs for this organization') }}.
+      {% if h.check_access('package_create') %}
+          {% snippet 'snippets/add_dataset.html', group=group_dict.id %}
+      {% endif %}
+    </p>
+  {% endif %}
+{% endblock %}
+{% block page_pagination %}
+  {% set symbol_next %}
+    <span aria-hidden='true'>»</span><span class='sr-only'>{{ _('Next') }}</span>
+  {% endset %}
+  {% set symbol_previous %}
+    <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
+  {% endset %}
+  {{ page.pager(q=q, link_attr={'aria-label': _('Go to page')}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
+{% endblock %}
 {% endblock %}
 
 {% block primary %}
-    <div class="org-page-heading">
-        <h2>{{ _('Active APIs') }}</h2>
-    </div>
     {{super()}}
 {% endblock %}
 
-{% block secondary_content %}
-    <div class="module main-heading">
-        <h2 class="module-heading">{{ _('Filter list') }}</h2>
-    </div>
-    <div class="module module-narrow module-shallow">
-        {% set sorting = [(_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
-        {% set sorting_selected = sort_by_selected or 'title asc' %}
-        <div class="sorter-wrapper">
-            {% snippet 'snippets/search_form_without_input.html', q=q, sorting=sorting, sorting_selected=sorting_selected %}
-        </div>
-    </div>
-    {% block organization_facets %}
-        <div class="filters">
-            <div>
-                {% for facet in facet_titles %}
-                    {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, extras={'id':group_dict.id}) }}
-                {% endfor %}
-            </div>
-            <a class="close no-text hide-filters">
-                <i class="fa fa-times-circle"></i>
-                <span class="text">close</span>
-            </a>
-        </div>
-    {% endblock %}
-{% endblock %}

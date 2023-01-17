@@ -7,17 +7,17 @@
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
 # Teemu Erkkola <teemu.erkkola@iki.fi>, 2022
-# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
 # Suvi Nuttunen, 2022
+# Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-16 11:16+0000\n"
+"POT-Creation-Date: 2022-12-21 14:22+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
-"Last-Translator: Suvi Nuttunen, 2022\n"
+"Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,27 +31,27 @@ msgid "User {user} not authorized to create users via the API"
 msgstr ""
 "Användare {user} har inte behörighet att skapa användare via subsystemet."
 
-#: ckanext/apicatalog/plugin.py:633
+#: ckanext/apicatalog/plugin.py:634
 msgid "User {name} stored in database."
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:830
-#: ckanext/apicatalog/templates/package/read.html:61
+#: ckanext/apicatalog/plugin.py:852
+#: ckanext/apicatalog/templates/package/read.html:67
 msgid "Services"
 msgstr "Tjänster"
 
-#: ckanext/apicatalog/plugin.py:831
+#: ckanext/apicatalog/plugin.py:853
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr "Organisation"
 
-#: ckanext/apicatalog/plugin.py:832
+#: ckanext/apicatalog/plugin.py:854
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr "Ämnesord"
 
-#: ckanext/apicatalog/plugin.py:833
+#: ckanext/apicatalog/plugin.py:855
 msgid "Formats"
 msgstr ""
 
@@ -80,40 +80,52 @@ msgid "Name in English"
 msgstr "Namn på engelska"
 
 #: ckanext/apicatalog/translations.py:15
-msgid "Organisation description"
-msgstr "Beskrivning av organisation"
+msgid "Organization description"
+msgstr ""
 
 #: ckanext/apicatalog/translations.py:16
 msgid ""
-"A general, concise, and easy-to-understand description of the organization"
+"A general, concise, and easy-to-understand description of the organization."
 msgstr ""
-"En allmän, kortfattad och lättförståelig beskrivning av organisationen"
 
 #: ckanext/apicatalog/translations.py:17
+msgid ""
+"A general, concise, and easy-to-understand description of the attachment."
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:18
+msgid "A general, concise, and easy-to-understand description of the service."
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:19
 msgid "Description in Finnish"
 msgstr "Beskrivning på finska"
 
-#: ckanext/apicatalog/translations.py:18
+#: ckanext/apicatalog/translations.py:20
 msgid "Description in Swedish"
 msgstr "Beskrivning på svenska"
 
-#: ckanext/apicatalog/translations.py:19
+#: ckanext/apicatalog/translations.py:21
 msgid "Description in English"
 msgstr "Beskrivning på engelska"
 
-#: ckanext/apicatalog/translations.py:20
-msgid "Other information and settings"
-msgstr ""
-
-#: ckanext/apicatalog/translations.py:21
-msgid "Organisation logo"
-msgstr ""
-
 #: ckanext/apicatalog/translations.py:22
-msgid "The logo is displayed on the organization page in API Catalogue."
+msgid "Write the organization's description"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:23
+msgid "Other information and settings"
+msgstr "Övrig information och inställningar"
+
+#: ckanext/apicatalog/translations.py:24
+msgid "Organization logo"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:25
+msgid "The logo is displayed on the organization page in API Catalogue."
+msgstr "Logotypen visas på organisationssidan i API-katalogen."
+
+#: ckanext/apicatalog/translations.py:26
 msgid ""
 "If possible, provide a telephone number for the organization's switchboard "
 "or customer service, not an individual number."
@@ -121,7 +133,7 @@ msgstr ""
 "Om möjligt, ange ett telefonnummer till organisationens växel eller "
 "kundtjänst, inte ett individuellt nummer."
 
-#: ckanext/apicatalog/translations.py:25
+#: ckanext/apicatalog/translations.py:28
 msgid ""
 "If possible, enter the email address of the organization or customer "
 "service, not the email address of the individual."
@@ -129,124 +141,122 @@ msgstr ""
 "Om möjligt, ange e-postadressen till organisationen eller kundtjänsten, inte"
 " e-postadressen till individen."
 
-#: ckanext/apicatalog/translations.py:27
+#: ckanext/apicatalog/translations.py:30
 msgid "Email {email} is not a valid format"
 msgstr ""
 
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:10
-#: ckanext/apicatalog/templates/scheming/organization/group_form.html:40
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:76
-#: ckanext/apicatalog/translations.py:28
+#: ckanext/apicatalog/templates/scheming/organization/group_form.html:51
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:87
+#: ckanext/apicatalog/translations.py:31
 msgid "Discard changes"
 msgstr "Ignorera ändringar"
 
-#: ckanext/apicatalog/templates/scheming/organization/group_form.html:36
+#: ckanext/apicatalog/templates/scheming/organization/group_form.html:47
 #: ckanext/apicatalog/templates/scheming/package/snippets/resource_edit_form.html:3
-#: ckanext/apicatalog/translations.py:29
+#: ckanext/apicatalog/translations.py:32
 msgid "Save changes"
 msgstr "Spara ändringar"
 
-#: ckanext/apicatalog/translations.py:30
+#: ckanext/apicatalog/translations.py:33
 msgid "Write subsystem description"
 msgstr "Skriv subsystemets beskrivning"
 
-#: ckanext/apicatalog/translations.py:31
+#: ckanext/apicatalog/translations.py:34
 msgid "Write attachment description"
 msgstr "Skriv beskrivning av bilagan"
 
-#: ckanext/apicatalog/translations.py:32
+#: ckanext/apicatalog/translations.py:35
 msgid "Service name will be filled automatically and should not be edited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:33
+#: ckanext/apicatalog/translations.py:36
 msgid "Attachment name will be filled automatically and should not be edited"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:34
+#: ckanext/apicatalog/translations.py:37
 msgid "Service visibility"
 msgstr "Tjänstens synlighet"
 
-#: ckanext/apicatalog/translations.py:35
+#: ckanext/apicatalog/translations.py:38
 msgid "Service description"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:36
+#: ckanext/apicatalog/translations.py:39
 msgid "Service name"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:37
+#: ckanext/apicatalog/translations.py:40
 msgid "Attachment visibility"
 msgstr "Synlighet av bilagan"
 
-#: ckanext/apicatalog/translations.py:38
+#: ckanext/apicatalog/translations.py:41
 msgid "Attachment description"
 msgstr "Beskrivning av bilagan"
 
-#: ckanext/apicatalog/translations.py:39
+#: ckanext/apicatalog/translations.py:42
 msgid "Attachment name"
 msgstr "Namn av bilagan"
 
-#: ckanext/apicatalog/translations.py:40
+#: ckanext/apicatalog/translations.py:43
 msgid ""
 "When service visibility is private, it is only visible to the owner "
-"organisation or users from allowed organisations"
-msgstr ""
-"När tjänstens synlighet är privat är den endast synlig för "
-"ägarorganisationen eller användare från tillåtna organisationer"
-
-#: ckanext/apicatalog/translations.py:42
-msgid ""
-"When attachment visibility is private, it is only visible to the owner "
-"organisation or users from allowed organisations"
-msgstr ""
-
-#: ckanext/apicatalog/translations.py:44
-msgid "Chargeable"
+"organization or users from allowed organizations"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:45
-msgid "Free of charge"
-msgstr ""
-
-#: ckanext/apicatalog/translations.py:46
-msgid "Mentioned in service description"
+msgid ""
+"When attachment visibility is private, it is only visible to the owner "
+"organization or users from allowed organizations"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:47
-msgid "No license specified"
+msgid "Chargeable"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:48
-msgid "Open Database license"
+msgid "Free of charge"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:49
-msgid "Web address"
+msgid "Mentioned in service description"
 msgstr ""
 
 #: ckanext/apicatalog/translations.py:50
+msgid "No license specified"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:51
+msgid "Open Database license"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:52
+msgid "Web address"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:53
 msgid ""
 "URL will be formed automatically from the name of the application and should"
 " in general not be edited."
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:52
+#: ckanext/apicatalog/translations.py:55
 msgid "E-mail address in Finnish"
 msgstr "E-postadress på finska"
 
-#: ckanext/apicatalog/translations.py:53
+#: ckanext/apicatalog/translations.py:56
 msgid "E-mail address in Swedish"
 msgstr "E-postadress på svenska"
 
-#: ckanext/apicatalog/translations.py:54
+#: ckanext/apicatalog/translations.py:57
 msgid "E-mail address in English"
 msgstr "E-postadress på engelska"
 
-#: ckanext/apicatalog/translations.py:55
+#: ckanext/apicatalog/translations.py:58
 msgid "Subsystem's title"
 msgstr "Subsystemets namn"
 
-#: ckanext/apicatalog/translations.py:56
+#: ckanext/apicatalog/translations.py:59
 msgid ""
 "We recommend that the subsystem is given a clear name that describes its "
 "real name or purpose."
@@ -254,19 +264,19 @@ msgstr ""
 "Vi rekommenderar att subsystemet har ett tydligt namn som beskriver dess "
 "riktiga namnet eller funktion."
 
-#: ckanext/apicatalog/translations.py:57
+#: ckanext/apicatalog/translations.py:60
 msgid "The subsystem's name"
 msgstr "Subsystemets namn"
 
-#: ckanext/apicatalog/translations.py:58
+#: ckanext/apicatalog/translations.py:61
 msgid "Title in Data Exchange Layer"
 msgstr "Namn i Informationsleden"
 
-#: ckanext/apicatalog/translations.py:59
+#: ckanext/apicatalog/translations.py:62
 msgid "Subsystem description"
 msgstr "Subsystemets beskrivning"
 
-#: ckanext/apicatalog/translations.py:60
+#: ckanext/apicatalog/translations.py:63
 msgid ""
 "General, compact and easy to understand description of the subsystem. You "
 "can use markdown formatting in the description.<br><br><div "
@@ -309,32 +319,32 @@ msgstr ""
 "href=\"https://palveluhallinta.suomi.fi/sv/tuki/artikkelit/5ef313c79a155e0139629cb5\">en"
 " separat stödartikel.</a>.</div></div>"
 
-#: ckanext/apicatalog/translations.py:78
+#: ckanext/apicatalog/translations.py:81
 msgid "Write the subsystem's description"
 msgstr "Skriv subsystemets beskrivning"
 
-#: ckanext/apicatalog/translations.py:79
-msgid "Write the service's description"
-msgstr ""
-
-#: ckanext/apicatalog/translations.py:80
-msgid "Write the attachment's description"
-msgstr ""
-
-#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
-#: ckanext/apicatalog/translations.py:81
-msgid "Update Service"
-msgstr ""
-
 #: ckanext/apicatalog/translations.py:82
-msgid "Edit service"
-msgstr ""
+msgid "Write the service's description"
+msgstr "Skriv tjänstens beskrivning"
 
 #: ckanext/apicatalog/translations.py:83
-msgid "Edit attachment"
-msgstr ""
+msgid "Write the attachment's description"
+msgstr "Skriv bilagans beskrivning"
 
+#: ckanext/apicatalog/templates/package/snippets/resource_edit_form.html:5
 #: ckanext/apicatalog/translations.py:84
+msgid "Update Service"
+msgstr "Uppdatera tjänsten"
+
+#: ckanext/apicatalog/translations.py:85
+msgid "Edit service"
+msgstr "Redigera tjänsten"
+
+#: ckanext/apicatalog/translations.py:86
+msgid "Edit attachment"
+msgstr "Redigera bilagan"
+
+#: ckanext/apicatalog/translations.py:87
 msgid ""
 "Using keywords the user can easily find this application or similar "
 "applications through the search function. Choose at least one Finnish "
@@ -343,67 +353,86 @@ msgstr ""
 "Med hjälp av nyckelord kan användaren enkelt hitta detta subsystem eller "
 "liknande subsystem genom sök funktionen. Välj minst ett finskt nyckelord."
 
-#: ckanext/apicatalog/translations.py:86
+#: ckanext/apicatalog/translations.py:89
 msgid "Write a keyword"
 msgstr "Skriv ett nyckelord"
 
-#: ckanext/apicatalog/translations.py:87
+#: ckanext/apicatalog/translations.py:90
 msgid "Maintainer's information"
 msgstr "Administratörens kontaktuppgifter"
 
-#: ckanext/apicatalog/translations.py:88
+#: ckanext/apicatalog/translations.py:91
 msgid "Use the maintainer's common contact information."
 msgstr "Använda administratörens allmänna kontaktuppgifter."
 
-#: ckanext/apicatalog/translations.py:89
+#: ckanext/apicatalog/translations.py:92
 msgid "The name of the maintainer"
 msgstr "Namnet av administratören"
 
-#: ckanext/apicatalog/translations.py:90
+#: ckanext/apicatalog/translations.py:93
 msgid "The email of the maintainer"
 msgstr "E-post av administratören"
 
-#: ckanext/apicatalog/translations.py:91
+#: ckanext/apicatalog/translations.py:94
 msgid "Limited"
 msgstr "Begränsad"
 
-#: ckanext/apicatalog/translations.py:92
+#: ckanext/apicatalog/translations.py:95
 msgid "Allowed organizations"
 msgstr "Tillåtna organisationer"
 
-#: ckanext/apicatalog/translations.py:93
-msgid "Other information"
+#: ckanext/apicatalog/translations.py:96
+msgid "Period of validity"
 msgstr "Giltighetstid"
 
-#: ckanext/apicatalog/translations.py:94
+#: ckanext/apicatalog/translations.py:97
 msgid "dd/mm/yyyy"
 msgstr ""
 
-#: ckanext/apicatalog/translations.py:95
+#: ckanext/apicatalog/translations.py:98
 msgid "fi"
 msgstr "på finska"
 
-#: ckanext/apicatalog/translations.py:96
+#: ckanext/apicatalog/translations.py:99
 msgid "en"
 msgstr "på engelska"
 
-#: ckanext/apicatalog/translations.py:97
+#: ckanext/apicatalog/translations.py:100
 msgid "sv"
 msgstr "på svenska"
+
+#: ckanext/apicatalog/translations.py:101
+msgid "Organization acts as an intermediary for other organizations."
+msgstr "Organisationen agerar som mellanhand för andra organisationer."
+
+#: ckanext/apicatalog/translations.py:102
+msgid "Organization processes data outside the EU/EAA countries."
+msgstr "Organisationen behandlar data utanför EU-/EES-länder."
+
+#: ckanext/apicatalog/translations.py:103
+msgid "Intermediary organization"
+msgstr "Mellanhand organisation"
+
+#: ckanext/apicatalog/translations.py:104
+msgid "Data processing"
+msgstr "Databehandling"
 
 #: ckanext/apicatalog/validators.py:54
 msgid "Package contains invalid resources"
 msgstr ""
 
 #: ckanext/apicatalog/validators.py:78 ckanext/apicatalog/validators.py:246
+#: ckanext/apicatalog/validators.py:284
 msgid "Failed to decode JSON string"
 msgstr ""
 
 #: ckanext/apicatalog/validators.py:81 ckanext/apicatalog/validators.py:249
+#: ckanext/apicatalog/validators.py:281
 msgid "Invalid encoding for JSON string"
 msgstr ""
 
 #: ckanext/apicatalog/validators.py:85 ckanext/apicatalog/validators.py:252
+#: ckanext/apicatalog/validators.py:286
 msgid "expecting JSON object"
 msgstr ""
 
@@ -448,6 +477,14 @@ msgstr "Hindra"
 msgid "Learn more"
 msgstr "Läs mer"
 
+#: ckanext/apicatalog/fanstatic/javascript/modal-dialog.js:69
+msgid "Confirm"
+msgstr ""
+
+#: ckanext/apicatalog/fanstatic/javascript/modal-dialog.js:70
+msgid "Cancel"
+msgstr ""
+
 #: ckanext/apicatalog/templates/apicatalog_header.html:10
 #: ckanext/apicatalog/templates/apicatalog_header.html:41
 #: ckanext/apicatalog/templates/footer.html:6
@@ -472,8 +509,8 @@ msgstr "Startsida"
 
 #: ckanext/apicatalog/templates/apicatalog_header.html:60
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_navmenu.html:5
-#: ckanext/apicatalog/templates/organization/edit_base.html:11
-#: ckanext/apicatalog/templates/organization/read_base.html:8
+#: ckanext/apicatalog/templates/organization/read.html:15
+#: ckanext/apicatalog/templates/organization/read_base.html:19
 #: ckanext/apicatalog/templates/package/search.html:4
 msgid "Datasets"
 msgstr "Subsystem"
@@ -484,16 +521,16 @@ msgstr "Subsystem"
 msgid "Organizations"
 msgstr "Organisationer"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:66
+#: ckanext/apicatalog/templates/apicatalog_header.html:73
 msgid "More options"
 msgstr "Fler alternativ"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:85
+#: ckanext/apicatalog/templates/apicatalog_header.html:87
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile.html:20
 msgid "Log in"
 msgstr "Logga in"
 
-#: ckanext/apicatalog/templates/apicatalog_header.html:87
+#: ckanext/apicatalog/templates/apicatalog_header.html:89
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_profile.html:22
 msgid "Register"
 msgstr "Registrera dig"
@@ -510,27 +547,11 @@ msgstr ""
 msgid "Give feedback"
 msgstr "Ge respons"
 
-#: ckanext/apicatalog/templates/footer.html:14
-msgid "API Catalog source code"
-msgstr "API-katalogens källkod"
-
-#: ckanext/apicatalog/templates/footer.html:14
-msgid "(Skip twitter feed)"
-msgstr "Hoppa över Twitter-flödet"
-
-#: ckanext/apicatalog/templates/footer.html:27
-msgid "Twitter"
-msgstr ""
-
-#: ckanext/apicatalog/templates/footer.html:29
+#: ckanext/apicatalog/templates/footer.html:22
 msgid "@Suomifiyritys"
 msgstr ""
 
-#: ckanext/apicatalog/templates/footer.html:32
-msgid "Facebook"
-msgstr ""
-
-#: ckanext/apicatalog/templates/footer.html:34
+#: ckanext/apicatalog/templates/footer.html:27
 msgid "@Suomifiyritykselle"
 msgstr ""
 
@@ -702,7 +723,6 @@ msgid "Resource"
 msgstr "Filbilaga"
 
 #: ckanext/apicatalog/templates/admin/dashboard.html:171
-#: ckanext/apicatalog/templates/package/read_base.html:15
 msgid "Dataset"
 msgstr "Subsystem"
 
@@ -873,8 +893,10 @@ msgid "Not in menu"
 msgstr ""
 
 #: ckanext/apicatalog/templates/ckanext_pages/page.html:15
-#: ckanext/apicatalog/templates/organization/edit_base.html:10
-#: ckanext/apicatalog/templates/organization/members.html:35
+#: ckanext/apicatalog/templates/organization/read_base.html:5
+#: ckanext/apicatalog/templates/package/read_base.html:10
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:28
+#: ckanext/apicatalog/templates/user/read_base.html:5
 msgid "Edit"
 msgstr "Redigera"
 
@@ -1206,20 +1228,24 @@ msgid "Show more tweets by NIIS"
 msgstr "Visa användarens NIIS övriga tweets"
 
 #: ckanext/apicatalog/templates/macros/form.html:5
+#: ckanext/apicatalog/templates/scheming/macros/form.html:73
 msgid "This field is required"
 msgstr "Detta fält är obligatoriskt"
 
 #: ckanext/apicatalog/templates/macros/form.html:5
+#: ckanext/apicatalog/templates/scheming/macros/form.html:73
 msgid "Custom"
 msgstr "Redigerad"
 
 #: ckanext/apicatalog/templates/macros/form.html:53
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:23
+#: ckanext/apicatalog/templates/scheming/macros/form.html:187
 msgid "Paste or drag file in here"
 msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:54
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:24
+#: ckanext/apicatalog/templates/scheming/macros/form.html:193
 msgid ""
 "Maximum filesize of single file is {max_filesize}Mb. Total maximum size of "
 "all files is {max_total_size}Mb."
@@ -1227,6 +1253,7 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:55
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:25
+#: ckanext/apicatalog/templates/scheming/macros/form.html:194
 msgid ""
 "Allowed filetypes are: pdf, jpg, jpeg, png, doc, docx, xls, xlsx, ppt, pptx,"
 " odt, ods, txt."
@@ -1234,52 +1261,64 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:68
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:10
+#: ckanext/apicatalog/templates/scheming/macros/form.html:7
+#: ckanext/apicatalog/templates/scheming/macros/form.html:153
 msgid "http://example.com/my-image.jpg"
 msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:69
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:11
+#: ckanext/apicatalog/templates/scheming/macros/form.html:8
+#: ckanext/apicatalog/templates/scheming/macros/form.html:154
 msgid "Image URL"
 msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:70
 #: ckanext/apicatalog/templates/scheming/form_snippets/organization_upload.html:12
+#: ckanext/apicatalog/templates/scheming/macros/form.html:9
+#: ckanext/apicatalog/templates/scheming/macros/form.html:155
 msgid "Image"
 msgstr ""
 
 #: ckanext/apicatalog/templates/macros/form.html:94
+#: ckanext/apicatalog/templates/scheming/macros/form.html:21
+#: ckanext/apicatalog/templates/scheming/macros/form.html:179
 msgid "Clear Upload"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/about.html:16
-msgid "Contact Information"
-msgstr "Kontaktuppgifter"
-
-#: ckanext/apicatalog/templates/organization/about.html:58
-msgid "X-Road related information"
-msgstr "Uppgifter som hänför sig till X-Road"
-
-#: ckanext/apicatalog/templates/organization/about.html:84
-msgid "Additional information"
-msgstr "Mer information"
-
-#: ckanext/apicatalog/templates/organization/about.html:115
-msgid "Logo of organization {org}"
-msgstr "Organisationens {org} logo"
-
-#: ckanext/apicatalog/templates/organization/edit_base.html:12
-msgid "X-Road Errors"
-msgstr ""
+#: ckanext/apicatalog/templates/organization/activity_stream.html:3
+#: ckanext/apicatalog/templates/organization/activity_stream.html:9
+#: ckanext/apicatalog/templates/organization/read_base.html:21
+#: ckanext/apicatalog/templates/package/read_base.html:32
+msgid "Activity Stream"
+msgstr "Uppdateringshistorik"
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:15
-#: ckanext/apicatalog/templates/organization/read_base.html:12
+#: ckanext/apicatalog/templates/package/edit_base.html:14
+#: ckanext/apicatalog/templates/package/resource_edit_base.html:4
+#: ckanext/apicatalog/templates/package/resources.html:18
+msgid "Cancel editing"
+msgstr "Avbryt redigering"
+
+#: ckanext/apicatalog/templates/organization/edit_base.html:27
+#: ckanext/apicatalog/templates/organization/read_base.html:20
+#: ckanext/apicatalog/templates/scheming/organization/about.html:5
+msgid "About the organization"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/edit_base.html:28
+msgid "Dataset visibility"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/edit_base.html:29
+#: ckanext/apicatalog/templates/organization/read_base.html:23
+msgid "X-Road errors"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/edit_base.html:32
+#: ckanext/apicatalog/templates/organization/read_base.html:26
 msgid "Members"
 msgstr "Medlemmar"
-
-#: ckanext/apicatalog/templates/organization/edit_base.html:26
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:34
-msgid "View"
-msgstr "Visa"
 
 #: ckanext/apicatalog/templates/organization/index.html:7
 msgid ""
@@ -1301,13 +1340,11 @@ msgid "Service providers first"
 msgstr "Tjänsteleverantörerna först"
 
 #: ckanext/apicatalog/templates/organization/index.html:11
-#: ckanext/apicatalog/templates/organization/read.html:47
 #: ckanext/apicatalog/templates/package/search.html:70
 msgid "Name Ascending"
 msgstr "Stigande enligt namn"
 
 #: ckanext/apicatalog/templates/organization/index.html:11
-#: ckanext/apicatalog/templates/organization/read.html:47
 #: ckanext/apicatalog/templates/package/search.html:71
 msgid "Name Descending"
 msgstr "Sjunkande enligt namn"
@@ -1321,7 +1358,6 @@ msgid "How about creating one?"
 msgstr "Vad sägs om att göra en?"
 
 #: ckanext/apicatalog/templates/organization/index.html:35
-#: ckanext/apicatalog/templates/organization/read.html:44
 #: ckanext/apicatalog/templates/package/search.html:64
 msgid "Filter list"
 msgstr "Avgränsa listan"
@@ -1331,19 +1367,19 @@ msgid "Type in name of organization"
 msgstr "Skriv organisationens namn"
 
 #: ckanext/apicatalog/templates/organization/index.html:47
-#: ckanext/apicatalog/templates/organization/read.html:26
+#: ckanext/apicatalog/templates/organization/read.html:38
 #: ckanext/apicatalog/templates/package/search.html:29
 msgid "Next"
 msgstr "Nästa"
 
 #: ckanext/apicatalog/templates/organization/index.html:50
-#: ckanext/apicatalog/templates/organization/read.html:29
+#: ckanext/apicatalog/templates/organization/read.html:41
 #: ckanext/apicatalog/templates/package/search.html:32
 msgid "Previous"
 msgstr "Föregående"
 
 #: ckanext/apicatalog/templates/organization/index.html:52
-#: ckanext/apicatalog/templates/organization/read.html:31
+#: ckanext/apicatalog/templates/organization/read.html:43
 #: ckanext/apicatalog/templates/package/search.html:34
 msgid "Go to page"
 msgstr "Gå till sidan"
@@ -1359,47 +1395,49 @@ msgstr[0] "{count} medlem"
 msgstr[1] "{count} medlemmar"
 
 #: ckanext/apicatalog/templates/organization/members.html:20
+#: ckanext/apicatalog/templates/organization/members.html:58
 msgid "User"
 msgstr "Användare"
 
 #: ckanext/apicatalog/templates/organization/members.html:21
+#: ckanext/apicatalog/templates/organization/members.html:65
+#: ckanext/apicatalog/templates/organization/members.html:69
 msgid "Role"
 msgstr "Roll"
 
-#: ckanext/apicatalog/templates/organization/members.html:38
+#: ckanext/apicatalog/templates/organization/members.html:47
+#: ckanext/apicatalog/templates/organization/members.html:50
+msgid "Edit member role"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/members.html:48
+msgid "Update"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/members.html:75
 msgid "Are you sure you want to delete this member?"
 msgstr "Är du säker på att du vill ta bort medlemmen?"
 
-#: ckanext/apicatalog/templates/organization/members.html:38
+#: ckanext/apicatalog/templates/organization/members.html:75
 #: ckanext/apicatalog/templates/package/snippets/package_form.html:25
-#: ckanext/apicatalog/templates/scheming/organization/group_form.html:29
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
+#: ckanext/apicatalog/templates/scheming/organization/group_form.html:40
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:81
 #: ckanext/apicatalog/templates/user/edit_user_form.html:53
 msgid "Delete"
 msgstr "Radera"
 
 #: ckanext/apicatalog/templates/organization/new.html:3
-#: ckanext/apicatalog/templates/scheming/organization/group_form.html:34
+#: ckanext/apicatalog/templates/scheming/organization/group_form.html:45
 msgid "Create an Organization"
 msgstr "Skapa en organisation"
 
 #: ckanext/apicatalog/templates/organization/read.html:17
+msgid "List of organization's subsystems"
+msgstr ""
+
+#: ckanext/apicatalog/templates/organization/read.html:29
 msgid "There are currently no APIs for this organization"
 msgstr "Organisationen har inga aktiva subsystem"
-
-#: ckanext/apicatalog/templates/organization/read.html:37
-msgid "Active APIs"
-msgstr "Aktiva subsystem"
-
-#: ckanext/apicatalog/templates/organization/read_base.html:9
-#: ckanext/apicatalog/templates/snippets/apicatalog_offcanvas-info-button.html:2
-msgid "About"
-msgstr "Information"
-
-#: ckanext/apicatalog/templates/organization/read_base.html:10
-#: ckanext/apicatalog/templates/package/read_base.html:18
-msgid "Activity Stream"
-msgstr "Uppdateringshistorik"
 
 #: ckanext/apicatalog/templates/organization/snippets/organization_item.html:25
 msgid "View {organization_name}"
@@ -1415,44 +1453,28 @@ msgid "Filter by role"
 msgstr "Avgränsa organisationslistan"
 
 #: ckanext/apicatalog/templates/organization/snippets/search_form.html:9
-msgid "Show organizations without APIs"
-msgstr "Visa alla organisationer"
-
-#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
 msgid "Show only service providers"
 msgstr "Visa endast tjänsteleverantörer"
+
+#: ckanext/apicatalog/templates/organization/snippets/search_form.html:14
+msgid "Show organizations without APIs"
+msgstr "Visa alla organisationer"
 
 #: ckanext/apicatalog/templates/package/edit_base.html:7
 msgid "Edit subsystem"
 msgstr "Redigera subsystem"
 
-#: ckanext/apicatalog/templates/package/edit_base.html:14
-msgid "Cancel editing"
-msgstr "Avbryt redigering"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:24
+#: ckanext/apicatalog/templates/package/edit_base.html:25
+#: ckanext/apicatalog/templates/package/read_base.html:31
 msgid "Subsystem's information"
 msgstr "Subsystemets information"
 
-#: ckanext/apicatalog/templates/package/edit_base.html:25
-#: ckanext/apicatalog/templates/package/read.html:64
-msgid "Attachments"
-msgstr "Bilagor"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:27
-msgid "Access request settings"
-msgstr "Administrering av begäran om tillstånd"
-
-#: ckanext/apicatalog/templates/package/edit_base.html:28
-msgid "Received access requests"
-msgstr "Mottagna ansökningar"
-
-#: ckanext/apicatalog/templates/package/read.html:18
+#: ckanext/apicatalog/templates/package/read.html:21
 msgid "Request permission to use this subsystem"
 msgstr "Be om tillstånd att använda detta subsystem"
 
-#: ckanext/apicatalog/templates/package/read.html:21
-#: ckanext/apicatalog/templates/package/read.html:31
+#: ckanext/apicatalog/templates/package/read.html:26
+#: ckanext/apicatalog/templates/package/read.html:38
 msgid ""
 "Request permission if you want to have access on some of this subsystems "
 "services. Please note that some subsystems might require information permit "
@@ -1461,11 +1483,11 @@ msgstr ""
 "Ansök om användningstillstånd om du vill få tillgång till något av subsystemets tjänster i Suomi.fi-informationsleden. \n"
 "Observera att vissa subsystem kan kräva till exempel en ansökan om datatillstånd innan du kan ansöka om användningstillstånd i API-katalogen."
 
-#: ckanext/apicatalog/templates/package/read.html:22
+#: ckanext/apicatalog/templates/package/read.html:28
 msgid "Request permission"
 msgstr "Be om tillåtelse"
 
-#: ckanext/apicatalog/templates/package/read.html:26
+#: ckanext/apicatalog/templates/package/read.html:32
 msgid ""
 "Request permission to use this subsystem in the Suomi.fi Data Exchange Layer"
 " if you want to have access to one or several of its services. Download and "
@@ -1483,31 +1505,27 @@ msgstr ""
 "exempel en ansökan om datatillstånd innan du kan ansöka om "
 "användningstillstånd i API-katalogen."
 
-#: ckanext/apicatalog/templates/package/read.html:27
+#: ckanext/apicatalog/templates/package/read.html:34
 msgid "Download file"
 msgstr "Ladda ner ansökan"
 
-#: ckanext/apicatalog/templates/package/read.html:32
+#: ckanext/apicatalog/templates/package/read.html:40
 msgid "Request permission in organizations website"
 msgstr "Ansök om tillstånd på organisationens webbplats"
 
-#: ckanext/apicatalog/templates/package/read.html:38
-#: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:20
-msgid "Subsystem information"
-msgstr "Subsystemets information"
+#: ckanext/apicatalog/templates/package/read.html:47
+#: ckanext/apicatalog/templates/scheming/organization/about.html:9
+msgid "Description"
+msgstr "Beskrivning"
 
-#: ckanext/apicatalog/templates/package/read.html:39
+#: ckanext/apicatalog/templates/package/read.html:52
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:59
 msgid "Service bus identifier"
 msgstr "Kod i Informationsleden"
 
-#: ckanext/apicatalog/templates/package/read.html:49
-msgid "Description"
-msgstr "Beskrivning"
-
-#: ckanext/apicatalog/templates/package/read_base.html:16
-msgid "Groups"
-msgstr "Grupper"
+#: ckanext/apicatalog/templates/package/read.html:68
+msgid "Attachments"
+msgstr "Bilagor"
 
 #: ckanext/apicatalog/templates/package/resource_edit.html:13
 msgid "Cancel edit"
@@ -1518,6 +1536,15 @@ msgstr "Avbryt redigering"
 #: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:21
 msgid "Required field"
 msgstr "Obligatoriskt fält"
+
+#: ckanext/apicatalog/templates/package/resource_edit_base.html:6
+msgid "View resource"
+msgstr ""
+
+#: ckanext/apicatalog/templates/package/resources.html:4
+#: ckanext/apicatalog/templates/package/snippets/resources_list.html:22
+msgid "Reorder resources"
+msgstr ""
 
 #: ckanext/apicatalog/templates/package/search.html:5
 msgid ""
@@ -1605,18 +1632,18 @@ msgstr "Vill du verkligen radera detta subsystem?"
 msgid "Update Resource"
 msgstr ""
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:26
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:27
 msgid "Invalid content"
 msgstr "Felaktigt innehåll"
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:37
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:39
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:38
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:40
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:43
 msgid "Download"
 msgstr "Exportera"
 
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:42
-#: ckanext/apicatalog/templates/package/snippets/resource_item.html:44
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:43
+#: ckanext/apicatalog/templates/package/snippets/resource_item.html:45
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:40
 msgid "Go to resource"
 msgstr "Gå till resurs"
@@ -1642,18 +1669,9 @@ msgstr "Förhandsgranskning"
 msgid "Your browser does not support iframes."
 msgstr "Din webbläsare stöder inte ramarna."
 
-#: ckanext/apicatalog/templates/package/snippets/resources_list.html:26
-#, python-format
-msgid ""
-"<p class=\"empty\">This dataset has no data, <a href=\"%(url)s\">why not add"
-" some?</a></p>"
+#: ckanext/apicatalog/templates/package/snippets/resources_list.html:17
+msgid "Add new resource"
 msgstr ""
-"<p class=\"empty\">Detta subsystem har inga bilagor. <a "
-"href=\"%(url)s\">Lägg till en bilaga.</a></p>"
-
-#: ckanext/apicatalog/templates/package/snippets/resources_list.html:30
-msgid "This dataset has no data"
-msgstr "Detta subsystem har inga bilagor"
 
 #: ckanext/apicatalog/templates/package/snippets/tags.html:4
 msgid "Keywords"
@@ -1677,13 +1695,33 @@ msgstr ""
 "När tjänstens synlighet är begränsad är den endast synlig för "
 "ägarorganisationen eller användare från tillåtna organisationer"
 
-#: ckanext/apicatalog/templates/scheming/organization/group_form.html:28
+#: ckanext/apicatalog/templates/scheming/organization/about.html:17
+msgid "Contact Information"
+msgstr "Kontaktuppgifter"
+
+#: ckanext/apicatalog/templates/scheming/organization/about.html:59
+msgid "X-Road related information"
+msgstr "Uppgifter som hänför sig till X-Road"
+
+#: ckanext/apicatalog/templates/scheming/organization/about.html:85
+msgid "Additional information"
+msgstr "Mer information"
+
+#: ckanext/apicatalog/templates/scheming/organization/about.html:123
+msgid "Logo of organization {org}"
+msgstr "Organisationens {org} logo"
+
+#: ckanext/apicatalog/templates/scheming/organization/group_form.html:39
 msgid "Are you sure you want to delete this Organization?"
 msgstr "Vill du verkligen radera denna organisation?"
 
-#: ckanext/apicatalog/templates/scheming/package/resource_read.html:28
-msgid "Manage"
-msgstr "Hantera"
+#: ckanext/apicatalog/templates/scheming/package/read.html:16
+msgid "No description"
+msgstr "Ingen beskrivning"
+
+#: ckanext/apicatalog/templates/scheming/package/resource_read.html:34
+msgid "View"
+msgstr "Visa"
 
 #: ckanext/apicatalog/templates/scheming/package/resource_read.html:37
 msgid "API Endpoint"
@@ -1755,12 +1793,20 @@ msgstr ""
 msgid "Format"
 msgstr ""
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:70
+#: ckanext/apicatalog/templates/scheming/package/snippets/package_form.html:20
+msgid "Subsystem information"
+msgstr "Subsystemets information"
+
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:81
 msgid "Are you sure you want to delete this resource?"
 msgstr "Vill du verkligen radera denna resurs?"
 
-#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:75
+#: ckanext/apicatalog/templates/scheming/package/snippets/resource_form.html:86
 msgid "Finish"
+msgstr ""
+
+#: ckanext/apicatalog/templates/snippets/add_dataset.html:7
+msgid "Add Dataset"
 msgstr ""
 
 #: ckanext/apicatalog/templates/snippets/apicatalog_offcanvas-close-button.html:2
@@ -1771,6 +1817,10 @@ msgstr "Stäng"
 #: ckanext/apicatalog/templates/snippets/apicatalog_offcanvas-filter-button.html:2
 msgid "Filters"
 msgstr "Filter"
+
+#: ckanext/apicatalog/templates/snippets/apicatalog_offcanvas-info-button.html:2
+msgid "About"
+msgstr "Information"
 
 #: ckanext/apicatalog/templates/snippets/facet_list.html:15
 msgid "results with this filter"
@@ -1836,20 +1886,29 @@ msgstr "Sortering"
 msgid "Go"
 msgstr "Gå till"
 
-#: ckanext/apicatalog/templates/user/dashboard.html:5
+#: ckanext/apicatalog/templates/user/dashboard.html:8
+msgid "Profile settings"
+msgstr ""
+
+#: ckanext/apicatalog/templates/user/dashboard.html:12
+#: ckanext/apicatalog/templates/user/dashboard.html:34
 msgid "News feed"
 msgstr ""
 
-#: ckanext/apicatalog/templates/user/dashboard.html:6
+#: ckanext/apicatalog/templates/user/dashboard.html:13
 msgid "My Datasets"
 msgstr ""
 
-#: ckanext/apicatalog/templates/user/dashboard.html:7
+#: ckanext/apicatalog/templates/user/dashboard.html:14
 msgid "My Organizations"
 msgstr ""
 
-#: ckanext/apicatalog/templates/user/dashboard.html:9
+#: ckanext/apicatalog/templates/user/dashboard.html:16
 msgid "Service access applications"
+msgstr ""
+
+#: ckanext/apicatalog/templates/user/dashboard.html:36
+msgid "Activity from items that I'm following"
 msgstr ""
 
 #: ckanext/apicatalog/templates/user/edit_user_form.html:9

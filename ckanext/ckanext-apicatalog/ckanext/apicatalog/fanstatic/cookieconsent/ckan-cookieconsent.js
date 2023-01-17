@@ -12,8 +12,8 @@ ckan.module('cookie_consent', function (jQuery){
                     message: this._('This website uses cookies to ensure you get the best experience on our website.'),
                     allow: this._('Allow cookies'),
                     deny: this._('Decline'),
-                    link: this._('Learn more')
-
+                    link: this._('Learn more'),
+                    href: ckan.LOCALE_ROOT + '/pages/tietoa-evasteista'
                 },
                 onStatusChange: function(status, chosenBefore) {
                     let type = this.options.type;
