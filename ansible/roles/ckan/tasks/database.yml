@@ -44,7 +44,7 @@
 - name: Initialize xroad database
   shell: ./bin/ckan --config "{{ ckan_ini }}" xroad init-db chdir={{ virtualenv }}
 
-- name: Init and updgrade xroad alembic databases
+- name: Init and upgrade xroad alembic databases
   shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p xroad_integration chdir={{ virtualenv }}
 
 - name: Initialize pages database
