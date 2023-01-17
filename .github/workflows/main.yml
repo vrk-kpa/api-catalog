@@ -147,9 +147,14 @@ jobs:
 
       - name: setup xroad integration extension
         run: |
+          # Enable plugins in test.ini temporarily
+          sed -i -e 's/#ckan.plugins/ckan.plugins/' test.ini
+          
           ckan -c ckanext/ckanext-xroad_integration/test.ini db init
           ckan -c ckanext/ckanext-xroad_integration/test.ini harvester initdb
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
+          # Disable plugins in test.ini
+          sed -i -e 's/ckan.plugins/#ckan.plugins/' test.ini
       - name: Run xroad integration tests
         run: pytest --ckan-ini=ckanext/ckanext-xroad_integration/test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/ckanext-xroad_integration/ckanext/xroad_integration/tests
