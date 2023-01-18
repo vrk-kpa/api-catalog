@@ -6,6 +6,9 @@ import argparse
 import sys
 import json
 import csv
+import smtplib
+import datetime
+from email.message import EmailMessage
 
 
 def main():
@@ -16,11 +19,24 @@ def main():
     parser.add_argument('--update', '-u', action='store_true')
     parser.add_argument('--include-samples', '-i', action='store_true')
     parser.add_argument('--verbose', '-v', action='store_true')
+    parser.add_argument('--email-server')
+    parser.add_argument('--email-from')
+    parser.add_argument('--email-to')
     args = parser.parse_args()
+
+    email_fields = [args.email_server, args.email_from, args.email_to]
+    if any(email_fields) and not all(email_fields):
+        print('Either provide all email parameters (server, from and to) or none of them')
+        return
 
     spec = json.load(args.spec_file)
     validation = json.load(args.validation_file) if args.validation_file else {}
     valid = True
+    output = []
+
+    def log(msg):
+        output.append(msg)
+        print(msg)
 
     for item in spec.get('items'):
         name = item['name']
@@ -33,7 +49,7 @@ def main():
         try:
             response = make_request(spec, config)
         except Exception as e:
-            print(f'{name} | {type(e).__name__}: {e}')
+            log(f'{name} | {type(e).__name__}: {e}')
             valid = False
             continue
 
@@ -44,7 +60,7 @@ def main():
             try:
                 response = response.json()
             except requests.JSONDecodeError as e:
-                print(f'{name} | {type(e).__name__}: {e}')
+                log(f'{name} | {type(e).__name__}: {e}')
                 valid = False
                 continue
 
@@ -64,7 +80,7 @@ def main():
                 item_valid = True
                 for error in validator.iter_errors(response):
                     path = '.'.join(error.absolute_schema_path)
-                    print(f'{name} | {path}: {error.message}')
+                    log(f'{name} | {path}: {error.message}')
                     valid = False
                     item_valid = False
 
@@ -86,7 +102,7 @@ def main():
                         }
             else:
                 if first_line != validation_schema:
-                    print(f'{name} | CSV header changed')
+                    log(f'{name} | CSV header changed')
                     valid = False
 
                     if args.verbose:
@@ -97,6 +113,19 @@ def main():
                             print('It should look like:')
                             print(sample)
 
+    if output and all(email_fields):
+        with smtplib.SMTP(args.email_server) as smtp:
+            recipients = args.email_to.split(',')
+            message = EmailMessage()
+            message.add_header('From', args.email_from)
+            message.add_header('To', ', '.join(recipients))
+            message.add_header('Subject', f'api-verifier reported {len(output)} errors on {datetime.date.today()}')
+            message.set_content('\n'.join(output))
+            print(f'Sending output to {recipients} from {args.email_from} via {args.email_server}')
+            try:
+                smtp.send_message(message, args.email_from, recipients)
+            except smtplib.SMTPException as e:
+                print(f'Error sending message: {e}')
     if args.update and valid:
         json.dump(validation, args.output)
     elif not valid:

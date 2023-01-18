@@ -139,3 +139,9 @@ developers:
   - user: bzar
   - user: zharktas
   - user: eetumans
+
+api_verifier:
+  path: "{{ server_path }}/tools/api-verifier"
+  spec: "{{ server_path }}/tools/api-verifier/xroad-catalog-qa_spec.json"
+  validation: "{{ server_path }}/tools/api-verifier/xroad-catalog-qa_validation.json"
+  email: "{{ ckan_fault_recipients|join(',') }}"

@@ -48,6 +48,6 @@
     - ckan-translations
     - supervisor
     - solr-reindex
-    - filebeat
+    - diagnostics
   handlers:
     - include: handlers/handlers.yml

@@ -1,0 +1,4 @@
+---
+
+- include: filebeat.yml
+- include: api-verifier.yml

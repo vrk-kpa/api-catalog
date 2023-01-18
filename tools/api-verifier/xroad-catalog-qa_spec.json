@@ -127,7 +127,7 @@
     {
       "name": "listErrors",
       "profile": "xroad-catalog-rest",
-      "url": "/listErrors"
+      "url": "/listErrors?startDate=2020-01-01"
     },
     {
       "name": "listSecurityServers",
@@ -147,7 +147,7 @@
     {
       "name": "getOrganizationChanges",
       "profile": "xroad-catalog-rest",
-      "url": "/getOrganizationChanges/{businessId}"
+      "url": "/getOrganizationChanges/{businessId}?startDate=2020-01-01"
     },
     {
       "name": "getEndpoints",

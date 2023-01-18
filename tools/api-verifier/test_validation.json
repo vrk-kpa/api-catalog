@@ -1,0 +1,1 @@
+{"site_read": {"sample": null, "schema": {"$schema": "http://json-schema.org/schema#", "type": "object", "properties": {"help": {"type": "string"}, "success": {"type": "boolean"}, "result": {"type": "boolean"}}, "required": ["help", "result", "success"]}}}
