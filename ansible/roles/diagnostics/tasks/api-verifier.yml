@@ -1,0 +1,15 @@
+---
+- name: Install api-verifier requirements
+  pip: requirements="{{ api_verifier.path }}/requirements.txt" virtualenv={{ virtualenv }} chdir="{{ api_verifier.path }}/"
+
+- name: Install api-verifier cronjob
+  when: api_verifier is defined
+  cron:
+    name: api-verifier
+    special_time: weekly
+    job: >
+      {{ virtualenv }}/bin/python {{ api_verifier.path }}/api-verifier.py
+      {{ api_verifier.spec }} {{ api_verifier.validation }}
+      --email-server {{ email.smtp_server }}
+      --email-from {{ email.from }}
+      --email-to {{ api_verifier.email }}

@@ -1,0 +1,4 @@
+genson==1.2.2
+jsonschema==4.17.1
+requests==2.28.1
+requests-pkcs12==1.14

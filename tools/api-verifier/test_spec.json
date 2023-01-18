@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "liityntakatalogi_prod_action": {
+      "format": "json",
+      "base_url": "https://liityntakatalogi.suomi.fi/api/action",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  },
+  "items": [
+    {
+      "name": "site_read",
+      "profile": "liityntakatalogi_prod_action",
+      "url": "/site_read"
+    }
+  ]
+}
