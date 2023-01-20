@@ -1,5 +1,21 @@
 ---
+- name: Ensure api-verifier path exists
+  when: api_verifier is defined
+  file: path={{ api_verifier.path }} state=directory mode="0700"
+
+- name: Install api-verifier
+  when: api_verifier is defined
+  copy:
+    src: "../tools/api-verifier/{{ item }}"
+    dest: "{{ api_verifier.path }}"
+  with_items:
+    - "api-verifier.py"
+    - "requirements.txt"
+    - "{{ api_verifier.spec }}"
+    - "{{ api_verifier.validation }}"
+
 - name: Install api-verifier requirements
+  when: api_verifier is defined
   pip: requirements="{{ api_verifier.path }}/requirements.txt" virtualenv={{ virtualenv }} chdir="{{ api_verifier.path }}/"
 
 - name: Install api-verifier cronjob
@@ -9,7 +25,8 @@
     special_time: weekly
     job: >
       {{ virtualenv }}/bin/python {{ api_verifier.path }}/api-verifier.py
-      {{ api_verifier.spec }} {{ api_verifier.validation }}
+      {{ api_verifier.path }}/{{ api_verifier.spec }}
+      {{ api_verifier.path }}/{{ api_verifier.validation }}
       --email-server {{ email.smtp_server }}
       --email-from {{ email.from }}
       --email-to {{ api_verifier.email }}
