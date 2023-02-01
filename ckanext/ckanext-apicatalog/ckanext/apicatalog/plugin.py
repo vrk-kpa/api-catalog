@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 from future import standard_library
+from typing import Dict, List
 from builtins import str
 from builtins import range
 import ckan.plugins as plugins
@@ -26,7 +27,7 @@ import ckan.lib.mailer as mailer
 from flask import has_request_context
 from ckan.lib.navl.dictization_functions import validate as _validate
 
-from .utils import package_generator, organization_generator
+from .utils import package_generator, organization_generator, filter_allowed_resources
 import ckanext.apicatalog.admindashboard as admindashboard
 from ckanext.apicatalog.schema import create_user_to_organization_schema
 
@@ -843,7 +844,8 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'fluent_list_output': validators.fluent_list_output,
             'ignore_non_existent_organizations': validators.ignore_non_existent_organizations,
             'list_to_json_string': validators.list_to_json_string,
-            'json_string_to_list': validators.json_string_to_list
+            'json_string_to_list': validators.json_string_to_list,
+            'debug': validators.debug,
         }
 
     # IFacets
@@ -896,32 +898,19 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         except ObjectNotFound:
             pass
 
-        for result in search_results['results']:
-            # Accessible resources are:
-            # 1) Visibility/private is public (False)
-            # OR
-            # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
-            # OR
-            # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
-            #    the organization of the package
-            if 'user' in toolkit.g:
-                user_orgs = toolkit.get_action('organization_list_for_user')(
-                    {'ignore_auth': True},
-                    {'id': toolkit.g.user, 'permission': 'read'})
-            else:
-                user_orgs = []
+        # Filter subsystems removed from X-Road
+        results = [result for result in search_results.get('results', [])
+                   if result.get('xroad_removed') is not True]
 
-            allowed_resources = [resource for resource in result.get('resources', [])
-                                 if resource.get('access_restriction_level', '') in ('', 'public') or
-                                 ((resource.get('access_restriction_level', '') == 'private')
-                                  and any(o.get('name') in orgs for orgs in
-                                          resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                                 ((resource.get('access_restriction_level', '') == 'true') and
-                                  any(o.get('id', None) == result.get('organization',
-                                                                      {}).get('id', '') for o in user_orgs))]
-
+        for result in results:
+            user_name = toolkit.g.user
+            org_id = result.get('organization', {}).get('id', '')
+            resources = result.get('resources', [])
+            allowed_resources = filter_allowed_resources(resources, org_id, user_name)
             result['resources'] = allowed_resources
             result['num_resources'] = len(allowed_resources)
+
+        search_results['results'] = results
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
@@ -936,30 +925,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
         user_name = context.get('user')
 
-        if user_name:
-            user_orgs = [{'name': o['name'], 'id': o['id']} for o in toolkit.get_action('organization_list_for_user')(
-                {'ignore_auth': True},
-                {'id': user_name, 'permission': 'read'})]
-        else:
-            user_orgs = []
-
-        # Allowed resources are the ones where:
-        # 1) Visibility/private is public (False)
-        # OR
-        # 2) Visibility/private is limited (True) AND the logged in user is on the allowed users list
-        # OR
-        # 3) Visibility/private is limited (True) AND the logged in user's list of organizations contains
-        #    the organization of the package
-
-        allowed_resources = [resource for resource in data_dict.get('resources', [])
-                             if resource.get('access_restriction_level', '') in ('', 'public') or
-                             ((resource.get('access_restriction_level', '') == 'private')
-                              and any(o.get('name') in orgs for orgs in
-                                      resource.get('allowed_organizations', '').split(',') for o in user_orgs)) or
-                             ((resource.get('access_restriction_level', '') == 'private') and
-                              any(o.get('id', None) == data_dict.get('organization',
-                                                                     {}).get('id', '') for o in user_orgs))]
-
+        org_id = data_dict.get('organization', {}).get('id', '')
+        resources = data_dict.get('resources', [])
+        allowed_resources = filter_allowed_resources(resources, org_id, user_name)
         data_dict['resources'] = allowed_resources
         data_dict['num_resources'] = len(allowed_resources)
 
