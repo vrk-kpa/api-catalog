@@ -204,6 +204,13 @@
       "label": "X-Road member type",
       "form_snippet": null,
       "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+    },
+    {
+      "field_name": "xroad_removed",
+      "label": "X-Road subsystem code",
+      "form_snippet": null,
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value(false) boolean_validator",
+      "output_validators": "scheming_load_json boolean_validator"
     }
   ]
 }

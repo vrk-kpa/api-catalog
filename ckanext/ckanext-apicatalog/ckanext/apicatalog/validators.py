@@ -397,3 +397,17 @@ def json_string_to_list(value):
     if not isinstance(value, list):
         log.warning("Stored value in database was not a list")
     return value
+
+
+@scheming_validator
+def debug(field, schema):
+    from pprint import pformat
+
+    def validator(key, data, errors, context):
+        fields = {'field': field,
+                  'key': key,
+                  'data': data,
+                  'errors': {k: v for k, v in errors.items() if v != []},
+                  'context': context}
+        log.debug(f'Debug validator: {pformat(fields)}')
+    return validator
