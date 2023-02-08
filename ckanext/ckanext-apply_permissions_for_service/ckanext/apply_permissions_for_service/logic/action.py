@@ -95,7 +95,7 @@ def service_permission_application_create(context, data_dict):
 
     # Need sysadmin privileges to see permission_application_settings
     sysadmin_context = {'ignore_auth': True, 'use_cache': False}
-    package = tk.get_action('package_show')(sysadmin_context, {'id': subsystem_id})
+    package = tk.get_action('package_show')(sysadmin_context, {'id': target_subsystem_id})
     owner_org = tk.get_action('organization_show')(context, {'id': package['owner_org']})
 
     application_id = model.ApplyPermission.create(organization_id=organization_id,
