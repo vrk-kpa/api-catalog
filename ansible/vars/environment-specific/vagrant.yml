@@ -89,10 +89,10 @@ xroad:
     host: "catalog-ss1.palveluvayla.com"
     alias: "catalog-ss1"
     port: 443
-  client_id: CATALOG.COM.111.XROAD-CATALOG
-  service_id: CATALOG.COM.222.XROAD-CATALOG
-  service_name: REST
-  environment: 'CATALOG'
+  client_id: DEV.GOV.1234.MANAGEMENT
+  service_id: DEV.COM.111.XROAD-CATALOG
+  service_name: X-Road-Catalog/api
+  environment: 'DEV'
 
 elk:
   logstash:
