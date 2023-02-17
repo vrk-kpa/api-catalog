@@ -41,13 +41,15 @@
     "serviceVersion": "v1",
     "soapExternalId": "1598873326071_b756fe09-bd20-4761-b15b-04e2acf1cb32",
     "openApiExternalId": "1613988073851_acd13d50-4ea1-477a-8c18-1815bc365716",
-    "organizationGuid": "d06969b2-342b-4063-bfc8-6372e2545d81"
+    "organizationGuid": "d06969b2-342b-4063-bfc8-6372e2545d81",
+    "startDate": "2023-02-01",
+    "endDate": "2023-02-02"
   },
   "items": [
     {
       "name": "ListMembers",
       "profile": "xroad-gateway",
-      "url": "/ListMembers"
+      "url": "/ListMembers?startDateTime={startDate}&endDateTime={endDate}"
     },
     {
       "name": "GetWsdl",
