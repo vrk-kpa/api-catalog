@@ -1,4 +1,6 @@
 {% block footer %}
+{% set current_lang = request.environ.CKAN_LANG %}
+{% set lang_code = 'en' if current_lang == 'en_GB' else current_lang %}
 	<footer>
 		<div class="footer-top clearfix">
 			<div class="container">
@@ -9,6 +11,7 @@
 				<div class="footer-top-links col-xs-12 col-sm-8 col-lg-9">
 					<ul class="nav navbar footer-nav">
 						{{ h.build_nav_main() }}
+						<li><a href="{{'https://palveluhallinta.suomi.fi/%s/sivut/palveluvayla/palvelukuvaus/tietosuoja' % lang_code}}" target="_blank">{{_('Privacy statement')}}&nbsp;<i class="fal fa-external-link"></i></a></li>
 						{{ h.build_nav('contact.form', _('Give feedback')) }}
 					</ul>
 				</div>

@@ -17,10 +17,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-16 06:35+0000\n"
+"POT-Creation-Date: 2023-06-19 10:32+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
 "Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2023\n"
-"Language-Team: Finnish (https://www.transifex.com/avoindata/teams/7979/fi/)\n"
+"Language-Team: Finnish (https://app.transifex.com/avoindata/teams/7979/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,24 +37,24 @@ msgstr ""
 msgid "User {name} stored in database."
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:854
+#: ckanext/apicatalog/plugin.py:855
 #: ckanext/apicatalog/templates/package/read.html:67
 #: ckanext/apicatalog/templates/package/snippets/resources.html:8
 msgid "Services"
 msgstr "Palvelut"
 
-#: ckanext/apicatalog/plugin.py:855
+#: ckanext/apicatalog/plugin.py:856
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr "Organisaatio"
 
-#: ckanext/apicatalog/plugin.py:856
+#: ckanext/apicatalog/plugin.py:857
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr "Asiasanat"
 
-#: ckanext/apicatalog/plugin.py:857
+#: ckanext/apicatalog/plugin.py:858
 msgid "Formats"
 msgstr "Tiedostomuodot"
 
@@ -519,7 +519,7 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/apicatalog_header.html:10
 #: ckanext/apicatalog/templates/apicatalog_header.html:41
-#: ckanext/apicatalog/templates/footer.html:6
+#: ckanext/apicatalog/templates/footer.html:8
 msgid "API Catalog"
 msgstr "Liityntäkatalogi"
 
@@ -567,21 +567,25 @@ msgstr "Kirjaudu sisään"
 msgid "Register"
 msgstr "Rekisteröidy"
 
-#: ckanext/apicatalog/templates/footer.html:7
+#: ckanext/apicatalog/templates/footer.html:9
 msgid ""
 "The service is being developed by the Digital and Population Data Services "
 "Agency."
 msgstr "Verkkopalvelun kehittämisestä vastaa Digi- ja väestötietovirasto."
 
-#: ckanext/apicatalog/templates/footer.html:12
+#: ckanext/apicatalog/templates/footer.html:14
+msgid "Privacy statement"
+msgstr "Tietosuojaseloste"
+
+#: ckanext/apicatalog/templates/footer.html:15
 msgid "Give feedback"
 msgstr "Anna palautetta"
 
-#: ckanext/apicatalog/templates/footer.html:22
+#: ckanext/apicatalog/templates/footer.html:25
 msgid "@Suomifiyritys"
 msgstr "@Suomifiyritys"
 
-#: ckanext/apicatalog/templates/footer.html:27
+#: ckanext/apicatalog/templates/footer.html:30
 msgid "@Suomifiyritykselle"
 msgstr "@Suomifiyritykselle"
 
@@ -1423,7 +1427,7 @@ msgid "X-Road errors"
 msgstr "Liityntäpalvelimen virhetilanteet"
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:32
-#: ckanext/apicatalog/templates/organization/read_base.html:29
+#: ckanext/apicatalog/templates/organization/read_base.html:27
 msgid "Members"
 msgstr "Jäsenet"
 
@@ -1542,7 +1546,7 @@ msgstr "Luettelo valitun organisaation alijärjestelmistä"
 msgid "There are currently no APIs for this organization"
 msgstr "Organisaatiolla ei ole aktiivisia alijärjestelmiä"
 
-#: ckanext/apicatalog/templates/organization/read_base.html:25
+#: ckanext/apicatalog/templates/organization/read_base.html:24
 msgid "Broken links"
 msgstr ""
 
