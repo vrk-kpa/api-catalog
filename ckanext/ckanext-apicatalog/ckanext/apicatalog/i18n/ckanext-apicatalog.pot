@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-16 06:35+0000\n"
+"POT-Creation-Date: 2023-06-19 10:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,24 +26,24 @@ msgstr ""
 msgid "User {name} stored in database."
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:854
+#: ckanext/apicatalog/plugin.py:855
 #: ckanext/apicatalog/templates/package/read.html:67
 #: ckanext/apicatalog/templates/package/snippets/resources.html:8
 msgid "Services"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:855
+#: ckanext/apicatalog/plugin.py:856
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:856
+#: ckanext/apicatalog/plugin.py:857
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr ""
 
-#: ckanext/apicatalog/plugin.py:857
+#: ckanext/apicatalog/plugin.py:858
 msgid "Formats"
 msgstr ""
 
@@ -464,7 +464,7 @@ msgstr ""
 
 #: ckanext/apicatalog/templates/apicatalog_header.html:10
 #: ckanext/apicatalog/templates/apicatalog_header.html:41
-#: ckanext/apicatalog/templates/footer.html:6
+#: ckanext/apicatalog/templates/footer.html:8
 msgid "API Catalog"
 msgstr ""
 
@@ -512,21 +512,25 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ckanext/apicatalog/templates/footer.html:7
+#: ckanext/apicatalog/templates/footer.html:9
 msgid ""
 "The service is being developed by the Digital and Population Data Services "
 "Agency."
 msgstr ""
 
-#: ckanext/apicatalog/templates/footer.html:12
+#: ckanext/apicatalog/templates/footer.html:14
+msgid "Privacy statement"
+msgstr ""
+
+#: ckanext/apicatalog/templates/footer.html:15
 msgid "Give feedback"
 msgstr ""
 
-#: ckanext/apicatalog/templates/footer.html:22
+#: ckanext/apicatalog/templates/footer.html:25
 msgid "@Suomifiyritys"
 msgstr ""
 
-#: ckanext/apicatalog/templates/footer.html:27
+#: ckanext/apicatalog/templates/footer.html:30
 msgid "@Suomifiyritykselle"
 msgstr ""
 
@@ -1317,7 +1321,7 @@ msgid "X-Road errors"
 msgstr ""
 
 #: ckanext/apicatalog/templates/organization/edit_base.html:32
-#: ckanext/apicatalog/templates/organization/read_base.html:29
+#: ckanext/apicatalog/templates/organization/read_base.html:27
 msgid "Members"
 msgstr ""
 
@@ -1432,7 +1436,7 @@ msgstr ""
 msgid "There are currently no APIs for this organization"
 msgstr ""
 
-#: ckanext/apicatalog/templates/organization/read_base.html:25
+#: ckanext/apicatalog/templates/organization/read_base.html:24
 msgid "Broken links"
 msgstr ""
 

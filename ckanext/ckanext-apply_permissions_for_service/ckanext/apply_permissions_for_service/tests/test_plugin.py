@@ -150,7 +150,6 @@ class TestApplyPermissionsForServicePlugin():
                                    id='TEST.ORG.1234567-1.target_subsystem_name')
 
         resource1 = Resource(package_id=target_subsystem['id'],
-                             id='TEST.ORG.1234567-1.target_subsystem_name.service_name',
                              xroad_servicecode='service_name',
                              xroad_serviceversion='v1',
                              harvested_from_xroad=True)
@@ -223,7 +222,6 @@ class TestApplyPermissionsForServicePlugin():
                                    id='TEST.ORG.1234567-1.target_subsystem_name')
 
         resource1 = Resource(package_id=target_subsystem['id'],
-                             id='TEST.ORG.1234567-1.target_subsystem_name.service_name',
                              xroad_servicecode='service_name',
                              xroad_serviceversion='v1',
                              harvested_from_xroad=True)
