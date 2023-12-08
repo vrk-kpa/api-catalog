@@ -30,7 +30,7 @@
   with_items: "{{ ckan_admins }}"
 
 - name: Initialize Harvest database
-  shell: ./bin/ckan --config {{ ckan_ini }} harvester initdb chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p harvest chdir={{ virtualenv }}
 
 - name: Initialize Link Validation database
   shell: ./bin/ckan --config {{ ckan_ini }} links initdb chdir={{ virtualenv }}
