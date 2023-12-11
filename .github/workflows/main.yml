@@ -151,7 +151,7 @@ jobs:
           sed -i -e 's/#ckan.plugins/ckan.plugins/' ckanext/ckanext-xroad_integration/test.ini
           
           ckan -c ckanext/ckanext-xroad_integration/test.ini db init
-          ckan -c ckanext/ckanext-xroad_integration/test.ini harvester initdb
+          ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p harvest
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
           # Disable plugins in test.ini
