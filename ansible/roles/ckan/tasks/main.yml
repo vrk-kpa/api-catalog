@@ -42,6 +42,12 @@
    virtualenv: "{{ virtualenv }}"
   register: ckan_installation
 
+- name: Install ckan
+  pip:
+    name: git+https://github.com/ckan/ckan.git@ckan-2.9.9#egg=ckan
+    editable: true
+    virtualenv: "{{ virtualenv }}"
+
 #- name: Install CKAN requirements
 #  pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
 
