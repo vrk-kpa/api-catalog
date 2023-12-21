@@ -16,4 +16,4 @@
     - { role: ckan-ui }
     - ckan-translations
   handlers:
-    - include: handlers/handlers.yml
+    - import_tasks: handlers/handlers.yml

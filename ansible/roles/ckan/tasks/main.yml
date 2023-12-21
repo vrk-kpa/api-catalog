@@ -130,9 +130,9 @@
 - name: Install CKAN frontend requirements
   shell: npm install --only=prod chdir={{ virtualenv }}/src/ckan
 
-- include: patch.yml
+- import_tasks: patch.yml
 
-- include: database.yml
+- import_tasks: database.yml
 
 - name: Disable emails in cron
   cronvar: name="MAILTO" value="\"\""
