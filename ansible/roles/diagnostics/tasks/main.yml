@@ -1,4 +1,4 @@
 ---
 
-- include: filebeat.yml
-- include: api-verifier.yml
+- import_tasks: filebeat.yml
+- import_tasks: api-verifier.yml

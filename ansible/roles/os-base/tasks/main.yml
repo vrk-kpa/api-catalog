@@ -6,8 +6,8 @@
   tags:
   - clear-cache
 
-- include: timezone.yml
-- include: hosts.yml
+- import_tasks: timezone.yml
+- import_tasks: hosts.yml
 
 
 - name: Copy apt sources.list
@@ -66,4 +66,4 @@
     name: fi_FI.UTF-8
     state: present
 
-- include: developer-users.yml
+- import_tasks: developer-users.yml

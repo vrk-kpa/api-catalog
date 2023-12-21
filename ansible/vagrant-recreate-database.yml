@@ -56,4 +56,4 @@
       service: name=supervisor state=restarted
 
   handlers:
-    - include: handlers/handlers.yml
+    - import_tasks: handlers/handlers.yml
