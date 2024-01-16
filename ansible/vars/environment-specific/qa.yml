@@ -138,7 +138,6 @@ allowed_member_editors:
 developers:
   - user: bzar
   - user: zharktas
-  - user: eetumans
 
 api_verifier:
   path: "{{ server_path }}/tools/api-verifier"
