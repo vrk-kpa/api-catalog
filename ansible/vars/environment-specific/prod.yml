@@ -139,3 +139,4 @@ developers:
   - user: bzar
   - user: zharktas
   - user: eetumans
+    remove: true
