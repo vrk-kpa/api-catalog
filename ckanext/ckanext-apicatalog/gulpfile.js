@@ -17,21 +17,6 @@ function fontAwesomeFonts() {
         .pipe(dest("ckanext/apicatalog/public/fonts/font-awesome/webfonts/"))
 }
 
-const cookieConsentPath = './node_modules/cookieconsent/'
-
-function cookieConsentJs() {
-    return src(cookieConsentPath + 'src/cookieconsent.js')
-        .pipe(dest("ckanext/apicatalog/fanstatic/cookieconsent/"))
-}
-
-function cookieConsentCss() {
-    return src(cookieConsentPath + 'build/cookieconsent.min.css')
-        .pipe(rename((path) => {
-            path.basename = path.basename.replace(".min", "")
-        }))
-        .pipe(dest("ckanext/apicatalog/fanstatic/cookieconsent/"))
-}
-
 const bootstrapDatepickerPath = './node_modules/eonasdan-bootstrap-datetimepicker/'
 
 function bootstrapDatepickerJs() {

@@ -456,28 +456,6 @@ msgstr ""
 msgid "Business id verification number does not match business id."
 msgstr ""
 
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:11
-msgid "Cookie Policy"
-msgstr ""
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:12
-msgid ""
-"This website uses cookies to ensure you get the best experience on our "
-"website."
-msgstr ""
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:13
-msgid "Allow cookies"
-msgstr ""
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:14
-msgid "Decline"
-msgstr ""
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:15
-msgid "Learn more"
-msgstr ""
-
 #: ckanext/apicatalog/fanstatic/javascript/modal-dialog.js:69
 msgid "Confirm"
 msgstr ""

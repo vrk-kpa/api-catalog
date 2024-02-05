@@ -22,22 +22,6 @@ main_css:
   contents:
     - apicatalog/main.css
 
-cookieconsent_js:
-  filters: rjsmin
-  output: ckanext-apicatalog/%(version)s_cookieconsent.js
-  extra:
-    preload:
-      - base/main
-  contents:
-    - cookieconsent/cookieconsent.js
-    - cookieconsent/ckan-cookieconsent.js
-
-cookieconsent_css:
-  output: ckanext-apicatalog/%(version)s_cookieconsent.css
-  contents:
-    - cookieconsent/cookieconsent.css
-    - cookieconsent/ckan-cookieconsent.css
-
 chartjs_js:
   filters: rjsmin
   output: ckanext-apicatalog/%(version)s_chartjs.js
