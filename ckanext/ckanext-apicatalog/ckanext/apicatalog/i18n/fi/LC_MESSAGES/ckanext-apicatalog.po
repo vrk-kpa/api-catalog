@@ -1,8 +1,8 @@
 # Translations template for ckanext-apicatalog.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the ckanext-apicatalog
 # project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 # 
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2022
@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-06-19 10:32+0000\n"
+"POT-Creation-Date: 2024-02-05 09:05+0000\n"
 "PO-Revision-Date: 2022-05-05 05:41+0000\n"
 "Last-Translator: Eetu Mansikkamäki <eetu.mansikkamaki@gofore.com>, 2023\n"
 "Language-Team: Finnish (https://app.transifex.com/avoindata/teams/7979/fi/)\n"
@@ -484,30 +484,6 @@ msgstr "Y-tunnus on väärässä muodossa."
 #: ckanext/apicatalog/validators.py:155
 msgid "Business id verification number does not match business id."
 msgstr "Y-tunnuksen vahvistusnumero ei vastaa y-tunnusta."
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:11
-msgid "Cookie Policy"
-msgstr "Evästeet"
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:12
-msgid ""
-"This website uses cookies to ensure you get the best experience on our "
-"website."
-msgstr ""
-"Tällä verkkosivulla käytetään evästeitä, jotta voimme mahdollistaa sivuston "
-"oikean toiminnan sekä parantaa vierailusi käyttökokemusta."
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:13
-msgid "Allow cookies"
-msgstr "Salli evästeet"
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:14
-msgid "Decline"
-msgstr "Estä evästeet"
-
-#: ckanext/apicatalog/fanstatic/cookieconsent/ckan-cookieconsent.js:15
-msgid "Learn more"
-msgstr "Lue lisää"
 
 #: ckanext/apicatalog/fanstatic/javascript/modal-dialog.js:69
 msgid "Confirm"
@@ -1266,15 +1242,15 @@ msgstr ""
 msgid "E.g. environment"
 msgstr "Esim. ajo-oikeuden tarkistus"
 
-#: ckanext/apicatalog/templates/home/snippets/twitter.html:2
+#: ckanext/apicatalog/templates/home/snippets/twitter.html:1
 msgid "Skip twitter feed"
 msgstr "Hyppää twitter syötteen yli"
 
-#: ckanext/apicatalog/templates/home/snippets/twitter.html:7
+#: ckanext/apicatalog/templates/home/snippets/twitter.html:6
 msgid "Show more tweets by Suomi.fi yritys"
 msgstr "Näytä käyttäjän Suomi.fi yrityksille muut twiitit"
 
-#: ckanext/apicatalog/templates/home/snippets/twitter.html:16
+#: ckanext/apicatalog/templates/home/snippets/twitter.html:15
 msgid "Show more tweets by NIIS"
 msgstr "Näytä käyttäjän NIIS muut twiitit"
 

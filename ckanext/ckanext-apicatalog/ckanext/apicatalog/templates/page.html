@@ -143,14 +143,12 @@
   <link rel="stylesheet" href="/fonts/font-awesome/css/all.css" />
   <link rel="stylesheet" href="/fonts/font-awesome/css/v4-shims.css" />
   {% asset 'apicatalog/main_css' %}
-  {% asset 'apicatalog/cookieconsent_css' %}
 {% endblock %}
 
 {%- block scripts %}
     {% asset 'base/main' %}
     {% asset 'base/ckan' %}
     {% asset 'apicatalog/main_js' %}
-    {% asset 'apicatalog/cookieconsent_js' %}
     {% asset 'apicatalog/tablesorter' %}
 
     {% if g.tracking_enabled %}
@@ -171,12 +169,6 @@
         }
 
         var _paq = window._paq = window._paq || [];
-
-        _paq.push(['requireConsent']);
-
-        {% if 'cookieconsent_status' in request.cookies and request.cookies['cookieconsent_status'] == 'allow'%}
-            _paq.push(['setConsentGiven']);
-        {% endif %}
 
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
