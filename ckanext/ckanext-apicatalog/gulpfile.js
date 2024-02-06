@@ -38,15 +38,12 @@ function bootstrapLess() {
 
 exports.fontAwesomeCss = fontAwesomeCss;
 exports.fontAwesomeFonts = fontAwesomeFonts;
-exports.cookieConsentJs = cookieConsentJs;
-exports.cookieConsentCss = cookieConsentCss;
 exports.bootstrapDatepickerJs = bootstrapDatepickerJs;
 exports.bootstrapDatepickerCss = bootstrapDatepickerCss;
 exports.bootstrapLess = bootstrapLess;
 
 exports.default = parallel(
   fontAwesomeCss, fontAwesomeFonts,
-  cookieConsentJs, cookieConsentCss,
   bootstrapDatepickerJs, bootstrapDatepickerCss,
   bootstrapLess
 );
