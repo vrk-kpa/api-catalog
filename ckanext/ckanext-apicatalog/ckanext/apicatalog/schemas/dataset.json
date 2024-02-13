@@ -335,6 +335,12 @@
       "display_snippet": null
     },
     {
+      "field_name": "rest_endpoints",
+      "label": "Rest endpoints",
+      "form_snippet": false,
+      "display_snippet": null
+    },
+    {
       "field_name": "url_type",
       "form_snippet": "hidden.html",
       "display_snippet": null,
