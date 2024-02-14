@@ -5,14 +5,15 @@ from typing import List, Dict, Any
 ResourceDict = Dict[str, Any]
 
 
-def package_generator(context, query='*:*', page_size=1000, dataset_type='dataset'):
+def package_generator(context, query='*:*', page_size=1000,
+                      sort='score desc, metadata_modified desc', dataset_type='dataset'):
     package_search = toolkit.get_action('package_search')
 
     # Loop through all items. Each page has {page_size} items.
     # Stop iteration when all items have been looped.
     for index in itertools.count(start=0, step=page_size):
         data_dict = {'include_private': True, 'rows': page_size, 'q': query, 'start': index,
-                     'fq': '+dataset_type:' + dataset_type}
+                     'fq': '+dataset_type:' + dataset_type, 'sort': sort}
         data = package_search(context, data_dict)
         packages = data.get('results', [])
         for package in packages:
