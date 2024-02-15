@@ -76,7 +76,7 @@
             {% endblock %}
 
             {% block primary %}
-            <div class="primary border-left {% if no_nav %} col-xs-8 {% endif %} {% if not no_nav %}{% block primary_col %}col-sm-8{% endblock %}{% endif %}">
+            <div class="primary border-left {% if no_nav %}{% block primary_col_no_nav %}col-xs-8{% endblock %}{% endif %} {% if not no_nav %}{% block primary_col %}col-sm-8{% endblock %}{% endif %}">
 
                 {#
                 The primary_content block can be used to add content to the page.
