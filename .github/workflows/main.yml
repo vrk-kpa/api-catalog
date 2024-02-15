@@ -25,7 +25,7 @@ jobs:
       image: openknowledge/ckan-dev:2.9
     services:
       solr:
-        image: ckan/ckan-solr-dev:2.9
+        image: ckan/ckan-solr:2.9
       postgres:
         image: ckan/ckan-postgres-dev:2.9
         env:
@@ -86,7 +86,7 @@ jobs:
       image: openknowledge/ckan-dev:2.9
     services:
       solr:
-        image: ckan/ckan-solr-dev:2.9
+        image: ckan/ckan-solr:2.9
       postgres:
         image: ckan/ckan-postgres-dev:2.9
         env:
