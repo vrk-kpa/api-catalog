@@ -22,36 +22,6 @@ main_css:
   contents:
     - apicatalog/main.css
 
-chartjs_js:
-  filters: rjsmin
-  output: ckanext-apicatalog/%(version)s_chartjs.js
-  contents:
-    - xroad_stats/js/libs/Chart.js
-    - xroad_stats/js/libs/chartjs-datalabels.js
-
-chartjs_css:
-  output: ckanext-apicatalog/%(version)s_chartjs.css
-  contents:
-    - xroad_stats/css/Chart.css
-
-xroad_statistics_js:
-  filters: rjsmin
-  output: ckanext-apicatalog/%(version)s_xroad-statistics.js
-  extra:
-    preload:
-      - base/main
-      - apicatalog/chartjs_js
-  contents:
-    - xroad_stats/js/xroad_statistics.js
-
-xroad_statistics_css:
-  output: ckanext-apicatalog/%(version)s_xroad-statistics.css
-  extra:
-    preload:
-      - apicatalog/chartjs_css
-  contents:
-    - xroad_stats/css/xroad_statistics.css
-
 datetimepicker_js:
   filters: rjsmin
   output: ckanext-apicatalog/%(version)s_datetimepicker.js
