@@ -203,8 +203,17 @@ def get_homepage_organizations(count=1):
 
 
 def get_homepage_datasets(count=1):
-    datasets = get_action('package_search')({}, {'q': 'type:dataset', 'rows': count}).get('results', [])
-    return datasets
+    context = {}
+    datasets = package_generator(context=context,
+                                 query='res_name:*',
+                                 page_size=count*5,
+                                 sort='metadata_created desc',
+                                 dataset_type='dataset')
+
+    def criteria(dataset):
+        return dataset.get('notes') and len(dataset.get('resources', [])) > 0
+
+    return list(itertools.islice(filter(criteria, datasets), count))
 
 
 NEWS_CACHE = None
