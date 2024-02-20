@@ -25,6 +25,9 @@ server {
       return 301 /en_GB$1;
     }
 
+  location ~ (/en|/fi|/sv|/en_GB)?/contact {
+    return 301 https://laatutyokalut.suomi.fi/p/jTVC;
+  }
   location / {
     proxy_pass http://127.0.0.1:8080/;
     proxy_set_header X-Url-Scheme $scheme;
