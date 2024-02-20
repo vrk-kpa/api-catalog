@@ -15,7 +15,6 @@
     - { role: ckan-extension, ckanext: ckanext-scheming }
     - { role: ckan-extension, ckanext: ckanext-fluent }
     - { role: ckan-extension, ckanext: ckanext-pages }
-    - { role: ckan-extension, ckanext: ckanext-contact }
     - { role: ckan-extension, ckanext: ckanext-harvest }
     - { role: ckan-extension, ckanext: ckanext-xroad_integration }
     - { role: ckan-extension, ckanext: ckanext-validate_links }
