@@ -33,6 +33,7 @@ ckan_patches:
   - { file: "email_attachment" }
   - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
   - { file: "fix_resource_delete_auth" } # https://github.com/ckan/ckan/pull/7132
+  - { file: "fix_detection_of_xlsx_mimetype"} # https://github.com/ckan/ckan/pull/8088
 
 files_created_by_patches:
   - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
