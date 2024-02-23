@@ -249,7 +249,7 @@ def settings_post(context, subsystem_id):
             upload.upload(max_size=uploader.get_max_resource_size())
         except toolkit.ValidationError as e:
             return settings_get(context, subsystem_id, e.error_dict, values=data_dict)
-        
+
         file_url = data_dict.get('file_url', '')
         if re.match('https?:', file_url) is None:
             # File has been updated, so update filename too
