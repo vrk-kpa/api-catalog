@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Swagger UI</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="/fonts/source-sans-pro/css/source-sans-pro.css">
   <link rel="stylesheet" type="text/css" href="/swagger-ui/dist/swagger-ui.css" >
   {% asset 'apicatalog/openapi_view_css' %}
   {{ h.render_assets('style') }}
-  <link rel="icon" type="image/png" href="https://www2.gov.bc.ca/favicon.ico" />
+  <link rel="shortcut icon" href="/base/images/favicon.ico" />
   <style>
     html
     {
@@ -26,6 +26,20 @@
     body {
       margin:0;
       background: #fafafa;
+    }
+    .swagger-ui,
+    .swagger-ui .info .title,
+    .swagger-ui .info a,
+    .swagger-ui .opblock-tag,
+    .swagger-ui .opblock .opblock-summary-operation-id,
+    .swagger-ui .opblock .opblock-summary-path,
+    .swagger-ui .opblock .opblock-summary-path__deprecated,
+    .swagger-ui .opblock-description-wrapper p,
+    .swagger-ui .opblock-external-docs-wrapper p,
+    .swagger-ui .opblock-title_normal p,
+    .swagger-ui .opblock .opblock-section-header h4
+    {
+      font-family: 'SourceSansPro-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
   </style>
 </head>
@@ -86,7 +100,9 @@ window.onload = function() {
     ],
     layout: "StandaloneLayout",
     translationLanguage: "{{ h.lang() }}",
-    validatorUrl: "none"
+    validatorUrl: "none", // disable validation.swagger.io validation
+    supportedSubmitMethods: [], // remove "Try it out" button
+    requestSnippetsEnabled: false,
   })
 
   window.ui = ui
