@@ -8,13 +8,14 @@ import ckan.plugins.toolkit as t
 import ckan.lib.mailer as mailer
 from datetime import datetime
 
-
+import six
 import os
 import sys
 
 import click
 import polib
 import re
+import requests
 from ckanext.apicatalog.translations import facet_translations
 
 from ckan.plugins.toolkit import get_action, config
@@ -163,14 +164,15 @@ def apicatalog_harvest():
 
 
 @apicatalog_harvest.command(
-    u'send-status-emails',
+    'send-status-emails',
     help='Sends harvester status emails to configured recipients'
 )
+@click.option('--dryrun', is_flag=True)
+@click.option('--force', is_flag=True)
+@click.option('--all-harvesters', is_flag=True)
+@click.option('--send-email', is_flag=True)
 @click.pass_context
-@click.option(u'--dryrun', is_flag=True)
-@click.option(u'--force', is_flag=True)
-@click.option(u'--all-harvesters', is_flag=True)
-def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
+def send_harvester_status_emails(ctx, dryrun, force, all_harvesters, send_email):
     email_notification_recipients = t.aslist(t.config.get('ckanext.apicatalog.harvester_status_recipients', ''))
 
     if not email_notification_recipients and not dryrun:
@@ -178,10 +180,10 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
         return
 
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
-    status = t.get_action('harvester_status')({}, status_opts)
+    status = get_action('harvester_status')({}, status_opts)
 
     errored_runs = any(item.get('errors') != 0 for item in status.values())
-    running = [item.get('started') for item in status.values() if item.get('status') == 'running']
+    running = (item.get('started') for item in status.values() if item.get('status') == 'running')
     stuck_runs = any(_elapsed_since(started).days >= 1 for started in running)
 
     if not (errored_runs or stuck_runs) and not force:
@@ -220,21 +222,21 @@ def send_harvester_status_emails(ctx, dryrun, force, all_harvesters):
     }
 
     subject = '%s - Harvester summary %s' % (site_title, today)
-    _send_harvester_notification(subject, msg, email_notification_recipients, dryrun)
+    _send_harvester_notification(subject, msg, email_notification_recipients, dryrun, send_email=send_email)
 
     if dryrun:
         click.echo(msg)
 
 
 @apicatalog_harvest.command(
-    u'send-stuck-runs-report',
+    'send-stuck-runs-report',
     help='Sends stuck runs report to configured recipients'
 )
-@click.option(u'--dryrun', is_flag=True)
-@click.option(u'--force', is_flag=True)
-@click.option(u'--all-harvesters', is_flag=True)
-@click.pass_context
-def send_stuck_runs_report(ctx, dryrun, force, all_harvesters):
+@click.option('--dryrun', is_flag=True)
+@click.option('--force', is_flag=True)
+@click.option('--all-harvesters', is_flag=True)
+@click.option('--send-email', is_flag=True)
+def send_stuck_runs_report(dryrun, force, all_harvesters, send_email):
     email_notification_recipients = t.aslist(t.config.get('ckanext.apicatalog.fault_recipients', ''))
 
     if not email_notification_recipients and not dryrun:
@@ -242,7 +244,7 @@ def send_stuck_runs_report(ctx, dryrun, force, all_harvesters):
         return
 
     status_opts = {} if not all_harvesters else {'include_manual': True, 'include_never_run': True}
-    status = t.get_action('harvester_status')({}, status_opts)
+    status = get_action('harvester_status')({}, status_opts)
 
     stuck_runs = [(title, job_status) for title, job_status in status.items()
                   if job_status.get('status') == 'running' and _elapsed_since(job_status.get('started')).days >= 1]
@@ -260,7 +262,7 @@ def send_stuck_runs_report(ctx, dryrun, force, all_harvesters):
               }
 
         subject = '%s - There are stuck harvester runs that need to have a look at' % site_title
-        _send_harvester_notification(subject, msg, email_notification_recipients, dryrun)
+        _send_harvester_notification(subject, msg, email_notification_recipients, dryrun, send_email=send_email)
 
         if dryrun:
             click.echo(msg)
@@ -268,7 +270,7 @@ def send_stuck_runs_report(ctx, dryrun, force, all_harvesters):
         click.echo('Nothing to report')
 
 
-def _send_harvester_notification(subject, msg, recipients, dryrun):
+def _send_harvester_notification(subject, msg, recipients, dryrun, send_zulip=True, send_email=False):
 
     for recipient in recipients:
         email = {'recipient_name': recipient,
@@ -279,10 +281,40 @@ def _send_harvester_notification(subject, msg, recipients, dryrun):
         if dryrun:
             click.echo('to: %s' % recipient)
         else:
-            try:
-                mailer.mail_recipient(**email)
-            except mailer.MailerException as e:
-                click.echo('Sending harvester notification to %s failed: %s' % (recipient, e))
+            if send_email:
+                try:
+                    mailer.mail_recipient(**email)
+                except mailer.MailerException as e:
+                    click.echo('Sending harvester notification to %s failed: %s' % (recipient, e))
+
+            if send_zulip:
+                zulip_stream = t.config.get('ckanext.apicatalog.harvester_status_zulip_stream')
+                zulip_topic = t.config.get('ckanext.apicatalog.harvester_status_zulip_topic')
+                _send_to_zulip(zulip_stream, zulip_topic, msg)
+
+
+def _send_to_zulip(stream, topic, content):
+    api_url = t.config.get('ckanext.apicatalog.zulip.api_url')
+    api_user = t.config.get('ckanext.apicatalog.zulip.api_user')
+    api_key = t.config.get('ckanext.apicatalog.zulip.api_key')
+
+    if not (api_url and api_user and api_key):
+        click.echo('Zulip not configured in CKAN configuration!')
+        return
+
+    if not (stream and topic):
+        click.echo('Invalid Zulip destination: {}/{}'.format(stream, topic))
+
+    data = {
+        'type': 'stream',
+        'to': stream,
+        'topic': topic,
+        'content': content
+    }
+
+    url = 'https://{}/api/v1/messages'.format(api_url)
+    auth = requests.auth.HTTPBasicAuth(api_user, api_key)
+    return requests.post(url, data=data, auth=auth)
 
 
 def _elapsed_since(t):
