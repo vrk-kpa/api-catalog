@@ -919,6 +919,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             result['num_resources'] = len(allowed_resources)
 
         search_results['results'] = results
+        search_results['count'] = len(results)
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
@@ -930,6 +931,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         # Skip access check if sysadmin or auth is ignored
         if context.get('ignore_auth') or (context.get('auth_user_obj') and context.get('auth_user_obj').sysadmin):
             return data_dict
+
+        if data_dict.get('xroad_removed') is True:
+            raise toolkit.ObjectNotFound
 
         user_name = context.get('user')
 

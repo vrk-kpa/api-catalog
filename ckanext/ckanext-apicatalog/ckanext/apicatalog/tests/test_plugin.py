@@ -238,3 +238,18 @@ class TestApicatalogPlugin():
         organization_with_python_list = Organization(old_business_ids=['1', '2'])
 
         assert organization_with_python_list['old_business_ids'] == ['1', '2']
+
+    def test_user_should_not_see_subsystems_removed_from_xroad(self, app):
+        org = factories.Organization()
+        subsystem = factories.Dataset(
+            owner_org=org["id"],
+            xroad_removed=True
+        )
+
+        with app.flask_app.test_request_context():
+            app.flask_app.preprocess_request()
+            with pytest.raises(ObjectNotFound):
+                get_action('package_show')({}, {"id": subsystem['id']})
+
+            search = get_action('package_search')({}, {})
+            assert all(result['id'] != subsystem['id'] for result in search['results'])
