@@ -117,6 +117,12 @@ ckanext.apicatalog.news.ssl_verify = {{ content.news.ssl_verify | default(True) 
 ckanext.apicatalog.news.tags = palveluvaeylae
 ckanext.apicatalog.news.url_template = {{ content.news.url_template }}
 
+ckanext.apicatalog.harvester_status_zulip_stream = {{ harvester_status.zulip_stream }}
+ckanext.apicatalog.harvester_status_zulip_topic = {{ harvester_status.zulip_topic }}
+ckanext.apicatalog.zulip.api_url = {{ zulip.api_url }}
+ckanext.apicatalog.zulip.api_user = {{ zulip.api_user }}
+ckanext.apicatalog.zulip.api_key = {{ zulip.api_key }}
+
 ckanext-archiver.archive_dir = /tmp/archive
 ckanext-archiver.max_content_length = 50000000
 ckan.celery.queues = celery bulk priority

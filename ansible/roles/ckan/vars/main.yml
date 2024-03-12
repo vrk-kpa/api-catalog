@@ -57,3 +57,13 @@ blocked_bots:
   - PetalBot
   - AhrefsBot
   - SemrushBot
+
+harvester_status:
+  zulip_stream: "Liityntäkatalogi"
+  zulip_topic: "Harvester status"
+
+zulip:
+  api_url: "turina.dvv.fi"
+  api_user: "apicatalog-bot@turina.dvv.fi"
+  api_key: "{{ secret.zulip_api_key }}"
+    
