@@ -174,7 +174,7 @@
     name: "Send harvester status report emails"
     minute: "0"
     hour: "11"
-    job: "{{ virtualenv }}/bin/ckan --config '{{ ckan_ini }}' apicatalog-harvest send-status-emails --force"
+    job: "{{ virtualenv }}/bin/ckan --config '{{ ckan_ini }}' apicatalog-harvest send-status-emails"
 
 - name: Send batch run report emails as a cron job
   cron:
