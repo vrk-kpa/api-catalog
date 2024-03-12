@@ -906,9 +906,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         except ObjectNotFound:
             pass
 
-        # Filter subsystems removed from X-Road
-        results = [result for result in search_results.get('results', [])
-                   if result.get('xroad_removed') is not True]
+        results = search_results.get('results', [])
 
         for result in results:
             user_name = toolkit.g.user
@@ -930,9 +928,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         # Skip access check if sysadmin or auth is ignored
         if context.get('ignore_auth') or (context.get('auth_user_obj') and context.get('auth_user_obj').sysadmin):
             return data_dict
-
-        if data_dict.get('xroad_removed') is True:
-            raise toolkit.ObjectNotFound
 
         user_name = context.get('user')
 
@@ -995,6 +990,10 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
                 continue
 
         pkg_dict = get_action('package_show')(context, {'id': dataset_obj.id})
+
+        if pkg_dict.get('xroad_removed') is True:
+            # Only sysadmin can view subsystems removed from xroad
+            return []
 
         if pkg_dict.get('private') and \
                 pkg_dict.get('private') is True:
