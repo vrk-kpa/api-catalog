@@ -919,7 +919,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             result['num_resources'] = len(allowed_resources)
 
         search_results['results'] = results
-        search_results['count'] = len(results)
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
