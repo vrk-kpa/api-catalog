@@ -8,7 +8,6 @@ import ckan.plugins.toolkit as t
 import ckan.lib.mailer as mailer
 from datetime import datetime
 
-import six
 import os
 import sys
 
