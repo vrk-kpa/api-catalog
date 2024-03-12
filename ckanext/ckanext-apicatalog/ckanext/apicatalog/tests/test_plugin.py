@@ -248,7 +248,7 @@ class TestApicatalogPlugin():
 
         with app.flask_app.test_request_context():
             app.flask_app.preprocess_request()
-            with pytest.raises(ObjectNotFound):
+            with pytest.raises(NotAuthorized):
                 get_action('package_show')({}, {"id": subsystem['id']})
 
             search = get_action('package_search')({}, {})
