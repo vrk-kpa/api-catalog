@@ -906,9 +906,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         except ObjectNotFound:
             pass
 
-        # Filter subsystems removed from X-Road
-        results = [result for result in search_results.get('results', [])
-                   if result.get('xroad_removed') is not True]
+        results = search_results.get('results', [])
 
         for result in results:
             user_name = toolkit.g.user
