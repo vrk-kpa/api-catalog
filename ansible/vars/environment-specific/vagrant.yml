@@ -3,7 +3,7 @@ vagrant: true
 
 public_facing_hostname: 10.100.10.10
 internal_hostname: catalog-vagrant
-ckan_site_name: Liityntäkatalogi
+ckan_site_name: Liityntäkatalogi (Vagrant)
 ckan_site_logo: /base/images/lika-logo-test.svg
 ckan_featured_orgs:
 ckan_test_environment: True
