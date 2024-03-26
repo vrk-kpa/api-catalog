@@ -1,5 +1,5 @@
 diff --git a/ckan/lib/mailer.py b/ckan/lib/mailer.py
-index 780dffd72..8a7e3053f 100644
+index 485c9d454..ca107720c 100644
 --- a/ckan/lib/mailer.py
 +++ b/ckan/lib/mailer.py
 @@ -5,10 +5,10 @@ import os
@@ -27,13 +27,11 @@ index 780dffd72..8a7e3053f 100644
      if not headers:
          headers = {}
  
--    mail_from = config.get('smtp.mail_from')
--    reply_to = config.get('smtp.reply_to')
 +    if not attachments:
 +        attachments = []
 +
-+    mail_from = config.get('smtp.mail_from')
-+    reply_to = config.get('smtp.reply_to')
+     mail_from = config.get('smtp.mail_from')
+     reply_to = config.get('smtp.reply_to')
 +
 +    msg = EmailMessage()
 +
@@ -59,10 +57,10 @@ index 780dffd72..8a7e3053f 100644
 -    subject = Header(subject.encode('utf-8'), 'utf-8')
 +
      msg['Subject'] = subject
-     msg['From'] = _("%s <%s>") % (sender_name, mail_from)
-     msg['To'] = u"%s <%s>" % (recipient_name, recipient_email)
-@@ -62,6 +64,23 @@ def _mail_recipient(recipient_name, recipient_email,
-     if reply_to and reply_to != '':
+     msg['From'] = utils.formataddr((sender_name, mail_from))
+     msg['To'] = utils.formataddr((recipient_name, recipient_email))
+@@ -63,6 +65,23 @@ def _mail_recipient(recipient_name, recipient_email,
+     if reply_to and reply_to != '' and not msg['Reply-to']:
          msg['Reply-to'] = reply_to
  
 +    for attachment in attachments:
@@ -85,19 +83,13 @@ index 780dffd72..8a7e3053f 100644
      # Send the email using Python's smtplib.
      if 'smtp.test_server' in config:
          # If 'smtp.test_server' is configured we assume we're running tests,
-@@ -115,22 +134,72 @@ def _mail_recipient(recipient_name, recipient_email,
+@@ -116,22 +135,72 @@ def _mail_recipient(recipient_name, recipient_email,
          smtp_connection.quit()
  
  
 -def mail_recipient(recipient_name, recipient_email, subject,
 -                   body, body_html=None, headers={}):
 -    '''Sends an email'''
--    site_title = config.get('ckan.site_title')
--    site_url = config.get('ckan.site_url')
--    return _mail_recipient(recipient_name, recipient_email,
--                           site_title, site_url, subject, body,
--                           body_html=body_html, headers=headers)
--
 +def mail_recipient(
 +        recipient_name, recipient_email, subject, body,
 +        body_html=None, headers=None, attachments=None):
@@ -137,8 +129,11 @@ index 780dffd72..8a7e3053f 100644
 +            ]
 +    :type: list
 +    '''
-+    site_title = config.get('ckan.site_title')
-+    site_url = config.get('ckan.site_url')
+     site_title = config.get('ckan.site_title')
+     site_url = config.get('ckan.site_url')
+-    return _mail_recipient(recipient_name, recipient_email,
+-                           site_title, site_url, subject, body,
+-                           body_html=body_html, headers=headers)
 +    return _mail_recipient(
 +        recipient_name, recipient_email,
 +        site_title, site_url, subject, body,
@@ -154,7 +149,7 @@ index 780dffd72..8a7e3053f 100644
 +
 +    :param recipient: a CKAN user object
 +    :type recipient: a model.User object
-+
+ 
 +    For further parameters see
 +    :py:func:`~ckan.lib.mailer.mail_recipient`.
 +    '''
@@ -171,13 +166,13 @@ index 780dffd72..8a7e3053f 100644
  
  
  def get_reset_link_body(user):
-@@ -202,12 +271,12 @@ def send_invite(user, group_dict=None, role=None):
+@@ -203,12 +272,12 @@ def send_invite(user, group_dict=None, role=None):
  
  
  def create_reset_key(user):
 -    user.reset_key = text_type(make_key())
 +    user.reset_key = make_key()
-     model.repo.commit_and_remove()
+     model.repo.commit()
  
  
  def make_key():
