@@ -23,10 +23,8 @@ chardet==4.0.0
     #   ckan
     #   requests
 # Removed manually, ckan is installed with ansible as this convention does not allow editable installs
-#ckan[requirements] @ git+https://github.com/ckan/ckan.git@ckan-2.9.10
-    # via
-    #   -r requirements.in
-    #   ckan
+# ckan[requirements] @ git+https://github.com/ckan/ckan.git@ckan-2.9.11
+    # via -r requirements.in
 click==7.1.2
     # via
     #   ckan
@@ -55,7 +53,7 @@ idna==2.10
     # via
     #   ckan
     #   requests
-importlib-metadata==7.0.0
+importlib-metadata==7.1.0
     # via markdown
 iso8601==2.1.0
     # via python-subunit
@@ -173,7 +171,7 @@ urllib3==1.26.6
     # via
     #   ckan
     #   requests
-uwsgi==2.0.23
+uwsgi==2.0.24
     # via -r requirements.in
 watchdog==2.1.5
     # via
@@ -194,8 +192,7 @@ werkzeug[watchdog]==1.0.0
     # via
     #   ckan
     #   flask
-    #   werkzeug
-zipp==3.17.0
+zipp==3.18.1
     # via importlib-metadata
 zope-interface==4.3.2
     # via
