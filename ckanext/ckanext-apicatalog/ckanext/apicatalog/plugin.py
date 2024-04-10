@@ -854,6 +854,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             'list_to_json_string': validators.list_to_json_string,
             'json_string_to_list': validators.json_string_to_list,
             'debug': validators.debug,
+            'empty_to_list': validators.empty_to_list,
         }
 
     # IFacets

@@ -172,7 +172,7 @@
       "field_name": "old_business_ids",
       "label": "Old business ids",
       "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing list_to_json_string default_value()",
+      "validators": "ignore_not_sysadmin keep_old_value_if_missing empty_to_list list_to_json_string default_value()",
       "output_validators": "json_string_to_list"
     },
     {

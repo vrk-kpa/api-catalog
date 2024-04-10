@@ -411,3 +411,9 @@ def debug(field, schema):
                   'context': context}
         log.debug(f'Debug validator: {pformat(fields)}')
     return validator
+
+
+def empty_to_list(value):
+    if value == '' or value is None:
+        return []
+    return value
