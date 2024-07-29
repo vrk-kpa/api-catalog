@@ -4,14 +4,18 @@
 # project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
+# Translators:
+# Laura Eloranta, 2024
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-validate_links 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-01-10 09:15+0000\n"
-"PO-Revision-Date: 2023-01-10 09:18+0000\n"
-"Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
+"PO-Revision-Date: 2024-07-29 09:39+0000\n"
+"Last-Translator: Laura Eloranta, 2024\n"
+"Language-Team: English (United Kingdom) (https://app.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,28 +25,28 @@ msgstr ""
 
 #: ckanext/validate_links/views.py:24 ckanext/validate_links/views.py:52
 msgid "Not authorized to see this page"
-msgstr ""
+msgstr "Not authorised to see this page"
 
 #: ckanext/validate_links/templates/admin/broken_links.html:3
 #: ckanext/validate_links/templates/organization/broken_links.html:3
 msgid "Broken links"
-msgstr ""
+msgstr "Broken links"
 
 #: ckanext/validate_links/templates/admin/broken_links.html:7
 #: ckanext/validate_links/templates/organization/broken_links.html:7
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ckanext/validate_links/templates/admin/broken_links.html:8
 #: ckanext/validate_links/templates/organization/broken_links.html:8
 msgid "Referrers"
-msgstr ""
+msgstr "Referrers"
 
 #: ckanext/validate_links/templates/admin/broken_links.html:9
 #: ckanext/validate_links/templates/organization/broken_links.html:9
 msgid "Reason"
-msgstr ""
+msgstr "Reason"
 
 #: ckanext/validate_links/templates/admin/broken_links.html:10
 msgid "Organizations"
-msgstr ""
+msgstr "Organisations"
