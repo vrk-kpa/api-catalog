@@ -13,7 +13,7 @@ function fontAwesomeCss() {
 }
 
 function fontAwesomeFonts() {
-    return src(fontawesomePath + '/webfonts/*')
+    return src(fontawesomePath + '/webfonts/*', {encoding:false})
         .pipe(dest("ckanext/apicatalog/public/fonts/font-awesome/webfonts/"))
 }
 
