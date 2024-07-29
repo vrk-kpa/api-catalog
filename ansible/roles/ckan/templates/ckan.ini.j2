@@ -129,6 +129,10 @@ ckan.celery.queues = celery bulk priority
 
 sentry.dsn = {{ sentry.dsn }}
 sentry.environment = {{ deployment_environment_id }}
+sentry.traces_sample_rate = {{ sentry.traces_sample_rate }}
+sentry.profiles_sample_rate = {{ sentry.profiles_sample_rate }}
+sentry.loader_script = {{ sentry.loader_script }}
+
 
 # Force using of core translations, change this when translations are moved to extensions
 ckanext.forcetranslation.module = ckan

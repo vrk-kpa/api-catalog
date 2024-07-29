@@ -15,6 +15,9 @@ matomo:
 
 sentry:
   dsn: "https://90b0a66fb880b85721506d42c390dadd@o4507260631580672.ingest.de.sentry.io/4507683758080080"
+  traces_sample_rate: "0.1"
+  profiles_sample_rate: "0.1"
+  loader_script: "https://js-de.sentry-cdn.com/90b0a66fb880b85721506d42c390dadd.min.js"
 
 system:
   ubuntu_codename: focal
