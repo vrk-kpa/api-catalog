@@ -1,24 +1,23 @@
 # Translations template for ckanext-apply_permissions_for_service.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the
 # ckanext-apply_permissions_for_service project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 # 
 # Translators:
 # Jonna Jantunen <jonna.jantunen@vrk.fi>, 2020
-# Meeri Hakala <meeri.hakala@dvv.fi>, 2021
 # Bert Viikmäe, 2022
-# Suvi Nuttunen, 2022
+# Suvi Nuttunen, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apply_permissions_for_service 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-13 09:48+0000\n"
+"POT-Creation-Date: 2023-01-12 13:10+0000\n"
 "PO-Revision-Date: 2020-05-08 07:33+0000\n"
-"Last-Translator: Suvi Nuttunen, 2022\n"
-"Language-Team: English (United Kingdom) (https://www.transifex.com/avoindata/teams/7979/en_GB/)\n"
+"Last-Translator: Suvi Nuttunen, 2023\n"
+"Language-Team: English (United Kingdom) (https://app.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,15 +29,15 @@ msgstr ""
 #: ckanext/apply_permissions_for_service/views.py:140
 #: ckanext/apply_permissions_for_service/views.py:151
 #: ckanext/apply_permissions_for_service/views.py:160
-#: ckanext/apply_permissions_for_service/views.py:276
+#: ckanext/apply_permissions_for_service/views.py:277
 msgid "Not authorized to see this page"
 msgstr "Not authorised to see this page"
 
 #: ckanext/apply_permissions_for_service/views.py:99
 msgid "This API is not accepting access applications."
-msgstr "This subsystem is not accepting access applications."
+msgstr "This subsystem is not accepting use permit applications."
 
-#: ckanext/apply_permissions_for_service/views.py:264
+#: ckanext/apply_permissions_for_service/views.py:265
 msgid "Changes saved successfully"
 msgstr "Changes saved successfully"
 
@@ -57,25 +56,45 @@ msgstr "Missing value"
 #: ckanext/apply_permissions_for_service/logic/action.py:81
 msgid "Selected subsystem does not belong to the utilizing organization"
 msgstr ""
+"Selected subsystem does not belong to the organisation for which the use "
+"permit is requested for"
+
+#: ckanext/apply_permissions_for_service/logic/action.py:229
+msgid ""
+"You must provide application file when"
+"                                                  'Organisation’s "
+"downloadable application (PDF)' is selected"
+msgstr ""
+"You must provide application file when 'Organisation’s own downloadable use "
+"permit application (PDF)' is selected"
+
+#: ckanext/apply_permissions_for_service/logic/action.py:234
+msgid ""
+"You must provide additional file when"
+"                                                             'Request "
+"additional info with an attachment' is selected"
+msgstr ""
+"You must provide an additional file when 'Request additional info with an "
+"attachment' is selected"
 
 #: ckanext/apply_permissions_for_service/logic/auth.py:23
 msgid "User not authorized to view permission application."
-msgstr "User not authorised to view permission application."
+msgstr "User not authorised to view the use permit application."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/base.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:31
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:4
 msgid "Service access applications"
-msgstr "Service access applications"
+msgstr "Use permit applications"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:16
 msgid "Sent access requests"
-msgstr ""
+msgstr "Sent use permit applications"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:19
 #: ckanext/apply_permissions_for_service/templates/package/read_base.html:5
 msgid "Received access requests"
-msgstr ""
+msgstr "Received use permit applications"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:36
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/index.html:12
@@ -83,20 +102,21 @@ msgid ""
 "You have not sent any service access applications. You can apply for access "
 "to services by clicking the \"Request access\" button on the service page."
 msgstr ""
-"You have not sent any service access applications. You can apply for access "
-"to services by clicking the \"Request access\" button on the service page."
+"You have not sent any use permit applications. You can request a permission "
+"to use services by clicking the \"Request use permit\" button on the service"
+" page."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/dashboard.html:39
 msgid "Your organizations have not received any service access applications."
-msgstr ""
+msgstr "Your organisations have not received any use permit applications."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:4
 msgid "Received applications"
-msgstr "Received applications"
+msgstr "Received use permit applications"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/manage.html:12
 msgid "You have not received any service access applications."
-msgstr "You have not received any service access applications."
+msgstr "You have not received any use permit applications."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:8
 msgid "Organizations"
@@ -112,13 +132,13 @@ msgstr "Apply for permit to use"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:21
 msgid "Apply for permission to use API {}"
-msgstr "Apply for permit to use subsystem {}"
+msgstr "Request a permission to use subsystem {}"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:82
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:7
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:9
 msgid "API access application"
-msgstr "Subsystem's user permit application"
+msgstr "Request use permit"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:83
 msgid ""
@@ -128,11 +148,11 @@ msgid ""
 "approved, Valtori is automatically notified of the needed firewall "
 "configurations."
 msgstr ""
-"Use this form to apply for permission to use this subsystem’s services in "
-"the Suomi.fi Data Exchange Layer. All the information will be forwarded to "
-"the organisation to whose subsystem you are applying a user permit for. "
-"Valtori is informed of any approved user permit applications for the "
-"necessary firewall openings."
+"Use this form to request permission to use this subsystem’s services in the "
+"Suomi.fi Data Exchange Layer. All the information will be forwarded to the "
+"organisation to whose subsystem you are requesting a use permit for. Valtori"
+" is informed of any approved use permit applications for the necessary "
+"firewall openings."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:85
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:4
@@ -152,7 +172,7 @@ msgstr ""
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:88
 msgid "Required field"
-msgstr ""
+msgstr "Required field"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:95
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:15
@@ -199,6 +219,8 @@ msgid ""
 "Fill in the information on behalf of the organisation that you apply user "
 "permit for."
 msgstr ""
+"Fill in the information on behalf of the organisation that you request use "
+"permit for."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:129
 msgid "Organization using the services"
@@ -219,7 +241,7 @@ msgid ""
 "applying permission for, and need the firewall opened to."
 msgstr ""
 "Fill in the details of the security server and subsystem that you are "
-"applying a user permit for, and need the firewall opened to."
+"requesting a use permit for, and need the firewall opened to."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:149
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:46
@@ -245,7 +267,7 @@ msgid ""
 "Select the subsystem of your organization for which you want to apply "
 "permission"
 msgstr ""
-"Select the subsystem of your organisation for which you want to apply "
+"Select the subsystem of your organisation for which you want to request a "
 "permission to use"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:154
@@ -278,7 +300,7 @@ msgstr "Service code"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:179
 msgid "Select one or several APIs you are applying to access"
-msgstr "Select one or several services you are applying a user permit for"
+msgstr "Select one or several services you are requesting a use permit for"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:180
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:67
@@ -296,15 +318,16 @@ msgstr "Select a date from which the service is needed"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/new.html:190
 msgid "Send access application"
-msgstr "Send the user permit application"
+msgstr "Send the use permit application"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:4
 msgid "Preview permission application"
-msgstr "Preview permission application"
+msgstr "Preview the use permit application"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:6
 msgid "You are previewing permission from applicants point of view"
-msgstr "You are previewing permission from applicants point of view"
+msgstr ""
+"You are previewing the use permit application from applicants point of view"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:7
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/preview.html:13
@@ -314,59 +337,64 @@ msgstr "Exit from preview"
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/sent.html:4
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:13
 msgid "All access applications"
-msgstr "All access applications"
+msgstr "All use permit applications"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/sent.html:6
 msgid "Application sent successfully"
 msgstr "Application sent successfully"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:6
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:7
 msgid "Exit the settings"
 msgstr "Exit the settings"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:15
-msgid "Subsystem permission"
-msgstr "Subsystem permission"
-
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:16
+msgid "Subsystem permission"
+msgstr "Use permit application settings"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:17
 msgid ""
 "You can allow permission requests for authenticated API-Catalog users. "
 "Permission requests are disabled by default in a new subsystem."
 msgstr ""
-"You can allow users who are logged in the API Catalogue to apply for access "
-"to your subsystem's services. By default, access requests are disabled for "
-"each subsystem."
-
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:23
-msgid "Delivery method for access requests"
-msgstr "Select the access request type"
+"You can allow users who are logged in the API Catalogue to request permisson"
+" to your subsystem's services. Please note that you can only view received "
+"use permit applications in the API Catalogue."
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:24
-msgid "Disable access requests for this API"
-msgstr "Disable access requests for this subsystem"
+msgid "Delivery method for access requests"
+msgstr "Select the use permit application type"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:25
-msgid "Application in API Catalogue"
-msgstr "Application in API Catalogue"
+msgid "Disable access requests for this API"
+msgstr "Disable use permit applications for this subsystem"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:26
-msgid "Organisation’s downloadable application (PDF)"
-msgstr "Organisation’s downloadable application (PDF)"
+msgid "Application in API Catalogue"
+msgstr "Predefined use permit application in API Catalogue"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:27
-msgid "Link to the access licence application on the organisation's website"
-msgstr "Link to the access licence application on the organisation's website"
+msgid "Organisation’s downloadable application (PDF)"
+msgstr "Organisation’s own downloadable use permit application (PDF)"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:32
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:97
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:28
+msgid "Link to the access licence application on the organisation's website"
+msgstr "Link to the use permit application on the organisation's website"
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:33
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:101
 msgid "Email"
 msgstr "Email"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:51
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:33
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:101
+msgid "Fill in the email address to which the application will be sent."
+msgstr "Fill in the email address to which the application will be sent."
+
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:55
 msgid "Request additional info with an attachment"
 msgstr "Request additional info with an attachment"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:59
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:63
 msgid ""
 "Please note that <b>you should not request to provide personal "
 "information</b> in the attached files, because the submitted attached files "
@@ -374,59 +402,67 @@ msgid ""
 "form a personal register. Any personal information should be requested to be"
 " submitted in other way than via the API Catalogue."
 msgstr ""
+"Please note that <b>you should not request to provide personal "
+"information</b> in the attached files, because the submitted attached files "
+"remain available to the administrators of the API Catalogue and can thus "
+"form a personal register. Any personal information should be requested to be"
+" submitted in other way than via the API Catalogue."
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:77
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:103
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:81
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:107
 msgid "File"
-msgstr ""
+msgstr "File"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:78
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:104
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:82
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:108
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:25
 msgid "Add your file"
 msgstr "Add your file"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:117
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:121
 msgid "Webpage URL"
 msgstr "Webpage URL"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:120
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:124
 msgid "Description of the user permit application process"
-msgstr ""
+msgstr "Description of the use permit application process"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:121
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:125
 msgid ""
 "Describe the user permit application process of your subsystem here. "
 "Describe also other possible permits required for the implementation of your"
 " services."
 msgstr ""
+"Describe the use permit application process of your subsystem here. Describe"
+" also other possible permits required for the implementation of your "
+"services."
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:123
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:127
 msgid "Describe the user permit application process"
-msgstr ""
+msgstr "Describe the use permit application process"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:124
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:128
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:140
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:144
 msgid "Save"
 msgstr "Save"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:141
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:145
 msgid "Cancel"
 msgstr "Cancel"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:142
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:146
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:43
 msgid "Preview application"
 msgstr "Preview application"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:148
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:152
 msgid "Permission request alternatives:"
-msgstr "Access request options:"
+msgstr "Use permit application options:"
 
-#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:150
+#: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/settings.html:154
 msgid ""
 "<p style=\"font-weight: bold;\">Application in API Catalogue</p> <ul> "
 "<li>Request permission to use a subsystem by using the predefined electronic"
@@ -446,24 +482,24 @@ msgid ""
 "access rights, see the instructions in the <a target=\"_blank\" "
 "href=\"https://liityntakatalogi.suomi.fi/\"> API Catalogue. </a> </p>"
 msgstr ""
-"<p style=\"font-weight: bold;\">Application in API "
-"Catalogue</p><ul><li>Request permission to use a subsystem by using the "
-"predefined electronic form in the API Catalogue.</li></ul><p style=\"font-"
-"weight: bold;\">Organisation’s downloadable application "
-"(PDF)</p><ul><li>Upload your organisation's own PDF form to the API "
-"Catalogue that can be used to request permission to use the subsystem. The "
-"applicant must download the form from the API Catalogue and send the "
-"completed form to the email address you specified.</li><li>In the form, "
-"explain to which email address the form should be returned "
-"to.</li><li>Access requests sent in this way will not appear in the API "
-"Catalogue.</li></ul><p style=\"font-weight: bold;\">Link to the access "
-"licence application on the organisation's website</p><ul><li>Enter the URL "
-"for your organisation’s web page where the person requesting access can "
-"apply for access to your organisation’s services.</li><li>Access requests "
-"sent in this way will not appear in the API Catalogue.</li></ul><p>For more "
-"information on the administration of access rights, see the instructions in "
-"the <a target=\"_blank\" href=\"https://liityntakatalogi.suomi.fi/\">API "
-"Catalogue.</a></p>"
+"<p style=\"font-weight: bold;\">Predefined use permit application in API "
+"Catalogue</p><ul><li>The use permit is applied by using the predefined "
+"electronic form in the API Catalogue.</li></ul><p style=\"font-weight: "
+"bold;\">Organisation’s own downloadable use permit "
+"application</p><ul><li>Upload your organisation's own PDF form to the API "
+"Catalogue that can be used to request a permission to use the subsystem. The"
+" applicant must download the form from the API Catalogue and send the filled"
+" form to the email address you specified.</li><li>In the form, explain to "
+"which email address the form should be returned to.</li><li>Use permit "
+"applications sent in this way will not appear in the API "
+"Catalogue.</li></ul><p style=\"font-weight: bold;\">Link to the use permit "
+"application on the organisation's website</p><ul><li>Enter the URL for your "
+"organisation’s web page where the person requesting a use permit can apply "
+"for permit to use your organisation’s services.</li><li>Use permit "
+"applications sent in this way will not appear in the API "
+"Catalogue.</li></ul><p>Read more about the use permit applications in the <a"
+" target=\"_blank\" href=\"https://liityntakatalogi.suomi.fi/\">API "
+"Catalogue's instructions.</a></p>"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/view.html:75
 msgid "Additional info"
@@ -477,7 +513,8 @@ msgstr "Sending additional info"
 msgid ""
 "Requested subsystem is managed by a company that requires additional info"
 msgstr ""
-"Requested subsystem is managed by a company that requires additional info"
+"The subsystem which you are requesting a use permit for is managed by an "
+"organisation that requires additional info"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/additional_application_info.html:7
 msgid "1. Download file and fill required information"
@@ -493,12 +530,12 @@ msgstr "2. Add completed file into the application"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/application_table.html:6
 msgid "Service and API you are applying to access"
-msgstr "Subsystem and service you are applying to access"
+msgstr "Subsystem and service you are requesting permission to use"
 
 #: ckanext/apply_permissions_for_service/templates/apply_permissions_for_service/snippets/organization_select.html:24
 msgid "No organization"
-msgstr ""
+msgstr "No organisation"
 
 #: ckanext/apply_permissions_for_service/templates/package/edit_base.html:5
 msgid "Access request settings"
-msgstr ""
+msgstr "Use permit application settings"
