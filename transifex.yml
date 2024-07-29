@@ -3,18 +3,18 @@ git:
     - filter_type: file
       file_format: PO
       source_language: en
-      source_file: 'ckan/ckanext/ckanext-apicatalog/ckanext/apicatalog/i18n/ckanext-apicatalog.pot'
-      translation_files_expression: 'ckan/ckanext/ckanext-apicatalog/ckanext/apicatalog/i18n/<lang>/LC_MESSAGES/ckanext-apicatalog.po'
+      source_file: 'ckanext/ckanext-apicatalog/ckanext/apicatalog/i18n/ckanext-apicatalog.pot'
+      translation_files_expression: 'ckanext/ckanext-apicatalog/ckanext/apicatalog/i18n/<lang>/LC_MESSAGES/ckanext-apicatalog.po'
     - filter_type: file
       file_format: PO
       source_language: en
-      source_file: 'ckan/ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/i18n/ckanext-apply_permissions_for_service.pot'
-      translation_files_expression: 'ckan/ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/i18n/<lang>/LC_MESSAGES/ckanext-apply_permissions_for_service.po'
+      source_file: 'ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/i18n/ckanext-apply_permissions_for_service.pot'
+      translation_files_expression: 'ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/i18n/<lang>/LC_MESSAGES/ckanext-apply_permissions_for_service.po'
     - filter_type: file
       file_format: PO
       source_language: en
-      source_file: 'ckan/ckanext/ckanext-validate_links/ckanext/validate_links/i18n/ckanext-validate_links.pot'
-      translation_files_expression: 'ckan/ckanext/ckanext-validate_links/ckanext/validate_links/i18n/<lang>/LC_MESSAGES/ckanext-validate_links.po'
+      source_file: 'ckanext/ckanext-validate_links/ckanext/validate_links/i18n/ckanext-validate_links.pot'
+      translation_files_expression: 'ckanext/ckanext-validate_links/ckanext/validate_links/i18n/<lang>/LC_MESSAGES/ckanext-validate_links.po'
     - filter_type: file
       file_format: PO
       source_language: en
