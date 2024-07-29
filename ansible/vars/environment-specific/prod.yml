@@ -14,7 +14,7 @@ matomo:
   site_id: 17
 
 sentry:
-  dsn: "https://dc3f89506d5f43baae74108b0219fc37@o277154.ingest.sentry.io/5908510"
+  dsn: "https://90b0a66fb880b85721506d42c390dadd@o4507260631580672.ingest.de.sentry.io/4507683758080080"
 
 system:
   ubuntu_codename: focal
