@@ -16,9 +16,30 @@ buffer-size     =  32768
 strict          =  true
 enable-threads  =  true
 reload-on-rss   =  2048
+processes       =  4
+threads         =  2
 
+cheaper-algo = busyness
+cheaper = 1
+cheaper-initial = 1
+cheaper-step = 1
+
+# Avoid multiple interpreters (automatically created in case you need mounts)
+single-interpreter = true
+
+# Fix SIGTERM
+die-on-term = true
+
+# Enable an accept mutex for a more balanced worker load
+thunder-lock = true
 
 # Fix SQLAlchemy SSL errors
 # <https://stackoverflow.com/questions/22752521/uwsgi-flask-sqlalchemy-and-postgres-ssl-error-decryption-failed-or-bad-reco>
 lazy = true
 lazy-apps = true
+
+# Ignore some errors from logs
+ignore-write-errors
+ignore-sigpipe
+disable-write-exception
+
