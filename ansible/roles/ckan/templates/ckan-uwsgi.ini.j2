@@ -8,12 +8,15 @@ virtualenv      =  /usr/lib/ckan/default
 module          =  wsgi:application
 master          =  true
 pidfile         =  /tmp/%n.pid
-harakiri        =  50
+harakiri        =  130
 max-requests    =  5000
 vacuum          =  true
 callable        =  application
 buffer-size     =  32768
 strict          =  true
+enable-threads  =  true
+reload-on-rss   =  2048
+
 
 # Fix SQLAlchemy SSL errors
 # <https://stackoverflow.com/questions/22752521/uwsgi-flask-sqlalchemy-and-postgres-ssl-error-decryption-failed-or-bad-reco>
