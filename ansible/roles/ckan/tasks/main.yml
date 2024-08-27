@@ -205,6 +205,10 @@
     group: root
     mode: 0644
 
+- name: Install uwsgitop
+  pip:
+    name: uwsgitop
+
 - name: Update supervisor configuration
   shell: supervisorctl update
 
