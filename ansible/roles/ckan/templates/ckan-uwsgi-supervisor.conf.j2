@@ -2,11 +2,6 @@
 
 command=/usr/lib/ckan/default/bin/uwsgi -i /etc/ckan/default/ckan-uwsgi.ini
 
-; Start just a single worker. Increase this number if you have many or
-; particularly long running background jobs.
-numprocs=1
-process_name=%(program_name)s-%(process_num)02d
-
 ; Log files - change this to point to the existing CKAN log files
 stdout_logfile=/var/log/ckan/ckan.log
 stderr_logfile=/var/log/ckan/ckan.log

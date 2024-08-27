@@ -213,4 +213,4 @@
   shell: supervisorctl update
 
 - name: Start CKAN
-  shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"
+  shell: supervisorctl restart "{{ ckan_supervisor_name }}"
