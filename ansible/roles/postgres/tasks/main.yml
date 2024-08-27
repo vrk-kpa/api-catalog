@@ -18,7 +18,7 @@
   shell: chmod 600 /var/lib/postgresql/{{ system.postgresql.version }}/main/server.* && chown "postgres:postgres" /var/lib/postgresql/{{ system.postgresql.version }}/main/server.*
 
 - name: Ensure CKAN is not running before making changes to the database
-  supervisorctl: name="{{ ckan_supervisor_name }}:" state=stopped
+  supervisorctl: name="{{ ckan_supervisor_name }}" state=stopped
   ignore_errors: True
 
 - name: Restart postgres

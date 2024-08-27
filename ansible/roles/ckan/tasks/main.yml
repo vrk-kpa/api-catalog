@@ -205,8 +205,12 @@
     group: root
     mode: 0644
 
+- name: Install uwsgitop
+  pip:
+    name: uwsgitop
+
 - name: Update supervisor configuration
   shell: supervisorctl update
 
 - name: Start CKAN
-  shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"
+  shell: supervisorctl restart "{{ ckan_supervisor_name }}"

@@ -7,4 +7,4 @@
   service: name=nginx state=restarted
 
 - name: Restart CKAN
-  shell: supervisorctl restart "{{ ckan_supervisor_name }}:*"
+  shell: supervisorctl restart "{{ ckan_supervisor_name }}"

@@ -8,7 +8,7 @@ virtualenv      =  /usr/lib/ckan/default
 module          =  wsgi:application
 master          =  true
 pidfile         =  /tmp/%n.pid
-harakiri        =  130
+harakiri        =  50
 max-requests    =  5000
 vacuum          =  true
 callable        =  application
@@ -17,7 +17,9 @@ strict          =  true
 enable-threads  =  true
 reload-on-rss   =  2048
 processes       =  4
-threads         =  2
+threads         =  4
+stats           =  /tmp/stats.sock
+memory-report   =  true
 
 cheaper-algo = busyness
 cheaper = 1
@@ -27,8 +29,6 @@ cheaper-step = 1
 # Avoid multiple interpreters (automatically created in case you need mounts)
 single-interpreter = true
 
-# Fix SIGTERM
-die-on-term = true
 
 # Enable an accept mutex for a more balanced worker load
 thunder-lock = true
