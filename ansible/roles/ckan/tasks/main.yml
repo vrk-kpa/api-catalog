@@ -9,19 +9,6 @@
     msg: Please run npm install in ckanext_apicatalog on host machine
   when: not node_modules.stat.exists
 
-- name: Copy project setuptools requirements
-  copy:
-    src: "requirement-setuptools.txt"
-    dest: "{{ cache_path }}/requirement-setuptools.txt"
-    mode: "0644"
-    owner: root
-    group: root
-
-- name: Install project setuptools requirements
-  pip:
-    requirements: "{{ cache_path }}/requirement-setuptools.txt"
-    virtualenv: "{{ virtualenv }}"
-
 - name: Copy Project requirements
   copy:
     src: "{{ playbook_dir }}/../requirements.txt"
