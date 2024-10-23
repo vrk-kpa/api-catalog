@@ -1,8 +1,3 @@
-- name: re-minify ckanext-apicatalog module javascript files
-  shell: ./bin/ckan --config "{{ ckan_ini }}" minify "{{ apicatalog_ckanext_path }}/fanstatic/javascript/modules" chdir="{{ virtualenv }}"
-  tags:
-    - frontend-build
-
 - name: rebuild ckanext-apicatalog less
   shell: lessc "{{ apicatalog_path }}/less/main.less" "{{ apicatalog_ckanext_path }}/fanstatic/apicatalog/main.css"
 
