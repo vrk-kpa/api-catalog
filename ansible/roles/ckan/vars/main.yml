@@ -22,22 +22,14 @@ auto_author_enabled: true
 
 ckan_patches:
   - { file: "alert_fix" }
-  - { file: "csrf" }
   - { file: "disable_leftover_with_capacity" }
-  - { file: "mark_main_nav_active_on_subpages" } # https://github.com/ckan/ckan/pull/5551
   - { file: "remove_edit_button_from_slugs" }
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
-  - { file: "remove_old_fontawesome" }
-  - { file: "email_attachment" }
   - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
   - { file: "fix_resource_delete_auth" } # https://github.com/ckan/ckan/pull/7132
 
-files_created_by_patches:
-  - { file: '/usr/lib/ckan/default/src/ckan/ckan/lib/csrf_token.py'}
-  - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/styles/a11y-light.css'}
-  - { file: '/usr/lib/ckan/default/src/ckan/ckanext/textview/theme/public/vendor/highlight.js'}
-  - { file: '/usr/lib/ckan/default/src/ckan/changes/6340.bugfix' }
+files_created_by_patches: []
 
 
 ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"

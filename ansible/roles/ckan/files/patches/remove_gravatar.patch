@@ -1,13 +1,14 @@
 diff --git a/ckan/lib/helpers.py b/ckan/lib/helpers.py
-index 0d9a2ed8c..38d753c49 100644
+index f3362a4b5..a991c8e03 100644
 --- a/ckan/lib/helpers.py
 +++ b/ckan/lib/helpers.py
-@@ -1503,17 +1503,7 @@ _VALID_GRAVATAR_DEFAULTS = ['404', 'mm', 'identicon', 'monsterid',
- 
- @core_helper
- def gravatar(email_hash, size=100, default=None):
+@@ -1385,18 +1385,7 @@ _VALID_GRAVATAR_DEFAULTS = ['404', 'mm', 'identicon', 'monsterid',
+ def gravatar(email_hash: str,
+              size: int = 100,
+              default: Optional[str] = None) -> Markup:
 -    if default is None:
--        default = config.get('ckan.gravatar_default', 'identicon')
+-        default = config.get('ckan.gravatar_default')
+-    assert default is not None
 -
 -    if default not in _VALID_GRAVATAR_DEFAULTS:
 -        # treat the default as a url
@@ -18,6 +19,6 @@ index 0d9a2ed8c..38d753c49 100644
 -                   % (email_hash, size, default, size, size)
 -                   )
 +    return ''
- 
- 
+
+
  _PLAUSIBLE_HOST_IDNA = re.compile(r'^[-\w.:\[\]]*$')
