@@ -1014,7 +1014,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         if user_obj and user_obj.name in readonly_users:
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
-        if user_obj:
+        if user_obj and not user_obj.is_anonymous :
             orgs = get_action(u'organization_list_for_user')({u'user': user_obj.id}, {})
             labels.extend(u'allowed_organization_members-%s' % o['id'] for o in orgs)
         return labels
