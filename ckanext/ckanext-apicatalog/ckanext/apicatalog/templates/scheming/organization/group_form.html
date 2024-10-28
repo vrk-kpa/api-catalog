@@ -32,7 +32,7 @@
           <hr/>
         {% endif %}
     {%- endfor -%}
-    {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
+    {{ h.csrf_input() }}
 
     <div class="form-group control-full">
         {% if h.check_access('organization_delete', {'id': data.id}) and action=='edit'  %}

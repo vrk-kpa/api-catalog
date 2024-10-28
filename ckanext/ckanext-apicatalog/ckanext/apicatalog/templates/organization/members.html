@@ -80,5 +80,5 @@
     {% endfor %}
     </tbody>
 </table>
-<form method="post">{{ form.hidden('csrf-token', h.generate_csrf_token()) }}</form>
+<form method="post">{{ h.csrf_input() }}</form>
 {% endblock %}

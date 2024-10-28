@@ -3,7 +3,7 @@
 <form id="user-edit-form" class="dataset-form" method="post" action="{{ action }}">
     {{ form.errors(error_summary) }}
 
-    {{ form.hidden('csrf-token', h.generate_csrf_token()) }}
+    {{ h.csrf_input() }}
 
     <fieldset>
         <legend>{{ _('Change details') }}</legend>
