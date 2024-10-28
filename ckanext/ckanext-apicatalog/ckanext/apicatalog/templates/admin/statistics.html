@@ -13,7 +13,7 @@
     <table class="table table-condensed table-hover">
         <tr class="active">
             <td class="col-sm-3">
-                <b>{% trans %}X-ROAD Graphs{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_stats.get('date', '')), "%d.%m.%Y")}}</i>
+                <b>{% trans %}X-ROAD Graphs{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_stats.get('date', '2016-01-01')), "%d.%m.%Y")}}</i>
             </td>
             <td></td>
         </tr>
@@ -51,7 +51,7 @@
         </tr>
         <tr class="active">
             <td colspan="2">
-                <b>{% trans %}X-ROAD Catalog - Services{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_services.get('date', '')), "%d.%m.%Y")}}</i>
+                <b>{% trans %}X-ROAD Catalog - Services{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_services.get('date', '2016-01-01')), "%d.%m.%Y")}}</i>
             </td>
         </tr>
         <tr>
@@ -80,7 +80,7 @@
         </tr>
         <tr class="active">
             <td colspan="2">
-                <b>{% trans %}X-ROAD Catalog - Distinct Services{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_distinct_services.get('date', '')), "%d.%m.%Y")}}</i>
+                <b>{% trans %}X-ROAD Catalog - Distinct Services{% endtrans %}</b>&nbsp;&nbsp;<i>{{h.render_datetime(h.date_str_to_datetime(xroad_distinct_services.get('date', '2016-01-01')), "%d.%m.%Y")}}</i>
             </td>
         </tr>
         <tr>
