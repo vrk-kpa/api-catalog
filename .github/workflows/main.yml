@@ -27,7 +27,7 @@ jobs:
       solr:
         image: ckan/ckan-solr:2.10-solr9
       postgres:
-        image: postgres:14
+        image: ckan/ckan-postgres-dev:2.10
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -41,7 +41,6 @@ jobs:
       CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@postgres/datastore_test
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
-      PGPASSWORD: postgres
 
     steps:
       - uses: actions/checkout@v4
@@ -89,7 +88,7 @@ jobs:
       solr:
         image: ckan/ckan-solr:2.10-solr9
       postgres:
-        image: postgres:14
+        image: ckan/ckan-postgres-dev:2.10
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -103,7 +102,6 @@ jobs:
       CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@postgres/datastore_test
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
-      PGPASSWORD: postgres
 
     steps:
       - name: Add build dependencies to container
