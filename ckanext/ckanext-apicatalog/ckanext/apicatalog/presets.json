@@ -31,7 +31,7 @@
     {
       "preset_name": "apicatalog_resource_format_autocomplete",
       "values": {
-        "validators": "if_empty_guess_format ignore_missing clean_format upper_if_exists unicode",
+        "validators": "if_empty_guess_format ignore_missing clean_format upper_if_exists unicode_safe",
         "form_placeholder": "eg. CSV, XML or JSON",
         "form_attrs": {
           "data-module": "autocomplete",
@@ -42,21 +42,21 @@
     {
       "preset_name": "group_slug",
       "values": {
-        "validators": "not_empty unicode name_validator group_name_validator",
+        "validators": "not_empty unicode_safe name_validator group_name_validator",
         "form_snipper": "slug.html"
       }
     },
     {
       "preset_name": "organization_slug",
       "values": {
-        "validators": "not_empty unicode name_validator organization_name_validator",
+        "validators": "not_empty unicode_safe name_validator organization_name_validator",
         "form_snipper": "slug.html"
       }
     },
     {
       "preset_name": "title_ex",
       "values": {
-        "validators": "if_empty_same_as(name) unicode",
+        "validators": "if_empty_same_as(name) unicode_safe",
         "form_snippet": "large_text_ex.html",
         "form_attrs": {
           "data-module": "slug-preview-target"
@@ -66,14 +66,14 @@
     {
       "preset_name": "dataset_slug_ex",
       "values": {
-        "validators": "not_empty unicode name_validator package_name_validator",
+        "validators": "not_empty unicode_safe name_validator package_name_validator",
         "form_snippet": "slug_ex.html"
       }
     },
     {
       "preset_name": "dataset_organization_ex",
       "values": {
-        "validators": "owner_org_validator unicode",
+        "validators": "owner_org_validator unicode_safe",
         "form_snippet": "organization_ex.html",
         "classes": ["control-full"]
       }
@@ -81,7 +81,7 @@
     {
       "preset_name": "resource_url_upload_ex",
       "values": {
-        "validators": "ignore_missing unicode remove_whitespace",
+        "validators": "ignore_missing unicode_safe remove_whitespace",
         "form_snippet": "upload_ex.html",
         "form_placeholder": "http://example.com/my-data.csv",
         "upload_field": "upload",
