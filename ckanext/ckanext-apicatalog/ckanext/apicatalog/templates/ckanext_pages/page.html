@@ -17,7 +17,7 @@
 			<h1 class="page-heading">{{ page_title }}</h1>
 			{% if page_content %}
 				<div class="ckanext-pages-content">
-					{% set editor = h.get_wysiwyg_editor() %}
+					{% set editor = h.pages_get_wysiwyg_editor() %}
 					{% if editor %}
 						<div>
 							{{page_content|safe}}
