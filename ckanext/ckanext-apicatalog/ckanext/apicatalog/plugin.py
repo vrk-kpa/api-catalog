@@ -443,7 +443,7 @@ def is_test_environment():
 
 
 def is_extension_loaded(extension_name):
-    return extension_name in config.get('ckan.plugins', '').split()
+    return extension_name in config.get('ckan.plugins', [])
 
 
 def get_submenu_content():
