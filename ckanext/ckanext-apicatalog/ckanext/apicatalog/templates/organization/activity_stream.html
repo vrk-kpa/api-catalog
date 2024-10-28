@@ -10,5 +10,12 @@
             {%- endblock %}
         </h2>
     </div>
-  {% snippet 'snippets/activity_stream.html', activity_stream=activity_stream, id=id, object_type='organization' %}
+    {# TODO: This needs an update again in CKAN 2.11 #}
+    {% if activity_types is defined %}
+        {% snippet 'snippets/activity_type_selector.html', id=id, activity_type=activity_type, activity_types=activity_types, blueprint='activity.organization_activity' %}
+    {% endif %}
+
+    {% snippet 'snippets/stream.html', activity_stream=activity_stream, id=id, object_type='organization', group_type=group_type %}
+
+    {% snippet 'snippets/pagination.html', newer_activities_url=newer_activities_url, older_activities_url=older_activities_url %}
 {% endblock %}
