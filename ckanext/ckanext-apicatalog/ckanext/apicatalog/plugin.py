@@ -868,7 +868,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
     # IPackageController
 
-    def before_index(self, pkg_dict):
+    def before_dataset_index(self, pkg_dict):
         # Map keywords to vocab_keywords_{lang}
         translated_vocabs = ['keywords']
         languages = ['fi', 'sv', 'en']
@@ -891,7 +891,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         return pkg_dict
 
     # After package_search, filter out the resources which the user doesn't have access to
-    def after_search(self, search_results, search_params):
+    def after_dataset_search(self, search_results, search_params):
         # Only filter results if processing a request
         if not has_request_context():
             return search_results
@@ -918,7 +918,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
-    def after_show(self, context, data_dict):
+    def after_dataset_show(self, context, data_dict):
         # Only filter results if processing a request
         if not has_request_context():
             return data_dict
