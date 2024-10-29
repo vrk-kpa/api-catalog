@@ -273,7 +273,8 @@ def fetch_packageless_organizations_and_changelog(context):
 
     # Query package new/delete activity events
     package_new_delete_activities = (model.Session.query(activity_model.Activity.timestamp,
-                                                         activity_model.Activity.object_id, activity_model.Activity.activity_type)
+                                                         activity_model.Activity.object_id,
+                                                         activity_model.Activity.activity_type)
                                      .filter(or_(activity_model.Activity.activity_type == 'new package',
                                                  activity_model.Activity.activity_type == 'deleted package'))
                                      .order_by(activity_model.Activity.timestamp)
