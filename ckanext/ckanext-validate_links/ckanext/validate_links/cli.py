@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from future import standard_library
 from builtins import str
 from builtins import object
 import sys
