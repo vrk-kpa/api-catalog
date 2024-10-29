@@ -20,8 +20,6 @@ import ssl
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
 ssl_context.options &= ssl.CERT_NONE
 
-standard_library.install_aliases()
-
 
 def get_commands():
     return [links]

@@ -38,8 +38,6 @@ from ckanext.apicatalog.helpers import with_field_string_replacements, \
 
 from collections import OrderedDict
 
-standard_library.install_aliases()
-
 NotFound = logic.NotFound
 ObjectNotFound = toolkit.ObjectNotFound
 config = toolkit.config
