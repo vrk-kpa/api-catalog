@@ -335,9 +335,9 @@ def _pretty_time(t):
     elif delta.days < 30:
         return '%d days ago' % delta.days
     elif delta.days < 365:
-        return '%d months ago' % int(delta.days / 30)
+        return '%d months ago' % (delta.days // 30)
     else:
-        return '%d years ago' % int(delta.days / 365)
+        return '%d years ago' % (delta.days // 365)
 
 
 @click.group()
