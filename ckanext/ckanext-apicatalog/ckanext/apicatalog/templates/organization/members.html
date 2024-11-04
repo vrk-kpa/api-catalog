@@ -53,7 +53,7 @@
               <span style="display:none">
                 <form id="edit-members-dialog" action="{{ user_edit_url }}" method="POST">
                   {{ form.hidden('username', username) }}
-
+                  {{ h.csrf_input() }}
                   <div class="form-group">
                     <label class="control-label">{{ _('User') }}</label>
                     <div>{{ username }}</div>

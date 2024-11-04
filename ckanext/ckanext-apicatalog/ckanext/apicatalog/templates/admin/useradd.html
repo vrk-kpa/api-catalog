@@ -4,6 +4,7 @@
 {% block primary_content_inner %}
 <form id="new-user-form" method="post">
   {{ form.errors(errors) }}
+  {{ h.csrf_input() }}
   {% if success %}
   <div class="alert alert-success" role="alert">
     {{ _('Successfully created user %(name)s &lt;%(email)s&gt;. Password reset mail sent.', name=name, email=email) }}

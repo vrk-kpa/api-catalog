@@ -8,6 +8,7 @@
 {%- endif -%}
 <div class="module-content">
 <form class="dataset-form" method="post" data-module="basic-form" enctype="multipart/form-data">
+    {{ h.csrf_input() }}
     <p class="control-required-message"><span>*&nbsp;</span>{{ _('Required field') }}</p>
   {% block error_summary %}
     {{ form.errors(error_summary) }}

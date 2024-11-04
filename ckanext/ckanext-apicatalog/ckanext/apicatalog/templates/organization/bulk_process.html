@@ -24,6 +24,7 @@
       {% block form %}
         {% if page.item_count %}
           <form method="POST" data-module="basic-form">
+            {{ h.csrf_input() }}
             <div class="bulk_process-actions">
                 <button name="bulk_action.public" value="public" class="btn btn-default" type="submit">
                     {{ _('Make public') }}
