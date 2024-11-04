@@ -23,20 +23,16 @@
     state: absent
     virtualenv: "{{ virtualenv }}"
 
-- name: Install project requirements
-  pip:
-   requirements: "{{ cache_path }}/requirements.txt"
-   virtualenv: "{{ virtualenv }}"
-  register: ckan_installation
-
 - name: Install ckan
   pip:
     name: git+https://github.com/ckan/ckan.git@ckan-2.10.5#egg=ckan
     editable: true
     virtualenv: "{{ virtualenv }}"
 
-- name: Install CKAN requirements
-  pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
+- name: Install ckan and project requirements
+  pip:
+    requirements: "{{ cache_path }}/requirements.txt"
+    virtualenv: "{{ virtualenv }}"
 
 - name: Install CKAN dev requirements
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
