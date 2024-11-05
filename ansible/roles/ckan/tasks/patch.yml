@@ -1,5 +1,5 @@
 - name: Create patch cache path
-  file: path="{{ patches_cache_path }}" state=directory
+  file: path="{{ patches_cache_path }}" state=directory
   tags:
     - patch_ckan
 
@@ -21,19 +21,4 @@
   with_items: "{{ ckan_patches }}"
   tags:
   - patch_ckan
-
-- name: re-minify CKAN javascript files
-  shell: ./bin/ckan --config {{ ckan_ini }} minify {{ ckan_source_path }}/ckan/public/base/javascript chdir="{{ virtualenv }}"
-  tags:
-  - patch_ckan
-
-- name: re-minify CKAN javascript vendor files
-  shell: ./bin/ckan --config {{ ckan_ini }} minify {{ ckan_source_path }}/ckan/public/base/vendor chdir="{{ virtualenv }}"
-  tags:
-    - patch_ckan
-
-- name: CKAN front end build
-  shell: "{{ virtualenv }}/bin/ckan --config {{ ckan_ini }} front-end-build chdir={{ virtualenv }}/src/ckan"
-  tags:
-    - patch_ckan
 

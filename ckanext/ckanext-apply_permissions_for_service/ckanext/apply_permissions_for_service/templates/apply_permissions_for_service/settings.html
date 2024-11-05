@@ -18,6 +18,7 @@
     {% block errors %}{{ form.errors(errors) }}{% endblock %}
     <div class="row">
       <form class="col-sm-12" method="POST" enctype="multipart/form-data" data-module="form-change-listener" data-module-confirm-modal-selector>
+        {{ h.csrf_input() }}
         {{ form.hidden('subsystemId', value=subsystem_id) }}
         <div data-module="mutexfield">
           <div class="select-wrapper">

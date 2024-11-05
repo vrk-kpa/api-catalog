@@ -132,7 +132,7 @@
       "form_placeholder": "my-applications-title",
       "final": true,
       "preset": "dataset_slug_ex",
-      "validators": "not_empty unicode name_validator package_name_validator",
+      "validators": "not_empty unicode_safe name_validator package_name_validator",
       "group_divider": true
     },
     {

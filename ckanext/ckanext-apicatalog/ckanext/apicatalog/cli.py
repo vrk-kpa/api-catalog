@@ -1,7 +1,6 @@
 from __future__ import print_function
 from __future__ import absolute_import
 from __future__ import division
-from past.utils import old_div
 import glob
 
 import ckan.plugins.toolkit as t
@@ -336,9 +335,9 @@ def _pretty_time(t):
     elif delta.days < 30:
         return '%d days ago' % delta.days
     elif delta.days < 365:
-        return '%d months ago' % int(old_div(delta.days, 30))
+        return '%d months ago' % (delta.days // 30)
     else:
-        return '%d years ago' % int(old_div(delta.days, 365))
+        return '%d years ago' % (delta.days // 365)
 
 
 @click.group()

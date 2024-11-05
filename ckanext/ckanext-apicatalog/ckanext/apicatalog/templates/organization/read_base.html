@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block prelude %}
-<h1>{{ h.get_translated( c.group_dict, 'title')  }}</h1>
+<h1>{{ h.get_translated(group_dict, 'title')  }}</h1>
 {% endblock %}
 
 {% block wrapper_class %} page-container org-page-tweaks dataset-edit{% endblock %}
@@ -16,15 +16,15 @@
 <section class="module module-narrow">
   <div class="module context-info">
     <div class="module-content dataset-sidebar">
-      {{ h.build_nav_icon(group_type + '_read', _('Datasets'), id=c.group_dict.name) }}
-      {{ h.build_nav_icon(group_type + '_about', _('About the organization'), id=c.group_dict.name) }}
-      {{ h.build_nav_icon(group_type + '_activity', _('Activity Stream'), id=c.group_dict.name, offset=0) }}
-      {% if h.check_access('organization_update', {'id': c.group_dict.name} ) %}
-        {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=c.group_dict.id) }}
-        {{ h.build_nav_icon('broken_links.organization_read', _('Broken links'), organization_id=c.group_dict.id) }}
+      {{ h.build_nav_icon(group_type + '.read', _('Datasets'), id=group_dict.name) }}
+      {{ h.build_nav_icon(group_type + '.about', _('About the organization'), id=group_dict.name) }}
+      {{ h.build_nav_icon('activity.' + group_type + '_activity', _('Activity Stream'), id=group_dict.name, offset=0) }}
+      {% if h.check_access('organization_update', {'id': group_dict.name} ) %}
+        {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=group_dict.id) }}
+        {{ h.build_nav_icon('broken_links.organization_read', _('Broken links'), organization_id=group_dict.id) }}
       {% endif %}
       {% if h.check_access('read_members') %}
-        {{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name) }}
+        {{ h.build_nav_icon('organization.members', _('Members'), id=group_dict.name) }}
       {% endif %}
     </div>
   </div>

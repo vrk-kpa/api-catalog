@@ -125,6 +125,7 @@ ckan_plugins:
   - sentry
   - forcetranslation
   - markdown_editor
+  - activity
 
 allowed_user_creators:
   - paha

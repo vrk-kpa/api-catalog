@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from future import standard_library
 from builtins import str
 from builtins import range
 import ckan.plugins as plugins
@@ -38,8 +37,6 @@ from ckanext.apicatalog.helpers import with_field_string_replacements, \
     is_boolean_selected
 
 from collections import OrderedDict
-
-standard_library.install_aliases()
 
 NotFound = logic.NotFound
 ObjectNotFound = toolkit.ObjectNotFound
@@ -443,7 +440,7 @@ def is_test_environment():
 
 
 def is_extension_loaded(extension_name):
-    return extension_name in config.get('ckan.plugins', '').split()
+    return extension_name in config.get('ckan.plugins', [])
 
 
 def get_submenu_content():
@@ -871,7 +868,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
     # IPackageController
 
-    def before_index(self, pkg_dict):
+    def before_dataset_index(self, pkg_dict):
         # Map keywords to vocab_keywords_{lang}
         translated_vocabs = ['keywords']
         languages = ['fi', 'sv', 'en']
@@ -894,7 +891,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         return pkg_dict
 
     # After package_search, filter out the resources which the user doesn't have access to
-    def after_search(self, search_results, search_params):
+    def after_dataset_search(self, search_results, search_params):
         # Only filter results if processing a request
         if not has_request_context():
             return search_results
@@ -921,7 +918,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         return search_results
 
     # After package_show, filter out the resources which the user doesn't have access to
-    def after_show(self, context, data_dict):
+    def after_dataset_show(self, context, data_dict):
         # Only filter results if processing a request
         if not has_request_context():
             return data_dict
@@ -1014,7 +1011,7 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
         if user_obj and user_obj.name in readonly_users:
             labels.append(u'read_only_admin-%s' % user_obj.id)
 
-        if user_obj:
+        if user_obj and not user_obj.is_anonymous:
             orgs = get_action(u'organization_list_for_user')({u'user': user_obj.id}, {})
             labels.extend(u'allowed_organization_members-%s' % o['id'] for o in orgs)
         return labels

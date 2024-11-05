@@ -1,13 +1,13 @@
-diff --git a/ckan/controllers/package.py b/ckan/controllers/package.py
-index 7ae1c5d..2bcd9b9 100644
---- a/ckan/controllers/package.py
-+++ b/ckan/controllers/package.py
-@@ -1177,7 +1177,7 @@ class PackageController(base.BaseController):
-         if rsc.get('url_type') == 'upload':
-             upload = uploader.get_resource_uploader(rsc)
-             filepath = upload.get_path(rsc['id'])
--            fileapp = paste.fileapp.FileApp(filepath)
-+            fileapp = paste.fileapp.FileApp(filepath, content_disposition="attachment; filename=%s" % filename)
-             try:
-                 status, headers, app_iter = request.call_application(fileapp)
-             except OSError:
+diff --git a/ckan/views/resource.py b/ckan/views/resource.py
+index 7f22152d6..62e5574f1 100644
+--- a/ckan/views/resource.py
++++ b/ckan/views/resource.py
+@@ -171,7 +171,7 @@ def download(package_type: str,
+     if rsc.get(u'url_type') == u'upload':
+         upload = uploader.get_resource_uploader(rsc)
+         filepath = upload.get_path(rsc[u'id'])
+-        resp = flask.send_file(filepath, download_name=filename)
++        resp = flask.send_file(filepath, download_name=filename, as_attachment=True)
+
+         if rsc.get('mimetype'):
+             resp.headers['Content-Type'] = rsc['mimetype']

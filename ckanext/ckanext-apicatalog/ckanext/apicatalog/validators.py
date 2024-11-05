@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from past.builtins import basestring
+
 import re
 from ckan.common import _
 import ckan.lib.navl.dictization_functions as df
@@ -73,7 +73,7 @@ def only_default_lang_required(field, schema):
         value = data[key]
 
         if value is not missing:
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 try:
                     value = json.loads(value)
                 except ValueError:
@@ -208,7 +208,7 @@ def add_to_vocab(context, tags, vocab):
     import ckan.model as model
     context['vocabulary'] = model.Vocabulary.get(v.get('id'))
 
-    if isinstance(tags, basestring):
+    if isinstance(tags, str):
         tags = [tags]
 
     for tag in tags:
@@ -222,7 +222,7 @@ def add_to_vocab(context, tags, vocab):
 
 
 def convert_to_json_compatible_str_if_str(value):
-    if isinstance(value, basestring):
+    if isinstance(value, str):
         if value == "":
             return json.dumps({})
         try:
@@ -245,7 +245,7 @@ def override_field_with_default_translation(overridden_field_name):
             override_value = missing
 
             if value is not missing:
-                if isinstance(value, basestring):
+                if isinstance(value, str):
                     try:
                         value = json.loads(value)
                     except ValueError:
@@ -280,7 +280,7 @@ def override_translation_with_default_language(field, schema):
         override_value = missing
 
         if value is not missing:
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 try:
                     value = json.loads(value)
                 except UnicodeDecodeError:

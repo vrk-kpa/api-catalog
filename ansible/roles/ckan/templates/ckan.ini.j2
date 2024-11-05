@@ -20,7 +20,7 @@ beaker.session.secure = True
 beaker.session.httponly = True
 beaker.session.samesite = Strict
 beaker.session.type = ext:database
-beaker.session.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
+beaker.session.url = postgresql://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
 
 app_instance_uuid = {{ secret.ckan_config.app_instance_uuid }}
 
@@ -33,7 +33,7 @@ who.secure = True
 who.timeout = 14400
 who.samesite = {{ ckan_who_samesite  | default('Strict') }}
 
-sqlalchemy.url = postgres://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
+sqlalchemy.url = postgresql://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
 
 ckan.site_url = https://{{ public_facing_hostname }}
 ckan.site_url_internally = https://{{ public_facing_hostname }}/data/
@@ -59,6 +59,8 @@ ckan.site_title = {{ ckan_site_name }}
 ckan.site_logo = {{ ckan_site_logo }}
 ckan.site_description =
 
+ckan.csrf_protection.ignore_extensions = false
+
 ckan.featured_orgs = {{ ckan_featured_orgs }}
 
 ckan.plugins = {{ ckan_plugins | join(' ') }}
@@ -82,6 +84,9 @@ ckan.feeds.authority_name =
 ckan.feeds.date =
 ckan.feeds.author_name =
 ckan.feeds.author_link =
+
+ckan.base_public_folder = public-bs3
+ckan.base_templates_folder = templates-bs3
 
 ckan.hide_activity_from_users = non-existing
 

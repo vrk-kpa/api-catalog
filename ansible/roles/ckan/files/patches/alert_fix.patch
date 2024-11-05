@@ -1,7 +1,7 @@
 diff --git a/ckan/public/base/javascript/notify.js b/ckan/public/base/javascript/notify.js
 index 1837a0a..901f8f4 100644
---- a/ckan/public/base/javascript/notify.js
-+++ b/ckan/public/base/javascript/notify.js
+--- a/ckan/public-bs3/base/javascript/notify.js
++++ b/ckan/public-bs3/base/javascript/notify.js
 @@ -36,7 +36,7 @@
     * Returns the element.
     */

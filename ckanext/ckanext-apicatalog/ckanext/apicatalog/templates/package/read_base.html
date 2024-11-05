@@ -29,7 +29,7 @@
                 <div class="module-content dataset-sidebar">
                     {% block side_navigation %}
                         {{ h.build_nav_icon(pkg.type ~ '.read', _("Subsystem's information"), id=pkg.name) }}
-                        {{ h.build_nav_icon(pkg.type ~ '.activity', _('Activity Stream'), id=pkg.name, icon=None) }}
+                        {{ h.build_nav_icon('activity.package_activity', _('Activity Stream'), id=pkg.name, icon=None) }}
                     {% endblock %}
                 </div>
             </div>

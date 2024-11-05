@@ -1,6 +1,6 @@
 index 4a4f78fe2..1b67fe906 100644
---- a/ckan/public/base/javascript/plugins/jquery.slug-preview.js
-+++ b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
+--- a/ckan/public-bs3/base/javascript/plugins/jquery.slug-preview.js
++++ b/ckan/public-bs3/base/javascript/plugins/jquery.slug-preview.js
 @@ -40,11 +40,12 @@
 
        preview.find('strong').html(required + ' ' + options.i18n['URL'] + ':');

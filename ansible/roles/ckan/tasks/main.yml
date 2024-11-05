@@ -9,19 +9,6 @@
     msg: Please run npm install in ckanext_apicatalog on host machine
   when: not node_modules.stat.exists
 
-- name: Copy project setuptools requirements
-  copy:
-    src: "requirement-setuptools.txt"
-    dest: "{{ cache_path }}/requirement-setuptools.txt"
-    mode: "0644"
-    owner: root
-    group: root
-
-- name: Install project setuptools requirements
-  pip:
-    requirements: "{{ cache_path }}/requirement-setuptools.txt"
-    virtualenv: "{{ virtualenv }}"
-
 - name: Copy Project requirements
   copy:
     src: "{{ playbook_dir }}/../requirements.txt"
@@ -36,20 +23,16 @@
     state: absent
     virtualenv: "{{ virtualenv }}"
 
-- name: Install project requirements
-  pip:
-   requirements: "{{ cache_path }}/requirements.txt"
-   virtualenv: "{{ virtualenv }}"
-  register: ckan_installation
-
 - name: Install ckan
   pip:
-    name: git+https://github.com/ckan/ckan.git@ckan-2.9.11#egg=ckan
+    name: git+https://github.com/ckan/ckan.git@ckan-2.10.5#egg=ckan
     editable: true
     virtualenv: "{{ virtualenv }}"
 
-#- name: Install CKAN requirements
-#  pip: requirements={{ virtualenv }}/src/ckan/requirements.txt virtualenv={{ virtualenv }} state=latest
+- name: Install ckan and project requirements
+  pip:
+    requirements: "{{ cache_path }}/requirements.txt"
+    virtualenv: "{{ virtualenv }}"
 
 - name: Install CKAN dev requirements
   pip: requirements={{ virtualenv }}/src/ckan/dev-requirements.txt virtualenv={{ virtualenv }} state=latest
