@@ -1,7 +1,6 @@
 ckan[requirements]==2.10.5
 
 # requirements of apicatalog
-testrepository==0.0.20
 uwsgi
 
 # harvest requires newer six
