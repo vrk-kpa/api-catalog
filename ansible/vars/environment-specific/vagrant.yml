@@ -25,9 +25,9 @@ sentry:
   loader_script: ""
 
 system:
-  ubuntu_codename: focal
+  ubuntu_codename: jammy
   postgresql:
-    version: 12
+    version: 14
 
 database_ckan:
   host: 127.0.0.1
