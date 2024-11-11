@@ -924,7 +924,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
             return data_dict
 
         # Skip access check if sysadmin or auth is ignored
-        if context.get('ignore_auth') or (context.get('auth_user_obj') and not context.get('auth_user_obj').is_anonymous and context.get('auth_user_obj').sysadmin):
+        if context.get('ignore_auth') or (context.get('auth_user_obj')
+                                          and not context.get('auth_user_obj').is_anonymous
+                                          and context.get('auth_user_obj').sysadmin):
             return data_dict
 
         user_name = context.get('user')
