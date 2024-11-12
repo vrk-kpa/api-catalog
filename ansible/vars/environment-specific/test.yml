@@ -34,7 +34,7 @@ database_ckan:
   password: "{{ secret.database_ckan_password }}"
 
 nginx:
-  alternative_hostnames: testiliityntakatalogi.csc.fi
+  alternative_hostnames_with_alternative_certificate: testiliityntakatalogi.csc.fi
 
 solr:
   host: 127.0.0.1
