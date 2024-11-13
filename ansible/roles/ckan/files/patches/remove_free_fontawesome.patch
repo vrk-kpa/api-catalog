@@ -1,5 +1,5 @@
 diff --git a/ckan/public-bs3/base/vendor/webassets.yml b/ckan/public-bs3/base/vendor/webassets.yml
-index 40e09173a..d9cc3d5d4 100644
+index 40e09173a..393ae2cf5 100644
 --- a/ckan/public-bs3/base/vendor/webassets.yml
 +++ b/ckan/public-bs3/base/vendor/webassets.yml
 @@ -4,11 +4,6 @@ select2-css:
@@ -14,3 +14,11 @@ index 40e09173a..d9cc3d5d4 100644
 
  jquery:
    filters: rjsmin
+@@ -39,7 +34,6 @@ bootstrap:
+   output: vendor/%(version)s_bootstrap.js
+   extra:
+     preload:
+-      - vendor/fontawesome
+       - vendor/jquery
+   contents:
+     - bootstrap/javascripts/bootstrap.js
