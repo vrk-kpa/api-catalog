@@ -1,0 +1,16 @@
+diff --git a/ckan/public-bs3/base/vendor/webassets.yml b/ckan/public-bs3/base/vendor/webassets.yml
+index 40e09173a..d9cc3d5d4 100644
+--- a/ckan/public-bs3/base/vendor/webassets.yml
++++ b/ckan/public-bs3/base/vendor/webassets.yml
+@@ -4,11 +4,6 @@ select2-css:
+   contents:
+     - select2/select2.css
+
+-fontawesome:
+-  output: vendor/%(version)s_fontawesome.css
+-  filters: cssrewrite
+-  contents:
+-    - fontawesome-free/css/all.css
+
+ jquery:
+   filters: rjsmin

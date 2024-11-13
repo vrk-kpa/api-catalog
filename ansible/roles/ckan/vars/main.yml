@@ -26,6 +26,7 @@ ckan_patches:
   - { file: "remove_edit_button_from_slugs" }
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
+  - { file: "remove_free_fontawesome" }
   - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
   - { file: "fix_resource_delete_auth" } # https://github.com/ckan/ckan/pull/7132
 
