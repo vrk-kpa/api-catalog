@@ -33,7 +33,7 @@ from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import with_field_string_replacements, \
-    apicatalog_scheming_language_text, parse_datetime, username_from_id, \
+    apicatalog_scheming_language_text, username_from_id, \
     is_boolean_selected
 
 from collections import OrderedDict
