@@ -92,11 +92,7 @@ elk:
       - "kapalogprod02.csc.fi:5044"
       - "kapalogprod03.csc.fi:5044"
 
-content:
-  news:
-    endpoint_url: "https://palveluhallinta.suomi.fi/api/articles/importantTopical?newsTypes"
-    url_template: "https://palveluhallinta.suomi.fi/{language}/ajankohtaista/uutiset/{id}"
-    ssl_verify: true
+
 
 debug_enabled: false
 
