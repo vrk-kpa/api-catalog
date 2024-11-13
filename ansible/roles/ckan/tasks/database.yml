@@ -13,12 +13,7 @@
 - name: Upgrade CKAN database
   shell: ./bin/ckan --config {{ ckan_ini }} db upgrade chdir={{ virtualenv }}
   ignore_errors: True
-
-# Not supported in CKAN 2.9
-#- name: Upgrade CKAN filestore
-#  shell: ./bin/ckan --config {{ ckan_ini }} db migrate-filestore chdir={{ virtualenv }}
-#  ignore_errors: True
-
+  
 - name: Create initial CKAN users
   shell: ./bin/ckan --config {{ ckan_ini }} user add "{{ item.value.username }}" "password={{ item.value.password }}" "email={{ item.value.email }}" chdir={{ virtualenv }}
   ignore_errors: True
