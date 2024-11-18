@@ -45,7 +45,7 @@ server {
   include snippets/nginx_security_headers.conf;
 }
 
-{% if nginx.alternative_hostnames %}
+{% if nginx.alternative_hostnames | default("") %}
 # Redirect from alternative hostnames to primary hostname
 server {
   listen 443 ssl;
