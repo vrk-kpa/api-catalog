@@ -1,0 +1,18 @@
+diff --git a/ckan/templates-bs3/home/robots.txt b/ckan/templates-bs3/home/robots.txt
+new file mode 100644
+index 000000000..ca60362c7
+--- /dev/null
++++ b/ckan/templates-bs3/home/robots.txt
+@@ -0,0 +1,12 @@
++User-agent: *
++{% block all_user_agents -%}
++Disallow: /dataset/rate/
++Disallow: /revision/
++Disallow: /dataset/*/history
++Disallow: /api/
++Crawl-Delay: 10
++{%- endblock %}
++
++{% block additional_user_agents -%}
++{%- endblock %}
++

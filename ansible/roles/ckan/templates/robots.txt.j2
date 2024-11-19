@@ -1,15 +1,17 @@
-User-agent: *
+{% raw %}
+{% ckan_extends %}
+
+{% block additional_user_agents -%}
+{% endraw %}
 {% if not robots_allowed %}
+User-agent: *
 Disallow: /
 {% else %}
-Disallow: /dataset/rate/
-Disallow: /revision/
-Disallow: /dataset/*/history
-Disallow: /api/
-Crawl-Delay: 10
-{% endif %}
-
 {% for bot in blocked_bots %}
 User-agent: {{ bot }}
 Disallow: /
 {% endfor %}
+{% endif %}
+{% raw %}
+{%- endblock %}
+{% endraw %}

@@ -29,8 +29,10 @@ ckan_patches:
   - { file: "remove_free_fontawesome" }
   - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
   - { file: "fix_resource_delete_auth" } # https://github.com/ckan/ckan/pull/7132
+  - { file: "fix_missing_robotstxt"} # https://github.com/ckan/ckan/pull/8536
 
-files_created_by_patches: []
+files_created_by_patches:
+  - { file: "/usr/lib/ckan/default/src/ckan/ckan/templates-bs3/home/robots.txt" }
 
 
 ckan_harvester_status_email_recipients: "{{ secret.ckan_harvester_status_email_recipients }}"
