@@ -33,7 +33,7 @@ from . import validators
 from ckanext.apicatalog import cli
 from ckanext.apicatalog import auth, db
 from ckanext.apicatalog.helpers import with_field_string_replacements, \
-    apicatalog_scheming_language_text, parse_datetime, username_from_id, \
+    apicatalog_scheming_language_text, username_from_id, \
     is_boolean_selected
 
 from collections import OrderedDict
@@ -211,63 +211,6 @@ def get_homepage_datasets(count=1):
         return dataset.get('notes') and len(dataset.get('resources', [])) > 0
 
     return list(itertools.islice(filter(criteria, datasets), count))
-
-
-NEWS_CACHE = None
-
-
-def get_homepage_news(count=3, cache_duration=timedelta(days=1), language=None):
-    global NEWS_CACHE
-    log.debug('Fetching homepage news')
-    if NEWS_CACHE is None or datetime.now() - NEWS_CACHE[0] > cache_duration:
-        log.debug('Updating news cache')
-        news_endpoint_url = config.get('ckanext.apicatalog.news.endpoint_url')
-        news_ssl_verify = toolkit.asbool(config.get('ckanext.apicatalog.news.ssl_verify', True))
-        news_tags = config.get('ckanext.apicatalog.news.tags')
-        news_url_template = config.get('ckanext.apicatalog.news.url_template')
-
-        if not news_endpoint_url:
-            log.warning('ckanext.apicatalog.news.endpoint_url not set')
-            news = []
-        else:
-            log.debug('Fetching from %s', news_endpoint_url)
-            try:
-                news_items = requests.get(news_endpoint_url, verify=news_ssl_verify).json()
-                log.debug('Received %i news items', len(news_items))
-
-                tags = set(t.strip() for t in news_tags.split(',')) if news_tags else None
-                if tags:
-                    log.debug('Filtering with tags: %s', repr(tags))
-                    news_items = [n for n in news_items if any(t.get('slug') in tags for t in n.get('tags', []))]
-
-                news = [{'title': {tl: t for tl, t in list(item.get('title', {}).items()) if t != 'undefined'},
-                         'content': {tl: t for tl, t in list(item.get('content', {}).items()) if t != 'undefined'},
-                         'published': parse_datetime(item.get('publishedAt')),
-                         'brief': item.get('brief', {}),
-                         'image': '',
-                         'image_alt': '',
-                         'url': {lang: news_url_template.format(**{'id': item.get('id'), 'language': lang})
-                                 for lang in list(item.get('title').keys())}}
-                        for item in news_items]
-                news.sort(key=lambda x: x['published'], reverse=True)
-
-                log.debug('Updating news cache with %i news', len(news))
-                news_cache_timestamp = datetime.now()
-                NEWS_CACHE = (news_cache_timestamp, news)
-
-            except Exception as e:
-                # Fetch failed for some reason, keep old value until cache invalidates
-                log.error(e)
-                news = [] if NEWS_CACHE is None else NEWS_CACHE[1]
-
-    else:
-        log.debug('Returning cached news')
-        news_cache_timestamp, news = NEWS_CACHE
-
-    if language:
-        news = [n for n in news if language in n.get('title', {}) and language in n.get('content', {})]
-
-    return news[:count]
 
 
 ANNOUNCEMENT_CACHE = None
@@ -771,7 +714,6 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
     def get_helpers(self):
         return {'get_homepage_organizations': get_homepage_organizations,
                 'get_homepage_datasets': get_homepage_datasets,
-                'get_homepage_news': get_homepage_news,
                 'get_homepage_announcements': get_homepage_announcements,
                 'service_alerts': service_alerts,
                 'info_message': info_message,
