@@ -183,7 +183,7 @@
 - name: Modify allowed robots
   template:
     src: robots.txt.j2
-    dest: "{{ virtualenv }}/src/ckan/ckan/public/robots.txt"
+    dest: "{{ apicatalog_path }}/ckanext/apicatalog/templates/home/robots.txt"
     owner: root
     group: root
     mode: 0644
