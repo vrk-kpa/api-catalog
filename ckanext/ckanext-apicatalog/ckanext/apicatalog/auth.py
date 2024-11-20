@@ -56,7 +56,7 @@ def user_create(next_auth, context, data_dict=None):
 
     try:
         dict_for_member_create = data_dict.copy()
-        dict_for_member_create['id'] = dict_for_member_create['group_id']
+        dict_for_member_create['id'] = dict_for_member_create.get('group_id')
         check_access('organization_member_create', context, dict_for_member_create)
         return {"success": True}
     except NotAuthorized:
