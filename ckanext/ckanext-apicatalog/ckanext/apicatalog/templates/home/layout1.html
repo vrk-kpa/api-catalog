@@ -1,8 +1,10 @@
   <section aria-label="{{ _('hero') }}" class="hero-background-container {% if h.is_test_environment() %}test-environment{% endif %}">
     <div class="container">
       {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
-      <div id="hero-stats" class="col-sm-8 col-sm-offset-2">
+
+      <div id="hero-stats" class="col-sm-8 offset-sm-2">
         {% set statistics = h.get_statistics() %}
+        <div class="row align-items-start">
         <div class="col-sm-4">
           <a href="{{ h.url_for('dataset.search') }}" aria-label="{{ _('Show all datasets') }}">
             <div class="count">{{statistics.package_count}}</div>
@@ -22,6 +24,7 @@
             <div class="stats-title">{{_('service providers')}}</div>
           </a>
         </div>
+      </div>
       </div>
     </div>
   </section>
