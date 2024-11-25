@@ -7,7 +7,6 @@ from ckan.logic.auth import get, update, get_resource_object
 from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function, check_access, NotAuthorized
 
 from ckan.lib.base import config
-from ckan.common import g
 
 log = logging.getLogger(__name__)
 
