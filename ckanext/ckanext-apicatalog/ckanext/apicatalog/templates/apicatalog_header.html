@@ -29,7 +29,7 @@
 
   {% block header_account %}
     <div class="navbar-wrapper">
-      <nav class="navbar navbar-default main-navbar" data-spy="affix" data-offset-top="80">
+      <nav class="navbar navbar-expand-lg navbar-light main-navbar" data-spy="affix" data-offset-top="80">
         {% block header_debug %}
           {% if g.debug and not g.debug_supress_header %}
             <div class="debug">Controller : {{ c.controller }}<br>Action : {{ c.action }}</div>
@@ -37,11 +37,11 @@
         {% endblock %}
         <div class="container">
           <div class="logo-row">
-            <div class="navbar-logo-text visible-xs">
+            <div class="navbar-logo-text d-block d-sm-none">
               <a href="{{ h.url_for('home.index') }}"><img class="lika-logo" src="/base/images/lika-logo.svg" alt="{{ _('API Catalog') }}"></a>
             </div>
 
-            <button type="button" class="navbar-toggle collapsed placeright" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggler collapsed placeright" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="sr-only navbar-hamburger">Toggle navigation</span>
                 <span class="icon-bar navbar-hamburger"></span>
                 <span class="icon-bar navbar-hamburger"></span>
@@ -82,11 +82,11 @@
                   {% endif %}
 
                 {% if c.userobj %}
-                  {% snippet 'home/snippets/apicatalog_profile_items.html', class="visible-xs" %}
+                  {% snippet 'home/snippets/apicatalog_profile_items.html', class="d-block d-sm-none" %}
                 {% else %}
-                  <li class="visible-xs">{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
+                  <li class="d-block d-sm-none">{% link_for _('Log in'), controller='user', action='login', icon='signin' %}</li>
                   {% if h.check_access('user_create') %}
-                    <li class="visible-xs">{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
+                    <li class="d-block d-sm-none">{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
                   {% endif %}
                 {% endif %}
               {% endblock %}
