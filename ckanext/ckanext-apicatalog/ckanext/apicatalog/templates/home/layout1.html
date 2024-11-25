@@ -1,5 +1,3 @@
-
-<div class="hero">
   <section aria-label="{{ _('hero') }}" class="hero-background-container {% if h.is_test_environment() %}test-environment{% endif %}">
     <div class="container">
       {% block slogan %} {% snippet 'home/snippets/apicatalog_slogan.html' %} {% endblock %}
@@ -27,7 +25,6 @@
       </div>
     </div>
   </section>
-</div>
 
   <section id="main_content" role="main">
     {% block service_alerts %}
