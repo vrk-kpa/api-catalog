@@ -7,7 +7,7 @@ from ckan.logic.auth import get, update, get_resource_object
 from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function, check_access, NotAuthorized
 
 from ckan.lib.base import config
-from ckan.common import c
+from ckan.common import g
 
 log = logging.getLogger(__name__)
 
@@ -24,8 +24,6 @@ def package_show(context, data_dict):
 
 def read_members(context, data_dict):
 
-    if 'id' not in data_dict and 'group' not in context:
-        data_dict['id'] = c.group_dict['id']
     read_only_users = aslist(config.get('ckanext.apicatalog.readonly_users', []))
 
     if context.get('user') and context.get('user') in read_only_users:
