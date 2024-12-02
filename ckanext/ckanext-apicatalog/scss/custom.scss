@@ -1,0 +1,30 @@
+// This file is needed in order for ./bin/less to compile in less 1.3.1+
+
+
+@import "variables.scss";
+@import "typography";
+
+.subheading {
+  color: $suomifi-text-base;
+  font-family: $font-family-base;
+  font-size: 18px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+hr {
+  border-color: $suomifi-border;
+}
+
+table.horizontal-info {
+  width: 100%;
+  margin-bottom: 40px;
+  font-size: 16px;
+
+  th {
+    font-weight: 600;
+    font-family: $headings-font-family;
+  }
+}

@@ -30,20 +30,20 @@ function bootstrapDatepickerCss() {
   
 }
 
-const bootstrapLessPath = './node_modules/bootstrap/less';
-function bootstrapLess() {
-    return src(bootstrapLessPath + '/**/*')
-        .pipe(dest("vendor/bootstrap/less"))
+const bootstrapSassPath = './node_modules/bootstrap-sass/assets/stylesheets';
+function bootstrapSass() {
+    return src(bootstrapSassPath + '/**/*')
+        .pipe(dest("vendor/bootstrap-sass/stylesheets"))
 }
 
 exports.fontAwesomeCss = fontAwesomeCss;
 exports.fontAwesomeFonts = fontAwesomeFonts;
 exports.bootstrapDatepickerJs = bootstrapDatepickerJs;
 exports.bootstrapDatepickerCss = bootstrapDatepickerCss;
-exports.bootstrapLess = bootstrapLess;
+exports.bootstrapLess = bootstrapSass;
 
 exports.default = parallel(
   fontAwesomeCss, fontAwesomeFonts,
   bootstrapDatepickerJs, bootstrapDatepickerCss,
-  bootstrapLess
+  bootstrapSass
 );

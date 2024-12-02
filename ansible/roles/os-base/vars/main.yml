@@ -7,3 +7,4 @@ timezone: UTC
 # Apt repository configuration
 apt_source_url: http://archive.ubuntu.com
 
+sass_version: 1.81.0

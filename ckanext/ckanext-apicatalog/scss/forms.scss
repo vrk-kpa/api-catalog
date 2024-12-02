@@ -1,0 +1,530 @@
+.input {
+  border: 2px solid $kapa-input-border;
+  @include border-radius(2px);
+  padding-left: 5px;
+  min-height: 40px;
+}
+
+input {
+  @extend input;
+}
+
+
+.input-focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+input:focus {
+  @extend .input-focus
+}
+
+.button-focus {
+  outline: 1px auto rgb(77, 144, 254);
+}
+
+button:focus {
+  @extend .button-focus;
+}
+
+.link-focus {
+  outline: 1px auto rgb(77, 144, 254);
+  outline-offset: 0;
+}
+
+a:focus {
+  @extend .link-focus;
+}
+
+select:focus {
+  @extend .link-focus;
+}
+
+.btn-primary {
+  font-weight: bold;
+
+  &:visited {
+    color: $btn-primary-color;
+  }
+}
+
+.btn-default,
+.btn-danger {
+  font-weight: bold;
+
+  &:visited {
+    color: $btn-default-color;
+  }
+}
+
+form .control-group {
+  margin-top: 10px;
+}
+
+form .control-group:first-child {
+  margin-top: 0px;
+}
+
+form {
+  .form-control {
+    @include border-radius(0);
+  }
+}
+
+label {
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 14px;
+
+  &.control-label {
+    font-size: 16px;
+    font-family: $headings-font-family;
+  }
+
+}
+
+
+label.checkbox {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+
+  input[type=checkbox] {
+    top: 0;
+    margin-top: 0;
+  }
+}
+
+input[type=radio],
+input[type=checkbox] {
+  margin-top: 5px;
+
+  &.checkbox-onown {
+    top: 0;
+  }
+}
+
+.select-wrapper {
+  position: relative;
+
+  select {
+    color: $suomifi-text-base;
+    height: 40px;
+    background-color: white;
+    border: 1px solid $kapa-input-border;
+    border-radius: 2px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &:after {
+    pointer-events: none;
+    font-family: "Font Awesome 6 Pro";
+    content: "\f0d7";
+    font-size: 18px;
+    font-weight: 900;
+    color: $suomifi-text-highlight;
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+  }
+}
+
+textarea {
+  max-width: 100%;
+  @include border-radius(0);
+}
+
+form .control-order-by {
+  float: right;
+  margin-top: 4px;
+}
+
+.form-group .btn {
+  position: relative;
+  top: -2px;
+}
+
+.control-full input,
+.control-full select,
+.control-full textarea {
+  @include box-sizing(border-box);
+  height: auto;
+  width: 100%;
+  border-width: 1px;
+  @include border-radius(0);
+}
+
+.control-medium input,
+.control-medium select,
+.control-medium textarea {
+  width: 100%;
+  max-width: 320px;
+  @include border-radius(0);
+}
+
+.control-large input,
+.control-large .control-label {
+  font-size: $font-size-base * 1.25;
+  line-height: $line-height-computed * 1.5;
+}
+
+.control-large input {
+  height: ($line-height-computed*2)+1;
+}
+
+.control-maybe-final input[readonly] {
+  border: 4px solid #818181;
+}
+
+.simple-input .field .btn-search {
+  position: absolute;
+  display: block;
+  padding: 0;
+  top: 50%;
+  right: 0;
+  margin-top: -15px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #999;
+  @include transition(color 0.2s ease-in);
+
+  &:hover {
+    color: #000;
+  }
+}
+
+textarea {
+  padding-left: 5px;
+  border: 2px solid $kapa-input-border;
+  border-radius: 4px;
+}
+
+.control-group.error input,
+.control-group.error select,
+.control-group.error textarea,
+.control-group.error .input-group .add-on,
+.control-group.error .input-group .add-on {
+  border-color: $errorBorder;
+}
+
+.error-block,
+.error-inline {
+  color: $errorText;
+}
+
+
+.error-block {
+  font-weight: bold;
+  display: block;
+  padding: 6px 8px 3px;
+  background: transparent;
+  margin: -$inputBorderRadius 0 0;
+  width: 208px;
+}
+
+
+.form-group.error .input-group .error-block,
+.control-custom.error .error-block {
+  width: auto;
+}
+
+
+.stages {
+  @include list-unstyled;
+  @include clearfix;
+  color: $stagesTextColor;
+  counter-reset: stage;
+  margin: -$gutterY -($gutterX + 15px + 10px) $gutterY -($gutterX + 15px);
+  overflow: hidden;
+  padding: 0px;
+}
+
+// Errors
+
+.alert {
+  //margin-top:20px;
+  border: none;
+
+  &.alert-danger {
+    background-color: #faebeb;
+    margin-bottom: 0;
+
+    i.far,
+    i.fas,
+    i.fal {
+      color: $color--danger;
+    }
+  }
+
+  &.alert-info {
+    display: flex;
+    align-items: start;
+    color: $suomifi-text-base;
+    margin-top: 25px;
+
+    .info-message,
+    .far {
+      padding-left: 20px;
+      line-height: 24px;
+
+      a {
+        color: $suomifi-text-base;
+        text-decoration: underline;
+      }
+    }
+
+    i.far,
+    i.fal {
+      color: $suomifi-highlight-base;
+      line-height: 24px;
+    }
+  }
+
+  .service-alert-message {
+    padding-left: 20px;
+    font-family: $headings-font-family;
+  }
+
+  button.close {
+    font-size: 16px;
+    color: $suomifi-text-base;
+    opacity: 1;
+    line-height: 30px;
+    margin-right: 20px;
+
+    i.far,
+    i.fas,
+    i.fal {
+      padding-left: 10px;
+      color: $suomifi-text-base
+    }
+  }
+}
+
+// Select2
+
+
+.select2-container-multi .select2-choices li.select2-search-choice {
+  color: $kapa-black;
+  background-color: $white;
+  margin-top: 5px;
+  padding: 5px 8px 5px 22px;
+  box-shadow: none;
+  border: 1px solid $kapa-black;
+  line-height: $line-height-computed;
+  background-image: none;
+}
+
+.select2-container .select2-choice {
+  font-size: 14px;
+  color: $suomifi-text-base;
+  height: 40px;
+  background-color: white;
+  border: 1px solid $kapa-input-border;
+  border-radius: 2px;
+  appearance: none;
+  padding: 6px 16px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: none;
+
+  .select2-arrow {
+    display: none;
+    pointer-events: none;
+  }
+
+  &:after {
+    pointer-events: none;
+    font-family: "Font Awesome 6 Pro";
+    content: "\f0d7";
+    font-size: 18px;
+    font-weight: 900;
+    color: $suomifi-text-highlight;
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+  }
+}
+
+.select2-results {
+  font-size: 14px;
+}
+
+.select2-search-choice-close,
+.select2-container-multi .select2-search-choice-close {
+  top: 14px;
+  left: 5px;
+}
+
+.select2-search .select2-input:focus {
+  box-shadow: none;
+  font-size: 14px;
+  color: $kapa-black;
+}
+
+.select2-container-multi .select2-choices {
+  @extend input;
+}
+
+.select2-container-active .select2-choices,
+.select2-container-multi.select2-container-active .select2-choices {
+  @extend input;
+  //border-color: rgba(82,168,236,.8);
+}
+
+
+.select2-search-choice {
+  display: none;
+}
+
+.select2-tags-container .api-catalog-pill {
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+
+
+.select2-container-multi.select2-container .select2-choices,
+.select2-container .select2-choices,
+.select2-choices,
+.select2-container-multi .select2-choices {
+  padding: 0;
+  border: 2px solid $kapa-input-border;
+  border-width: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-image: none;
+}
+
+.api-catalog-pill i {
+  margin-top: 1px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.js .image-upload {
+  #field-image-url {
+    padding-right: 29px;
+  }
+
+  #field-image-upload {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    @include opacity(0);
+  }
+
+  .controls {
+    position: relative;
+  }
+
+  .btn {
+    position: relative;
+    top: 0;
+    margin-right: 10px;
+
+    &.hover {
+      color: $gray-dark;
+      text-decoration: none;
+      background-position: 0 -15px;
+      @include transition(background-position .1s linear);
+    }
+  }
+
+  .btn-remove-url {
+    position: absolute;
+    margin-right: 0;
+    top: 0;
+    right: 0;
+    font-size: $font-size-base;
+    padding: 5px 15px;
+    @include border-radius(0);
+    height: 100%;
+    line-height: 28px;
+
+    .glyphicon-remove {
+      margin-right: 0;
+    }
+  }
+}
+
+.multiple-value-group {
+  margin-bottom: 8px;
+
+  .multiple-value {
+    display: inline-block;
+  }
+
+  .multiple-values-remove-input {
+    margin-left: 8px;
+  }
+}
+
+.input-block-description {
+  font-size: 16px;
+}
+
+.input-group-description {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.hide-label label{
+  display: none
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+
+// Buttons
+
+.btn-default {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+
+// Success appears as green
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+
+// Info appears as blue-green
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+
+// Warning appears as orange
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+
+// Danger and error appear as red
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+fieldset.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+
+  input {
+    min-height: 20px;
+    width: 20px;
+    margin: -2px 5px 0 0;
+  }
+  label::after {
+    content: ""
+  }
+}

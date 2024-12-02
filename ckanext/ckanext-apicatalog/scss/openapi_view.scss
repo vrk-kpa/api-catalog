@@ -1,0 +1,39 @@
+@import "variables";
+
+.topbar {
+  display: none;
+}
+
+@mixin opblock-colors($background, $foreground, $shadow: undefined){
+  border-color: $foreground;
+  background: $background;
+  .opblock-summary {
+      border-color: $foreground;
+  }
+  .opblock-summary-method {
+    background: $foreground;
+
+    @if $shadow {
+      text-shadow: 0 2px darken($foreground, 5%);
+    }
+  }
+}
+
+.swagger-container .swagger-ui {
+  .btn.authorize {
+    color: $suomifi-success-base;
+    border-color: $suomifi-success-base;
+  }
+  .opblock.opblock-get {
+    @include opblock-colors(rgba($suomifi-highlight-base, 10%/100.0%), $suomifi-highlight-base);
+  }
+  .opblock.opblock-post {
+    @include opblock-colors(rgba($suomifi-success-base, 10%/100.0%), $suomifi-success-base, true);
+  }
+  .opblock.opblock-put {
+    @include opblock-colors(rgba($suomifi-warning-base, 10%/100.0%), $suomifi-warning-base, true);
+  }
+  .opblock.opblock-delete {
+    @include opblock-colors(rgba($suomifi-alert-base, 10%/100.0%), $suomifi-alert-base);
+  }
+}

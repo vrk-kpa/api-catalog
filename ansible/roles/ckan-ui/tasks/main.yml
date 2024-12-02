@@ -1,8 +1,8 @@
-- name: rebuild ckanext-apicatalog less
-  shell: lessc "{{ apicatalog_path }}/less/main.less" "{{ apicatalog_ckanext_path }}/fanstatic/apicatalog/main.css"
+- name: rebuild ckanext-apicatalog sass
+  shell: sass "{{ apicatalog_path }}/scss/main.scss"  "{{ apicatalog_ckanext_path }}/fanstatic/apicatalog/main.css"
 
-- name: rebuild ckanext-openapi_view less
-  shell: lessc "{{ apicatalog_path }}/less/openapi_view.less" "{{ apicatalog_ckanext_path }}/fanstatic/openapi_view.css"
+- name: rebuild ckanext-openapi_view sass
+  shell: sass "{{ apicatalog_path }}/scss/openapi_view.scss"  "{{ apicatalog_ckanext_path }}/fanstatic/openapi_view.css"
 
 - name: Restart CKAN
   shell: supervisorctl restart "{{ ckan_supervisor_name }}"
