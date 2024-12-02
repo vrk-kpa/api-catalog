@@ -688,25 +688,26 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
     def update_config_schema(self, schema):
         ignore_missing = toolkit.get_validator('ignore_missing')
+        unicode_safe = toolkit.get_validator('unicode_safe')
 
         schema.update({
-            'ckanext.apicatalog.service_alert.fi.message': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.service_alert.sv.message': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.service_alert.en_GB.message': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.info_message.fi': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.info_message.sv': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.info_message.en_GB': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.left_column.fi': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.left_column.sv': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.left_column.en_GB': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.right_column.fi': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.right_column.sv': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.right_column.en_GB': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.readonly_users': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.site_intro_text.sv': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.site_intro_text.en_GB': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.site_description.sv': [ignore_missing, six.text_type],
-            'ckanext.apicatalog.site_description.en_GB': [ignore_missing, six.text_type]
+            'ckanext.apicatalog.service_alert.fi.message': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.service_alert.sv.message': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.service_alert.en_GB.message': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.info_message.fi': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.info_message.sv': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.info_message.en_GB': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.left_column.fi': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.left_column.sv': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.left_column.en_GB': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.right_column.fi': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.right_column.sv': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.right_column.en_GB': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.readonly_users': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.site_intro_text.sv': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.site_intro_text.en_GB': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.site_description.sv': [ignore_missing, unicode_safe],
+            'ckanext.apicatalog.site_description.en_GB': [ignore_missing, unicode_safe]
         })
 
         return schema

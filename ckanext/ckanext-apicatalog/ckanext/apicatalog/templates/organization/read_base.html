@@ -23,7 +23,7 @@
         {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=group_dict.id) }}
         {{ h.build_nav_icon('broken_links.organization_read', _('Broken links'), organization_id=group_dict.id) }}
       {% endif %}
-      {% if h.check_access('read_members') %}
+      {% if h.check_access('read_members', {'id': group_dict.id}) %}
         {{ h.build_nav_icon('organization.members', _('Members'), id=group_dict.name) }}
       {% endif %}
     </div>

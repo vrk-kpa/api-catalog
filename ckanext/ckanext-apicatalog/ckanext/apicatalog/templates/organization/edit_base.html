@@ -28,7 +28,7 @@
                     {{ h.build_nav_icon('organization.bulk_process', _('Dataset visibility'), id=c.group_dict.name) }}
                     {{ h.build_nav_icon('xroad_organization.organization_errors', _('X-Road errors'), organization=c.group_dict.id) }}
                 {% endif %}
-                {% if h.check_access('read_members') %}
+                {% if h.check_access('read_members', {'id': g.group_dict.id}) %}
                     {{ h.build_nav_icon('organization.members', _('Members'), id=c.group_dict.name) }}
                 {% endif %}
             {% endblock %}

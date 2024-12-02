@@ -7,7 +7,6 @@ from ckan.logic.auth import get, update, get_resource_object
 from ckan.plugins.toolkit import auth_allow_anonymous_access, _, chained_auth_function, check_access, NotAuthorized
 
 from ckan.lib.base import config
-from ckan.common import c
 
 log = logging.getLogger(__name__)
 
@@ -24,8 +23,6 @@ def package_show(context, data_dict):
 
 def read_members(context, data_dict):
 
-    if 'id' not in data_dict and 'group' not in context:
-        data_dict['id'] = c.group_dict['id']
     read_only_users = aslist(config.get('ckanext.apicatalog.readonly_users', []))
 
     if context.get('user') and context.get('user') in read_only_users:
@@ -56,7 +53,7 @@ def user_create(next_auth, context, data_dict=None):
 
     try:
         dict_for_member_create = data_dict.copy()
-        dict_for_member_create['id'] = dict_for_member_create['group_id']
+        dict_for_member_create['id'] = dict_for_member_create.get('group_id')
         check_access('organization_member_create', context, dict_for_member_create)
         return {"success": True}
     except NotAuthorized:

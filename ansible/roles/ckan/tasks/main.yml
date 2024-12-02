@@ -110,8 +110,6 @@
     owner: root
     group: "root"
 
-- name: Install CKAN frontend requirements
-  shell: npm install --only=prod chdir={{ virtualenv }}/src/ckan
 
 - import_tasks: patch.yml
 
