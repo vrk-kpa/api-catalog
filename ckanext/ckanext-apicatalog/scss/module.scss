@@ -1,0 +1,238 @@
+@import "../vendor/bootstrap-sass/stylesheets/bootstrap/mixins";
+@import "../vendor/bootstrap-sass/stylesheets/bootstrap/variables";
+
+@import "mixins";
+
+.secondary {
+  .module {
+    margin: $margin-y__module 0;
+
+    &.main-heading {
+      margin: 0;
+
+      .module-heading{
+        height: 78px;
+        background-color: $suomifi-highlight-base;
+        font-size: 18px;
+        color: $white;
+        padding-left: 20px;
+        border-top: none;
+      }
+    }
+  }
+}
+
+.filters {
+  .module {
+    .module-heading {
+      border-top: 1px solid $moduleHeadingBorderColor;
+    }
+  }
+}
+
+.module-heading {
+  @include clearfix;
+  margin: 0;
+  border-bottom: none;
+
+  @extend .visual-h5;
+  padding: 28px 0 0 0;
+  background-color: $moduleHeadingBackgroundColor;
+}
+
+.module-content {
+  padding: 0 $gutterX;
+  margin: 20px auto;
+
+  > .fill-module {
+    margin: -20px 0;
+  }
+
+  dd {
+    margin-left: 40px;
+  }
+}
+
+.dataset-sidebar li {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #f0f6ff;
+  padding-left: 10px;
+  margin: 0;
+  min-height: 54px;
+  padding-top: 13.5px;
+  padding-bottom: 13.5px;
+
+  &:hover {
+    background-color: #d5e4f6;
+  }
+
+  &.active {
+    background-color: #d5e4f6;
+    border: 5px solid;
+    border-color: $suomifi-highlight-base;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    margin: 0;
+    padding-right: 5px;
+  }
+
+  & a {
+    color: $suomifi-highlight-base;
+    font-family: $headings-font-family;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: uppercase;
+
+    &:visited {
+      color: $suomifi-highlight-base;
+    }
+  }
+}
+
+.dataset-sidebar-selected {
+  background-color: #d5e4f6;
+  border: 5px solid;
+  border-color: $suomifi-highlight-base;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  margin: 0;
+  padding-right: 5px;
+}
+
+.module-content-medium {
+  padding: 0 $gutterX;
+  margin: 20px auto;
+  width: 60%;
+  > .fill-module {
+    margin: -20px 0;
+  }
+
+  dd {
+    margin-left: 40px;
+  }
+}
+
+.with-margin {
+  margin-top: 20px;
+}
+
+.module-content > :first-child:not(.fill-module) {
+  margin-top: 0;
+  padding-top: $gutterY;
+}
+
+.module-content > :first-child:is(.dataset-sidebar) {
+  padding-top: 13.5px;
+}
+
+.module-content > :last-child:not(.fill-module) {
+  margin-bottom: 0;
+  padding-bottom: $gutterY;
+}
+
+.module-content > :last-child {
+  margin-bottom: 0;
+}
+
+.module:last-child {
+  margin-bottom: $margin-y__module;
+}
+
+.module-footer {
+  padding: 7px $gutterX 7px;
+  margin: 0;
+  border-top: 1px  $kapa-box-border-color;
+}
+
+.module .read-more {
+  font-family: $font-family-base;
+  font-size: 16px;
+  line-height: 20px;
+  color: $suomifi-highlight-base;
+}
+
+.module .pagination li.active a {
+  border-color: #ddd;
+}
+
+// Secondary column specific
+
+.module-narrow {
+  .module-heading,
+  .module-content,
+  .module-footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.secondary,
+.primary {
+  .module {
+    margin-top: 0;
+  }
+}
+
+.secondary {
+  @include box();
+  background-color: $moduleBackgroundColor;
+
+  .module {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.module-image {
+  width: 50px;
+  line-height: $line-height-computed;
+  text-align: center;
+  margin-left: 15px;
+  img {
+    max-width: 50px;
+    max-height: 50px;
+    vertical-align: middle;
+  }
+}
+
+.module {
+  &__instructions {
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width * 1.5;
+  }
+
+  &__actions {
+    margin-left: -$grid-gutter-width / 4;
+    margin-right: -$grid-gutter-width / 4;
+    display: flex;
+
+    .btn {
+      margin-left: $grid-gutter-width / 4;
+      margin-right: $grid-gutter-width / 4;
+    }
+  }
+
+  &__settings-instructions {
+    background-color: $suomifi-brand--extra-light;
+    padding: $grid-gutter-width;
+    margin: $margin-y__module-child 0;
+
+    &__header {
+      margin-top: 0;
+
+      i {
+        margin-right: $grid-gutter-width / 4;
+      }
+    }
+
+    &__content {
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

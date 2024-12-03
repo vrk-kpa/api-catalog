@@ -1,0 +1,118 @@
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  font-style: italic;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  font-style: italic;
+}
+
+
+.search-form {
+  // @include clearfix;
+
+  &.header-search {
+    margin: auto;
+    width: 356px;
+    padding-bottom: 0;
+
+    .search-input {
+      margin: 0px;
+    }
+  }
+
+  &:not(.header-search):not(.no-bottom-border) {
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $genericBorderColor;
+  }
+
+  &#dataset-facet-search-form {
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border: none;
+  }
+
+  .search-result-text {
+    line-height: 42px;
+  }
+
+  // Normal search box
+  .search-input {
+    position: relative;
+    margin-bottom: 20px;
+
+    input {
+      @include box-sizing(border-box);
+      margin: 0;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+      border: 1px solid $kapa-input-border;
+
+      &:focus {
+        @extend .input-focus
+      }
+    }
+
+    button {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 50%;
+      margin-top: -10px;
+      right: 10px;
+      padding: 0 3px;
+      border: none;
+      background: transparent;
+
+      span {
+        display: none;
+      }
+
+      i {
+        color: #999;
+        @include transition(color 0.2s ease-in);
+      }
+
+      &:focus {
+        @extend .button-focus;
+      }
+    }
+
+    &.search-giant {
+      input {
+        font-size: 18px;
+        padding: 10px;
+        outline: none;
+
+        &:valid {
+          font-style: normal;
+        }
+      }
+    }
+  }
+}
+
+aside .search-form {
+  input {
+    font-size: 16px;
+    height: 39px;
+    border-radius: 2px;
+    border: 1px solid rgb(200, 205, 208);
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid rgb(200, 205, 208);
+  }
+}

@@ -43,10 +43,22 @@
       - supervisor
       - libxml2-dev
       - libxslt1-dev
-      - node-less
       - acl
-      - npm
       - gulp
+
+
+- name: Download sass
+  unarchive:
+    src: https://github.com/sass/dart-sass/releases/download/{{sass_version}}/dart-sass-{{sass_version}}-linux-x64.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: Link sass binary
+  file:
+    src: /tmp/dart-sass/sass
+    dest: /usr/local/bin/sass
+    state: link
+
 
 # Note: psycopg2 requires postgresql-server-dev
 

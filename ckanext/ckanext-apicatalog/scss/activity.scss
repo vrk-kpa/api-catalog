@@ -1,0 +1,19 @@
+.activity {
+	.item {
+		p {
+			margin: 0 0 0 45px;
+		}
+
+		.date {
+			color: $kapa-vdark-grey;
+			font-size: 14px;
+			margin-left: 10px;
+			white-space: nowrap;
+		}
+	}
+}
+
+// colors
+.activity .item {
+	&.changed-package-privacy .icon { background-color: adjust-hue($activityColorModify, 90); }
+}
