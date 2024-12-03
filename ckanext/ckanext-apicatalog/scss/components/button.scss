@@ -1,0 +1,33 @@
+.btn {
+    border-radius: $border-radius__button;
+    font-weight: normal;
+
+    &.btn-primary {
+        background: linear-gradient(0deg, $suomifi-highlight-dark, $suomifi-highlight-base);
+        border-color: $suomifi-highlight-base;
+
+        &:hover {
+            background: linear-gradient(0deg, $suomifi-highlight-light, $suomifi-highlight-base);
+        }
+    }
+
+    &.btn-secondary {
+        font-weight: bold;
+    }
+
+    .btn-icon--right {
+        margin-left: $grid-gutter-width / 4;
+    }
+
+    &.btn-outline-primary {
+        background: none;
+        border-color: $suomifi-highlight-base;
+        color: $suomifi-highlight-base;
+    }
+
+    &.btn-outline-white {
+        color: $white;
+        background-color: transparent;
+        border-color: $white
+    }
+}

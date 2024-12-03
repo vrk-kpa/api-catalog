@@ -1,0 +1,54 @@
+@import "variables.scss";
+@import "custom.scss";
+@import "module.scss";
+@import "media.scss";
+@import "nav.scss";
+@import "forms.scss";
+@import "dataset.scss";
+@import "search.scss";
+@import "group.scss";
+@import "toolbar.scss";
+@import "prose.scss";
+@import "icons.scss";
+@import "layout.scss";
+@import "homepage.scss";
+@import "masthead.scss";
+@import "footer.scss";
+@import "tables.scss";
+@import "activity.scss";
+@import "dropdown.scss";
+@import "offcanvas.scss";
+@import "contact.scss";
+@import "modals.scss";
+
+
+body {
+  // Using the masthead/footer gradient prevents the color from changing
+  // at the bottom of the window on pages with little content.
+  background: $accountMastheadColor;
+}
+
+.empty {
+  font-size: 16px;
+  line-height: 20px;
+  color: $emptyTextColor;
+  font-style: italic;
+}
+
+.page-heading {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.error-heading {
+  margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 25px;
+}
+
+input[type="checkbox"]#field-remember {
+  // Fix layout for "remember me"-checkbox at login screen breaks on small screens
+  margin-top: 2px;
+  min-height: 0px;
+}
+

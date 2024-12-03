@@ -1,0 +1,163 @@
+
+
+.plusglyph,
+.minusglyph {
+  font-weight: bold;
+}
+
+li.active .plusglyph {
+  display:none;
+}
+
+li:not(.active) .minusglyph {
+  display:none;
+}
+
+.nav-aside {
+  border-top: 1px solid $kapa-box-border-color;
+  border-bottom: 1px solid $kapa-box-border-color;
+  margin-bottom: 15px;
+}
+
+.nav-item > a,
+.nav-aside li a {
+  color: $navLinkColor;
+  font-size: $font-size-base;
+  font-weight: normal;
+  line-height: $line-height-computed;
+  margin: -7px -$gutterX;
+  padding: 7px $gutterX;
+}
+
+.nav-item.active,
+.nav-aside li.active {
+  font-weight: 600;
+}
+
+.nav-item.active > a,
+.nav-aside li.active a {
+  position: relative;
+  color:$black;
+  background-color: initial;
+
+  &:before {
+    content: initial;
+    border: none;
+  }
+
+
+}
+
+.nav.nav-facet > li.nav-item a {
+  &:hover {
+    @include transition(0.2s);
+    background-color: #EAF2FA;
+    color: $black;
+  }
+}
+
+.nav-facet {
+  .nav-item {
+    &.active, &:hover {
+      background: $white;
+      > a:after {
+        background: none;
+      }
+    }
+
+    > a:hover:after {
+      background: none;
+    }
+  }
+}
+
+.module-narrow .nav-item > a,
+.module-narrow .nav-aside li a {
+  padding-left:  0;
+  padding-right: 0;
+  position: relative;
+}
+
+
+.nav {
+  &.nav-tabs{
+    border: none;
+    li {
+      border: none;
+      margin-right: 64px;
+
+      &.active {
+        a,
+        a:hover,
+        a:focus {
+          border: none;
+          border-bottom: 4px solid $suomifi-highlight-base;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      a {
+        color: $suomifi-text-base;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+
+        &:hover,
+        &:focus {
+          background-color: $white;
+        }
+      }
+    }
+  }
+}
+
+.nav-external-link {
+  svg {
+    margin-bottom: -2px;
+    margin-left: 4px;
+    width: 16px;
+    height: 16px;
+    fill: $suomifi-text-base;
+  }
+}
+
+.navbar-wrapper{
+  height: unset;
+}
+
+.navbar-light {
+
+  background-color: $kapa-header-color;
+  border-color: none;
+
+  .navbar-toggle {
+    border: none;
+    margin-right: 10px;
+    padding-top: 14px;
+
+    .icon-bar {
+      width: 24px;
+      background-color: #636769;
+    }
+
+    .icon-bar + .icon-bar {
+      margin-top: 5px;
+    }
+
+    .fal {
+      color: #636769;
+      font-size: 32px;
+      margin-top: -7px;
+
+    }
+  }
+
+  .navbar-nav{
+    & > li {
+      & > a {
+        color: $kapa-black;
+      }
+    }
+  }
+}
