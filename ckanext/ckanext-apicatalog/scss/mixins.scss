@@ -1,3 +1,5 @@
+@use "variables" as apicatalog;
+
 @mixin break-word {
   /* Non standard for webkit */
   word-break: break-word;
@@ -33,4 +35,12 @@
 @mixin list-unstyled {
   padding-left: 0;
   list-style: none;
+}
+
+@mixin btn-primary {
+  background: apicatalog.$btn-primary-bg
+}
+
+@mixin btn-secondary {
+  background: apicatalog.$btn-secondary-bg
 }

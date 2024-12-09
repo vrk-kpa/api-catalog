@@ -1,3 +1,5 @@
+@use "../mixins" as mixins;
+
 .btn {
     border-radius: $border-radius__button;
     font-weight: normal;
@@ -12,6 +14,7 @@
     }
 
     &.btn-secondary {
+        @include mixins.btn-secondary;
         font-weight: bold;
     }
 
