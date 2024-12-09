@@ -22,7 +22,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(sm) {
   .dataset-item {
     word-wrap: break-word;
   }

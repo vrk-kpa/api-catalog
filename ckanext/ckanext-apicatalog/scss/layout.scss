@@ -13,7 +13,7 @@
   }
 }
 .pull-right-sm-up {
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(sm) {
     margin-left: 0 !important;
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@
     z-index: 2;
   }
 }
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-up(sm) {
   .border-right,
   .border-left,
   .border-both {
@@ -86,7 +86,7 @@
 .container {
   position: relative;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(md) {
       width: auto;
   }
 }
@@ -342,7 +342,7 @@
     margin-left: 20px;
     margin-top: 10px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(md){
       float: none;
     }
   }

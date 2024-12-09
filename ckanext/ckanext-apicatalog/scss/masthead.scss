@@ -14,7 +14,7 @@ $masthead-doublerow-height: 89px;
 }
 
 .placeright-sm-up {
-  @media(min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md){
     @include placeright;
   }
 }
@@ -33,7 +33,7 @@ $masthead-doublerow-height: 89px;
   border-radius: 0;
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(md){
   .navbar-logo-text {
     margin: 8px;
   }
@@ -43,12 +43,12 @@ $masthead-doublerow-height: 89px;
 }
 
 .navbar-nav {
-  z-index: $zindex-navbar;
+  z-index: 1000;
   float:none;
   margin:auto;
   height: $masthead-height;
 
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(md) {
     height: unset;
   }
 
@@ -179,12 +179,12 @@ $masthead-doublerow-height: 89px;
     position: relative;
   }
 
-  z-index: $zindex-navbar - 1;
+  z-index: 1000 - 1;
   font-size:16px;
   height: $masthead-height;
   min-height: $masthead-height;
 
-  @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+  @include media-breakpoint-between(sm, md) {
     height: $masthead-doublerow-height;
   }
 
@@ -196,13 +196,13 @@ $masthead-doublerow-height: 89px;
 
   .navbar-collapse.collapse.in,
   .navbar-collapse.collapsing {
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(md){
       margin-top: 0;
     }
   }
 
   .navbar-collapse[aria-expanded="true"] {
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(md){
       border-top: 1px solid $genericBorderColor;
     }
   }
@@ -228,7 +228,7 @@ $masthead-doublerow-height: 89px;
       background-color: $mastheadBackgroundColor;;
     }
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(md){
       li {
         display: block;
 

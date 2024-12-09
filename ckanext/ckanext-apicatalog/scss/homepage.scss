@@ -1,7 +1,7 @@
 @import "variables";
 @import "mixins";
-@import "../vendor/bootstrap-sass/stylesheets/bootstrap/mixins";
-@import "../vendor/bootstrap-sass/stylesheets/bootstrap/variables";
+@import "../vendor/bootstrap/scss/mixins";
+@import "../vendor/bootstrap/scss/variables";
 
 .homepage {
 
@@ -193,7 +193,7 @@
     margin-top: $gutterY;
   }
   .sidebar {
-    @media (min-width: $screen-xs-max) {
+    @include media-breakpoint-up(md) {
       padding-top: 85px;
     }
 

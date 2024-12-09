@@ -131,7 +131,7 @@
   }
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(md){
   .footer-top {
     padding: 30px 30px;
     height: 350px;

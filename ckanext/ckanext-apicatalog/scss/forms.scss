@@ -151,7 +151,6 @@ form .control-order-by {
 .control-full input,
 .control-full select,
 .control-full textarea {
-  @include box-sizing(border-box);
   height: auto;
   width: 100%;
   border-width: 1px;
@@ -417,7 +416,7 @@ textarea {
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    @include opacity(0);
+    opacity: 0;
   }
 
   .controls {
@@ -484,37 +483,6 @@ textarea {
   margin-bottom: 0;
 }
 
-
-// Buttons
-
-
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
-
-// Success appears as green
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-
-// Info appears as blue-green
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-
-// Warning appears as orange
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-
-// Danger and error appear as red
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-}
 
 fieldset.checkboxes {
   display: flex;

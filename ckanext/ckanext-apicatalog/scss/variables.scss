@@ -14,7 +14,9 @@ $spritePath: "#{$imagePath}/sprite-ckan-icons.png";
 $bgPath: "";
 $heroBgPath: "#{$imagePath}/bg.png";
 
-$font-size-base: 16px;
+// font-size-base needs to be in rem due to later calculations
+$font-size-base:              1rem !default;
+
 $label-color: #000;
 
 $headings-font-family: 'SourceSansPro-SemiBold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -203,6 +205,7 @@ $btn-border-radius-base: 0px;
 
 $btn-primary-color: white;
 $btn-primary-bg: $suomifi-highlight-base;
+$btn-primary-border: darken($btn-primary-bg, 5%);
 $btn-secondary-color: $suomifi-highlight-base;
 $btn-secondary-border: darken($btn-primary-bg, 5%);
 $btn-secondary-bg: white;
@@ -262,3 +265,7 @@ $navbar-default-toggle-border-color:       #ddd;
 
 // List group style
 $list-group-border-radius: 2px;
+
+// Internal bootstrap 3 variables, defined here as its used in many of our own style files
+$line-height-base:        1.428571429; // 20/14
+$line-height-computed: floor(($font-size-base * $line-height-base))

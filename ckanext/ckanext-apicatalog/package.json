@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6",
-    "bootstrap-sass": "^3.4.1",
+    "bootstrap": "^5.3.3",
     "eonasdan-bootstrap-datetimepicker": "^4.17.49"
   },
   "devDependencies": {
