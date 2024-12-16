@@ -6,7 +6,7 @@
 #
 alembic==1.8.1
     # via ckan
-async-timeout==5.0.0
+async-timeout==5.0.1
     # via redis
 babel==2.10.3
     # via
@@ -27,7 +27,7 @@ charset-normalizer==2.0.12
     #   ckan
     #   requests
 # Removed manually, ckan is installed with ansible as this convention does not allow editable installs
-#ckan[requirements]==2.10.5
+#ckan[requirements]==2.10.6
     # via -r requirements.in
 click==8.1.3
     # via
