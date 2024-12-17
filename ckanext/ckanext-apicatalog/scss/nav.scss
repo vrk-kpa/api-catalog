@@ -154,6 +154,7 @@ li:not(.active) .minusglyph {
   }
 
   .navbar-nav{
+    margin: initial;
     & > li {
       & > a {
         color: $kapa-black;
