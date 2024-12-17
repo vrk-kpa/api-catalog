@@ -1,0 +1,8 @@
+#profile.dropdown {
+  .dropdown-item {
+    --bs-dropdown-link-active-bg: var(--bs-body-bg);
+    a {
+      color: $kapa-black;
+    }
+  }
+}
