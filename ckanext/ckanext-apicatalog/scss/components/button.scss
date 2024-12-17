@@ -4,6 +4,11 @@
     border-radius: $border-radius__button;
     font-weight: normal;
 
+    &:focus {
+        box-shadow: initial;
+    }
+    
+
     &.btn-primary {
         background: linear-gradient(0deg, $suomifi-highlight-dark, $suomifi-highlight-base);
         border-color: $suomifi-highlight-base;
@@ -16,6 +21,7 @@
     &.btn-secondary {
         @include mixins.btn-secondary;
         font-weight: bold;
+        --bs-btn-active-bg: #e6e6e6;
     }
 
     .btn-icon--right {
