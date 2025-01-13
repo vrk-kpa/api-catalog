@@ -404,6 +404,14 @@
       margin-bottom: 25px;
     }
   }
+
+  .form-select {
+    border: none;
+    box-shadow: none;
+    padding-right: 0;
+    --bs-form-select-bg-img: none;
+  }
+
 }
 
 .pagination-wrapper {
