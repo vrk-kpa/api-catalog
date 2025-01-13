@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import "./variables/palette";
 @import "./variables/spacing";
 
@@ -205,9 +207,9 @@ $btn-border-radius-base: 0px;
 
 $btn-primary-color: white;
 $btn-primary-bg: $suomifi-highlight-base;
-$btn-primary-border: darken($btn-primary-bg, 5%);
+$btn-primary-border: color.scale($btn-primary-bg, $lightness: -5%, $space: hsl);
 $btn-secondary-color: $suomifi-highlight-base;
-$btn-secondary-border: darken($btn-primary-bg, 5%);
+$btn-secondary-border: color.scale($btn-primary-bg, $lightness: -5%, $space: hsl);
 $btn-secondary-bg: white;
 $brand-primary: $suomifi-highlight-base;
 $brand-warning: $kapa-secondary-attention-color;
@@ -254,7 +256,7 @@ $navbar-default-link-active-bg:            #fff;
 
 // Navbar brand label
 $navbar-default-brand-color:               $navbar-default-link-color;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-color:         color.scale($navbar-default-brand-color, $lightness: -10%, $space: hsl);
 $navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
