@@ -99,9 +99,9 @@ li:not(.active) .minusglyph {
 
       a {
         color: $suomifi-text-base;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 10px 0;
         border: none;
+        display: inline-block;
 
         &:hover,
         &:focus {
