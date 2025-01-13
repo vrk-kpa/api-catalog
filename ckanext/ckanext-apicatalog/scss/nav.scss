@@ -50,9 +50,9 @@ li:not(.active) .minusglyph {
 
 .nav.nav-facet > li.nav-item a {
   &:hover {
-    @include transition(0.2s);
     background-color: #EAF2FA;
     color: $black;
+    @include transition(0.2s);
   }
 }
 
