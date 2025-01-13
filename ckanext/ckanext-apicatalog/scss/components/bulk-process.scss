@@ -1,3 +1,5 @@
+@use "sass:math";
+
 #organization-datasets-search-form {
     [type='submit'] {
         background-color: $suomifi-highlight-base;
@@ -14,10 +16,10 @@
 }
 
 .bulk_process-actions {
-    margin: $gutterY -($gutterX / 4);
+    margin: $gutterY math.div(-$gutterX, 4);
 
     .btn {
-        margin: 0 ($gutterX / 4);
+        margin: 0 math.div($gutterX, 4);
         font-weight: 600;
         color: $suomifi-highlight-base;
         border-color: $suomifi-highlight-base;
@@ -25,7 +27,7 @@
 
     .btn-delete {
         i {
-            margin-right: ($gutterX / 4);
+            margin-right: math.div($gutterX, 4);
         }
     }
 }
@@ -64,7 +66,7 @@
     }
 
     .table-checkbox {
-        padding-left: ($gutterX / 2);
-        padding-right: ($gutterX / 2);
+        padding-left: math.div($gutterX, 2);
+        padding-right: math.div($gutterX, 2);
     }
 }

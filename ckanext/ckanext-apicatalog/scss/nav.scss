@@ -25,7 +25,7 @@ li:not(.active) .minusglyph {
   font-size: $font-size-base;
   font-weight: normal;
   line-height: $line-height-computed;
-  margin: -7px -$gutterX;
+  margin: -7px (-$gutterX);
   padding: 7px $gutterX;
 }
 

@@ -238,7 +238,7 @@ textarea {
   @include clearfix;
   color: $stagesTextColor;
   counter-reset: stage;
-  margin: -$gutterY -($gutterX + 15px + 10px) $gutterY -($gutterX + 15px);
+  margin: (-$gutterY) (-($gutterX + 15px + 10px)) ($gutterY) (-($gutterX + 15px));
   overflow: hidden;
   padding: 0px;
 }
