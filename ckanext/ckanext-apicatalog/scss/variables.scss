@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:math';
 
 @import "./variables/palette";
 @import "./variables/spacing";
@@ -158,7 +159,7 @@ $highlightHoverBackground: #fdf3d9;
 // Forms
 
 $errorText: #b55457;
-$errorBackground: lighten(#c6898b, 30%);
+$errorBackground: color.scale(#c6898b, $lightness: 30%, $space: hsl);
 $errorBorder: #c6898b;
 
 $formInfoText: #707070;
@@ -269,4 +270,4 @@ $list-group-border-radius: 2px;
 
 // Internal bootstrap 3 variables, defined here as its used in many of our own style files
 $line-height-base:        1.428571429; // 20/14
-$line-height-computed: floor(($font-size-base * $line-height-base))
+$line-height-computed: math.floor(($font-size-base * $line-height-base))
