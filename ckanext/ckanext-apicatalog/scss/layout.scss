@@ -456,3 +456,8 @@
 .no-padding {
   padding: 0;
 }
+
+/* pull corner buttons to the edge */
+.row > div > .pull-right {
+  margin-right: math.div(-$gutterX, 2);
+}
