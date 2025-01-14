@@ -22,7 +22,6 @@
     &.btn-secondary {
         @include mixins.btn-secondary;
         font-weight: bold;
-        --bs-btn-active-bg: #e6e6e6;
     }
 
     .btn-icon--right {

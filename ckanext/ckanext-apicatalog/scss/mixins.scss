@@ -1,4 +1,5 @@
 @use "variables" as apicatalog;
+@use "sass:color";
 
 @mixin break-word {
   /* Non standard for webkit */
@@ -38,9 +39,20 @@
 }
 
 @mixin btn-primary {
-  background: apicatalog.$btn-primary-bg
+  --bs-btn-bg: #{apicatalog.$btn-primary-bg};
 }
 
 @mixin btn-secondary {
-  background: apicatalog.$btn-secondary-bg
+  --bs-btn-bg: #{apicatalog.$btn-secondary-bg};
+  --bs-btn-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-border-color: #{apicatalog.$btn-secondary-border};
+  --bs-btn-hover-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-hover-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-hover-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -35%)};
+  --bs-btn-active-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-active-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-active-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -35%)};
+  --bs-btn-focus-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-focus-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-focus-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -65%)};
 }
