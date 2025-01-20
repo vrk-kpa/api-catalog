@@ -26,10 +26,10 @@
           <form method="POST" data-module="basic-form">
             {{ h.csrf_input() }}
             <div class="bulk_process-actions">
-                <button name="bulk_action.public" value="public" class="btn btn-default" type="submit">
+                <button name="bulk_action.public" value="public" class="btn btn-secondary" type="submit">
                     {{ _('Make public') }}
                 </button>
-                <button name="bulk_action.private" value="private" class="btn btn-default" type="submit">
+                <button name="bulk_action.private" value="private" class="btn btn-secondary" type="submit">
                     {{ _('Make private') }}
                 </button>
                 <button name="bulk_action.delete" value="delete" class="btn btn-delete" type="submit">

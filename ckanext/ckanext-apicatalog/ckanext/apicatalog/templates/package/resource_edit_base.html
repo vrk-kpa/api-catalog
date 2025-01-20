@@ -1,8 +1,8 @@
 {% ckan_extends %}
 
 {% block content_action %}
-    {% link_for _('Cancel editing'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default', icon='arrow-left' %}
+    {% link_for _('Cancel editing'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-secondary', icon='arrow-left' %}
     {% if res %}
-	    {% link_for _('View resource'), named_route=pkg.type ~ '_resource.read', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='eye' %}
+	    {% link_for _('View resource'), named_route=pkg.type ~ '_resource.read', id=pkg.name, resource_id=res.id, class_='btn btn-secondary', icon='eye' %}
     {% endif %}
 {% endblock %}

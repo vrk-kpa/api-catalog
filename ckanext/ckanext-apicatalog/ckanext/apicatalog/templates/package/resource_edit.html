@@ -10,7 +10,7 @@
     <div class="col-xs-12 prelude">
         <div class="pull-right page-actions">
             {% block content_action %}
-                {% link_for _('Cancel edit'), named_route=pkg.type ~ '.resources', id=pkg.name, class_='btn btn-default', icon='arrow-left' %}
+                {% link_for _('Cancel edit'), named_route=pkg.type ~ '.resources', id=pkg.name, class_='btn btn-secondary', icon='arrow-left' %}
             {% endblock %}
             {% if self.page_primary_action() | trim %}
                 <div class="page_primary_action">

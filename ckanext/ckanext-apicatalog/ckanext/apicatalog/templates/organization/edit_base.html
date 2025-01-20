@@ -10,7 +10,7 @@
 
 {% block content_action %}
     {% if organization and h.check_access('organization_show', {'id': organization.id}) %}
-        <a href="{{ h.url_for('organization.read', id=organization.id) }}" class="btn btn-default dataset-edit-cancel">
+        <a href="{{ h.url_for('organization.read', id=organization.id) }}" class="btn btn-secondary dataset-edit-cancel">
             <i class="far fa-long-arrow-left"></i>
             {{ _('Cancel editing') }}
         </a>
