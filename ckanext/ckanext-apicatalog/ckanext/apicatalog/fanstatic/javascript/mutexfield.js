@@ -17,7 +17,7 @@ ckan.module("mutexfield", function($) {
           const handleMutex = (newValue) => {
             children.each((i, child) => {
               let mutexValue = $(child).attr('data-mutex-value');
-              $(child).toggleClass('hidden', newValue != mutexValue);
+              $(child).attr('hidden', newValue != mutexValue);
             });
           };
           handleMutex(mutexElement.val());
