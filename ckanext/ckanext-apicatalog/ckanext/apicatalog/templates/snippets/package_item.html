@@ -29,7 +29,7 @@ Example:
                 <h2 class="dataset-heading">
                     {% block heading_private %}
                       {% if package.private %}
-                        <span class="dataset-private label label-inverse">
+                        <span class="dataset-private badge badge-inverse">
                           <i class="fa fa-lock"></i>
                           {{ _('Private') }}
                         </span>
@@ -38,9 +38,9 @@ Example:
                     <a href="{{ h.url_for('dataset.read', id=package.name) }}">{{title}}</a>
                     {% block heading_meta %}
                       {% if package.get('state', '').startswith('draft') %}
-                        <span class="label label-info">{{ _('Draft') }}</span>
+                        <span class="badge bg-secondary">{{ _('Draft') }}</span>
                       {% elif package.get('state', '').startswith('deleted') %}
-                        <span class="label label-important">{{ _('Deleted') }}</span>
+                        <span class="badge bg-danger">{{ _('Deleted') }}</span>
                       {% endif %}
                       {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
                     {% endblock %}
@@ -65,7 +65,7 @@ Example:
                     <ul class="dataset-resources unstyled">
                       {% block resources_inner %}
                         {% for resource in h.dict_list_reduce(package.resources, 'format') %}
-                        <li class="label" data-format="{{ resource.lower() }}">{{ resource }}
+                        <li class="badge" data-format="{{ resource.lower() }}">{{ resource }}
                         </li>
                         {% endfor %}
                       {% endblock %}
