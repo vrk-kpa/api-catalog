@@ -27,10 +27,7 @@ $formatMediumX: 32px;
 $formatMediumY: 35px;
 $formatMediumOffsetX: -$formatMediumX;
 $formatMediumOffsetY: -62px;
-$resourceIconX: 60px;
-$resourceIconY: 65px;
-$resourceIconOffsetX: -20px;
-$resourceIconOffsetY: -220px;
+
 .ckan-icon {
     //.ie7-restore-right-whitespace;
     display: inline-block;
@@ -54,14 +51,21 @@ $resourceIconOffsetY: -220px;
     background-position: ($x * $offset) $y;
 }
 
+$icon-position: (
+ "resourceIconX": 60px,
+ "resourceIconY": 65px,
+ "resourceIconOffsetX": -20px,
+ "resourceIconOffsetY": -220px,
+);
+
 @mixin ckan-resource-icon-bg-pos($offset, $size) {
-  $w: #{$size}X;
-  $h: #{$size}Y;
-  $x: #{$size}OffsetX;
-  $y: #{$size}OffsetY;
+  $w: map.get($icon-position, "#{$size}X");
+  $h: map.get($icon-position, "#{$size}Y");
+  $x: map.get($icon-position, "#{$size}OffsetX");
+  $y: map.get($icon-position, "#{$size}OffsetY");
   width: $w;
   height: $h;
-  background-position: ($x + -100*$offset) $y;
+  background-position: ($x + -100 * $offset) $y;
   transform: scale(0.5);
   margin: -14px 0 0 -14px;
 }
@@ -304,6 +308,11 @@ $resourceIconOffsetY: -220px;
 .format-label[data-format=gif],
 .format-label[data-format*=gif] {
     @include ckan-resource-icon-bg-pos(16, "resourceIcon");
+}
+
+.format-label[data-format=data],
+.format-label[data-format*=data] {
+    @include ckan-resource-icon-bg-pos(17, "resourceIcon");
 }
 
 .format-label[data-format=wfs],
