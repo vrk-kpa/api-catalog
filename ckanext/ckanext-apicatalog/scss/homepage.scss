@@ -4,6 +4,10 @@
 @import "../vendor/bootstrap/scss/variables";
 
 .homepage {
+  /* Push footer down if too little content */
+  &.layout-1 {
+    flex: 1;
+  }
 
   .module li.dataset-item {
     background-color: white;
