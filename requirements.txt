@@ -117,7 +117,8 @@ pyjwt==2.4.0
     # via ckan
 pyparsing==3.1.2
     # via ckan
-pysolr==3.9.0
+# Pysolr upgraded manually to fix indexing error
+pysolr==3.10.0
     # via ckan
 python-dateutil==2.8.2
     # via
