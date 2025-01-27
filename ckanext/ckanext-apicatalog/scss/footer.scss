@@ -68,6 +68,7 @@
 .footer-nav {
   font-size: 16px;
   line-height: 20px;
+  justify-content: end;
 
   li,
   li > a {
@@ -83,6 +84,10 @@
     &:focus {
       background-color: unset;
     }
+  }
+
+  li > a {
+    padding: 10px 15px;
   }
 }
 
