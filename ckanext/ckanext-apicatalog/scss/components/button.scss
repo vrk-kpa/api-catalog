@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "../mixins" as mixins;
+@import "../../vendor/bootstrap/scss/buttons";
 
 .btn {
     border-radius: $border-radius__button;
