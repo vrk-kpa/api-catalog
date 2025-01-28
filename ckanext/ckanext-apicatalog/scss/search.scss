@@ -50,7 +50,6 @@
     margin-bottom: 20px;
 
     input {
-      @include box-sizing(border-box);
       margin: 0;
       width: 100%;
       height: auto;

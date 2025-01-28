@@ -26,10 +26,10 @@
           <form method="POST" data-module="basic-form">
             {{ h.csrf_input() }}
             <div class="bulk_process-actions">
-                <button name="bulk_action.public" value="public" class="btn btn-default" type="submit">
+                <button name="bulk_action.public" value="public" class="btn btn-secondary" type="submit">
                     {{ _('Make public') }}
                 </button>
-                <button name="bulk_action.private" value="private" class="btn btn-default" type="submit">
+                <button name="bulk_action.private" value="private" class="btn btn-secondary" type="submit">
                     {{ _('Make private') }}
                 </button>
                 <button name="bulk_action.delete" value="delete" class="btn btn-delete" type="submit">
@@ -64,12 +64,12 @@
                         </a>
                         {{ h.link_to(h.truncate(title, truncate_title), h.url_for(package.type ~ '.read', id=package.name)) }}
                         {% if package.get('state', '').startswith('draft') %}
-                            <span class="label label-info">{{ _('Draft') }}</span>
+                            <span class="badge bg-info">{{ _('Draft') }}</span>
                         {% elif package.get('state', '').startswith('deleted') %}
-                            <span class="label label-danger">{{ _('Deleted') }}</span>
+                            <span class="badge bg-danger">{{ _('Deleted') }}</span>
                         {% endif %}
                         {% if package.private %}
-                            <span class="label label-danger">{{ _('Private') }}</span>
+                            <span class="badge bg-danger">{{ _('Private') }}</span>
                         {% endif %}
                       {% if notes %}
                         <p>{{ notes|urlize }}</p>

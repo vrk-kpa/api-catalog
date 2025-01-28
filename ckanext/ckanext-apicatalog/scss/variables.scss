@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'sass:math';
+
 @import "./variables/palette";
 @import "./variables/spacing";
 
@@ -14,7 +17,9 @@ $spritePath: "#{$imagePath}/sprite-ckan-icons.png";
 $bgPath: "";
 $heroBgPath: "#{$imagePath}/bg.png";
 
-$font-size-base: 16px;
+// font-size-base needs to be in rem due to later calculations
+$font-size-base:              1rem !default;
+
 $label-color: #000;
 
 $headings-font-family: 'SourceSansPro-SemiBold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -154,7 +159,7 @@ $highlightHoverBackground: #fdf3d9;
 // Forms
 
 $errorText: #b55457;
-$errorBackground: lighten(#c6898b, 30%);
+$errorBackground: color.scale(#c6898b, $lightness: 30%, $space: hsl);
 $errorBorder: #c6898b;
 
 $formInfoText: #707070;
@@ -203,16 +208,16 @@ $btn-border-radius-base: 0px;
 
 $btn-primary-color: white;
 $btn-primary-bg: $suomifi-highlight-base;
-$btn-default-color: $suomifi-highlight-base;
-$btn-default-border: darken($btn-primary-bg, 5%);
-$btn-default-bg: white;
+$btn-primary-border: color.scale($btn-primary-bg, $lightness: -5%, $space: hsl);
+$btn-secondary-color: $suomifi-highlight-base;
+$btn-secondary-border: color.scale($btn-primary-bg, $lightness: -5%, $space: hsl);
+$btn-secondary-bg: white;
 $brand-primary: $suomifi-highlight-base;
 $brand-warning: $kapa-secondary-attention-color;
 
-$btn-secondary-bg: $black;
-$btn-danger-color: $btn-default-color;
-$btn-danger-border: $btn-default-border;
-$btn-danger-bg: $btn-default-bg;
+$btn-danger-color: $btn-secondary-color;
+$btn-danger-border: $btn-secondary-border;
+$btn-danger-bg: $btn-secondary-bg;
 
 $btn-success-bg: $kapa-attention-color;
 $btn-link-disabled-color: yellow;
@@ -252,7 +257,7 @@ $navbar-default-link-active-bg:            #fff;
 
 // Navbar brand label
 $navbar-default-brand-color:               $navbar-default-link-color;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-color:         color.scale($navbar-default-brand-color, $lightness: -10%, $space: hsl);
 $navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
@@ -262,3 +267,7 @@ $navbar-default-toggle-border-color:       #ddd;
 
 // List group style
 $list-group-border-radius: 2px;
+
+// Internal bootstrap 3 variables, defined here as its used in many of our own style files
+$line-height-base:        1.428571429; // 20/14
+$line-height-computed: math.floor(($font-size-base * $line-height-base))

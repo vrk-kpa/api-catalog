@@ -7,7 +7,7 @@
 
 {% block content_action %}
   {% if h.check_access('package_update', {'id':pkg.id }) %}
-    {% link_for _('Edit'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-default', icon='far fa-edit' %}
+    {% link_for _('Edit'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-secondary', icon='far fa-edit' %}
   {% endif %}
 {% endblock %}
 

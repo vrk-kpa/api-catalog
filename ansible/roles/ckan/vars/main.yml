@@ -30,6 +30,7 @@ ckan_patches:
   - { file: "fix_updating_resource_filesize" } # https://github.com/ckan/ckan/pull/7103
   - { file: "fix_resource_delete_auth" } # https://github.com/ckan/ckan/pull/7132
   - { file: "fix_missing_robotstxt"} # https://github.com/ckan/ckan/pull/8536
+  - { file: "replace_btn-default_with_btn-secondary"} # https://github.com/ckan/ckan/pull/8611
 
 files_created_by_patches:
   - { file: "/usr/lib/ckan/default/src/ckan/ckan/templates-bs3/home/robots.txt" }

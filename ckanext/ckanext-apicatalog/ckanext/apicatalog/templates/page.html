@@ -75,6 +75,27 @@
               {% snippet 'snippets/apicatalog_offcanvas-button.html' %}
             {% endblock %}
 
+            {% block secondary %}
+              {%  if not no_nav %}
+              <section class="secondary border-right {% block secondary_col %}col-sm-4{% endblock %} navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
+                  {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
+                  {#
+                  The secondary_content block can be used to add content to the
+                  sidebar of the page. This is the main block that is likely to be
+                  used within a template.
+
+                  Example:
+
+                  {% block secondary_content %}
+                  <h2>A sidebar item</h2>
+                  <p>Some content for the item</p>
+                  {% endblock %}
+                  #}
+                  {% block secondary_content %}{% endblock %}
+              </section>
+              {% endif %}
+            {% endblock %}
+
             {% block primary %}
             <div class="primary border-left {% if no_nav %}{% block primary_col_no_nav %}col-xs-8{% endblock %}{% endif %} {% if not no_nav %}{% block primary_col %}col-sm-8{% endblock %}{% endif %}">
 
@@ -101,26 +122,6 @@
 
               </div>
             {% endblock %}
-            {% block secondary %}
-                {%  if not no_nav %}
-                <section class="secondary border-right {% block secondary_col %}col-sm-4{% endblock %} navbar-offcanvas navbar-offcanvas-touch {% block secondary_class %}{% endblock %}" id="js-bootstrap-offcanvas">
-              {% snippet 'snippets/apicatalog_offcanvas-close-button.html' %}
-              {#
-              The secondary_content block can be used to add content to the
-              sidebar of the page. This is the main block that is likely to be
-              used within a template.
-
-              Example:
-
-                {% block secondary_content %}
-                  <h2>A sidebar item</h2>
-                  <p>Some content for the item</p>
-                {% endblock %}
-              #}
-              {% block secondary_content %}{% endblock %}
-            </section>
-                {% endif %}
-            {% endblock %}
           </div>
         {% endblock %}
       </div>
@@ -140,8 +141,8 @@
 {%- block styles %}
   {{ super() }}
   <link rel="stylesheet" href="/fonts/source-sans-pro/css/source-sans-pro.css" />
-  <link rel="stylesheet" href="/fonts/font-awesome/css/all.css" />
-  <link rel="stylesheet" href="/fonts/font-awesome/css/v4-shims.css" />
+  <link rel="stylesheet" href="/fonts/font-awesome/css/all.min.css" />
+  <link rel="stylesheet" href="/fonts/font-awesome/css/v4-shims.min.css" />
   {% asset 'apicatalog/main_css' %}
 {% endblock %}
 

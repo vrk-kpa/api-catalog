@@ -25,7 +25,7 @@ li:not(.active) .minusglyph {
   font-size: $font-size-base;
   font-weight: normal;
   line-height: $line-height-computed;
-  margin: -7px -$gutterX;
+  margin: -7px (-$gutterX);
   padding: 7px $gutterX;
 }
 
@@ -50,9 +50,9 @@ li:not(.active) .minusglyph {
 
 .nav.nav-facet > li.nav-item a {
   &:hover {
-    @include transition(0.2s);
     background-color: #EAF2FA;
     color: $black;
+    @include transition(0.2s);
   }
 }
 
@@ -99,9 +99,9 @@ li:not(.active) .minusglyph {
 
       a {
         color: $suomifi-text-base;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 10px 0;
         border: none;
+        display: inline-block;
 
         &:hover,
         &:focus {
@@ -126,7 +126,7 @@ li:not(.active) .minusglyph {
   height: unset;
 }
 
-.navbar-default {
+.navbar-light {
 
   background-color: $kapa-header-color;
   border-color: none;
@@ -154,6 +154,7 @@ li:not(.active) .minusglyph {
   }
 
   .navbar-nav{
+    margin: initial;
     & > li {
       & > a {
         color: $kapa-black;

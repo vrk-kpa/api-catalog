@@ -1,3 +1,6 @@
+@use "variables" as apicatalog;
+@use "sass:color";
+
 @mixin break-word {
   /* Non standard for webkit */
   word-break: break-word;
@@ -8,11 +11,8 @@
   hyphens: auto;
 }
 
-@mixin border-radius($radius){
-    @include border-top-radius($radius);
-    @include border-right-radius($radius);
-    @include border-bottom-radius($radius);
-    @include border-left-radius($radius);
+@mixin border-radius($size) {
+  border-radius: $size;
 }
 
 @mixin multiline-ellipsis($lines, $width: 100%, $line-height: $line-height-computed){
@@ -36,4 +36,23 @@
 @mixin list-unstyled {
   padding-left: 0;
   list-style: none;
+}
+
+@mixin btn-primary {
+  --bs-btn-bg: #{apicatalog.$btn-primary-bg};
+}
+
+@mixin btn-secondary {
+  --bs-btn-bg: #{apicatalog.$btn-secondary-bg};
+  --bs-btn-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-border-color: #{apicatalog.$btn-secondary-border};
+  --bs-btn-hover-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-hover-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-hover-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -35%)};
+  --bs-btn-active-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-active-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-active-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -35%)};
+  --bs-btn-focus-bg: #{color.scale(apicatalog.$btn-secondary-bg, $lightness: -10%)};
+  --bs-btn-focus-color: #{apicatalog.$btn-secondary-color};
+  --bs-btn-focus-border-color: #{color.scale(apicatalog.$btn-secondary-border, $lightness: -65%)};
 }

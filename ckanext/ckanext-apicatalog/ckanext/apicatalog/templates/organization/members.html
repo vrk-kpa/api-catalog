@@ -41,7 +41,7 @@
             {% if h.check_access('organization_member_create', {'id': c.group_dict.id }) and h.check_access('organization_member_delete', {'id': c.group_dict.id }) %}
             <div class="btn-group pull-right">
               {% set user_edit_url = h.url_for('organization.member_new', group_type=c.group_dict.type, id=c.group_dict.id, is_organization=True, user=username) %}
-              <a class="btn btn-default btn-sm" href="{{ user_edit_url }}"
+              <a class="btn btn-secondary btn-sm" href="{{ user_edit_url }}"
                  data-module="modal-dialog"
                  data-module-content-id="edit-members-dialog"
                  data-module-title="{{ _('Edit member role') }}"

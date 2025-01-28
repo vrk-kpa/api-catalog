@@ -148,7 +148,7 @@
   {% endfor %}
 
   {% call form.input_multiple('ip_address_list', label=_('IP address'), value=values.ip_address_list, is_required=True, placeholder=_('Write the IP address'), description=_('Select one or several IP addresses of your organization\'s security servers'), add_input='add-ip-address', error=[errors.ip_address_list]) %}
-    <button class="btn btn-default" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
+    <button class="btn btn-secondary" name="add-ip-address"><i class="fa fa-plus"></i>{{ _('Add an IP address') }}</button>
   {% endcall %}
 
   <div class="select-wrapper">

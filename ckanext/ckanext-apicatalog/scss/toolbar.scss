@@ -25,10 +25,7 @@
 
 .breadcrumb {
   > li {
-    + li:before {
-      content: "#{$breadcrumb-separator}\00a0";
-      color: $breadcrumb-active-color;
-    }
+    --bs-breadcrumb-divider: ">";
   }
 }
 
@@ -57,8 +54,8 @@
   background-color: #f9f9f9;
   border-bottom: 1px solid $moduleHeadingBorderColor;
   @include border-radius(0 3px 0 0);
-  @media(max-width: $screen-xs-max) {
-  @include border-radius(0 0 0 0);
+  @include media-breakpoint-down(sm) {
+    @include border-radius(0 0 0 0);
   }
   .nav-tabs {
     float: left;
@@ -102,7 +99,7 @@
   background-color: transparent;
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(sm) {
   .page-header {
     padding: 0px 10px;
   }

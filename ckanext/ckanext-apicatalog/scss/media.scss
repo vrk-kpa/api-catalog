@@ -1,9 +1,6 @@
 @import "mixins";
 
 .kapa-item {
-  &:first-child {
-    margin-top: 10px;
-  }
   .media-body {
     padding-left: 10px;
   }

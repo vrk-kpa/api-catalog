@@ -1,24 +1,25 @@
-diff --git a/ckan/public-bs3/base/vendor/webassets.yml b/ckan/public-bs3/base/vendor/webassets.yml
-index 40e09173a..393ae2cf5 100644
---- a/ckan/public-bs3/base/vendor/webassets.yml
-+++ b/ckan/public-bs3/base/vendor/webassets.yml
-@@ -4,11 +4,6 @@ select2-css:
+diff --git a/ckan/public/base/vendor/webassets.yml b/ckan/public/base/vendor/webassets.yml
+index 2ff63043c..3d226878c 100644
+--- a/ckan/public/base/vendor/webassets.yml
++++ b/ckan/public/base/vendor/webassets.yml
+@@ -4,12 +4,6 @@ select2-css:
    contents:
      - select2/select2.css
-
+ 
 -fontawesome:
 -  output: vendor/%(version)s_fontawesome.css
 -  filters: cssrewrite
 -  contents:
 -    - fontawesome-free/css/all.css
-
+-
  jquery:
    filters: rjsmin
-@@ -39,7 +34,6 @@ bootstrap:
+   output: vendor/%(version)s_jquery.js
+@@ -41,7 +35,6 @@ bootstrap:
    output: vendor/%(version)s_bootstrap.js
    extra:
      preload:
 -      - vendor/fontawesome
        - vendor/jquery
    contents:
-     - bootstrap/javascripts/bootstrap.js
+     - bootstrap/js/bootstrap.js

@@ -1,5 +1,7 @@
-@import "../vendor/bootstrap-sass/stylesheets/bootstrap/mixins";
-@import "../vendor/bootstrap-sass/stylesheets/bootstrap/variables";
+@use "sass:math";
+@import "../vendor/bootstrap/scss/functions";
+@import "../vendor/bootstrap/scss/mixins";
+@import "../vendor/bootstrap/scss/variables";
 
 @import "mixins";
 
@@ -206,13 +208,13 @@
   }
 
   &__actions {
-    margin-left: -$grid-gutter-width / 4;
-    margin-right: -$grid-gutter-width / 4;
+    margin-left: math.div(-$grid-gutter-width, 4);
+    margin-right: math.div(-$grid-gutter-width, 4);
     display: flex;
 
     .btn {
-      margin-left: $grid-gutter-width / 4;
-      margin-right: $grid-gutter-width / 4;
+      margin-left: math.div($grid-gutter-width, 4);
+      margin-right: math.div($grid-gutter-width, 4);
     }
   }
 
@@ -225,7 +227,7 @@
       margin-top: 0;
 
       i {
-        margin-right: $grid-gutter-width / 4;
+        margin-right: math.div($grid-gutter-width, 4);
       }
     }
 

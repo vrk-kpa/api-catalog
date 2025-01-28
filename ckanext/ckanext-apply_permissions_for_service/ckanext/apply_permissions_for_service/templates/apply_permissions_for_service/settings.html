@@ -4,7 +4,7 @@
 
 
 {% block content_action %}
-{% link_for _('Exit the settings'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default' %}
+{% link_for _('Exit the settings'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-secondary' %}
 {% endblock %}
 
 {% block primary_content %}
@@ -143,8 +143,8 @@
             </div>
             <div class="module__actions">
               <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
-              <a class="btn btn-default" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Cancel') }}</a>
-              <a data-mutex-value="email" class="btn btn-default btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', target_subsystem_id=pkg.name) }}" target="_blank">{{ _('Preview application') }}</a>
+              <a class="btn btn-secondary" href="{{ h.url_for('apply_permissions.permission_application_settings', subsystem_id=pkg.name) }}">{{ _('Cancel') }}</a>
+              <a data-mutex-value="email" class="btn btn-secondary btn--preview" href="{{ h.url_for('apply_permissions.preview_permission_application', target_subsystem_id=pkg.name) }}" target="_blank">{{ _('Preview application') }}</a>
             </div>
           </div>
         </div>

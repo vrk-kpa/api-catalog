@@ -30,10 +30,10 @@ function bootstrapDatepickerCss() {
   
 }
 
-const bootstrapSassPath = './node_modules/bootstrap-sass/assets/stylesheets';
+const bootstrapSassPath = './node_modules/bootstrap/scss';
 function bootstrapSass() {
     return src(bootstrapSassPath + '/**/*')
-        .pipe(dest("vendor/bootstrap-sass/stylesheets"))
+        .pipe(dest("vendor/bootstrap/scss"))
 }
 
 exports.fontAwesomeCss = fontAwesomeCss;

@@ -1,6 +1,17 @@
+@use "sass:math";
+@use "../mixins" as mixins;
+@import "../../vendor/bootstrap/scss/buttons";
+
 .btn {
     border-radius: $border-radius__button;
     font-weight: normal;
+
+    --bs-btn-border-width: 1px;
+
+    &:focus {
+        box-shadow: initial;
+    }
+    
 
     &.btn-primary {
         background: linear-gradient(0deg, $suomifi-highlight-dark, $suomifi-highlight-base);
@@ -11,12 +22,17 @@
         }
     }
 
-    &.btn-default {
+    &.btn-secondary {
+        @include mixins.btn-secondary;
         font-weight: bold;
+
+        &:focus {
+            background-color: initial;
+        }
     }
 
     .btn-icon--right {
-        margin-left: $grid-gutter-width / 4;
+        margin-left: math.div($grid-gutter-width, 4);
     }
 
     &.btn-outline-primary {

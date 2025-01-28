@@ -13,7 +13,7 @@
             <p>{% trans %}No problem, use our password recovery form to reset it.{% endtrans %}</p>
             <p class="action">
                 {% block help_forgotten_button %}
-                    <a class="btn btn-default" href="{{ h.url_for('user.request_reset') }}">{{ _('Forgot your password?') }}</a>
+                    <a class="btn btn-secondary" href="{{ h.url_for('user.request_reset') }}">{{ _('Forgot your password?') }}</a>
                 {% endblock %}
             </p>
         </div>

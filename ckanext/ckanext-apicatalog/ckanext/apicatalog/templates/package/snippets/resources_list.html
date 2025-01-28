@@ -14,7 +14,7 @@ Example:
     <h2 class="visual-h3 flex">{{ title }}</h2>
     {% if h.check_access('resource_create', {'package_id': pkg['id']}) and resource_type == "attachment" %}
       <div class="flex-right">
-        {% link_for _('Add new resource'), named_route=pkg.type ~ '_resource.new', id=pkg.name, class_='btn btn-default' %}
+        {% link_for _('Add new resource'), named_route=pkg.type ~ '_resource.new', id=pkg.name, class_='btn btn-secondary' %}
       </div>
     {% endif %}
     {% if h.check_access('package_update', {'id': pkg['id']}) and resource_type == "service" %}

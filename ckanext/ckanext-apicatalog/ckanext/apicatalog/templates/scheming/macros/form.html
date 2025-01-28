@@ -44,11 +44,11 @@ description - Additional description text between the label and the input
 
 #}
 
-{% macro input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], attrs={'class': 'form-control'}, is_required=false, description="") %}
+{% macro input(name, id='', label='', value='', placeholder='', type='text', error="", classes=[], input_classes=['form-control'], attrs={}, is_required=false, description="") %}
 {%- set extra_html = caller() if caller -%}
 
 {% call input_block(id or name, label or name, error, classes, extra_html=extra_html, is_required=is_required, description=description) %}
-<input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" {{ form.attributes(attrs) }} />
+<input id="{{ id or name }}" type="{{ type }}" name="{{ name }}" value="{{ value | empty_and_escape }}" placeholder="{{ placeholder }}" class="{{ " " ~ input_classes | join(' ') }}" {{ form.attributes(attrs) }} />
 {% endcall %}
 {% endmacro %}
 

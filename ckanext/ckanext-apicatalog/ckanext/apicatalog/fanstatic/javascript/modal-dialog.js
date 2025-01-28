@@ -18,7 +18,7 @@ this.ckan.module('modal-dialog', function (jQuery) {
         '<div class="modal-body"></div>',
         '<div class="modal-footer">',
         '<button class="btn btn-primary"></button>',
-        '<button class="btn btn-default btn-cancel"></button>',
+        '<button class="btn btn-secondary btn-cancel"></button>',
         '</div>',
         '</div>',
         '</div>',

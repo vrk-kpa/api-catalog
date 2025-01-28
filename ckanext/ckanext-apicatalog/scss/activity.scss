@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .activity {
 	.item {
 		p {
@@ -15,5 +17,5 @@
 
 // colors
 .activity .item {
-	&.changed-package-privacy .icon { background-color: adjust-hue($activityColorModify, 90); }
+	&.changed-package-privacy .icon { background-color: color.adjust($activityColorModify, $hue: 90deg); }
 }
