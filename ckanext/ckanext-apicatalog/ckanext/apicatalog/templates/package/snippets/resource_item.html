@@ -5,7 +5,7 @@
 <li class="resource-item" data-id="{{ res.id }}">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-9">
+      <div class="col-9">
         <a href="{{ url }}" title="{{ res.name or res.description }}">
           <div class="container-fluid">
             {% block resource_item_title %}
@@ -29,7 +29,7 @@
           </div>
         </a>
       </div>
-      <div class="col-xs-3 hidden-xs">
+      <div class="col-3 d-none d-sm-block">
       <div class="container-fluid resource-download">
         {% block resource_item_explore %}
             {% if not url_is_edit %}
