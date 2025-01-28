@@ -25,10 +25,7 @@
 
 .breadcrumb {
   > li {
-    + li:before {
-      content: "#{$breadcrumb-separator}\00a0";
-      color: $breadcrumb-active-color;
-    }
+    --bs-breadcrumb-divider: ">";
   }
 }
 
