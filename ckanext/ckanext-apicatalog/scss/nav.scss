@@ -160,5 +160,22 @@ li:not(.active) .minusglyph {
         color: $kapa-black;
       }
     }
+
+    .dropdown {
+      background: initial;
+      padding: 0;
+
+      &:active {
+        background: initial;
+        box-shadow: initial;
+      }
+
+      .dropdown-item {
+        background: initial;
+        &:active {
+          background: initial;
+        }
+      }
+    }
   }
 }
