@@ -70,7 +70,7 @@
                     <li {% if page_name == page.name %}class="active"{% endif %}>{{ h.literal('<a href="/%s/%s/%s">%s</a>' % (lang, type_, page.name, page_title)) }}</li>
                   {% endfor %}
                   {% if submenu_content | length > 2 %}
-                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('More options') }}<span class="caret"></span></a>
+                  <li class="btn btn-primary dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('More options') }}</a>
                        <ul class="dropdown-menu">
                            {% for page in submenu_content[2:] %}
                                {% set type_ = 'blog' if page['page_type'] == 'blog' else 'pages' %}
