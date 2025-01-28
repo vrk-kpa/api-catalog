@@ -6,6 +6,8 @@
     border-radius: $border-radius__button;
     font-weight: normal;
 
+    --bs-btn-border-width: 1px;
+
     &:focus {
         box-shadow: initial;
     }
@@ -23,6 +25,10 @@
     &.btn-secondary {
         @include mixins.btn-secondary;
         font-weight: bold;
+
+        &:focus {
+            background-color: initial;
+        }
     }
 
     .btn-icon--right {
