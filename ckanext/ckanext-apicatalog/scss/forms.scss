@@ -289,12 +289,15 @@ textarea {
     font-family: $headings-font-family;
   }
 
-  button.close {
+  button.btn-close {
     font-size: 16px;
     color: $suomifi-text-base;
     opacity: 1;
     line-height: 30px;
     margin-right: 20px;
+    background: none;
+    width: auto;
+    padding-top: 0;
 
     i.far,
     i.fas,
