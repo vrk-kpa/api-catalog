@@ -57,5 +57,5 @@
   {% set symbol_previous %}
     <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
   {% endset %}
-  {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', all_orgs=org_list.all_orgs or '', link_attr={'aria-label': _('Go to page')}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
+  {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', all_orgs=org_list.all_orgs or '', link_attr={'aria-label': _('Go to page'), 'class': 'page-link'}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
 {% endblock %}
