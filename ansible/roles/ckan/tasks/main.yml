@@ -122,8 +122,12 @@
 - name: Ensure harvester cronjob
   cron: name="Harvester run" minute="*/15" job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" harvester run"
 
-- name: Ensure xroad organization data cronjob
-  cron: name="X-Road organization data update" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad update-xroad-organizations"
+- name: Remove xroad organization data cronjob
+  cron:
+    name: "X-Road organization data update"
+    special_time: daily
+    job: "{{ virtualenv }}/bin/ckan --config {{ ckan_ini }} xroad update-xroad-organizations"
+    state: absent
 
 - name: Ensure tracking cronjob
   cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" tracking update && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" search-index rebuild -r && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" sitesearch rebuild organizations"
