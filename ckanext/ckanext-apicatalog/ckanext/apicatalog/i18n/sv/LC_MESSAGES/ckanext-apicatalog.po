@@ -6,6 +6,7 @@
 # 
 # Translators:
 # Zharktas <jari-pekka.voutilainen@gofore.com>, 2025
+# Teemu Erkkola <teemu.erkkola@iki.fi>, 2025
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-02-03 10:59+0000\n"
 "PO-Revision-Date: 2024-07-29 09:39+0000\n"
-"Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2025\n"
+"Last-Translator: Teemu Erkkola <teemu.erkkola@iki.fi>, 2025\n"
 "Language-Team: Swedish (https://app.transifex.com/avoindata/teams/7979/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1580,6 +1581,11 @@ msgid ""
 "through-the-suomi-fi-data-exchange-layer\">instructions on implementing "
 "services</a> and contact the service provider."
 msgstr ""
+"Om du vill ta i bruk en tjänst, bekanta dig med <a "
+"href=\"https://kehittajille.suomi.fi/tjanster/informationsleden/stodartiklar/datautbyte/ta-"
+"i-bruk-en-tjanst-som-tillhandahalls-via-suomi-fi-"
+"informationsleden\">anvisningarna om att ta i bruk tjänster</a> och kontakta"
+" den organisation som tillhandahåller tjänsten."
 
 #: ckanext/apicatalog/templates/package/search.html:7
 msgid "{0} datasets"
