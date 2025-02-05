@@ -23,7 +23,7 @@
 {% block groups_search_form %}{% endblock %}
 {% block packages_list %}
   {% if page.items %}
-    {{ h.snippet('snippets/package_list.html', packages=page.items) }}
+    {% snippet 'snippets/package_list.html', packages=page.items  %}
   {% else %}
     <p class="empty">
       {{ _('There are currently no APIs for this organization') }}.
