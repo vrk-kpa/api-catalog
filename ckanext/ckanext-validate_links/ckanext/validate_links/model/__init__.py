@@ -11,6 +11,7 @@ import ckan.model as model
 from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
+from ckan.plugins import toolkit
 
 link_validation_result_table = None
 link_validation_referrer_table = None
@@ -23,7 +24,13 @@ __all__ = [
 log = logging.getLogger(__name__)
 
 
-class LinkValidationResult(DomainObject):
+class LinkValidationResult(toolkit.BaseModel):
+    __tablename__ = 'link_validation_result'
+    id = Column('id', types.UnicodeText, primary_key=True, default=make_uuid)
+    type = Column('type', types.UnicodeText, default=None)
+    timestamp = Column('timestamp', types.DateTime, default=datetime.datetime.utcnow)
+    url = Column('url', types.UnicodeText, nullable=False)
+    reason = Column('reason', types.UnicodeText, nullable=False)
     @classmethod
     def get_since(cls, t):
         return (model.Session.query(cls)
@@ -39,55 +46,13 @@ class LinkValidationResult(DomainObject):
                 .all())
 
 
-class LinkValidationReferrer(DomainObject):
-    pass
-
-
-def setup():
-    if link_validation_result_table is None:
-        define_tables()
-        log.debug('Link validation tables defined in memory')
-
-    if not link_validation_result_table.exists():
-        link_validation_result_table.create()
-        link_validation_referrer_table.create()
-        log.debug('Link validation tables created')
-    else:
-        log.debug('Link validation tables already exist')
-
-
-def define_tables():
-    global link_validation_result_table, link_validation_referrer_table
-
-    if link_validation_result_table is not None:
-        return
-
-    link_validation_result_columns = (
-        Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-        Column('type', types.UnicodeText, default=None),
-        Column('timestamp', types.DateTime, default=datetime.datetime.utcnow),
-        Column('url', types.UnicodeText, nullable=False),
-        Column('reason', types.UnicodeText, nullable=False),
-    )
-    link_validation_result_table = Table('link_validation_result', metadata,
-                                         *link_validation_result_columns)
-
-    link_validation_referrer_columns = (
-        Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-        Column('result_id', types.UnicodeText, ForeignKey('link_validation_result.id')),
-        Column('url', types.UnicodeText, nullable=False),
-        Column('organization', types.UnicodeText, nullable=True),
-    )
-    link_validation_referrer_table = Table('link_validation_referrer', metadata,
-                                           *link_validation_referrer_columns)
-
-    mapper(LinkValidationResult, link_validation_result_table)
-
-    mapper(LinkValidationReferrer, link_validation_referrer_table,
-           properties={
-               'result': relation(LinkValidationResult, backref='referrers'),
-               }
-           )
+class LinkValidationReferrer(toolkit.BaseModel):
+    __tablename__ = 'link_validation_referrer'
+    id = Column('id', types.UnicodeText, primary_key=True, default=make_uuid)
+    result_id = Column('result_id', types.UnicodeText, ForeignKey('link_validation_result.id'))
+    url = Column('url', types.UnicodeText, nullable=False)
+    organization = Column('organization', types.UnicodeText, nullable=True)
+    result = relation(LinkValidationResult, backref='referrers')
 
 
 def clear_tables():
@@ -99,23 +64,4 @@ def clear_tables():
         Session.rollback()
         log.error("Clearing LinkValidation tables failed")
     log.info("LinkValidation tables cleared")
-
-
-def migrate():
-    def add_link_validation_result_reason():
-        q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_result';"
-        current_cols = list([m[0] for m in Session.execute(q)])
-        if "reason" not in current_cols:
-            Session.execute("ALTER TABLE link_validation_result ADD COLUMN reason "
-                            "character varying NOT NULL default 'Reason was not stored in database.'")
-            Session.commit()
-
-    def add_link_validation_referrer_organization():
-        q = "select column_name from INFORMATION_SCHEMA.COLUMNS where table_name = 'link_validation_referrer';"
-        current_cols = list([m[0] for m in Session.execute(q)])
-        if "organization" not in current_cols:
-            Session.execute("ALTER TABLE link_validation_referrer ADD COLUMN organization character varying")
-            Session.commit()
-
-    add_link_validation_result_reason()
-    add_link_validation_referrer_organization()
+    

@@ -9,7 +9,7 @@ import urllib.parse as parse
 import re
 from typing import Optional
 
-from ckanext.validate_links.model import define_tables, clear_tables, LinkValidationResult, LinkValidationReferrer
+from ckanext.validate_links.model import LinkValidationResult, LinkValidationReferrer, clear_tables
 import ckan.model as model
 import ckan.lib.mailer as mailer
 from ckan.common import config
@@ -32,28 +32,12 @@ def links():
 
 
 @links.command()
-def initdb():
-    'Creates the necessary database tables'
-    from ckanext.validate_links.model import setup as db_setup
-    db_setup()
-
-
-@links.command()
 def clear():
-    define_tables()
     clear_tables()
 
 
 @links.command()
-def migrate():
-    from ckanext.validate_links.model import migrate
-    define_tables()
-    migrate()
-
-
-@links.command()
 def crawl():
-    define_tables()
     clear_tables()
 
     site_url = config.get('ckan.site_url')

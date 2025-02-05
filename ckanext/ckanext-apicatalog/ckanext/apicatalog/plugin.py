@@ -963,21 +963,9 @@ class ApicatalogPlugin(plugins.SingletonPlugin, DefaultTranslation, DefaultPermi
 
 
 class Apicatalog_AdminDashboardPlugin(plugins.SingletonPlugin):
-    plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IBlueprint)
 
-    # IConfigurer
-
-    def update_config(self, config):
-        toolkit.add_ckan_admin_tab(config, 'admin_dashboard.read', 'Dashboard')
-        toolkit.add_ckan_admin_tab(config, 'admin_useradd.read', 'Add user')
-        toolkit.add_ckan_admin_tab(config, 'admin_stats.read', 'Statistics')
-        toolkit.add_ckan_admin_tab(config, 'xroad.graphs', 'X-Road graphs')
-        toolkit.add_ckan_admin_tab(config, 'xroad.errors', 'X-Road errors')
-        toolkit.add_ckan_admin_tab(config, 'xroad.services', 'X-Road services')
-        toolkit.add_ckan_admin_tab(config, 'xroad.stats', 'X-Road statistics')
-        toolkit.add_ckan_admin_tab(config, 'xroad.distinct_service_stats', 'X-Road distinct service statistics')
     # IAuthFunctions
 
     def get_auth_functions(self):
