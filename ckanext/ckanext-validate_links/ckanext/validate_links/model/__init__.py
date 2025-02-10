@@ -40,7 +40,7 @@ class LinkValidationResult(toolkit.BaseModel):
     @classmethod
     def get_for_organization_since(cls, organization_id, t):
         return (model.Session.query(cls)
-                .join(link_validation_referrer_table)
+                .join(LinkValidationReferrer)
                 .filter(LinkValidationReferrer.organization == organization_id)
                 .filter(cls.timestamp > t)
                 .all())
