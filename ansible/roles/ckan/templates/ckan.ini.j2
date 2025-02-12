@@ -14,6 +14,8 @@ use = egg:ckan
 full_stack = true
 cache_dir = /tmp/%(ckan.site_id)s/
 
+SECRET_KEY = {{ secret.ckan_config.beaker_session_secret }}
+
 beaker.session.key = ckan
 beaker.session.secret = {{ secret.ckan_config.beaker_session_secret }}
 beaker.session.secure = True
