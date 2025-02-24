@@ -180,7 +180,7 @@ def ignore_not_package_maintainer(key, data, errors, context):
     if 'package' not in context:
         return
 
-    if not toolkit.check_access('package_update', context, {'id': context['package'].id}):
+    if toolkit.h.check_access('package_update', {'id': context['package'].id}):
         data.pop(key)
 
 
