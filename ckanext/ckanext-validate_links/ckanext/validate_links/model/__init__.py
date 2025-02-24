@@ -3,14 +3,12 @@
 import logging
 import datetime
 
-from sqlalchemy import Table, Column, ForeignKey, types
+from sqlalchemy import Column, ForeignKey, types
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm import relation
 
 import ckan.model as model
-from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
-from ckan.model.domain_object import DomainObject
 from ckan.plugins import toolkit
 
 link_validation_result_table = None
@@ -31,6 +29,7 @@ class LinkValidationResult(toolkit.BaseModel):
     timestamp = Column('timestamp', types.DateTime, default=datetime.datetime.utcnow)
     url = Column('url', types.UnicodeText, nullable=False)
     reason = Column('reason', types.UnicodeText, nullable=False)
+
     @classmethod
     def get_since(cls, t):
         return (model.Session.query(cls)
@@ -56,12 +55,11 @@ class LinkValidationReferrer(toolkit.BaseModel):
 
 
 def clear_tables():
-    Session.query(LinkValidationReferrer).delete()
-    Session.query(LinkValidationResult).delete()
+    model.Session.query(LinkValidationReferrer).delete()
+    model.Session.query(LinkValidationResult).delete()
     try:
-        Session.commit()
+        model.Session.commit()
     except InvalidRequestError:
-        Session.rollback()
+        model.Session.rollback()
         log.error("Clearing LinkValidation tables failed")
     log.info("LinkValidation tables cleared")
-    
