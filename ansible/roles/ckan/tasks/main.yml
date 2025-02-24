@@ -125,9 +125,6 @@
 - name: Ensure xroad organization data cronjob
   cron: name="X-Road organization data update" special_time=daily job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" xroad update-xroad-organizations"
 
-- name: Ensure tracking cronjob
-  cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" tracking update && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" search-index rebuild -r && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" sitesearch rebuild organizations"
-
 - name: Ensure link validation cronjob
   cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" links crawl"
 
