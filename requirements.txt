@@ -33,7 +33,7 @@ charset-normalizer==3.3.2
     #   ckan
     #   requests
 # Removed manually, ckan is installed with ansible as this convention does not allow editable installs
-#ckan[requirements]==2.11.1
+#ckan[requirements]==2.11.2
     # via -r requirements.in
 click==8.1.7
     # via
@@ -74,7 +74,7 @@ itsdangerous==2.2.0
     #   ckan
     #   flask
     #   flask-wtf
-jinja2==3.1.4
+jinja2==3.1.5
     # via
     #   ckan
     #   flask
