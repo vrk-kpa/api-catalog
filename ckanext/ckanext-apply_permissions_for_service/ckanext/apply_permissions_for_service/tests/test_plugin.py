@@ -11,7 +11,7 @@ from .fixtures import apply_permissions_for_service_setup  # noqa
 # import ckan.tests.helpers as helpers
 
 
-@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
+@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'scheming_organizations', 'apply_permissions_for_service_setup')
 class TestApplyPermissionsForServicePlugin():
     def test_user_creates_application(self):
         organization1 = Organization()
