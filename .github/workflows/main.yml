@@ -126,6 +126,7 @@ jobs:
           pip install -r dev-requirements.txt
           pip install -e .
           # Add dummy css file for tests that require UI
+          mkdir -p ckanext/apicatalog/fanstatic/apicatalog
           touch ckanext/apicatalog/fanstatic/apicatalog/main.css
 
           cd ../ckanext-harvest
