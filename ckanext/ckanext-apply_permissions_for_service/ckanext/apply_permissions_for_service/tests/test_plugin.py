@@ -13,7 +13,7 @@ from .fixtures import apply_permissions_for_service_setup  # noqa
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
 @pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog'
-                         'scheming_datasets scheming_organizations fluent markdown_editor')
+                         ' scheming_datasets scheming_organizations fluent markdown_editor')
 def test_user_creates_application():
     organization1 = Organization()
 
@@ -61,7 +61,7 @@ def test_user_creates_application():
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
 @pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog'
-                         'scheming_datasets scheming_organizations fluent markdown_editor')
+                         ' scheming_datasets scheming_organizations fluent markdown_editor')
 def test_user_creates_application_with_inconsistent_subsystem():
     organization1 = Organization()
 
@@ -105,7 +105,7 @@ def test_user_creates_application_with_inconsistent_subsystem():
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
 @pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog'
-                         'scheming_datasets scheming_organizations fluent markdown_editor')
+                         ' scheming_datasets scheming_organizations fluent markdown_editor')
 def test_user_creates_application_with_an_invalid_ip_list():
     organization1 = Organization()
 
@@ -148,7 +148,7 @@ def test_user_creates_application_with_an_invalid_ip_list():
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
 @pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog'
-                         'scheming_datasets scheming_organizations fluent markdown_editor')
+                         ' scheming_datasets scheming_organizations fluent markdown_editor')
 def test_application_format():
     user1 = User()
     org1_users = [{"name": user1["name"], "capacity": "admin"}]
@@ -221,7 +221,7 @@ def test_application_format():
 
 @pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
 @pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog'
-                         'scheming_datasets scheming_organizations fluent markdown_editor')
+                         ' scheming_datasets scheming_organizations fluent markdown_editor')
 def test_application_with_intermediate_organization(drop_db, migrate_db_for):
 
     migrate_db_for('apply_permissions_for_service')
