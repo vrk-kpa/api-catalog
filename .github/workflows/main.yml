@@ -157,7 +157,6 @@ jobs:
           
           ckan -c ckanext/ckanext-xroad_integration/test.ini db init
           ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p harvest
-          ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p activity
           ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p pages
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 

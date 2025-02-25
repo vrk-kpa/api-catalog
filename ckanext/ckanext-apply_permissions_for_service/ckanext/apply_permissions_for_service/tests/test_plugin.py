@@ -11,7 +11,8 @@ from .fixtures import apply_permissions_for_service_setup  # noqa
 # import ckan.tests.helpers as helpers
 
 
-@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'scheming_organizations', 'apply_permissions_for_service_setup')
+@pytest.mark.usefixtures('with_plugins', 'clean_db', 'clean_index', 'apply_permissions_for_service_setup')
+@pytest.mark.ckan_config('ckan.plugins', 'apply_permissions_for_service apicatalog scheming_datasets scheming_organizations fluent markdown_editor')
 class TestApplyPermissionsForServicePlugin():
     def test_user_creates_application(self):
         organization1 = Organization()
