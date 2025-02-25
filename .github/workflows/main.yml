@@ -22,12 +22,13 @@ jobs:
     name: Test apicatalog extensions
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -83,12 +84,13 @@ jobs:
     name: Test xroad integration
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -106,7 +108,7 @@ jobs:
     steps:
       - name: Add build dependencies to container
         run: |
-          apk add --update --no-progress \
+          apt install \
           tar
       - uses: actions/checkout@v4
         with:
@@ -123,6 +125,9 @@ jobs:
           cd ckanext/ckanext-apicatalog
           pip install -r dev-requirements.txt
           pip install -e .
+          # Add dummy css file for tests that require UI
+          mkdir -p ckanext/apicatalog/fanstatic/apicatalog
+          touch ckanext/apicatalog/fanstatic/apicatalog/main.css
 
           cd ../ckanext-harvest
           pip install -r pip-requirements.txt
@@ -135,6 +140,9 @@ jobs:
           pip install -e .
 
           cd ../ckanext-markdown_editor
+          pip install -e .
+
+          cd ../ckanext-pages
           pip install -e .
 
           cd ../ckanext-xroad_integration
@@ -152,6 +160,8 @@ jobs:
           
           ckan -c ckanext/ckanext-xroad_integration/test.ini db init
           ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p harvest
+          ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p activity
+          ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p pages
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
           # Disable plugins in test.ini

@@ -28,10 +28,7 @@
   shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p harvest chdir={{ virtualenv }}
 
 - name: Initialize Link Validation database
-  shell: ./bin/ckan --config {{ ckan_ini }} links initdb chdir={{ virtualenv }}
-
-- name: Migrate Link Validation database
-  shell: ./bin/ckan --config {{ ckan_ini }} links migrate chdir={{ virtualenv }}
+  shell: ./bin/ckan --config {{ ckan_ini }} db upgrade -p validate_links chdir={{ virtualenv }}
 
 - name: Initialize users for organization database
   shell: ./bin/ckan --config "{{ ckan_ini }}" apicatalog-database init chdir={{ virtualenv }}

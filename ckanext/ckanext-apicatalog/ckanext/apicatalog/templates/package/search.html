@@ -19,7 +19,7 @@
       {% block form %}{% endblock %}
       {% block package_search_results_list %}
       <div class="fill-module">
-        {{ h.snippet('snippets/package_list.html', packages=page.items) }}
+        {% snippet 'snippets/package_list.html', packages=page.items  %}
       </div>
       {% endblock %}
     </div>
@@ -80,6 +80,6 @@
 
 {% block page_primary_action %}
   {% if h.check_access('package_create') %}
-    {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
+    {% snippet  'snippets/add_dataset.html', dataset_type=dataset_type  %}
   {% endif %}
 {% endblock %}
