@@ -22,12 +22,12 @@ jobs:
     name: Test apicatalog extensions
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -83,12 +83,12 @@ jobs:
     name: Test xroad integration
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
