@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
         image: ckan/ckan-solr:2.11-solr9
@@ -84,6 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
         image: ckan/ckan-solr:2.11-solr9
@@ -106,7 +108,7 @@ jobs:
     steps:
       - name: Add build dependencies to container
         run: |
-          apk add --update --no-progress \
+          apt install \
           tar
       - uses: actions/checkout@v4
         with:
