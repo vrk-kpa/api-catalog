@@ -1,8 +1,9 @@
-index 4a4f78fe2..1b67fe906 100644
---- a/ckan/public-bs3/base/javascript/plugins/jquery.slug-preview.js
-+++ b/ckan/public-bs3/base/javascript/plugins/jquery.slug-preview.js
+diff --git a/ckan/public/base/javascript/plugins/jquery.slug-preview.js b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
+index 4a4f78fe2..222fd700e 100644
+--- a/ckan/public/base/javascript/plugins/jquery.slug-preview.js
++++ b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
 @@ -40,11 +40,12 @@
-
+ 
        preview.find('strong').html(required + ' ' + options.i18n['URL'] + ':');
        preview.find('.slug-preview-prefix').text(options.prefix);
 +      /*
@@ -11,8 +12,8 @@ index 4a4f78fe2..1b67fe906 100644
          element.show();
          preview.hide();
 -      });
-+      });'*/
-
++      });*/
+ 
        setValue();
        field.on('change', setValue);
 @@ -70,7 +71,7 @@

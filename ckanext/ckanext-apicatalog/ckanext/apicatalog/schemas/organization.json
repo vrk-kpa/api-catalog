@@ -4,6 +4,12 @@
   "about_url": "http://github.com/vrk-kpa/apicatalog/ckanext/ckanext-apicatalog_scheming",
   "fields": [
     {
+      "field_name":  "id",
+      "display_snippet": null,
+      "form_snippet": null,
+      "validators": "ignore_missing empty_if_not_sysadmin unicode_safe"
+    },
+    {
       "field_name": "title_translated",
       "label": "Name",
       "group_title": "Organization name",
