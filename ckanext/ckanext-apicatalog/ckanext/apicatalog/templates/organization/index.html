@@ -18,24 +18,39 @@
 
 {% set sorting = [(_('Service providers first'), ''), (_('Name Ascending'), 'title asc'), (_('Name Descending'), 'title desc')] %}
 
-{% block organizations_search_form %}
-{% endblock %}
-
-{% block organizations_list %}
-  {% if org_list.organizations or request.args %}
-    {% if org_list.organizations %}
-    <div class="fill-module">
-      {% snippet "organization/snippets/organization_list.html", organizations=org_list.organizations %}
-    </div>
-    {% endif %}
-  {% else %}
-    <p class="empty">
-      {{ _('There are currently no organizations for this site') }}.
-      {% if h.check_access('organization_create') %}
-        {% link_for _('How about creating one?'), controller='organization', action='new' %}.
+{% block primary_content %}
+<section class="module">
+  <div class="module-content">
+    <h1 class="hide-heading">{% block page_heading %}{{ h.humanize_entity_type('organization', group_type, 'page title') or _('Organizations') }}{% endblock %}</h1>
+    {% block organizations_search_form %}{% endblock %}
+    {% block organizations_list %}
+      {% if org_list.organizations or request.args %}
+        {% if org_list.organizations %}
+        <div class="fill-module">
+          {% snippet "organization/snippets/organization_list.html", organizations=org_list.organizations %}
+        </div>
+        {% endif %}
+      {% else %}
+        <p class="empty">
+          {{ _('There are currently no organizations for this site') }}.
+          {% if h.check_access('organization_create') %}
+            {% link_for _('How about creating one?'), controller='organization', action='new' %}.
+          {% endif %}
+        </p>
       {% endif %}
-    </p>
-  {% endif %}
+    {% endblock %}
+  </div>
+
+  {% block page_pagination %}
+    {% set symbol_next %}
+      <span aria-hidden='true'>»</span><span class='sr-only'>{{ _('Next') }}</span>
+    {% endset %}
+    {% set symbol_previous %}
+      <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
+    {% endset %}
+    {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', all_orgs=org_list.all_orgs or '', link_attr={'aria-label': _('Go to page'), 'class': 'page-link'}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
+  {% endblock %}
+</section>
 {% endblock %}
 
 {% block secondary_content %}
@@ -50,12 +65,3 @@
   </div>
 {% endblock %}
 
-{% block page_pagination %}
-  {% set symbol_next %}
-    <span aria-hidden='true'>»</span><span class='sr-only'>{{ _('Next') }}</span>
-  {% endset %}
-  {% set symbol_previous %}
-    <span aria-hidden='true'>«</span><span class='sr-only'>{{ _('Previous') }}</span>
-  {% endset %}
-  {{ org_list.page.pager(q=q or '', sort=c.sort_by_selected or '', all_orgs=org_list.all_orgs or '', link_attr={'aria-label': _('Go to page'), 'class': 'page-link'}, symbol_next=symbol_next, symbol_previous=symbol_previous) }}
-{% endblock %}
