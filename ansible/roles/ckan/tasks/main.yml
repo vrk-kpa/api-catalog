@@ -25,7 +25,7 @@
 
 - name: Install ckan
   pip:
-    name: git+https://github.com/ckan/ckan.git@ckan-2.10.6#egg=ckan
+    name: git+https://github.com/ckan/ckan.git@ckan-2.11.2#egg=ckan
     editable: true
     virtualenv: "{{ virtualenv }}"
 
@@ -129,9 +129,6 @@
     job: "{{ virtualenv }}/bin/ckan --config {{ ckan_ini }} xroad update-xroad-organizations"
     state: absent
 
-- name: Ensure tracking cronjob
-  cron: name="Tracking update" special_time=hourly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" tracking update && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" search-index rebuild -r && {{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" sitesearch rebuild organizations"
-
 - name: Ensure link validation cronjob
   cron: name="Link validator update" special_time=weekly job="{{ virtualenv }}/bin/ckan --config "{{ ckan_ini }}" links crawl"
 
@@ -192,6 +189,7 @@
 
 - name: Install uwsgitop
   pip:
+    virtualenv: "{{ virtualenv }}"
     name: uwsgitop
 
 - name: Update supervisor configuration

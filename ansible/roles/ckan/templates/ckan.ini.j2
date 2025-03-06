@@ -14,13 +14,12 @@ use = egg:ckan
 full_stack = true
 cache_dir = /tmp/%(ckan.site_id)s/
 
-beaker.session.key = ckan
-beaker.session.secret = {{ secret.ckan_config.beaker_session_secret }}
-beaker.session.secure = True
-beaker.session.httponly = True
-beaker.session.samesite = Strict
-beaker.session.type = ext:database
-beaker.session.url = postgresql://{{ database_ckan.username }}:{{ database_ckan.password }}@{{ database_ckan.host }}/{{ database_ckan.name }}
+SECRET_KEY = {{ secret.ckan_config.beaker_session_secret }}
+SESSION_COOKIE_NAME = ckan
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = Strict
+SESSION_TYPE = cookie
 
 app_instance_uuid = {{ secret.ckan_config.app_instance_uuid }}
 
@@ -165,8 +164,6 @@ ofs.storage_dir = {{ ckan_storage_path }}
 ckan.storage_path = {{ ckan_storage_path }}
 
 solr_url = http://{{ solr.host }}:{{ solr.port }}/solr/ckan
-
-ckan.tracking_enabled = true
 
 ckan.max_resource_size = {{ ckan_max_resource_size }}
 

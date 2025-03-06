@@ -32,7 +32,7 @@
       - unattended-upgrades
       - postgresql-server-dev-all
       - libpq5
-      - git-core
+      - git
       - zip
       - bzip2
       - unzip
