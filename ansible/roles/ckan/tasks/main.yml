@@ -185,6 +185,7 @@
 
 - name: Install uwsgitop
   pip:
+    virtualenv: "{{ virtualenv }}"
     name: uwsgitop
 
 - name: Update supervisor configuration
