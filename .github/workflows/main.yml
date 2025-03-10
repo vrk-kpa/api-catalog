@@ -22,12 +22,13 @@ jobs:
     name: Test apicatalog extensions
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -83,12 +84,13 @@ jobs:
     name: Test xroad integration
     runs-on: ubuntu-latest
     container:
-      image: ckan/ckan-dev:2.10
+      image: ckan/ckan-dev:2.11
+      options: --user root  # https://github.com/actions/checkout/issues/956
     services:
       solr:
-        image: ckan/ckan-solr:2.10-solr9
+        image: ckan/ckan-solr:2.11-solr9
       postgres:
-        image: ckan/ckan-postgres-dev:2.10
+        image: ckan/ckan-postgres-dev:2.11
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -106,7 +108,7 @@ jobs:
     steps:
       - name: Add build dependencies to container
         run: |
-          apk add --update --no-progress \
+          apt install \
           tar
       - uses: actions/checkout@v4
         with:
@@ -154,7 +156,5 @@ jobs:
           ckan -c ckanext/ckanext-xroad_integration/test.ini db upgrade -p harvest
           ckan -c ckanext/ckanext-xroad_integration/test.ini xroad init-db
 
-          # Disable plugins in test.ini
-          sed -i -e 's/ckan.plugins/#ckan.plugins/' ckanext/ckanext-xroad_integration/test.ini
       - name: Run xroad integration tests
         run: pytest --ckan-ini=ckanext/ckanext-xroad_integration/test.ini --cov=ckanext.xroad_integration --disable-warnings ckanext/ckanext-xroad_integration/ckanext/xroad_integration/tests

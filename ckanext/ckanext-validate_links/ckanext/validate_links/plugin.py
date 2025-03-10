@@ -4,7 +4,6 @@ import ckanext.validate_links.cli as cli
 import ckanext.validate_links.views as views
 from ckan.lib.plugins import DefaultTranslation
 
-from .model import define_tables
 from .helpers import organization_has_broken_links
 
 
@@ -23,8 +22,6 @@ class Validate_LinksPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # IConfigurer
 
     def update_config(self, config):
-        define_tables()
-        toolkit.add_ckan_admin_tab(config, 'admin_broken_links.read', 'Broken links')
         toolkit.add_template_directory(config, 'templates')
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('fanstatic', 'validate_links')
