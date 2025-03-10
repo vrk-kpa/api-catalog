@@ -23,12 +23,14 @@ def upgrade():
                     sa.Column('timestamp', sa.DateTime),
                     sa.Column('url', sa.UnicodeText, nullable=False),
                     sa.Column('reason', sa.UnicodeText, nullable=False),
+                    if_not_exists=True,
                     )
     op.create_table('link_validation_referrer',
                     sa.Column('id', sa.UnicodeText, primary_key=True),
                     sa.Column('result_id', sa.UnicodeText, sa.ForeignKey('link_validation_result.id')),
                     sa.Column('url', sa.UnicodeText, nullable=False),
                     sa.Column('organization', sa.UnicodeText, nullable=True),
+                    if_not_exists=True,
                     )
 
 
