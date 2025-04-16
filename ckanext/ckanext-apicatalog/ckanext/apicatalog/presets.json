@@ -101,13 +101,13 @@
       }
     },
     {
-      "preset_name": "fluent_core_markdown_translated",
+      "preset_name": "fluent_markdown_editor_any_field",
       "values": {
-        "form_snippet": "fluent_markdown_ex.html",
+        "form_snippet": "fluent_markdown_editor.html",
         "display_snippet": "fluent_markdown.html",
         "error_snippet": "fluent_text.html",
         "validators": "fluent_text",
-        "output_validators": "fluent_core_translated_output",
+        "output_validators": "fluent_core_translated_output_any_field",
         "classes": ["control-full"]
       }
     },

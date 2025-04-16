@@ -7,7 +7,7 @@
       "field_name":  "id",
       "display_snippet": null,
       "form_snippet": null,
-      "validators": "ignore_missing empty_if_not_sysadmin unicode_safe"
+      "validators": "ignore_missing unicode_safe"
     },
     {
       "field_name": "title_translated",
@@ -122,11 +122,14 @@
     {
       "field_name": "webpage_address",
       "label": "Webpage address",
-      "preset": "fluent_text",
+      "group_title": "Web page",
       "display_webpage_name_field": "webpage_description",
       "display_snippet": "webpage.html",
-      "form_snippet": null,
-      "validators": "keep_old_value_if_missing fluent_text"
+      "validators": "fluent_text keep_old_value_if_missing",
+      "input_title": ["Finnish web page", "Swedish web page", "English web page"],
+      "output_validators": "fluent_core_translated_output_any_field",
+      "form_snippet": "fluent_text_ex.html",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "webpage_address_modified_in_catalog",
@@ -136,11 +139,17 @@
     },
     {
       "field_name": "webpage_description",
-      "label": "Webpage description",
-      "preset": "fluent_text",
-      "validators": "keep_old_value_if_missing fluent_text",
-      "form_snippet": null,
-      "display_snippet": null
+      "label": "Web page description",
+      "group_title": "Web page description",
+      "group_description": "A general, concise, and easy-to-understand description of the web page.",
+      "preset": "fluent_markdown_editor_any_field",
+      "validators": "fluent_text keep_old_value_if_missing mark_as_modified_in_catalog_if_changed",
+      "required": false,
+      "form_placeholder": "Write the web page's description",
+      "form_languages": ["fi", "sv", "en"],
+      "display_snippet": null,
+      "form_attrs": {},
+      "group_divider": true
     },
     {
       "field_name": "webpage_description_modified_in_catalog",
@@ -151,34 +160,40 @@
     {
       "field_name": "company_type",
       "label": "Company type",
-      "preset": "fluent_text",
-      "form_snippet": null,
-      "display_snippet": "fluent_text.html"
+      "input_title": ["Company type in Finnish", "Company type in Swedish", "Company type in English"],
+      "form_placeholder": "Company type",
+      "validators": "fluent_text override_translation_with_default_language",
+      "output_validators": "fluent_core_translated_output_any_field",
+      "display_snippet": "fluent_text.html",
+      "form_snippet": "fluent_text_ex.html",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "company_language",
       "label": "Company language",
-      "preset": "fluent_text",
-      "form_snippet": null,
-      "display_snippet": "fluent_text.html"
+      "input_title": ["Company language in Finnish", "Company language in Swedish", "Company language in English"],
+      "form_placeholder": "Company language",
+      "validators": "fluent_text override_translation_with_default_language",
+      "output_validators": "fluent_core_translated_output_any_field",
+      "display_snippet": "fluent_text.html",
+      "form_snippet": "fluent_text_ex.html",
+      "form_languages": ["fi", "sv", "en"]
     },
     {
       "field_name": "organization_guid",
       "label": "Organization GUID",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing default_value()"
+      "validators": "keep_old_value_if_missing default_value()"
     },
     {
       "field_name": "company_registration_date",
       "label": "Company registration date",
-      "preset": "datetime",
-      "form_snippet": null
+      "preset": "datetime"
     },
     {
       "field_name": "old_business_ids",
       "label": "Old business ids",
-      "form_snippet": null,
-      "validators": "ignore_not_sysadmin keep_old_value_if_missing empty_to_list list_to_json_string default_value()",
+      "validators": "keep_old_value_if_missing empty_to_list list_to_json_string default_value()",
+      "preset": "multiple_text",
       "output_validators": "json_string_to_list"
     },
     {
