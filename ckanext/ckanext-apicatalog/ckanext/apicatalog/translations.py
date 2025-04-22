@@ -104,5 +104,12 @@ def schema_translatable_strings():
             _('Data processing'),
             _('Choose this if your organization acts as an intermediary for other organizations.'),
             _('Choose this if your organization processes data outside the EU/EAA countries.'),
+            _('Web page'),
+            _('Web page description'),
+            _('A general, concise and easy-to-understand description of the  web page.'),
+            _('Organization GUID'),
+            _('Company registration date'),
+            _('Time'),
+            _('Old business IDs'),
             ungettext('{number} dataset found for "{query}"', '{number} datasets found for "{query}"')
             ]
