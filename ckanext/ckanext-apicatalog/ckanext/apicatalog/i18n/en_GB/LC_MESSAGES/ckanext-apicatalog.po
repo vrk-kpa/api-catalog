@@ -12,14 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-apicatalog 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-02-03 10:59+0000\n"
+"POT-Creation-Date: 2025-04-22 06:25+0000\n"
 "PO-Revision-Date: 2024-07-29 09:39+0000\n"
 "Last-Translator: Zharktas <jari-pekka.voutilainen@gofore.com>, 2024\n"
 "Language-Team: English (United Kingdom) (https://app.transifex.com/avoindata/teams/7979/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.15.0\n"
 "Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -31,24 +31,24 @@ msgstr "User {user} not authorised to create users via the API"
 msgid "User {name} stored in database."
 msgstr "User {name} stored in database."
 
-#: ckanext/apicatalog/plugin.py:805
+#: ckanext/apicatalog/plugin.py:806
 #: ckanext/apicatalog/templates/package/read.html:64
 #: ckanext/apicatalog/templates/package/snippets/resources.html:8
 msgid "Services"
 msgstr "Services"
 
-#: ckanext/apicatalog/plugin.py:806
+#: ckanext/apicatalog/plugin.py:807
 #: ckanext/apicatalog/templates/admin/dashboard.html:205
 #: ckanext/apicatalog/templates/admin/dashboard.html:237
 msgid "Organization"
 msgstr "Organisation"
 
-#: ckanext/apicatalog/plugin.py:807
+#: ckanext/apicatalog/plugin.py:808
 #: ckanext/apicatalog/templates/snippets/tag_list.html:4
 msgid "Tags"
 msgstr "Keywords"
 
-#: ckanext/apicatalog/plugin.py:808
+#: ckanext/apicatalog/plugin.py:809
 msgid "Formats"
 msgstr "File formats"
 
@@ -442,6 +442,35 @@ msgstr ""
 "countries."
 
 #: ckanext/apicatalog/translations.py:107
+msgid "Web page"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:108
+msgid "Web page description"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:109
+msgid ""
+"A general, concise and easy-to-understand description of the  web page."
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:110
+msgid "Organization GUID"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:111
+msgid "Company registration date"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:112
+msgid "Time"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:113
+msgid "Old business IDs"
+msgstr ""
+
+#: ckanext/apicatalog/translations.py:114
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
 msgstr[0] "{number} subsystem found for \"{query}\""
@@ -524,6 +553,7 @@ msgstr "Subsystems"
 #: ckanext/apicatalog/templates/apicatalog_header.html:61
 #: ckanext/apicatalog/templates/home/snippets/apicatalog_navmenu.html:6
 #: ckanext/apicatalog/templates/organization/index.html:6
+#: ckanext/apicatalog/templates/organization/index.html:24
 msgid "Organizations"
 msgstr "Organisations"
 
@@ -586,6 +616,49 @@ msgstr "Config"
 #: ckanext/apicatalog/templates/admin/base.html:7
 msgid "Trash"
 msgstr "Trash"
+
+#: ckanext/apicatalog/templates/admin/base.html:8
+#: ckanext/apicatalog/templates/organization/read_base.html:24
+msgid "Broken links"
+msgstr "Broken links"
+
+#: ckanext/apicatalog/templates/admin/base.html:9
+#: ckanext/apicatalog/templates/admin/dashboard.html:23
+#: ckanext/apicatalog/templates/home/snippets/apicatalog_profile_items.html:23
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: ckanext/apicatalog/templates/admin/base.html:10
+#: ckanext/apicatalog/templates/admin/useradd.html:14
+msgid "Add user"
+msgstr "Add user"
+
+#: ckanext/apicatalog/templates/admin/base.html:11
+#: ckanext/apicatalog/templates/admin/dashboard.html:33
+msgid "Statistics"
+msgstr "Statistics"
+
+#: ckanext/apicatalog/templates/admin/base.html:12
+msgid "X-Road graphs"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/base.html:13
+#: ckanext/apicatalog/templates/organization/edit_base.html:29
+#: ckanext/apicatalog/templates/organization/read_base.html:23
+msgid "X-Road errors"
+msgstr "Data Exchange Layer errors"
+
+#: ckanext/apicatalog/templates/admin/base.html:14
+msgid "X-Road services"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/base.html:15
+msgid "X-Road statistics"
+msgstr ""
+
+#: ckanext/apicatalog/templates/admin/base.html:16
+msgid "X-Road distinct service statistics"
+msgstr ""
 
 #: ckanext/apicatalog/templates/admin/config.html:7
 msgid "Site Tag Line in swedish"
@@ -665,15 +738,6 @@ msgstr ""
 "<p>As a sysadmin user you have full control over this CKAN instance. Proceed"
 " with care!</p> <p>For guidance on using sysadmin features, see the CKAN  <a"
 " href=\"%(docs_url)s\" target=\"_blank\">sysadmin guide</a></p>"
-
-#: ckanext/apicatalog/templates/admin/dashboard.html:23
-#: ckanext/apicatalog/templates/home/snippets/apicatalog_profile_items.html:23
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: ckanext/apicatalog/templates/admin/dashboard.html:33
-msgid "Statistics"
-msgstr "Statistics"
 
 #: ckanext/apicatalog/templates/admin/dashboard.html:36
 msgid "New package count"
@@ -834,10 +898,6 @@ msgid ""
 msgstr ""
 "Successfully created user %(name)s &lt;%(email)s&gt;. Password reset mail "
 "sent."
-
-#: ckanext/apicatalog/templates/admin/useradd.html:14
-msgid "Add user"
-msgstr "Add user"
 
 #: ckanext/apicatalog/templates/admin/useradd.html:15
 #: ckanext/apicatalog/templates/user/edit_user_form.html:7
@@ -1331,11 +1391,6 @@ msgstr "About the organization"
 msgid "Dataset visibility"
 msgstr "Subsystem visibility"
 
-#: ckanext/apicatalog/templates/organization/edit_base.html:29
-#: ckanext/apicatalog/templates/organization/read_base.html:23
-msgid "X-Road errors"
-msgstr "Data Exchange Layer errors"
-
 #: ckanext/apicatalog/templates/organization/edit_base.html:32
 #: ckanext/apicatalog/templates/organization/read_base.html:27
 msgid "Members"
@@ -1373,40 +1428,40 @@ msgstr "Show all the organisations"
 msgid "Service providers first"
 msgstr "Service providers first"
 
-#: ckanext/apicatalog/templates/organization/index.html:33
+#: ckanext/apicatalog/templates/organization/index.html:35
 msgid "There are currently no organizations for this site"
 msgstr "There are currently no organisations for this site"
 
-#: ckanext/apicatalog/templates/organization/index.html:35
+#: ckanext/apicatalog/templates/organization/index.html:37
 msgid "How about creating one?"
 msgstr "How about creating one?"
 
-#: ckanext/apicatalog/templates/organization/index.html:43
-#: ckanext/apicatalog/templates/package/search.html:64
-msgid "Filter list"
-msgstr "Filter list"
-
-#: ckanext/apicatalog/templates/organization/index.html:48
-msgid "Type in name of organization"
-msgstr "Type in name of organisation"
-
-#: ckanext/apicatalog/templates/organization/index.html:55
+#: ckanext/apicatalog/templates/organization/index.html:46
 #: ckanext/apicatalog/templates/organization/read.html:38
 #: ckanext/apicatalog/templates/package/search.html:29
 msgid "Next"
 msgstr "Next"
 
-#: ckanext/apicatalog/templates/organization/index.html:58
+#: ckanext/apicatalog/templates/organization/index.html:49
 #: ckanext/apicatalog/templates/organization/read.html:41
 #: ckanext/apicatalog/templates/package/search.html:32
 msgid "Previous"
 msgstr "Previous"
 
-#: ckanext/apicatalog/templates/organization/index.html:60
+#: ckanext/apicatalog/templates/organization/index.html:51
 #: ckanext/apicatalog/templates/organization/read.html:43
 #: ckanext/apicatalog/templates/package/search.html:34
 msgid "Go to page"
 msgstr "Go to page"
+
+#: ckanext/apicatalog/templates/organization/index.html:58
+#: ckanext/apicatalog/templates/package/search.html:64
+msgid "Filter list"
+msgstr "Filter list"
+
+#: ckanext/apicatalog/templates/organization/index.html:63
+msgid "Type in name of organization"
+msgstr "Type in name of organisation"
 
 #: ckanext/apicatalog/templates/organization/members.html:8
 msgid "Add Member"
@@ -1454,10 +1509,6 @@ msgstr "List of the organisation's subsystems"
 #: ckanext/apicatalog/templates/organization/read.html:29
 msgid "There are currently no APIs for this organization"
 msgstr "There are currently no subsystems for this organisation"
-
-#: ckanext/apicatalog/templates/organization/read_base.html:24
-msgid "Broken links"
-msgstr "Broken links"
 
 #: ckanext/apicatalog/templates/organization/snippets/organization_item.html:25
 msgid "View {organization_name}"
