@@ -417,3 +417,28 @@ def empty_to_list(value):
     if value == '' or value is None:
         return []
     return value
+
+
+@scheming_validator
+def fluent_core_translated_output_any_field(field, schema):
+    'fluent_core_translated_output without _translated suffix requirement'
+
+    from ckanext.fluent.validators import fluent_text_output, LANG_SUFFIX
+    from ckanext.scheming.helpers import scheming_language_text
+
+    def validator(key, data, errors, context):
+        """
+        Return a value for a core field using a multilingual dict.
+        """
+        data[key] = fluent_text_output(data[key])
+
+        if field['field_name'].endswith(LANG_SUFFIX):
+            k = key[-1]
+            new_key = key[:-1] + (k[:-len(LANG_SUFFIX)],)
+
+            if new_key in data:
+                default_locale = config.get('ckan.locale_default', 'en')
+                data[new_key] = scheming_language_text(data[key],
+                                                       default_locale)
+
+    return validator
