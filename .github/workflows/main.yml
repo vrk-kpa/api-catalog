@@ -80,6 +80,11 @@ jobs:
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
           pytest --ckan-ini=ckanext/ckanext-apply_permissions_for_service/test.ini --cov=ckanext.apply_permissions_for_service --disable-warnings ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/tests
 
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   text-xroad:
     name: Test xroad integration
     runs-on: ubuntu-latest
