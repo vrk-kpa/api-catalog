@@ -91,6 +91,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./apicatalog.xml, ./apply_permissions.xml
 
   text-xroad:
     name: Test xroad integration
