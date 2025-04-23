@@ -192,7 +192,7 @@
     {
       "field_name": "old_business_ids",
       "label": "Old business IDs",
-      "validators": "keep_old_value_if_missing empty_to_list list_to_json_string default_value()",
+      "validators": "keep_old_value_if_missing empty_to_list scheming_multiple_text default_value()",
       "preset": "multiple_text",
       "output_validators": "json_string_to_list"
     },
