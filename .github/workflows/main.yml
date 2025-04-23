@@ -1,6 +1,6 @@
 name: Code Quality
 
-on: [push, pull_request, workflow_dispatch]
+on: [pull_request, workflow_dispatch]
 
 jobs:
   lint:
@@ -77,8 +77,21 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
+          pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --cov-report xml:apicatalog.xml --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
           pytest --ckan-ini=ckanext/ckanext-apply_permissions_for_service/test.ini --cov=ckanext.apply_permissions_for_service --disable-warnings ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/tests
+
+      - name: install codecov requirements
+        if: ${{ !cancelled() }}
+        run: |
+          apt-get update
+          apt-get install -y curl gpg
+
+      - name: Upload coverage to codecov
+        uses: codecov/codecov-action@v5
+        if: ${{ !cancelled() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./apicatalog.xml
 
   text-xroad:
     name: Test xroad integration
