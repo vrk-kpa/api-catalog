@@ -78,7 +78,7 @@ jobs:
       - name: Run tests
         run: |
           pytest --ckan-ini=ckanext/ckanext-apicatalog/test.ini --cov=ckanext.apicatalog --cov-report xml:apicatalog.xml --disable-warnings ckanext/ckanext-apicatalog/ckanext/apicatalog/tests
-          pytest --ckan-ini=ckanext/ckanext-apply_permissions_for_service/test.ini --cov=ckanext.apply_permissions_for_service --cov-report xml:apply_permissions.xml --disable-warnings ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/tests
+          pytest --ckan-ini=ckanext/ckanext-apply_permissions_for_service/test.ini --cov=ckanext.apply_permissions_for_service --disable-warnings ckanext/ckanext-apply_permissions_for_service/ckanext/apply_permissions_for_service/tests
 
       - name: install codecov requirements
         if: ${{ !cancelled() }}
@@ -91,7 +91,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./apicatalog.xml, ./apply_permissions.xml
+          files: ./apicatalog.xml
 
   text-xroad:
     name: Test xroad integration
