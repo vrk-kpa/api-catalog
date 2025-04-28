@@ -309,5 +309,3 @@ class TestApicatalogPlugin():
             context = {'user': user, 'user_obj': user_obj}
             assert call_auth('user_show', context, id=target_user)
             assert context['keep_email']
-
-
