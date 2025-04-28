@@ -1,7 +1,7 @@
 import pytest
 from ckan.tests.factories import User, Dataset, Organization, Resource
 from ckan.plugins.toolkit import get_action, ObjectNotFound, NotAuthorized, ValidationError
-from ckan.tests.helpers import call_action
+from ckan.tests.helpers import call_action, changed_config, call_auth
 
 import unittest.mock as mock
 from ckan import model
@@ -254,3 +254,60 @@ class TestApicatalogPlugin():
 
             search = get_action('package_search')({}, {})
             assert all(result['id'] != subsystem['id'] for result in search['results'])
+
+    def test_auth_read_members(self):
+        user = factories.User()['name']
+        group_id = factories.Group()['id']
+
+        with pytest.raises(NotAuthorized):
+            call_auth('read_members', {'user': user}, id=group_id)
+
+        with changed_config('ckanext.apicatalog.readonly_users', [user]):
+            assert call_auth('read_members', {'user': user}, id=group_id)
+
+        with changed_config('ckanext.apicatalog.allowed_member_editors', [user]):
+            assert call_auth('read_members', {'user': user}, id=group_id)
+
+    def test_auth_create_user_to_organization(self):
+        user = factories.User()['name']
+
+        with pytest.raises(NotAuthorized):
+            call_auth('create_user_to_organization', {'user': user})
+
+        with changed_config('ckanext.apicatalog.allowed_user_creators', [user]):
+            assert call_auth('create_user_to_organization', {'user': user})
+
+    def test_auth_user_create(self):
+        user = factories.User()['name']
+
+        with pytest.raises(NotAuthorized):
+            call_auth('user_create', {'user': user})
+
+        with changed_config('ckanext.apicatalog.allowed_user_editors', [user]):
+            assert call_auth('user_create', {'user': user})
+
+    def test_auth_user_update(self):
+        user = factories.User()['name']
+        target_user = factories.User()['name']
+
+        with pytest.raises(NotAuthorized):
+            call_auth('user_update', {'user': user}, id=target_user)
+
+        with changed_config('ckanext.apicatalog.allowed_user_editors', [user]):
+            assert call_auth('user_update', {'user': user}, id=target_user)
+
+    def test_auth_user_show(self):
+        user = factories.User()['name']
+        user_obj = model.User.by_name(user)
+        target_user = factories.User()['name']
+
+        context = {'user': user, 'user_obj': user_obj}
+        call_auth('user_show', context, id=target_user)
+        assert not context.get('keep_email', False)
+
+        with changed_config('ckanext.apicatalog.allowed_user_editors', [user]):
+            context = {'user': user, 'user_obj': user_obj}
+            assert call_auth('user_show', context, id=target_user)
+            assert context['keep_email']
+
+
