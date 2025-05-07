@@ -20,9 +20,9 @@ sentry:
   loader_script: "https://js-de.sentry-cdn.com/90b0a66fb880b85721506d42c390dadd.min.js"
 
 system:
-  ubuntu_codename: jammy
+  ubuntu_codename: noble
   postgresql:
-    version: 14
+    version: 16
 
 database_ckan:
   host: 127.0.0.1
