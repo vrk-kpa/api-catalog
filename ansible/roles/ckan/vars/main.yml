@@ -22,11 +22,11 @@ auto_author_enabled: true
 
 ckan_patches:
   - { file: "disable_leftover_with_capacity" }
+  - { file: "replace_btn-default_with_btn-secondary"} # https://github.com/ckan/ckan/pull/8611
   - { file: "remove_edit_button_from_slugs" }
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_free_fontawesome" }
-  - { file: "replace_btn-default_with_btn-secondary"} # https://github.com/ckan/ckan/pull/8611
 
 files_created_by_patches:
   - { file: "/usr/lib/ckan/default/src/ckan/ckan/templates-bs3/home/robots.txt" }

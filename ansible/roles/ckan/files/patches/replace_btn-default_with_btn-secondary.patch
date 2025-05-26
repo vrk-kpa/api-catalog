@@ -1,16 +1,78 @@
+diff --git a/ckan/public/base/javascript/modules/confirm-action.js b/ckan/public/base/javascript/modules/confirm-action.js
+index c91dba7f6..b1afe2117 100644
+--- a/ckan/public/base/javascript/modules/confirm-action.js
++++ b/ckan/public/base/javascript/modules/confirm-action.js
+@@ -43,7 +43,7 @@ this.ckan.module('confirm-action', function (jQuery) {
+         '</div>',
+         '<div class="modal-body"></div>',
+         '<div class="modal-footer">',
+-        '<button class="btn btn-default btn-cancel"></button>',
++        '<button class="btn btn-secondary btn-cancel"></button>',
+         '<button class="btn btn-primary"></button>',
+         '</div>',
+         '</div>',
+diff --git a/ckan/public/base/javascript/modules/image-upload.js b/ckan/public/base/javascript/modules/image-upload.js
+index af9cbf2da..bb23d093b 100644
+--- a/ckan/public/base/javascript/modules/image-upload.js
++++ b/ckan/public/base/javascript/modules/image-upload.js
+@@ -57,7 +57,7 @@ this.ckan.module('image-upload', function($) {
+         .appendTo(this.el);
+
+       // Button to set the field to be a URL
+-      this.button_url = $('<a href="javascript:;" class="btn btn-default">' +
++      this.button_url = $('<a href="javascript:;" class="btn btn-secondary">' +
+                           '<i class="fa fa-globe"></i>' +
+                           this._('Link') + '</a>')
+         .prop('title', this._('Link to a URL on the internet (you can also link to an API)'))
+@@ -65,7 +65,7 @@ this.ckan.module('image-upload', function($) {
+         .insertAfter(this.input);
+
+       // Button to attach local file to the form
+-      this.button_upload = $('<a href="javascript:;" class="btn btn-default">' +
++      this.button_upload = $('<a href="javascript:;" class="btn btn-secondary">' +
+                              '<i class="fa fa-cloud-upload"></i>' +
+                              this._('Upload') + '</a>')
+         .insertAfter(this.input);
+diff --git a/ckan/public/base/javascript/modules/resource-view-reorder.js b/ckan/public/base/javascript/modules/resource-view-reorder.js
+index 4a62b09e0..92a0e2610 100644
+--- a/ckan/public/base/javascript/modules/resource-view-reorder.js
++++ b/ckan/public/base/javascript/modules/resource-view-reorder.js
+@@ -8,7 +8,7 @@ this.ckan.module('resource-view-reorder', function($) {
+     template: {
+       title: '<h1></h1>',
+       button: [
+-        '<a href="javascript:;" class="btn btn-default">',
++        '<a href="javascript:;" class="btn btn-secondary">',
+         '<i class="fa fa-bars"></i>',
+         '<span></span>',
+         '</a>'
+diff --git a/ckan/public/base/javascript/plugins/jquery.slug-preview.js b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
+index 4a4f78fe2..f56f80ef9 100644
+--- a/ckan/public/base/javascript/plugins/jquery.slug-preview.js
++++ b/ckan/public/base/javascript/plugins/jquery.slug-preview.js
+@@ -70,7 +70,7 @@
+       '<div class="slug-preview">',
+       '<strong></strong>',
+       '<span class="slug-preview-prefix"></span><span class="slug-preview-value"></span>',
+-      '<button class="btn btn-default btn-xs"></button>',
++      '<button class="btn btn-secondary btn-xs"></button>',
+       '</div>'
+     ].join('\n')
+   };
 diff --git a/ckan/templates/development/primer.html b/ckan/templates/development/primer.html
-index fe4ddc8d5..1c2d77981 100644
+index 10c22275a..431540212 100644
 --- a/ckan/templates/development/primer.html
 +++ b/ckan/templates/development/primer.html
-@@ -31,7 +31,7 @@
+@@ -30,7 +30,7 @@
+ <div class="module-content">
    <div class="input-group input-group-lg search-giant">
      <input type="text" class="search form-control" name="q" value="" autocomplete="off" placeholder="Search something...">
-     <span class="input-group-btn">
--        <button class="btn btn-default" type="submit">
-+        <button class="btn btn-secondary" type="submit">
-           <i class="fa fa-search"></i>
-           <span class="sr-only">Search</span>
-         </button>
+-      <button class="btn btn-default" type="submit">
++      <button class="btn btn-secondary" type="submit">
+         <i class="fa fa-search"></i>
+         <span class="sr-only">Search</span>
+       </button>
+
 diff --git a/ckan/templates/development/snippets/actions.html b/ckan/templates/development/snippets/actions.html
 index fe9519c86..015c74bc8 100644
 --- a/ckan/templates/development/snippets/actions.html
@@ -25,20 +87,33 @@ index 8114b2759..d07396de9 100644
 +++ b/ckan/templates/group/edit_base.html
 @@ -6,7 +6,7 @@
  {% set group = group_dict %}
- 
+
  {% block content_action %}
 -  {% link_for _('View'), named_route=group_type+'.read', id=group_dict.name, class_='btn btn-default', icon='eye' %}
 +  {% link_for _('View'), named_route=group_type+'.read', id=group_dict.name, class_='btn btn-secondary', icon='eye' %}
  {% endblock %}
- 
+
  {% block content_primary_nav %}
+diff --git a/ckan/templates/group/manage_members.html b/ckan/templates/group/manage_members.html
+index bd4d48135..6af553645 100644
+--- a/ckan/templates/group/manage_members.html
++++ b/ckan/templates/group/manage_members.html
+@@ -26,7 +26,7 @@
+         <td>{{ role }}</td>
+         <td>
+           <div class="btn-group pull-right">
+-            <a class="btn btn-default btn-sm" href="{{ h.url_for(group_type + '.member_new', id=group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
++            <a class="btn btn-secondary btn-sm" href="{{ h.url_for(group_type + '.member_new', id=group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
+               <i class="fa fa-wrench"></i>
+             </a>
+             <a class="btn btn-danger btn-sm" href="{{ h.url_for(group_type + '.member_delete', id=group_dict.id, user=user_id) }}" data-module="confirm-action" data-module-content="{{ _('Are you sure you want to delete this member?') }}" title="{{ _('Delete') }}">{% block delete_button_text %}<i class="fa fa-times"></i>{% endblock %}</a>
 diff --git a/ckan/templates/group/member_new.html b/ckan/templates/group/member_new.html
 index bcd3e50b1..7309b167e 100644
 --- a/ckan/templates/group/member_new.html
 +++ b/ckan/templates/group/member_new.html
 @@ -5,7 +5,7 @@
  {% set user = user_dict %}
- 
+
  {% block primary_content_inner %}
 -  {% link_for _('Back to all members'), named_route=group_type+'.manage_members', id=group.name, class_='btn btn-default pull-right', icon='arrow-left' %}
 +  {% link_for _('Back to all members'), named_route=group_type+'.manage_members', id=group.name, class_='btn btn-secondary pull-right', icon='arrow-left' %}
@@ -50,14 +125,14 @@ index f9a63912e..3b00aeda3 100644
 --- a/ckan/templates/group/read_base.html
 +++ b/ckan/templates/group/read_base.html
 @@ -10,7 +10,7 @@
- 
+
  {% block content_action %}
    {% if h.check_access('group_update', {'id': group_dict.id}) %}
 -    {% link_for _('Manage'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-default', icon='wrench' %}
 +    {% link_for _('Manage'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary', icon='wrench' %}
    {% endif %}
  {% endblock %}
- 
+
 diff --git a/ckan/templates/organization/bulk_process.html b/ckan/templates/organization/bulk_process.html
 index 23073108c..96ffc47f0 100644
 --- a/ckan/templates/organization/bulk_process.html
@@ -81,21 +156,34 @@ index 69ab2f8de..91539ae62 100644
 --- a/ckan/templates/organization/edit_base.html
 +++ b/ckan/templates/organization/edit_base.html
 @@ -6,7 +6,7 @@
- 
+
  {% block content_action %}
    {% if organization and h.check_access('organization_update', {'id': organization.id}) %}
 -    {% link_for _('View'), named_route=group_type+'.read', id=organization.name, class_='btn btn-default', icon='eye'%}
 +    {% link_for _('View'), named_route=group_type+'.read', id=organization.name, class_='btn btn-secondary', icon='eye'%}
    {% endif %}
  {% endblock %}
- 
+
+diff --git a/ckan/templates/organization/manage_members.html b/ckan/templates/organization/manage_members.html
+index ff27e424f..21267ded6 100644
+--- a/ckan/templates/organization/manage_members.html
++++ b/ckan/templates/organization/manage_members.html
+@@ -37,7 +37,7 @@
+             <td>
+               <div class="btn-group pull-right">
+                 {% if can_create_members %}
+-                  <a class="btn btn-default btn-sm" href="{{ h.url_for(group_type + '.member_new', id=group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
++                  <a class="btn btn-secondary btn-sm" href="{{ h.url_for(group_type + '.member_new', id=group_dict.id, user=user_id) }}" title="{{ _('Edit') }}">
+                     <i class="fa fa-wrench"></i>
+                   </a>
+                 {% endif %}
 diff --git a/ckan/templates/organization/member_new.html b/ckan/templates/organization/member_new.html
 index dc7b8dd0c..717fd5d90 100644
 --- a/ckan/templates/organization/member_new.html
 +++ b/ckan/templates/organization/member_new.html
 @@ -7,7 +7,7 @@
  {% block subtitle %}{{ _('Edit Member') if user else _('Add Member') }} {{ g.template_title_delimiter }} {{ super() }}{% endblock %}
- 
+
  {% block primary_content_inner %}
 -  {% link_for _('Back to all members'), named_route=group_type+'.manage_members', id=organization.name, class_='btn btn-default pull-right', icon='arrow-left' %}
 +  {% link_for _('Back to all members'), named_route=group_type+'.manage_members', id=organization.name, class_='btn btn-secondary pull-right', icon='arrow-left' %}
@@ -107,21 +195,21 @@ index 67913f179..9e8b1b9fe 100644
 --- a/ckan/templates/organization/read_base.html
 +++ b/ckan/templates/organization/read_base.html
 @@ -11,7 +11,7 @@
- 
+
  {% block content_action %}
    {% if h.check_access('organization_update', {'id': group_dict.id}) %}
 -    {% link_for _('Manage'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-default', icon='wrench' %}
 +    {% link_for _('Manage'), named_route=group_type+'.edit', id=group_dict.name, class_='btn btn-secondary', icon='wrench' %}
    {% endif %}
  {% endblock %}
- 
+
 diff --git a/ckan/templates/package/collaborators/collaborator_new.html b/ckan/templates/package/collaborators/collaborator_new.html
 index 7bb1315a8..53cdbc9b9 100644
 --- a/ckan/templates/package/collaborators/collaborator_new.html
 +++ b/ckan/templates/package/collaborators/collaborator_new.html
 @@ -5,7 +5,7 @@
  {% block subtitle %}{{ _('Edit Collaborator') if user else _('Add Collaborator') }} - {{ super() }}{% endblock %}
- 
+
  {% block primary_content_inner %}
 -  {% link_for _('Back to all collaborators'), named_route='dataset.collaborators_read', id=pkg_dict.name, class_='btn btn-default pull-right', icon='arrow-left' %}
 +  {% link_for _('Back to all collaborators'), named_route='dataset.collaborators_read', id=pkg_dict.name, class_='btn btn-secondary pull-right', icon='arrow-left' %}
@@ -147,12 +235,12 @@ index 134d2297f..d6d792398 100644
 +++ b/ckan/templates/package/edit_base.html
 @@ -10,7 +10,7 @@
  {% endblock %}
- 
+
  {% block content_action %}
 -    {% link_for h.humanize_entity_type('package', pkg.type, 'view label') or _('View dataset'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-default', icon='eye' %}
 +    {% link_for h.humanize_entity_type('package', pkg.type, 'view label') or _('View dataset'), named_route=pkg.type ~ '.read', id=pkg.name, class_='btn btn-secondary', icon='eye' %}
  {% endblock %}
- 
+
  {% block content_primary_nav %}
 diff --git a/ckan/templates/package/edit_view.html b/ckan/templates/package/edit_view.html
 index 61efd5940..dbdc61f0c 100644
@@ -180,19 +268,32 @@ index e5d6ad77b..5d42e637d 100644
          <button class="btn btn-primary" name="save" value="Save" type="submit">{% block save_button_text %}{{ _('Add') }}{% endblock %}</button>
      </div>
    </form>
+diff --git a/ckan/templates/package/read_base.html b/ckan/templates/package/read_base.html
+index af1a47fc8..1c65cd4c5 100644
+--- a/ckan/templates/package/read_base.html
++++ b/ckan/templates/package/read_base.html
+@@ -14,7 +14,7 @@
+
+ {% block content_action %}
+   {% if h.check_access('package_update', {'id':pkg.id }) %}
+-    {% link_for _('Manage'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-default', icon='wrench' %}
++    {% link_for _('Manage'), named_route=pkg.type ~ '.edit', id=pkg.name, class_='btn btn-secondary', icon='wrench' %}
+   {% endif %}
+ {% endblock %}
+
 diff --git a/ckan/templates/package/resource_edit_base.html b/ckan/templates/package/resource_edit_base.html
 index fac12bd42..6fc4f73be 100644
 --- a/ckan/templates/package/resource_edit_base.html
 +++ b/ckan/templates/package/resource_edit_base.html
 @@ -15,7 +15,7 @@
- 
+
  {% block content_action %}
      {% if res %}
 -	{% link_for _('View resource'), named_route=pkg.type ~ '_resource.read', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='eye' %}
 +	{% link_for _('View resource'), named_route=pkg.type ~ '_resource.read', id=pkg.name, resource_id=res.id, class_='btn btn-secondary', icon='eye' %}
    {% endif %}
  {% endblock %}
- 
+
 diff --git a/ckan/templates/package/resource_read.html b/ckan/templates/package/resource_read.html
 index 51058d737..208e0ed45 100644
 --- a/ckan/templates/package/resource_read.html
@@ -278,13 +379,34 @@ index 75392a6db..8ae0154ef 100644
                <i class="fa fa-lg fa-arrow-circle-down"></i>
                {{ _('Download resource') }}
              </a>
+diff --git a/ckan/templates/package/snippets/resources.html b/ckan/templates/package/snippets/resources.html
+index 8b8a0c6f9..d96b6f06b 100644
+--- a/ckan/templates/package/snippets/resources.html
++++ b/ckan/templates/package/snippets/resources.html
+@@ -32,7 +32,7 @@ Example:
+                 <li class="nav-item d-flex justify-content-between position-relative">
+                   <a class="flex-fill" href="{{ url }}" title="{{ h.resource_display_name(resource) }}">{{ h.resource_display_name(resource)|truncate(25) }}</a>
+                   <div class="dropdown position-absolute end-0 me-2">
+-                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownRes{{ loop.index }}" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-wrench"></i></button>
++                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownRes{{ loop.index }}" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-wrench"></i></button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownRes{{ loop.index }}">
+                       <li>{% link_for _('Edit resource'), named_route=pkg.type ~ '_resource.edit', id=pkg.name, resource_id=resource.id, class_='dropdown-item', icon='pencil' %}</li>
+                       {% block resources_list_edit_dropdown_inner scoped %}{% endblock %}
+@@ -55,6 +55,6 @@ Example:
+
+ {% if can_edit and not is_activity_archive %}
+   <div class="module-content">
+-    {% link_for _('Add new resource'), named_route=pkg.type ~ '_resource.new', id=pkg.name, class_='btn btn-default btn-sm', icon='plus' %}
++    {% link_for _('Add new resource'), named_route=pkg.type ~ '_resource.new', id=pkg.name, class_='btn btn-secondary btn-sm', icon='plus' %}
+   </div>
+ {% endif %}
 diff --git a/ckan/templates/package/view_edit_base.html b/ckan/templates/package/view_edit_base.html
 index 2df15f5a4..5f9e96ea2 100644
 --- a/ckan/templates/package/view_edit_base.html
 +++ b/ckan/templates/package/view_edit_base.html
 @@ -6,10 +6,10 @@
  {% block breadcrumb_edit_selected %}{% endblock %}
- 
+
  {% block content_action %}
 -  {% link_for _('All views'), named_route=pkg.type ~ '_resource.views', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='arrow-left' %}
 +  {% link_for _('All views'), named_route=pkg.type ~ '_resource.views', id=pkg.name, resource_id=res.id, class_='btn btn-secondary', icon='arrow-left' %}
@@ -294,7 +416,7 @@ index 2df15f5a4..5f9e96ea2 100644
 +    <a href="{{ url }}" class="btn btn-secondary"><i class="fa fa-eye"></i> {{ _('View view') }}</a>
    {% endif %}
  {% endblock %}
- 
+
 diff --git a/ckan/templates/snippets/language_selector.html b/ckan/templates/snippets/language_selector.html
 index 16c387754..591b95133 100644
 --- a/ckan/templates/snippets/language_selector.html
@@ -306,22 +428,22 @@ index 16c387754..591b95133 100644
 -  <button class="btn btn-default d-none " type="submit">{{ _('Go') }}</button>
 +  <button class="btn btn-secondary d-none " type="submit">{{ _('Go') }}</button>
  </form>
- 
- 
+
+
 diff --git a/ckan/templates/snippets/search_form.html b/ckan/templates/snippets/search_form.html
-index b77f2b990..bca653755 100644
+index 3bdd08f9e..f2d037750 100644
 --- a/ckan/templates/snippets/search_form.html
 +++ b/ckan/templates/snippets/search_form.html
-@@ -13,7 +13,7 @@
+@@ -12,7 +12,7 @@
+     <div class="input-group search-input-group">
        <input aria-label="{% block header_site_search_label %}{{ placeholder }}{% endblock %}" id="field-giant-search" type="text" class="form-control input-lg" name="q" value="{{ query }}" autocomplete="off" placeholder="{{ placeholder }}">
        {% block search_input_button %}
-       <span class="input-group-btn">
--        <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
-+        <button class="btn btn-secondary btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
-           <i class="fa fa-search"></i>
-         </button>
-       </span>
-@@ -39,7 +39,7 @@
+-      <button class="btn btn-default btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
++      <button class="btn btn-secondary btn-lg" type="submit" value="search" aria-label="{{_('Submit')}}">
+         <i class="fa fa-search"></i>
+       </button>
+       {% endblock %}
+@@ -37,7 +37,7 @@
            {% endfor %}
          </select>
          {% block search_sortby_button %}
@@ -330,7 +452,7 @@ index b77f2b990..bca653755 100644
          {% endblock %}
        </div>
      {% endif %}
-@@ -73,7 +73,7 @@
+@@ -71,7 +71,7 @@
            {% endfor %}
          {% endfor %}
        </p>
@@ -338,7 +460,7 @@ index b77f2b990..bca653755 100644
 +      <a class="show-filters btn btn-secondary">{{ _('Filter Results') }}</a>
      {% endif %}
    {% endblock %}
- 
+
 diff --git a/ckan/templates/snippets/simple_search.html b/ckan/templates/snippets/simple_search.html
 index 6bc6a53e5..c1c58ae4b 100644
 --- a/ckan/templates/snippets/simple_search.html
@@ -404,27 +526,14 @@ index 223ba8143..b5c458f58 100644
 --- a/ckan/templates/user/read_base.html
 +++ b/ckan/templates/user/read_base.html
 @@ -14,7 +14,7 @@
- 
+
  {% block content_action %}
    {% if h.check_access('user_update', user) %}
 -    {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='btn btn-default', icon='wrench' %}
 +    {% link_for _('Manage'), named_route='user.edit', id=user.name, class_='btn btn-secondary', icon='wrench' %}
    {% endif %}
  {% endblock %}
- 
-diff --git a/ckan/views/user.py b/ckan/views/user.py
-index 8f1da7ab1..5962015cb 100644
---- a/ckan/views/user.py
-+++ b/ckan/views/user.py
-@@ -265,7 +265,7 @@ class ApiTokenView(MethodView):
-             u'class': u'fa fa-copy'
-         }), {
-             u'type': u'button',
--            u'class': u'btn btn-default btn-xs',
-+            u'class': u'btn btn-secondary btn-xs',
-             u'data-module': u'copy-into-buffer',
-             u'data-module-copy-value': ensure_str(token)
-         })
+
 diff --git a/ckanext/activity/templates/snippets/pagination.html b/ckanext/activity/templates/snippets/pagination.html
 index 78e605368..78887232e 100644
 --- a/ckanext/activity/templates/snippets/pagination.html
@@ -434,7 +543,7 @@ index 78e605368..78887232e 100644
 -{% set class_next = "btn btn-default" if older_activities_url else "btn disabled" %}
 +{% set class_prev = "btn btn-secondary" if newer_activities_url else "btn disabled" %}
 +{% set class_next = "btn btn-secondary" if older_activities_url else "btn disabled" %}
- 
+
  {% if newer_activities_url or older_activities_url %}
      <div id="activity_page_buttons" class="activity_buttons" style="margin-top: 25px;">
 diff --git a/ckanext/activity/templates/user/snippets/followee_dropdown.html b/ckanext/activity/templates/user/snippets/followee_dropdown.html
@@ -442,7 +551,7 @@ index f3db32883..7225aa5c2 100644
 --- a/ckanext/activity/templates/user/snippets/followee_dropdown.html
 +++ b/ckanext/activity/templates/user/snippets/followee_dropdown.html
 @@ -12,7 +12,7 @@
- 
+
  <div id="followee-filter" class="pull-right">
    <div class="dropdown">
 -    <a href="#" id="followee-popover" class="btn btn-default dropdown-toggle"
@@ -450,6 +559,98 @@ index f3db32883..7225aa5c2 100644
        title="{{ _('Activity from:') }} {{ context.context }}">
        <span>{{ _('Activity from:') }}</span> <strong>{{ context.context }}</strong> <span class="caret"></span>
      </a>
+diff --git a/ckanext/datastore/templates/package/resource_read.html b/ckanext/datastore/templates/package/resource_read.html
+index d61a1c1b2..37aec2721 100644
+--- a/ckanext/datastore/templates/package/resource_read.html
++++ b/ckanext/datastore/templates/package/resource_read.html
+@@ -46,7 +46,7 @@
+ {% block action_manage_inner %}
+   {{ super() }}
+   {% if res.datastore_active %}
+-    <li>{% link_for _('Data Dictionary'), named_route='datastore.dictionary', id=pkg.name, resource_id=res.id, class_='btn btn-default', icon='code' %}</li>
++    <li>{% link_for _('Data Dictionary'), named_route='datastore.dictionary', id=pkg.name, resource_id=res.id, class_='btn btn-secondary', icon='code' %}</li>
+   {% endif %}
+ {% endblock %}
+
+diff --git a/ckanext/datatablesview/assets/datatablesview.js b/ckanext/datatablesview/assets/datatablesview.js
+index 7416108b2..8760acf68 100644
+--- a/ckanext/datatablesview/assets/datatablesview.js
++++ b/ckanext/datatablesview/assets/datatablesview.js
+@@ -419,9 +419,9 @@ this.ckan.module('datatables_view', function (jQuery) {
+                 // add clipboard and print buttons to modal record display
+                 var data = row.data();
+                 return '<span style="font-size:150%;font-weight:bold;">Details:</span>&nbsp;&nbsp;<div class=" dt-buttons btn-group">' +
+-                  '<button id="modalcopy-button" class="btn btn-default" title="' + that._('Copy to clipboard') + '" onclick="copyModal(\'' +
++                  '<button id="modalcopy-button" class="btn btn-secondary" title="' + that._('Copy to clipboard') + '" onclick="copyModal(\'' +
+                   packagename + '&mdash;' + resourcename + '\')"><i class="fa fa-copy"></i></button>' +
+-                  '<button id="modalprint-button" class="btn btn-default" title="' + that._('Print') + '" onclick="printModal(\'' +
++                  '<button id="modalprint-button" class="btn btn-secondary" title="' + that._('Print') + '" onclick="printModal(\'' +
+                   packagename + '&mdash;' + resourcename + '\')"><i class="fa fa-print"></i></button>' +
+                   '</div>&nbsp;'
+               }
+@@ -708,7 +708,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           name: 'viewToggleButton',
+           text: gcurrentView === 'table' ? '<i class="fa fa-list"></i>' : '<i class="fa fa-table"></i>',
+           titleAttr: that._('Table/List toggle'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           action: function (e, dt, node, config) {
+             if (gcurrentView === 'list') {
+               dt.button('viewToggleButton:name').text('<i class="fa fa-table"></i>')
+@@ -728,7 +728,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           extend: 'copy',
+           text: '<i class="fa fa-copy"></i>',
+           titleAttr: that._('Copy to clipboard'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           title: function () {
+             // remove html tags from filterInfo msg
+             const filternohtml = filterInfo(datatable, true)
+@@ -742,7 +742,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           extend: 'colvis',
+           text: '<i class="fa fa-eye-slash"></i>',
+           titleAttr: that._('Toggle column visibility'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           columns: 'th:gt(0):not(:contains("colspacer"))',
+           collectionLayout: 'fixed',
+           postfixButtons: [{
+@@ -780,7 +780,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+         }, {
+           text: '<i class="fa fa-download"></i>',
+           titleAttr: that._('Filtered download'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           autoClose: true,
+           extend: 'collection',
+           buttons: [{
+@@ -816,7 +816,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           name: 'resetButton',
+           text: '<i class="fa fa-repeat"></i>',
+           titleAttr: that._('Reset'),
+-          className: 'btn-default resetButton',
++          className: 'btn-secondary resetButton',
+           action: function (e, dt, node, config) {
+             dt.state.clear()
+             $('.resetButton').css('color', 'black')
+@@ -827,7 +827,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           extend: 'print',
+           text: '<i class="fa fa-print"></i>',
+           titleAttr: that._('Print'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           title: packagename + ' — ' + resourcename,
+           messageTop: function () {
+             return filterInfo(datatable)
+@@ -843,7 +843,7 @@ this.ckan.module('datatables_view', function (jQuery) {
+           name: 'shareButton',
+           text: '<i class="fa fa-share"></i>',
+           titleAttr: that._('Share current view'),
+-          className: 'btn-default',
++          className: 'btn-secondary',
+           action: function (e, dt, node, config) {
+             dt.state.save()
+             const sharelink = window.location.href + '?state=' + window.btoa(JSON.stringify(dt.state()))
 diff --git a/ckanext/datatablesview/templates/datatables/datatables_view.html b/ckanext/datatablesview/templates/datatables/datatables_view.html
 index 3e9d1d978..214292ed8 100644
 --- a/ckanext/datatablesview/templates/datatables/datatables_view.html
@@ -463,3 +664,16 @@ index 3e9d1d978..214292ed8 100644
          {% for field in datadictionary -%}
            <th id="cdx{{ loop.index }}" class="fhead" data-type="{{ field.type }}">
                {{- field.id -}}
+diff --git a/ckanext/tabledesigner/templates/package/snippets/resource_upload_field.html b/ckanext/tabledesigner/templates/package/snippets/resource_upload_field.html
+index 583ba82f4..e98dc2763 100644
+--- a/ckanext/tabledesigner/templates/package/snippets/resource_upload_field.html
++++ b/ckanext/tabledesigner/templates/package/snippets/resource_upload_field.html
+@@ -2,7 +2,7 @@
+
+ {% block url_type_select %}
+   {{ super() }}
+-  <button type="button" class="btn btn-default" id="resource-table-designer-button"
++  <button type="button" class="btn btn-secondary" id="resource-table-designer-button"
+     title="{{ _('Create a custom table for your data') }}"
+       onclick="
+         document.getElementById('resource-url-table-designer').checked = true;
