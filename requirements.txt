@@ -31,7 +31,7 @@ charset-normalizer==3.3.2
     #   ckan
     #   requests
 # Removed manually, ckan is installed with ansible as this convention does not allow editable installs
-#ckan[requirements]==2.11.3
+#ckan[requirements]==2.11.4
     # via -r requirements.in
 click==8.1.7
     # via
@@ -136,7 +136,7 @@ redis==5.0.7
     # via
     #   ckan
     #   rq
-requests==2.32.3
+requests==2.32.4
     # via
     #   ckan
     #   pysolr
@@ -174,7 +174,7 @@ urllib3==2.2.2
     # via
     #   ckan
     #   requests
-uwsgi==2.0.29
+uwsgi==2.0.31
     # via -r requirements.in
 watchdog==4.0.1
     # via
