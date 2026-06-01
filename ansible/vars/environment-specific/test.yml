@@ -62,7 +62,7 @@ ckan_users:
 ckan_admins:
   - "{{ ckan_users.admin.username }}"
 
-email_domain: "{{ public_facing_hostname }}"
+email_domain: palveluvayla.fi
 email:
   smtp_server: localhost
   from: no-reply@{{ email_domain }}
