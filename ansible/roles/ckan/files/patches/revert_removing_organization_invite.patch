@@ -1,0 +1,40 @@
+From 788d413f2609adeb8fb6182364ec8da4f448d7fd Mon Sep 17 00:00:00 2001
+From: Jari Voutilainen <jari-pekka.voutilainen@gofore.com>
+Date: Mon, 1 Jun 2026 15:47:50 +0300
+Subject: [PATCH] Revert "Hide invite user form if can't create users"
+
+This reverts commit e72b6b996991c41c3672c5dfe211ed0e8f47178f.
+---
+ ckan/templates/group/member_new.html        | 2 +-
+ ckan/templates/organization/member_new.html | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ckan/templates/group/member_new.html b/ckan/templates/group/member_new.html
+index 7038da0e4f..e1e098717e 100644
+--- a/ckan/templates/group/member_new.html
++++ b/ckan/templates/group/member_new.html
+@@ -36,7 +36,7 @@
+           </div>
+         </div>
+       </div>
+-      {% if not user and h.check_access('user_create') %}
++      {% if not user %}
+       <div class="col-md-2">
+         <div class="add-member-or">
+           {{ _('or') }}
+diff --git a/ckan/templates/organization/member_new.html b/ckan/templates/organization/member_new.html
+index 717fd5d907..bb5c52cad6 100644
+--- a/ckan/templates/organization/member_new.html
++++ b/ckan/templates/organization/member_new.html
+@@ -38,7 +38,7 @@
+           </div>
+         </div>
+       </div>
+-      {% if not user and h.check_access('user_create') %}
++      {% if not user %}
+       <div class="col-md-2">
+         <div class="add-member-or">
+           {{ _('or') }}
+--
+2.43.0
+
