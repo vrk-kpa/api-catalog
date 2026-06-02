@@ -179,9 +179,9 @@
           _paq.push(['setSiteId', {{ matomo_config.site_id }} ]);
 
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/suomi.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+          g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
     </script>
-    <noscript><p><img src="https://suomi.matomo.cloud/matomo.php?idsite={{ matomo_config.site_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <noscript><p><img src="{{ matomo_config.site_url }}/matomo.php?idsite={{ matomo_config.site_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
     <!-- End Matomo Code -->
 {% endblock -%}
