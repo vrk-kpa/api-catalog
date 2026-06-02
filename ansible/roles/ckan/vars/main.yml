@@ -27,6 +27,7 @@ ckan_patches:
   - { file: "remove_gravatar" }
   - { file: "set_attachment_content_disposition" }
   - { file: "remove_free_fontawesome" }
+  - { file: "revert_removing_organization_invite"}
 
 files_created_by_patches:
   - { file: "/usr/lib/ckan/default/src/ckan/ckan/templates-bs3/home/robots.txt" }
