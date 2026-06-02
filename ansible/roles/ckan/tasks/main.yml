@@ -23,6 +23,11 @@
     state: absent
     virtualenv: "{{ virtualenv }}"
 
+- name: Install required setuptools
+  pip:
+    name: setuptools<81
+    virtualenv: "{{ virtualenv }}"
+
 - name: Install ckan
   pip:
     name: git+https://github.com/ckan/ckan.git@ckan-2.11.4#egg=ckan
