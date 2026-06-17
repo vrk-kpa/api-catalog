@@ -32,7 +32,7 @@ pyopenssl==24.2.1
     # via requests-pkcs12
 pyrsistent==0.20.0
     # via jsonschema
-requests==2.28.1
+requests==2.32.3
     # via
     #   -r requirements.in
     #   requests-pkcs12
