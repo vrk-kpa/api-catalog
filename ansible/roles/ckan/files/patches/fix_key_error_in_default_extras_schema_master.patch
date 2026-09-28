@@ -1,0 +1,80 @@
+From 057571acadc0df2db1373442aa816d0d3430d49f Mon Sep 17 00:00:00 2001
+From: Stefanie Taepke <stefina@users.noreply.github.com>
+Date: Wed, 9 Sep 2026 16:03:58 +0200
+Subject: [PATCH 1/2] fix: KeyError in default_extras_schema when validating
+ extras without an explicit id
+
+fix: KeyError in default_extras_schema when validating extras without an explicit id
+---
+ changes/9523.bugfix      | 1 +
+ ckan/logic/validators.py | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 changes/9523.bugfix
+
+diff --git a/changes/9523.bugfix b/changes/9523.bugfix
+new file mode 100644
+index 0000000000..7caad750a6
+--- /dev/null
++++ b/changes/9523.bugfix
+@@ -0,0 +1 @@
++fallback to None to prevent KeyError in default_extras_schema when validating extras without an explicit id
+diff --git a/ckan/logic/validators.py b/ckan/logic/validators.py
+index c320ee2a9e..8996733752 100644
+--- a/ckan/logic/validators.py
++++ b/ckan/logic/validators.py
+@@ -581,7 +581,7 @@ def ignore_not_sysadmin(key: FlattenKey, data: FlattenDataDict,
+     if ignore_auth or (user and authz.is_sysadmin(user)):
+         return
+ 
+-    data.pop(key)
++    data.pop(key, None)
+ 
+ 
+ def limit_sysadmin_update(key: FlattenKey, data: FlattenDataDict,
+
+From 352870725aecbd836c09eed4f9f11ca840127326 Mon Sep 17 00:00:00 2001
+From: Stefanie Taepke <stefina@users.noreply.github.com>
+Date: Thu, 10 Sep 2026 14:19:29 +0200
+Subject: [PATCH 2/2] fix: add regression test for ignore_not_sysadmin KeyError
+
+default_extras_schema()'s 'id' field is seeded with the `missing` sentinel by augment_data() before the main validation happens, since the extras row is only known from the data, not yet flattened. But a sibling field using convert_from_extras (e.g. ckanext-showcase's author, author_email, showcase_type, ...) is a shorter, and thus earlier-sorted, key than ('extras', 0, 'id'). When it consumes its matching extras row it deletes that row's 'id'/'key'/'value' subkeys, so by the time the loop reaches ('extras', 0, 'id') the key is gone.
+---
+ ckan/tests/logic/test_conversion.py | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/ckan/tests/logic/test_conversion.py b/ckan/tests/logic/test_conversion.py
+index 8bdba63993..b031373dde 100644
+--- a/ckan/tests/logic/test_conversion.py
++++ b/ckan/tests/logic/test_conversion.py
+@@ -4,7 +4,8 @@
+ """
+ from ckan import model
+ from ckan.lib.navl.dictization_functions import validate
+-from ckan.logic.converters import convert_to_extras
++from ckan.lib.navl.validators import not_empty
++from ckan.logic.converters import convert_from_extras, convert_to_extras
+ from ckan.logic.schema import default_extras_schema
+ 
+ 
+@@ -138,3 +139,20 @@ def test_convert_to_extras_free_extra_can_not_have_the_same_key():
+     assert errors["extras"] == [
+         {"key": [u"There is a schema field with the same name"]}
+     ]
++
++
++def test_convert_from_extras_does_not_crash_when_extras_row_has_no_id():
++
++    data_dict = {"extras": [{"key": "custom_text", "value": "Hi"}]}
++
++    schema = {
++        "custom_text": [convert_from_extras, not_empty],
++        "extras": default_extras_schema(),
++    }
++
++    context = {"model": model, "session": model.Session}
++
++    data, errors = validate(data_dict, schema, context)
++
++    assert data["custom_text"] == "Hi"
++    assert errors == {"extras": [{"key": [u"Missing value"]}]}
+
