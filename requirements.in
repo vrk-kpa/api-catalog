@@ -1,4 +1,4 @@
-ckan[requirements]==2.11.6
+ckan[requirements]==2.11.7
 
 # requirements of apicatalog
 uwsgi
