@@ -1,21 +1,31 @@
 diff --git a/ckan/logic/validators.py b/ckan/logic/validators.py
-index 635ef9dee..5be0af325 100644
+index 635ef9dee..a207d9c02 100644
 --- a/ckan/logic/validators.py
 +++ b/ckan/logic/validators.py
-@@ -582,7 +582,7 @@ def ignore_not_package_admin(key: FlattenKey, data: FlattenDataDict,
-     # FIXME is this the best way to cjeck for state only?
-     if key == ('state',) and context.get('allow_state_change'):
+@@ -594,7 +594,7 @@ def ignore_not_sysadmin(key: FlattenKey, data: FlattenDataDict,
+     if ignore_auth or (user and authz.is_sysadmin(user)):
          return
+ 
 -    data.pop(key)
 +    data.pop(key, None)
  
  
- def ignore_not_sysadmin(key: FlattenKey, data: FlattenDataDict,
+ def ignore_not_group_admin(key: FlattenKey, data: FlattenDataDict,
 diff --git a/ckan/tests/logic/test_conversion.py b/ckan/tests/logic/test_conversion.py
-index 8bdba6399..bb96a29b5 100644
+index 8bdba6399..b031373dd 100644
 --- a/ckan/tests/logic/test_conversion.py
 +++ b/ckan/tests/logic/test_conversion.py
-@@ -138,3 +138,20 @@ def test_convert_to_extras_free_extra_can_not_have_the_same_key():
+@@ -4,7 +4,8 @@
+ """
+ from ckan import model
+ from ckan.lib.navl.dictization_functions import validate
+-from ckan.logic.converters import convert_to_extras
++from ckan.lib.navl.validators import not_empty
++from ckan.logic.converters import convert_from_extras, convert_to_extras
+ from ckan.logic.schema import default_extras_schema
+ 
+ 
+@@ -138,3 +139,20 @@ def test_convert_to_extras_free_extra_can_not_have_the_same_key():
      assert errors["extras"] == [
          {"key": [u"There is a schema field with the same name"]}
      ]
